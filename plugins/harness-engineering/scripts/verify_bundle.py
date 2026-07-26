@@ -12,6 +12,7 @@ import sys
 
 EXPECTED_SKILLS = {
     "agents-md-engineer",
+    "context-doctor",
     "harness-audit",
     "harness-builder",
     "harness-engineering",
@@ -25,7 +26,7 @@ EXPECTED_SKILLS = {
     "skill-engineer",
 }
 TEXT_SUFFIXES = {".md", ".json", ".yaml", ".yml", ".py"}
-VERSION_PATTERN = re.compile(r"^2\.1\.0$")
+VERSION_PATTERN = re.compile(r"^2\.1\.1$")
 
 
 def fail(message: str) -> None:

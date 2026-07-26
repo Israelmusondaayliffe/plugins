@@ -7,6 +7,8 @@ description: Create or upgrade a missing skill identified during harness design 
 
 Reuse an existing capability when it already owns the task. Create a skill only for a repeated, named failure or workflow.
 
+Author to `../../references/claude5-context-doctrine.md`. A skill is a lightweight guide that encodes opinions particular to this user, not a constraint cage. Depth moves into linked files that load on demand, and enumerated prohibitions collapse into one statement of the wanted shape.
+
 ## Workflow
 
 1. Define concrete trigger examples and the failure the skill prevents.
@@ -18,6 +20,8 @@ Reuse an existing capability when it already owns the task. Create a skill only 
 7. Place it where the platform discovers it, per the platform file: personal or project skills directory, or inside a plugin.
 8. Before compacting an existing skill, freeze its source fingerprint, launcher contract, scripts, positive and negative triggers, functional cases, and external rubric. Stop before editing when the current version fails its acceptance gate.
 9. Run realistic forward tests and add the skill to the harness plan and discovery checks.
+
+When upgrading an existing skill, run `context-doctor` first and treat its findings as the starting removal set.
 
 Do not create a broad everything-skill or load an entire library by default.
 Word ceilings are soft diagnostics. The complete behavior suite decides acceptance. See `../../references/frontier-first-prompt-governance.md`.

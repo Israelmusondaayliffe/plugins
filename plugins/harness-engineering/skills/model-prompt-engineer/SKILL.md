@@ -14,7 +14,7 @@ Keep stable user policy separate from temporary model compensation.
 3. If the user requests latest, current, or default, verify current guidance from the vendor's official documentation for the resolved platform's model family before selecting or rewriting.
 4. Load an installed model-specific prompting skill when one exists and is visible; prefer the namespaced plugin copy.
 5. State the outcome, necessary context, constraints, authority, output contract, and completion evidence once each.
-6. Remove duplicate reminders and obsolete workarounds.
+6. Remove duplicate reminders and obsolete workarounds. For instruction files and skills, apply `../../references/claude5-context-doctrine.md` rather than prompt-level advice, and never carry a reasoning-echo instruction into any surface.
 7. Test representative success, ambiguity, approval, tool-routing, formatting, and stop cases.
 8. Run each case more than once at fixed model, effort, tool, and scorer conditions.
 9. Subtract one coherent prompt group at a time. Restore any critical, category, or overall regression.

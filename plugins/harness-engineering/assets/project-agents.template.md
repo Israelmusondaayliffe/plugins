@@ -1,24 +1,26 @@
 # Project AGENTS.md
 
+Spend most of this file on gotchas. Skip anything Codex can learn by reading the repo.
+
 ## Outcome
 
-[Describe the work this project exists to produce.]
+[Describe the work this project exists to produce, in one or two lines.]
 
-## Inputs
+## Gotchas
 
-[List authoritative references and source systems.]
+[The non-obvious facts that cost time when missed. The highest value section in the file.]
 
-## Workflow
+## References
 
-[List only project-specific steps that differ from global defaults.]
+[Point at source code, test suites, or rubrics rather than describing them.]
 
 ## Outputs
 
 [Name destinations and file conventions.]
 
-## Verification
+## Deterministic checks
 
-[List deterministic commands and judgment checks.]
+[Name the scripts that must pass.]
 
 ## Boundaries
 

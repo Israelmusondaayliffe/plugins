@@ -1,0 +1,4 @@
+interface:
+  display_name: "Context Doctor"
+  short_description: "Audit persistent context for Claude 5 over-constraint."
+  default_prompt: "Use $context-doctor to audit my context files for over-constraint."

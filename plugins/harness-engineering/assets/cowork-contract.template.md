@@ -1,6 +1,10 @@
 # Cowork Folder Contract (CLAUDE.md at the connected-folder root)
 
-[This file only loads if the user's app-level global instructions say to read it. Verify that pointer exists.]
+[This file only loads if the user's app-level global instructions say to read it. Verify
+that pointer exists.]
+
+Keep it to what only this folder's owner knows. Claude 5 models already plan, explore, and
+check their own work, so restating that here spends tokens for nothing.
 
 ## Identity and stakes
 
@@ -9,16 +13,23 @@
 ## Companion files
 
 Read these at the start of every task and treat them as the contract:
-[List companion files at this root, for example about-me.md, voice-and-style.md, working-rules.md. Ask for restoration if one is missing.]
+[List companion files at this root. Ask for restoration if one is missing.]
 
-## Always-on hard rules
+## Policy that is not model behaviour
 
-[Rules that must hold even if companions fail to load: output paths, naming, banned patterns, fabrication bans.]
+[Voice, banned patterns, brand constraints, fabrication limits. These survive every model
+upgrade because they encode taste and business policy.]
 
 ## Output discipline
 
-[Where outputs land inside this folder, dated-folder and versioning conventions, exceptions for living artifacts.]
+[Where outputs land inside this folder, naming and versioning conventions, exceptions for
+living artifacts.]
+
+## Gotchas
+
+[Non-obvious facts about this folder that cost time when missed.]
 
 ## Deterministic gate
 
-[Name the validator scripts in this folder that run before any deliverable is announced complete.]
+[Name the validator scripts in this folder that run before any deliverable is announced
+complete. Exact requirements belong in the scripts, not in prose above.]

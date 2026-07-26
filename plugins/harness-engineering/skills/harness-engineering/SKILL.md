@@ -7,6 +7,8 @@ description: Design, build, verify, or maintain a personalized AI operating harn
 
 Build the smallest harness that satisfies the user's real work. Treat the user's existing files and live environment as implementation truth.
 
+On Claude 5 generation models the common defect in an inherited harness is over-constraint, not absence. Read `../../references/claude5-context-doctrine.md` before writing or judging any persistent context, and prefer removing an instruction to adding one.
+
 ## Platform first
 
 Resolve the target platform (Claude Code, Claude Cowork, or Codex) using `../../references/platform-matrix.md` before any phase. The principles are shared; the surfaces are not. Name the platform in every profile, plan, and receipt. A user running more than one platform gets one harness scope per platform, never a copy-paste between them.
@@ -24,6 +26,7 @@ Resolve the target platform (Claude Code, Claude Cowork, or Codex) using `../../
 9. Sustained approved build: load `harness-runner`.
 10. Completion claim: load `harness-verifier`.
 11. Drift or update work: load `harness-maintainer`.
+12. Over-constrained or inherited context: load `context-doctor` before rewriting anything.
 
 For an end-to-end request, use this order: interview, audit, plan, approve, run, verify, hand off.
 

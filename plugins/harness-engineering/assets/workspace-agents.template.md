@@ -2,11 +2,11 @@
 
 ## Purpose
 
-[Describe what this workspace holds and who uses it.]
+[Describe what this workspace holds and who uses it, in one or two lines.]
 
 ## Layout
 
-[List the folders Codex must understand.]
+[List only the folders whose purpose is not obvious from their names.]
 
 ## Read and write boundaries
 
@@ -16,6 +16,10 @@
 
 [Describe how named projects map to project folders and project contracts.]
 
-## Verification
+## Gotchas
 
-[Name workspace-level checks and artifact review requirements.]
+[Workspace-level facts that cost time when missed.]
+
+## Deterministic checks
+
+[Name the scripts that must pass. Keep exact requirements inside them.]
