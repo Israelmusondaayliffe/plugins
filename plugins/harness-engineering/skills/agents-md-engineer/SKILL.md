@@ -18,3 +18,7 @@ Keep instruction files short, accurate, durable, and scoped to the directories t
 7. Verify that closer files refine rather than silently contradict broader guidance. On Cowork, also verify the global instructions actually direct Claude to read the folder contract, since folder files do not load themselves.
 
 Use the templates under `../../assets/`: `global-claude`, `project-claude`, and `cowork-contract` for Claude platforms, the three `agents` templates for Codex. Replace every bracketed placeholder. Do not copy the advanced case study as a default.
+
+Use a compact context kernel for stable cross-task policy and delta-only workspace or project overlays. Keep front-door ownership cues only when they are load-bearing for routing. Treat size ceilings as diagnostics and accept subtraction only against a frozen behavior suite.
+
+For measured context reduction, follow `../../references/frontier-first-prompt-governance.md`.

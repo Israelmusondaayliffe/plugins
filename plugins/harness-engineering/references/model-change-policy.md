@@ -6,10 +6,14 @@ When the user requests the latest or current model, check current official docum
 
 After a major model change:
 
-1. Re-run representative harness tasks.
-2. Compare the current prompt with a shorter version.
-3. Remove reminders that the new model follows without them.
-4. Recheck approval behavior, tool routing, response length, and stop conditions.
-5. Keep stable user policy separate from temporary model corrections.
+1. Freeze the current prompt, model, effort, tool inventory, scorer, routing state, hashes, and representative behavior suite.
+2. Run every case more than once under fixed conditions.
+3. Remove one coherent instruction group and compare the shorter candidate with the frozen baseline.
+4. Restore any batch that introduces a critical failure, lowers a category, or lowers the overall pass rate.
+5. Recheck approval behavior, tool routing, response length, stop conditions, task-start capability context, and completion evidence after installation.
+6. Remove reminders the new model follows without them.
+7. Keep stable user policy separate from temporary model corrections.
+
+Do not compare runs whose model, effort, tools, scorer, or task conditions differ. Rescore frozen raw outputs when evaluation logic changes. Follow `frontier-first-prompt-governance.md` for the complete subtraction contract.
 
 Do not invent model names, parameters, prices, or availability.

@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION_PATTERN = re.compile(r"^2\.1\.0$")
 
 
 def read_manifest(platform: str) -> dict:
@@ -20,7 +22,7 @@ class BundleContractTests(unittest.TestCase):
         for field in ("name", "version", "description", "license"):
             self.assertEqual(codex_manifest[field], claude_manifest[field], field)
         self.assertEqual(codex_manifest["name"], "harness-engineering")
-        self.assertEqual(codex_manifest["version"], "2.0.0")
+        self.assertRegex(codex_manifest["version"], VERSION_PATTERN)
         self.assertEqual(codex_manifest["license"], "MIT")
         self.assertEqual(len(codex_manifest["interface"]["defaultPrompt"]), 3)
         for manifest in (codex_manifest, claude_manifest):
@@ -52,5 +54,30 @@ class BundleContractTests(unittest.TestCase):
             self.assertIn("Cowork", text, f"{path} does not mention Cowork")
             self.assertIn("Claude Code", text, f"{path} does not mention Claude Code")
             self.assertIn("Codex", text, f"{path} does not mention Codex")
+
+    def test_frontier_first_contract_is_owned_and_routed(self) -> None:
+        reference = ROOT / "references" / "frontier-first-prompt-governance.md"
+        self.assertTrue(reference.is_file())
+        text = reference.read_text(encoding="utf-8")
+        for phrase in (
+            "compact context kernel",
+            "delta-only overlays",
+            "Evidence freeze before subtraction",
+            "Behavior evaluation contract",
+            "Front-door invocation policy",
+            "source/cache parity",
+            "pre-existing failures",
+        ):
+            self.assertIn(phrase, text)
+        for skill in (
+            "harness-engineering",
+            "harness-maintainer",
+            "harness-verifier",
+            "agents-md-engineer",
+            "plugin-engineer",
+            "skill-engineer",
+        ):
+            skill_text = (ROOT / "skills" / skill / "SKILL.md").read_text(encoding="utf-8")
+            self.assertIn("frontier-first-prompt-governance.md", skill_text)
 if __name__ == "__main__":
     unittest.main()

@@ -2,3 +2,6 @@ interface:
   display_name: "Harness Builder"
   short_description: "Apply an approved harness plan with backups."
   default_prompt: "Use $harness-builder to apply my approved harness plan."
+
+policy:
+  allow_implicit_invocation: false

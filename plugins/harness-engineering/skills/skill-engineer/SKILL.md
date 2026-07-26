@@ -16,6 +16,8 @@ Reuse an existing capability when it already owns the task. Create a skill only 
 5. Add deterministic scripts only when exact behavior warrants them.
 6. Validate: the Codex quick validator on Codex, `claude plugin validate` when the skill ships inside a Claude Code plugin, structural checks (frontmatter parses, description present, no placeholders) on Cowork.
 7. Place it where the platform discovers it, per the platform file: personal or project skills directory, or inside a plugin.
-8. Run realistic forward tests and add the skill to the harness plan and discovery checks.
+8. Before compacting an existing skill, freeze its source fingerprint, launcher contract, scripts, positive and negative triggers, functional cases, and external rubric. Stop before editing when the current version fails its acceptance gate.
+9. Run realistic forward tests and add the skill to the harness plan and discovery checks.
 
 Do not create a broad everything-skill or load an entire library by default.
+Word ceilings are soft diagnostics. The complete behavior suite decides acceptance. See `../../references/frontier-first-prompt-governance.md`.

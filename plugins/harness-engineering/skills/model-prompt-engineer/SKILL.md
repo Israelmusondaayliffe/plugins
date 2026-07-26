@@ -16,6 +16,9 @@ Keep stable user policy separate from temporary model compensation.
 5. State the outcome, necessary context, constraints, authority, output contract, and completion evidence once each.
 6. Remove duplicate reminders and obsolete workarounds.
 7. Test representative success, ambiguity, approval, tool-routing, formatting, and stop cases.
-8. Record model-specific blocks as provisional.
+8. Run each case more than once at fixed model, effort, tool, and scorer conditions.
+9. Subtract one coherent prompt group at a time. Restore any critical, category, or overall regression.
+10. Record model-specific blocks as provisional.
 
 Follow `../../references/model-change-policy.md`. Never invent a model name, parameter, price, or availability claim.
+For universal context changes, also follow `../../references/frontier-first-prompt-governance.md`.

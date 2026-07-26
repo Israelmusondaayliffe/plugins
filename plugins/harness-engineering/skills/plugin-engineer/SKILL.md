@@ -22,4 +22,6 @@ The manifest schema is shared; the packaging, install, and proof paths are not. 
 - Claude Code: scaffold or validate with `claude plugin validate`, install with `/plugin` or `claude plugin install` (test via `--plugin-dir`), and compare source against the cache under `~/.claude/plugins/cache/` after marketplace installs.
 - Codex: scaffold with the system `plugin-creator` skill, install through `codex plugin marketplace add` and `codex plugin add`, verify with `codex plugin list --json` and `scripts/verify_install.py` source-cache parity.
 
+For task-start policy, keep the personal plugin front door implicit and hide an owned specialist only after a deterministic front-door case proves reachability. Keep explicit-only plugin skills and exact loose mirrors out of default context. Preserve unrelated metadata, roll out in reversible waves, and run an actual explicit hidden-skill smoke. Follow `../../references/frontier-first-prompt-governance.md`.
+
 Public repository creation and marketplace submission remain separate external actions on every platform.

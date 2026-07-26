@@ -46,6 +46,12 @@ Start a new task after installation so the plugin's skills appear in the task ca
 - Hooks, authentication, external publication, and third-party installs require separate approval.
 - Reports record configuration keys and capability state, never secret values.
 
+## Frontier-first maintenance
+
+Harness Engineering treats model-visible instructions as a compact context kernel with delta-only overlays. It keeps personal plugin front doors in default context, loads specialists only when relevant, and moves examples plus exact checks beside the task that owns them. Prompt reductions are accepted only against frozen behavior, routing, installed-state, and rollback evidence.
+
+See `references/frontier-first-prompt-governance.md` for the complete subtraction, invocation-policy, skill-pilot, and post-model-update contract.
+
 ## Included skills
 
 - `harness-engineering` (front door)

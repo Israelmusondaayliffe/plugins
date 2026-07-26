@@ -19,7 +19,10 @@ Treat maintenance as a new audit and plan. Do not assume the previous harness st
 2. Compare current behavior with the last verified receipt.
 3. Classify drift as user change, product change, broken dependency, stale policy, or missing enforcement.
 4. Remove dead weight before adding new instructions.
-5. Produce a reversible update plan and approval groups.
-6. Run the standard build and verification phases.
+5. Freeze prompt, model, tool, routing, plugin, hash, scorer, and behavior conditions before subtracting context.
+6. Produce a reversible update plan and approval groups.
+7. Run subtraction and capability-policy changes in small waves, with behavior checks after every task-start context mutation.
+8. Run the standard build and verification phases, including installed-state checks.
 
 Follow `../../references/model-change-policy.md` after every major model change.
+Run the subtraction test monthly and after model updates. Use `../../references/frontier-first-prompt-governance.md` for the evidence, stopping, and rollback contract.

@@ -16,7 +16,10 @@ Plan the outcome, scopes, operations, approvals, evidence, and rollback. Leave n
 5. Prefer scripts, rules, hooks, sandbox settings, and templates when behavior must be exact, within what the platform supports.
 6. Define separate approval groups using `../../references/safety-and-approvals.md`.
 7. Generate file previews, operations, expected hashes, checks, failure stops, and rollback actions.
-8. Present the human plan and machine operations together.
-9. Do not begin implementation until the user accepts the plan or explicitly requests end-to-end execution.
+8. For prompt work, define a frozen baseline, fixed evaluation conditions, delta-only overlays, front-door route gates, reversible waves, and post-install acceptance.
+9. Treat word or token ceilings as soft diagnostics. Behavioral acceptance wins.
+10. Present the human plan and machine operations together.
+11. Do not begin implementation until the user accepts the plan or explicitly requests end-to-end execution.
 
 Start from `../../assets/harness-plan.template.json`. Validate it with `python3 ../../scripts/harnessctl.py validate-operations PLAN.json`.
+Follow `../../references/frontier-first-prompt-governance.md` for subtraction, invocation-policy, or skill-compaction plans.

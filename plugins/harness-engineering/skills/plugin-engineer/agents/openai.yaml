@@ -2,3 +2,6 @@ interface:
   display_name: "Plugin Engineer"
   short_description: "Create and validate plugins required by a harness."
   default_prompt: "Use $plugin-engineer to package a plugin."
+
+policy:
+  allow_implicit_invocation: false

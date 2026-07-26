@@ -13,6 +13,8 @@ Completion requires fresh evidence from the installed environment.
 ## Behavioral checks
 
 - A new task discovers installed skills and plugin front doors.
+- Fresh prompt input contains intended front doors, omits hidden specialists and exact mirrors, and records total plus section-level prompt size.
+- Every hidden specialist has a deterministic front-door route and at least one actual explicit-invocation smoke.
 - Command policy allows safe examples and blocks forbidden examples.
 - Hooks run only after review and trust.
 - Connectors return an authenticated profile or a precise setup requirement.
@@ -21,3 +23,5 @@ Completion requires fresh evidence from the installed environment.
 ## Completion receipt
 
 List every required check once. Include the command or inspection, fresh result, evidence path, and pass or fail status. A missing or stale check is a failure, not a clean no-op.
+
+For prompt subtraction, include the frozen baseline, raw outputs, scorer version, normalized category comparison, and post-install rerun. For local plugin updates, accept the documented base version plus `+codex.<cachebuster>`, then require installed listing, exact source/cache parity, and fresh discovery.

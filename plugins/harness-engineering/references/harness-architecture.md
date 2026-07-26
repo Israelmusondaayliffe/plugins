@@ -37,3 +37,9 @@ Prefer the least-free mechanism that fits:
 8. Inference
 
 Repeated corrections should move toward deterministic enforcement. On platforms without hooks (Cowork), the ladder compresses: scripts run by contract become the top rung.
+
+## Context architecture
+
+Model-visible instructions are a compact context kernel plus delta-only overlays. Personal plugin front doors remain in default context. Specialists, detailed workflows, examples, and recovery guidance load from their task-owned files. Exact behavior belongs in deterministic mechanisms whenever possible.
+
+Prompt size is a diagnostic, not an acceptance criterion. Freeze behavior before subtracting instructions and keep only reductions that preserve authority, routing, stopping, formatting, and verification. Use `frontier-first-prompt-governance.md` for the full evidence and rollout contract.

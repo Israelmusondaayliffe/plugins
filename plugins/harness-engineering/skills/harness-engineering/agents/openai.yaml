@@ -2,3 +2,6 @@ interface:
   display_name: "Harness Engineering"
   short_description: "Design, build, and verify an AI operating harness."
   default_prompt: "Use $harness-engineering to design and build my operating harness."
+
+policy:
+  allow_implicit_invocation: true

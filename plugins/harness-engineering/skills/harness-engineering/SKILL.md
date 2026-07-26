@@ -36,4 +36,4 @@ For an end-to-end request, use this order: interview, audit, plan, approve, run,
 - Do not install third-party code, trust hooks, authenticate accounts, or publish externally without separate approval.
 - Require fresh evidence before completion.
 
-Read `../../references/harness-architecture.md` for scope placement and `../../references/safety-and-approvals.md` before any mutation.
+Read `../../references/harness-architecture.md` for scope placement, `../../references/frontier-first-prompt-governance.md` for context reduction or capability-catalog work, and `../../references/safety-and-approvals.md` before any mutation.

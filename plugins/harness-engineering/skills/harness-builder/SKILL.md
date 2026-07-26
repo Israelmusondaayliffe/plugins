@@ -25,6 +25,8 @@ python3 ../../scripts/harnessctl.py apply PLAN.json --mode apply --approved GROU
 
 Run one approval group at a time. Preserve unrelated files. If reality invalidates the plan, log the deviation and return to planning.
 
+For task-start capability changes, apply one reversible wave at a time. Stop on the first route, behavior, parity, discovery, or unexpected-manifest regression. Re-run the accepted behavior suite after every change that affects default context, not only after `AGENTS.md` edits.
+
 ## Rollback
 
 Use `python3 ../../scripts/harnessctl.py rollback MANIFEST.json --receipt ROLLBACK.json`. Verify restored hashes before reporting recovery. On Cowork, roll back on the device copy too, not only the staged copy.
