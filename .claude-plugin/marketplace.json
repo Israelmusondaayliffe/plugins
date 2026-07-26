@@ -21,7 +21,7 @@
       "name": "brand-world-studio",
       "source": "./plugins/brand-world-studio",
       "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -57,7 +57,7 @@
       "name": "data-storytelling-studio",
       "source": "./plugins/data-storytelling-studio",
       "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -85,7 +85,7 @@
       "name": "knowledge-work-superpowers",
       "source": "./plugins/knowledge-work-superpowers",
       "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Israel A."
       }
@@ -104,7 +104,7 @@
       "name": "matt-partok-bundled-plugin-for-knowledge-work",
       "source": "./plugins/matt-partok-bundled-plugin-for-knowledge-work",
       "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
-      "version": "1.0.0+codex.20260717203901",
+      "version": "1.0.1+codex.20260717203901",
       "author": {
         "name": "Israel A."
       }
@@ -113,7 +113,7 @@
       "name": "model-evaluation-lab",
       "source": "./plugins/model-evaluation-lab",
       "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -131,7 +131,7 @@
       "name": "outcome-engine",
       "source": "./plugins/outcome-engine",
       "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "author": {
         "name": "Israel A."
       }
@@ -149,7 +149,7 @@
       "name": "proofloop",
       "source": "./plugins/proofloop",
       "description": "Governed agent learning ledger and evaluation wrapper with bounded refinement, verification, quarantined memory, and read-only audit.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -158,7 +158,7 @@
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -167,7 +167,7 @@
       "name": "video-production-studio",
       "source": "./plugins/video-production-studio",
       "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -185,7 +185,7 @@
       "name": "writing-quality",
       "source": "./plugins/writing-quality",
       "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }

@@ -1,11 +1,15 @@
 {
   "name": "writing-quality",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
   "author": {
     "name": "Israel Ayliffe"
   },
-  "keywords": ["codex", "claude-code", "cowork"],
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Writing Quality",

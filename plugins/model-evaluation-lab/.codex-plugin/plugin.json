@@ -1,11 +1,15 @@
 {
   "name": "model-evaluation-lab",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
   "author": {
     "name": "Israel Ayliffe"
   },
-  "keywords": ["codex", "claude-code", "cowork"],
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Model Evaluation Lab",

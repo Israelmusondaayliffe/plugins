@@ -1,9 +1,13 @@
 {
   "name": "brand-world-studio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
   "author": {
     "name": "Israel Ayliffe"
   },
-  "keywords": ["codex", "claude-code", "cowork"]
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork"
+  ]
 }

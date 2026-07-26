@@ -1,11 +1,15 @@
 {
   "name": "strategy-room",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
   "author": {
     "name": "Israel Ayliffe"
   },
-  "keywords": ["codex", "claude-code", "cowork"],
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Strategy Room",

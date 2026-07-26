@@ -1,9 +1,13 @@
 {
   "name": "video-production-studio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
   "author": {
     "name": "Israel Ayliffe"
   },
-  "keywords": ["codex", "claude-code", "cowork"]
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork"
+  ]
 }
