@@ -1,13 +1,13 @@
 {
   "name": "citizen-forge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Governed internal application creation for non-technical owners, with deterministic policy and lifecycle controls.",
   "author": {
     "name": "Israel Ayliffe",
     "url": "https://github.com/Israelmusondaayliffe"
   },
-  "homepage": "https://github.com/Israelmusondaayliffe/codex-plugins/tree/main/plugins/citizen-forge",
-  "repository": "https://github.com/Israelmusondaayliffe/codex-plugins",
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/citizen-forge",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
   "license": "MIT",
   "keywords": [
     "codex",
@@ -31,8 +31,8 @@
       "Write"
     ],
     "websiteURL": "https://israel-codex-plugins.israelayliffe.chatgpt.site",
-    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/codex-plugins/blob/main/PRIVACY.md",
-    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/codex-plugins/blob/main/TERMS.md",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
     "defaultPrompt": [
       "Help me turn an internal-tool idea into a safe application.",
       "Check whether my Citizen Forge app is ready to release.",

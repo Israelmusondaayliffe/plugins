@@ -1,13 +1,13 @@
 {
   "name": "harness-engineering",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
   "author": {
     "name": "Israel Ayliffe",
     "url": "https://github.com/Israelmusondaayliffe"
   },
-  "homepage": "https://github.com/Israelmusondaayliffe/codex-plugins/tree/main/plugins/harness-engineering",
-  "repository": "https://github.com/Israelmusondaayliffe/codex-plugins",
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/harness-engineering",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
   "license": "MIT",
   "keywords": [
     "claude-code",
@@ -30,9 +30,9 @@
       "Interactive",
       "Write"
     ],
-    "websiteURL": "https://github.com/Israelmusondaayliffe/codex-plugins/tree/main/plugins/harness-engineering",
-    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/codex-plugins/blob/main/plugins/harness-engineering/PRIVACY.md",
-    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/codex-plugins/blob/main/plugins/harness-engineering/TERMS.md",
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/harness-engineering",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/plugins/harness-engineering/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/plugins/harness-engineering/TERMS.md",
     "defaultPrompt": [
       "Design and build my AI operating harness.",
       "Audit my current Claude Code, Cowork, or Codex setup.",

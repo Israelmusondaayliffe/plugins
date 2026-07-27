@@ -1,13 +1,13 @@
 {
   "name": "loopkit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
   "author": {
     "name": "Israel Ayliffe",
     "url": "https://github.com/Israelmusondaayliffe"
   },
-  "homepage": "https://github.com/Israelmusondaayliffe/codex-plugins/tree/main/plugins/loopkit",
-  "repository": "https://github.com/Israelmusondaayliffe/codex-plugins",
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/loopkit",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
   "license": "MIT",
   "keywords": [
     "codex",
@@ -33,8 +33,8 @@
       "Local state"
     ],
     "websiteURL": "https://israel-codex-plugins.israelayliffe.chatgpt.site",
-    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/codex-plugins/blob/main/PRIVACY.md",
-    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/codex-plugins/blob/main/TERMS.md",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
     "defaultPrompt": [
       "Turn this recurring task into a bounded Codex loop.",
       "Resume the active LoopKit run from its checkpoint.",

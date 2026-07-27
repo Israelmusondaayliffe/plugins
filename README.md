@@ -5,13 +5,13 @@ operate, evaluate, and ship work in Codex, Claude Code, and Claude Cowork.
 
 Website: https://israel-codex-plugins.israelayliffe.chatgpt.site
 
-Repository: https://github.com/Israelmusondaayliffe/codex-plugins
+Repository: https://github.com/Israelmusondaayliffe/plugins
 
 ## Install
 
 Add the marketplace once:
 
-    codex plugin marketplace add Israelmusondaayliffe/codex-plugins --ref main
+    codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
 
 Install any plugin:
 
@@ -28,7 +28,7 @@ task capability inventory.
 
 Add the marketplace once, then install any plugin:
 
-    /plugin marketplace add Israelmusondaayliffe/codex-plugins
+    /plugin marketplace add Israelmusondaayliffe/plugins
     /plugin install loopkit@israel-codex-plugins
 
 Every plugin carries both a .codex-plugin and a .claude-plugin manifest, so the same
@@ -38,8 +38,8 @@ repository serves Codex and Claude. Plugin skills load namespaced (loopkit:loop-
 
 Open Customize, select Plugins, then Add marketplace. Paste either repository form:
 
-    Israelmusondaayliffe/codex-plugins
-    https://github.com/Israelmusondaayliffe/codex-plugins
+    Israelmusondaayliffe/plugins
+    https://github.com/Israelmusondaayliffe/plugins
 
 The plugins in this repository will appear in Cowork's marketplace. Select any plugin
 and install it from the catalog.

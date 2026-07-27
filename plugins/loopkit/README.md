@@ -19,11 +19,11 @@ State is host-scoped. Resolve the host home first (`~/.claude` on Claude Code / 
 On Codex, add the marketplace, then install the plugin:
 
 ```bash
-codex plugin marketplace add Israelmusondaayliffe/codex-plugins
+codex plugin marketplace add Israelmusondaayliffe/plugins
 codex plugin add loopkit@israel-codex-plugins
 ```
 
-On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/codex-plugins`), then install `loopkit` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace or a delivered `.plugin` file.
+On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/plugins`), then install `loopkit` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace or a delivered `.plugin` file.
 
 Review and trust the plugin hooks in `/hooks`. The hooks only refresh or restore a compact checkpoint for an active run in the current workspace.
 

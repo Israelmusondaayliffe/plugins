@@ -35,7 +35,7 @@ or test a local checkout with `claude --plugin-dir ./plugins/harness-engineering
 Codex:
 
 ```bash
-codex plugin marketplace add Israelmusondaayliffe/codex-plugins --ref main
+codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
 codex plugin add harness-engineering@israel-codex-plugins
 ```
 

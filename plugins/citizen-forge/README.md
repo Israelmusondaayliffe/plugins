@@ -20,7 +20,7 @@ The `citizen-forge` front door routes an end-to-end request through the focused 
 Add the public marketplace once, then install Citizen Forge:
 
 ```bash
-codex plugin marketplace add Israelmusondaayliffe/codex-plugins --ref main
+codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
 codex plugin add citizen-forge@israel-codex-plugins
 ```
 

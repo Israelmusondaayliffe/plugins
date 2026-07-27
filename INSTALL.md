@@ -7,7 +7,7 @@ public source.
 
 Run this once:
 
-    codex plugin marketplace add Israelmusondaayliffe/codex-plugins --ref main
+    codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
 
 The marketplace name is israel-codex-plugins.
 
@@ -59,13 +59,13 @@ No secrets are included in this repository.
 
 Add the marketplace and install a plugin from inside Claude Code:
 
-    /plugin marketplace add Israelmusondaayliffe/codex-plugins
+    /plugin marketplace add Israelmusondaayliffe/plugins
     /plugin install <plugin-name>@israel-codex-plugins
 
 ## Claude Cowork
 
 Open Customize, select Plugins, then Add marketplace. Paste the repository URL:
 
-    https://github.com/Israelmusondaayliffe/codex-plugins
+    https://github.com/Israelmusondaayliffe/plugins
 
 Choose a plugin from the marketplace and select Install.

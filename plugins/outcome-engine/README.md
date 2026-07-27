@@ -9,7 +9,7 @@ On Codex:
 
     codex plugin add outcome-engine@israel-codex-plugins
 
-On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/codex-plugins`), then install `outcome-engine` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace.
+On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/plugins`), then install `outcome-engine` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace.
 
 ## Included skills
 
