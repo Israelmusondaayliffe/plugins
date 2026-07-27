@@ -104,7 +104,7 @@
       "name": "matt-partok-bundled-plugin-for-knowledge-work",
       "source": "./plugins/matt-partok-bundled-plugin-for-knowledge-work",
       "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
-      "version": "1.0.1+codex.20260717203901",
+      "version": "1.0.2+codex.20260717203901",
       "author": {
         "name": "Israel A."
       }

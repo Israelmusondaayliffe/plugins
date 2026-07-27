@@ -20,7 +20,7 @@ On Codex, add the marketplace, then install the plugin:
 
 ```bash
 codex plugin marketplace add Israelmusondaayliffe/plugins
-codex plugin add loopkit@israel-codex-plugins
+codex plugin add loopkit@israel-plugins
 ```
 
 On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/plugins`), then install `loopkit` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace or a delivered `.plugin` file.

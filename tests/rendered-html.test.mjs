@@ -56,11 +56,11 @@ test("server-renders plugin detail pages", async () => {
   assert.match(html, /capability-router/);
   assert.match(
     html,
-    /codex plugin add capability-operator@israel-codex-plugins/,
+    /codex plugin add capability-operator@israel-plugins/,
   );
   assert.match(
     html,
-    /\/plugin install capability-operator@israel-codex-plugins/,
+    /\/plugin install capability-operator@israel-plugins/,
   );
   assert.match(html, /In Customize → Plugins/);
 });
@@ -74,7 +74,7 @@ test("server-renders the Harness Engineering release", async () => {
   assert.match(html, /harness-interview/);
   assert.match(
     html,
-    /codex plugin add harness-engineering@israel-codex-plugins/,
+    /codex plugin add harness-engineering@israel-plugins/,
   );
 });
 
@@ -87,7 +87,7 @@ test("server-renders the LoopKit release", async () => {
   assert.match(html, /loop-runner/);
   assert.match(
     html,
-    /codex plugin add loopkit@israel-codex-plugins/,
+    /codex plugin add loopkit@israel-plugins/,
   );
 });
 
@@ -101,7 +101,7 @@ test("server-renders the Citizen Forge release", async () => {
   assert.match(html, /questions such as &quot;is this safe\?&quot;/);
   assert.match(
     html,
-    /codex plugin add citizen-forge@israel-codex-plugins/,
+    /codex plugin add citizen-forge@israel-plugins/,
   );
 });
 
@@ -114,11 +114,11 @@ test("server-renders the Operating Graph release", async () => {
   assert.match(html, /graph-verify/);
   assert.match(
     html,
-    /codex plugin add operating-graph@israel-codex-plugins/,
+    /codex plugin add operating-graph@israel-plugins/,
   );
   assert.match(
     html,
-    /\/plugin install operating-graph@israel-codex-plugins/,
+    /\/plugin install operating-graph@israel-plugins/,
   );
 });
 
@@ -163,11 +163,11 @@ test("publishes every plugin across both manifest formats and all install surfac
     assert.equal(response.status, 200, `${name} detail page must render`);
     const html = await response.text();
     assert.ok(
-      html.includes(`codex plugin add ${name}@israel-codex-plugins`),
+      html.includes(`codex plugin add ${name}@israel-plugins`),
       `${name} must expose its Codex install command`,
     );
     assert.ok(
-      html.includes(`/plugin install ${name}@israel-codex-plugins`),
+      html.includes(`/plugin install ${name}@israel-plugins`),
       `${name} must expose its Claude Code install command`,
     );
     assert.ok(

@@ -3,7 +3,7 @@
 A public marketplace for the personal plugins I use to research, plan, create,
 operate, evaluate, and ship work in Codex, Claude Code, and Claude Cowork.
 
-Website: https://israel-codex-plugins.israelayliffe.chatgpt.site
+Website: https://israel-plugins.israelayliffe.chatgpt.site
 
 Repository: https://github.com/Israelmusondaayliffe/plugins
 
@@ -15,11 +15,11 @@ Add the marketplace once:
 
 Install any plugin:
 
-    codex plugin add <plugin-name>@israel-codex-plugins
+    codex plugin add <plugin-name>@israel-plugins
 
 Example:
 
-    codex plugin add knowledge-work-superpowers@israel-codex-plugins
+    codex plugin add knowledge-work-superpowers@israel-plugins
 
 Start a new Codex task after installation so the new skills are loaded into the
 task capability inventory.
@@ -29,7 +29,7 @@ task capability inventory.
 Add the marketplace once, then install any plugin:
 
     /plugin marketplace add Israelmusondaayliffe/plugins
-    /plugin install loopkit@israel-codex-plugins
+    /plugin install loopkit@israel-plugins
 
 Every plugin carries both a .codex-plugin and a .claude-plugin manifest, so the same
 repository serves Codex and Claude. Plugin skills load namespaced (loopkit:loop-runner).
@@ -78,11 +78,11 @@ bundle MCP servers or app connectors.
 
 Refresh the marketplace:
 
-    codex plugin marketplace upgrade israel-codex-plugins
+    codex plugin marketplace upgrade israel-plugins
 
 Reinstall the plugin you want to update:
 
-    codex plugin add <plugin-name>@israel-codex-plugins
+    codex plugin add <plugin-name>@israel-plugins
 
 Then start a new Codex task.
 

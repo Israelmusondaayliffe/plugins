@@ -7,7 +7,7 @@ research, writing, operations, creative work, planning, and software.
 
 On Codex:
 
-    codex plugin add outcome-engine@israel-codex-plugins
+    codex plugin add outcome-engine@israel-plugins
 
 On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/plugins`), then install `outcome-engine` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace.
 
