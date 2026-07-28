@@ -1,10 +1,11 @@
 {
   "plugin": "agent-ops",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "skills": [
     "agent-builder",
     "agent-ops-router",
     "agent-system-audit",
+    "cowork-handoff",
     "goal-runner",
     "loop-goal-engineer",
     "loopy"
@@ -56,6 +57,12 @@
       "expected_skill": "agent-system-audit",
       "evidence_file": "skills/agent-system-audit/SKILL.md",
       "evidence_contains": "unbounded external authority"
+    },
+    {
+      "prompt": "Give me the prompt to hand this task to Cowork to run itself.",
+      "expected_skill": "cowork-handoff",
+      "evidence_file": "skills/cowork-handoff/SKILL.md",
+      "evidence_contains": "The receiving harness is an agent"
     }
   ]
 }

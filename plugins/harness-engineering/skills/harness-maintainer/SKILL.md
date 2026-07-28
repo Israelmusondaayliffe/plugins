@@ -15,11 +15,12 @@ Treat maintenance as a new audit and plan. Do not assume the previous harness st
 
 ## Workflow
 
-1. Run `harness-audit` against fresh state.
+1. Run the harness's deterministic check script if one exists; its failures are the first work items. Then run `harness-audit` against fresh state.
 2. Compare current behavior with the last verified receipt.
 3. Classify drift as user change, product change, broken dependency, stale policy, or missing enforcement.
 4. Remove dead weight before adding new instructions. After a model generation change, run `context-doctor` across the whole chain and treat instructions written for the previous generation as removable until a regression proves otherwise.
-5. Produce a reversible update plan and approval groups.
-6. Run the standard build and verification phases.
+5. Promote any correction or finding class seen twice into the harness's deterministic check script rather than into more instructions, when it is deterministically checkable.
+6. Produce a reversible update plan and approval groups.
+7. Run the standard build and verification phases.
 
 Follow `../../references/model-change-policy.md` after every major model change.

@@ -1,12 +1,14 @@
 {
   "plugin": "capability-operator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "skills": [
     "capability-inventory",
     "capability-router",
     "fresh-task-discovery-verifier",
     "harness-meta-audit",
+    "plugin-install",
     "plugin-portfolio-manager",
+    "plugin-release",
     "skill-creator-pro",
     "skill-overlap-audit"
   ],
@@ -53,6 +55,18 @@
       "expected_skill": "fresh-task-discovery-verifier",
       "evidence_file": "skills/fresh-task-discovery-verifier/SKILL.md",
       "evidence_contains": "clean Codex task prompt"
+    },
+    {
+      "prompt": "Install this plugin globally and verify it is really installed.",
+      "expected_skill": "plugin-install",
+      "evidence_file": "skills/plugin-install/SKILL.md",
+      "evidence_contains": "Install once, then prove it"
+    },
+    {
+      "prompt": "Release the changed plugins from the repo and sync installed copies.",
+      "expected_skill": "plugin-release",
+      "evidence_file": "skills/plugin-release/SKILL.md",
+      "evidence_contains": "ending in parity evidence"
     }
   ]
 }

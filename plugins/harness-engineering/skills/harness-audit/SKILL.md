@@ -10,13 +10,18 @@ Read current state before proposing changes. Do not record credential values or 
 ## Workflow
 
 1. Resolve the platform per `../../references/platform-matrix.md`, then read its platform file for the surfaces that exist there.
-2. Identify the instruction chain for that platform: the CLAUDE.md chain on Claude Code, app instructions plus connected-folder contract files on Cowork, the AGENTS.md chain on Codex.
-3. Inventory config key names, rules, hooks, skills, plugins, MCP and connector names, templates, projects, memory surfaces, automations or scheduled tasks, and optional capability bundles.
-4. Check for conflicts, placeholders, stale paths, duplicated ownership, missing validators, untrusted hooks, unsupported settings, cross-platform assumptions ported on similarity, and absent evidence.
-5. Run the over-constraint pass with `context-doctor`. Reasoning-echo instructions rank first because they cause refusals rather than quality drag; verification instructions rank second.
-6. Classify findings across information, execution, and feedback layers.
-7. Separate verified facts, inferred risks, and user decisions.
-8. Produce `audit.json` plus a short gap summary. Make no changes.
+2. Run the harness's own deterministic check script first, if one exists (a smoke or validation script under the home scripts directory, or one the workspace contract names). Each failure enters the findings as a verified fact with the script's output as evidence. Skip re-deriving by hand anything the script already proves.
+3. Identify the instruction chain for that platform: the CLAUDE.md chain on Claude Code, app instructions plus connected-folder contract files on Cowork, the AGENTS.md chain on Codex.
+4. Inventory config key names, rules, hooks, skills, plugins, MCP and connector names, templates, projects, memory surfaces, automations or scheduled tasks, and optional capability bundles.
+5. Check for conflicts, placeholders, stale paths, duplicated ownership, missing validators, untrusted hooks, unsupported settings, cross-platform assumptions ported on similarity, and absent evidence.
+6. Run the over-constraint pass with `context-doctor`. Reasoning-echo instructions rank first because they cause refusals rather than quality drag; verification instructions rank second.
+7. Classify findings across information, execution, and feedback layers.
+8. Separate verified facts, inferred risks, and user decisions.
+9. Produce `audit.json` plus a short gap summary. Make no changes.
+
+## Promote repeat findings to the deterministic layer
+
+A finding class that has surfaced in two or more audits belongs in the harness's check script, not in a longer checklist. When the audit report proposes fixes, include the script addition as a fix whenever the finding is deterministically checkable (registry parity, scope drift, version drift, dead file references, stale registries, output hygiene). If the harness has no such script, creating one is the first proposed fix. This keeps the auditor's prose focused on judgment calls the script cannot make.
 
 Run:
 

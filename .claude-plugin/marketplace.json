@@ -12,7 +12,7 @@
       "name": "agent-ops",
       "source": "./plugins/agent-ops",
       "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -30,7 +30,7 @@
       "name": "capability-operator",
       "source": "./plugins/capability-operator",
       "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -75,7 +75,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.1.2",
+      "version": "2.2.0",
       "author": {
         "name": "Israel Ayliffe",
         "url": "https://github.com/Israelmusondaayliffe"

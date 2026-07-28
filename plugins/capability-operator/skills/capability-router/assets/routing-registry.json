@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "generated_on": "2026-07-15",
-  "expected_owned_skill_count": 109,
+  "generated_on": "2026-07-27",
+  "expected_owned_skill_count": 112,
   "required_plugins": [
     "agent-ops",
     "brand-world-studio",
@@ -38,102 +38,176 @@
   "collision_rules": [
     {
       "id": "writing-versus-research",
-      "match_all": ["research from sources", "final prose cleanup"],
+      "match_all": [
+        "research from sources",
+        "final prose cleanup"
+      ],
       "plugin": "knowledge-work-superpowers",
       "skill": "using-knowledge-work-superpowers",
       "route_type": "plugin-router",
-      "companions": ["writing-quality:writing-quality-router"],
-      "excluded_routes": ["writing-quality:writing-quality-router as primary"],
+      "companions": [
+        "writing-quality:writing-quality-router"
+      ],
+      "excluded_routes": [
+        "writing-quality:writing-quality-router as primary"
+      ],
       "reason": "Evidence work owns the request; Writing Quality starts after the evidence-backed draft exists.",
-      "verification_needed": ["Verify source and claim ledgers before the writing handoff."]
+      "verification_needed": [
+        "Verify source and claim ledgers before the writing handoff."
+      ]
     },
     {
       "id": "strategy-versus-execution",
-      "match_all": ["decide what to do", "execution plan"],
+      "match_all": [
+        "decide what to do",
+        "execution plan"
+      ],
       "plugin": "strategy-room",
       "skill": "strategy-room-router",
       "route_type": "plugin-router",
-      "companions": ["outcome-engine:outcome-engine"],
-      "excluded_routes": ["outcome-engine:outcome-engine before decision acceptance"],
+      "companions": [
+        "outcome-engine:outcome-engine"
+      ],
+      "excluded_routes": [
+        "outcome-engine:outcome-engine before decision acceptance"
+      ],
       "reason": "Decision quality comes before execution design.",
-      "verification_needed": ["Confirm the decision is accepted before the Outcome Engine handoff."]
+      "verification_needed": [
+        "Confirm the decision is accepted before the Outcome Engine handoff."
+      ]
     },
     {
       "id": "agents-versus-proofloop",
-      "match_all": ["audit this agent system", "do not run proofloop"],
+      "match_all": [
+        "audit this agent system",
+        "do not run proofloop"
+      ],
       "plugin": "agent-ops",
       "skill": "agent-system-audit",
       "route_type": "plugin-skill",
       "companions": [],
-      "excluded_routes": ["proofloop:proofloop-run", "proofloop:proofloop-audit"],
+      "excluded_routes": [
+        "proofloop:proofloop-run",
+        "proofloop:proofloop-audit"
+      ],
       "reason": "The request is a focused agent audit and explicitly excludes the ProofLoop protocol.",
-      "verification_needed": ["Verify the agent audit evidence surface."]
+      "verification_needed": [
+        "Verify the agent audit evidence surface."
+      ]
     },
     {
       "id": "agents-versus-loops",
-      "match_all": ["reusable agent system", "bounded agent loop"],
+      "match_all": [
+        "reusable agent system",
+        "bounded agent loop"
+      ],
       "plugin": "agent-ops",
       "skill": "agent-ops-router",
       "route_type": "plugin-router",
-      "companions": ["loopkit"],
-      "excluded_routes": ["loopkit:loopkit as primary before the agent contract exists"],
+      "companions": [
+        "loopkit"
+      ],
+      "excluded_routes": [
+        "loopkit:loopkit as primary before the agent contract exists"
+      ],
       "reason": "Reusable agent architecture owns the first decision; LoopKit receives the approved bounded execution contract at handoff.",
-      "verification_needed": ["Verify the agent contract before initializing the LoopKit run."]
+      "verification_needed": [
+        "Verify the agent contract before initializing the LoopKit run."
+      ]
     },
     {
       "id": "prompts-versus-evaluations",
-      "match_all": ["benchmark specification is complete", "comparative model evaluation"],
+      "match_all": [
+        "benchmark specification is complete",
+        "comparative model evaluation"
+      ],
       "plugin": "model-evaluation-lab",
       "skill": "model-evaluation-router",
       "route_type": "plugin-router",
       "companions": [],
-      "excluded_routes": ["model-prompt-lab:model-prompt-router as primary"],
+      "excluded_routes": [
+        "model-prompt-lab:model-prompt-router as primary"
+      ],
       "reason": "The prompt benchmark specification is complete and the task now requires comparative runs and selection.",
-      "verification_needed": ["Verify the benchmark specification before running evaluations."]
+      "verification_needed": [
+        "Verify the benchmark specification before running evaluations."
+      ]
     },
     {
       "id": "brand-versus-image-prompting",
-      "match_all": ["brand visual system", "image model"],
+      "match_all": [
+        "brand visual system",
+        "image model"
+      ],
       "plugin": "brand-world-studio",
       "skill": "brand-world-router",
       "route_type": "plugin-router",
       "companions": [],
-      "excluded_routes": ["model-prompt-lab:model-prompt-router"],
+      "excluded_routes": [
+        "model-prompt-lab:model-prompt-router"
+      ],
       "reason": "Brand system ownership determines model choice and prompt direction.",
-      "verification_needed": ["Verify the brand brief before generating prompts."]
+      "verification_needed": [
+        "Verify the brand brief before generating prompts."
+      ]
     },
     {
       "id": "data-story-versus-analysis",
-      "match_all": ["analysis is already checked", "executive story"],
+      "match_all": [
+        "analysis is already checked",
+        "executive story"
+      ],
       "plugin": "data-storytelling-studio",
       "skill": "analysis-to-story-router",
       "route_type": "plugin-router",
-      "companions": ["presentations"],
-      "excluded_routes": ["knowledge-work-superpowers:evidence-first-analysis"],
+      "companions": [
+        "presentations"
+      ],
+      "excluded_routes": [
+        "knowledge-work-superpowers:evidence-first-analysis"
+      ],
       "reason": "Checked analysis is ready for decision-facing story design, not another analysis pass.",
-      "verification_needed": ["Confirm the analysis validation evidence is present."]
+      "verification_needed": [
+        "Confirm the analysis validation evidence is present."
+      ]
     },
     {
       "id": "capability-versus-continuity",
-      "match_all": ["routing coverage", "durable knowledge decision"],
+      "match_all": [
+        "routing coverage",
+        "durable knowledge decision"
+      ],
       "plugin": "capability-operator",
       "skill": "capability-router",
       "route_type": "plugin-router",
-      "companions": ["continuity-vault:continuity-router"],
-      "excluded_routes": ["continuity-vault:continuity-router as primary"],
+      "companions": [
+        "continuity-vault:continuity-router"
+      ],
+      "excluded_routes": [
+        "continuity-vault:continuity-router as primary"
+      ],
       "reason": "Capability maintenance owns the audit; durable knowledge follows after the routing decision is verified.",
-      "verification_needed": ["Validate the capability registry before the continuity handoff."]
+      "verification_needed": [
+        "Validate the capability registry before the continuity handoff."
+      ]
     },
     {
       "id": "web-versus-video",
-      "match_all": ["website", "product launch video"],
+      "match_all": [
+        "website",
+        "product launch video"
+      ],
       "plugin": "video-production-studio",
       "skill": "website-to-video",
       "route_type": "plugin-skill",
       "companions": [],
-      "excluded_routes": ["web-product-studio:web-product-router"],
+      "excluded_routes": [
+        "web-product-studio:web-product-router"
+      ],
       "reason": "The requested deliverable is a video built from an existing website.",
-      "verification_needed": ["Verify website capture and final video delivery quality."]
+      "verification_needed": [
+        "Verify website capture and final video delivery quality."
+      ]
     }
   ],
   "plugins": [
@@ -142,272 +216,914 @@
       "display_name": "Writing Quality",
       "purpose": "Plan, check, rewrite, and validate human-facing writing.",
       "front_door": "writing-quality-router",
-      "composite_triggers": ["draft and review an executive memo", "writing workflow from intent through cleanup"],
-      "owned_skills": ["business-writing-intent-enforcer", "claim-boundary-checker", "writing-enforcer", "writing-quality-router"],
-      "direct_routes": [
-        {"skill": "business-writing-intent-enforcer", "triggers": ["design the intent architecture"]},
-        {"skill": "claim-boundary-checker", "triggers": ["check the claim boundaries"]},
-        {"skill": "writing-enforcer", "triggers": ["clean this prose without changing the facts"]}
+      "composite_triggers": [
+        "draft and review an executive memo",
+        "writing workflow from intent through cleanup"
       ],
-      "companions": ["knowledge-work-superpowers"],
-      "handoffs": ["Receive evidence-backed final prose from Knowledge Work Superpowers."],
-      "exclusions": ["Do not own evidence gathering when research is still required."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "business-writing-intent-enforcer",
+        "claim-boundary-checker",
+        "writing-enforcer",
+        "writing-quality-router"
+      ],
+      "direct_routes": [
+        {
+          "skill": "business-writing-intent-enforcer",
+          "triggers": [
+            "design the intent architecture"
+          ]
+        },
+        {
+          "skill": "claim-boundary-checker",
+          "triggers": [
+            "check the claim boundaries"
+          ]
+        },
+        {
+          "skill": "writing-enforcer",
+          "triggers": [
+            "clean this prose without changing the facts"
+          ]
+        }
+      ],
+      "companions": [
+        "knowledge-work-superpowers"
+      ],
+      "handoffs": [
+        "Receive evidence-backed final prose from Knowledge Work Superpowers."
+      ],
+      "exclusions": [
+        "Do not own evidence gathering when research is still required."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "capability-operator",
       "display_name": "Capability Operator",
       "purpose": "Inventory, route, audit, govern, and verify capabilities across Claude Code, Claude Cowork, and Codex.",
       "front_door": "capability-router",
-      "composite_triggers": ["plugin or skill ownership is unclear", "inventory and route it"],
-      "owned_skills": ["capability-inventory", "capability-router", "fresh-task-discovery-verifier", "harness-meta-audit", "plugin-portfolio-manager", "skill-creator-pro", "skill-overlap-audit"],
-      "direct_routes": [
-        {"skill": "capability-inventory", "triggers": ["inventory every capability layer"]},
-        {"skill": "fresh-task-discovery-verifier", "triggers": ["visible in a fresh task"]},
-        {"skill": "harness-meta-audit", "triggers": ["audit the harness routing system"]},
-        {"skill": "plugin-portfolio-manager", "triggers": ["review plugin lifecycle states"]},
-        {"skill": "skill-overlap-audit", "triggers": ["audit duplicate skill overlap"]}
+      "composite_triggers": [
+        "plugin or skill ownership is unclear",
+        "inventory and route it"
       ],
-      "companions": ["continuity-vault"],
-      "handoffs": ["Send verified durable knowledge decisions to Continuity Vault."],
-      "exclusions": ["Do not replace a clear domain plugin route."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "capability-inventory",
+        "capability-router",
+        "fresh-task-discovery-verifier",
+        "harness-meta-audit",
+        "plugin-install",
+        "plugin-portfolio-manager",
+        "plugin-release",
+        "skill-creator-pro",
+        "skill-overlap-audit"
+      ],
+      "direct_routes": [
+        {
+          "skill": "capability-inventory",
+          "triggers": [
+            "inventory every capability layer"
+          ]
+        },
+        {
+          "skill": "fresh-task-discovery-verifier",
+          "triggers": [
+            "visible in a fresh task"
+          ]
+        },
+        {
+          "skill": "harness-meta-audit",
+          "triggers": [
+            "audit the harness routing system"
+          ]
+        },
+        {
+          "skill": "plugin-portfolio-manager",
+          "triggers": [
+            "review plugin lifecycle states"
+          ]
+        },
+        {
+          "skill": "skill-overlap-audit",
+          "triggers": [
+            "audit duplicate skill overlap"
+          ]
+        },
+        {
+          "skill": "plugin-install",
+          "triggers": [
+            "install this plugin and verify"
+          ]
+        },
+        {
+          "skill": "plugin-release",
+          "triggers": [
+            "release the plugins repo"
+          ]
+        }
+      ],
+      "companions": [
+        "continuity-vault"
+      ],
+      "handoffs": [
+        "Send verified durable knowledge decisions to Continuity Vault."
+      ],
+      "exclusions": [
+        "Do not replace a clear domain plugin route."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "agent-ops",
       "display_name": "Agent Ops",
       "purpose": "Design, route, and audit reusable agent systems.",
       "front_door": "agent-ops-router",
-      "composite_triggers": ["design and audit a reusable agent system", "agent architecture tools authority and stops"],
-      "owned_skills": ["agent-builder", "agent-ops-router", "agent-system-audit", "goal-runner", "loop-goal-engineer", "loopy"],
-      "direct_routes": [
-        {"skill": "agent-builder", "triggers": ["build a reusable agent"]},
-        {"skill": "agent-system-audit", "triggers": ["audit this agent system"]},
-        {"skill": "goal-runner", "triggers": ["run goal runner"]},
-        {"skill": "loop-goal-engineer", "triggers": ["use loop goal engineer"]},
-        {"skill": "loopy", "triggers": ["use loopy"]}
+      "composite_triggers": [
+        "design and audit a reusable agent system",
+        "agent architecture tools authority and stops"
       ],
-      "companions": ["loopkit", "proofloop"],
-      "handoffs": ["Send approved generic Goal and loop execution contracts to LoopKit.", "Use ProofLoop only after an explicit request for learning and quarantined memory."],
-      "exclusions": ["Do not own generic host Goal, loop, resume, verification, or scheduling work.", "Do not infer ProofLoop from ordinary agent verification."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "agent-builder",
+        "agent-ops-router",
+        "agent-system-audit",
+        "cowork-handoff",
+        "goal-runner",
+        "loop-goal-engineer",
+        "loopy"
+      ],
+      "direct_routes": [
+        {
+          "skill": "agent-builder",
+          "triggers": [
+            "build a reusable agent"
+          ]
+        },
+        {
+          "skill": "agent-system-audit",
+          "triggers": [
+            "audit this agent system"
+          ]
+        },
+        {
+          "skill": "goal-runner",
+          "triggers": [
+            "run goal runner"
+          ]
+        },
+        {
+          "skill": "loop-goal-engineer",
+          "triggers": [
+            "use loop goal engineer"
+          ]
+        },
+        {
+          "skill": "loopy",
+          "triggers": [
+            "use loopy"
+          ]
+        },
+        {
+          "skill": "cowork-handoff",
+          "triggers": [
+            "prompt for cowork to run"
+          ]
+        }
+      ],
+      "companions": [
+        "loopkit",
+        "proofloop"
+      ],
+      "handoffs": [
+        "Send approved generic Goal and loop execution contracts to LoopKit.",
+        "Use ProofLoop only after an explicit request for learning and quarantined memory."
+      ],
+      "exclusions": [
+        "Do not own generic host Goal, loop, resume, verification, or scheduling work.",
+        "Do not infer ProofLoop from ordinary agent verification."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "loopkit",
       "display_name": "LoopKit",
       "purpose": "Design, run, verify, resume, schedule, and diagnose bounded agent loops with durable state on Claude Code, Claude Cowork, or Codex.",
       "front_door": "loopkit",
-      "composite_triggers": ["design run verify and schedule a bounded agent loop", "durable plan act verify loop with state on disk"],
-      "owned_skills": ["loop-designer", "loop-doctor", "loop-resumer", "loop-runner", "loop-scheduler", "loop-verifier", "loopkit"],
-      "direct_routes": [
-        {"skill": "loop-designer", "triggers": ["turn this into a bounded agent loop"]},
-        {"skill": "loop-doctor", "triggers": ["diagnose this repeating loop"]},
-        {"skill": "loop-resumer", "triggers": ["resume the active loopkit run"]},
-        {"skill": "loop-runner", "triggers": ["run this initialized loopkit contract"]},
-        {"skill": "loop-scheduler", "triggers": ["schedule this loopkit task"]},
-        {"skill": "loop-verifier", "triggers": ["verify this loopkit run"]}
+      "composite_triggers": [
+        "design run verify and schedule a bounded agent loop",
+        "durable plan act verify loop with state on disk"
       ],
-      "companions": ["agent-ops"],
-      "handoffs": ["Receive approved reusable agent execution contracts from Agent Ops."],
-      "exclusions": ["Do not own reusable agent definitions or agent-system audits.", "Do not manufacture a loop when fresh feedback cannot change the next action."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "loop-designer",
+        "loop-doctor",
+        "loop-resumer",
+        "loop-runner",
+        "loop-scheduler",
+        "loop-verifier",
+        "loopkit"
+      ],
+      "direct_routes": [
+        {
+          "skill": "loop-designer",
+          "triggers": [
+            "turn this into a bounded agent loop"
+          ]
+        },
+        {
+          "skill": "loop-doctor",
+          "triggers": [
+            "diagnose this repeating loop"
+          ]
+        },
+        {
+          "skill": "loop-resumer",
+          "triggers": [
+            "resume the active loopkit run"
+          ]
+        },
+        {
+          "skill": "loop-runner",
+          "triggers": [
+            "run this initialized loopkit contract"
+          ]
+        },
+        {
+          "skill": "loop-scheduler",
+          "triggers": [
+            "schedule this loopkit task"
+          ]
+        },
+        {
+          "skill": "loop-verifier",
+          "triggers": [
+            "verify this loopkit run"
+          ]
+        }
+      ],
+      "companions": [
+        "agent-ops"
+      ],
+      "handoffs": [
+        "Receive approved reusable agent execution contracts from Agent Ops."
+      ],
+      "exclusions": [
+        "Do not own reusable agent definitions or agent-system audits.",
+        "Do not manufacture a loop when fresh feedback cannot change the next action."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "video-production-studio",
       "display_name": "Video Production Studio",
       "purpose": "Route and produce video from brief through delivery quality checks.",
       "front_door": "video-production-router",
-      "composite_triggers": ["finished product launch video with captions and delivery checks", "video brief from concept through delivery"],
-      "owned_skills": ["embedded-captions", "faceless-explainer", "general-video", "graphic-overlays", "media-use", "motion-graphics", "music-to-video", "pr-to-video", "product-launch-video", "remotion-to-hyperframes", "slideshow", "video-delivery-qc", "video-production-router", "video-prompt-builder", "website-to-video"],
-      "direct_routes": [
-        {"skill": "embedded-captions", "triggers": ["add embedded captions"]},
-        {"skill": "graphic-overlays", "triggers": ["add graphic overlays"]},
-        {"skill": "video-delivery-qc", "triggers": ["run video delivery qc"]},
-        {"skill": "video-prompt-builder", "triggers": ["build a video generation prompt"]},
-        {"skill": "website-to-video", "triggers": ["turn this website into a video"]}
+      "composite_triggers": [
+        "finished product launch video with captions and delivery checks",
+        "video brief from concept through delivery"
       ],
-      "companions": ["brand-world-studio", "web-product-studio"],
-      "handoffs": ["Receive approved brand direction or a website capture as production input."],
-      "exclusions": ["Do not own a web product whose final deliverable is an app or site."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "embedded-captions",
+        "faceless-explainer",
+        "general-video",
+        "graphic-overlays",
+        "media-use",
+        "motion-graphics",
+        "music-to-video",
+        "pr-to-video",
+        "product-launch-video",
+        "remotion-to-hyperframes",
+        "slideshow",
+        "video-delivery-qc",
+        "video-production-router",
+        "video-prompt-builder",
+        "website-to-video"
+      ],
+      "direct_routes": [
+        {
+          "skill": "embedded-captions",
+          "triggers": [
+            "add embedded captions"
+          ]
+        },
+        {
+          "skill": "graphic-overlays",
+          "triggers": [
+            "add graphic overlays"
+          ]
+        },
+        {
+          "skill": "video-delivery-qc",
+          "triggers": [
+            "run video delivery qc"
+          ]
+        },
+        {
+          "skill": "video-prompt-builder",
+          "triggers": [
+            "build a video generation prompt"
+          ]
+        },
+        {
+          "skill": "website-to-video",
+          "triggers": [
+            "turn this website into a video"
+          ]
+        }
+      ],
+      "companions": [
+        "brand-world-studio",
+        "web-product-studio"
+      ],
+      "handoffs": [
+        "Receive approved brand direction or a website capture as production input."
+      ],
+      "exclusions": [
+        "Do not own a web product whose final deliverable is an app or site."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "web-product-studio",
       "display_name": "Web Product Studio",
       "purpose": "Build, redesign, implement, fix, and verify web products.",
       "front_door": "web-product-router",
-      "composite_triggers": ["web product from brief through implementation and visual qa", "build redesign and verify this web app"],
-      "owned_skills": ["acceptance-flow", "code-production-agent", "design-constitution-selector", "full-output-enforcement", "gstack", "image-to-code", "imagegen-frontend-web", "playwright", "redesign-existing-projects", "web-product-router"],
-      "direct_routes": [
-        {"skill": "acceptance-flow", "triggers": ["define the acceptance flow"]},
-        {"skill": "image-to-code", "triggers": ["implement this screenshot as code"]},
-        {"skill": "playwright", "triggers": ["run playwright acceptance tests"]},
-        {"skill": "redesign-existing-projects", "triggers": ["redesign this existing project"]}
+      "composite_triggers": [
+        "web product from brief through implementation and visual qa",
+        "build redesign and verify this web app"
       ],
-      "companions": ["brand-world-studio"],
-      "handoffs": ["Receive approved brand direction for implementation."],
-      "exclusions": ["Do not own a video deliverable built from a website."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "acceptance-flow",
+        "code-production-agent",
+        "design-constitution-selector",
+        "full-output-enforcement",
+        "gstack",
+        "image-to-code",
+        "imagegen-frontend-web",
+        "playwright",
+        "redesign-existing-projects",
+        "web-product-router"
+      ],
+      "direct_routes": [
+        {
+          "skill": "acceptance-flow",
+          "triggers": [
+            "define the acceptance flow"
+          ]
+        },
+        {
+          "skill": "image-to-code",
+          "triggers": [
+            "implement this screenshot as code"
+          ]
+        },
+        {
+          "skill": "playwright",
+          "triggers": [
+            "run playwright acceptance tests"
+          ]
+        },
+        {
+          "skill": "redesign-existing-projects",
+          "triggers": [
+            "redesign this existing project"
+          ]
+        }
+      ],
+      "companions": [
+        "brand-world-studio"
+      ],
+      "handoffs": [
+        "Receive approved brand direction for implementation."
+      ],
+      "exclusions": [
+        "Do not own a video deliverable built from a website."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "model-prompt-lab",
       "display_name": "Model Prompt Lab",
       "purpose": "Choose model prompt routes, create prompts, migrate prompts, and design prompt benchmarks.",
       "front_door": "model-prompt-router",
-      "composite_triggers": ["choose the right model and create then test a production prompt", "model family prompt surface and migration path are unclear"],
-      "owned_skills": ["fable-5-production-prompter", "fable-mode", "gpt-5-4-production-prompter", "gpt-5-6-production-prompter", "model-prompt-router", "prompt-benchmark-designer", "prompt-migration-audit"],
-      "direct_routes": [
-        {"skill": "gpt-5-4-production-prompter", "triggers": ["write a gpt-5.4 production prompt"]},
-        {"skill": "gpt-5-6-production-prompter", "triggers": ["write a gpt-5.6 sol production prompt"]},
-        {"skill": "prompt-benchmark-designer", "triggers": ["design a prompt benchmark specification"]},
-        {"skill": "prompt-migration-audit", "triggers": ["audit this prompt migration"]}
+      "composite_triggers": [
+        "choose the right model and create then test a production prompt",
+        "model family prompt surface and migration path are unclear"
       ],
-      "companions": ["model-evaluation-lab"],
-      "handoffs": ["Send a completed benchmark specification to Model Evaluation Lab for comparative runs or deployment selection."],
-      "exclusions": ["Do not run comparative model evaluations after the benchmark specification is complete."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "fable-5-production-prompter",
+        "fable-mode",
+        "gpt-5-4-production-prompter",
+        "gpt-5-6-production-prompter",
+        "model-prompt-router",
+        "prompt-benchmark-designer",
+        "prompt-migration-audit"
+      ],
+      "direct_routes": [
+        {
+          "skill": "gpt-5-4-production-prompter",
+          "triggers": [
+            "write a gpt-5.4 production prompt"
+          ]
+        },
+        {
+          "skill": "gpt-5-6-production-prompter",
+          "triggers": [
+            "write a gpt-5.6 sol production prompt"
+          ]
+        },
+        {
+          "skill": "prompt-benchmark-designer",
+          "triggers": [
+            "design a prompt benchmark specification"
+          ]
+        },
+        {
+          "skill": "prompt-migration-audit",
+          "triggers": [
+            "audit this prompt migration"
+          ]
+        }
+      ],
+      "companions": [
+        "model-evaluation-lab"
+      ],
+      "handoffs": [
+        "Send a completed benchmark specification to Model Evaluation Lab for comparative runs or deployment selection."
+      ],
+      "exclusions": [
+        "Do not run comparative model evaluations after the benchmark specification is complete."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "strategy-room",
       "display_name": "Strategy Room",
       "purpose": "Challenge assumptions, generate options, interview decisions, and synthesize consequential choices.",
       "front_door": "strategy-room-router",
-      "composite_triggers": ["consequential decision by challenging assumptions and comparing options", "interview options assumptions and synthesis"],
-      "owned_skills": ["assumption-challenger", "assumption-register", "decision-synthesizer", "grill-me", "multi-direction-explorer", "strategy-room-router"],
-      "direct_routes": [
-        {"skill": "assumption-challenger", "triggers": ["challenge the assumptions in this plan"]},
-        {"skill": "assumption-register", "triggers": ["record these assumptions"]},
-        {"skill": "grill-me", "triggers": ["grill me on this decision"]},
-        {"skill": "multi-direction-explorer", "triggers": ["generate several strategic directions"]}
+      "composite_triggers": [
+        "consequential decision by challenging assumptions and comparing options",
+        "interview options assumptions and synthesis"
       ],
-      "companions": ["outcome-engine"],
-      "handoffs": ["Send an accepted decision to Outcome Engine."],
-      "exclusions": ["Do not start execution before a consequential decision is accepted."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "assumption-challenger",
+        "assumption-register",
+        "decision-synthesizer",
+        "grill-me",
+        "multi-direction-explorer",
+        "strategy-room-router"
+      ],
+      "direct_routes": [
+        {
+          "skill": "assumption-challenger",
+          "triggers": [
+            "challenge the assumptions in this plan"
+          ]
+        },
+        {
+          "skill": "assumption-register",
+          "triggers": [
+            "record these assumptions"
+          ]
+        },
+        {
+          "skill": "grill-me",
+          "triggers": [
+            "grill me on this decision"
+          ]
+        },
+        {
+          "skill": "multi-direction-explorer",
+          "triggers": [
+            "generate several strategic directions"
+          ]
+        }
+      ],
+      "companions": [
+        "outcome-engine"
+      ],
+      "handoffs": [
+        "Send an accepted decision to Outcome Engine."
+      ],
+      "exclusions": [
+        "Do not start execution before a consequential decision is accepted."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "brand-world-studio",
       "display_name": "Brand World Studio",
       "purpose": "Build a brand brief, visual system, image model route, prompts, and consistency checks.",
       "front_door": "brand-world-router",
-      "composite_triggers": ["brand world from brief through model choice prompts and consistency checks", "brand visual system model choice and implementation handoff"],
-      "owned_skills": ["brand-brief-builder", "brand-consistency-verifier", "brand-model-router", "brand-world-router", "brandkit", "gpt-image-2-unified", "nano-banana-unified"],
-      "direct_routes": [
-        {"skill": "brand-brief-builder", "triggers": ["build a brand brief"]},
-        {"skill": "brand-consistency-verifier", "triggers": ["check brand consistency"]},
-        {"skill": "brand-model-router", "triggers": ["choose the image model for this brand"]}
+      "composite_triggers": [
+        "brand world from brief through model choice prompts and consistency checks",
+        "brand visual system model choice and implementation handoff"
       ],
-      "companions": ["video-production-studio", "web-product-studio"],
-      "handoffs": ["Send approved brand implementation to Web Product Studio or Video Production Studio."],
-      "exclusions": ["Do not route brand-owned image prompting through the general Model Prompt Lab."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "brand-brief-builder",
+        "brand-consistency-verifier",
+        "brand-model-router",
+        "brand-world-router",
+        "brandkit",
+        "gpt-image-2-unified",
+        "nano-banana-unified"
+      ],
+      "direct_routes": [
+        {
+          "skill": "brand-brief-builder",
+          "triggers": [
+            "build a brand brief"
+          ]
+        },
+        {
+          "skill": "brand-consistency-verifier",
+          "triggers": [
+            "check brand consistency"
+          ]
+        },
+        {
+          "skill": "brand-model-router",
+          "triggers": [
+            "choose the image model for this brand"
+          ]
+        }
+      ],
+      "companions": [
+        "video-production-studio",
+        "web-product-studio"
+      ],
+      "handoffs": [
+        "Send approved brand implementation to Web Product Studio or Video Production Studio."
+      ],
+      "exclusions": [
+        "Do not route brand-owned image prompting through the general Model Prompt Lab."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "founder-revenue-engine",
       "display_name": "Founder Revenue Engine",
       "purpose": "Turn market signals into ICPs, narrative, prospect research, outreach drafts, and founder content.",
       "front_door": "founder-revenue-router",
-      "composite_triggers": ["market signals define the icp build the narrative and draft no-send outreach", "founder revenue workflow from signals through content"],
-      "owned_skills": ["first-customer-finder", "founder-revenue-router", "last30days", "linkedin-viral-content-creator", "market-narrative-builder", "outreach-sequence-builder", "signal-to-icp"],
-      "direct_routes": [
-        {"skill": "first-customer-finder", "triggers": ["find my first customers"]},
-        {"skill": "last30days", "triggers": ["research the last 30 days"]},
-        {"skill": "market-narrative-builder", "triggers": ["build the market narrative"]},
-        {"skill": "outreach-sequence-builder", "triggers": ["draft a no-send outreach sequence"]},
-        {"skill": "signal-to-icp", "triggers": ["turn these signals into an icp"]}
+      "composite_triggers": [
+        "market signals define the icp build the narrative and draft no-send outreach",
+        "founder revenue workflow from signals through content"
       ],
-      "companions": ["writing-quality"],
-      "handoffs": ["Use Writing Quality for final founder-facing prose."],
-      "exclusions": ["Do not send outreach without explicit authorization."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "first-customer-finder",
+        "founder-revenue-router",
+        "last30days",
+        "linkedin-viral-content-creator",
+        "market-narrative-builder",
+        "outreach-sequence-builder",
+        "signal-to-icp"
+      ],
+      "direct_routes": [
+        {
+          "skill": "first-customer-finder",
+          "triggers": [
+            "find my first customers"
+          ]
+        },
+        {
+          "skill": "last30days",
+          "triggers": [
+            "research the last 30 days"
+          ]
+        },
+        {
+          "skill": "market-narrative-builder",
+          "triggers": [
+            "build the market narrative"
+          ]
+        },
+        {
+          "skill": "outreach-sequence-builder",
+          "triggers": [
+            "draft a no-send outreach sequence"
+          ]
+        },
+        {
+          "skill": "signal-to-icp",
+          "triggers": [
+            "turn these signals into an icp"
+          ]
+        }
+      ],
+      "companions": [
+        "writing-quality"
+      ],
+      "handoffs": [
+        "Use Writing Quality for final founder-facing prose."
+      ],
+      "exclusions": [
+        "Do not send outreach without explicit authorization."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "continuity-vault",
       "display_name": "Continuity Vault",
       "purpose": "Keep durable knowledge findable, promote it to the right layer, graph it, and audit staleness.",
       "front_door": "continuity-router",
-      "composite_triggers": ["make this knowledge durable and decide where it should live across tasks", "knowledge destination is unclear across tasks"],
-      "owned_skills": ["continuity-router", "frontier-extraction", "graphify", "knowledge-promotion-policy", "staleness-and-conflict-audit"],
-      "direct_routes": [
-        {"skill": "frontier-extraction", "triggers": ["extract the knowledge frontier"]},
-        {"skill": "graphify", "triggers": ["turn these notes into a graph"]},
-        {"skill": "knowledge-promotion-policy", "triggers": ["decide which knowledge layer owns this"]},
-        {"skill": "staleness-and-conflict-audit", "triggers": ["audit this knowledge for staleness"]}
+      "composite_triggers": [
+        "make this knowledge durable and decide where it should live across tasks",
+        "knowledge destination is unclear across tasks"
       ],
-      "companions": ["capability-operator"],
-      "handoffs": ["Receive verified durable knowledge decisions from Capability Operator."],
-      "exclusions": ["Do not treat recall caches as sources of truth."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "continuity-router",
+        "frontier-extraction",
+        "graphify",
+        "knowledge-promotion-policy",
+        "staleness-and-conflict-audit"
+      ],
+      "direct_routes": [
+        {
+          "skill": "frontier-extraction",
+          "triggers": [
+            "extract the knowledge frontier"
+          ]
+        },
+        {
+          "skill": "graphify",
+          "triggers": [
+            "turn these notes into a graph"
+          ]
+        },
+        {
+          "skill": "knowledge-promotion-policy",
+          "triggers": [
+            "decide which knowledge layer owns this"
+          ]
+        },
+        {
+          "skill": "staleness-and-conflict-audit",
+          "triggers": [
+            "audit this knowledge for staleness"
+          ]
+        }
+      ],
+      "companions": [
+        "capability-operator"
+      ],
+      "handoffs": [
+        "Receive verified durable knowledge decisions from Capability Operator."
+      ],
+      "exclusions": [
+        "Do not treat recall caches as sources of truth."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "data-storytelling-studio",
       "display_name": "Data Storytelling Studio",
       "purpose": "Turn checked analysis into chart messages, executive readouts, and decision-facing production routes.",
       "front_door": "analysis-to-story-router",
-      "composite_triggers": ["checked analysis into a decision-facing story and choose the right format", "analysis is ready for executive story production"],
-      "owned_skills": ["analysis-to-story-router", "chart-message-audit", "executive-readout-builder"],
-      "direct_routes": [
-        {"skill": "chart-message-audit", "triggers": ["audit whether each chart has a clear message"]},
-        {"skill": "executive-readout-builder", "triggers": ["build an executive readout"]}
+      "composite_triggers": [
+        "checked analysis into a decision-facing story and choose the right format",
+        "analysis is ready for executive story production"
       ],
-      "companions": ["presentations", "sites", "spreadsheets", "visualize", "writing-quality"],
-      "handoffs": ["Send the approved story to the selected production capability."],
-      "exclusions": ["Do not redo exploratory analysis that already has validation evidence."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "analysis-to-story-router",
+        "chart-message-audit",
+        "executive-readout-builder"
+      ],
+      "direct_routes": [
+        {
+          "skill": "chart-message-audit",
+          "triggers": [
+            "audit whether each chart has a clear message"
+          ]
+        },
+        {
+          "skill": "executive-readout-builder",
+          "triggers": [
+            "build an executive readout"
+          ]
+        }
+      ],
+      "companions": [
+        "presentations",
+        "sites",
+        "spreadsheets",
+        "visualize",
+        "writing-quality"
+      ],
+      "handoffs": [
+        "Send the approved story to the selected production capability."
+      ],
+      "exclusions": [
+        "Do not redo exploratory analysis that already has validation evidence."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "model-evaluation-lab",
       "display_name": "Model Evaluation Lab",
       "purpose": "Plan, run, normalize, compare, and select models from evaluation evidence.",
       "front_door": "model-evaluation-router",
-      "composite_triggers": ["plan run normalize and select among these model evaluations", "comparative model runs and deployment selection"],
-      "owned_skills": ["benchmark-runner", "model-evaluation-plan", "model-evaluation-router", "model-selection-memo"],
-      "direct_routes": [
-        {"skill": "benchmark-runner", "triggers": ["run this completed model benchmark"]},
-        {"skill": "model-evaluation-plan", "triggers": ["write the model evaluation plan"]},
-        {"skill": "model-selection-memo", "triggers": ["write the model selection memo"]}
+      "composite_triggers": [
+        "plan run normalize and select among these model evaluations",
+        "comparative model runs and deployment selection"
       ],
-      "companions": ["model-prompt-lab"],
-      "handoffs": ["Receive a completed benchmark specification from Model Prompt Lab."],
-      "exclusions": ["Do not redesign prompts when the benchmark specification is already complete."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "benchmark-runner",
+        "model-evaluation-plan",
+        "model-evaluation-router",
+        "model-selection-memo"
+      ],
+      "direct_routes": [
+        {
+          "skill": "benchmark-runner",
+          "triggers": [
+            "run this completed model benchmark"
+          ]
+        },
+        {
+          "skill": "model-evaluation-plan",
+          "triggers": [
+            "write the model evaluation plan"
+          ]
+        },
+        {
+          "skill": "model-selection-memo",
+          "triggers": [
+            "write the model selection memo"
+          ]
+        }
+      ],
+      "companions": [
+        "model-prompt-lab"
+      ],
+      "handoffs": [
+        "Receive a completed benchmark specification from Model Prompt Lab."
+      ],
+      "exclusions": [
+        "Do not redesign prompts when the benchmark specification is already complete."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "knowledge-work-superpowers",
       "display_name": "Knowledge Work Superpowers",
       "purpose": "Frame, research, analyze, draft, review, and verify substantial evidence-first knowledge work.",
       "front_door": "using-knowledge-work-superpowers",
-      "composite_triggers": ["research this systematically and produce an evidence-backed deliverable", "complete evidence-first research and writing workflow"],
-      "owned_skills": ["dispatching-parallel-research", "drafting-from-evidence", "evidence-first-analysis", "executing-knowledge-work-plans", "finishing-a-deliverable", "framing-knowledge-work", "planning-knowledge-work", "receiving-work-review", "reviewing-knowledge-work", "systematic-research", "using-knowledge-work-superpowers", "verification-before-delivery"],
-      "direct_routes": [
-        {"skill": "drafting-from-evidence", "triggers": ["draft only from this evidence ledger"]},
-        {"skill": "evidence-first-analysis", "triggers": ["analyze this evidence before writing"]},
-        {"skill": "reviewing-knowledge-work", "triggers": ["review this deliverable against the evidence"]},
-        {"skill": "systematic-research", "triggers": ["run systematic research on this question"]},
-        {"skill": "verification-before-delivery", "triggers": ["verify this knowledge deliverable before delivery"]}
+      "composite_triggers": [
+        "research this systematically and produce an evidence-backed deliverable",
+        "complete evidence-first research and writing workflow"
       ],
-      "companions": ["writing-quality"],
-      "handoffs": ["Send final human-facing prose to Writing Quality."],
-      "exclusions": ["Do not own prose cleanup before evidence work is complete."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "dispatching-parallel-research",
+        "drafting-from-evidence",
+        "evidence-first-analysis",
+        "executing-knowledge-work-plans",
+        "finishing-a-deliverable",
+        "framing-knowledge-work",
+        "planning-knowledge-work",
+        "receiving-work-review",
+        "reviewing-knowledge-work",
+        "systematic-research",
+        "using-knowledge-work-superpowers",
+        "verification-before-delivery"
+      ],
+      "direct_routes": [
+        {
+          "skill": "drafting-from-evidence",
+          "triggers": [
+            "draft only from this evidence ledger"
+          ]
+        },
+        {
+          "skill": "evidence-first-analysis",
+          "triggers": [
+            "analyze this evidence before writing"
+          ]
+        },
+        {
+          "skill": "reviewing-knowledge-work",
+          "triggers": [
+            "review this deliverable against the evidence"
+          ]
+        },
+        {
+          "skill": "systematic-research",
+          "triggers": [
+            "run systematic research on this question"
+          ]
+        },
+        {
+          "skill": "verification-before-delivery",
+          "triggers": [
+            "verify this knowledge deliverable before delivery"
+          ]
+        }
+      ],
+      "companions": [
+        "writing-quality"
+      ],
+      "handoffs": [
+        "Send final human-facing prose to Writing Quality."
+      ],
+      "exclusions": [
+        "Do not own prose cleanup before evidence work is complete."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "outcome-engine",
       "display_name": "Outcome Engine",
       "purpose": "Turn unclear goals into outcome briefs, action slices, evidence-driven delivery, and system improvement.",
       "front_door": "outcome-engine",
-      "composite_triggers": ["fuzzy goal into an outcome brief action slices execution and proof", "goal needs brief actions execution and evidence"],
-      "owned_skills": ["decision-grill", "evidence-driven-delivery", "improve-system-architecture", "outcome-engine", "to-action-slices", "to-outcome-brief"],
-      "direct_routes": [
-        {"skill": "evidence-driven-delivery", "triggers": ["execute this approved action slice with evidence"]},
-        {"skill": "improve-system-architecture", "triggers": ["review and improve this system architecture"]},
-        {"skill": "to-action-slices", "triggers": ["break this approved outcome brief into action slices"]},
-        {"skill": "to-outcome-brief", "triggers": ["turn this request into an outcome brief"]}
+      "composite_triggers": [
+        "fuzzy goal into an outcome brief action slices execution and proof",
+        "goal needs brief actions execution and evidence"
       ],
-      "companions": ["strategy-room"],
-      "handoffs": ["Receive an accepted decision from Strategy Room."],
-      "exclusions": ["Do not replace strategy work when the decision itself is unresolved."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "owned_skills": [
+        "decision-grill",
+        "evidence-driven-delivery",
+        "improve-system-architecture",
+        "outcome-engine",
+        "to-action-slices",
+        "to-outcome-brief"
+      ],
+      "direct_routes": [
+        {
+          "skill": "evidence-driven-delivery",
+          "triggers": [
+            "execute this approved action slice with evidence"
+          ]
+        },
+        {
+          "skill": "improve-system-architecture",
+          "triggers": [
+            "review and improve this system architecture"
+          ]
+        },
+        {
+          "skill": "to-action-slices",
+          "triggers": [
+            "break this approved outcome brief into action slices"
+          ]
+        },
+        {
+          "skill": "to-outcome-brief",
+          "triggers": [
+            "turn this request into an outcome brief"
+          ]
+        }
+      ],
+      "companions": [
+        "strategy-room"
+      ],
+      "handoffs": [
+        "Receive an accepted decision from Strategy Room."
+      ],
+      "exclusions": [
+        "Do not replace strategy work when the decision itself is unresolved."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     },
     {
       "plugin": "proofloop",
@@ -416,16 +1132,44 @@
       "front_door": null,
       "explicit_only": true,
       "composite_triggers": [],
-      "owned_skills": ["proofloop-audit", "proofloop-memory-review", "proofloop-run"],
-      "direct_routes": [
-        {"skill": "proofloop-audit", "triggers": ["run a proofloop audit"]},
-        {"skill": "proofloop-memory-review", "triggers": ["run a proofloop memory review"]},
-        {"skill": "proofloop-run", "triggers": ["explicitly use proofloop"]}
+      "owned_skills": [
+        "proofloop-audit",
+        "proofloop-memory-review",
+        "proofloop-run"
       ],
-      "companions": ["agent-ops"],
-      "handoffs": ["Start only after an explicit request for the ProofLoop protocol."],
-      "exclusions": ["Never infer ProofLoop from ordinary agent, audit, memory, or verification work."],
-      "lifecycle": {"state": "active", "visibility": "installed"}
+      "direct_routes": [
+        {
+          "skill": "proofloop-audit",
+          "triggers": [
+            "run a proofloop audit"
+          ]
+        },
+        {
+          "skill": "proofloop-memory-review",
+          "triggers": [
+            "run a proofloop memory review"
+          ]
+        },
+        {
+          "skill": "proofloop-run",
+          "triggers": [
+            "explicitly use proofloop"
+          ]
+        }
+      ],
+      "companions": [
+        "agent-ops"
+      ],
+      "handoffs": [
+        "Start only after an explicit request for the ProofLoop protocol."
+      ],
+      "exclusions": [
+        "Never infer ProofLoop from ordinary agent, audit, memory, or verification work."
+      ],
+      "lifecycle": {
+        "state": "active",
+        "visibility": "installed"
+      }
     }
   ]
 }
