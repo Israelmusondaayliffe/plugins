@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "status": "compiled",
+  "plan_version": 1,
+  "project_type": "mixed",
+  "goal": "Produce a cited implementation guide and a tested reference tool.",
+  "execution": {
+    "explicitly_invoked": true,
+    "effort_preference": "highest_available",
+    "fresh_judges": true,
+    "judge_context_policy": "fresh_no_inherited_turns",
+    "builder_can_issue_final_verdict": false,
+    "allow_parallel_agents": true,
+    "allow_user_owned_tasks": false,
+    "write_isolation": "disjoint_targets"
+  },
+  "continuity": {
+    "canonical_project_file": ".gauntlet/project.md",
+    "canonical_handoff_file": ".gauntlet/handoff.md",
+    "update_after_material_event": true,
+    "resume_requires_explicit_invocation": true
+  },
+  "budget": {
+    "max_elapsed_minutes": 240,
+    "max_agent_launches": 24,
+    "max_concurrency": 3,
+    "max_critic_rounds_per_workstream": 4,
+    "extension_requires_user_approval": true
+  },
+  "global_quality_bar": {
+    "description": "The guide is source-grounded and the reference tool passes its checks.",
+    "dimensions": ["correctness", "source quality", "usability", "integration"],
+    "evidence_required": ["source register", "test output", "independent verifier reports"]
+  },
+  "workstreams": [
+    {
+      "id": "research",
+      "objective": "Build the source-grounded evidence base.",
+      "dependencies": [],
+      "write_targets": ["artifacts/research/"],
+      "acceptance_criteria": ["Every material guide claim maps to a reviewed source."],
+      "evidence_required": ["source register", "claim audit"],
+      "builder_charter": "Build the source-grounded evidence base inside artifacts/research/.",
+      "critic_charter": "Check source quality, claim boundaries, and contradiction handling from fresh context.",
+      "critic": "fresh-source-critic",
+      "max_critic_rounds": 2,
+      "stop_conditions": ["Stop if required primary evidence is unavailable."]
+    },
+    {
+      "id": "implementation",
+      "objective": "Build and test the reference tool.",
+      "dependencies": [],
+      "write_targets": ["artifacts/tool/"],
+      "acceptance_criteria": ["The reference tool passes its declared functional checks."],
+      "evidence_required": ["test output", "artifact register"],
+      "builder_charter": "Build and test the reference tool inside artifacts/tool/.",
+      "critic_charter": "Review correctness, failure handling, and test evidence from fresh context.",
+      "critic": "fresh-code-critic",
+      "max_critic_rounds": 3,
+      "stop_conditions": ["Stop if a material acceptance test cannot pass."]
+    },
+    {
+      "id": "synthesis",
+      "objective": "Integrate the evidence and tool into the final guide.",
+      "dependencies": ["research", "implementation"],
+      "write_targets": ["artifacts/final/"],
+      "acceptance_criteria": ["The final guide integrates cited evidence and the tested tool consistently."],
+      "evidence_required": ["integration report", "final artifact check"],
+      "builder_charter": "Integrate accepted research and implementation outputs inside artifacts/final/.",
+      "critic_charter": "Check cross-workstream consistency and reader usability from fresh context.",
+      "critic": "fresh-integration-critic",
+      "max_critic_rounds": 2,
+      "stop_conditions": ["Stop if source and implementation claims conflict."]
+    }
+  ],
+  "integration_waves": [
+    {"id": "wave-1", "workstreams": ["research", "implementation"]},
+    {"id": "wave-2", "workstreams": ["synthesis"]}
+  ],
+  "verification_panel": [
+    "acceptance-and-scope",
+    "evidence-and-correctness",
+    "integration-and-adversarial-failure"
+  ]
+}

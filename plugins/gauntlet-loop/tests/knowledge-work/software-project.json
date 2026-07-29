@@ -1,0 +1,6 @@
+{
+  "project_type": "software",
+  "quality_bar": ["contract tests", "regression tests", "security boundaries", "install proof"],
+  "workstreams": ["implementation", "tests", "integration", "release verification"],
+  "required_verdicts": ["acceptance", "correctness", "adversarial"]
+}

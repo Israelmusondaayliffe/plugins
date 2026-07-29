@@ -1,0 +1,6 @@
+{
+  "project_type": "multi-session",
+  "quality_bar": ["canonical state", "eager handoff updates", "fresh-reader comprehension", "no hidden-context dependency"],
+  "workstreams": ["session execution", "handoff validation", "resume audit"],
+  "required_verdicts": ["continuity", "evidence", "adversarial"]
+}

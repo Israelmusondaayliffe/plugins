@@ -1,0 +1,6 @@
+{
+  "project_type": "mixed",
+  "quality_bar": ["source validity", "artifact correctness", "cross-workstream consistency", "reader usability"],
+  "workstreams": ["research", "implementation", "synthesis"],
+  "required_verdicts": ["scope", "evidence", "integration"]
+}

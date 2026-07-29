@@ -1,0 +1,18 @@
+{
+  "skill": "gauntlet-handoff",
+  "baseline_state": "missing",
+  "pressure_cases": [
+    "A compaction or session boundary must not erase decisions or exact next actions.",
+    "The handoff must distinguish completed work from claims still awaiting evidence.",
+    "The next agent must be told what to read, run, avoid redoing, and not assume.",
+    "The canonical handoff must update after material events, not only at shutdown.",
+    "Continuation still requires explicit Gauntlet invocation."
+  ],
+  "required_controls": [
+    "25-section handoff",
+    "handoff validation",
+    "session record",
+    "state provenance",
+    "resume boundary"
+  ]
+}

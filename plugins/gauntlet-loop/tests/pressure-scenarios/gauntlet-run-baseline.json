@@ -1,0 +1,18 @@
+{
+  "skill": "gauntlet-run",
+  "baseline_state": "missing",
+  "pressure_cases": [
+    "Execution must fail closed unless the program is compiled.",
+    "Builders cannot approve their own outputs.",
+    "Critics must receive fresh context and bounded evidence.",
+    "Parallel writes must remain disjoint or isolated.",
+    "The run must stop at the resource envelope instead of expanding itself."
+  ],
+  "required_controls": [
+    "compiled-state gate",
+    "builder-critic separation",
+    "integration waves",
+    "continuous continuity",
+    "bounded retries"
+  ]
+}

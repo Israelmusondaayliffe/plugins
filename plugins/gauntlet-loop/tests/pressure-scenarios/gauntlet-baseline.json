@@ -1,0 +1,18 @@
+{
+  "skill": "gauntlet",
+  "baseline_state": "missing",
+  "pressure_cases": [
+    "The front door must remain explicit-only even for obvious mega-projects.",
+    "The orchestrator must load sibling skill instructions rather than pretending to invoke them.",
+    "User approval must separate planning from compilation and execution.",
+    "Fresh judges must have no inherited turns.",
+    "The workflow must persist state and terminate at a finite resource boundary."
+  ],
+  "required_controls": [
+    "explicit front door",
+    "stage routing",
+    "approval gates",
+    "durable handoff",
+    "independent final verification"
+  ]
+}

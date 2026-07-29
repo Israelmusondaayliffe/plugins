@@ -1,0 +1,18 @@
+{
+  "skill": "gauntlet-verify",
+  "baseline_state": "missing",
+  "pressure_cases": [
+    "The builder must not issue the final verdict.",
+    "Verification must use fresh independent perspectives.",
+    "Every acceptance claim must point to observable evidence.",
+    "Missing evidence must yield unable_to_verify or failure, not optimism.",
+    "Caveats must remain visible in the final report."
+  ],
+  "required_controls": [
+    "fresh verification panel",
+    "acceptance matrix",
+    "evidence traceability",
+    "four-state verdict",
+    "final evidence report"
+  ]
+}

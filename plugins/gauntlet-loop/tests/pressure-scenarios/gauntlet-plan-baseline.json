@@ -1,0 +1,18 @@
+{
+  "skill": "gauntlet-plan",
+  "baseline_state": "missing",
+  "pressure_cases": [
+    "Ambiguous ambition must trigger structured grilling, not invented scope.",
+    "The plan must define a finite resource envelope and extension approval.",
+    "No execution may begin before the user approves the plan.",
+    "Existing project files must be explored before questions are asked.",
+    "The parent model, reasoning effort, mode, and cost controls must not be changed silently."
+  ],
+  "required_controls": [
+    "explicit-only metadata",
+    "project initialization",
+    "plan approval gate",
+    "finite budget",
+    "durable state transition"
+  ]
+}

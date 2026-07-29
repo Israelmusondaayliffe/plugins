@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-07-29T23:47:57.868932+00:00",
+  "codex_version": "codex-cli 0.146.0-alpha.3.1",
+  "parent_model": "example",
+  "parent_reasoning": "high",
+  "agent_tools": "available",
+  "thread_tools": "unavailable",
+  "max_concurrency": 3,
+  "fresh_no_inherited_turns_supported": true,
+  "limitations": [
+    "The script cannot inspect model-visible tool inventory by itself.",
+    "Parent model, effort, and host mode remain user-selected."
+  ]
+}

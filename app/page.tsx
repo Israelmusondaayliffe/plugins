@@ -5,7 +5,7 @@ import { CopyCommand } from "./components/CopyCommand";
 import { plugins, totals } from "./catalog.generated";
 
 const repositoryUrl =
-  "https://github.com/Israelmusondaayliffe/codex-plugins";
+  "https://github.com/Israelmusondaayliffe/plugins";
 
 export default function Home() {
   const resourceTotal = totals.assets + totals.references + totals.scripts;
@@ -120,8 +120,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p>Add the marketplace, then install any plugin by name.</p>
-                <CopyCommand command="codex plugin marketplace add Israelmusondaayliffe/codex-plugins --ref main" />
-                <CopyCommand command="codex plugin add loopkit@israel-codex-plugins" />
+                <CopyCommand command="codex plugin marketplace add Israelmusondaayliffe/plugins --ref main" />
+                <CopyCommand command="codex plugin add loopkit@israel-plugins" />
                 <p className="platform-note">
                   Start a fresh Codex task after installation.
                 </p>
@@ -136,8 +136,8 @@ export default function Home() {
                   </div>
                 </div>
                 <p>Run both commands inside Claude Code.</p>
-                <CopyCommand command="/plugin marketplace add Israelmusondaayliffe/codex-plugins" />
-                <CopyCommand command="/plugin install loopkit@israel-codex-plugins" />
+                <CopyCommand command="/plugin marketplace add Israelmusondaayliffe/plugins" />
+                <CopyCommand command="/plugin install loopkit@israel-plugins" />
                 <p className="platform-note">
                   Skills load under their plugin namespace.
                 </p>
@@ -156,7 +156,7 @@ export default function Home() {
                   choose any plugin from the catalog.
                 </p>
                 <CopyCommand
-                  command="https://github.com/Israelmusondaayliffe/codex-plugins"
+                  command="https://github.com/Israelmusondaayliffe/plugins"
                   label="marketplace URL"
                 />
                 <a

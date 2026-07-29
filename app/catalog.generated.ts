@@ -7,7 +7,7 @@ export const plugins = [
     "shortDescription": "Evidence-first workflows for research, analysis, writing, and delivery",
     "longDescription": "Frame substantial knowledge work, plan it, research systematically, test claims against evidence, draft from sources, review the result, and verify it before delivery.",
     "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -91,7 +91,7 @@ export const plugins = [
     "shortDescription": "Turn unclear goals into verified results.",
     "longDescription": "Clarify decisions, write durable briefs, create independent action slices, execute from evidence, and improve the systems behind the work.",
     "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -151,7 +151,7 @@ export const plugins = [
     "shortDescription": "Matt Pocock's full workflow, adapted for Codex.",
     "longDescription": "Clarify ideas, record shared language, research unknowns, prototype questions, write specs, split work, execute bounded slices, hand off across threads, and review against evidence. Includes coding and knowledge-work tracks.",
     "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
-    "version": "1.0.0+codex.20260717203901",
+    "version": "1.0.2+codex.20260717203901",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -276,7 +276,7 @@ export const plugins = [
     "shortDescription": "Run evidence-gated learning loops.",
     "longDescription": "ProofLoop adds bounded task execution, quarantined learning records, governed memory review, and read-only audits without adding external authority.",
     "description": "Governed agent learning ledger and evaluation wrapper with bounded refinement, verification, quarantined memory, and read-only audit.",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -320,7 +320,7 @@ export const plugins = [
     "shortDescription": "Route and verify serious writing work.",
     "longDescription": "Writing Quality separates intent architecture, rewriting, detect-only review, claim support, and final prose validation so each request receives the smallest sufficient intervention.",
     "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -368,7 +368,7 @@ export const plugins = [
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
     "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -401,8 +401,16 @@ export const plugins = [
         "description": "Run deep meta-audits against the user's AI harness and work system. Three routed modes. HARNESS audits goal alignment, Bitter Lesson over-engineering, self-model staleness, memory compounding, eval design, and the autonomy ladder. SECURITY maps prompt-injection exposure per input avenue and maintains a living attack-surface inventory. LIFE runs the ikigai big-picture, steelman-my-biggest-bet, 10x-or-dies, decisions-into-policy, binding-constraint, and bus-factor audits. Use whenever the user says audit my harness, self-model audit, bitter lesson check, is my memory compounding, autonomy ladder, attack surface, prompt injection review, where am I most wrong, find my bottleneck, bus factor, or asks for any deep review of their setup, priorities, or system design. Rerun after every major model intelligence jump."
       },
       {
+        "name": "plugin-install",
+        "description": "Install a plugin from a marketplace reference or a pasted install command, at user scope by default, then prove the install with registry evidence and fresh-task discovery. Use when the user pastes a claude plugin install, marketplace add, or npx skills command, asks to install a plugin or skill globally, or an install needs to be completed and verified end to end instead of assumed."
+      },
+      {
         "name": "plugin-portfolio-manager",
         "description": "Maintains a decision ledger for personal plugins, their owned skills, companions, tests, versions, and retirement state. Use when planning, building, auditing, upgrading, or retiring multiple plugins. Validates ownership and lifecycle fields so plugin bundles remain intentional instead of becoming untracked collections of copied skills."
+      },
+      {
+        "name": "plugin-release",
+        "description": "Ship plugin content changes from the source-of-truth repo to installed copies. Detects drift between repo and installed versions, bumps every required manifest together, commits and pushes, refreshes the marketplace install, and verifies parity. Use for a plugin release, version bump, repo-to-install sync, checking whether the repo updated too, or when installed plugin content has drifted from its source repo."
       },
       {
         "name": "skill-creator-pro",
@@ -414,11 +422,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 7,
+      "skills": 9,
       "assets": 8,
       "references": 14,
       "scripts": 19,
-      "files": 63
+      "files": 65
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -429,7 +437,7 @@ export const plugins = [
     "shortDescription": "Build governed internal tools without hidden expert steps.",
     "longDescription": "Citizen Forge turns plain-language ideas into classified, paved-road internal applications. Deterministic code owns policy, state, checks, change gates, and release decisions.",
     "description": "Governed internal application creation for non-technical owners, with deterministic policy and lifecycle controls.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "category": "Developer Tools",
     "license": "MIT",
     "capabilities": [
@@ -504,7 +512,7 @@ export const plugins = [
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
     "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. Generic Goals and loops on any host are owned by LoopKit.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -532,6 +540,10 @@ export const plugins = [
         "description": "Audits an agent, Goal, loop, or autonomous workflow for authority, stop conditions, evidence, tool contracts, cost controls, recovery, and durable state. Use for read-only reviews before launch, after failures, or before increasing autonomy. Produces a validated finding ledger with severity and evidence, without executing or repairing the system unless separately authorized."
       },
       {
+        "name": "cowork-handoff",
+        "description": "Package a task as a self-contained prompt that Claude Cowork, or another agentic harness, runs on its own. Use when the user says give me the prompt for Cowork, wants work handed to Cowork or a second harness instead of executed here, or asks for a copy-paste brief another agent can complete without this session's context. Produces the handoff prompt, not the work itself."
+      },
+      {
         "name": "goal-runner",
         "description": "Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Redirect Goal contract, execution, verification, and resume work, on Claude Code, Claude Cowork, or Codex, to the matching LoopKit skill. Generic goal or completion requests should trigger LoopKit directly."
       },
@@ -545,11 +557,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 6,
+      "skills": 7,
       "assets": 8,
       "references": 17,
       "scripts": 7,
-      "files": 57
+      "files": 58
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -560,7 +572,7 @@ export const plugins = [
     "shortDescription": "Plan, produce, and verify video assets.",
     "longDescription": "Video Production Studio routes briefs across explainers, launches, music, slideshows, website and PR stories, captions, overlays, prompts, HyperFrames implementation, and final delivery checks.",
     "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Media",
     "license": null,
     "capabilities": [],
@@ -784,7 +796,7 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -840,7 +852,7 @@ export const plugins = [
     "shortDescription": "Turn approved positioning into a coherent visual world.",
     "longDescription": "Brand World Studio routes approved strategy into a visual brief, identity system, image-model choice, production prompt pack, and consistency review without inventing upstream positioning.",
     "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Design",
     "license": null,
     "capabilities": [],
@@ -1012,7 +1024,7 @@ export const plugins = [
     "shortDescription": "Turn checked analysis into decision-facing stories.",
     "longDescription": "Data Storytelling Studio preserves the analytical source of truth while routing it to the right delivery format, auditing visual claims, and producing an answer-first executive readout with explicit evidence and caveats.",
     "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -1056,7 +1068,7 @@ export const plugins = [
     "shortDescription": "Plan, run, normalize, and decide model evaluations.",
     "longDescription": "Model Evaluation Lab turns a model choice into a fixed evaluation plan, a reproducible run contract, normalized results, and a decision memo that separates measurement from judgment and deployment conditions.",
     "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -1104,7 +1116,7 @@ export const plugins = [
     "shortDescription": "Bounded loops with durable evidence on Claude Code, Cowork, and Codex.",
     "longDescription": "LoopKit turns repeatable work into bounded loops on Claude Code, Claude Cowork, and Codex. It creates durable contracts, runs evidence-gated iterations, restores compact checkpoints, prepares scheduled tasks on the host scheduling surface, and diagnoses stalled or unsafe runs.",
     "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1169,7 +1181,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, contract files and .plugin delivery on Claude Cowork, AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1190,6 +1202,10 @@ export const plugins = [
       {
         "name": "agents-md-engineer",
         "description": "Design, rewrite, split, or verify agent instruction files across scopes on any supported platform, a CLAUDE.md chain for Claude Code, contract files at connected-folder roots for Claude Cowork, or an AGENTS.md chain for Codex. Use when users ask what belongs in CLAUDE.md or AGENTS.md, want instructions modeled on an existing harness, need shorter or clearer agent guidance, have conflicting instruction files, or need templates that encode role, boundaries, routing, workflow, and verification."
+      },
+      {
+        "name": "context-doctor",
+        "description": "Audit persistent context against the Claude 5 context doctrine and return a deprune ledger. Use when a user asks to rightsize a CLAUDE.md, AGENTS.md, Cowork contract file, skill, or plugin bundle, says a skill is over-constrained or too prescriptive, asks what to cut after a model upgrade, wants a context audit, doctrine audit, over-constraint check, reasoning-echo check, or asks why an inherited harness degrades output on Claude 5 models. Read-only. It produces findings and a proposed removal set, and does not rewrite the source."
       },
       {
         "name": "harness-audit",
@@ -1237,11 +1253,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 12,
+      "skills": 13,
       "assets": 7,
-      "references": 11,
-      "scripts": 3,
-      "files": 56
+      "references": 12,
+      "scripts": 4,
+      "files": 60
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1252,7 +1268,7 @@ export const plugins = [
     "shortDescription": "Engineer and run adaptive agent organizations.",
     "longDescription": "Transforms complex goals into typed, executable agent graphs with shared state, evidence, verification, bounded runtime restructuring, and human authority controls.",
     "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1308,14 +1324,73 @@ export const plugins = [
     },
     "bundlesMcp": false,
     "bundlesApp": false
+  },
+  {
+    "slug": "gauntlet-loop",
+    "name": "Gauntlet Loop",
+    "shortDescription": "Run explicitly selected mega-projects.",
+    "longDescription": "A user-invoked Codex execution system for consequential software and knowledge-work projects. It turns an approved project constitution into bounded workstreams, separates builders from fresh critics, preserves state across sessions, integrates the whole project, and requires evidence-backed verification.",
+    "description": "Run explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
+    "version": "1.0.0",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompts": [
+      "$gauntlet-loop:gauntlet Plan and run this as a Gauntlet project.",
+      "$gauntlet-loop:gauntlet Resume the active Gauntlet project.",
+      "$gauntlet-loop:gauntlet-verify Verify this Gauntlet project."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "skills": [
+      {
+        "name": "gauntlet",
+        "description": "Use when the user explicitly invokes $gauntlet-loop:gauntlet to orchestrate a mega-project across approved planning, bounded workstreams, fresh critics, durable handoffs, integration, and independent verification. Never use implicitly."
+      },
+      {
+        "name": "gauntlet-compile",
+        "description": "Use when the user explicitly invokes $gauntlet-loop:gauntlet-compile to compile an approved plan into bounded workstreams, dependency waves, fresh critic contracts, write ownership, and an independent verification panel. Never use implicitly."
+      },
+      {
+        "name": "gauntlet-handoff",
+        "description": "Use when the user explicitly invokes $gauntlet-loop:gauntlet-handoff to create and validate a continuity package preserving state, evidence, decisions, failures, exact next actions, and resume boundaries. Never use implicitly."
+      },
+      {
+        "name": "gauntlet-plan",
+        "description": "Use when the user explicitly invokes $gauntlet-loop:gauntlet-plan to plan a mega-project through exploration, structured grilling, finite limits, acceptance criteria, and a user approval gate. Never use implicitly."
+      },
+      {
+        "name": "gauntlet-run",
+        "description": "Use when the user explicitly invokes $gauntlet-loop:gauntlet-run to execute an approved compiled program through bounded builder-critic workstreams, integration waves, durable state, and evidence capture. Never use implicitly."
+      },
+      {
+        "name": "gauntlet-verify",
+        "description": "Use when the user explicitly invokes $gauntlet-loop:gauntlet-verify to evaluate a project with fresh independent judges, acceptance-to-evidence traceability, adversarial checks, and a bounded final verdict. Never use implicitly."
+      }
+    ],
+    "counts": {
+      "skills": 6,
+      "assets": 8,
+      "references": 13,
+      "scripts": 11,
+      "files": 93
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false
   }
 ] as const;
 export const totals = {
-  "plugins": 20,
-  "skills": 160,
-  "assets": 283,
-  "references": 403,
-  "scripts": 357,
-  "files": 1580
+  "plugins": 21,
+  "skills": 170,
+  "assets": 291,
+  "references": 417,
+  "scripts": 369,
+  "files": 1680
 } as const;
 export type Plugin = (typeof plugins)[number];

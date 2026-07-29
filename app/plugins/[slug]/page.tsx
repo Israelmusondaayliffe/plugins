@@ -9,7 +9,7 @@ type PluginPageProps = {
 };
 
 const repositoryUrl =
-  "https://github.com/Israelmusondaayliffe/codex-plugins";
+  "https://github.com/Israelmusondaayliffe/plugins";
 
 export function generateStaticParams() {
   return plugins.map((plugin) => ({ slug: plugin.slug }));

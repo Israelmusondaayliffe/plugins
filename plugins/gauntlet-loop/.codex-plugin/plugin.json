@@ -1,0 +1,43 @@
+{
+  "name": "gauntlet-loop",
+  "version": "1.0.0",
+  "description": "Run explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
+  "author": {
+    "name": "Israel Ayliffe",
+    "url": "https://github.com/Israelmusondaayliffe"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/gauntlet-loop",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork",
+    "mega-project",
+    "multi-agent",
+    "knowledge-work",
+    "verification",
+    "handoff"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Gauntlet Loop",
+    "shortDescription": "Run explicitly selected mega-projects.",
+    "longDescription": "A user-invoked Codex execution system for consequential software and knowledge-work projects. It turns an approved project constitution into bounded workstreams, separates builders from fresh critics, preserves state across sessions, integrates the whole project, and requires evidence-backed verification.",
+    "developerName": "Israel Ayliffe",
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "$gauntlet-loop:gauntlet Plan and run this as a Gauntlet project.",
+      "$gauntlet-loop:gauntlet Resume the active Gauntlet project.",
+      "$gauntlet-loop:gauntlet-verify Verify this Gauntlet project."
+    ],
+    "brandColor": "#6D28D9"
+  }
+}

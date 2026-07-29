@@ -189,6 +189,15 @@
       "author": {
         "name": "Israel Ayliffe"
       }
+    },
+    {
+      "name": "gauntlet-loop",
+      "source": "./plugins/gauntlet-loop",
+      "description": "Run explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Israel Ayliffe"
+      }
     }
   ]
 }

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Run"
+  short_description: "Run compiled Gauntlet workstreams"
+
+policy:
+  allow_implicit_invocation: false

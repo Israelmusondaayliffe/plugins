@@ -1,0 +1,22 @@
+{
+  "name": "gauntlet-loop",
+  "version": "1.0.0",
+  "description": "Run explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
+  "author": {
+    "name": "Israel Ayliffe",
+    "url": "https://github.com/Israelmusondaayliffe"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/gauntlet-loop",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork",
+    "mega-project",
+    "multi-agent",
+    "knowledge-work",
+    "verification",
+    "handoff"
+  ]
+}

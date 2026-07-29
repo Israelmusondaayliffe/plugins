@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Compile"
+  short_description: "Compile an approved plan into workstreams"
+
+policy:
+  allow_implicit_invocation: false

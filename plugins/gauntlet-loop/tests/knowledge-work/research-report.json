@@ -1,0 +1,6 @@
+{
+  "project_type": "research-report",
+  "quality_bar": ["claim-to-source traceability", "source recency", "contradiction register", "citation audit"],
+  "workstreams": ["source discovery", "claim ledger", "synthesis", "independent citation verification"],
+  "required_verdicts": ["scope", "evidence", "adversarial"]
+}

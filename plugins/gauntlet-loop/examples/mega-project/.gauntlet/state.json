@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "project_name": "Example Mega-Project",
+  "state": "gauntlet_compiled",
+  "plan_version": 1,
+  "program_version": 1,
+  "previous_active_state": null,
+  "created_at": "2026-07-29T23:36:25.464181+00:00",
+  "updated_at": "2026-07-29T23:36:46.198819+00:00",
+  "history": [
+    {
+      "previous_state": "not_initialized",
+      "new_state": "intake",
+      "timestamp": "2026-07-29T23:36:25.464337+00:00",
+      "actor": "example-author",
+      "reason": "Explicit Gauntlet initialization",
+      "related_artifacts": [
+        ".gauntlet/project.md",
+        ".gauntlet/state.json"
+      ],
+      "required_next_action": "Run gauntlet-plan."
+    },
+    {
+      "previous_state": "intake",
+      "new_state": "grilling",
+      "timestamp": "2026-07-29T23:36:25.500120+00:00",
+      "actor": "example-author",
+      "reason": "Example exploration complete",
+      "related_artifacts": [
+        ".gauntlet/brief.md"
+      ],
+      "required_next_action": "Draft the plan."
+    },
+    {
+      "previous_state": "grilling",
+      "new_state": "plan_proposed",
+      "timestamp": "2026-07-29T23:36:25.536095+00:00",
+      "actor": "example-author",
+      "reason": "Example plan proposed",
+      "related_artifacts": [
+        ".gauntlet/plan.md"
+      ],
+      "required_next_action": "Review the plan."
+    },
+    {
+      "previous_state": "plan_proposed",
+      "new_state": "plan_approved",
+      "timestamp": "2026-07-29T23:36:25.573043+00:00",
+      "actor": "example-author",
+      "reason": "Example approval recorded",
+      "related_artifacts": [
+        ".gauntlet/plan.md"
+      ],
+      "required_next_action": "Compile the program."
+    },
+    {
+      "previous_state": "plan_approved",
+      "new_state": "gauntlet_compiled",
+      "timestamp": "2026-07-29T23:36:46.198681+00:00",
+      "actor": "example-author",
+      "reason": "Example workstreams compiled",
+      "related_artifacts": [
+        ".gauntlet/gauntlet.yaml"
+      ],
+      "required_next_action": "Invoke gauntlet-run explicitly."
+    }
+  ]
+}

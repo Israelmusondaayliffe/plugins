@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Handoff"
+  short_description: "Create a durable Gauntlet handoff"
+
+policy:
+  allow_implicit_invocation: false

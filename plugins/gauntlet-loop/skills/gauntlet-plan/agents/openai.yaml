@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Plan"
+  short_description: "Plan an explicitly invoked Gauntlet project"
+
+policy:
+  allow_implicit_invocation: false

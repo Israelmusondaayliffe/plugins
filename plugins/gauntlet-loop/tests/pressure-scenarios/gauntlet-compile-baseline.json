@@ -1,0 +1,18 @@
+{
+  "skill": "gauntlet-compile",
+  "baseline_state": "missing",
+  "pressure_cases": [
+    "Compilation without an approved plan must fail closed.",
+    "Overlapping write targets must be serialized or isolated in worktrees.",
+    "Every workstream must have a builder, critic, evidence contract, and stop rule.",
+    "Fresh critics must use no inherited conversation turns.",
+    "User-owned tasks must not be created without separate explicit authorization."
+  ],
+  "required_controls": [
+    "plan approval check",
+    "workstream dependency graph",
+    "write ownership",
+    "fresh critic contract",
+    "verification panel"
+  ]
+}

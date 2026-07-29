@@ -31,13 +31,13 @@ test("server-renders the public marketplace homepage", async () => {
   const html = await response.text();
   assert.match(html, /<title>Israel&#x27;s Plugin Registry<\/title>/i);
   assert.match(html, /A working system/);
-  assert.match(html, /20(?:<!--.*?-->)? field-tested plugins/);
+  assert.match(html, /21(?:<!--.*?-->)? field-tested plugins/);
   assert.match(html, /Codex, Claude Code, and(?:<!--.*?-->)?\s*Claude Cowork/);
   assert.match(html, /codex plugin marketplace add Israelmusondaayliffe/);
   assert.match(html, /\/plugin marketplace add Israelmusondaayliffe/);
   assert.match(
     html,
-    /https:\/\/github.com\/Israelmusondaayliffe\/codex-plugins/,
+    /https:\/\/github.com\/Israelmusondaayliffe\/plugins/,
   );
   assert.match(html, /Official Cowork install guide/);
   assert.match(html, /knowledge-work-superpowers/);
@@ -122,6 +122,19 @@ test("server-renders the Operating Graph release", async () => {
   );
 });
 
+test("server-renders the Gauntlet Loop release", async () => {
+  const response = await render("/plugins/gauntlet-loop");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Gauntlet Loop/);
+  assert.match(html, /gauntlet-verify/);
+  assert.match(
+    html,
+    /codex plugin add gauntlet-loop@israel-plugins/,
+  );
+});
+
 test("publishes every plugin across both manifest formats and all install surfaces", async () => {
   const codexMarketplace = JSON.parse(
     readFileSync(
@@ -140,7 +153,7 @@ test("publishes every plugin across both manifest formats and all install surfac
     .map((plugin) => plugin.name)
     .sort();
 
-  assert.equal(codexNames.length, 20);
+  assert.equal(codexNames.length, 21);
   assert.deepEqual(claudeNames, codexNames);
 
   for (const name of codexNames) {
