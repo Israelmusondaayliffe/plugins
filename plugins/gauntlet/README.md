@@ -9,13 +9,6 @@ verify with agents that never saw the build, and report with receipts.
 Method source: Matt Shumer, "How to Run a Gauntlet Loop" (somethingbig.ai, 2026-07-27) and
 github.com/mshumer/Claude-of-Duty.
 
-## Editions
-
-This is the Claude Code and Cowork edition, built from the v3.0 spec in `docs/SPEC.md`. The
-sibling `gauntlet-loop` plugin in this marketplace is the Codex edition of the same method,
-built independently with a Codex-native invocation policy and dual-format manifests. Install
-the edition that matches your surface; they share the method, not their state layouts.
-
 ## Invocation contract
 
 This plugin never loads on its own. It responds only to explicit triggers: gauntlet, run the

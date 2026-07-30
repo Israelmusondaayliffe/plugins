@@ -1,7 +1,7 @@
 {
   "name": "gauntlet-loop",
-  "version": "1.0.1",
-  "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification. The Claude Code and Cowork edition is the sibling gauntlet plugin.",
+  "version": "1.0.2",
+  "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
   "author": {
     "name": "Israel Ayliffe",
     "url": "https://github.com/Israelmusondaayliffe"

@@ -1,7 +1,7 @@
 {
   "name": "gauntlet",
-  "version": "0.1.2",
-  "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. The Codex edition is the sibling gauntlet-loop plugin.",
+  "version": "0.1.3",
+  "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
   "author": {
     "name": "Israel Ayliffe"
   },

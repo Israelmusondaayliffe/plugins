@@ -31,7 +31,7 @@ test("server-renders the public marketplace homepage", async () => {
   const html = await response.text();
   assert.match(html, /<title>Israel&#x27;s Plugin Registry<\/title>/i);
   assert.match(html, /A working system/);
-  assert.match(html, /21(?:<!--.*?-->)? field-tested plugins/);
+  assert.match(html, /22(?:<!--.*?-->)? field-tested plugins/);
   assert.match(html, /Codex, Claude Code, and(?:<!--.*?-->)?\s*Claude Cowork/);
   assert.match(html, /codex plugin marketplace add Israelmusondaayliffe/);
   assert.match(html, /\/plugin marketplace add Israelmusondaayliffe/);
@@ -153,7 +153,7 @@ test("publishes every plugin across both manifest formats and all install surfac
     .map((plugin) => plugin.name)
     .sort();
 
-  assert.equal(codexNames.length, 21);
+  assert.equal(codexNames.length, 22);
   assert.deepEqual(claudeNames, codexNames);
 
   for (const name of codexNames) {

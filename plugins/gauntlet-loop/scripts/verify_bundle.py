@@ -77,8 +77,8 @@ def verify(root: Path) -> dict[str, object]:
     if manifest.get("name") != "gauntlet-loop":
         errors.append("manifest name must be gauntlet-loop")
     version = manifest.get("version", "")
-    if not re.fullmatch(r"1\.0\.0(?:\+codex\.[0-9A-Za-z.-]+)?", version):
-        errors.append("manifest version must be 1.0.0 or 1.0.0+codex.<cachebuster>")
+    if not re.fullmatch(r"1\.0\.[0-9]+(?:\+codex\.[0-9A-Za-z.-]+)?", version):
+        errors.append("manifest version must be 1.0.x or 1.0.x+codex.<cachebuster>")
     for key in ["description", "author", "license", "keywords", "skills", "interface"]:
         if not manifest.get(key):
             errors.append(f"manifest missing {key}")

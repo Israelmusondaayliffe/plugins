@@ -55,6 +55,7 @@ and install it from the catalog.
 | continuity-vault | Extract, structure, and govern durable working knowledge |
 | data-storytelling-studio | Turn analysis into clear executive stories |
 | founder-revenue-engine | Find customers, build outreach, and shape market narratives |
+| gauntlet | Run explicit Claude Code and Cowork mega-project loops with blind critics and independent verification |
 | gauntlet-loop | Run explicitly selected mega-projects through bounded workstreams and independent verification |
 | harness-engineering | Interview, design, build, verify, and maintain a personalized Codex harness |
 | knowledge-work-superpowers | Research, analyze, draft, review, and verify evidence-backed work |
@@ -70,7 +71,7 @@ and install it from the catalog.
 | web-product-studio | Design, build, test, and ship web products |
 | writing-quality | Route, improve, and verify serious writing work |
 
-The marketplace currently contains 21 plugins and 170 skills. The packages also
+The marketplace currently contains 22 plugins and 177 skills. The packages also
 include their supporting scripts, references, assets, and agent definitions.
 LoopKit includes local lifecycle hooks. The marketplace does not currently
 bundle MCP servers or app connectors.

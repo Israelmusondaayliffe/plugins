@@ -1330,8 +1330,8 @@ export const plugins = [
     "name": "Gauntlet Loop",
     "shortDescription": "Run explicitly selected mega-projects.",
     "longDescription": "A user-invoked Codex execution system for consequential software and knowledge-work projects. It turns an approved project constitution into bounded workstreams, separates builders from fresh critics, preserves state across sessions, integrates the whole project, and requires evidence-backed verification.",
-    "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification. The Claude Code and Cowork edition is the sibling gauntlet plugin.",
-    "version": "1.0.1",
+    "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
+    "version": "1.0.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1388,9 +1388,9 @@ export const plugins = [
     "slug": "gauntlet",
     "name": "Gauntlet (Claude Code edition)",
     "shortDescription": "Explicit-only mega-project loop with blind critics.",
-    "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts. On Codex, prefer the sibling gauntlet-loop plugin, which is the Codex-native edition.",
-    "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. The Codex edition is the sibling gauntlet-loop plugin.",
-    "version": "0.1.2",
+    "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts.",
+    "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
+    "version": "0.1.3",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
