@@ -75,7 +75,7 @@
       "name": "gauntlet",
       "source": "./plugins/gauntlet",
       "description": "Explicit-only mega-project loop: blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Israel Ayliffe"
       }
