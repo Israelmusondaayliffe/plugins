@@ -1,0 +1,39 @@
+{
+  "plugin": "gauntlet",
+  "version": "0.1.0",
+  "skills": [
+    "gauntlet",
+    "gauntlet-brief",
+    "gauntlet-prompt",
+    "gauntlet-run",
+    "gauntlet-verify",
+    "gauntlet-evidence",
+    "gauntlet-handoff"
+  ],
+  "coordinator_skills": [
+    "gauntlet"
+  ],
+  "primary_skills": [
+    "gauntlet",
+    "gauntlet-brief",
+    "gauntlet-run",
+    "gauntlet-verify"
+  ],
+  "agents": [
+    "builder",
+    "critic",
+    "reader-proxy",
+    "quality-verifier",
+    "integrity-verifier",
+    "smoother"
+  ],
+  "companions": [],
+  "guardrails": [
+    "Explicit invocation only. Never load for a request that does not name the gauntlet.",
+    "While a run is active this plugin sits at the top of the stack and supersedes overlapping skills.",
+    "The router may not report completion and may not skip verification to reach the report.",
+    "Caps pause, they never certify. A capped piece is never done.",
+    "Consensus is computed by scripts/consensus.py, never by a model.",
+    "Handoffs are generated from state by scripts/write_handoff.py; agent opinion is confined to the labeled judgment section."
+  ]
+}

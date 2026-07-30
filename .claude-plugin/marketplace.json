@@ -72,6 +72,15 @@
       }
     },
     {
+      "name": "gauntlet",
+      "source": "./plugins/gauntlet",
+      "description": "Explicit-only mega-project loop: blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Israel Ayliffe"
+      }
+    },
+    {
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
@@ -128,21 +137,21 @@
       }
     },
     {
-      "name": "outcome-engine",
-      "source": "./plugins/outcome-engine",
-      "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-      "version": "1.0.3",
-      "author": {
-        "name": "Israel A."
-      }
-    },
-    {
       "name": "operating-graph",
       "source": "./plugins/operating-graph",
       "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
       "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
+      }
+    },
+    {
+      "name": "outcome-engine",
+      "source": "./plugins/outcome-engine",
+      "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
+      "version": "1.0.3",
+      "author": {
+        "name": "Israel A."
       }
     },
     {

@@ -1,0 +1,19 @@
+{
+  "name": "gauntlet",
+  "version": "0.1.0",
+  "description": "Explicit-only mega-project loop: blind critics, fresh-context verification, evidence reports, and multi-session handoff. Claude of Duty method. Loads only when the user names the gauntlet.",
+  "author": {
+    "name": "Israel Ayliffe"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "cowork",
+    "gauntlet",
+    "blind-critic",
+    "verification",
+    "mega-project",
+    "evidence",
+    "multi-session"
+  ]
+}
