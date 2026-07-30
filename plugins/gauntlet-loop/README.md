@@ -1,5 +1,7 @@
 # Gauntlet Loop for Codex
 
+This is the Codex edition of the gauntlet method. The sibling `gauntlet` plugin in this marketplace is the Claude Code and Cowork edition, built independently from the same source method. Install the edition that matches your surface; they share the method, not their state layouts.
+
 Gauntlet Loop is an explicit-only execution system for unusually large, consequential, or compute-intensive Codex projects. It supports software engineering, product work, research, strategy, long-form writing, curriculum, operations, creative systems, and mixed projects.
 
 Invoke it deliberately:

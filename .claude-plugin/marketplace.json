@@ -74,8 +74,8 @@
     {
       "name": "gauntlet",
       "source": "./plugins/gauntlet",
-      "description": "Explicit-only mega-project loop: blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-      "version": "0.1.1",
+      "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. The Codex edition is the sibling gauntlet-loop plugin.",
+      "version": "0.1.2",
       "author": {
         "name": "Israel Ayliffe"
       }
@@ -202,8 +202,8 @@
     {
       "name": "gauntlet-loop",
       "source": "./plugins/gauntlet-loop",
-      "description": "Run explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
-      "version": "1.0.0",
+      "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification. The Claude Code and Cowork edition is the sibling gauntlet plugin.",
+      "version": "1.0.1",
       "author": {
         "name": "Israel Ayliffe"
       }

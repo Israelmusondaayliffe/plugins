@@ -1,7 +1,7 @@
 {
   "name": "gauntlet",
-  "version": "0.1.1",
-  "description": "Explicit-only mega-project loop: blind critics, fresh-context verification, evidence reports, and multi-session handoff. Claude of Duty method. Loads only when the user names the gauntlet.",
+  "version": "0.1.2",
+  "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. The Codex edition is the sibling gauntlet-loop plugin.",
   "author": {
     "name": "Israel Ayliffe"
   },
@@ -9,6 +9,7 @@
   "keywords": [
     "claude-code",
     "cowork",
+    "codex",
     "gauntlet",
     "blind-critic",
     "verification",

@@ -1330,8 +1330,8 @@ export const plugins = [
     "name": "Gauntlet Loop",
     "shortDescription": "Run explicitly selected mega-projects.",
     "longDescription": "A user-invoked Codex execution system for consequential software and knowledge-work projects. It turns an approved project constitution into bounded workstreams, separates builders from fresh critics, preserves state across sessions, integrates the whole project, and requires evidence-backed verification.",
-    "description": "Run explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
-    "version": "1.0.0",
+    "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification. The Claude Code and Cowork edition is the sibling gauntlet plugin.",
+    "version": "1.0.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1383,14 +1383,77 @@ export const plugins = [
     },
     "bundlesMcp": false,
     "bundlesApp": false
+  },
+  {
+    "slug": "gauntlet",
+    "name": "Gauntlet (Claude Code edition)",
+    "shortDescription": "Explicit-only mega-project loop with blind critics.",
+    "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts. On Codex, prefer the sibling gauntlet-loop plugin, which is the Codex-native edition.",
+    "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. The Codex edition is the sibling gauntlet-loop plugin.",
+    "version": "0.1.2",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompts": [
+      "$gauntlet:gauntlet Run the gauntlet on this project.",
+      "$gauntlet:gauntlet Resume the gauntlet.",
+      "$gauntlet:gauntlet-verify Verify the gauntlet run."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "skills": [
+      {
+        "name": "gauntlet",
+        "description": "Loads only when the user explicitly invokes the gauntlet by name with one of these trigger phrases: gauntlet, run the gauntlet, gauntlet loop, gauntlet mode, gauntlet run, the big one, mega project mode, max run, ultracode run, beat this bar, blind critic loop, Claude of Duty method, resume the gauntlet, gauntlet handoff. Acts as the front door and router for the gauntlet mega-project method, prechecking the surface and routing to the brief, prompt, run, verify, evidence, and handoff stages. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      },
+      {
+        "name": "gauntlet-brief",
+        "description": "Loads only when the user explicitly starts a gauntlet run, says grill me for the gauntlet, or asks to set the bar for a gauntlet. Runs the gauntlet intake interview, sets and validates the external bar, gates brief completeness, sizes the run, and emits the hashed run state that every later gauntlet stage depends on. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      },
+      {
+        "name": "gauntlet-evidence",
+        "description": "Loads only when a gauntlet verification consensus exists on disk and the user explicitly asks for the gauntlet report, the gauntlet evidence report, or the receipts for a gauntlet run. Assembles EVIDENCE.md and EVIDENCE.json entirely from state files via script, with every number, path, command, and hash read from disk and never computed by the model. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      },
+      {
+        "name": "gauntlet-handoff",
+        "description": "Loads only when the user explicitly says hand off the gauntlet, resume the gauntlet, or continue the gauntlet in a new session, or when a gauntlet session is ending. Writes the script-generated session handoff from durable state and, on resume, reconstructs the run from disk before routing back into the loop. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      },
+      {
+        "name": "gauntlet-prompt",
+        "description": "Loads only when a gauntlet brief exists and the user explicitly asks for the gauntlet prompt or the gauntlet loop prompt to paste into Claude Code. Turns a completed gauntlet brief into a short lead-agent prompt, lints it with the plugin's prompt linter, writes it to prompt.md, and surfaces it in a single fenced code block. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      },
+      {
+        "name": "gauntlet-run",
+        "description": "Loads only when a gauntlet prompt and bar exist and the user explicitly says run the gauntlet, gauntlet run, gauntlet loop, or resume the gauntlet. Executes the gauntlet round loop as a deterministic state machine over disk state, spawning fresh-context builders and blind critics, running declared inspections, and writing every round durably before the next begins. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      },
+      {
+        "name": "gauntlet-verify",
+        "description": "Loads only when the user explicitly asks to verify the gauntlet, asks whether a gauntlet run is actually done, or when a gauntlet run has reached a stopped or converged state with no consensus on disk. Spawns independent quality and integrity verifiers that never saw the build, collects their verdicts to disk, and computes consensus by script. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+      }
+    ],
+    "counts": {
+      "skills": 7,
+      "assets": 5,
+      "references": 15,
+      "scripts": 17,
+      "files": 74
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false
   }
 ] as const;
 export const totals = {
-  "plugins": 21,
-  "skills": 170,
-  "assets": 291,
-  "references": 417,
-  "scripts": 369,
-  "files": 1680
+  "plugins": 22,
+  "skills": 177,
+  "assets": 296,
+  "references": 432,
+  "scripts": 386,
+  "files": 1754
 } as const;
 export type Plugin = (typeof plugins)[number];
