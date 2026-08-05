@@ -65,7 +65,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
               <dd>{plugin.counts.files}</dd>
             </div>
             <div>
-              <dt>Platforms</dt>
+              <dt>Runtime hosts</dt>
               <dd>{plugin.platforms.length}</dd>
             </div>
             <div>
@@ -79,12 +79,12 @@ export default async function PluginPage({ params }: PluginPageProps) {
           <div>
             <h2 id="install-title">Install it on your surface.</h2>
             <p className="install-note">
-              The same package is available in Codex, Claude Code, and Claude
-              Cowork.
+              {plugin.runtimeNote} Package manifests and verified runtime support
+              are separate claims.
             </p>
           </div>
           <div className="detail-platform-installs">
-            <article>
+            {plugin.platforms.includes("Codex") && <article>
               <p className="platform-eyebrow">Codex</p>
               <CopyCommand
                 command={
@@ -95,8 +95,8 @@ export default async function PluginPage({ params }: PluginPageProps) {
               <p className="install-note">
                 Add the marketplace first if needed, then start a fresh task.
               </p>
-            </article>
-            <article>
+            </article>}
+            {plugin.platforms.includes("Claude Code") && <article>
               <p className="platform-eyebrow">Claude Code</p>
               <CopyCommand
                 command={
@@ -107,8 +107,8 @@ export default async function PluginPage({ params }: PluginPageProps) {
               <p className="install-note">
                 Add this repository as a marketplace first if needed.
               </p>
-            </article>
-            <article>
+            </article>}
+            {plugin.platforms.includes("Claude Cowork") && <article>
               <p className="platform-eyebrow">Claude Cowork</p>
               <CopyCommand
                 command={repositoryUrl}
@@ -117,7 +117,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
               <p className="install-note">
                 In Customize → Plugins, add this marketplace and select {plugin.name}.
               </p>
-            </article>
+            </article>}
           </div>
         </section>
 

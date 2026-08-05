@@ -25,6 +25,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "dispatching-parallel-research",
@@ -109,6 +110,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "decision-grill",
@@ -166,10 +168,9 @@ export const plugins = [
       "Create a durable handoff for a fresh thread."
     ],
     "platforms": [
-      "Codex",
-      "Claude Code",
-      "Claude Cowork"
+      "Codex"
     ],
+    "runtimeNote": "Verified for Codex. The setup workflow currently depends on the AGENTS.md instruction chain, so Claude runtime parity is not claimed.",
     "skills": [
       {
         "name": "matt-ask-matt",
@@ -290,6 +291,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "proofloop-audit",
@@ -334,6 +336,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "business-writing-intent-enforcer",
@@ -382,6 +385,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "capability-inventory",
@@ -457,6 +461,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "citizen-build",
@@ -529,6 +534,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "agent-builder",
@@ -593,6 +599,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "embedded-captions",
@@ -669,7 +676,7 @@ export const plugins = [
     "slug": "web-product-studio",
     "name": "Web Product Studio",
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
-    "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. Runs on Claude Code, Claude Cowork, and Codex: rendered verification uses the in-app browser pane on Claude Code or the built-in Browser on Codex, with Playwright for repeatable automation.",
+    "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
     "version": "0.3.0",
     "category": "Developer Tools",
@@ -685,6 +692,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "acceptance-flow",
@@ -757,6 +765,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "fable-5-production-prompter",
@@ -817,6 +826,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "assumption-challenger",
@@ -873,6 +883,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "brand-brief-builder",
@@ -933,6 +944,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "first-customer-finder",
@@ -993,6 +1005,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "continuity-router",
@@ -1045,6 +1058,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "analysis-to-story-router",
@@ -1089,6 +1103,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "benchmark-runner",
@@ -1142,6 +1157,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "loop-designer",
@@ -1186,7 +1202,7 @@ export const plugins = [
     "slug": "harness-engineering",
     "name": "Harness Engineering",
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
-    "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, contract files and .plugin delivery on Claude Cowork, AGENTS.md chains and marketplaces on Codex.",
+    "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
     "version": "2.3.0",
     "category": "Productivity",
@@ -1205,6 +1221,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "agents-md-engineer",
@@ -1292,6 +1309,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
         "name": "graph-debug",
@@ -1351,10 +1369,9 @@ export const plugins = [
       "$gauntlet-loop:gauntlet-verify Verify this Gauntlet project."
     ],
     "platforms": [
-      "Codex",
-      "Claude Code",
-      "Claude Cowork"
+      "Codex"
     ],
+    "runtimeNote": "Verified for Codex. Its multi-agent execution contract depends on Codex fresh-task semantics, so Claude runtime parity is not claimed.",
     "skills": [
       {
         "name": "gauntlet",
@@ -1410,10 +1427,10 @@ export const plugins = [
       "$gauntlet:gauntlet-verify Verify the gauntlet run."
     ],
     "platforms": [
-      "Codex",
       "Claude Code",
       "Claude Cowork"
     ],
+    "runtimeNote": "Verified for Claude Code and Claude Cowork. The legacy runtime still expects Claude environment conventions and is not claimed as Codex-compatible.",
     "skills": [
       {
         "name": "gauntlet",

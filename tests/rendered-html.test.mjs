@@ -32,6 +32,7 @@ test("server-renders the public marketplace homepage", async () => {
   assert.match(html, /<title>Community Agent Plugins<\/title>/i);
   assert.match(html, /A working system/);
   assert.match(html, /22(?:<!--.*?-->)? field-tested plugins/);
+  assert.match(html, /179(?:<!--.*?-->)?\s*<\/strong>\s*<span>Bundled skills/);
   assert.match(html, /Codex, Claude Code, and(?:<!--.*?-->)?\s*Claude Cowork/);
   const owner = ["Israel", "musonda", "ayliffe"].join("");
   assert.match(html, new RegExp(`codex plugin marketplace add ${owner}`));
@@ -136,7 +137,7 @@ test("server-renders the Gauntlet Loop release", async () => {
   );
 });
 
-test("publishes every plugin across both manifest formats and all install surfaces", async () => {
+test("publishes every plugin with exact manifest and runtime-host claims", async () => {
   const codexMarketplace = JSON.parse(
     readFileSync(
       new URL("../.agents/plugins/marketplace.json", import.meta.url),
@@ -153,6 +154,12 @@ test("publishes every plugin across both manifest formats and all install surfac
   const claudeNames = claudeMarketplace.plugins
     .map((plugin) => plugin.name)
     .sort();
+  const hostSupport = JSON.parse(
+    readFileSync(
+      new URL("../docs/host-support.json", import.meta.url),
+      "utf8",
+    ),
+  );
 
   assert.equal(codexNames.length, 22);
   assert.deepEqual(claudeNames, codexNames);
@@ -176,17 +183,21 @@ test("publishes every plugin across both manifest formats and all install surfac
     const response = await render(`/plugins/${name}`);
     assert.equal(response.status, 200, `${name} detail page must render`);
     const html = await response.text();
-    assert.ok(
+    const runtimePlatforms = hostSupport[name].platforms;
+    assert.equal(
       html.includes(`codex plugin add ${name}@community-agent-plugins`),
-      `${name} must expose its Codex install command`,
+      runtimePlatforms.includes("Codex"),
+      `${name} Codex install visibility must match verified runtime support`,
     );
-    assert.ok(
+    assert.equal(
       html.includes(`/plugin install ${name}@community-agent-plugins`),
-      `${name} must expose its Claude Code install command`,
+      runtimePlatforms.includes("Claude Code"),
+      `${name} Claude Code install visibility must match verified runtime support`,
     );
-    assert.ok(
-      html.includes("Claude Cowork"),
-      `${name} must expose its Claude Cowork install path`,
+    assert.equal(
+      html.includes('platform-eyebrow">Claude Cowork'),
+      runtimePlatforms.includes("Claude Cowork"),
+      `${name} Cowork install visibility must match verified runtime support`,
     );
   }
 });

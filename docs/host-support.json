@@ -1,0 +1,33 @@
+{
+  "agent-ops": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "brand-world-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "capability-operator": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "citizen-forge": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "continuity-vault": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "data-storytelling-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "founder-revenue-engine": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "gauntlet": {
+    "platforms": ["Claude Code", "Claude Cowork"],
+    "note": "Verified for Claude Code and Claude Cowork. The legacy runtime still expects Claude environment conventions and is not claimed as Codex-compatible."
+  },
+  "gauntlet-loop": {
+    "platforms": ["Codex"],
+    "note": "Verified for Codex. Its multi-agent execution contract depends on Codex fresh-task semantics, so Claude runtime parity is not claimed."
+  },
+  "harness-engineering": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "knowledge-work-superpowers": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "loopkit": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "matt-partok-bundled-plugin-for-knowledge-work": {
+    "platforms": ["Codex"],
+    "note": "Verified for Codex. The setup workflow currently depends on the AGENTS.md instruction chain, so Claude runtime parity is not claimed."
+  },
+  "model-evaluation-lab": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "model-prompt-lab": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "operating-graph": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "outcome-engine": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "proofloop": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "strategy-room": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "video-production-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "web-product-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "writing-quality": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] }
+}

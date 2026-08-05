@@ -191,6 +191,7 @@ export function Catalog() {
                 <span key={platform}>{platform}</span>
               ))}
             </div>
+            <p className="preview-install-note">{selectedPlugin.runtimeNote}</p>
             <div className="preview-copy">
               <h3>{selectedPlugin.name}</h3>
               <p>{selectedPlugin.longDescription}</p>
@@ -204,18 +205,31 @@ export function Catalog() {
               </ul>
             </div>
             <div className="preview-actions">
-              <CopyCommand
-                command={
-                  "codex plugin add " +
-                  selectedPlugin.slug +
-                  "@" +
-                  marketplaceName
-                }
-                compact
-                label="Codex install command"
-              />
+              {selectedPlugin.platforms.includes("Codex") ? (
+                <CopyCommand
+                  command={
+                    "codex plugin add " +
+                    selectedPlugin.slug +
+                    "@" +
+                    marketplaceName
+                  }
+                  compact
+                  label="Codex install command"
+                />
+              ) : (
+                <CopyCommand
+                  command={
+                    "/plugin install " +
+                    selectedPlugin.slug +
+                    "@" +
+                    marketplaceName
+                  }
+                  compact
+                  label="Claude Code install command"
+                />
+              )}
               <p className="preview-install-note">
-                Claude Code and Cowork instructions are inside the full record.
+                Open the full record for host-specific installation and support.
               </p>
               <Link href={"/plugins/" + selectedPlugin.slug}>
                 Open plugin record

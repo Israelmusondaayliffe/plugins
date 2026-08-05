@@ -15,6 +15,9 @@ const claudeMarketplacePath = join(root, ".claude-plugin/marketplace.json");
 const claudeMarketplace = JSON.parse(
   readFileSync(claudeMarketplacePath, "utf8"),
 );
+const hostSupport = JSON.parse(
+  readFileSync(join(root, "docs/host-support.json"), "utf8"),
+);
 const claudePluginNames = new Set(
   claudeMarketplace.plugins.map((plugin) => plugin.name),
 );
@@ -28,8 +31,19 @@ const missingFromClaude = [...codexPluginNames].filter(
 const missingFromCodex = [...claudePluginNames].filter(
   (name) => !codexPluginNames.has(name),
 );
+const missingHostSupport = [...codexPluginNames].filter(
+  (name) => !hostSupport[name],
+);
+const unknownHostSupport = Object.keys(hostSupport).filter(
+  (name) => !codexPluginNames.has(name),
+);
 
-if (missingFromClaude.length || missingFromCodex.length) {
+if (
+  missingFromClaude.length ||
+  missingFromCodex.length ||
+  missingHostSupport.length ||
+  unknownHostSupport.length
+) {
   throw new Error(
     [
       missingFromClaude.length
@@ -37,6 +51,12 @@ if (missingFromClaude.length || missingFromCodex.length) {
         : "",
       missingFromCodex.length
         ? `Missing from Codex marketplace: ${missingFromCodex.join(", ")}`
+        : "",
+      missingHostSupport.length
+        ? `Missing host-support records: ${missingHostSupport.join(", ")}`
+        : "",
+      unknownHostSupport.length
+        ? `Unknown host-support records: ${unknownHostSupport.join(", ")}`
         : "",
     ]
       .filter(Boolean)
@@ -90,6 +110,15 @@ const plugins = marketplace.plugins.map((entry) => {
     throw new Error(`Missing Claude manifest for ${entry.name}`);
   }
   const claudeManifest = JSON.parse(readFileSync(claudeManifestPath, "utf8"));
+  const support = hostSupport[entry.name];
+  const allowedPlatforms = new Set(["Codex", "Claude Code", "Claude Cowork"]);
+  if (
+    !Array.isArray(support.platforms) ||
+    support.platforms.length === 0 ||
+    support.platforms.some((platform) => !allowedPlatforms.has(platform))
+  ) {
+    throw new Error(`Invalid host-support record for ${entry.name}`);
+  }
   const expectedSource = `./plugins/${entry.name}`;
   if (
     entry.source?.path !== expectedSource ||
@@ -151,9 +180,10 @@ const plugins = marketplace.plugins.map((entry) => {
     license: manifest.license ?? null,
     capabilities: manifest.interface?.capabilities ?? [],
     defaultPrompts: (manifest.interface?.defaultPrompt ?? []).map(cleanText),
-    platforms: supportsClaude
-      ? ["Codex", "Claude Code", "Claude Cowork"]
-      : ["Codex"],
+    platforms: support.platforms,
+    runtimeNote: cleanText(
+      support.note ?? `Verified runtime support: ${support.platforms.join(", ")}.`,
+    ),
     skills,
     counts,
     bundlesMcp: Boolean(manifest.mcpServers),

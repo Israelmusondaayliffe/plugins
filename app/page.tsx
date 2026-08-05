@@ -56,8 +56,8 @@ export default function Home() {
               packaged.
             </h1>
             <p className="hero-lede">
-              {totals.plugins} field-tested plugins for Codex, Claude Code, and
-              Claude Cowork. One source, packaged for all three.
+              {totals.plugins} field-tested plugins across Codex, Claude Code,
+              and Claude Cowork. Each record states its verified runtime hosts.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#plugins">
@@ -104,7 +104,7 @@ export default function Home() {
           <div className="shell install-layout">
             <div className="install-intro">
               <p className="kicker">Install your way</p>
-              <h2>Choose your surface. Keep the same plugin.</h2>
+              <h2>Choose your surface. Check runtime support.</h2>
               <p>
                 The repository carries native manifests for Codex and Claude.
                 Add the public source once, then install only what you need.
@@ -119,7 +119,7 @@ export default function Home() {
                     <h3>Codex</h3>
                   </div>
                 </div>
-                <p>Add the marketplace, then install any plugin by name.</p>
+                <p>Add the marketplace, then install a Codex-supported plugin by name.</p>
                 <CopyCommand command="codex plugin marketplace add Israelmusondaayliffe/plugins --ref main" />
                 <CopyCommand command="codex plugin add loopkit@community-agent-plugins" />
                 <p className="platform-note">
@@ -153,7 +153,7 @@ export default function Home() {
                 </div>
                 <p>
                   Select Add marketplace, paste the GitHub repository, then
-                  choose any plugin from the catalog.
+                  choose a Cowork-supported plugin from the catalog.
                 </p>
                 <CopyCommand
                   command="https://github.com/Israelmusondaayliffe/plugins"
@@ -174,10 +174,11 @@ export default function Home() {
           <div className="inventory-statement">
             <h2>Skills first. Claims kept exact.</h2>
             <p>
-              Every plugin carries both Codex and Claude manifests. This release
-              includes skills, scripts, references, assets, and agent
-              definitions. It does not currently bundle MCP servers or app
-              connectors.
+              Every plugin carries both Codex and Claude package manifests.
+              Runtime support is declared separately for each plugin, so a
+              manifest is never treated as proof of execution parity. This
+              release includes skills, scripts, references, assets, and agent
+              definitions. It does not currently bundle MCP servers or app connectors.
             </p>
             <Link className="text-link" href="/plugins/capability-operator">
               Inspect a complete plugin record
