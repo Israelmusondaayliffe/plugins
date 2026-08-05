@@ -63,6 +63,12 @@ After agent launches, critic rounds, concurrency changes, or meaningful elapsed 
 
 The lead agent owns orchestration and integration. A builder never issues its own acceptance verdict.
 
+## Optional Sol Advisor composition
+
+Use the Sol Advisor adapter only after both Gauntlet and Sol Advisor were explicitly invoked and the composition preconditions pass. Read ../../references/sol-advisor-composition.md before compiling a packet. Gauntlet remains the sole state, budget, approval, integration, final-answer, and terminal-verdict owner. The adapter may create bounded workstream packets. Only as a delegated Gauntlet operation, it registers validated return evidence in existing Gauntlet-owned records using an in-process rollback transaction. This operation is not crash-atomic across files. Its receipt is non-authoritative.
+
+A fresh Sol XHigh reviewer is a workstream critic only. It cannot build, repair, write, or replace the three-perspective verification panel.
+
 ## Integrate in waves
 
 When a dependency wave completes:

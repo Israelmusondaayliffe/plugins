@@ -247,7 +247,8 @@ Load files from `graphify-out/.graphify_uncached.txt`. Split into chunks of 20-2
 
 > **Claude Code / Claude Cowork:** dispatch with the Agent tool, one call per chunk, all in the same message, with `subagent_type="general-purpose"`.
 > **Codex:** uses `spawn_agent` + `wait_agent` + `close_agent` instead of the Agent tool.
-> Requires `multi_agent = true` under `[features]` in `${CODEX_HOME:-~/.codex}/config.toml`.
+> Requires the active host's multi-agent capability. If the host cannot provide it, stop with
+> `UNSUPPORTED_HOST_CAPABILITY` rather than assuming a Codex-specific configuration path.
 > If `spawn_agent` is unavailable, tell the user to add that config and restart Codex.
 
 Dispatch one subagent per chunk — ALL in the same response so they run in parallel. Build the message by wrapping the extraction prompt in task-delegation framing (shown here with Codex's `spawn_agent`; on Claude Code / Cowork pass the same message to the Agent tool):

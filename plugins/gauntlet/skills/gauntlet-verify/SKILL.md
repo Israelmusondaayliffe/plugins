@@ -2,7 +2,7 @@
 name: gauntlet-verify
 description: Loads only when the user explicitly asks to verify the gauntlet, asks whether a gauntlet run is actually done, or when a gauntlet run has reached a stopped or converged state with no consensus on disk. Spawns independent quality and integrity verifiers that never saw the build, collects their verdicts to disk, and computes consensus by script. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

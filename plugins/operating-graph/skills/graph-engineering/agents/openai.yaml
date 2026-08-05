@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Engineering"
   short_description: "Route operating graph design and execution"
   default_prompt: "Use $graph-engineering to route this operating graph request to the right workflow."
+policy:
+  allow_implicit_invocation: false

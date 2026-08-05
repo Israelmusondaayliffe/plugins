@@ -3,7 +3,7 @@ name: harness-meta-audit
 description: Run deep meta-audits against the user's AI harness and work system. Three routed modes. HARNESS audits goal alignment, Bitter Lesson over-engineering, self-model staleness, memory compounding, eval design, and the autonomy ladder. SECURITY maps prompt-injection exposure per input avenue and maintains a living attack-surface inventory. LIFE runs the ikigai big-picture, steelman-my-biggest-bet, 10x-or-dies, decisions-into-policy, binding-constraint, and bus-factor audits. Use whenever the user says audit my harness, self-model audit, bitter lesson check, is my memory compounding, autonomy ladder, attack surface, prompt injection review, where am I most wrong, find my bottleneck, bus factor, or asks for any deep review of their setup, priorities, or system design. Rerun after every major model intelligence jump.
 license: MIT
 metadata:
-  author: Israel A / The House of Curiosity
+  author: Community Maintainers
   version: 1.1.0
   source: Daniel Miessler, 10 Prompts to Run Before Fable Goes Away
 ---

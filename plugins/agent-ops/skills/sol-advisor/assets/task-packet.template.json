@@ -1,0 +1,131 @@
+{
+  "packet_type": "TaskPacket",
+  "protocol_version": 1,
+  "run_id": "sol-advisor-example-001",
+  "task_id": "task-routine-001",
+  "run_manifest_path": "run-manifest.json",
+  "run_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "plan": {
+    "status": "approved",
+    "version": 1,
+    "path": ".gauntlet/plan.md",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "task": {
+    "classification": "routine",
+    "objective": "Implement one bounded routine change.",
+    "dependencies": []
+  },
+  "authorization": {
+    "task_id": "task-routine-001",
+    "workstream_id": "WS-EXAMPLE",
+    "classification": "routine",
+    "role": "worker",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "dependencies": [],
+    "allowed_write_paths": ["/workspace/approved-root"],
+    "input_paths": [
+      {
+        "path": ".gauntlet/plan.md",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "expected_output": {
+      "description": "A bounded implementation artifact and deterministic test evidence.",
+      "paths": ["approved-root/artifacts/task-routine-001.md"]
+    },
+    "acceptance_criteria": [
+      {
+        "id": "bounded-criterion",
+        "description": "The example artifact and its evidence stay inside the approved scope."
+      }
+    ],
+    "tools": ["functions.exec", "functions.apply_patch"],
+    "evidence_commands": ["python3 -m unittest tests.test_bounded_change"],
+    "stop_conditions": ["Stop on scope, runtime, evidence, or approval failure."],
+    "limits": {
+      "max_attempts": 1,
+      "max_retries": 0,
+      "max_repair_rounds": 1,
+      "max_elapsed_minutes": 60
+    },
+    "reviewer_id": "reviewer-ws-example-001",
+    "target": "codex_task"
+  },
+  "worker": {
+    "role": "worker",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "fresh_task": true,
+    "creation_method": "create_thread",
+    "forked": false,
+    "may_spawn_workers": false,
+    "may_approve": false,
+    "may_integrate": false,
+    "may_issue_final_verdict": false
+  },
+  "runtime_attestation": {
+    "run_id": "sol-advisor-example-001",
+    "task_id": "task-routine-001",
+    "reviewer_id": null,
+    "role": "worker",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "max",
+    "target": "codex_task",
+    "fresh_task": true,
+    "creation_method": "create_thread",
+    "forked": false,
+    "creation_request": {
+      "request_id": "request-task-routine-001",
+      "path": "runtime/task-routine-001-request.json",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "created_at": "2026-08-03T00:00:00+00:00"
+    },
+    "creation_response": {
+      "request_id": "request-task-routine-001",
+      "path": "runtime/task-routine-001-response.json",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "thread_id": "thread-task-routine-001",
+      "host_id": "host-example",
+      "successful": true,
+      "responded_at": "2026-08-03T00:00:01+00:00"
+    }
+  },
+  "input_paths": [
+    {
+      "path": ".gauntlet/plan.md",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "expected_output": {
+    "description": "A bounded implementation artifact and deterministic test evidence.",
+    "paths": ["approved-root/artifacts/task-routine-001.md"]
+  },
+  "acceptance_criteria": [
+    {
+      "id": "bounded-criterion",
+      "description": "The example artifact and its evidence stay inside the approved scope."
+    }
+  ],
+  "tools": ["functions.exec", "functions.apply_patch"],
+  "scope": {
+    "workstream_id": "WS-EXAMPLE",
+    "allowed_write_paths": ["/workspace/approved-root"],
+    "read_paths": [".gauntlet/plan.md"]
+  },
+  "evidence_commands": ["python3 -m unittest tests.test_bounded_change"],
+  "stop_conditions": ["Stop on scope, runtime, evidence, or approval failure."],
+  "limits": {
+    "max_attempts": 1,
+    "max_retries": 0,
+    "max_repair_rounds": 1,
+    "max_elapsed_minutes": 60
+  },
+  "context": {
+    "delivery": "bounded_packet_only",
+    "include_parent_transcript": false,
+    "include_hidden_reasoning": false,
+    "reference_paths": [".gauntlet/plan.md"]
+  }
+}

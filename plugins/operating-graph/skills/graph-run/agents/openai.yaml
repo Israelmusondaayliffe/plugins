@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Run"
   short_description: "Run bounded adaptive agent graphs safely"
   default_prompt: "Use $graph-run to initialize and run this operating graph safely."
+policy:
+  allow_implicit_invocation: false

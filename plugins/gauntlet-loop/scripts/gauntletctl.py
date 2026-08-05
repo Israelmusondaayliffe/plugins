@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -104,6 +105,14 @@ def write_json(path: Path, data: Any) -> None:
     temporary.replace(path)
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(65536), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def replace_markdown_section(content: str, heading: str, value: str) -> str:
     """Replace one level-two Markdown section without disturbing its neighbors."""
     pattern = re.compile(rf"(?ms)(^## {re.escape(heading)}\n\n).*?(?=^## |\Z)")
@@ -151,6 +160,7 @@ def initial_program() -> dict[str, Any]:
         "version": 1,
         "status": "not_compiled",
         "plan_version": 0,
+        "plan_sha256": None,
         "project_type": "unresolved",
         "goal": "Pending approved plan",
         "execution": {
@@ -266,6 +276,17 @@ def command_init(args: argparse.Namespace) -> dict[str, Any]:
             },
         },
     )
+    write_json(
+        root / "runtime-task-records.json",
+        {
+            "schema_version": 1,
+            "owner": "gauntlet",
+            "run_id": None,
+            "plan_version": 0,
+            "plan_sha256": None,
+            "records": [],
+        },
+    )
     result = command_validate(argparse.Namespace(project_root=str(project_root), strict=False))
     result.update({"initialized": True, "project_root": str(project_root), "gauntlet_root": str(root)})
     return result
@@ -299,6 +320,9 @@ def validate_program(program: dict[str, Any], compiled: bool) -> list[str]:
     if compiled:
         if program.get("status") != "compiled":
             errors.append("compiled project requires program status=compiled")
+        plan_sha256 = program.get("plan_sha256")
+        if not isinstance(plan_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", plan_sha256):
+            errors.append("compiled project requires a lowercase plan_sha256")
         if not isinstance(program.get("workstreams"), list) or not program["workstreams"]:
             errors.append("compiled program requires at least one workstream")
         else:
@@ -471,12 +495,16 @@ def validate_compiled_gate(root: Path, state: dict[str, Any], program: dict[str,
     decisions = (root / "decisions.md").read_text(encoding="utf-8") if (root / "decisions.md").is_file() else ""
     if "Status: approved" not in plan:
         errors.append("approved plan must contain 'Status: approved'")
+    elif program.get("plan_sha256") != sha256_file(root / "plan.md"):
+        errors.append("compiled program plan_sha256 must match the approved plan")
     if "Approval:" not in decisions:
         errors.append("decisions register must contain an Approval record")
     if int(state.get("plan_version", 0)) < 1:
         errors.append("compiled state requires plan_version >= 1")
     if not (root / "runtime-capabilities.json").is_file():
         errors.append("compiled state requires runtime-capabilities.json")
+    if not (root / "runtime-task-records.json").is_file():
+        errors.append("compiled state requires runtime-task-records.json")
     errors.extend(validate_budget_ledger(root, program))
     return errors
 
@@ -744,6 +772,7 @@ def command_validate(args: argparse.Namespace) -> dict[str, Any]:
         "plan.md",
         "gauntlet.yaml",
         "budget-ledger.json",
+        "runtime-task-records.json",
         "state.json",
         "decisions.md",
         "assumptions.md",

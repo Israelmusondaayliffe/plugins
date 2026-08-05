@@ -1,0 +1,6 @@
+interface:
+  display_name: "Market Narrative Builder"
+  short_description: "Builds a source-traceable commercial narrative that connects a specific audie..."
+  default_prompt: "$market-narrative-builder Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

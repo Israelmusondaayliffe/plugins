@@ -1,9 +1,9 @@
 {
   "name": "model-prompt-lab",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Verified model routing, production prompt architecture, migration audits, and benchmark design on Claude Code, Claude Cowork, and Codex.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",
@@ -19,7 +19,7 @@
     "displayName": "Model Prompt Lab",
     "shortDescription": "Route, build, migrate, and test model prompts on Claude Code, Cowork, and Codex.",
     "longDescription": "Model Prompt Lab selects a verified model and prompt operation before loading focused production guidance on Claude Code, Claude Cowork, or Codex, then supports migration audits and benchmark design without inventing unstable platform behavior.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "category": "Developer Tools",
     "capabilities": [],
     "defaultPrompt": [

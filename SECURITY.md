@@ -24,6 +24,6 @@ implementation details and follow the provider's current terms.
 
 ## Installation boundary
 
-Review a plugin before installing it. Plugin skills can direct Codex to read
+Review a plugin before installing it. Plugin skills can direct the active host to read
 files, run scripts, or call configured tools within the authority of the active
 task. Installation does not grant authority for unrelated external actions.

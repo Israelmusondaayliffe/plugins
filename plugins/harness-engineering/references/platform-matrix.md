@@ -27,7 +27,7 @@ A user can operate two or all three. In that case treat each platform as its own
 | Instruction chain | `CLAUDE.md` chain: managed policy, `~/.claude/CLAUDE.md`, project, `CLAUDE.local.md`, nested | Global instructions and preferences in app settings, plus contract files at the root of each connected folder | `AGENTS.md` chain: global, workspace, project, nested |
 | Config home | `~/.claude/` with scoped `settings.json` | App-managed; no user-editable home inside the session | `~/.codex/` with `config.toml` |
 | Skills | `~/.claude/skills/`, `.claude/skills/`, plugin skills | Plugin skills (namespaced `plugin:skill`) and app-level skills | `~/.codex/skills/`, plugin skills |
-| Plugin install | `/plugin` UI, `claude plugin install`, marketplaces | `.plugin` file delivered in chat with an install button, or in-app marketplace | `codex plugin marketplace add`, `codex plugin add` |
+| Plugin install | `/plugin` UI, `claude plugin install`, marketplaces | Custom-plugin archive upload in **Customize** > **Plugins**, or a configured marketplace | `codex plugin marketplace add`, `codex plugin add` |
 | Deterministic enforcement | Hooks in `settings.json`, permission rules | User-owned validator scripts run per contract; hooks rarely available | Rules, hooks, sandbox settings |
 | Automation | Hooks, headless runs, background tasks | Scheduled tasks created in-session | Goals, Automations |
 | State durability | Files in repo or `~/.claude/` persist | Session sandbox is ephemeral; durable state must live in a connected folder or an external system | Files in `CODEX_HOME` and workspace persist |

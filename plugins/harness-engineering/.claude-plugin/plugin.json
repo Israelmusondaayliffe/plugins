@@ -1,10 +1,9 @@
 {
   "name": "harness-engineering",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
   "author": {
-    "name": "Israel Ayliffe",
-    "url": "https://github.com/Israelmusondaayliffe"
+    "name": "Community Maintainers"
   },
   "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/harness-engineering",
   "repository": "https://github.com/Israelmusondaayliffe/plugins",

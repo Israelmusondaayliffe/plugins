@@ -1,9 +1,9 @@
 {
   "name": "founder-revenue-engine",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "claude-code",

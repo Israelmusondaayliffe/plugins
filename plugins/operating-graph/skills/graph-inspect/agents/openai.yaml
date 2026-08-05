@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Inspect"
   short_description: "Inspect graph state and lineage read-only"
   default_prompt: "Use $graph-inspect to inspect this graph run without changing it."
+policy:
+  allow_implicit_invocation: false

@@ -424,7 +424,7 @@ class IntegrationRunTests(unittest.TestCase):
                 [item["criterion"] for item in verification.criteria],
                 Graph.from_dict(integration_graph_data()).goal.completion_criteria,
             )
-            executor.machine.complete_run(timestamp=TIMESTAMP)
+            executor.machine = StateMachine.resume(Path(directory), executor.store)
 
             events = executor.store.read_all()
             self.assertEqual(events[-1].type, EventType.RUN_COMPLETED)

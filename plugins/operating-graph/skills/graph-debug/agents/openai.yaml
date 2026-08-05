@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Debug"
   short_description: "Replay and diagnose graph runtime failures"
   default_prompt: "Use $graph-debug to replay this graph run and diagnose its failure."
+policy:
+  allow_implicit_invocation: false

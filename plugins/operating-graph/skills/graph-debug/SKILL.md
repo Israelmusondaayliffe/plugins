@@ -5,6 +5,8 @@ description: Diagnose operating graph failures read-only by replaying events, ch
 
 # Graph Debug
 
+This Operating Graph skill is explicit-only. Load it only from a namespaced command, a genuine current Operating Graph imperative routed through `graph-engineering`, or an explicit plugin selection.
+
 Remain read-only unless the user explicitly requests a separate repair workflow.
 
 1. Replay with `python3 scripts/graphctl.py replay <run-directory>`.

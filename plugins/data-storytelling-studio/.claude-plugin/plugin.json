@@ -1,9 +1,9 @@
 {
   "name": "data-storytelling-studio",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",

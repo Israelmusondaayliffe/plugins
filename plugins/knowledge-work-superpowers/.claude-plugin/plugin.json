@@ -1,9 +1,9 @@
 {
   "name": "knowledge-work-superpowers",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
   "author": {
-    "name": "Israel A."
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [

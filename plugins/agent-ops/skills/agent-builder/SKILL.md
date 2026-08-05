@@ -1,8 +1,8 @@
 ---
 name: agent-builder
-description: Build agents and agentic workflows for Claude Code, Claude Cowork, and Codex from a plain task description. Based on Anthropic's Building Effective Agents framework. Five routed modes. ARCHITECT walks the simplicity ladder and selects the pattern. WORKFLOW builds the chosen pattern as concrete artifacts. AGENT builds autonomous agents with ground-truth verification, stop conditions, pause points, and per-host subagent definitions (agents/*.md files on Claude Code and Cowork, config.toml agent blocks on Codex). ACI designs and hardens tool definitions (poka-yoke, docstring-grade parameters). REVIEW critiques existing agent setups against the three core principles. Harness-aware, built agents inherit the instruction chain (CLAUDE.md chain on Claude Code and Cowork, AGENTS.md chain on Codex) and output-folder discipline. Triggers on build an agent, design an agent, make me a subagent, agent for claude code, cowork, or codex, codex subagent config, multi-agent system, orchestrator workers, prompt chain, evaluator optimizer, agent design patterns, review or fix my agent, tool definition design, ACI, or any request to create an agentic system.
+description: Build agents and agentic workflows for Claude Code, Claude Cowork, and Codex from a plain task description. ARCHITECT selects the simplest suitable pattern. WORKFLOW builds concrete workflow artifacts. AGENT creates autonomous agents with ground-truth verification, stop conditions, pause points, and host-specific definitions. ACI designs safer tool interfaces and parameters. REVIEW critiques an existing agent setup. Built agents inherit the active host instruction chain and output discipline. Use for agent architecture, subagents, multi-agent systems, orchestrator-worker designs, prompt chains, evaluator-optimizer loops, agent review, or tool-interface design.
 metadata:
-  author: Israel A
+  author: Community Maintainers
   version: 1.1.0
 ---
 

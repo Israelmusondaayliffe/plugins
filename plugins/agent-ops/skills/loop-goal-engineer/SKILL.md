@@ -2,7 +2,7 @@
 name: loop-goal-engineer
 description: Explicit-only compatibility shim for the historical Loop Goal Engineer name. Use only when the user explicitly says loop-goal-engineer or Loop Goal Engineer. Redirect loop design, scheduling, and diagnosis, on Claude Code, Claude Cowork, or Codex, to LoopKit. Generic loop, Goal, recurring-task, and schedule requests should trigger LoopKit directly.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 1.3.0-compat
 ---
 

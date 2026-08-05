@@ -1,0 +1,6 @@
+interface:
+  display_name: "Model Selection Memo"
+  short_description: "Produces a model-selection memo that separates measured benchmark results fro..."
+  default_prompt: "$model-selection-memo Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

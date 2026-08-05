@@ -6,7 +6,7 @@ Three-tier system. Tier determines when to flag.
 **Tier 2:** Flag when 2+ appear in the same paragraph. Fine alone; suspicious in clusters.
 **Tier 3:** Flag by density only. Normal words AI simply overuses. Flag when they make up ~3%+ of total words, or when they replace specific information that should be there.
 
-Israel's Law applies throughout: if a simpler word conveys the same meaning, that is always the right choice.
+The plain-language rule applies throughout: if a simpler word conveys the same meaning, that is always the right choice.
 
 ---
 
@@ -191,4 +191,4 @@ These substitute a generic thumbs-up for a specific reason. Say why something ma
 
 ## Source
 
-Tier system adapted from avoid-ai-writing (conorbronsdon, MIT license) and humanizer/blader. Table extended with Israel's Rule Zero (simple words always preferred) and OQE-v3 patterns.
+Tier system adapted from avoid-ai-writing (conorbronsdon, MIT license) and humanizer/blader. Table extended with the plain-language rule (simple words always preferred) and OQE-v3 patterns.

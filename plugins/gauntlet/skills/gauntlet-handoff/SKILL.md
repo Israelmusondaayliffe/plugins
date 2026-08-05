@@ -2,7 +2,7 @@
 name: gauntlet-handoff
 description: Loads only when the user explicitly says hand off the gauntlet, resume the gauntlet, or continue the gauntlet in a new session, or when a gauntlet session is ending. Writes the script-generated session handoff from durable state and, on resume, reconstructs the run from disk before routing back into the loop. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

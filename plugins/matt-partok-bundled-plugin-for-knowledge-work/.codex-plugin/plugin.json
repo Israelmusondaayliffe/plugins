@@ -1,9 +1,9 @@
 {
   "name": "matt-partok-bundled-plugin-for-knowledge-work",
-  "version": "1.0.2+codex.20260717203901",
+  "version": "1.1.0",
   "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
   "author": {
-    "name": "Israel A."
+    "name": "Community Maintainers"
   },
   "homepage": "https://github.com/mattpocock/skills",
   "repository": "https://github.com/mattpocock/skills",
@@ -24,7 +24,7 @@
     "displayName": "Matt Partok Bundled Plugin For Knowledge Work",
     "shortDescription": "Matt Pocock's full workflow, adapted for Codex.",
     "longDescription": "Clarify ideas, record shared language, research unknowns, prototype questions, write specs, split work, execute bounded slices, hand off across threads, and review against evidence. Includes coding and knowledge-work tracks.",
-    "developerName": "Israel A. and Matt Pocock",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [
       "Reason",

@@ -2,7 +2,7 @@
 name: gauntlet-brief
 description: Loads only when the user explicitly starts a gauntlet run, says grill me for the gauntlet, or asks to set the bar for a gauntlet. Runs the gauntlet intake interview, sets and validates the external bar, gates brief completeness, sizes the run, and emits the hashed run state that every later gauntlet stage depends on. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

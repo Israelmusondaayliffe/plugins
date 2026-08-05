@@ -50,6 +50,11 @@ def main() -> int:
                 text = path.read_text(encoding="utf-8", errors="replace")
                 if "[TODO" in text or "template-placeholder" in text:
                     fail(errors, f"{name}: placeholder remains in {path.relative_to(root)}")
+    sol_metadata = root / "skills" / "sol-advisor" / "agents" / "openai.yaml"
+    if not sol_metadata.is_file() or "allow_implicit_invocation: false" not in sol_metadata.read_text(encoding="utf-8"):
+        fail(errors, "sol-advisor: Codex metadata must disable implicit invocation")
+    if not (root / "skills" / "sol-advisor" / "scripts" / "activation.py").is_file():
+        fail(errors, "sol-advisor: explicit activation regression classifier is missing")
     prompts = manifest.get("interface", {}).get("defaultPrompt")
     if not isinstance(prompts, list) or not prompts:
         fail(errors, "interface.defaultPrompt must be a non-empty list")

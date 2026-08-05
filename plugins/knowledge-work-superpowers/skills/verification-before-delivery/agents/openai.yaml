@@ -1,0 +1,6 @@
+interface:
+  display_name: "Verification Before Delivery"
+  short_description: "Use when substantial knowledge work is about to be called complete, accurate,..."
+  default_prompt: "$verification-before-delivery Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

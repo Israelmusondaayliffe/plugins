@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Design"
   short_description: "Design validated typed operating graphs"
   default_prompt: "Use $graph-design to turn this goal into a validated operating graph."
+policy:
+  allow_implicit_invocation: false

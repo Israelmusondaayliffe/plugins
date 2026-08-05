@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sol Advisor return registration",
+  "type": "object",
+  "required": [
+    "record_type",
+    "protocol_version",
+    "run_id",
+    "task_id",
+    "workstream_id",
+    "plan",
+    "return_packet_sha256",
+    "verified_evidence_count",
+    "registered_artifact_count",
+    "registered_state_files",
+    "gauntlet_ownership",
+    "state_mutated",
+    "budget_mutated"
+  ],
+  "properties": {
+    "record_type": {"const": "SolAdvisorReturnRegistration"},
+    "protocol_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "workstream_id": {"type": "string", "minLength": 1},
+    "plan": {
+      "type": "object",
+      "required": ["status", "version", "sha256"],
+      "properties": {
+        "status": {"const": "approved"},
+        "version": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "return_packet_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "verified_evidence_count": {"type": "integer", "minimum": 1},
+    "registered_artifact_count": {"type": "integer", "minimum": 1},
+    "registered_state_files": {
+      "type": "object",
+      "required": ["runtime_task_records", "artifact_register", "source_register", "progress", "state"],
+      "properties": {
+        "runtime_task_records": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "artifact_register": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_register": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "progress": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "state": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "gauntlet_ownership": {
+      "type": "object",
+      "required": ["state", "budget", "approval", "integration", "final_answer", "terminal_verdict"],
+      "properties": {
+        "state": {"const": "gauntlet"},
+        "budget": {"const": "gauntlet"},
+        "approval": {"const": "gauntlet"},
+        "integration": {"const": "gauntlet"},
+        "final_answer": {"const": "gauntlet"},
+        "terminal_verdict": {"const": "gauntlet"}
+      },
+      "additionalProperties": false
+    },
+    "state_mutated": {"const": true},
+    "budget_mutated": {"const": false}
+  },
+  "additionalProperties": false
+}

@@ -11,7 +11,7 @@ use Matt Pocock's correct name.
 
 ## Install
 
-    codex plugin add matt-partok-bundled-plugin-for-knowledge-work@israel-plugins
+    codex plugin add matt-partok-bundled-plugin-for-knowledge-work@community-agent-plugins
 
 Start a new Codex task after installation so the skills enter the task
 capability inventory.

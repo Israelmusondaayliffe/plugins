@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gpt 5 4 Production Prompter"
+  short_description: "Generate production-ready GPT-5.4 prompts, migrate prompts from GPT-5.2/5.3-C..."
+  default_prompt: "$gpt-5-4-production-prompter Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

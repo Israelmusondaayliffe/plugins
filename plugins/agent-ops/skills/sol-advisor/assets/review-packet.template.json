@@ -1,0 +1,96 @@
+{
+  "packet_type": "ReviewPacket",
+  "protocol_version": 1,
+  "run_id": "sol-advisor-example-001",
+  "task_id": "task-routine-001",
+  "workstream_id": "WS-EXAMPLE",
+  "reviewer_id": "reviewer-ws-example-001",
+  "task_packet_path": "task-packet.json",
+  "task_packet_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "return_packet_path": "return-packet.json",
+  "return_packet_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "plan": {
+    "status": "approved",
+    "version": 1,
+    "path": ".gauntlet/plan.md",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "reviewer": {
+    "role": "workstream_critic",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "fresh_task": true,
+    "creation_method": "create_thread",
+    "forked": false,
+    "may_build": false,
+    "may_repair": false,
+    "may_write": false,
+    "may_approve": false,
+    "may_integrate": false,
+    "may_update_state": false,
+    "may_update_budget": false,
+    "may_issue_final_verdict": false
+  },
+  "runtime_attestation": {
+    "run_id": "sol-advisor-example-001",
+    "task_id": "task-routine-001",
+    "reviewer_id": "reviewer-ws-example-001",
+    "role": "workstream_critic",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "target": "codex_task",
+    "fresh_task": true,
+    "creation_method": "create_thread",
+    "forked": false,
+    "creation_request": {
+      "request_id": "request-reviewer-ws-example-001",
+      "path": "runtime/reviewer-ws-example-001-request.json",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "created_at": "2026-08-03T00:00:02+00:00"
+    },
+    "creation_response": {
+      "request_id": "request-reviewer-ws-example-001",
+      "path": "runtime/reviewer-ws-example-001-response.json",
+      "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "thread_id": "thread-reviewer-ws-example-001",
+      "host_id": "host-example",
+      "successful": true,
+      "responded_at": "2026-08-03T00:00:03+00:00"
+    }
+  },
+  "artifacts_or_diffs": [
+    {
+      "path": "approved-root/artifacts/task-routine-001.md",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "kind": "implementation"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/sol-advisor-review.txt",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "kind": "inspection"
+    }
+  ],
+  "reproduction_commands": [
+    {
+      "command": "python3 -m unittest tests.test_bounded_change",
+      "exit_code": 0,
+      "evidence_path": "evidence/sol-advisor-review.txt",
+      "evidence_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  ],
+  "findings": [],
+  "verdict": "accepted",
+  "uncertainties": [],
+  "risks": [],
+  "next_action": "Hand the review packet to the Gauntlet lead; it is not a terminal verdict.",
+  "authority": {
+    "may_approve": false,
+    "may_integrate": false,
+    "may_update_state": false,
+    "may_update_budget": false,
+    "may_issue_final_verdict": false,
+    "may_replace_verification_panel": false
+  }
+}

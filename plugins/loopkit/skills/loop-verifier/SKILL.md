@@ -2,7 +2,7 @@
 name: loop-verifier
 description: Verify a LoopKit run, artifact, or completion claim against its durable contract and fresh evidence. Use when a user asks is this actually done, verify the loop, review a run receipt, check completion against the spec, or requires independent evidence before a Goal is closed. Do not modify the artifact while acting as verifier.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

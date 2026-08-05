@@ -1,9 +1,9 @@
 {
   "name": "video-production-studio",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",
@@ -15,7 +15,7 @@
     "displayName": "Video Production Studio",
     "shortDescription": "Plan, produce, and verify video assets.",
     "longDescription": "Video Production Studio routes briefs across explainers, launches, music, slideshows, website and PR stories, captions, overlays, prompts, HyperFrames implementation, and final delivery checks.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "category": "Media",
     "capabilities": [],
     "defaultPrompt": [

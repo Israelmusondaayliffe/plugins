@@ -2,7 +2,7 @@
 name: loop-runner
 description: Execute an initialized LoopKit run through bounded observe, choose, act, verify, and record iterations. Use when a user says run this loop, continue until the contract is satisfied, execute the ready Goal, or carry a durable run to a named terminal state. Requires a valid LoopKit run directory. Do not use to design agents or create an untested schedule.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

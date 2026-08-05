@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Verify"
   short_description: "Verify graph outcomes against original goals"
   default_prompt: "Use $graph-verify to verify this run against its immutable original goal."
+policy:
+  allow_implicit_invocation: false

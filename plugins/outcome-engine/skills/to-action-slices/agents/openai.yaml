@@ -1,0 +1,6 @@
+interface:
+  display_name: "To Action Slices"
+  short_description: "Break an approved brief, plan, or goal into independently verifiable action s..."
+  default_prompt: "$to-action-slices Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

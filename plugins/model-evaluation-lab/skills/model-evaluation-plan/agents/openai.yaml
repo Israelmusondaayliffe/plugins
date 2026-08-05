@@ -1,0 +1,6 @@
+interface:
+  display_name: "Model Evaluation Plan"
+  short_description: "Creates a reproducible model evaluation plan with a fixed decision, baselines..."
+  default_prompt: "$model-evaluation-plan Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

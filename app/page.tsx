@@ -12,7 +12,7 @@ export default function Home() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Israel's Plugin Registry",
+    name: "Community Agent Plugins",
     numberOfItems: plugins.length,
     itemListElement: plugins.map((plugin, index) => ({
       "@type": "ListItem",
@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <>
       <header className="site-header shell">
-        <Link className="wordmark" href="/" aria-label="Israel's Plugin Registry">
-          <span className="wordmark-mark">IA</span>
+        <Link className="wordmark" href="/" aria-label="Community Agent Plugins">
+          <span className="wordmark-mark">CAP</span>
           <span>PLUGIN REGISTRY</span>
         </Link>
         <nav aria-label="Primary navigation">
@@ -121,7 +121,7 @@ export default function Home() {
                 </div>
                 <p>Add the marketplace, then install any plugin by name.</p>
                 <CopyCommand command="codex plugin marketplace add Israelmusondaayliffe/plugins --ref main" />
-                <CopyCommand command="codex plugin add loopkit@israel-plugins" />
+                <CopyCommand command="codex plugin add loopkit@community-agent-plugins" />
                 <p className="platform-note">
                   Start a fresh Codex task after installation.
                 </p>
@@ -137,7 +137,7 @@ export default function Home() {
                 </div>
                 <p>Run both commands inside Claude Code.</p>
                 <CopyCommand command="/plugin marketplace add Israelmusondaayliffe/plugins" />
-                <CopyCommand command="/plugin install loopkit@israel-plugins" />
+                <CopyCommand command="/plugin install loopkit@community-agent-plugins" />
                 <p className="platform-note">
                   Skills load under their plugin namespace.
                 </p>
@@ -207,7 +207,7 @@ export default function Home() {
       <footer>
         <div className="shell footer-grid">
           <div>
-            <p className="footer-name">Israel&apos;s Plugin Registry</p>
+            <p className="footer-name">Community Agent Plugins</p>
             <p>Public packages for Codex, Claude Code, and Claude Cowork.</p>
           </div>
           <div className="footer-links">

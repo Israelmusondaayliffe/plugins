@@ -31,6 +31,7 @@ REQUIRED_REFERENCES = {
     "verification-panel.md",
     "evidence-report.md",
     "state-machine.md",
+    "sol-advisor-composition.md",
 }
 REQUIRED_ASSETS = {
     "project.md",
@@ -49,6 +50,7 @@ REQUIRED_SCHEMAS = {
     "verifier-report.schema.json",
     "source-register.schema.json",
     "budget-ledger.schema.json",
+    "sol-advisor-composition.schema.json",
 }
 
 
@@ -77,8 +79,16 @@ def verify(root: Path) -> dict[str, object]:
     if manifest.get("name") != "gauntlet-loop":
         errors.append("manifest name must be gauntlet-loop")
     version = manifest.get("version", "")
-    if not re.fullmatch(r"1\.0\.[0-9]+(?:\+codex\.[0-9A-Za-z.-]+)?", version):
-        errors.append("manifest version must be 1.0.x or 1.0.x+codex.<cachebuster>")
+    if version != "1.1.0":
+        errors.append("manifest version must be 1.1.0")
+    claude_manifest_path = root / ".claude-plugin" / "plugin.json"
+    try:
+        claude_manifest = json.loads(claude_manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        claude_manifest = {}
+        errors.append(f"invalid Claude manifest: {exc}")
+    if claude_manifest.get("name") != manifest.get("name") or claude_manifest.get("version") != version:
+        errors.append("Codex and Claude manifests must have matching name and version")
     for key in ["description", "author", "license", "keywords", "skills", "interface"]:
         if not manifest.get(key):
             errors.append(f"manifest missing {key}")
@@ -133,6 +143,7 @@ def verify(root: Path) -> dict[str, object]:
         "assemble_evidence_report.py",
         "detect_capabilities.py",
         "record_usage.py",
+        "sol_advisor_adapter.py",
     }
     script_names = {path.name for path in (root / "scripts").glob("*.py")}
     missing_scripts = sorted(required_scripts - script_names)

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Assumption Challenger"
+  short_description: "Tier 3 research-first assumption challenger. Researches the subject deeply vi..."
+  default_prompt: "$assumption-challenger Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

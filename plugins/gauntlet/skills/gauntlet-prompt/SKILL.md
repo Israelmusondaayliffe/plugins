@@ -2,7 +2,7 @@
 name: gauntlet-prompt
 description: Loads only when a gauntlet brief exists and the user explicitly asks for the gauntlet prompt or the gauntlet loop prompt to paste into Claude Code. Turns a completed gauntlet brief into a short lead-agent prompt, lints it with the plugin's prompt linter, writes it to prompt.md, and surfaces it in a single fenced code block. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

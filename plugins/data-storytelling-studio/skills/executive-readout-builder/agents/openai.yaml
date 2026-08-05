@@ -1,0 +1,6 @@
+interface:
+  display_name: "Executive Readout Builder"
+  short_description: "Builds an answer-first executive readout from checked evidence, with decision..."
+  default_prompt: "$executive-readout-builder Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

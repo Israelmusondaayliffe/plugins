@@ -1,27 +1,9 @@
 # Node Packet
 
-Create an immutable `packet.json` before dispatch:
+`prepare-dispatch` creates a `NodeTaskPacket` before dispatch and anchors its SHA-256 in a controller-owned `DispatchReceipt`. It binds the run, graph version, epoch, node attempt, dependencies, hashed inputs, success criteria, expected outputs, execution mode, authority prohibitions, allowed write roots, bounded context references, and finite limits. `record-launch` anchors the canonical launch record in a separate controller-owned `LaunchReceipt`.
 
-```json
-{
-  "runId": "run identifier",
-  "graphVersion": 1,
-  "epoch": 1,
-  "node": {},
-  "goal": {},
-  "requiredInputs": [],
-  "availableArtifacts": [],
-  "successCriteria": [],
-  "outputDirectory": "absolute permitted directory",
-  "constraints": [
-    "Do not modify graph state.",
-    "Do not modify another node's files.",
-    "Do not perform external side effects without explicit approval.",
-    "Return uncertainty and blockers explicitly."
-  ]
-}
-```
+Use the canonical examples in `assets/templates/node-task-packet.json`, `thread-launch-record.json`, and `node-return-packet.json`.
 
-Require the worker result to contain `nodeId`, `status`, `summary`, `artifactPaths`, `evidence`, `unresolvedIssues`, and `recommendedSignals`. Validate node identity, status, artifact ownership, hashes, required outputs, and evidence before transitioning the node.
+The parent records each actual fresh non-fork launch as a `ThreadLaunchRecord`. Require the worker result to be a `NodeReturnPacket` containing the source task and launch hashes, agent identity, exact status, summary, actual write paths, artifacts, evidence, criterion mapping, unresolved issues, risks, signals, and explicit denial of controller authority. Validate every binding before transitioning the node.
 
-Register valid artifacts with `python3 scripts/graphctl.py register-artifact <run-directory> <node-id> <artifact-type> <path>`. Reject paths outside the run directory or outside the node's artifact directory.
+Ingest valid returns with `python3 scripts/graphctl.py ingest-return <run-directory> <return-packet.json>`. The controller registers valid artifacts automatically. Reject paths outside the run directory or outside the node's `attempt-<number>/worker/` and artifact directories. Reject any task or launch hash that differs from its controller receipt.

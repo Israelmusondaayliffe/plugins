@@ -1,0 +1,146 @@
+{
+  "protocol_version": 1,
+  "profiles": {
+    "codex": {
+      "host": "Codex",
+      "capabilities": {
+        "fresh_task": {
+          "required": true,
+          "supported": "attested",
+          "mechanism": "create_thread",
+          "evidence": "structured create_thread request and successful non-fork response with threadId and hostId",
+          "on_missing": "stop"
+        },
+        "exact_model": {
+          "required": true,
+          "supported": "attested",
+          "mechanism": "host runtime metadata",
+          "evidence": "host-attested gpt-5.6-sol high or xhigh, gpt-5.6-luna max, and gpt-5.6-terra max support",
+          "on_missing": "stop"
+        },
+        "scheduling": {
+          "required": false,
+          "supported": "attested",
+          "mechanism": "host scheduling surface",
+          "evidence": "host scheduling receipt when scheduling is requested",
+          "on_missing": "stop_if_requested"
+        },
+        "state": {
+          "required": true,
+          "supported": true,
+          "mechanism": "hash-bound packet files",
+          "evidence": "RunManifest, TaskPacket, ReturnPacket, and ReviewPacket file hashes",
+          "on_missing": "stop"
+        },
+        "hooks": {
+          "required": false,
+          "supported": "attested",
+          "mechanism": "host hook surface",
+          "evidence": "host hook registration and execution receipt when hooks are requested",
+          "on_missing": "stop_if_requested"
+        },
+        "discovery": {
+          "required": true,
+          "supported": "attested",
+          "mechanism": "fresh task capability discovery",
+          "evidence": "fresh task output that exposes the selected skill without inherited cache proof",
+          "on_missing": "stop"
+        }
+      }
+    },
+    "claude-code": {
+      "host": "Claude Code",
+      "capabilities": {
+        "fresh_task": {
+          "required": true,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host-native fresh non-fork task creation evidence",
+          "on_missing": "stop"
+        },
+        "exact_model": {
+          "required": true,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host-attested exact fixed-topology model and effort support",
+          "on_missing": "stop"
+        },
+        "scheduling": {
+          "required": false,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host scheduling receipt",
+          "on_missing": "stop_if_requested"
+        },
+        "state": {
+          "required": true,
+          "supported": true,
+          "mechanism": "hash-bound packet files",
+          "evidence": "RunManifest, TaskPacket, ReturnPacket, and ReviewPacket file hashes",
+          "on_missing": "stop"
+        },
+        "hooks": {
+          "required": false,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host hook registration and execution receipt",
+          "on_missing": "stop_if_requested"
+        },
+        "discovery": {
+          "required": true,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "fresh host task discovery proof",
+          "on_missing": "stop"
+        }
+      }
+    },
+    "cowork": {
+      "host": "Claude Cowork",
+      "capabilities": {
+        "fresh_task": {
+          "required": true,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host-native fresh non-fork task creation evidence",
+          "on_missing": "stop"
+        },
+        "exact_model": {
+          "required": true,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host-attested exact fixed-topology model and effort support",
+          "on_missing": "stop"
+        },
+        "scheduling": {
+          "required": false,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host scheduling receipt",
+          "on_missing": "stop_if_requested"
+        },
+        "state": {
+          "required": true,
+          "supported": true,
+          "mechanism": "hash-bound packet files",
+          "evidence": "RunManifest, TaskPacket, ReturnPacket, and ReviewPacket file hashes",
+          "on_missing": "stop"
+        },
+        "hooks": {
+          "required": false,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "host hook registration and execution receipt",
+          "on_missing": "stop_if_requested"
+        },
+        "discovery": {
+          "required": true,
+          "supported": false,
+          "mechanism": null,
+          "evidence": "fresh host task discovery proof",
+          "on_missing": "stop"
+        }
+      }
+    }
+  }
+}

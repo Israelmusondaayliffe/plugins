@@ -14,6 +14,8 @@ Allowed kinds are `authority`, `controller`, `worker`, `state`, `evaluator`, `di
 
 Local loops are bounded work inside one node. They cannot add nodes, reroute edges, alter authority, or write runtime state. Graph-level failure triggers start only after the node's local loop is exhausted.
 
+`subagent` execution means a fresh, non-forked, bounded thread. It is never a synonym for scheduler eligibility and never falls back to inline execution. `modelHint` is optional; when present it is an exact requested model and unavailable support blocks dispatch. When absent, record the host-selected runtime evidence that is actually available.
+
 ## Edge contract
 
 Each edge defines `id`, `source`, `target`, `kind`, `enabled`, `required`, `temporal`, `artifactTypes`, and `activation`. Activation declares its mode, required node states, artifacts, and approvals.
@@ -31,5 +33,7 @@ The enabled same-epoch execution projection must be acyclic. Every directed feed
 - Every external side-effect node has an approval predecessor.
 - Limits are positive integers and graph versions are sequential and immutable.
 - Conditions contain no executable source code and paths cannot escape the run directory.
+- A subagent worker cannot spawn workers, approve, integrate, update controller state, answer the user, or issue a terminal verdict.
+- A succeeded subagent node requires bound task, launch, return, criterion, scope, and artifact evidence for the current graph version.
 
 Validate with `python3 scripts/graphctl.py validate <graph.json>`.

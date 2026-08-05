@@ -1,10 +1,9 @@
 {
   "name": "gauntlet-loop",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
   "author": {
-    "name": "Israel Ayliffe",
-    "url": "https://github.com/Israelmusondaayliffe"
+    "name": "Community Maintainers"
   },
   "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/gauntlet-loop",
   "repository": "https://github.com/Israelmusondaayliffe/plugins",
@@ -24,7 +23,7 @@
     "displayName": "Gauntlet Loop",
     "shortDescription": "Run explicitly selected mega-projects.",
     "longDescription": "A user-invoked Codex execution system for consequential software and knowledge-work projects. It turns an approved project constitution into bounded workstreams, separates builders from fresh critics, preserves state across sessions, integrates the whole project, and requires evidence-backed verification.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "websiteURL": "https://github.com/Israelmusondaayliffe/plugins",
     "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
     "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",

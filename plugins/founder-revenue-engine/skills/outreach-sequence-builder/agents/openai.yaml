@@ -1,0 +1,6 @@
+interface:
+  display_name: "Outreach Sequence Builder"
+  short_description: "Drafts a bounded, evidence-linked outreach sequence for early customers, desi..."
+  default_prompt: "$outreach-sequence-builder Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

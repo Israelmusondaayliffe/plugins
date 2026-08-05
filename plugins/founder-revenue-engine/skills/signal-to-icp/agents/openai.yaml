@@ -1,0 +1,6 @@
+interface:
+  display_name: "Signal To Icp"
+  short_description: "Converts recent public pain, buying, engagement, and language signals into an..."
+  default_prompt: "$signal-to-icp Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

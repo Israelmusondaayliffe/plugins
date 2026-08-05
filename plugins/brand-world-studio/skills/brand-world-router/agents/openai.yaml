@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brand World Router"
+  short_description: "Routes brand visual work across decision brief, identity system, image-model..."
+  default_prompt: "$brand-world-router Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "profiles": {
+    "global-loose-skill": {
+      "required_checks": [
+        "source-inventory",
+        "destination",
+        "validation",
+        "source-destination-parity",
+        "fresh-task-discovery"
+      ]
+    },
+    "personal-plugin": {
+      "required_checks": [
+        "bundle-validation",
+        "marketplace-source",
+        "installed-enabled",
+        "source-cache-parity",
+        "routing",
+        "fresh-task-discovery"
+      ]
+    },
+    "public-cross-platform-release": {
+      "required_checks": [
+        "stable-version",
+        "codex-claude-parity",
+        "bundle-validation",
+        "github-default-branch",
+        "anonymous-install",
+        "catalog-sites-sync",
+        "shareable-installer",
+        "fresh-task-discovery"
+      ]
+    }
+  }
+}

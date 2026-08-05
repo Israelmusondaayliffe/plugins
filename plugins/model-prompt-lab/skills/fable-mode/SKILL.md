@@ -4,7 +4,7 @@ description: >-
   Frontier-grade working process, authored by Claude Fable 5 as a distillation of its own method, so mid-tier models (Opus, Sonnet, successors) reach frontier-shaped results by following written process instead of improvising. Four modes. SOLVE: the hard-problem method on any domain, strategy, writing, design, prompts, analysis, decisions, not only code. BUILD: coding discipline, read before writing, root cause over symptom, prove by running. REVIEW: adversarial verification, evidence-gated done. LEARN: learnings notes so solves compound. Explicit invocation always wins: on fable mode, think like Fable, frontier process, work like the big model, or run the fable review, load on any task type and any model, no gate. Implicit triggering (hard messy problem, no invocation) applies only on mid-tier models; the router gates implicit loads off on frontier tiers.
 license: MIT
 metadata:
-  author: Claude Fable 5, for Israel A / The House of Curiosity
+  author: Community Maintainers
   version: 1.1.1
   source: Machina move 1 (operating manual pattern), authored first-hand
 ---

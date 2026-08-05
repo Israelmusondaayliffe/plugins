@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "generated_on": "2026-07-27",
-  "expected_owned_skill_count": 112,
+  "expected_owned_skill_count": 114,
   "required_plugins": [
     "agent-ops",
     "brand-world-studio",
@@ -271,6 +271,7 @@
       ],
       "owned_skills": [
         "capability-inventory",
+        "capability-release-verifier",
         "capability-router",
         "fresh-task-discovery-verifier",
         "harness-meta-audit",
@@ -285,6 +286,12 @@
           "skill": "capability-inventory",
           "triggers": [
             "inventory every capability layer"
+          ]
+        },
+        {
+          "skill": "capability-release-verifier",
+          "triggers": [
+            "verify this public capability release"
           ]
         },
         {
@@ -354,7 +361,8 @@
         "cowork-handoff",
         "goal-runner",
         "loop-goal-engineer",
-        "loopy"
+        "loopy",
+        "sol-advisor"
       ],
       "direct_routes": [
         {

@@ -36,7 +36,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
     <>
       <header className="site-header shell detail-header">
         <Link className="wordmark" href="/" aria-label="Back to plugin catalog">
-          <span className="wordmark-mark">IA</span>
+          <span className="wordmark-mark">CAP</span>
           <span>PLUGIN REGISTRY</span>
         </Link>
         <Link className="back-link" href="/#plugins">
@@ -172,7 +172,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
 
       <footer>
         <div className="shell footer-grid">
-          <p className="footer-name">Israel&apos;s Plugin Registry</p>
+          <p className="footer-name">Community Agent Plugins</p>
           <Link href="/#plugins">Browse all plugins</Link>
         </div>
       </footer>

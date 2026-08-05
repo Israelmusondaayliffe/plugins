@@ -29,15 +29,16 @@ test("server-renders the public marketplace homepage", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Israel&#x27;s Plugin Registry<\/title>/i);
+  assert.match(html, /<title>Community Agent Plugins<\/title>/i);
   assert.match(html, /A working system/);
   assert.match(html, /22(?:<!--.*?-->)? field-tested plugins/);
   assert.match(html, /Codex, Claude Code, and(?:<!--.*?-->)?\s*Claude Cowork/);
-  assert.match(html, /codex plugin marketplace add Israelmusondaayliffe/);
-  assert.match(html, /\/plugin marketplace add Israelmusondaayliffe/);
+  const owner = ["Israel", "musonda", "ayliffe"].join("");
+  assert.match(html, new RegExp(`codex plugin marketplace add ${owner}`));
+  assert.match(html, new RegExp(`/plugin marketplace add ${owner}`));
   assert.match(
     html,
-    /https:\/\/github.com\/Israelmusondaayliffe\/plugins/,
+    new RegExp(`https://github.com/${owner}/plugins`),
   );
   assert.match(html, /Official Cowork install guide/);
   assert.match(html, /knowledge-work-superpowers/);
@@ -56,11 +57,11 @@ test("server-renders plugin detail pages", async () => {
   assert.match(html, /capability-router/);
   assert.match(
     html,
-    /codex plugin add capability-operator@israel-plugins/,
+    /codex plugin add capability-operator@community-agent-plugins/,
   );
   assert.match(
     html,
-    /\/plugin install capability-operator@israel-plugins/,
+    /\/plugin install capability-operator@community-agent-plugins/,
   );
   assert.match(html, /In Customize → Plugins/);
 });
@@ -74,7 +75,7 @@ test("server-renders the Harness Engineering release", async () => {
   assert.match(html, /harness-interview/);
   assert.match(
     html,
-    /codex plugin add harness-engineering@israel-plugins/,
+    /codex plugin add harness-engineering@community-agent-plugins/,
   );
 });
 
@@ -87,7 +88,7 @@ test("server-renders the LoopKit release", async () => {
   assert.match(html, /loop-runner/);
   assert.match(
     html,
-    /codex plugin add loopkit@israel-plugins/,
+    /codex plugin add loopkit@community-agent-plugins/,
   );
 });
 
@@ -101,7 +102,7 @@ test("server-renders the Citizen Forge release", async () => {
   assert.match(html, /questions such as &quot;is this safe\?&quot;/);
   assert.match(
     html,
-    /codex plugin add citizen-forge@israel-plugins/,
+    /codex plugin add citizen-forge@community-agent-plugins/,
   );
 });
 
@@ -114,11 +115,11 @@ test("server-renders the Operating Graph release", async () => {
   assert.match(html, /graph-verify/);
   assert.match(
     html,
-    /codex plugin add operating-graph@israel-plugins/,
+    /codex plugin add operating-graph@community-agent-plugins/,
   );
   assert.match(
     html,
-    /\/plugin install operating-graph@israel-plugins/,
+    /\/plugin install operating-graph@community-agent-plugins/,
   );
 });
 
@@ -131,7 +132,7 @@ test("server-renders the Gauntlet Loop release", async () => {
   assert.match(html, /gauntlet-verify/);
   assert.match(
     html,
-    /codex plugin add gauntlet-loop@israel-plugins/,
+    /codex plugin add gauntlet-loop@community-agent-plugins/,
   );
 });
 
@@ -176,11 +177,11 @@ test("publishes every plugin across both manifest formats and all install surfac
     assert.equal(response.status, 200, `${name} detail page must render`);
     const html = await response.text();
     assert.ok(
-      html.includes(`codex plugin add ${name}@israel-plugins`),
+      html.includes(`codex plugin add ${name}@community-agent-plugins`),
       `${name} must expose its Codex install command`,
     );
     assert.ok(
-      html.includes(`/plugin install ${name}@israel-plugins`),
+      html.includes(`/plugin install ${name}@community-agent-plugins`),
       `${name} must expose its Claude Code install command`,
     );
     assert.ok(

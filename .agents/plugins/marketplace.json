@@ -1,7 +1,7 @@
 {
-  "name": "israel-plugins",
+  "name": "community-agent-plugins",
   "interface": {
-    "displayName": "Israel's Codex Plugins"
+    "displayName": "Community Agent Plugins"
   },
   "plugins": [
     {

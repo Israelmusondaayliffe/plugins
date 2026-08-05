@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontier Extraction"
+  short_description: "Extract a frontier model's judgment into durable artifacts before access ends..."
+  default_prompt: "$frontier-extraction Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

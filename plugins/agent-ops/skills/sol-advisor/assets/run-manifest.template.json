@@ -1,0 +1,172 @@
+{
+  "packet_type": "RunManifest",
+  "protocol_version": 1,
+  "run_id": "sol-advisor-example-001",
+  "mode": "standalone",
+  "activation": "explicit",
+  "plan": {
+    "status": "approved",
+    "version": 1,
+    "path": ".gauntlet/plan.md",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "goal": "Complete one approved bounded example without widening authority.",
+  "criteria": [
+    {
+      "id": "bounded-criterion",
+      "description": "The example artifact and its evidence stay inside the approved scope."
+    }
+  ],
+  "topology": {
+    "parent": {
+      "role": "parent",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "high",
+      "may_dispatch_tasks": true
+    },
+    "routine_worker": {
+      "role": "worker",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "fresh_task": true,
+      "creation_method": "create_thread",
+      "forked": false,
+      "may_spawn_workers": false
+    },
+    "complex_worker": {
+      "role": "worker",
+      "model": "gpt-5.6-terra",
+      "reasoning_effort": "max",
+      "fresh_task": true,
+      "creation_method": "create_thread",
+      "forked": false,
+      "may_spawn_workers": false
+    },
+    "reviewer": {
+      "role": "workstream_critic",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
+      "fresh_task": true,
+      "creation_method": "create_thread",
+      "forked": false,
+      "may_build": false,
+      "may_repair": false,
+      "may_write": false,
+      "may_approve": false,
+      "may_integrate": false,
+      "may_update_state": false,
+      "may_update_budget": false,
+      "may_issue_final_verdict": false
+    },
+    "edges": [
+      ["parent", "routine_worker"],
+      ["parent", "complex_worker"],
+      ["routine_worker", "reviewer"],
+      ["complex_worker", "reviewer"]
+    ]
+  },
+  "parent_runtime_attestation": {
+    "run_id": "sol-advisor-example-001",
+    "parent_id": "parent-sol-001",
+    "role": "parent",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "high",
+    "target": "parent_task",
+    "effective_model": null,
+    "effective_model_source": "explicitly_unavailable",
+    "host_metadata": null,
+    "unavailable_reason": "The host did not expose independent effective-parent-model metadata.",
+    "observed_at": "2026-08-03T00:00:00+00:00"
+  },
+  "runtime_requirements": {
+    "fallback_allowed": false,
+    "required_model_efforts": {
+      "gpt-5.6-sol": ["high", "xhigh"],
+      "gpt-5.6-luna": ["max"],
+      "gpt-5.6-terra": ["max"]
+    }
+  },
+  "task_dag": [
+    {
+      "task_id": "task-routine-001",
+      "dependencies": []
+    }
+  ],
+  "task_authorization": [
+    {
+      "task_id": "task-routine-001",
+      "workstream_id": "WS-EXAMPLE",
+      "classification": "routine",
+      "role": "worker",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "dependencies": [],
+      "allowed_write_paths": ["/workspace/approved-root"],
+      "input_paths": [
+        {
+          "path": ".gauntlet/plan.md",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ],
+      "expected_output": {
+        "description": "A bounded implementation artifact and deterministic test evidence.",
+        "paths": ["approved-root/artifacts/task-routine-001.md"]
+      },
+      "acceptance_criteria": [
+        {
+          "id": "bounded-criterion",
+          "description": "The example artifact and its evidence stay inside the approved scope."
+        }
+      ],
+      "tools": ["functions.exec", "functions.apply_patch"],
+      "evidence_commands": ["python3 -m unittest tests.test_bounded_change"],
+      "stop_conditions": ["Stop on scope, runtime, evidence, or approval failure."],
+      "limits": {
+        "max_attempts": 1,
+        "max_retries": 0,
+        "max_repair_rounds": 1,
+        "max_elapsed_minutes": 60
+      },
+      "reviewer_id": "reviewer-ws-example-001",
+      "target": "codex_task"
+    }
+  ],
+  "budget": {
+    "max_task_launches": 4,
+    "max_concurrency": 2,
+    "max_critic_rounds_per_workstream": 1,
+    "max_repair_rounds_per_workstream": 1,
+    "max_elapsed_minutes": 120
+  },
+  "write_policy": {
+    "mode": "disjoint_targets",
+    "active_scope_source": "canonical_gauntlet_task_records",
+    "require_disjoint_active_scopes": true,
+    "allow_unlisted_writes": false,
+    "allowed_write_roots": ["/workspace/approved-root"]
+  },
+  "prohibited_actions": [
+    "approve_work",
+    "issue_final_answer",
+    "issue_terminal_verdict",
+    "mutate_gauntlet_budget",
+    "mutate_gauntlet_state",
+    "reviewer_repairs",
+    "spawn_workers"
+  ],
+  "context_policy": {
+    "checkpoint_tokens": 150000,
+    "checkpoint_type": "observation_checkpoint",
+    "semantic_checkpoint": "telemetry-unavailable",
+    "numeric_occupancy_tokens": null,
+    "configuration_change_allowed": false
+  },
+  "authority": {
+    "state": "parent",
+    "budget": "parent",
+    "approval": "parent",
+    "integration": "parent",
+    "final_answer": "parent",
+    "terminal_verdict": "parent"
+  }
+}

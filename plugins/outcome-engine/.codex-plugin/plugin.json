@@ -1,9 +1,9 @@
 {
   "name": "outcome-engine",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
   "author": {
-    "name": "Israel A."
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [
@@ -21,9 +21,9 @@
     "displayName": "Outcome Engine",
     "shortDescription": "Turn unclear goals into verified results.",
     "longDescription": "Clarify decisions, write durable briefs, create independent action slices, execute from evidence, and improve the systems behind the work.",
-    "developerName": "Israel A.",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
-    "websiteURL": "https://github.com/Israelmusondaayliffe",
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/outcome-engine",
     "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
     "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
     "capabilities": [

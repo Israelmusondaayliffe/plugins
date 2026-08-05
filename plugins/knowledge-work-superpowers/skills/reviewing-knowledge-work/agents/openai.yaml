@@ -1,0 +1,6 @@
+interface:
+  display_name: "Reviewing Knowledge Work"
+  short_description: "Use when a report, brief, memo, analysis, recommendation, or research package..."
+  default_prompt: "$reviewing-knowledge-work Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

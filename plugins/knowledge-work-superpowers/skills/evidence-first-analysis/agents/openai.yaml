@@ -1,0 +1,6 @@
+interface:
+  display_name: "Evidence First Analysis"
+  short_description: "Use when important claims, comparisons, conclusions, or recommendations must..."
+  default_prompt: "$evidence-first-analysis Use this skill for the request."
+policy:
+  allow_implicit_invocation: false
