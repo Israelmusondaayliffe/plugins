@@ -79,7 +79,7 @@ Reusable architecture: [what makes this structure transferable]
 Suggested REMIX applications: [what kinds of videos could reuse this structure]
 ```
 
-This assessment block is what makes the deconstruction usable for REMIX.
+This assessment block is what makes the deconstruction usable for REMIX. When the deconstruction will feed a Seedance 2.5 remix or rebuild, note in the assessment whether the structure fits a single 30-second staged script, an extension chain (base + twist), or Ultra-Long (30-180s).
 
 ## Outputs
 

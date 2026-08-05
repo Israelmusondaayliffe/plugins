@@ -66,10 +66,11 @@ Arc adjustment: [same / modified, with reason]
 Load `references/effects-vocabulary.md` for precise naming of any new or swapped effects.
 Load `references/creative-principles.md` to verify the remix follows principles.
 Load `references/ai-video-failure-modes.md` to check the new context for high-risk patterns.
+Load `references/seedance-25-playbook.md` and `assets/seedance-25-templates.md` when the remix targets Seedance 2.5 (the default). The remixed output then ships as a single staged script with timestamps and end states (T3), inheriting the source's rhythm as the beat map.
 
 ### Step 4: Write Remixed Shot Prompts
 
-Generate new shot prompts, one per code block. Follow the same structure as BUILD:
+Generate new shot prompts in one code block (staged script for Seedance 2.5; `---`-separated shots for other models). Follow the same structure as BUILD:
 
 ```
 SHOT [N] ([timestamp]). [Shot Name]
@@ -105,7 +106,7 @@ Density adjusted: [yes/no, details]
 
 - [ ] Source architecture clearly extracted
 - [ ] Remix plan shows deliberate adaptation, not blind copy
-- [ ] Each shot prompt in its own code block
+- [ ] All shot prompts inside ONE single code block
 - [ ] Source mapping present in every shot
 - [ ] Effects named precisely
 - [ ] Signature effect serves the NEW concept
@@ -119,7 +120,7 @@ Density adjusted: [yes/no, details]
 Delivered in order:
 1. Source architecture (extraction)
 2. Remix plan (adaptation decisions)
-3. Shot prompts (each in its own code block, with source mapping)
+3. Shot prompts (one code block, with source mapping)
 4. Master effects inventory
 5. Effects density map
 6. Energy arc

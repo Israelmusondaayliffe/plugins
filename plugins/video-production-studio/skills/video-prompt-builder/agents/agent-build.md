@@ -1,6 +1,8 @@
 # Agent: BUILD
 
-Generate shot-by-shot video prompts from a creative brief. Each shot is a self-contained prompt in its own code block. Supporting sections (effects inventory, density map, energy arc) frame the full picture.
+Generate shot-by-shot video prompts from a creative brief. All shots ship in one paste-ready code block. Supporting sections (effects inventory, density map, energy arc) frame the full picture.
+
+Default target model: Seedance 2.5. For Seedance, the native shape is a single staged script with timestamps and end states (see `assets/seedance-25-templates.md` T1-T3), not a stack of independent shot prompts. For other models (Kling 3, Veo 3, Sora 2), use the shot-by-shot structure below.
 
 ## Scope
 
@@ -21,12 +23,16 @@ Extract and state:
 - Subject(s) and their appearance
 - Setting / environment
 - Mood / energy level
-- Duration (default 15-20 seconds if unspecified)
+- Duration (default 30 seconds on Seedance 2.5, staged in beats; 15-20 seconds for other models; 30-180s routes to the ultra-long template)
 - Any specific effects or references requested
 - Brand context if present
+- Format match: if the brief fits a one-take, a timed-beats spectacle, or one of the five format recipes (KPOP MV, vlog, product 3D, realistic lighting, animation), name it and use that template
 
 ### Step 2: Load References
 
+Load `references/seedance-25-playbook.md` for Seedance 2.5 limits, audio syntax, troubleshooting, and the pre-flight checklist. Always, unless the target model is not Seedance.
+Load `assets/seedance-25-templates.md` for the 2.5 scaffolds: T1 one-take, T2 timed beats, T3 staged script, T7 ultra-long, T9 audio direction, and the five format recipes.
+Load `references/seedance-patterns.md` for timeline brackets, reference tags, constraint clauses, and clause order.
 Load `references/effects-breakdown-reference.md` to calibrate detail level.
 Load `references/creative-principles.md` for principles and duration calibration.
 Load `references/effects-vocabulary.md` when selecting effects for shots.
@@ -54,9 +60,11 @@ Show this plan to the user before generating prompts.
 
 ### Step 4: Write Shot Prompts
 
-Each shot becomes its own prompt in its own triple-backtick code block.
+All shots go in a single triple-backtick code block. This is the prompt the user pastes into Seedance and other generators, so it must be one continuous pasteable unit. Only break shots into individual code blocks if the user explicitly requests it.
 
-Shot prompt structure:
+**Seedance 2.5 target (default):** write ONE staged script per T1/T2/T3, with timestamps, one primary change per stage, an explicit end state per stage, a consistency clause, a forbidden list, and the audio line in native syntax. No `---` dividers; the staged script is already continuous. For 30-180s, use T7 with anti-drift scaffolding. Never stretch a short prompt to a long duration without staging it.
+
+**Other models:** shots are separated by `---` dividers inside the single block, each shot following this structure:
 
 ```
 SHOT [N] ([timestamp]). [Shot Name]
@@ -118,7 +126,8 @@ Adapt act count to the video's length. 5-second clips may need two beats. 30-sec
 Before delivering, verify:
 - [ ] Production plan visible
 - [ ] Shot count matches duration calibration
-- [ ] Each shot prompt is in its own code block
+- [ ] All shot prompts inside ONE single code block (staged script for Seedance; `---` dividers for other models)
+- [ ] Seedance prompts pass the 2.5 pre-flight checklist in `references/seedance-25-playbook.md`
 - [ ] Effects named precisely (not vague)
 - [ ] At least 1 signature effect called out
 - [ ] Transition logic present between every pair of shots
@@ -132,7 +141,7 @@ Before delivering, verify:
 
 Delivered in order:
 1. Production plan (brief analysis block)
-2. Shot prompts (each in its own code block)
+2. Shot prompts (one code block)
 3. Master effects inventory
 4. Effects density map
 5. Energy arc
