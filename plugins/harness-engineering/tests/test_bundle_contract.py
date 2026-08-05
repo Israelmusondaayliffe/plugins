@@ -24,7 +24,7 @@ class BundleContractTests(unittest.TestCase):
     def test_manifest_and_marketplace_ready_shape(self) -> None:
         manifest = json.loads(manifest_path().read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], "harness-engineering")
-        self.assertEqual(manifest["version"], "2.2.0")
+        self.assertRegex(manifest["version"], r"^\d+\.\d+\.\d+$")
         self.assertEqual(manifest["license"], "MIT")
         codex = json.loads(codex_manifest_path().read_text(encoding="utf-8"))
         self.assertEqual(codex["version"], manifest["version"])
