@@ -572,7 +572,7 @@ export const plugins = [
     "shortDescription": "Plan, produce, and verify video assets.",
     "longDescription": "Video Production Studio routes briefs across explainers, launches, music, slideshows, website and PR stories, captions, overlays, prompts, HyperFrames implementation, and final delivery checks.",
     "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "category": "Media",
     "license": null,
     "capabilities": [],
@@ -641,7 +641,7 @@ export const plugins = [
       },
       {
         "name": "video-prompt-builder",
-        "description": "Build cinematic, shot-by-shot video prompts with full effects breakdowns. Four modes. BUILD: creative brief to shot-by-shot prompts with effects timeline, inventory, density map, energy arc. ANIMATE: image-to-video, keyframe interpolation (start+end frame), Seedance 2.0 native multi-image multi-shot prompts (@imageN syntax for up to 9 images in one prompt), and role-based multi-reference composition (subject/style/environment). DECONSTRUCT: reverse-engineer a described video into structured effects format. REMIX: transplant effects architecture onto a new subject or brand. Each shot prompt output in its own code block. Optimized for Seedance 2.0, Kling 3, Veo 3, Sora 2. Triggers on video prompt, shot list, effects breakdown, brand film, ad prompt, animate this, image to video, keyframe, multi-image seedance, @image prompt, deconstruct video, remix video, or any visual concept needing generation-ready video prompts."
+        "description": "Build cinematic, shot-by-shot video prompts with effects breakdowns. Seedance 2.5 is the primary target model (30s single-pass, timestamp control, 30-image reference budget, extension, ultra-long, editing). Four modes. BUILD: brief to staged scripts or shot-by-shot prompts with effects timeline, inventory, density map, energy arc. ANIMATE: image-to-video, keyframe, Seedance native multi-reference (@Image N role binding), Character Bible Pipeline (Stages A-D: character, bible, storyboard, role-aware tags), video extension, Smart Edit prompts, joining clips. DECONSTRUCT: reverse-engineer described video into effects format. REMIX: transplant effects onto new subject. Seedance-native output ships as one paste-ready code block. Also covers Kling 3, Veo 3, Sora 2. Triggers on video prompt, seedance, seedance 2.5, one-take, oner, shot list, effects breakdown, animate this, image to video, keyframe, multi-image seedance, @image prompt, video extension, extend this video, ultra-long video, edit this video, smart edit, join clips, first and last frame, deconstruct video, remix video, storyboard reference, character bible pipeline, full video pipeline."
       },
       {
         "name": "website-to-video",
@@ -650,10 +650,10 @@ export const plugins = [
     ],
     "counts": {
       "skills": 15,
-      "assets": 157,
-      "references": 206,
+      "assets": 158,
+      "references": 208,
       "scripts": 91,
-      "files": 533
+      "files": 536
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1181,7 +1181,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, contract files and .plugin delivery on Claude Cowork, AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1225,7 +1225,7 @@ export const plugins = [
       },
       {
         "name": "harness-maintainer",
-        "description": "Audit and update an existing harness after model changes, platform releases of Claude Code, Cowork, or Codex, plugin updates, repeated corrections, stale instructions, failed automations, or capability drift. Use for weekly, monthly, or quarterly harness reviews, model-jump audits, obsolete-skill removal, routing parity checks, maintenance planning, and safe in-place upgrades."
+        "description": "Audit and update an existing harness after model changes, platform releases of Claude Code, Cowork, or Codex, plugin updates, repeated corrections, stale instructions, failed automations, or capability drift. Use for weekly, monthly, or quarterly harness reviews, model-jump audits, obsolete-skill removal, routing parity checks, maintenance planning, safe in-place upgrades, and conservative cleanup of stale Claude Code cache, archived session logs, temporary data, shell snapshots, and inactive plugin cache versions via the bundled guarded cleanup script."
       },
       {
         "name": "harness-planner",
@@ -1256,8 +1256,8 @@ export const plugins = [
       "skills": 13,
       "assets": 7,
       "references": 12,
-      "scripts": 4,
-      "files": 60
+      "scripts": 5,
+      "files": 62
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1451,9 +1451,9 @@ export const plugins = [
 export const totals = {
   "plugins": 22,
   "skills": 177,
-  "assets": 296,
-  "references": 432,
-  "scripts": 386,
-  "files": 1754
+  "assets": 297,
+  "references": 434,
+  "scripts": 387,
+  "files": 1759
 } as const;
 export type Plugin = (typeof plugins)[number];
