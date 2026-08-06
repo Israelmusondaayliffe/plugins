@@ -1,7 +1,7 @@
 {
   "name": "matt-partok-bundled-plugin-for-knowledge-work",
-  "version": "1.1.0",
-  "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
+  "version": "1.1.1",
+  "description": "Deprecated compatibility release of Matt Pocock's adapted workflow. Migrate to Strategy Room, Outcome Engine, Knowledge Work Superpowers, Continuity Vault, Capability Operator, Web Product Studio, and Harness Engineering.",
   "author": {
     "name": "Community Maintainers"
   },

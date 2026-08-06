@@ -1,6 +1,6 @@
 {
   "plugin": "continuity-vault",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     "continuity-router",
     "frontier-extraction",
@@ -26,6 +26,13 @@
     "Audits do not silently overwrite, delete, or resolve conflicts in source material."
   ],
   "routing_cases": [
+    {
+      "kind": "success",
+      "prompt": "Create a durable handoff for a fresh task to continue this delegated slice.",
+      "expected_skill": "continuity-router",
+      "evidence_file": "skills/continuity-router/references/workflow.md",
+      "evidence_contains": "`handoff` | A fresh task or delegated slice"
+    },
     {
       "kind": "success",
       "prompt": "Extract reusable decisions from this completed task and preserve the source.",

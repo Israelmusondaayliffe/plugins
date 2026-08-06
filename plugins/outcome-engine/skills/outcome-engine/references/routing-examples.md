@@ -24,6 +24,15 @@
 - "Build this one acceptance check at a time."
 - "Keep iterating until the rendered document passes review."
 
+## Bounded test
+
+- "Prototype the riskiest assumption before we commit to the full build."
+- "Run the cheapest test that would tell us whether this idea is viable."
+
+## Intake triage
+
+- "I have research, a half-settled brief, and some implementation notes. Tell me what phase this is in."
+
 ## System architecture
 
 - "Why is this workflow so hard for agents to follow?"
@@ -42,3 +51,4 @@
 - A direct request to look up one fact should use research or web tools.
 - A direct request to fix a known software bug should use diagnosis and implementation skills.
 - A request to send, publish, assign, purchase, or delete needs explicit authorization at that action boundary.
+- A request for a durable fresh-task handoff belongs to Continuity Vault.

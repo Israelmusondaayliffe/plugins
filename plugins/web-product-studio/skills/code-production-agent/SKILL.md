@@ -29,8 +29,8 @@ Triggers: "build me", "create", "make", "I want", "I need an app/site/tool/compo
 Covers: full apps, features, UI components, API endpoints, scripts, tools.
 
 **FIX EXISTING** → Load `agents/agent-fix.md`
-Triggers: "fix this", "debug", "refactor", "optimize", "clean up", "restructure", "make this faster", "what's wrong with", "this doesn't work", "there's a bug", code pasted with a problem description, "improve this code", performance complaints.
-Covers: debugging, refactoring, performance optimization, clean architecture rebuild, codebase understanding.
+Triggers: "fix this", "debug", "refactor", "optimize", "clean up", "restructure", "make this faster", "what's wrong with", "this doesn't work", "there's a bug", "resolve this merge conflict", code pasted with a problem description, "improve this code", performance complaints.
+Covers: debugging, test-first fixes, refactoring, performance optimization, architecture improvement, intent-based merge-conflict resolution, and codebase understanding.
 
 **DESIGN SYSTEM** → Load `agents/agent-design.md`
 Triggers: "design a system for", "how should I architect", "system design", "what's the best way to build [large system]", scale/infrastructure questions, "design the backend for".
@@ -63,6 +63,8 @@ The task agent references:
 Load `agents/agent-reviewer.md`.
 
 The Reviewer validates output against the approved plan, runs `scripts/code_doctor.py` for deterministic checks, and presents results to the user in plain English.
+
+For code-review-only requests, skip mutation and have the Reviewer run two explicit axes: code standards and specification fidelity. Findings require file evidence and focused proof; a clean standards pass does not imply the requested behavior is correct.
 
 **GATE: User must confirm the output works before conversation is complete.**
 

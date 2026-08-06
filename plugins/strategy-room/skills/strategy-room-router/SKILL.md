@@ -1,6 +1,6 @@
 ---
 name: strategy-room-router
-description: Routes pre-commitment decision work to rigorous interview, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed. Enforces a decision-only boundary and hands execution to Outcome Engine only after the recommendation is accepted.
+description: Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and hands execution to Outcome Engine only after the recommendation is accepted.
 ---
 
 # Strategy Room Router
@@ -14,7 +14,7 @@ Choose the decision operation before loading several broad thinking skills. Stra
 1. Identify the decision, decision owner, deadline, stakes, reversibility, evidence already available, and what commitment would follow.
 2. Select one primary route using references/workflow.md.
 3. Fill assets/output-template.json and run scripts/validate_output.py.
-4. Use grill-me for source-first interview, assumption-challenger for researched scrutiny, multi-direction-explorer for distinct options, decision-synthesizer for the recommendation, and assumption-register for durable uncertainty tracking.
+4. Use grill-me for source-first interview, decision-wayfinder for a large uncertain effort whose blocking decisions are unclear, assumption-challenger for researched scrutiny, multi-direction-explorer for distinct options, decision-synthesizer for the recommendation, and assumption-register for durable uncertainty tracking.
 5. Deliver the decision record and name the next owner. Do not execute the selected option unless a separate task authorizes it.
 
 ## Error Handling

@@ -19,7 +19,7 @@
   "loopkit": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "matt-partok-bundled-plugin-for-knowledge-work": {
     "platforms": ["Codex"],
-    "note": "Verified for Codex. The setup workflow currently depends on the AGENTS.md instruction chain, so Claude runtime parity is not claimed."
+    "note": "Deprecated compatibility release. Verified for Codex only. Migrate to the domain-owning successor plugins documented in the bundle README before the later removal release."
   },
   "model-evaluation-lab": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "model-prompt-lab": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },

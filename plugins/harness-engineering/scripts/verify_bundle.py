@@ -26,7 +26,7 @@ EXPECTED_SKILLS = {
     "skill-engineer",
 }
 TEXT_SUFFIXES = {".md", ".json", ".yaml", ".yml", ".py"}
-VERSION_PATTERN = re.compile(r"^2\.3\.0$")
+VERSION_PATTERN = re.compile(r"^2\.3\.1$")
 
 
 def fail(message: str) -> None:

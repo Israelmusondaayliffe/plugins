@@ -70,6 +70,8 @@ Load `references/architecture-patterns.md` for pattern guidance.
 - Error handling (what can go wrong, how it recovers)
 - Scaling approach (horizontal, vertical, caching)
 
+Favor deep modules. A component should expose a small coherent interface while owning validation, policy, and implementation detail behind it. Reject shallow wrappers that add a name without reducing what callers must know.
+
 **Architecture diagram** (describe in text since we can't draw):
 ```
 [Client] → [API Gateway] → [Service A] → [Database]

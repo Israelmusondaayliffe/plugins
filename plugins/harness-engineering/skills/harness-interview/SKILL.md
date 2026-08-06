@@ -13,10 +13,10 @@ Treat the interview and confirmed profile as the deliverable. Do not build durin
 2. Inspect authorized existing files and capability state before asking discoverable facts.
 3. Establish the root outcome, users, work types, constraints, and largest unresolved dependency.
 4. Follow the decision tree in `../../references/interview-tree.md` one branch at a time, interpreting each branch through the platform file for the resolved platform.
-5. Ask one to three linked questions. Explain a tradeoff only when it changes the answer.
-6. Record each answer as fact, constraint, preference, assumption, or decision.
+5. Ask one to three linked questions. Offer a recommended default and its main tradeoff when evidence supports one.
+6. Define important harness terms before dependent choices use them. Record each answer as fact, constraint, preference, assumption, or decision, keeping only records that change the profile.
 7. Pressure-test authority, failure modes, maintenance, portability, and proof.
-8. Present the complete working model and request correction.
+8. Run a convergence check: all material branches are resolved, discoverable from a named source, explicitly excluded, or deferred with an owner or revisit trigger. Present the complete working model and request correction.
 9. Save a schema-versioned profile only after confirmation. Record the platform in the profile scope.
 
 ## Profile requirements
@@ -24,3 +24,5 @@ Treat the interview and confirmed profile as the deliverable. Do not build durin
 Include user context, target platform, intended scope, workspace choice, project pattern, data sources, capability needs, authority boundaries, verification expectations, maintenance ownership, exclusions, accepted assumptions, and deferred decisions.
 
 Validate saved profiles with `python3 ../../scripts/harnessctl.py validate-profile PROFILE.json`.
+
+When a confirmed profile must continue in a fresh task, route the durable handoff to Continuity Vault. The handoff does not authorize a build.

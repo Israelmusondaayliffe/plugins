@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "generated_on": "2026-07-27",
-  "expected_owned_skill_count": 114,
+  "generated_on": "2026-08-05",
+  "expected_owned_skill_count": 115,
   "required_plugins": [
     "agent-ops",
     "brand-world-studio",
@@ -313,6 +313,13 @@
           ]
         },
         {
+          "skill": "skill-creator-pro",
+          "triggers": [
+            "create a production skill",
+            "improve this skill writing"
+          ]
+        },
+        {
           "skill": "skill-overlap-audit",
           "triggers": [
             "audit duplicate skill overlap"
@@ -566,7 +573,7 @@
     {
       "plugin": "web-product-studio",
       "display_name": "Web Product Studio",
-      "purpose": "Build, redesign, implement, fix, and verify web products.",
+      "purpose": "Build, redesign, diagnose, review, resolve conflicts, and verify web products.",
       "front_door": "web-product-router",
       "composite_triggers": [
         "web product from brief through implementation and visual qa",
@@ -589,6 +596,16 @@
           "skill": "acceptance-flow",
           "triggers": [
             "define the acceptance flow"
+          ]
+        },
+        {
+          "skill": "code-production-agent",
+          "triggers": [
+            "use tdd for this change",
+            "diagnose this hard bug",
+            "review this code against the spec",
+            "improve this codebase architecture",
+            "resolve these merge conflicts"
           ]
         },
         {
@@ -685,7 +702,7 @@
     {
       "plugin": "strategy-room",
       "display_name": "Strategy Room",
-      "purpose": "Challenge assumptions, generate options, interview decisions, and synthesize consequential choices.",
+      "purpose": "Challenge assumptions, wayfind uncertain efforts, generate options, interview decisions, and synthesize consequential choices.",
       "front_door": "strategy-room-router",
       "composite_triggers": [
         "consequential decision by challenging assumptions and comparing options",
@@ -695,6 +712,7 @@
         "assumption-challenger",
         "assumption-register",
         "decision-synthesizer",
+        "decision-wayfinder",
         "grill-me",
         "multi-direction-explorer",
         "strategy-room-router"
@@ -710,6 +728,13 @@
           "skill": "assumption-register",
           "triggers": [
             "record these assumptions"
+          ]
+        },
+        {
+          "skill": "decision-wayfinder",
+          "triggers": [
+            "wayfind this large uncertain effort",
+            "map the next blocking decision"
           ]
         },
         {
@@ -859,7 +884,7 @@
     {
       "plugin": "continuity-vault",
       "display_name": "Continuity Vault",
-      "purpose": "Keep durable knowledge findable, promote it to the right layer, graph it, and audit staleness.",
+      "purpose": "Create durable task handoffs, keep knowledge findable, promote it to the right layer, graph it, and audit staleness.",
       "front_door": "continuity-router",
       "composite_triggers": [
         "make this knowledge durable and decide where it should live across tasks",
@@ -873,6 +898,13 @@
         "staleness-and-conflict-audit"
       ],
       "direct_routes": [
+        {
+          "skill": "continuity-router",
+          "triggers": [
+            "create a durable handoff for a fresh task",
+            "handoff this delegated slice"
+          ]
+        },
         {
           "skill": "frontier-extraction",
           "triggers": [
@@ -1052,7 +1084,9 @@
         {
           "skill": "systematic-research",
           "triggers": [
-            "run systematic research on this question"
+            "run systematic research on this question",
+            "bounded research for this decision",
+            "broad research with a stop condition"
           ]
         },
         {
@@ -1063,9 +1097,11 @@
         }
       ],
       "companions": [
+        "continuity-vault",
         "writing-quality"
       ],
       "handoffs": [
+        "Send a durable fresh-task research handoff to Continuity Vault.",
         "Send final human-facing prose to Writing Quality."
       ],
       "exclusions": [
@@ -1095,6 +1131,12 @@
       ],
       "direct_routes": [
         {
+          "skill": "decision-grill",
+          "triggers": [
+            "run outcome engine and clarify this brief"
+          ]
+        },
+        {
           "skill": "evidence-driven-delivery",
           "triggers": [
             "execute this approved action slice with evidence"
@@ -1115,15 +1157,25 @@
         {
           "skill": "to-outcome-brief",
           "triggers": [
-            "turn this request into an outcome brief"
+            "turn this request into an outcome brief",
+            "turn this settled conversation into a spec"
+          ]
+        },
+        {
+          "skill": "outcome-engine",
+          "triggers": [
+            "prototype the riskiest assumption with a bounded test",
+            "triage this mixed outcome intake"
           ]
         }
       ],
       "companions": [
+        "continuity-vault",
         "strategy-room"
       ],
       "handoffs": [
-        "Receive an accepted decision from Strategy Room."
+        "Receive an accepted decision from Strategy Room.",
+        "Send a durable cross-task or delegated-slice handoff to Continuity Vault."
       ],
       "exclusions": [
         "Do not replace strategy work when the decision itself is unresolved."

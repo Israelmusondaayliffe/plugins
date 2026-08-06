@@ -29,7 +29,7 @@
       "name": "capability-operator",
       "source": "./plugins/capability-operator",
       "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -47,7 +47,7 @@
       "name": "continuity-vault",
       "source": "./plugins/continuity-vault",
       "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -83,7 +83,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.3.0",
+      "version": "2.3.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -92,7 +92,7 @@
       "name": "knowledge-work-superpowers",
       "source": "./plugins/knowledge-work-superpowers",
       "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -109,8 +109,8 @@
     {
       "name": "matt-partok-bundled-plugin-for-knowledge-work",
       "source": "./plugins/matt-partok-bundled-plugin-for-knowledge-work",
-      "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
-      "version": "1.1.0",
+      "description": "Deprecated compatibility release of Matt Pocock's adapted workflow. Migrate to Strategy Room, Outcome Engine, Knowledge Work Superpowers, Continuity Vault, Capability Operator, Web Product Studio, and Harness Engineering.",
+      "version": "1.1.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -146,7 +146,7 @@
       "name": "outcome-engine",
       "source": "./plugins/outcome-engine",
       "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -164,7 +164,7 @@
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -182,7 +182,7 @@
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Community Maintainers"
       }

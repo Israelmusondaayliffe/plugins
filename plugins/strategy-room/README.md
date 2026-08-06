@@ -1,11 +1,12 @@
 # Strategy Room
 
-Strategy Room packages source-first interviews, assumption challenge, broad option generation, decision synthesis, and durable uncertainty tracking for consequential choices.
+Strategy Room packages source-first interviews, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, and durable uncertainty tracking for consequential choices.
 
 ## Owned skills
 
 - strategy-room-router
 - decision-synthesizer
+- decision-wayfinder (explicit specialist routed by Strategy Room)
 - assumption-register
 - grill-me
 - assumption-challenger
@@ -24,6 +25,7 @@ Run `scripts/check_companions.py` to see which optional companions are installed
 
 - Strategy Room ends at a decision record and named handoff.
 - A recommendation does not authorize execution.
+- Wayfinding maps one blocking decision at a time and does not become a generic project plan.
 - Facts, assumptions, and judgment remain visibly separate.
 
 ## Verification

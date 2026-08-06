@@ -1,7 +1,7 @@
 {
   "name": "matt-partok-bundled-plugin-for-knowledge-work",
-  "version": "1.1.0",
-  "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
+  "version": "1.1.1",
+  "description": "Deprecated compatibility release of Matt Pocock's adapted workflow. Migrate to Strategy Room, Outcome Engine, Knowledge Work Superpowers, Continuity Vault, Capability Operator, Web Product Studio, and Harness Engineering.",
   "author": {
     "name": "Community Maintainers"
   },
@@ -22,8 +22,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Matt Partok Bundled Plugin For Knowledge Work",
-    "shortDescription": "Matt Pocock's full workflow, adapted for Codex.",
-    "longDescription": "Clarify ideas, record shared language, research unknowns, prototype questions, write specs, split work, execute bounded slices, hand off across threads, and review against evidence. Includes coding and knowledge-work tracks.",
+    "shortDescription": "Deprecated compatibility bundle with migration routes.",
+    "longDescription": "Compatibility-only release. Existing prompts still work while users migrate grilling, wayfinding, research, briefing, slicing, handoff, skill writing, and software delivery to their domain-owning plugins.",
     "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [

@@ -45,6 +45,8 @@ Each recommendation cites a source.
 Use supplied research.
 ## Decisions
 Use one recommendation.
+## Blockers
+None.
 ## Out of scope
 External publishing.
 ## Next action

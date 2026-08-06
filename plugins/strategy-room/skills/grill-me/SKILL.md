@@ -16,6 +16,7 @@ Turn an idea, plan, or draft into a shared, decision-ready understanding through
 - Cover one branch or tightly linked question cluster at a time. Ask one to three questions per turn.
 - Keep a decision tree and decision ledger throughout the interview. Do not re-ask resolved questions unless new evidence creates a conflict.
 - Challenge contradictions, vague language, hidden assumptions, and convenient answers directly but calmly.
+- Establish exact terms for important concepts. If two people could read a word differently, define it before dependent decisions use it.
 - Match depth to stakes, reversibility, and cost. Exhaust material ambiguity, not trivia.
 - Use read-only exploration by default. Do not make external changes, send messages, or execute the plan without separate authority.
 
@@ -79,6 +80,8 @@ Select the highest-impact unresolved dependency. Ask one to three tightly linked
 - Follow each answer down its branch until it is closed.
 
 Close a branch only when its decision, rationale or governing constraint, dependencies, and acceptance test are clear. Then update the ledger and move to the next unresolved branch.
+
+Record only decisions that change downstream work. Include the chosen vocabulary, the rejected alternative when it matters, and the consequence. Do not turn the ledger into a transcript.
 
 If an answer opens new branches, add them. If the user says "I don't know," investigate when possible. Otherwise, offer a reasoned default and mark it as an assumption requiring acceptance.
 

@@ -14,6 +14,7 @@ Resolve the decision tree before turning the idea into a plan or artifact.
 - Give a recommended answer and one short reason before asking for the user's decision.
 - Inspect available files, connectors, references, and current sources instead of asking the user to restate discoverable facts.
 - Push back when an answer conflicts with the goal, constraints, evidence, or an earlier decision.
+- Define important domain terms before dependent choices use them. Preserve the user's established vocabulary when it is precise.
 - Do not start implementation, publish anything, or create external state during the interview.
 
 ## Workflow
@@ -23,7 +24,7 @@ Resolve the decision tree before turning the idea into a plan or artifact.
 3. Map the first decision branches. Typical branches include audience, outcome, scope, proof, constraints, format, ownership, timing, risk, and permissions.
 4. Choose the next unresolved branch based on dependency, not convenience.
 5. Ask one focused question. Offer the recommended answer and the main tradeoff.
-6. Record the answer, its consequences, and any branch it resolves or creates.
+6. Record the answer, its consequences, and any branch it resolves or creates. Keep only decisions that change downstream work; do not produce an interview transcript.
 7. Every four to six decisions, give a compact state recap so drift is visible.
 8. Test the emerging design against edge cases, conflicting constraints, failure modes, and the user who bears the cost when it fails.
 9. Continue until the completion test passes.

@@ -59,7 +59,7 @@ Cowork-supported plugin and install it from the catalog.
 | harness-engineering | Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow. |
 | knowledge-work-superpowers | A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery. |
 | loopkit | Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion. |
-| matt-partok-bundled-plugin-for-knowledge-work | A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work. |
+| matt-partok-bundled-plugin-for-knowledge-work | Deprecated compatibility release of Matt Pocock's adapted workflow. Migrate to Strategy Room, Outcome Engine, Knowledge Work Superpowers, Continuity Vault, Capability Operator, Web Product Studio, and Harness Engineering. |
 | model-evaluation-lab | Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions. |
 | model-prompt-lab | Verified model routing, production prompt architecture, migration audits, and benchmark design on Claude Code, Claude Cowork, and Codex. |
 | outcome-engine | Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software. |
@@ -70,7 +70,7 @@ Cowork-supported plugin and install it from the catalog.
 | web-product-studio | Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex. |
 | writing-quality | Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation. |
 
-The marketplace currently contains 22 plugins and 179 skills. The packages also
+The marketplace currently contains 22 plugins and 180 skills. The packages also
 include their supporting scripts, references, assets, and agent definitions.
 LoopKit includes local lifecycle hooks. The marketplace does not currently
 bundle MCP servers or app connectors.

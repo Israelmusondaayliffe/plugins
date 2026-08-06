@@ -63,7 +63,7 @@ export const plugins = [
     "shortDescription": "Evidence-first workflows for research, analysis, writing, and delivery",
     "longDescription": "Frame substantial knowledge work, plan it, research systematically, test claims against evidence, draft from sources, review the result, and verify it before delivery.",
     "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -148,7 +148,7 @@ export const plugins = [
     "shortDescription": "Turn unclear goals into verified results.",
     "longDescription": "Clarify decisions, write durable briefs, create independent action slices, execute from evidence, and improve the systems behind the work.",
     "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -196,9 +196,9 @@ export const plugins = [
     "counts": {
       "skills": 6,
       "assets": 3,
-      "references": 3,
+      "references": 5,
       "scripts": 2,
-      "files": 25
+      "files": 27
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -303,7 +303,7 @@ export const plugins = [
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
     "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -363,9 +363,9 @@ export const plugins = [
     "counts": {
       "skills": 10,
       "assets": 10,
-      "references": 15,
+      "references": 16,
       "scripts": 20,
-      "files": 71
+      "files": 73
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -610,7 +610,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -672,7 +672,7 @@ export const plugins = [
       "assets": 7,
       "references": 7,
       "scripts": 6,
-      "files": 42
+      "files": 43
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -744,7 +744,7 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -773,6 +773,10 @@ export const plugins = [
         "description": "Turns interviews, research, challenged assumptions, and distinct options into one evidence-linked recommendation with risks, conditions, reversibility, confidence, and a clean handoff. Use when a decision has enough inputs but remains unresolved. Produces a validated decision record and keeps measured evidence separate from judgment."
       },
       {
+        "name": "decision-wayfinder",
+        "description": "Map a large uncertain effort into its destination, decision map, fog, frontier, and next blocking edge. Use only when the user explicitly asks to wayfind, map an uncertain effort, find the next decision, or determine what must be decided before planning. Keep local-first decision state and resolve one blocking decision per context. Do not use for ordinary planning, task breakdown, or execution."
+      },
+      {
         "name": "grill-me",
         "description": "Conduct rigorous, source-first interviews that turn vague or incomplete plans into shared, decision-ready specifications. Use when the user explicitly says \"grill me,\" \"interview me relentlessly,\" \"pressure-test this,\" \"ask me everything,\" \"walk the decision tree,\" or \"challenge every assumption\" before planning or execution across business, creative, research, writing, product, operations, personal, or coding work. Explore available files, codebases, documents, connected apps, and authoritative sources before asking questions; resolve dependent decisions branch by branch; and record decisions, assumptions, conflicts, and open issues. Do not use for ordinary requests that need only one or two clarifications."
       },
@@ -782,15 +786,15 @@ export const plugins = [
       },
       {
         "name": "strategy-room-router",
-        "description": "Routes pre-commitment decision work to rigorous interview, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed. Enforces a decision-only boundary and hands execution to Outcome Engine only after the recommendation is accepted."
+        "description": "Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and hands execution to Outcome Engine only after the recommendation is accepted."
       }
     ],
     "counts": {
-      "skills": 6,
-      "assets": 12,
+      "skills": 7,
+      "assets": 13,
       "references": 9,
       "scripts": 7,
-      "files": 51
+      "files": 55
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -923,7 +927,7 @@ export const plugins = [
     "shortDescription": "Keep reusable knowledge findable and trustworthy on Claude Code, Claude Cowork, and Codex.",
     "longDescription": "Continuity Vault routes work through source-preserving extraction, governed promotion, relationship mapping, recall, and staleness audits while keeping workspace files authoritative. It runs on Claude Code, Claude Cowork, and Codex, and treats the host instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) plus workspace source files as the authority layer.",
     "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -941,7 +945,7 @@ export const plugins = [
     "skills": [
       {
         "name": "continuity-router",
-        "description": "Routes continuity work across extraction, durable-file promotion, knowledge graphs, memory search, staleness audits, and digests. Use when work from tasks, projects, or research must remain findable and trustworthy across future Claude Code, Claude Cowork, or Codex sessions. Keeps workspace files as authority, treats memory and Chronicle as recall only, and does not overwrite or delete source material."
+        "description": "Routes continuity work across durable task handoffs, extraction, durable-file promotion, knowledge graphs, memory search, staleness audits, and digests. Use when work from tasks, delegated slices, projects, or research must remain usable and trustworthy across future Claude Code, Claude Cowork, or Codex sessions. Keeps workspace files as authority, treats memory and Chronicle as recall only, and does not overwrite or delete source material."
       },
       {
         "name": "frontier-extraction",
@@ -962,10 +966,10 @@ export const plugins = [
     ],
     "counts": {
       "skills": 5,
-      "assets": 7,
-      "references": 12,
+      "assets": 8,
+      "references": 13,
       "scripts": 5,
-      "files": 45
+      "files": 48
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1136,7 +1140,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1213,7 +1217,7 @@ export const plugins = [
       "assets": 7,
       "references": 12,
       "scripts": 4,
-      "files": 60
+      "files": 61
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1406,10 +1410,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 21,
-  "skills": 157,
-  "assets": 308,
-  "references": 437,
+  "skills": 158,
+  "assets": 310,
+  "references": 441,
   "scripts": 391,
-  "files": 1777
+  "files": 1790
 } as const;
 export type Plugin = (typeof plugins)[number];

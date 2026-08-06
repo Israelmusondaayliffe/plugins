@@ -11,3 +11,5 @@ This plugin adapts substantial portions of the MIT-licensed `mattpocock/skills` 
 The complete MIT license is included in `LICENSE`.
 
 The plugin name follows the user's requested title, "Matt Partok Bundled Plugin for Knowledge Work." Attribution uses Matt Pocock's correct name.
+
+Version 1.1.1 is a deprecated compatibility release. It remains marketplace-available for one migration release; removal is a later approval-gated operation.
