@@ -8,6 +8,7 @@ const readText = (path) => readFileSync(join(root, path), "utf8");
 const codexMarketplace = readJson(".agents/plugins/marketplace.json");
 const claudeMarketplace = readJson(".claude-plugin/marketplace.json");
 const hostSupport = readJson("docs/host-support.json");
+const curation = readJson("docs/site-redesign/site-curation.json");
 const errors = [];
 const pluginNames = readdirSync(join(root, "plugins"), { withFileTypes: true })
   .filter(
@@ -130,13 +131,44 @@ if (repositoryMetadata.homepage !== null) {
 }
 
 const catalog = readText("app/catalog.generated.ts");
+function generatedExport(name) {
+  const match = catalog.match(
+    new RegExp(`export const ${name} = ([\\s\\S]*?) as const;\\n`),
+  );
+  if (!match) throw new Error(`Generated catalog export is missing: ${name}`);
+  return JSON.parse(match[1]);
+}
+
+let sitePlugins;
+let siteTotals;
+try {
+  sitePlugins = generatedExport("plugins");
+  siteTotals = generatedExport("totals");
+} catch (error) {
+  errors.push(error.message);
+}
+
+const visibleNames = curation.visibility?.visible_plugins ?? [];
+const excludedNames = curation.visibility?.excluded_plugins ?? [];
 if (
-  !catalog.includes(`"plugins": ${pluginCount}`) ||
-  !catalog.includes(`"skills": ${skillCount}`)
+  siteTotals?.plugins !== curation.expected_totals?.plugins ||
+  siteTotals?.skills !== curation.expected_totals?.skills
 ) {
-  errors.push("Generated catalog totals do not match the live inventory");
+  errors.push("Generated Site totals do not match the Site curation policy");
+}
+if (
+  JSON.stringify(sitePlugins?.map((plugin) => plugin.slug)) !==
+  JSON.stringify(visibleNames)
+) {
+  errors.push("Generated Site plugin order differs from the Site curation allowlist");
+}
+for (const excludedName of excludedNames) {
+  if (catalog.includes(`"slug": ${JSON.stringify(excludedName)}`)) {
+    errors.push(`${excludedName}: excluded plugin appears in the generated Site catalog`);
+  }
 }
 for (const [name, description] of descriptions) {
+  if (!visibleNames.includes(name)) continue;
   const recordStart = catalog.indexOf(`"slug": ${JSON.stringify(name)}`);
   const nextRecord = catalog.indexOf('\n  {\n    "slug":', recordStart + 1);
   const record = catalog.slice(

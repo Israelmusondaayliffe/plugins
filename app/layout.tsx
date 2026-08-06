@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
-import { totals } from "./catalog.generated";
+import { site, totals } from "./catalog.generated";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -20,9 +20,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = incoming.get("x-forwarded-host") ?? incoming.get("host");
   const protocol = incoming.get("x-forwarded-proto") ?? "https";
   const origin = host ? protocol + "://" + host : "http://localhost:3000";
-  const title = "Community Agent Plugins";
+  const title = site.name;
   const description =
-    `A public marketplace with ${totals.plugins} plugins and ${totals.skills} skills for Codex, Claude Code, and Claude Cowork.`;
+    "A public registry with " +
+    totals.plugins +
+    " plugins and " +
+    totals.skills +
+    " skills for Codex, Claude Code, and Claude Cowork.";
 
   return {
     metadataBase: new URL(origin),

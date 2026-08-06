@@ -18,6 +18,9 @@ const claudeMarketplace = JSON.parse(
 const hostSupport = JSON.parse(
   readFileSync(join(root, "docs/host-support.json"), "utf8"),
 );
+const curation = JSON.parse(
+  readFileSync(join(root, "docs/site-redesign/site-curation.json"), "utf8"),
+);
 const claudePluginNames = new Set(
   claudeMarketplace.plugins.map((plugin) => plugin.name),
 );
@@ -37,6 +40,53 @@ const missingHostSupport = [...codexPluginNames].filter(
 const unknownHostSupport = Object.keys(hostSupport).filter(
   (name) => !codexPluginNames.has(name),
 );
+
+const visiblePluginNames = curation.visibility?.visible_plugins;
+const excludedPluginNames = curation.visibility?.excluded_plugins;
+const repositoryPluginNames = marketplace.plugins.map((plugin) => plugin.name);
+
+if (!Array.isArray(visiblePluginNames) || !Array.isArray(excludedPluginNames)) {
+  throw new Error("Site curation must declare visible_plugins and excluded_plugins");
+}
+
+function duplicateNames(names) {
+  return names.filter((name, index) => names.indexOf(name) !== index);
+}
+
+const curationNames = [...visiblePluginNames, ...excludedPluginNames];
+const duplicateCurationNames = duplicateNames(curationNames);
+const unknownCurationNames = curationNames.filter(
+  (name) => !codexPluginNames.has(name),
+);
+const missingCurationNames = repositoryPluginNames.filter(
+  (name) => !curationNames.includes(name),
+);
+
+if (duplicateCurationNames.length || unknownCurationNames.length || missingCurationNames.length) {
+  throw new Error(
+    [
+      duplicateCurationNames.length
+        ? `Duplicate Site curation entries: ${duplicateCurationNames.join(", ")}`
+        : "",
+      unknownCurationNames.length
+        ? `Unknown Site curation entries: ${unknownCurationNames.join(", ")}`
+        : "",
+      missingCurationNames.length
+        ? `Marketplace plugins missing from Site curation: ${missingCurationNames.join(", ")}`
+        : "",
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  );
+}
+
+if (curation.visibility.mode !== "explicit-allowlist") {
+  throw new Error("Site curation must use the explicit-allowlist policy");
+}
+
+if (curation.expected_totals?.plugins !== visiblePluginNames.length) {
+  throw new Error("Site curation plugin total does not match its visible allowlist");
+}
 
 if (
   missingFromClaude.length ||
@@ -97,7 +147,7 @@ function frontmatterValue(source, key) {
   return match ? cleanText(unquoteFrontmatterValue(match[1])) : "";
 }
 
-const plugins = marketplace.plugins.map((entry) => {
+const allPlugins = marketplace.plugins.map((entry) => {
   const pluginRoot = join(root, "plugins", entry.name);
   const manifest = JSON.parse(
     readFileSync(join(pluginRoot, ".codex-plugin/plugin.json"), "utf8"),
@@ -191,7 +241,7 @@ const plugins = marketplace.plugins.map((entry) => {
   };
 });
 
-const totals = plugins.reduce(
+const totalsFor = (records) => records.reduce(
   (acc, plugin) => ({
     plugins: acc.plugins + 1,
     skills: acc.skills + plugin.counts.skills,
@@ -203,8 +253,67 @@ const totals = plugins.reduce(
   { plugins: 0, skills: 0, assets: 0, references: 0, scripts: 0, files: 0 },
 );
 
+const plugins = visiblePluginNames.map((name) =>
+  allPlugins.find((plugin) => plugin.slug === name),
+);
+
+if (plugins.some((plugin) => !plugin)) {
+  throw new Error("Site curation resolved to a missing generated plugin record");
+}
+
+const totals = totalsFor(plugins);
+
+if (curation.expected_totals?.skills !== totals.skills) {
+  throw new Error(
+    `Site curation skill total does not match generated records: expected ${curation.expected_totals?.skills}, got ${totals.skills}`,
+  );
+}
+
+const collectionNames = curation.collections?.map((collection) => collection.name);
+const collectionSlugs = curation.collections?.map((collection) => collection.slug);
+if (
+  !Array.isArray(curation.collections) ||
+  curation.collections.length !== 4 ||
+  duplicateNames(collectionNames).length ||
+  duplicateNames(collectionSlugs).length
+) {
+  throw new Error("Site curation must declare four uniquely named collections");
+}
+
+const assignedPlugins = curation.collections.flatMap((collection) => collection.plugins ?? []);
+const duplicateAssignedPlugins = duplicateNames(assignedPlugins);
+const unassignedVisiblePlugins = visiblePluginNames.filter(
+  (name) => !assignedPlugins.includes(name),
+);
+const unknownAssignedPlugins = assignedPlugins.filter(
+  (name) => !visiblePluginNames.includes(name),
+);
+if (
+  duplicateAssignedPlugins.length ||
+  unassignedVisiblePlugins.length ||
+  unknownAssignedPlugins.length
+) {
+  throw new Error(
+    [
+      duplicateAssignedPlugins.length
+        ? `Plugin assigned to multiple Site collections: ${duplicateAssignedPlugins.join(", ")}`
+        : "",
+      unassignedVisiblePlugins.length
+        ? `Visible plugins missing from Site collections: ${unassignedVisiblePlugins.join(", ")}`
+        : "",
+      unknownAssignedPlugins.length
+        ? `Unknown plugins assigned to Site collections: ${unknownAssignedPlugins.join(", ")}`
+        : "",
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  );
+}
+
 const output = `// Generated by scripts/generate-catalog.mjs. Do not edit directly.\n` +
   `export const marketplaceName = ${JSON.stringify(marketplace.name)} as const;\n` +
+  `export const site = ${JSON.stringify(curation.site, null, 2)} as const;\n` +
+  `export const collections = ${JSON.stringify(curation.collections, null, 2)} as const;\n` +
   `export const plugins = ${JSON.stringify(plugins, null, 2)} as const;\n` +
   `export const totals = ${JSON.stringify(totals, null, 2)} as const;\n` +
   `export type Plugin = (typeof plugins)[number];\n`;

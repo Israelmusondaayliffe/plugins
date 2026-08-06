@@ -1,23 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { Catalog } from "./components/Catalog";
 import { CopyCommand } from "./components/CopyCommand";
-import { plugins, totals } from "./catalog.generated";
+import { marketplaceName, plugins, site, totals } from "./catalog.generated";
 
 const repositoryUrl =
   "https://github.com/Israelmusondaayliffe/plugins";
 
-export default function Home() {
-  const resourceTotal = totals.assets + totals.references + totals.scripts;
+export default async function Home() {
+  const incoming = await headers();
+  const host = incoming.get("x-forwarded-host") ?? incoming.get("host");
+  const protocol = incoming.get("x-forwarded-proto") ?? "https";
+  const origin = host ? protocol + "://" + host : "http://localhost:3000";
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Community Agent Plugins",
+    name: site.name,
     numberOfItems: plugins.length,
     itemListElement: plugins.map((plugin, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: repositoryUrl + "/tree/main/plugins/" + plugin.slug,
+      url: origin + "/plugins/" + plugin.slug,
       name: plugin.name,
     })),
   };
@@ -25,12 +29,12 @@ export default function Home() {
   return (
     <>
       <header className="site-header shell">
-        <Link className="wordmark" href="/" aria-label="Community Agent Plugins">
-          <span className="wordmark-mark">CAP</span>
-          <span>PLUGIN REGISTRY</span>
+        <Link className="wordmark" href="/" aria-label={site.name}>
+          <span className="wordmark-mark">IA</span>
+          <span>{site.name}</span>
         </Link>
         <nav aria-label="Primary navigation">
-          <a href="#plugins">Plugins</a>
+          <a href="#outcomes">Outcomes</a>
           <a href="#install">Install</a>
           <a href={repositoryUrl}>GitHub</a>
         </nav>
@@ -49,19 +53,22 @@ export default function Home() {
             />
           </figure>
           <div className="hero-copy">
-            <p className="kicker">One marketplace. Three agent surfaces.</p>
+            <p className="kicker">
+              Public plugins for Codex, Claude Code, and Claude Cowork
+            </p>
             <h1 id="hero-title">
-              A working system,
+              Systems for work
               <br />
-              packaged.
+              that has to hold.
             </h1>
             <p className="hero-lede">
-              {totals.plugins} field-tested plugins across Codex, Claude Code,
-              and Claude Cowork. Each record states its verified runtime hosts.
+              {totals.plugins} public plugins and {totals.skills} bundled
+              skills, arranged by the outcome you need and the host you use.
+              Every record separates discovery from verified runtime support.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#plugins">
-                Browse the registry
+              <a className="button button-primary" href="#outcomes">
+                Browse by outcome
               </a>
               <a className="button button-quiet" href={repositoryUrl}>
                 View source
@@ -70,7 +77,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="proof-strip shell" aria-label="Marketplace totals">
+        <section className="proof-strip shell" aria-label="Registry totals">
           <div>
             <strong>{totals.plugins}</strong>
             <span>Public plugins</span>
@@ -80,21 +87,45 @@ export default function Home() {
             <span>Bundled skills</span>
           </div>
           <div>
-            <strong>{resourceTotal.toLocaleString("en-US")}</strong>
-            <span>Support files</span>
+            <strong>4</strong>
+            <span>Outcome collections</span>
           </div>
           <div>
             <strong>3</strong>
-            <span>Supported agent surfaces</span>
+            <span>Verified hosts</span>
           </div>
         </section>
 
-        <section className="catalog-section shell" id="plugins">
+        <section
+          className="changes-strip shell"
+          aria-labelledby="what-changed-title"
+        >
+          <div>
+            <p className="kicker">What changed</p>
+            <h2 id="what-changed-title">A clearer way into the registry.</h2>
+          </div>
+          <ul>
+            <li>
+              <strong>Added</strong> Gauntlet and Gauntlet Loop.
+            </li>
+            <li>
+              <strong>Expanded</strong> Capability Operator, Agent Ops, and
+              Harness Engineering.
+            </li>
+            <li>
+              <strong>Clarified</strong> which runtime hosts are verified for
+              every plugin.
+            </li>
+          </ul>
+        </section>
+
+        <section className="catalog-section shell" id="outcomes">
           <div className="section-heading">
-            <h2>Find the capability. Inspect the package. Choose your surface.</h2>
+            <h2>Start with the outcome. Then choose your host.</h2>
             <p>
-              Search every plugin and skill, select a record, then install only
-              what belongs in your agent setup.
+              Search every public plugin and bundled skill, narrow the registry
+              by outcome, category, or verified runtime host, then inspect the
+              exact record before you install.
             </p>
           </div>
           <Catalog />
@@ -104,10 +135,10 @@ export default function Home() {
           <div className="shell install-layout">
             <div className="install-intro">
               <p className="kicker">Install your way</p>
-              <h2>Choose your surface. Check runtime support.</h2>
+              <h2>Choose your host. Check the record.</h2>
               <p>
-                The repository carries native manifests for Codex and Claude.
-                Add the public source once, then install only what you need.
+                Add the public source once, then use the command shown only for
+                a host verified on that plugin’s record.
               </p>
             </div>
             <div className="platform-install-grid">
@@ -119,9 +150,11 @@ export default function Home() {
                     <h3>Codex</h3>
                   </div>
                 </div>
-                <p>Add the marketplace, then install a Codex-supported plugin by name.</p>
+                <p>Add the marketplace, then install a Codex-supported plugin.</p>
                 <CopyCommand command="codex plugin marketplace add Israelmusondaayliffe/plugins --ref main" />
-                <CopyCommand command="codex plugin add loopkit@community-agent-plugins" />
+                <CopyCommand
+                  command={"codex plugin add loopkit@" + marketplaceName}
+                />
                 <p className="platform-note">
                   Start a fresh Codex task after installation.
                 </p>
@@ -137,7 +170,9 @@ export default function Home() {
                 </div>
                 <p>Run both commands inside Claude Code.</p>
                 <CopyCommand command="/plugin marketplace add Israelmusondaayliffe/plugins" />
-                <CopyCommand command="/plugin install loopkit@community-agent-plugins" />
+                <CopyCommand
+                  command={"/plugin install loopkit@" + marketplaceName}
+                />
                 <p className="platform-note">
                   Skills load under their plugin namespace.
                 </p>
@@ -153,10 +188,10 @@ export default function Home() {
                 </div>
                 <p>
                   Select Add marketplace, paste the GitHub repository, then
-                  choose a Cowork-supported plugin from the catalog.
+                  choose a Cowork-supported plugin from its record.
                 </p>
                 <CopyCommand
-                  command="https://github.com/Israelmusondaayliffe/plugins"
+                  command={repositoryUrl}
                   label="marketplace URL"
                 />
                 <a
@@ -172,13 +207,12 @@ export default function Home() {
 
         <section className="inventory-section shell">
           <div className="inventory-statement">
-            <h2>Skills first. Claims kept exact.</h2>
+            <h2>Claims kept where you can inspect them.</h2>
             <p>
-              Every plugin carries both Codex and Claude package manifests.
-              Runtime support is declared separately for each plugin, so a
-              manifest is never treated as proof of execution parity. This
-              release includes skills, scripts, references, assets, and agent
-              definitions. It does not currently bundle MCP servers or app connectors.
+              A plugin can be available in a marketplace and still not be
+              verified on every host. The registry keeps those facts separate,
+              so the host filter and install actions only reflect documented
+              runtime support.
             </p>
             <Link className="text-link" href="/plugins/capability-operator">
               Inspect a complete plugin record
@@ -186,20 +220,20 @@ export default function Home() {
           </div>
           <dl className="inventory-facts">
             <div>
-              <dt>Repository</dt>
+              <dt>Registry</dt>
+              <dd>{site.name}</dd>
+            </div>
+            <div>
+              <dt>Source</dt>
               <dd>Public on GitHub</dd>
             </div>
             <div>
-              <dt>Marketplace</dt>
-              <dd>One GitHub source</dd>
+              <dt>Discovery</dt>
+              <dd>Outcome, category, and host</dd>
             </div>
             <div>
               <dt>Install surface</dt>
-              <dd>Codex + Claude</dd>
-            </div>
-            <div>
-              <dt>Discovery</dt>
-              <dd>Platform-native</dd>
+              <dd>Host-specific records</dd>
             </div>
           </dl>
         </section>
@@ -208,7 +242,7 @@ export default function Home() {
       <footer>
         <div className="shell footer-grid">
           <div>
-            <p className="footer-name">Community Agent Plugins</p>
+            <p className="footer-name">{site.name}</p>
             <p>Public packages for Codex, Claude Code, and Claude Cowork.</p>
           </div>
           <div className="footer-links">

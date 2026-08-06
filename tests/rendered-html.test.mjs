@@ -1,6 +1,35 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import test from "node:test";
+
+const root = new URL("../", import.meta.url);
+
+function generatedExport(name) {
+  const catalog = readFileSync(
+    new URL("app/catalog.generated.ts", root),
+    "utf8",
+  );
+  const prefix = "export const " + name + " = ";
+  const start = catalog.indexOf(prefix);
+  assert.notEqual(start, -1, "Missing generated export: " + name);
+  const afterPrefix = catalog.slice(start + prefix.length);
+  const end = afterPrefix.indexOf(" as const;");
+  assert.notEqual(end, -1, "Generated export is incomplete: " + name);
+  return JSON.parse(afterPrefix.slice(0, end).trim());
+}
+
+const marketplaceName = generatedExport("marketplaceName");
+const visiblePlugins = generatedExport("plugins");
+const totals = generatedExport("totals");
+const collections = generatedExport("collections");
+const hostSupport = JSON.parse(
+  readFileSync(new URL("docs/host-support.json", root), "utf8"),
+);
+const owner = ["Israel", "musonda", "ayliffe"].join("");
+
+function withoutReactMarkers(html) {
+  return html.replace(/<!--[\s\S]*?-->/g, "");
+}
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -23,181 +52,159 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders the public marketplace homepage", async () => {
+test("server-renders the IA registry identity and exact public discovery", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Community Agent Plugins<\/title>/i);
-  assert.match(html, /A working system/);
-  assert.match(html, /22(?:<!--.*?-->)? field-tested plugins/);
-  assert.match(html, /179(?:<!--.*?-->)?\s*<\/strong>\s*<span>Bundled skills/);
-  assert.match(html, /Codex, Claude Code, and(?:<!--.*?-->)?\s*Claude Cowork/);
-  const owner = ["Israel", "musonda", "ayliffe"].join("");
-  assert.match(html, new RegExp(`codex plugin marketplace add ${owner}`));
-  assert.match(html, new RegExp(`/plugin marketplace add ${owner}`));
-  assert.match(
-    html,
-    new RegExp(`https://github.com/${owner}/plugins`),
-  );
-  assert.match(html, /Official Cowork install guide/);
-  assert.match(html, /knowledge-work-superpowers/);
-  assert.match(html, /LoopKit/);
-  assert.match(html, /Harness Engineering/);
-  assert.match(html, /does not currently.*MCP servers/i);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
+  const text = withoutReactMarkers(html);
+  assert.match(text, /Israel(?:&#x27;|')s Plugin Registry/);
+  assert.match(text, /\bIA\b/);
+  assert.match(text, /21 public plugins and 157 bundled skills/);
+  assert.match(text, /21<\/strong><span>Public plugins/);
+  assert.match(text, /157<\/strong><span>Bundled skills/);
+  assert.match(text, /4<\/strong><span>Outcome collections/);
+  assert.match(text, /3<\/strong><span>Verified hosts/);
+  assert.match(text, /What changed/);
+  assert.match(text, /Gauntlet and Gauntlet Loop/);
+  assert.match(text, /Capability Operator, Agent Ops, and\s+Harness Engineering/);
+
+  assert.equal(collections.length, 4);
+  for (const collection of [
+    "Build and create",
+    "Plan and run",
+    "Verify and govern",
+    "Think, communicate, and preserve",
+  ]) {
+    assert.match(text, new RegExp(collection));
+  }
+  for (const host of ["Codex", "Claude Code", "Claude Cowork"]) {
+    assert.match(text, new RegExp(host));
+  }
+  assert.match(html, /data-testid="collection-filter"/);
+  assert.match(html, /data-testid="host-filter"/);
+  assert.match(html, /aria-keyshortcuts="\/"/);
+  assert.match(html, /data-testid="plugin-preview"/);
+  assert.match(html, /aria-live="polite"/);
+  assert.match(text, /Copy only the action shown for a verified host/);
 });
 
-test("server-renders plugin detail pages", async () => {
+test("server-renders complete public records with source and related navigation", async () => {
   const response = await render("/plugins/capability-operator");
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /Capability Operator/);
-  assert.match(html, /capability-router/);
+  const text = withoutReactMarkers(html);
+  assert.match(text, /Capability Operator/);
+  assert.match(text, /Purpose/);
+  assert.match(text, /Verified hosts/);
+  assert.match(text, /Version/);
+  assert.match(text, /Bundled skills/);
+  assert.match(text, /Source you can inspect/);
   assert.match(
     html,
-    /codex plugin add capability-operator@community-agent-plugins/,
-  );
-  assert.match(
-    html,
-    /\/plugin install capability-operator@community-agent-plugins/,
-  );
-  assert.match(html, /In Customize → Plugins/);
-});
-
-test("server-renders the Harness Engineering release", async () => {
-  const response = await render("/plugins/harness-engineering");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Harness Engineering/);
-  assert.match(html, /harness-interview/);
-  assert.match(
-    html,
-    /codex plugin add harness-engineering@community-agent-plugins/,
-  );
-});
-
-test("server-renders the LoopKit release", async () => {
-  const response = await render("/plugins/loopkit");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /LoopKit/);
-  assert.match(html, /loop-runner/);
-  assert.match(
-    html,
-    /codex plugin add loopkit@community-agent-plugins/,
-  );
-});
-
-test("server-renders the Citizen Forge release", async () => {
-  const response = await render("/plugins/citizen-forge");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Citizen Forge/);
-  assert.match(html, /citizen-release/);
-  assert.match(html, /questions such as &quot;is this safe\?&quot;/);
-  assert.match(
-    html,
-    /codex plugin add citizen-forge@community-agent-plugins/,
-  );
-});
-
-test("server-renders the Operating Graph release", async () => {
-  const response = await render("/plugins/operating-graph");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Operating Graph/);
-  assert.match(html, /graph-verify/);
-  assert.match(
-    html,
-    /codex plugin add operating-graph@community-agent-plugins/,
-  );
-  assert.match(
-    html,
-    /\/plugin install operating-graph@community-agent-plugins/,
-  );
-});
-
-test("server-renders the Gauntlet Loop release", async () => {
-  const response = await render("/plugins/gauntlet-loop");
-  assert.equal(response.status, 200);
-
-  const html = await response.text();
-  assert.match(html, /Gauntlet Loop/);
-  assert.match(html, /gauntlet-verify/);
-  assert.match(
-    html,
-    /codex plugin add gauntlet-loop@community-agent-plugins/,
-  );
-});
-
-test("publishes every plugin with exact manifest and runtime-host claims", async () => {
-  const codexMarketplace = JSON.parse(
-    readFileSync(
-      new URL("../.agents/plugins/marketplace.json", import.meta.url),
-      "utf8",
+    new RegExp(
+      "https://github.com/" +
+        owner +
+        "/plugins/tree/main/plugins/capability-operator",
     ),
   );
-  const claudeMarketplace = JSON.parse(
-    readFileSync(
-      new URL("../.claude-plugin/marketplace.json", import.meta.url),
-      "utf8",
+  assert.match(text, /Related plugins/);
+  const relatedCount = (html.match(/data-testid="related-plugin"/g) ?? []).length;
+  assert.ok(relatedCount > 0 && relatedCount <= 3);
+  assert.match(html, /aria-live="polite"/);
+});
+
+test("only renders install actions for each verified host", async () => {
+  const codexOnlyResponse = await render("/plugins/gauntlet-loop");
+  assert.equal(codexOnlyResponse.status, 200);
+  const codexOnlyHtml = await codexOnlyResponse.text();
+  assert.match(codexOnlyHtml, /data-install-host="Codex"/);
+  assert.doesNotMatch(codexOnlyHtml, /data-install-host="Claude Code"/);
+  assert.doesNotMatch(codexOnlyHtml, /data-install-host="Claude Cowork"/);
+  assert.match(
+    codexOnlyHtml,
+    new RegExp(
+      "codex plugin add gauntlet-loop@" + marketplaceName,
     ),
   );
-  const codexNames = codexMarketplace.plugins.map((plugin) => plugin.name).sort();
-  const claudeNames = claudeMarketplace.plugins
-    .map((plugin) => plugin.name)
-    .sort();
-  const hostSupport = JSON.parse(
-    readFileSync(
-      new URL("../docs/host-support.json", import.meta.url),
-      "utf8",
-    ),
+  assert.doesNotMatch(
+    codexOnlyHtml,
+    new RegExp("/plugin install gauntlet-loop@" + marketplaceName),
   );
 
-  assert.equal(codexNames.length, 22);
-  assert.deepEqual(claudeNames, codexNames);
+  const claudeOnlyResponse = await render("/plugins/gauntlet");
+  assert.equal(claudeOnlyResponse.status, 200);
+  const claudeOnlyHtml = await claudeOnlyResponse.text();
+  assert.doesNotMatch(claudeOnlyHtml, /data-install-host="Codex"/);
+  assert.match(claudeOnlyHtml, /data-install-host="Claude Code"/);
+  assert.match(claudeOnlyHtml, /data-install-host="Claude Cowork"/);
+  assert.doesNotMatch(
+    claudeOnlyHtml,
+    new RegExp("codex plugin add gauntlet@" + marketplaceName),
+  );
+  assert.match(
+    claudeOnlyHtml,
+    new RegExp("/plugin install gauntlet@" + marketplaceName),
+  );
+});
 
-  for (const name of codexNames) {
-    assert.equal(
-      existsSync(
-        new URL(`../plugins/${name}/.codex-plugin/plugin.json`, import.meta.url),
-      ),
-      true,
-      `${name} must include a Codex manifest`,
-    );
-    assert.equal(
-      existsSync(
-        new URL(`../plugins/${name}/.claude-plugin/plugin.json`, import.meta.url),
-      ),
-      true,
-      `${name} must include a Claude manifest`,
-    );
+test("renders all and only the public static plugin routes", async () => {
+  assert.equal(totals.plugins, 21);
+  assert.equal(totals.skills, 157);
+  assert.equal(visiblePlugins.length, 21);
 
-    const response = await render(`/plugins/${name}`);
-    assert.equal(response.status, 200, `${name} detail page must render`);
+  for (const plugin of visiblePlugins) {
+    const response = await render("/plugins/" + plugin.slug);
+    assert.equal(response.status, 200, plugin.slug + " detail page must render");
     const html = await response.text();
-    const runtimePlatforms = hostSupport[name].platforms;
+    const platforms = hostSupport[plugin.slug].platforms;
+
     assert.equal(
-      html.includes(`codex plugin add ${name}@community-agent-plugins`),
-      runtimePlatforms.includes("Codex"),
-      `${name} Codex install visibility must match verified runtime support`,
+      html.includes("codex plugin add " + plugin.slug + "@" + marketplaceName),
+      platforms.includes("Codex"),
+      plugin.slug + " Codex install visibility must match runtime support",
     );
     assert.equal(
-      html.includes(`/plugin install ${name}@community-agent-plugins`),
-      runtimePlatforms.includes("Claude Code"),
-      `${name} Claude Code install visibility must match verified runtime support`,
+      html.includes("/plugin install " + plugin.slug + "@" + marketplaceName),
+      platforms.includes("Claude Code"),
+      plugin.slug + " Claude Code install visibility must match runtime support",
     );
     assert.equal(
-      html.includes('platform-eyebrow">Claude Cowork'),
-      runtimePlatforms.includes("Claude Cowork"),
-      `${name} Cowork install visibility must match verified runtime support`,
+      html.includes('data-install-host="Claude Cowork"'),
+      platforms.includes("Claude Cowork"),
+      plugin.slug + " Cowork install visibility must match runtime support",
     );
+  }
+
+  const unknownResponse = await render("/plugins/not-a-public-plugin");
+  assert.equal(unknownResponse.status, 404);
+
+  const excludedResponse = await render(
+    "/plugins/matt-partok-bundled-plugin-for-knowledge-work",
+  );
+  assert.equal(excludedResponse.status, 404);
+});
+
+test("serves public discovery exports from the visible catalog", async () => {
+  const pluginsResponse = await render("/plugins.json");
+  assert.equal(pluginsResponse.status, 200);
+  const publicCatalog = await pluginsResponse.json();
+  assert.deepEqual(publicCatalog.counts, totals);
+  assert.equal(publicCatalog.plugins.length, 21);
+  assert.equal(publicCatalog.collections.length, 4);
+
+  const llmsResponse = await render("/llms.txt");
+  assert.equal(llmsResponse.status, 200);
+  const llms = await llmsResponse.text();
+  assert.match(llms, /Inventory: 21 plugins and 157 skills/);
+  assert.match(llms, /Install on Codex:/);
+  assert.match(llms, /Install on Claude Code:/);
+  assert.match(llms, /Install in Claude Cowork:/);
+
+  for (const value of [JSON.stringify(publicCatalog), llms]) {
+    assert.doesNotMatch(value, /matt-partok-bundled-plugin-for-knowledge-work/i);
+    assert.doesNotMatch(value, /Matt Partok Bundled Plugin For Knowledge Work/i);
   }
 });
