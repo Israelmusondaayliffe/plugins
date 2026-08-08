@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const versions = {
-  "agent-ops": "0.4.0",
+  "agent-ops": "0.4.1",
   "brand-world-studio": "0.2.0",
   "capability-operator": "0.4.1",
   "citizen-forge": "1.1.0",
@@ -13,7 +13,7 @@ const versions = {
   "founder-revenue-engine": "0.2.0",
   "gauntlet": "0.1.4",
   "gauntlet-loop": "1.1.0",
-  "harness-engineering": "2.3.1",
+  "harness-engineering": "2.3.2",
   "knowledge-work-superpowers": "0.2.1",
   "loopkit": "0.3.0",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",
