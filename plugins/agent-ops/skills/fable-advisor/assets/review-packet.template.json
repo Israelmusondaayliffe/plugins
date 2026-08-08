@@ -1,0 +1,54 @@
+{
+ "packet_type": "FableAdvisorReviewPacket",
+ "protocol_version": 1,
+ "run_id": "REPLACE-run-id",
+ "review_round": 1,
+ "verdict": "accepted",
+ "reviewed": [
+  {
+   "task_packet": {
+    "path": ".fable-advisor/runs/REPLACE-run-id/tasks/T1.task.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   },
+   "return_packet": {
+    "path": ".fable-advisor/runs/REPLACE-run-id/returns/T1.return.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  }
+ ],
+ "plan": {
+  "status": "approved",
+  "version": 1,
+  "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+ },
+ "candidate": [
+  {
+   "path": ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ ],
+ "reproduction_commands": [
+  {
+   "command": "REPLACE",
+   "exit_code": 0,
+   "evidence_path": ".fable-advisor/runs/REPLACE-run-id/evidence/review-1-cmd0.json",
+   "evidence_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ ],
+ "findings": [],
+ "reviewer_attestation": {
+  "agent_definition": "fa-reviewer",
+  "model": "claude-fable-5",
+  "effort": "xhigh",
+  "runtime_id": "REPLACE agent id",
+  "fresh_instance": true,
+  "spawn_record": {
+   "path": ".fable-advisor/runs/REPLACE-run-id/evidence/review-1.spawn.json",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "prior_review_runtime_ids": []
+ },
+ "uncertainties": [],
+ "next_action": "REPLACE"
+}

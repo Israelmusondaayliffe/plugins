@@ -1,0 +1,131 @@
+{
+ "packet_type": "FableAdvisorTaskPacket",
+ "protocol_version": 1,
+ "run_id": "REPLACE-run-id",
+ "task_id": "T1",
+ "run_manifest_path": ".fable-advisor/runs/REPLACE-run-id/run-manifest.json",
+ "run_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+ "plan": {
+  "status": "approved",
+  "version": 1,
+  "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+ },
+ "task": {
+  "classification": "complex",
+  "objective": "REPLACE",
+  "dependencies": []
+ },
+ "authorization": {
+  "task_id": "T1",
+  "classification": "complex",
+  "role": "worker",
+  "agent_definition": "fa-worker-complex",
+  "model": "claude-opus-4-8",
+  "effort": "xhigh",
+  "dependencies": [],
+  "allowed_write_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
+  ],
+  "input_paths": [
+   {
+    "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  ],
+  "expected_output": {
+   "description": "REPLACE",
+   "paths": [
+    ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md"
+   ]
+  },
+  "acceptance_criteria": [
+   {
+    "id": "C1",
+    "description": "REPLACE"
+   }
+  ],
+  "tools": [
+   "Read",
+   "Write",
+   "Edit",
+   "Glob",
+   "Grep",
+   "Bash"
+  ],
+  "evidence_commands": [
+   "REPLACE, for example: python3 -m pytest tests/"
+  ],
+  "stop_conditions": [
+   "scope violation",
+   "limit exhausted",
+   "missing input"
+  ],
+  "limits": {
+   "max_attempts": 3,
+   "max_turns": 80,
+   "max_elapsed_minutes": 60
+  }
+ },
+ "worker": {
+  "role": "worker",
+  "agent_definition": "fa-worker-complex",
+  "model": "claude-opus-4-8",
+  "effort": "xhigh",
+  "fresh_instance": true,
+  "mechanism": "agent_tool"
+ },
+ "input_paths": [
+  {
+   "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ ],
+ "expected_output": {
+  "description": "REPLACE",
+  "paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md"
+  ]
+ },
+ "acceptance_criteria": [
+  {
+   "id": "C1",
+   "description": "REPLACE"
+  }
+ ],
+ "tools": [
+  "Read",
+  "Write",
+  "Edit",
+  "Glob",
+  "Grep",
+  "Bash"
+ ],
+ "scope": {
+  "allowed_write_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
+  ],
+  "read_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/plan.md"
+  ]
+ },
+ "evidence_commands": [
+  "REPLACE, for example: python3 -m pytest tests/"
+ ],
+ "stop_conditions": [
+  "scope violation",
+  "limit exhausted",
+  "missing input"
+ ],
+ "limits": {
+  "max_attempts": 3,
+  "max_turns": 80,
+  "max_elapsed_minutes": 60
+ },
+ "context": {
+  "delivery": "bounded_packet_only",
+  "include_parent_transcript": false,
+  "include_hidden_reasoning": false,
+  "reference_paths": []
+ }
+}
