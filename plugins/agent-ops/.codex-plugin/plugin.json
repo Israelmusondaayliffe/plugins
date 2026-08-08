@@ -1,6 +1,6 @@
 {
   "name": "agent-ops",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
   "author": {
     "name": "Community Maintainers"

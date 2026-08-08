@@ -27,7 +27,13 @@ If activation is absent or revoked, use the normal routing owners (agent-ops-rou
 
 Every worker and reviewer runs under one of two mechanisms. Each spawn records its mechanism in the spawn record; the manifest's `runtime.spawn_mechanism` records the run default. Sessions are the point of this workflow: a separate session gives each worker genuinely fresh context and machine-checkable model attestation, so `headless` is the default and `agent_tool` exists only as a recorded downgrade.
 
-**`headless` (default).** Each worker and each reviewer round is its own Claude Code session via `claude -p`. Before first dispatch, write each needed role text (the body of the matching `fa-*` agent definition, frontmatter stripped) to `<run-root>/roles/<agent-name>.md`. Dispatch each task as a background process:
+**`headless` (default).** Each worker and each reviewer round is its own Claude Code session via `claude -p`. Before first dispatch, write each needed role text (the body of the matching `fa-*` agent definition, frontmatter stripped) to `<run-root>/roles/<agent-name>.md`, exactly:
+
+```bash
+awk 'flag; /^---$/{c++; if(c==2) flag=1}' <fa-agent-definition>.md > <run-root>/roles/<agent-name>.md
+```
+
+Dispatch each task as a background process:
 
 ```bash
 claude -p "TaskPacket: <packet path>. Run root: <run root>." \

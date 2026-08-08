@@ -452,7 +452,7 @@ export const plugins = [
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
     "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. Generic Goals and loops on any host are owned by LoopKit.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
