@@ -1,0 +1,123 @@
+{
+ "packet_type": "FableAdvisorRunManifest",
+ "protocol_version": 1,
+ "run_id": "REPLACE-run-id",
+ "mode": "standalone",
+ "activation": {
+  "type": "explicit",
+  "quoted_request": "REPLACE with the user's verbatim imperative",
+  "recorded_at": "1970-01-01T00:00:00Z"
+ },
+ "plan": {
+  "status": "approved",
+  "version": 1,
+  "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+ },
+ "goal": "REPLACE",
+ "criteria": [
+  {
+   "id": "C1",
+   "description": "REPLACE"
+  }
+ ],
+ "runtime": {
+  "claude_code_version": "REPLACE",
+  "entrypoint": "REPLACE (claude-desktop or cli)",
+  "parent_session_id": "REPLACE",
+  "parent_model": "claude-fable-5",
+  "spawn_mechanism": "agent_tool"
+ },
+ "task_dag": [
+  {
+   "task_id": "T1",
+   "dependencies": []
+  }
+ ],
+ "task_authorization": [
+  {
+   "task_id": "T1",
+   "classification": "complex",
+   "role": "worker",
+   "agent_definition": "fa-worker-complex",
+   "model": "claude-opus-4-8",
+   "effort": "xhigh",
+   "dependencies": [],
+   "allowed_write_paths": [
+    ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
+   ],
+   "input_paths": [
+    {
+     "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+   ],
+   "expected_output": {
+    "description": "REPLACE",
+    "paths": [
+     ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md"
+    ]
+   },
+   "acceptance_criteria": [
+    {
+     "id": "C1",
+     "description": "REPLACE"
+    }
+   ],
+   "tools": [
+    "Read",
+    "Write",
+    "Edit",
+    "Glob",
+    "Grep",
+    "Bash"
+   ],
+   "evidence_commands": [
+    "REPLACE, for example: python3 -m pytest tests/"
+   ],
+   "stop_conditions": [
+    "scope violation",
+    "limit exhausted",
+    "missing input"
+   ],
+   "limits": {
+    "max_attempts": 3,
+    "max_turns": 80,
+    "max_elapsed_minutes": 60
+   }
+  }
+ ],
+ "budget": {
+  "max_task_launches": 24,
+  "max_concurrency": 8,
+  "max_review_rounds": 3,
+  "max_repair_rounds": 3,
+  "max_elapsed_minutes": 240
+ },
+ "write_policy": {
+  "mode": "disjoint_targets",
+  "require_disjoint_active_scopes": true,
+  "allow_unlisted_writes": false,
+  "allowed_write_roots": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts"
+  ]
+ },
+ "prohibited_actions": [
+  "approve_work",
+  "issue_final_answer",
+  "issue_terminal_verdict",
+  "reviewer_repairs",
+  "spawn_peer_workers",
+  "contact_user",
+  "integrate_workstreams",
+  "modify_run_state"
+ ],
+ "authority": {
+  "state": "parent",
+  "budget": "parent",
+  "approval": "parent",
+  "integration": "parent",
+  "final_answer": "parent",
+  "terminal_verdict": "parent"
+ }
+}

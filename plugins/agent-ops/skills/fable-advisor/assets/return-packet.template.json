@@ -1,0 +1,63 @@
+{
+ "packet_type": "FableAdvisorReturnPacket",
+ "protocol_version": 1,
+ "run_id": "REPLACE-run-id",
+ "task_id": "T1",
+ "task_packet_path": ".fable-advisor/runs/REPLACE-run-id/tasks/T1.task.json",
+ "task_packet_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+ "plan": {
+  "status": "approved",
+  "version": 1,
+  "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+ },
+ "status": "succeeded",
+ "status_evidence": "REPLACE: what proves this status",
+ "scope": {
+  "allowed_write_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
+  ],
+  "writes_observed": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md"
+  ]
+ },
+ "artifacts": [
+  {
+   "path": ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "kind": "document"
+  }
+ ],
+ "criterion_results": [
+  {
+   "id": "C1",
+   "result": "met",
+   "evidence": "REPLACE"
+  }
+ ],
+ "commands": [
+  {
+   "command": "REPLACE",
+   "exit_code": 0,
+   "evidence_path": ".fable-advisor/runs/REPLACE-run-id/evidence/T1-cmd0.json",
+   "evidence_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ ],
+ "runtime_attestation": {
+  "agent_definition": "fa-worker-complex",
+  "requested_model": "claude-opus-4-8",
+  "requested_effort": "xhigh",
+  "runtime_id": "REPLACE agent or session id",
+  "spawn_record": {
+   "path": ".fable-advisor/runs/REPLACE-run-id/evidence/T1.spawn.json",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "model_record": {
+   "path": ".fable-advisor/runs/REPLACE-run-id/evidence/T1.model.json",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ },
+ "uncertainties": [],
+ "risks": [],
+ "next_action": "REPLACE"
+}
