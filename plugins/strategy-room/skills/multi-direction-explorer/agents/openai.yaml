@@ -1,0 +1,6 @@
+interface:
+  display_name: "Multi Direction Explorer"
+  short_description: "Use when the user asks for options, angles, names, concepts, prompts, creative..."
+  default_prompt: "$multi-direction-explorer Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Model Prompt Router"
+  short_description: "Routes production prompt work across generation, migration, diagnosis, benchm..."
+  default_prompt: "$model-prompt-router Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

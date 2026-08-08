@@ -1,0 +1,28 @@
+{
+  "plugin": "operating-graph",
+  "version": "0.2.0",
+  "explicit_only": true,
+  "skills": [
+    "graph-debug",
+    "graph-design",
+    "graph-engineering",
+    "graph-inspect",
+    "graph-rewrite",
+    "graph-run",
+    "graph-verify"
+  ],
+  "required_templates": [
+    "diamond-graph.json",
+    "graph.json",
+    "node-return-packet.json",
+    "node-task-packet.json",
+    "policies.json",
+    "thread-launch-record.json"
+  ],
+  "required_commands": [
+    "dispatch-preview",
+    "ingest-return",
+    "prepare-dispatch",
+    "record-launch"
+  ]
+}

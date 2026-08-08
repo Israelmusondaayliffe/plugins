@@ -2,7 +2,7 @@
 name: loopkit
 description: Route Claude Code, Claude Cowork, or Codex work among bounded loop design, execution, verification, resume, scheduled tasks, and diagnosis. Use when a user says build a loop, run this until done, make this recurring, resume the active run, schedule this task, verify the loop, diagnose repetition, or asks for a durable Plan-Act-Verify workflow with state on disk. Use this front door for multi-stage loop work. Do not use for quick one-shot questions, general agent architecture, or external agent CLI configuration.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

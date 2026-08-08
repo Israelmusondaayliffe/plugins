@@ -1,0 +1,63 @@
+{
+  "packet_type": "ReturnPacket",
+  "protocol_version": 1,
+  "run_id": "sol-advisor-example-001",
+  "task_id": "task-routine-001",
+  "task_packet_path": "task-packet.json",
+  "task_packet_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "plan": {
+    "status": "approved",
+    "version": 1,
+    "path": ".gauntlet/plan.md",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "status": "succeeded",
+  "status_evidence": {
+    "summary": "The criterion is met by the recorded test output.",
+    "evidence_path": "evidence/sol-advisor-return.txt",
+    "evidence_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "scope": {
+    "allowed_write_paths": ["/workspace/approved-root"],
+    "actual_write_paths": ["/workspace/approved-root"]
+  },
+  "artifacts": [
+    {
+      "path": "approved-root/artifacts/task-routine-001.md",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "kind": "implementation"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/sol-advisor-return.txt",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "kind": "test-output"
+    }
+  ],
+  "criterion_to_evidence": [
+    {
+      "criterion_id": "bounded-criterion",
+      "result": "met",
+      "evidence_paths": ["evidence/sol-advisor-return.txt"]
+    }
+  ],
+  "commands": [
+    {
+      "command": "python3 -m unittest tests.test_bounded_change",
+      "exit_code": 0,
+      "evidence_path": "evidence/sol-advisor-return.txt",
+      "evidence_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  ],
+  "uncertainties": [],
+  "risks": [],
+  "next_action": "Submit this report for the required independent review.",
+  "authority": {
+    "may_approve": false,
+    "may_integrate": false,
+    "may_update_state": false,
+    "may_update_budget": false,
+    "may_issue_final_verdict": false
+  }
+}

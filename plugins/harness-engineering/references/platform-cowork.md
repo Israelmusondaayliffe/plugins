@@ -24,7 +24,7 @@ Design rule: any state the harness needs next week must land in a connected fold
 
 ## Plugins and skills
 
-- A plugin is delivered as a `.plugin` file (a zip with `.claude-plugin/plugin.json` at the archive root). Sent in chat, it renders an install card; one press installs it for the user. This is the primary distribution path, ahead of marketplaces, folder copies, or manual moves.
+- A Cowork-compatible package is a deterministic ZIP archive with `.claude-plugin/plugin.json` at the archive root. Use the current app's custom-plugin upload or a configured marketplace. Do not claim that a chat attachment, folder, repository URL, or file extension alone installs a plugin without live proof from the current app.
 - Plugin structure follows the shared schema: `skills/*/SKILL.md`, optional `agents/`, optional `.mcp.json`, manifest in `.claude-plugin/`.
 - Skills use progressive disclosure: lean SKILL.md, depth in `references/`.
 - Namespaced plugin skills outrank loose copies of the same skill when both exist.
@@ -32,7 +32,7 @@ Design rule: any state the harness needs next week must land in a connected fold
 ## Verification
 
 - Structural: manifest parses, every skill directory has a valid SKILL.md, no placeholders.
-- Behavioral: the plugin appears in the user's plugin list after install, and a fresh task lists the namespaced skills in its capability inventory.
+- Behavioral: the plugin appears in the user's plugin list after install, and a fresh task lists the namespaced skills in its capability inventory. Static archive validation does not establish either result.
 - Contract files: prove they exist at the connected folder root and that the session actually read them, not that they merely exist.
 - There is no CLI validator inside a Cowork session. Verify structure with scripts in the sandbox and behavior from the live app surface.
 

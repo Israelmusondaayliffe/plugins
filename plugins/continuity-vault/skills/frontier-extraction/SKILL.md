@@ -3,7 +3,7 @@ name: frontier-extraction
 description: Extract a frontier model's judgment into durable artifacts before access ends, pricing changes, or a model window closes. Applies the irreversibility test (can a cheaper model redo this tomorrow, if yes skip it) then routes across five moves. WORKSPACE rewrites CLAUDE.md and skills as an operating manual a weaker model can execute. AUDIT runs a consultant-grade business audit into an executable roadmap. VAULT atomizes deep research into one-insight linked notes. GOALS fires capped, evidence-gated goal runs on the highest-value backlog. RECORDER installs an extract-approach habit that writes a learnings note per solved problem. Use when the user says extract before it is gone, last day with this model, bank this model's judgment, distill the model, write the standard down, make this survive the model change, or wants session learnings captured automatically.
 license: MIT
 metadata:
-  author: Israel A / The House of Curiosity
+  author: Community Maintainers
   version: 1.1.0
   source: Machina, Do this on your last day with Fable
 ---

@@ -75,13 +75,24 @@ class VerificationTests(unittest.TestCase):
         self.assertEqual(result.issues, [])
         self.assertEqual(result.evidence_artifact_ids, ["art-report"])
         event_types = [item.type.value for item in EventStore(self.run_directory, "run-001").read_all()]
-        self.assertEqual(event_types[-2:], ["verification.started", "verification.passed"])
+        self.assertEqual(
+            event_types[-3:],
+            ["verification.started", "verification.passed", "run.completed"],
+        )
+        state = RuntimeState.from_dict(
+            json.loads((self.run_directory / "state.json").read_text(encoding="utf-8"))
+        )
+        self.assertEqual(state.status, RunStatus.COMPLETED)
 
     def test_missing_deliverable_fails_against_the_original_goal(self) -> None:
         result = self.initialize(with_artifact=False).verify(timestamp=TIMESTAMP)
 
         self.assertEqual(result.status, VerificationStatus.FAIL)
         self.assertTrue(any("deliverable 'report'" in issue and "missing" in issue for issue in result.issues))
+        state = RuntimeState.from_dict(
+            json.loads((self.run_directory / "state.json").read_text(encoding="utf-8"))
+        )
+        self.assertEqual(state.status, RunStatus.RUNNING)
 
     def test_failed_artifact_integrity_check_fails(self) -> None:
         verifier = self.initialize()
@@ -122,6 +133,10 @@ class VerificationTests(unittest.TestCase):
 
         self.assertEqual(result.status, VerificationStatus.CONDITIONAL_PASS)
         self.assertTrue(any("non-critical node 'optional-helper' remains failed" in issue for issue in result.issues))
+        state = RuntimeState.from_dict(
+            json.loads((self.run_directory / "state.json").read_text(encoding="utf-8"))
+        )
+        self.assertEqual(state.status, RunStatus.COMPLETED)
 
     def test_terminal_deliverable_requires_evidence_provenance(self) -> None:
         result = self.initialize(with_evidence=False).verify(timestamp=TIMESTAMP)

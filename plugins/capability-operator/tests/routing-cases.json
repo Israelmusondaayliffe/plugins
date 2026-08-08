@@ -246,6 +246,96 @@
       "kind": "collision",
       "task": "Turn the existing website into a product launch video.",
       "expected": {"primary_route": "video-production-studio:website-to-video", "route_type": "plugin-skill", "plugin": "video-production-studio", "skill": "website-to-video", "companions": [], "excluded_routes": ["web-product-studio:web-product-router"]}
+    },
+    {
+      "id": "migrated-strategy-grill",
+      "kind": "focused",
+      "task": "Grill me on this decision before I commit.",
+      "expected": {"primary_route": "strategy-room:grill-me", "route_type": "plugin-skill", "plugin": "strategy-room", "skill": "grill-me", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-outcome-clarify",
+      "kind": "focused",
+      "task": "Run Outcome Engine and clarify this brief.",
+      "expected": {"primary_route": "outcome-engine:decision-grill", "route_type": "plugin-skill", "plugin": "outcome-engine", "skill": "decision-grill", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-wayfinder",
+      "kind": "focused",
+      "task": "Wayfind this large uncertain effort.",
+      "expected": {"primary_route": "strategy-room:decision-wayfinder", "route_type": "plugin-skill", "plugin": "strategy-room", "skill": "decision-wayfinder", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-to-spec",
+      "kind": "focused",
+      "task": "Turn this settled conversation into a spec.",
+      "expected": {"primary_route": "outcome-engine:to-outcome-brief", "route_type": "plugin-skill", "plugin": "outcome-engine", "skill": "to-outcome-brief", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-handoff",
+      "kind": "focused",
+      "task": "Create a durable handoff for a fresh task.",
+      "expected": {"primary_route": "continuity-vault:continuity-router", "route_type": "plugin-router", "plugin": "continuity-vault", "skill": "continuity-router", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-tdd",
+      "kind": "focused",
+      "task": "Use TDD for this change.",
+      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-hard-bug",
+      "kind": "focused",
+      "task": "Diagnose this hard bug.",
+      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-code-review",
+      "kind": "focused",
+      "task": "Review this code against the spec.",
+      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-architecture",
+      "kind": "focused",
+      "task": "Improve this codebase architecture.",
+      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-merge-conflict",
+      "kind": "focused",
+      "task": "Resolve these merge conflicts.",
+      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-bounded-research",
+      "kind": "focused",
+      "task": "Do bounded research for this decision.",
+      "expected": {"primary_route": "knowledge-work-superpowers:systematic-research", "route_type": "plugin-skill", "plugin": "knowledge-work-superpowers", "skill": "systematic-research", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "migrated-broad-research",
+      "kind": "focused",
+      "task": "Run broad research with a stop condition.",
+      "expected": {"primary_route": "knowledge-work-superpowers:systematic-research", "route_type": "plugin-skill", "plugin": "knowledge-work-superpowers", "skill": "systematic-research", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "near-miss-generic-planning",
+      "kind": "focused",
+      "task": "Make a simple plan for tomorrow.",
+      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "near-miss-generic-research",
+      "kind": "focused",
+      "task": "Research this topic.",
+      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "near-miss-generic-teaching",
+      "kind": "focused",
+      "task": "Explain photosynthesis in one paragraph.",
+      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
     }
   ]
 }

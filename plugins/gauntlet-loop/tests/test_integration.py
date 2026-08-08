@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import sys
 import tempfile
 import unittest
@@ -64,6 +65,7 @@ class IntegrationTests(unittest.TestCase):
                     "status": "compiled",
                     "version": 1,
                     "plan_version": 1,
+                    "plan_sha256": hashlib.sha256((root / "plan.md").read_bytes()).hexdigest(),
                     "project_type": "mixed",
                     "goal": "Prove the complete state path.",
                     "workstreams": [

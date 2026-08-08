@@ -1,9 +1,9 @@
 {
   "name": "web-product-studio",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "claude-code",

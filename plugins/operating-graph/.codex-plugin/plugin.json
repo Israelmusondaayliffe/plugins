@@ -1,10 +1,9 @@
 {
   "name": "operating-graph",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
   "author": {
-    "name": "Israel Ayliffe",
-    "url": "https://github.com/Israelmusondaayliffe"
+    "name": "Community Maintainers"
   },
   "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/operating-graph",
   "repository": "https://github.com/Israelmusondaayliffe/plugins",
@@ -25,7 +24,7 @@
     "displayName": "Operating Graph",
     "shortDescription": "Engineer and run adaptive agent organizations.",
     "longDescription": "Transforms complex goals into typed, executable agent graphs with shared state, evidence, verification, bounded runtime restructuring, and human authority controls.",
-    "developerName": "The House of Curiosity",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

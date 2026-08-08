@@ -1,83 +1,82 @@
 {
-  "name": "israel-plugins",
+  "name": "community-agent-plugins",
   "owner": {
-    "name": "Israel Ayliffe",
-    "url": "https://github.com/Israelmusondaayliffe"
+    "name": "Community Maintainers"
   },
   "metadata": {
-    "description": "Israel's plugin marketplace, dual format for Codex and Claude Code / Cowork."
+    "description": "A public plugin marketplace for Codex, Claude Code, and Claude Cowork."
   },
   "plugins": [
     {
       "name": "agent-ops",
       "source": "./plugins/agent-ops",
       "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "brand-world-studio",
       "source": "./plugins/brand-world-studio",
       "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "capability-operator",
       "source": "./plugins/capability-operator",
       "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.3.0",
+      "version": "0.4.1",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "citizen-forge",
       "source": "./plugins/citizen-forge",
       "description": "Governed internal application creation for non-technical owners, with deterministic policy and lifecycle controls.",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "continuity-vault",
       "source": "./plugins/continuity-vault",
       "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-      "version": "0.1.1",
+      "version": "0.2.1",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "data-storytelling-studio",
       "source": "./plugins/data-storytelling-studio",
       "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "founder-revenue-engine",
       "source": "./plugins/founder-revenue-engine",
       "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "gauntlet",
       "source": "./plugins/gauntlet",
       "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-      "version": "0.1.3",
+      "version": "0.1.4",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
@@ -86,126 +85,124 @@
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
       "version": "2.3.1",
       "author": {
-        "name": "Israel Ayliffe",
-        "url": "https://github.com/Israelmusondaayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "knowledge-work-superpowers",
       "source": "./plugins/knowledge-work-superpowers",
       "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-      "version": "0.1.1",
+      "version": "0.2.1",
       "author": {
-        "name": "Israel A."
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "loopkit",
       "source": "./plugins/loopkit",
       "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
-      "version": "0.2.1",
+      "version": "0.3.0",
       "author": {
-        "name": "Israel Ayliffe",
-        "url": "https://github.com/Israelmusondaayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "matt-partok-bundled-plugin-for-knowledge-work",
       "source": "./plugins/matt-partok-bundled-plugin-for-knowledge-work",
-      "description": "A Codex-native adaptation of Matt Pocock's complete promoted workflow, extended for coding and general knowledge work.",
-      "version": "1.0.2+codex.20260717203901",
+      "description": "Deprecated compatibility release of Matt Pocock's adapted workflow. Migrate to Strategy Room, Outcome Engine, Knowledge Work Superpowers, Continuity Vault, Capability Operator, Web Product Studio, and Harness Engineering.",
+      "version": "1.1.1",
       "author": {
-        "name": "Israel A."
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "model-evaluation-lab",
       "source": "./plugins/model-evaluation-lab",
       "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "model-prompt-lab",
       "source": "./plugins/model-prompt-lab",
       "description": "Verified model routing, production prompt architecture, migration audits, and benchmark design on Claude Code, Claude Cowork, and Codex.",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "operating-graph",
       "source": "./plugins/operating-graph",
       "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "outcome-engine",
       "source": "./plugins/outcome-engine",
       "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-      "version": "1.0.3",
+      "version": "1.1.1",
       "author": {
-        "name": "Israel A."
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "proofloop",
       "source": "./plugins/proofloop",
       "description": "Governed agent learning ledger and evaluation wrapper with bounded refinement, verification, quarantined memory, and read-only audit.",
-      "version": "0.1.3",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.1.2",
+      "version": "0.2.1",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "video-production-studio",
       "source": "./plugins/video-production-studio",
       "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.2.0",
+      "version": "0.3.1",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "writing-quality",
       "source": "./plugins/writing-quality",
       "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     },
     {
       "name": "gauntlet-loop",
       "source": "./plugins/gauntlet-loop",
       "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "author": {
-        "name": "Israel Ayliffe"
+        "name": "Community Maintainers"
       }
     }
   ]

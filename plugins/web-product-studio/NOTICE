@@ -1,0 +1,5 @@
+The code-production workflow includes rewritten debugging, test-first delivery,
+deep-module design, review-axis, and merge-intent concepts adapted from
+mattpocock/skills at revision 9603c1cc8118d08bc1b3bf34cf714f62178dea3b.
+The adapted concepts remain subject to the upstream MIT license and copyright
+notice. No upstream skill is copied wholesale.

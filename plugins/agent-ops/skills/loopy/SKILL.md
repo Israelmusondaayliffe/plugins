@@ -2,7 +2,7 @@
 name: loopy
 description: Explicit-only compatibility shim for the historical Loopy name. Use only when the user explicitly says Loopy or asks for the Loop Library workflow. Redirect generic loop design, run, verification, resume, and diagnosis, on Claude Code, Claude Cowork, or Codex, to LoopKit. Retain the bundled legacy references only for an explicitly requested Loop Library discovery or publication task.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 1.1.0-compat
 ---
 

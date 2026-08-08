@@ -5,6 +5,8 @@ description: Diagnose inadequate operating graph topology and propose or apply t
 
 # Graph Rewrite
 
+This Operating Graph skill is explicit-only. Load it only from a namespaced command, a genuine current Operating Graph imperative routed through `graph-engineering`, or an explicit plugin selection.
+
 Drafting a proposal file is read-only with respect to the run. Submitting it with `propose-rewrite` persists a controller-owned rewrite record. Applying it mutates graph versions and runtime state through the controller.
 
 1. Inspect triggering events and diagnose the topology failure.

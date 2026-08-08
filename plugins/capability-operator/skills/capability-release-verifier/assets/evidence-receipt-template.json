@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "capability": "capability-name",
+  "profile": "personal-plugin",
+  "source": "/absolute/path/to/source/checked-out-at-the-release-commit",
+  "version": "0.1.0",
+  "commit": "0123456789abcdef0123456789abcdef01234567",
+  "checks": [
+    {
+      "id": "bundle-validation",
+      "status": "passed",
+      "evidence": {
+        "kind": "command-result",
+        "record_path": "/absolute/path/to/hash-bound-command-evidence.json",
+        "record_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+      }
+    }
+  ]
+}

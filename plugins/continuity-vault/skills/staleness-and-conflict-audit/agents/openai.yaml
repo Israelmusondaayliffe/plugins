@@ -1,0 +1,6 @@
+interface:
+  display_name: "Staleness And Conflict Audit"
+  short_description: "Audits a bounded source set for stale claims, conflicting instructions, broke..."
+  default_prompt: "$staleness-and-conflict-audit Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

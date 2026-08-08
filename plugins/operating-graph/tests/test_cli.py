@@ -15,9 +15,11 @@ from unittest.mock import patch
 
 from scripts.graph_engine.artifacts import ArtifactRegistry
 from scripts.graph_engine.constants import Confidence, NodeStatus, RunStatus
+from scripts.graph_engine.dispatch import sha256_file
 from scripts.graph_engine.events import EventStore
 from scripts.graph_engine.models import Evidence, Graph, NodeRuntimeState, RuntimeState
 from scripts.graph_engine.rewrites import RewriteEngine
+from tests.test_dispatch import threaded_graph_data
 from tests.test_rewrites import TIMESTAMP, graph_data, node, operation
 
 
@@ -118,6 +120,105 @@ class GraphctlTests(unittest.TestCase):
             "inspect", str(run_directory), "--format", "mermaid"
         )
         self.assertIn("flowchart TD", mermaid["report"])
+
+    def test_fresh_thread_commands_form_a_complete_cli_protocol(self) -> None:
+        self.graph_path.write_text(json.dumps(threaded_graph_data()), encoding="utf-8")
+        run_directory = self.init_run()
+        for node_id in ("authority", "controller"):
+            for target in ("ready", "running", "succeeded"):
+                self.json_command("transition", str(run_directory), node_id, target)
+
+        preview = self.json_command("dispatch-preview", str(run_directory))
+        self.assertEqual(preview["readySubagentNodeIds"], ["researcher"])
+        prepared = self.json_command("prepare-dispatch", str(run_directory))
+        launch = prepared["launches"][0]
+        launch_input = self.root / "thread-launch.json"
+        launch_input.write_text(
+            json.dumps(
+                {
+                    "packetType": "ThreadLaunchRecord",
+                    "protocolVersion": 1,
+                    "runId": "run-threaded-test",
+                    "graphVersion": 1,
+                    "epoch": 1,
+                    "nodeId": "researcher",
+                    "attempt": 1,
+                    "taskPacketPath": "node-runs/researcher/attempt-1/task-packet.json",
+                    "taskPacketSha256": launch["taskPacketSha256"],
+                    "request": {
+                        **launch["launchSpec"],
+                        "reasoningEffort": None,
+                        "requestedAt": TIMESTAMP,
+                    },
+                    "response": {
+                        "successful": True,
+                        "agentId": "agent-cli-test",
+                        "canonicalTaskName": "/root/og_researcher_1",
+                        "respondedAt": TIMESTAMP,
+                        "error": None,
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        recorded = self.json_command(
+            "record-launch", str(run_directory), str(launch_input)
+        )
+        self.assertEqual(recorded["status"], "running")
+
+        artifact = run_directory / "artifacts/researcher/report.md"
+        artifact.parent.mkdir(parents=True, exist_ok=True)
+        artifact.write_text("bounded CLI result", encoding="utf-8")
+        attempt = run_directory / "node-runs/researcher/attempt-1"
+        task_packet = attempt / "task-packet.json"
+        launch_record = attempt / "thread-launch.json"
+        return_packet = attempt / "worker" / "return-packet.json"
+        return_packet.parent.mkdir(parents=True, exist_ok=True)
+        return_packet.write_text(
+            json.dumps(
+                {
+                    "packetType": "NodeReturnPacket",
+                    "protocolVersion": 1,
+                    "runId": "run-threaded-test",
+                    "graphVersion": 1,
+                    "epoch": 1,
+                    "nodeId": "researcher",
+                    "attempt": 1,
+                    "agentId": "agent-cli-test",
+                    "taskPacketPath": "node-runs/researcher/attempt-1/task-packet.json",
+                    "taskPacketSha256": sha256_file(task_packet),
+                    "launchRecordPath": "node-runs/researcher/attempt-1/thread-launch.json",
+                    "launchRecordSha256": sha256_file(launch_record),
+                    "status": "succeeded",
+                    "summary": "The CLI protocol result is complete.",
+                    "actualWritePaths": ["artifacts/researcher/report.md"],
+                    "artifacts": [{"artifactType": "report", "path": "artifacts/researcher/report.md", "sha256": sha256_file(artifact), "mediaType": "text/markdown"}],
+                    "evidence": [{"path": "artifacts/researcher/report.md", "sha256": sha256_file(artifact), "kind": "artifact-inspection"}],
+                    "criteria": [{"criterion": "Research is grounded.", "result": "met", "evidencePaths": ["artifacts/researcher/report.md"]}],
+                    "unresolvedIssues": [],
+                    "risks": [],
+                    "recommendedSignals": [],
+                    "authority": {
+                        "maySpawnWorkers": False,
+                        "mayApprove": False,
+                        "mayIntegrate": False,
+                        "mayUpdateControllerState": False,
+                        "mayAnswerUser": False,
+                        "mayIssueTerminalVerdict": False,
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        ingested = self.json_command(
+            "ingest-return", str(run_directory), str(return_packet)
+        )
+        self.assertEqual(ingested["nodeStatus"], "succeeded")
+        status = self.json_command("status", str(run_directory))
+        self.assertEqual(status["threads"][0]["agentId"], "agent-cli-test")
+        inspection = self.json_command("inspect", str(run_directory), "--format", "text")
+        self.assertIn("Fresh threads:", inspection["report"])
+        self.assertIn("fork=none", inspection["report"])
 
     def test_verify_command_returns_zero_only_for_pass_or_conditional_pass(self) -> None:
         run_directory = self.root / "complete-run"

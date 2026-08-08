@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brand Brief Builder"
+  short_description: "Turns approved business context, positioning, audience, references, and deliv..."
+  default_prompt: "$brand-brief-builder Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

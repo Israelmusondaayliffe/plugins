@@ -1,0 +1,6 @@
+interface:
+  display_name: "Analysis To Story Router"
+  short_description: "Routes checked analysis to the right notebook, chart, dashboard, report, deck..."
+  default_prompt: "$analysis-to-story-router Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

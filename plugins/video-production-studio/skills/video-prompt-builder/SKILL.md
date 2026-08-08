@@ -1,6 +1,6 @@
 ---
 name: video-prompt-builder
-description: "Build cinematic, shot-by-shot video prompts with effects breakdowns. Seedance 2.5 is the primary target model (30s single-pass, timestamp control, 30-image reference budget, extension, ultra-long, editing). Four modes. BUILD: brief to staged scripts or shot-by-shot prompts with effects timeline, inventory, density map, energy arc. ANIMATE: image-to-video, keyframe, Seedance native multi-reference (@Image N role binding), Character Bible Pipeline (Stages A-D: character, bible, storyboard, role-aware tags), video extension, Smart Edit prompts, joining clips. DECONSTRUCT: reverse-engineer described video into effects format. REMIX: transplant effects onto new subject. Seedance-native output ships as one paste-ready code block. Also covers Kling 3, Veo 3, Sora 2. Triggers on video prompt, seedance, seedance 2.5, one-take, oner, shot list, effects breakdown, animate this, image to video, keyframe, multi-image seedance, @image prompt, video extension, extend this video, ultra-long video, edit this video, smart edit, join clips, first and last frame, deconstruct video, remix video, storyboard reference, character bible pipeline, full video pipeline."
+description: "Build cinematic, shot-by-shot video prompts with effects breakdowns for Seedance 2.5, Kling 3, Veo 3, and Sora 2. BUILD turns a brief into staged scripts or prompts with effects timelines, density, and energy arcs. ANIMATE handles image-to-video, keyframes, multi-reference roles, character bibles, storyboards, extensions, edits, and clip joins. DECONSTRUCT converts a described video into the effects format. REMIX transfers an effects architecture to a new subject. Use for video prompts, one-takes, shot lists, animation, keyframes, extensions, edits, storyboards, reference pipelines, or full video workflows."
 ---
 
 # Video Prompt Builder
@@ -11,7 +11,7 @@ Build cinematic, shot-by-shot video prompts from creative briefs, uploaded refer
 
 ## Output Mandate
 
-**All shot prompts go in a single triple-backtick code block by default.** Shots are separated by `---` dividers inside that block, except Seedance-native staged scripts, which are already one continuous prompt. This is the format Israel inputs directly into Seedance and other generators, so the full sequence must be one pasteable unit.
+**All shot prompts go in a single triple-backtick code block by default.** Shots are separated by `---` dividers inside that block, except Seedance-native staged scripts, which are already one continuous prompt. This is the format accepted directly by Seedance and other generators, so the full sequence must be one pasteable unit.
 
 Only break shots into individual code blocks if the user explicitly asks for it.
 

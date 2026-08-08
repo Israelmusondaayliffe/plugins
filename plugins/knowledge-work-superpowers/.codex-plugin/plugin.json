@@ -1,9 +1,9 @@
 {
   "name": "knowledge-work-superpowers",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
   "author": {
-    "name": "Israel A."
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [
@@ -23,7 +23,7 @@
     "displayName": "Knowledge Work Superpowers",
     "shortDescription": "Evidence-first workflows for research, analysis, writing, and delivery",
     "longDescription": "Frame substantial knowledge work, plan it, research systematically, test claims against evidence, draft from sources, review the result, and verify it before delivery.",
-    "developerName": "Israel A.",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

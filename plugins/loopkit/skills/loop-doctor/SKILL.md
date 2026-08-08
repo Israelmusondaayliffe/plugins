@@ -2,7 +2,7 @@
 name: loop-doctor
 description: Diagnose and repair LoopKit loops that repeat, stall, drift, overrun limits, lose state, fail verification, misuse scheduling, or claim completion without evidence. Use when a user says the loop is stuck, keeps doing the same thing, wastes tokens, forgot progress, passed bad output, schedule drifted, or asks for a LoopKit audit. Preserve the intended outcome and change only material defects.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

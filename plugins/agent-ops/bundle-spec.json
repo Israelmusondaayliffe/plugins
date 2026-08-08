@@ -1,10 +1,11 @@
 {
   "plugin": "agent-ops",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "skills": [
     "agent-builder",
     "agent-ops-router",
     "agent-system-audit",
+    "sol-advisor",
     "cowork-handoff",
     "goal-runner",
     "loop-goal-engineer",
@@ -13,7 +14,8 @@
   ],
   "coordinator_skills": [
     "agent-ops-router",
-    "agent-system-audit"
+    "agent-system-audit",
+    "sol-advisor"
   ],
   "primary_skills": [
     "agent-builder",
@@ -21,15 +23,6 @@
     "agent-system-audit",
     "fable-advisor"
   ],
-  "compatibility_shims": {
-    "through": "0.3.x",
-    "remove_in": "0.5.0 (kept through 0.4.0; removal deferred, loopkit 0.2.x live)",
-    "skills": [
-      "goal-runner",
-      "loop-goal-engineer",
-      "loopy"
-    ]
-  },
   "companions": [
     "outcome-engine",
     "proofloop",

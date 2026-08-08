@@ -1,9 +1,9 @@
 {
   "name": "model-evaluation-lab",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",

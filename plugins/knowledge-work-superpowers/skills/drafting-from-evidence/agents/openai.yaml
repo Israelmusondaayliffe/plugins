@@ -1,0 +1,6 @@
+interface:
+  display_name: "Drafting From Evidence"
+  short_description: "Use when writing a report, brief, memo, comparison, recommendation, or synthe..."
+  default_prompt: "$drafting-from-evidence Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

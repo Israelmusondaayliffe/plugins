@@ -14,6 +14,7 @@ REQUIRED_SECTIONS = (
     "Success evidence",
     "Constraints",
     "Decisions",
+    "Blockers",
     "Out of scope",
     "Next action",
 )

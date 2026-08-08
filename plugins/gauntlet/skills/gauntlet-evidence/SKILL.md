@@ -2,7 +2,7 @@
 name: gauntlet-evidence
 description: Loads only when a gauntlet verification consensus exists on disk and the user explicitly asks for the gauntlet report, the gauntlet evidence report, or the receipts for a gauntlet run. Assembles EVIDENCE.md and EVIDENCE.json entirely from state files via script, with every number, path, command, and hash read from disk and never computed by the model. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

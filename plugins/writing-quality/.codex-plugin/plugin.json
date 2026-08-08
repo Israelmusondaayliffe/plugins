@@ -1,9 +1,9 @@
 {
   "name": "writing-quality",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",
@@ -15,7 +15,7 @@
     "displayName": "Writing Quality",
     "shortDescription": "Route and verify serious writing work.",
     "longDescription": "Writing Quality separates intent architecture, rewriting, detect-only review, claim support, and final prose validation so each request receives the smallest sufficient intervention.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": [

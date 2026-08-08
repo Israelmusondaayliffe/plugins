@@ -1,0 +1,6 @@
+interface:
+  display_name: "Continuity Router"
+  short_description: "Routes continuity work across extraction, durable-file promotion, knowledge g..."
+  default_prompt: "$continuity-router Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

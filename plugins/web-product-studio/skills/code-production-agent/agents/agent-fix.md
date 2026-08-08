@@ -42,6 +42,8 @@ The Planner's plan specifies the fix type, but verify:
 - Fix scope: minimum change that fixes the bug without side effects
 - Regression risk: what else could break
 
+Before editing, create the tightest reliable reproduction and run it. State one root-cause hypothesis and choose the smallest test that could disprove it. If it survives, make one bounded change, rerun the reproduction, then run the closest regression checks. Do not stack speculative fixes.
+
 **REFACTOR**: Code works but is hard to maintain.
 - Identify code smells: duplication, long functions, deep nesting, unclear naming
 - Group related changes (don't refactor everything at once)
@@ -59,6 +61,13 @@ The Planner's plan specifies the fix type, but verify:
 - Design target architecture (what it should be)
 - Plan migration path (how to get there without breaking things)
 - Separate concerns: data, logic, presentation, I/O
+
+**MERGE CONFLICT**: Two valid change histories overlap.
+- Read the base and both sides when available.
+- Reconstruct the intent and invariants of each change before editing markers.
+- Choose the combined behavior from intent, not from which side is newer or easier to compile.
+- Resolve one conflict cluster at a time and run focused tests for both intents.
+- Escalate when the intents are genuinely incompatible; do not invent product policy.
 
 Load `references/architecture-patterns.md` for target architecture patterns.
 Load `references/error-catalog.md` for common error patterns by language.
@@ -94,6 +103,8 @@ Load `references/error-catalog.md` for common error patterns by language.
 4. Remove circular dependencies
 5. Ensure each module has a single responsibility
 6. Add validation at layer boundaries
+
+Prefer deep modules: a narrow, stable interface that hides substantial complexity. Measure improvement by the reduced knowledge required by callers, not by the number of new files or layers.
 
 ### Step 4: Explain Every Change
 

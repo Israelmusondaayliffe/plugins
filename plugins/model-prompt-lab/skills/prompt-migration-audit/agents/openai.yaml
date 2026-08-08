@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prompt Migration Audit"
+  short_description: "Audits a prompt migration for stale model assumptions, unsupported parameters..."
+  default_prompt: "$prompt-migration-audit Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

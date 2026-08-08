@@ -1,6 +1,6 @@
 ---
 name: multi-direction-explorer
-description: Use when Israel asks for options, angles, names, concepts, prompts, creative directions, strategy paths, or broad variation. Produces meaningfully different directions instead of minor wording changes, then helps choose the strongest path.
+description: Use when the user asks for options, angles, names, concepts, prompts, creative directions, strategy paths, or broad variation. Produces meaningfully different directions instead of minor wording changes, then helps choose the strongest path.
 ---
 
 # Multi-Direction Explorer

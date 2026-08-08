@@ -13,39 +13,58 @@ export function CopyCommand({
   compact = false,
   label = "command",
 }: CopyCommandProps) {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
 
   async function copy() {
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
     try {
-      if (!navigator.clipboard) throw new Error("Clipboard API unavailable");
-      await navigator.clipboard.writeText(command);
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(command);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = command;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        const copied = document.execCommand("copy");
+        textarea.remove();
+        if (!copied) throw new Error("Fallback copy failed");
+      }
+      setStatus("copied");
     } catch {
-      const textarea = document.createElement("textarea");
-      textarea.value = command;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
+      setStatus("failed");
     }
+    window.setTimeout(() => setStatus("idle"), 1800);
   }
+
+  const buttonText =
+    status === "copied"
+      ? "Copied"
+      : status === "failed"
+        ? "Copy failed"
+        : "Copy";
+  const announcement =
+    status === "copied"
+      ? label + " copied to clipboard"
+      : status === "failed"
+        ? label + " could not be copied"
+        : "";
 
   return (
     <div className={"copy-command" + (compact ? " copy-command-compact" : "")}>
       <code>{command}</code>
       <button
-        aria-label={copied ? label + " copied" : "Copy " + label + ": " + command}
+        aria-label={
+          status === "idle" ? "Copy " + label + ": " + command : announcement
+        }
         onClick={copy}
         type="button"
       >
-        {copied ? "Copied" : "Copy"}
+        {buttonText}
       </button>
       <span className="sr-only" aria-live="polite">
-        {copied ? label + " copied to clipboard" : ""}
+        {announcement}
       </span>
     </div>
   );

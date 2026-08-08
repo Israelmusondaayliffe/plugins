@@ -1,0 +1,6 @@
+interface:
+  display_name: "Sol Advisor"
+  short_description: "Run an explicit fixed-topology packet workflow"
+  default_prompt: "Use $sol-advisor to run this bounded multi-thread session."
+policy:
+  allow_implicit_invocation: false

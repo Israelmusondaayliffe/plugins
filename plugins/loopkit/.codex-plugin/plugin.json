@@ -1,10 +1,9 @@
 {
   "name": "loopkit",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
   "author": {
-    "name": "Israel Ayliffe",
-    "url": "https://github.com/Israelmusondaayliffe"
+    "name": "Community Maintainers"
   },
   "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/loopkit",
   "repository": "https://github.com/Israelmusondaayliffe/plugins",
@@ -24,7 +23,7 @@
     "displayName": "LoopKit",
     "shortDescription": "Bounded loops with durable evidence on Claude Code, Cowork, and Codex.",
     "longDescription": "LoopKit turns repeatable work into bounded loops on Claude Code, Claude Cowork, and Codex. It creates durable contracts, runs evidence-gated iterations, restores compact checkpoints, prepares scheduled tasks on the host scheduling surface, and diagnoses stalled or unsafe runs.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [
       "Goals",
@@ -32,7 +31,7 @@
       "Lifecycle hooks",
       "Local state"
     ],
-    "websiteURL": "https://israel-codex-plugins.israelayliffe.chatgpt.site",
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins",
     "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
     "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
     "defaultPrompt": [

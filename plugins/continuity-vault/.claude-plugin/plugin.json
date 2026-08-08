@@ -1,9 +1,9 @@
 {
   "name": "continuity-vault",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "continuity",

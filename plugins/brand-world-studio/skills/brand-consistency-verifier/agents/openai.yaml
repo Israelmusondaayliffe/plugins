@@ -1,0 +1,6 @@
+interface:
+  display_name: "Brand Consistency Verifier"
+  short_description: "Checks a logo system, identity board, campaign series, or image set against a..."
+  default_prompt: "$brand-consistency-verifier Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

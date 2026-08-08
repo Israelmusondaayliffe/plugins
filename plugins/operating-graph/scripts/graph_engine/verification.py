@@ -17,11 +17,14 @@ from .constants import (
     NodeKind,
     NodeStatus,
     RiskLevel,
+    RunStatus,
     VerificationStatus,
 )
 from .events import EventChainError, EventStore
+from .dispatch import thread_history_issues
 from .invariants import validate_graph_versions
 from .models import Approval, Artifact, Graph, RuntimeState, VerificationResult
+from .state import StateMachine
 from .validation import parse_and_validate_rewritten_graph
 
 
@@ -212,6 +215,7 @@ class Verifier:
             current.to_dict(), original_graph=original
         )
         mandatory.extend(str(item) for item in rewrite_validation.violations)
+        mandatory.extend(thread_history_issues(self.run_directory, current, state))
 
         try:
             artifacts = registry.read_all()
@@ -307,6 +311,9 @@ class Verifier:
             state.graph_version,
             timestamp=timestamp,
         )
+        if status in (VerificationStatus.PASS, VerificationStatus.CONDITIONAL_PASS):
+            if state.status == RunStatus.RUNNING:
+                StateMachine(self.run_directory, state, store).complete_run(timestamp=timestamp)
         return VerificationResult.from_dict(result.to_dict())
 
 

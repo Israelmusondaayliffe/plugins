@@ -2,7 +2,7 @@
 name: loop-scheduler
 description: Prepare, activate, observe, pause, or remove a scheduled task (Codex scheduled tasks, or Claude Code scheduled cloud routines via /schedule) for a manually tested LoopKit run. Use when a user asks to schedule this loop, run it every day or week, make the workflow recurring, test an automation, or diagnose a scheduled LoopKit run. Uses the host scheduling surface, not cron or a shell loop.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

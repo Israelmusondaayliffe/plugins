@@ -2,7 +2,7 @@
 name: gauntlet-run
 description: Loads only when a gauntlet prompt and bar exist and the user explicitly says run the gauntlet, gauntlet run, gauntlet loop, or resume the gauntlet. Executes the gauntlet round loop as a deterministic state machine over disk state, spawning fresh-context builders and blind critics, running declared inspections, and writing every round durably before the next begins. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

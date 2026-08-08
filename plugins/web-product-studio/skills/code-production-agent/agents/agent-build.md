@@ -35,6 +35,14 @@ Implementation order matters. Build in dependency order:
 5. Integration layer (connecting pieces together)
 6. Error handling (wrap everything in defensive code)
 
+Within each approved behavior, use a red-green-refactor loop:
+
+1. Add the smallest meaningful test or check and run it to confirm the behavior is missing or broken.
+2. Make the smallest implementation change that makes that check pass.
+3. Refactor only after green, then rerun the focused check.
+
+Do not batch every test before every implementation. Preserve the initial failing output as evidence when practical.
+
 ### Step 3: Apply Defensive Coding
 
 Load `references/error-catalog.md` for language-specific patterns.

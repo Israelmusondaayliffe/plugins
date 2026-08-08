@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "record_type": "site-curation",
+  "site": {
+    "name": "Israel's Plugin Registry",
+    "identity": "Israel's Plugin Registry with the IA mark",
+    "description": "A public registry of IA plugins for Codex, Claude Code, and Claude Cowork."
+  },
+  "source": {
+    "codex_marketplace": ".agents/plugins/marketplace.json",
+    "claude_marketplace": ".claude-plugin/marketplace.json",
+    "runtime_support": "docs/host-support.json"
+  },
+  "visibility": {
+    "mode": "explicit-allowlist",
+    "visible_plugins": [
+      "knowledge-work-superpowers",
+      "outcome-engine",
+      "proofloop",
+      "writing-quality",
+      "capability-operator",
+      "citizen-forge",
+      "agent-ops",
+      "video-production-studio",
+      "web-product-studio",
+      "model-prompt-lab",
+      "strategy-room",
+      "brand-world-studio",
+      "founder-revenue-engine",
+      "continuity-vault",
+      "data-storytelling-studio",
+      "model-evaluation-lab",
+      "loopkit",
+      "harness-engineering",
+      "operating-graph",
+      "gauntlet-loop",
+      "gauntlet"
+    ],
+    "excluded_plugins": [
+      "matt-partok-bundled-plugin-for-knowledge-work"
+    ],
+    "exclusion_notes": {
+      "matt-partok-bundled-plugin-for-knowledge-work": {
+        "reason": "Keep the Matt bundle installable in the repository marketplace while excluding it from every public Site surface.",
+        "repository_preserved": true
+      }
+    }
+  },
+  "expected_totals": {
+    "plugins": 21,
+    "skills": 158
+  },
+  "collections": [
+    {
+      "slug": "build-and-create",
+      "name": "Build and create",
+      "description": "Make products, media, visual systems, and usable public artifacts.",
+      "plugins": [
+        "citizen-forge",
+        "web-product-studio",
+        "brand-world-studio",
+        "video-production-studio",
+        "founder-revenue-engine"
+      ]
+    },
+    {
+      "slug": "plan-and-run",
+      "name": "Plan and run",
+      "description": "Turn decisions into bounded plans, execution, revenue work, and verified runs.",
+      "plugins": [
+        "outcome-engine",
+        "loopkit",
+        "operating-graph",
+        "gauntlet-loop",
+        "gauntlet",
+        "agent-ops"
+      ]
+    },
+    {
+      "slug": "verify-and-govern",
+      "name": "Verify and govern",
+      "description": "Inspect systems, prove changes, and keep capability ownership and runtime claims clear.",
+      "plugins": [
+        "capability-operator",
+        "harness-engineering",
+        "model-evaluation-lab",
+        "proofloop"
+      ]
+    },
+    {
+      "slug": "think-communicate-and-preserve",
+      "name": "Think, communicate, and preserve",
+      "description": "Improve thinking, writing, prompting, and continuity across knowledge-work sessions.",
+      "plugins": [
+        "knowledge-work-superpowers",
+        "writing-quality",
+        "strategy-room",
+        "data-storytelling-studio",
+        "continuity-vault",
+        "model-prompt-lab"
+      ]
+    }
+  ]
+}

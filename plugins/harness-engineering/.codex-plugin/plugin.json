@@ -3,8 +3,7 @@
   "version": "2.3.1",
   "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
   "author": {
-    "name": "Israel Ayliffe",
-    "url": "https://github.com/Israelmusondaayliffe"
+    "name": "Community Maintainers"
   },
   "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/harness-engineering",
   "repository": "https://github.com/Israelmusondaayliffe/plugins",
@@ -23,8 +22,8 @@
   "interface": {
     "displayName": "Harness Engineering",
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
-    "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, contract files and .plugin delivery on Claude Cowork, AGENTS.md chains and marketplaces on Codex.",
-    "developerName": "Israel Ayliffe",
+    "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [
       "Interactive",

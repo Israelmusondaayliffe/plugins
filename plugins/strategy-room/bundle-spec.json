@@ -1,10 +1,11 @@
 {
   "plugin": "strategy-room",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "skills": [
     "assumption-challenger",
     "assumption-register",
     "decision-synthesizer",
+    "decision-wayfinder",
     "grill-me",
     "multi-direction-explorer",
     "strategy-room-router"
@@ -26,6 +27,13 @@
     "Irreversible choices with insufficient evidence remain conditional or blocked."
   ],
   "routing_cases": [
+    {
+      "kind": "success",
+      "prompt": "Wayfind this large uncertain effort and show me the next blocking decision.",
+      "expected_skill": "decision-wayfinder",
+      "evidence_file": "skills/strategy-room-router/references/workflow.md",
+      "evidence_contains": "wayfind: use decision-wayfinder"
+    },
     {
       "kind": "success",
       "prompt": "My decision is still vague and mostly in my head.",

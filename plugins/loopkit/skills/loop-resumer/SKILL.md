@@ -2,7 +2,7 @@
 name: loop-resumer
 description: Resume a nonterminal LoopKit run after interruption, restart, or context compaction by restoring its checkpoint and validating durable state. Use when a user says resume the loop, continue where it stopped, restore the active Goal, pick up after compaction, or recover a blocked or waiting run. Do not infer run state from chat memory.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

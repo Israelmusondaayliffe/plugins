@@ -1,0 +1,6 @@
+interface:
+  display_name: "Knowledge Promotion Policy"
+  short_description: "Decides whether extracted knowledge belongs in a durable file, project refere..."
+  default_prompt: "$knowledge-promotion-policy Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

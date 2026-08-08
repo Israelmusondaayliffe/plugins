@@ -1,0 +1,6 @@
+interface:
+  display_name: "Chart Message Audit"
+  short_description: "Audits whether each chart, dashboard panel, diagram, or visual caption suppor..."
+  default_prompt: "$chart-message-audit Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

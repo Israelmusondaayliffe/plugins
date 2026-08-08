@@ -1,9 +1,9 @@
 {
   "name": "capability-operator",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [
@@ -20,14 +20,13 @@
     "displayName": "Capability Operator",
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": [
       "Choose the right plugin or skill for this request.",
       "Inventory my current capabilities on this host.",
-      "Audit skill overlap without changing anything.",
-      "Verify that this plugin is visible in a clean task."
+      "Audit skill overlap without changing anything."
     ]
   }
 }

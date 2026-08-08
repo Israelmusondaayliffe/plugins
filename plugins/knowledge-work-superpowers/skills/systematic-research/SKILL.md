@@ -11,7 +11,9 @@ Answer important questions through an explicit evidence process. Search results 
 
 ## Research Gate
 
-Do not draft conclusions before defining the research questions and evidence standard. For simple one-source lookups, use the fast path and cite the direct source.
+Do not draft conclusions before defining the decision question, research questions, evidence standard, and stop condition. State what decision or deliverable the research must change. For simple one-source lookups, use the fast path and cite the direct source.
+
+Choose the research bound before searching: bounded research answers one decision question within named limits; broad research maps a field but still defines a saturation rule and excluded branches.
 
 ## Workflow
 
@@ -24,6 +26,8 @@ Break the brief into answerable questions. For each question, record:
 - Which source owns the fact.
 - What date or freshness range applies.
 - What would disconfirm the likely answer.
+
+Also record the overall stop condition, such as a source-owner answer, a minimum independent evidence threshold, a time boundary, or saturation with named remaining gaps.
 
 ### Phase 2: Source Routing
 
@@ -81,7 +85,7 @@ Do not treat the first coherent story as the final answer.
 
 ### Phase 7: Saturation Check
 
-Stop when additional searching is no longer changing the answer, the remaining gaps are named, and the evidence standard is met. Do not stop merely because enough sources have been collected.
+Stop when the predeclared condition is met: additional searching is no longer changing the decision-relevant answer, the remaining gaps are named, and the evidence standard is met. Do not stop merely because enough sources have been collected. If the bound expires first, return the strongest supported answer and the exact unresolved question rather than widening scope silently.
 
 ## Source Quality Questions
 
@@ -104,4 +108,4 @@ Ask:
 
 ## Handoff
 
-When the source ledger is ready, load `knowledge-work-superpowers:evidence-first-analysis` to test the claims. For independent question groups and permitted multi-agent work, load `knowledge-work-superpowers:dispatching-parallel-research`.
+When the source ledger is ready, load `knowledge-work-superpowers:evidence-first-analysis` to test the claims. For independent question groups and permitted multi-agent work, load `knowledge-work-superpowers:dispatching-parallel-research`. Route a durable fresh-task research handoff to Continuity Vault.

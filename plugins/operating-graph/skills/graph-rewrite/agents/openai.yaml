@@ -2,3 +2,5 @@ interface:
   display_name: "Graph Rewrite"
   short_description: "Propose and apply bounded graph rewrites"
   default_prompt: "Use $graph-rewrite to diagnose and propose the smallest safe graph rewrite."
+policy:
+  allow_implicit_invocation: false

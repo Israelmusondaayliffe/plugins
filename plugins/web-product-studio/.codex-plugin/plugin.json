@@ -1,9 +1,9 @@
 {
   "name": "web-product-studio",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "claude-code",
@@ -18,8 +18,8 @@
   "interface": {
     "displayName": "Web Product Studio",
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
-    "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. Runs on Claude Code, Claude Cowork, and Codex: rendered verification uses the in-app browser pane on Claude Code or the built-in Browser on Codex, with Playwright for repeatable automation.",
-    "developerName": "Israel Ayliffe",
+    "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
+    "developerName": "Community Maintainers",
     "category": "Developer Tools",
     "capabilities": [],
     "defaultPrompt": [

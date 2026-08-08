@@ -1,0 +1,6 @@
+interface:
+  display_name: "Systematic Research"
+  short_description: "Use when deep research, current or disputed facts, fact checking, literature..."
+  default_prompt: "$systematic-research Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

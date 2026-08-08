@@ -1,0 +1,6 @@
+interface:
+  display_name: "Using Knowledge Work Superpowers"
+  short_description: "Use when substantial non-coding work needs research, analysis, planning, writ..."
+  default_prompt: "$using-knowledge-work-superpowers Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

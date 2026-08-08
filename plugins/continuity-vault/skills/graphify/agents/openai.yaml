@@ -1,0 +1,6 @@
+interface:
+  display_name: "Graphify"
+  short_description: "Use for any question about a codebase, its architecture, file relationships,..."
+  default_prompt: "$graphify Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

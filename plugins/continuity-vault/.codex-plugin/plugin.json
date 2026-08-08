@@ -1,9 +1,9 @@
 {
   "name": "continuity-vault",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "continuity",
@@ -19,7 +19,7 @@
     "displayName": "Continuity Vault",
     "shortDescription": "Keep reusable knowledge findable and trustworthy on Claude Code, Claude Cowork, and Codex.",
     "longDescription": "Continuity Vault routes work through source-preserving extraction, governed promotion, relationship mapping, recall, and staleness audits while keeping workspace files authoritative. It runs on Claude Code, Claude Cowork, and Codex, and treats the host instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) plus workspace source files as the authority layer.",
-    "developerName": "Israel Ayliffe",
+    "developerName": "Community Maintainers",
     "category": "Productivity",
     "capabilities": [],
     "defaultPrompt": [

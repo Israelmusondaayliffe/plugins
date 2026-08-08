@@ -3,7 +3,7 @@ name: assumption-challenger
 description: Tier 3 research-first assumption challenger. Researches the subject deeply via web search to become a domain expert, builds a challenge plan, executes multi-lens scrutiny, triple-verifies findings against research, and ships a recommendations report. Use when user says "challenge assumptions," "analyze blind spots," "what am I missing," "critique this," "find contradictions," "stress test this," "what could go wrong," "tear this apart," or asks for rigorous adversarial review of plans, prompts, strategies, ideas, business cases, technical decisions, or AI prompts. Five-agent pipeline (researcher, planner, challenger, verifier, synthesizer). Three effort modes (light, standard, deep). Mandatory web search before challenge so the critique is grounded in current facts and expert disagreement, not training-data instinct.
 license: MIT
 metadata:
-  author: Israel A.
+  author: Community Maintainers
   version: 2.0.0
   tier: 3
 ---

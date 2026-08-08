@@ -7,7 +7,7 @@ learning records, governed memory review, and read-only audits.
 
 On Codex:
 
-    codex plugin add proofloop@israel-plugins
+    codex plugin add proofloop@community-agent-plugins
 
 On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/plugins`), then install `proofloop` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace.
 

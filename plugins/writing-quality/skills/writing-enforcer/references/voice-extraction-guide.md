@@ -161,10 +161,10 @@ Ask yourself:
 
 ## Known User Profiles
 
-### Israel A. Profile (Pre-Built)
+### Example Profile (Pre-Built)
 
 ```
-VOICE PROFILE: ISRAEL A.
+VOICE PROFILE: EXAMPLE WRITER
 ========================
 Tone: Curious, practical, collaborative, direct without warmth loss
 Sentence style: Short and punchy, fragments for emphasis

@@ -1,9 +1,9 @@
 ---
 name: writing-enforcer
-description: "Unified writing enforcer that removes AI patterns, preserves voice, injects soul, and ensures plain human-sounding prose. Combines humanizer, output-quality-enforcer, and anti-AI style detection into one workflow. Use when asked to humanize this, remove AI feel, make this sound like me, clean this up, too robotic, too generic, sound more human, or to improve any text that reads as AI-generated or over-polished. Two modes: DETECT (flag patterns only) and REWRITE (full pipeline, default). Applies Israel's law: simpler words always beat complex words. Enforces voice, soul, intent, and the 36-pattern AI-tell taxonomy. Runs deterministic scripts for em-dash removal and quality scoring."
+description: "Unified writing enforcer that removes AI patterns, preserves voice, injects soul, and ensures plain human-sounding prose. Combines humanizer, output-quality-enforcer, and anti-AI style detection into one workflow. Use when asked to humanize this, remove AI feel, make this sound like me, clean this up, too robotic, too generic, sound more human, or to improve any text that reads as AI-generated or over-polished. Two modes: DETECT (flag patterns only) and REWRITE (full pipeline, default). Applies the plain-language rule: simpler words always beat complex words. Enforces voice, soul, intent, and the 36-pattern AI-tell taxonomy. Runs deterministic scripts for em-dash removal and quality scoring."
 license: MIT
 metadata:
-  author: Israel A. / The House of Curiosity
+  author: Community Maintainers
   version: 1.0.0
   combines: humanizer, output-quality-enforcer-v3, avoid-ai-writing
 ---
@@ -14,7 +14,7 @@ Remove AI patterns, preserve voice, inject soul, enforce plain language. The sin
 
 ---
 
-## Israel's Law (Rule Zero)
+## Plain-Language Rule (Rule Zero)
 
 **Simple words win. Always.**
 

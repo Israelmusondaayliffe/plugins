@@ -4,6 +4,7 @@ Use one primary route per handoff.
 
 | Route | Use when | Primary skill or companion | Required evidence |
 | --- | --- | --- | --- |
+| `handoff` | A fresh task or delegated slice must continue without conversation history | `continuity-router` plus `task-handoff.md` | Source paths, current state, decisions, proof, open risks, next action |
 | `extract` | A task or source contains reusable decisions, procedures, or evidence | `frontier-extraction` | Source path or stable identifier |
 | `promote` | Extracted knowledge needs a durable destination decision | `knowledge-promotion-policy` | Source, authority, reuse case, owner |
 | `graph` | Relationships across sources are more important than linear notes | `graphify` | Named nodes and source-backed relationships |

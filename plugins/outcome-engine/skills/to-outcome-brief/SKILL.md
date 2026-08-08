@@ -17,7 +17,7 @@ Do not publish, submit, email, or create tracker items without separate authoriz
 
 1. Read the current conversation and the closest source of truth.
 2. Choose the brief type that matches the work. Keep the common Outcome Brief sections even when the title changes.
-3. Separate facts, decisions, assumptions, risks, and unresolved questions.
+3. Separate facts, decisions, assumptions, risks, unresolved questions, and blockers. Never bury a blocker inside prose or silently convert it into an assumption.
 4. State the outcome from the audience or user's point of view.
 5. Name observable success evidence. Avoid vague goals such as "better" unless a concrete check defines them.
 6. Record constraints, requirements, decisions, risks, scope limits, and the next action.
@@ -39,4 +39,4 @@ python3 scripts/validate_outcome_brief.py PATH
 
 ## Completion contract
 
-A complete brief has a clear outcome, named user or audience, proof of success, explicit constraints, settled decisions, scope limits, and one next action. It does not hide material unknowns or imply authorization for external actions.
+A complete brief has a clear outcome, named user or audience, proof of success, explicit constraints, settled decisions, visible blockers, scope limits, and one next action. It does not hide material unknowns, invent a choice for an unresolved dependency, or imply authorization for external actions.

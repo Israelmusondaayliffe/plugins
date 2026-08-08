@@ -1,9 +1,9 @@
 {
   "name": "writing-quality",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",

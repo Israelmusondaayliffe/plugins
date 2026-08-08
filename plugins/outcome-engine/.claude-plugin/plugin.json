@@ -1,9 +1,9 @@
 {
   "name": "outcome-engine",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
   "author": {
-    "name": "Israel A."
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [

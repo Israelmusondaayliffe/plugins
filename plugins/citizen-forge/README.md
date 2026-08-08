@@ -21,7 +21,7 @@ Add the public marketplace once, then install Citizen Forge:
 
 ```bash
 codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
-codex plugin add citizen-forge@israel-plugins
+codex plugin add citizen-forge@community-agent-plugins
 ```
 
 Start a new Claude Code, Claude Cowork, or Codex task after installation so the plugin skills appear in the task capability inventory.

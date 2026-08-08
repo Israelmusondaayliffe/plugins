@@ -22,12 +22,12 @@ On Claude 5 generation models the common defect in an inherited harness is over-
 
 ## Install
 
-Claude Cowork: install the delivered `harness-engineering.plugin` file from chat with one press, or install from your marketplace in the app.
+Claude Cowork: build a deterministic archive with the registry packager, then upload it through Claude Desktop's **Cowork** > **Customize** > **Plugins** flow. Static archive validation does not prove a live Cowork installation or fresh-task discovery.
 
 Claude Code:
 
 ```bash
-claude plugin install harness-engineering@israel-plugins
+claude plugin install harness-engineering@community-agent-plugins
 ```
 
 or test a local checkout with `claude --plugin-dir ./plugins/harness-engineering`.
@@ -36,7 +36,7 @@ Codex:
 
 ```bash
 codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
-codex plugin add harness-engineering@israel-plugins
+codex plugin add harness-engineering@community-agent-plugins
 ```
 
 Start a new task after installation so the plugin's skills appear in the task capability inventory.

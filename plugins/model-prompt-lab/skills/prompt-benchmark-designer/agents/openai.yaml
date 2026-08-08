@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prompt Benchmark Designer"
+  short_description: "Designs reproducible prompt benchmarks with success, boundary, and failure ca..."
+  default_prompt: "$prompt-benchmark-designer Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

@@ -2,7 +2,7 @@
 name: goal-runner
 description: Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Redirect Goal contract, execution, verification, and resume work, on Claude Code, Claude Cowork, or Codex, to the matching LoopKit skill. Generic goal or completion requests should trigger LoopKit directly.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 1.2.0-compat
 ---
 

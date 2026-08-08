@@ -116,6 +116,8 @@ Skills use three-level loading:
 2. **SKILL.md body.** Loaded when Claude determines the skill is relevant. Aim for under 500 lines.
 3. **Linked files.** Additional files Claude navigates only as needed. Unlimited size.
 
+Load `references/predictable-skill-writing.md` before drafting or pruning instructions. It defines invocation load, leading words, completion criteria, split tests, and deletion rules. Apply it before adding architecture: the smallest skill that passes its behavior cases is the preferred design.
+
 ### 5. Composability
 
 Skills must work alongside other skills. Avoid claiming exclusive ownership of broad task categories.
@@ -440,6 +442,9 @@ Comprehensive reliability patterns: deterministic-first, validation-heavy, templ
 
 ### references/quality-checklist.md
 Pre-packaging validation checklist by tier. Includes testing methodology, quality gates. **Load before packaging.**
+
+### references/predictable-skill-writing.md
+Instruction quality layer for trigger precision, leading words, progressive disclosure, completion criteria, splitting, and pruning. **Load before drafting, restructuring, or compacting a skill.**
 
 ### references/trigger-optimization.md
 Writing descriptions that trigger effectively. Keywords, use cases, action verbs, testing, automated pipeline. **Load when writing or improving descriptions.**

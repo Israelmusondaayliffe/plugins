@@ -2,7 +2,7 @@
 ## Version 3.0, build-ready
 
 Target: Claude Code (primary), Claude Cowork (packaged secondary).
-Author: Israel A. / The House of Curiosity.
+Author: Community Maintainers.
 Method source: Matt Shumer, "How to Run a Gauntlet Loop" (somethingbig.ai, 2026-07-27)
 and github.com/mshumer/Claude-of-Duty.
 

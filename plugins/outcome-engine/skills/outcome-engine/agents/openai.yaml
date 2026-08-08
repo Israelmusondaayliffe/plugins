@@ -1,0 +1,6 @@
+interface:
+  display_name: "Outcome Engine"
+  short_description: "Coordinate a path from unclear idea to verified result across research, writi..."
+  default_prompt: "$outcome-engine Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

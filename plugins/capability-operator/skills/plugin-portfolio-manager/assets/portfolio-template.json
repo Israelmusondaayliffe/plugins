@@ -2,7 +2,7 @@
   "plugins": [
     {
       "name": "example-plugin",
-      "owner": "Israel A.",
+      "owner": "Contributors",
       "purpose": "Single clear user outcome",
       "version": "0.1.0",
       "owned_skills": [],

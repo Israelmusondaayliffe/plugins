@@ -30,6 +30,10 @@ Brief type: [Choose the form that fits the work, such as specification, research
 
 - [Separate known risks from unresolved facts.]
 
+## Blockers
+
+- [Name any unresolved dependency that prevents the next action, its owner, and the evidence or decision needed to clear it. Write `None` when no blocker remains.]
+
 ## Out of scope
 
 - [State what this brief does not authorize or require.]

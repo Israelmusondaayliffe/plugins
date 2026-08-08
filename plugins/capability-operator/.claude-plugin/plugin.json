@@ -1,9 +1,9 @@
 {
   "name": "capability-operator",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [

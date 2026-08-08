@@ -2,7 +2,7 @@
 name: fable-5-production-prompter
 description: Generate, migrate, diagnose, and harden production prompts for Claude Fable 5 and Mythos 5 (claude-fable-5). Four routed modes. GENERATE builds new Fable 5 prompts with effort-aware defaults plus anti-overplanning, scope-restraint, and brevity guards. MIGRATE converts Opus 4.8/4.7/4.6 prompts and over-prescriptive skills via subtract-first depruning and reasoning-echo removal. DIAGNOSE fixes behavior drift (overplanning, fabricated progress, early stopping, context-budget anxiety, unrequested actions, refusal fallbacks, unreadable summaries). LONG-RUN builds multi-hour and multi-day autonomous harnesses with memory systems, verifier subagents, send_to_user tools, and parallel subagent orchestration. Covers effort levels, adaptive-thinking-only API, refusal stop reason with Opus 4.8 fallback, and dual-use safety classifiers. Triggers on Fable 5 prompt, Mythos 5, claude-fable-5, migrate to Fable 5, Claude 5 prompt, long-running agent harness, or any Fable 5 prompt engineering request.
 metadata:
-  author: The House of Curiosity
+  author: Community Maintainers
   version: 1.0.0
 ---
 

@@ -7,7 +7,7 @@
       "steps": [
         {
           "action": "Open the homepage",
-          "expected": "The page reports 17 plugins and 121 skills, and the catalog includes LoopKit and Harness Engineering.",
+          "expected": "The page reports 22 plugins and 180 skills, and the catalog includes LoopKit and Harness Engineering.",
           "evidence": "Rendered DOM assertion and production screenshot"
         }
       ],

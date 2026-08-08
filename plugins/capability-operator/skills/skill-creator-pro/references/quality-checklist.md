@@ -178,6 +178,9 @@ Compare with-skill vs without-skill:
 - [ ] Writing style: imperative form throughout
 - [ ] No TODO placeholders remain
 - [ ] Under 500 lines (content moved to references if longer)
+- [ ] Completion names an observable artifact or state plus its proof surface
+- [ ] Leading words make the workflow scannable
+- [ ] Every rule maps to a behavior case or documented boundary
 
 ### Scripts (if present)
 
@@ -206,6 +209,7 @@ Compare with-skill vs without-skill:
 - [ ] No placeholder files from init script
 - [ ] No test files included in package
 - [ ] Every file has clear purpose
+- [ ] No obsolete aliases, setup shims, or historical source layout remain
 
 ---
 

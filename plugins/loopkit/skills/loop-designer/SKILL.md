@@ -2,7 +2,7 @@
 name: loop-designer
 description: Design and initialize a bounded loop or goal contract (Codex Goals or Claude Code /goal) with observable completion, machine checks, authority boundaries, iteration limits, and named stop states. Use when a user asks to turn a recurring task into a loop, define a verifiable Goal, build a Plan-Act-Verify contract, or create durable loop state before execution. Do not use to run an existing contract.
 metadata:
-  author: Israel Ayliffe
+  author: Community Maintainers
   version: 0.1.0
 ---
 

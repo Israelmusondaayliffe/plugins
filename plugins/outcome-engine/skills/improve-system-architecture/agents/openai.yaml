@@ -1,0 +1,6 @@
+interface:
+  display_name: "Improve System Architecture"
+  short_description: "Review a workflow, project, knowledge base, operating process, plugin, produc..."
+  default_prompt: "$improve-system-architecture Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

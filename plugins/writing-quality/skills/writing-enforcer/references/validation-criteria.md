@@ -254,7 +254,7 @@ python scripts/quality_validator.py content.txt
 
 **With voice profile:**
 ```bash
-python scripts/quality_validator.py content.txt --voice-profile israel_a.json
+python scripts/quality_validator.py content.txt --voice-profile example_profile.json
 ```
 
 **Verbose output:**

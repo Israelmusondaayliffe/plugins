@@ -10,6 +10,8 @@ Route the request to the smallest useful capability. Chain phases only when the 
 ## Router
 
 - Unclear idea, unresolved tradeoffs, or pressure test: load `decision-grill`.
+- Mixed or ambiguous intake whose next mode is unclear: load `references/intake-triage.md`, then choose exactly one primary route.
+- High-risk assumption that should be tested before a full brief or build: load `references/bounded-test.md`, define the decision rule, then use `evidence-driven-delivery` for the test only.
 - Settled context that needs a durable brief: load `to-outcome-brief`.
 - Approved brief or plan that needs tasks, tickets, or work packages: load `to-action-slices`.
 - Approved slice that needs execution and proof: load `evidence-driven-delivery`.
@@ -37,6 +39,8 @@ Load `references/measurement-notes.md` when evaluating plugin cost, benchmark us
 - Do not create action slices from an unapproved or invalid brief.
 - Do not execute a slice without an observable acceptance check and proof surface.
 - Do not mark the plan complete until every required slice has fresh proof.
+- Do not execute more than one fresh-context-sized slice unless the task explicitly authorizes the next slice.
+- Route a durable cross-task or delegated-slice handoff to Continuity Vault instead of relying on conversation history.
 - Do not publish, send, assign, purchase, delete, or change external state without task-specific authorization.
 
 ## Resume logic

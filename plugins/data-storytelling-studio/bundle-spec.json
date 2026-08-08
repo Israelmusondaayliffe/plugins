@@ -1,6 +1,6 @@
 {
   "plugin": "data-storytelling-studio",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "skills": [
     "analysis-to-story-router",
     "chart-message-audit",

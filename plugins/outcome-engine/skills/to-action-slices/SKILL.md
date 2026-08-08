@@ -25,16 +25,17 @@ Examples:
 2. Identify the first thin path that exposes important unknowns early.
 3. Draft slices in dependency order. Give each slice a unique ID.
 4. For each slice, state its outcome, proof surface, acceptance checks, blockers, and boundaries.
-5. Add enabling work only when it is required for a complete slice. Prefer small preparation inside the slice that needs it.
-6. Present the proposed breakdown for a granularity and dependency check before creating external tickets or assigning work.
-7. Use `assets/action-slices-template.json` for a machine-checkable local plan.
-8. Validate a local plan with:
+5. Size each slice so a fresh context can understand, execute, and prove it from the brief plus the slice alone. If it cannot, split it or create a durable Continuity Vault handoff.
+6. Add enabling work only when it is required for a complete slice. Prefer small preparation inside the slice that needs it.
+7. Present the proposed breakdown for a granularity and dependency check before creating external tickets or assigning work.
+8. Use `assets/action-slices-template.json` for a machine-checkable local plan.
+9. Validate a local plan with:
 
 ```bash
 python3 scripts/validate_action_slices.py PATH
 ```
 
-9. Fix every validation failure before handoff.
+10. Fix every validation failure before handoff.
 
 ## Wide-change exception
 

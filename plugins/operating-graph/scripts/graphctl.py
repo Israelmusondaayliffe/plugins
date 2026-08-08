@@ -27,6 +27,15 @@ from scripts.graph_engine.artifacts import (  # noqa: E402
 )
 from scripts.graph_engine.constants import EventType, NodeStatus, RunStatus, VerificationStatus  # noqa: E402
 from scripts.graph_engine.events import EventChainError, EventStore  # noqa: E402
+from scripts.graph_engine.dispatch import (  # noqa: E402
+    PacketValidationError,
+    ingest_return,
+    prepare_dispatch,
+    preview_dispatch,
+    record_launch,
+    thread_evidence_summary,
+    thread_history_issues,
+)
 from scripts.graph_engine.invariants import validate_graph_versions  # noqa: E402
 from scripts.graph_engine.models import Approval, Graph, NodeRuntimeState, RewriteProposal, RuntimeState, VerificationResult  # noqa: E402
 from scripts.graph_engine.reporting import render_mermaid, render_text  # noqa: E402
@@ -180,6 +189,18 @@ def _parser() -> argparse.ArgumentParser:
     status.add_argument("run_directory")
     ready = command("ready")
     ready.add_argument("run_directory")
+    dispatch_preview = command("dispatch-preview")
+    dispatch_preview.add_argument("run_directory")
+    dispatch_preview.add_argument("--available-slots", type=int)
+    prepare = command("prepare-dispatch")
+    prepare.add_argument("run_directory")
+    prepare.add_argument("--available-slots", type=int)
+    launch = command("record-launch")
+    launch.add_argument("run_directory")
+    launch.add_argument("record")
+    returned = command("ingest-return")
+    returned.add_argument("run_directory")
+    returned.add_argument("packet")
     transition = command("transition")
     transition.add_argument("run_directory")
     transition.add_argument("node_id")
@@ -237,7 +258,7 @@ def _init(args: argparse.Namespace) -> CommandResult:
         },
     )
     RewriteEngine.initialize(run_directory, graph, state)
-    for directory in ("node-runs", "artifacts"):
+    for directory in ("node-runs", "artifacts", "runtime"):
         (run_directory / directory).mkdir(parents=True, exist_ok=True)
     _atomic_replace(
         run_directory / "policies.json",
@@ -256,6 +277,7 @@ def _status(args: argparse.Namespace) -> CommandResult:
         "graphName": graph.name,
         "state": state.to_dict(),
         "eventCount": len(store.read_all()),
+        "threads": thread_evidence_summary(Path(args.run_directory), graph, state),
     }
     return CommandResult(payload, json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
 
@@ -279,6 +301,61 @@ def _ready(args: argparse.Namespace) -> CommandResult:
         {"readyNodeIds": ids, "count": len(ids)},
         "Ready nodes: " + (", ".join(ids) if ids else "none") + "\n",
     )
+
+
+def _dispatch_preview(args: argparse.Namespace) -> CommandResult:
+    run_directory = Path(args.run_directory)
+    state, graph, store = _runtime(run_directory)
+    registry = ArtifactRegistry(run_directory, state.run_id, store)
+    nodes = preview_dispatch(
+        graph,
+        state,
+        registry,
+        _approvals(run_directory, state.run_id),
+        available_slots=args.available_slots,
+    )
+    payload = {
+        "readySubagentNodeIds": [node.id for node in nodes],
+        "count": len(nodes),
+        "mutated": False,
+    }
+    return CommandResult(payload, json.dumps(payload, indent=2) + "\n")
+
+
+def _prepare_dispatch(args: argparse.Namespace) -> CommandResult:
+    run_directory = Path(args.run_directory)
+    state, graph, store = _runtime(run_directory)
+    registry = ArtifactRegistry(run_directory, state.run_id, store)
+    launches = prepare_dispatch(
+        run_directory,
+        graph,
+        state,
+        store,
+        registry,
+        _approvals(run_directory, state.run_id),
+        available_slots=args.available_slots,
+    )
+    payload = {"launches": launches, "count": len(launches)}
+    return CommandResult(payload, json.dumps(payload, indent=2) + "\n")
+
+
+def _record_launch(args: argparse.Namespace) -> CommandResult:
+    run_directory = Path(args.run_directory)
+    state, graph, store = _runtime(run_directory)
+    result = record_launch(
+        run_directory, graph, state, store, Path(args.record)
+    )
+    return CommandResult(result, json.dumps(result, indent=2) + "\n")
+
+
+def _ingest_return(args: argparse.Namespace) -> CommandResult:
+    run_directory = Path(args.run_directory)
+    state, graph, store = _runtime(run_directory)
+    registry = ArtifactRegistry(run_directory, state.run_id, store)
+    result = ingest_return(
+        run_directory, graph, state, store, registry, Path(args.packet)
+    )
+    return CommandResult(result, json.dumps(result, indent=2) + "\n")
 
 
 def _transition(args: argparse.Namespace) -> CommandResult:
@@ -411,6 +488,15 @@ def _inspect(args: argparse.Namespace) -> CommandResult:
             f"- {node_id}: {runtime.status.value}"
             for node_id, runtime in sorted(state.node_states.items())
         )
+        threads = thread_evidence_summary(run_directory, graph, state)
+        if threads:
+            lines.append("Fresh threads:")
+            lines.extend(
+                f"- {item['nodeId']} attempt {item['attempt']}: {item['nodeStatus']}; "
+                f"fork={item['forkTurns']}; agent={item['agentId'] or 'unrecorded'}; "
+                f"return={item['returnStatus'] or 'pending'}"
+                for item in threads
+            )
         report = "\n".join(lines) + "\n"
     else:
         verification_path = run_directory / "verification.json"
@@ -448,6 +534,9 @@ def _resume_check(args: argparse.Namespace) -> CommandResult:
     version = Graph.from_dict(_read_json(version_path, runtime=True))
     if version.to_dict() != graph.to_dict():
         raise RuntimeCorruptionError("corrupt runtime: current graph differs from immutable version")
+    thread_issues = thread_history_issues(run_directory, graph, persisted)
+    if thread_issues:
+        raise PacketValidationError("; ".join(thread_issues))
     return CommandResult(
         {"resumable": True, "graphVersion": persisted.graph_version, "eventCount": len(store.read_all())},
         "Resume check: resumable\n",
@@ -459,6 +548,10 @@ _HANDLERS = {
     "init": _init,
     "status": _status,
     "ready": _ready,
+    "dispatch-preview": _dispatch_preview,
+    "prepare-dispatch": _prepare_dispatch,
+    "record-launch": _record_launch,
+    "ingest-return": _ingest_return,
     "transition": _transition,
     "register-artifact": _register_artifact,
     "signal": _signal,
@@ -513,6 +606,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         RetryRejectedError,
         ArtifactUnavailableError,
         UnsafeArtifactPathError,
+        PacketValidationError,
         ValueError,
     ) as error:
         _emit_error(str(error), EXIT_POLICY, json_requested)

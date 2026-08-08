@@ -1,0 +1,6 @@
+interface:
+  display_name: "Founder Revenue Router"
+  short_description: "Routes founder-led revenue work across recent signal research, ideal-customer..."
+  default_prompt: "$founder-revenue-router Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

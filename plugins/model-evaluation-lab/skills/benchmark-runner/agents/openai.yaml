@@ -1,0 +1,6 @@
+interface:
+  display_name: "Benchmark Runner"
+  short_description: "Executes or delegates a frozen model evaluation plan, records reproducible ru..."
+  default_prompt: "$benchmark-runner Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

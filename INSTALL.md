@@ -9,17 +9,17 @@ Run this once:
 
     codex plugin marketplace add Israelmusondaayliffe/plugins --ref main
 
-The marketplace name is israel-plugins.
+The marketplace name is community-agent-plugins.
 
 ## Install a plugin
 
 Use the plugin folder name shown in the catalog:
 
-    codex plugin add <plugin-name>@israel-plugins
+    codex plugin add <plugin-name>@community-agent-plugins
 
 For example:
 
-    codex plugin add model-prompt-lab@israel-plugins
+    codex plugin add model-prompt-lab@community-agent-plugins
 
 Start a new Codex task after installation. An already open task may keep the
 capability inventory it loaded before the plugin was installed.
@@ -33,11 +33,11 @@ trusted.
 
 Refresh the marketplace source:
 
-    codex plugin marketplace upgrade israel-plugins
+    codex plugin marketplace upgrade community-agent-plugins
 
 Install the desired plugin again:
 
-    codex plugin add <plugin-name>@israel-plugins
+    codex plugin add <plugin-name>@community-agent-plugins
 
 Start a new task to verify that the updated skills are visible.
 
@@ -60,7 +60,7 @@ No secrets are included in this repository.
 Add the marketplace and install a plugin from inside Claude Code:
 
     /plugin marketplace add Israelmusondaayliffe/plugins
-    /plugin install <plugin-name>@israel-plugins
+    /plugin install <plugin-name>@community-agent-plugins
 
 ## Claude Cowork
 

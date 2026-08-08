@@ -1,0 +1,7 @@
+interface:
+  display_name: "Decision Wayfinder"
+  short_description: "Maps uncertainty to the next blocking decision"
+  default_prompt: "Use $decision-wayfinder to map this uncertain effort and identify the next blocking decision."
+
+policy:
+  allow_implicit_invocation: false

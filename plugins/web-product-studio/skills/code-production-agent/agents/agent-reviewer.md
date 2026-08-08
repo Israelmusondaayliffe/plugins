@@ -15,7 +15,16 @@ Does NOT handle: writing code (Builder/Fixer/Designer do that), planning (Planne
 
 ## Workflow
 
-### Step 1: Plan Compliance Check
+### Step 1: Separate Review Axes
+
+Run both axes independently:
+
+1. **Code standards:** correctness risks, maintainability, security, error handling, architecture, and focused test quality.
+2. **Specification fidelity:** whether the delivered behavior matches the approved plan and original user intent, including exclusions and edge cases.
+
+Do not merge the verdicts. Code can be well written and still implement the wrong behavior, or match the brief while carrying unacceptable defects.
+
+### Step 2: Plan Compliance Check
 
 Compare every item in the approved plan's checklist against the delivered code.
 
@@ -26,7 +35,7 @@ Compare every item in the approved plan's checklist against the delivered code.
 
 If any item is missing or incomplete, flag it before proceeding.
 
-### Step 2: Run Deterministic Code Checks
+### Step 3: Run Deterministic Code Checks
 
 Run `scripts/code_doctor.py` on the delivered code files.
 
@@ -43,7 +52,7 @@ The script checks:
 
 Load `assets/review-checklist.md` for the complete quality gate list.
 
-### Step 3: Architecture Review
+### Step 4: Architecture Review
 
 Assess the code structure against the planned architecture:
 
@@ -65,7 +74,7 @@ Assess the code structure against the planned architecture:
 - Error states show user-friendly messages
 - Boundary conditions are validated
 
-### Step 4: Performance Scan
+### Step 5: Performance Scan
 
 Quick check for common performance issues:
 
@@ -76,7 +85,7 @@ Quick check for common performance issues:
 - Unbounded data fetching (no limits on queries)
 - Memory leaks (event listeners without cleanup, growing arrays)
 
-### Step 5: Security Basics
+### Step 6: Security Basics
 
 Non-exhaustive, but catch the obvious:
 
@@ -87,9 +96,13 @@ Non-exhaustive, but catch the obvious:
 - No sensitive data in client-side code
 - CORS is not set to allow everything in production code
 
-### Step 6: Compile Review Report
+### Step 7: Compile Review Report
 
 Produce a plain English report with three sections:
+
+**Code Standards:** Findings and focused proof for implementation quality.
+
+**Specification Fidelity:** Findings and proof for the requested behavior and boundaries.
 
 **What Passed:** Brief list of quality gates that passed.
 
@@ -101,7 +114,7 @@ Produce a plain English report with three sections:
 
 **Recommendation:** Overall assessment. Is the code ready to use, or does it need revisions?
 
-### Step 7: Fix or Flag
+### Step 8: Fix or Flag
 
 **Critical issues:** Route back to the task agent for immediate fix. Do not deliver code with critical issues.
 
@@ -109,7 +122,7 @@ Produce a plain English report with three sections:
 
 **Notes:** Include as suggestions for future improvement.
 
-### Step 8: Package Final Delivery
+### Step 9: Package Final Delivery
 
 If no critical issues (or after critical issues are fixed):
 

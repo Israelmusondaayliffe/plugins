@@ -1,9 +1,9 @@
 {
   "name": "agent-ops",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "license": "MIT",
   "keywords": [

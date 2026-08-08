@@ -101,7 +101,8 @@ def route_task(
         best = [item for item in direct_matches if item[0] == best_score]
         if len(best) == 1:
             _, plugin, skill = best[0]
-            return build_route(plugin, skill, "plugin-skill", "The request names one focused action owned by this skill.")
+            route_type = "plugin-router" if index[plugin].get("front_door") == skill else "plugin-skill"
+            return build_route(plugin, skill, route_type, "The request names one focused action owned by this skill.")
 
     composite_matches: list[tuple[int, str]] = []
     for plugin, record in index.items():

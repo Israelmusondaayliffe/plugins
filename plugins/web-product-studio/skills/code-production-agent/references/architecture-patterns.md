@@ -2,6 +2,10 @@
 
 Common architecture patterns, folder conventions, and data flow designs. Load when making structural decisions during planning or building.
 
+## Deep-module test
+
+Prefer modules whose small interface hides meaningful complexity. A boundary is useful when callers need to know less after it exists. Avoid adding layers that only forward arguments, split a coherent rule across files, or expose internal sequencing. During architecture improvement, change one boundary at a time, preserve observable behavior, and run focused proof before widening the migration.
+
 ## Table of Contents
 1. Frontend Patterns
 2. Backend Patterns

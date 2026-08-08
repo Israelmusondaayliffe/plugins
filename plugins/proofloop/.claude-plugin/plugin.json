@@ -1,9 +1,9 @@
 {
   "name": "proofloop",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Governed agent learning ledger and evaluation wrapper with bounded refinement, verification, quarantined memory, and read-only audit.",
   "author": {
-    "name": "Israel Ayliffe"
+    "name": "Community Maintainers"
   },
   "keywords": [
     "codex",

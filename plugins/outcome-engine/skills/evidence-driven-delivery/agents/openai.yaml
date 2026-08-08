@@ -1,0 +1,6 @@
+interface:
+  display_name: "Evidence Driven Delivery"
+  short_description: "Execute approved work one observable result at a time through a check-change-..."
+  default_prompt: "$evidence-driven-delivery Use this skill for the request."
+policy:
+  allow_implicit_invocation: false
