@@ -36,13 +36,13 @@ const repositorySkills = codexMarketplace.plugins.reduce(
 test("keeps the complete repository inventory separate from the Site inventory", () => {
   assert.equal(codexMarketplace.plugins.length, 22);
   assert.equal(claudeMarketplace.plugins.length, 22);
-  assert.equal(repositorySkills, 180);
+  assert.equal(repositorySkills, 181);
   assert.equal(curation.visibility.visible_plugins.length, 21);
   assert.equal(curation.visibility.excluded_plugins.length, 1);
   assert.equal(curation.expected_totals.plugins, 21);
-  assert.equal(curation.expected_totals.skills, 158);
+  assert.equal(curation.expected_totals.skills, 159);
   assert.equal(totals.plugins, 21);
-  assert.equal(totals.skills, 158);
+  assert.equal(totals.skills, 159);
 });
 
 test("excludes the Matt bundle from every generated Site surface", () => {

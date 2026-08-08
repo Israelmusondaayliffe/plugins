@@ -452,7 +452,7 @@ export const plugins = [
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
     "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. Generic Goals and loops on any host are owned by LoopKit.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -485,6 +485,10 @@ export const plugins = [
         "description": "Package a task as a self-contained prompt that Claude Cowork, or another agentic harness, runs on its own. Use when the user says give me the prompt for Cowork, wants work handed to Cowork or a second harness instead of executed here, or asks for a copy-paste brief another agent can complete without this session's context. Produces the handoff prompt, not the work itself."
       },
       {
+        "name": "fable-advisor",
+        "description": "Use only after the user explicitly says \"Use Fable Advisor\" or gives an equivalent imperative such as \"run this as a Fable Advisor multi-session run.\" Adaptive parent-orchestrated worker fleet with packet validation, exact-model workers, fresh Fable 5 review, and no implicit activation."
+      },
+      {
         "name": "goal-runner",
         "description": "Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Redirect Goal contract, execution, verification, and resume work, on Claude Code, Claude Cowork, or Codex, to the matching LoopKit skill. Generic goal or completion requests should trigger LoopKit directly."
       },
@@ -502,11 +506,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 8,
-      "assets": 13,
-      "references": 18,
-      "scripts": 10,
-      "files": 70
+      "skills": 9,
+      "assets": 17,
+      "references": 19,
+      "scripts": 11,
+      "files": 83
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1185,7 +1189,7 @@ export const plugins = [
       },
       {
         "name": "harness-maintainer",
-        "description": "Audit and update an existing harness after model changes, platform releases of Claude Code, Cowork, or Codex, plugin updates, repeated corrections, stale instructions, failed automations, or capability drift. Use for weekly, monthly, or quarterly harness reviews, model-jump audits, obsolete-skill removal, routing parity checks, maintenance planning, and safe in-place upgrades."
+        "description": "Audit and update an existing harness after model changes, platform releases of Claude Code, Cowork, or Codex, plugin updates, repeated corrections, stale instructions, failed automations, or capability drift. Use for weekly, monthly, or quarterly harness reviews, model-jump audits, obsolete-skill removal, routing parity checks, maintenance planning, safe in-place upgrades, and conservative cleanup of stale Claude Code cache, archived session logs, temporary data, shell snapshots, and inactive plugin cache versions via the bundled guarded cleanup script."
       },
       {
         "name": "harness-planner",
@@ -1216,8 +1220,8 @@ export const plugins = [
       "skills": 13,
       "assets": 7,
       "references": 12,
-      "scripts": 4,
-      "files": 61
+      "scripts": 5,
+      "files": 63
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1410,10 +1414,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 21,
-  "skills": 158,
-  "assets": 310,
-  "references": 441,
-  "scripts": 391,
-  "files": 1790
+  "skills": 159,
+  "assets": 314,
+  "references": 442,
+  "scripts": 393,
+  "files": 1805
 } as const;
 export type Plugin = (typeof plugins)[number];
