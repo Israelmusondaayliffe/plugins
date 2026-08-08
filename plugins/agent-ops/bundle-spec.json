@@ -1,6 +1,6 @@
 {
   "plugin": "agent-ops",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "skills": [
     "agent-builder",
     "agent-ops-router",
@@ -8,7 +8,8 @@
     "cowork-handoff",
     "goal-runner",
     "loop-goal-engineer",
-    "loopy"
+    "loopy",
+    "fable-advisor"
   ],
   "coordinator_skills": [
     "agent-ops-router",
@@ -17,11 +18,12 @@
   "primary_skills": [
     "agent-builder",
     "agent-ops-router",
-    "agent-system-audit"
+    "agent-system-audit",
+    "fable-advisor"
   ],
   "compatibility_shims": {
     "through": "0.3.x",
-    "remove_in": "0.4.0 after loopkit 0.2.0",
+    "remove_in": "0.5.0 (kept through 0.4.0; removal deferred, loopkit 0.2.x live)",
     "skills": [
       "goal-runner",
       "loop-goal-engineer",
@@ -64,5 +66,12 @@
       "evidence_file": "skills/cowork-handoff/SKILL.md",
       "evidence_contains": "The receiving harness is an agent"
     }
+  ],
+  "agents": [
+    "fa-worker-light",
+    "fa-worker-complex",
+    "fa-worker-complex-opus5",
+    "fa-worker-complex-46",
+    "fa-reviewer"
   ]
 }
