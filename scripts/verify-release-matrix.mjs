@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const versions = {
-  "agent-ops": "0.4.1",
+  "agent-ops": "0.4.2",
   "brand-world-studio": "0.2.0",
   "capability-operator": "0.4.1",
   "citizen-forge": "1.1.0",

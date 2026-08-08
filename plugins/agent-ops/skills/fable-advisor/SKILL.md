@@ -20,20 +20,43 @@ If activation is absent or revoked, use the normal routing owners (agent-ops-rou
 | Role | Runtime identity | Authority |
 | --- | --- | --- |
 | Parent | The activating session (expected model `claude-fable-5`) | Plan, obtain user approval, dispatch, validate packets, integrate, spawn reviewers, synthesize, claim completion, stop the run |
-| Worker | Fresh instance of `fa-worker-light` (`claude-sonnet-5`) or `fa-worker-complex` (`claude-opus-4-8` baseline; `fa-worker-complex-opus5` / `fa-worker-complex-46` only when the manifest authorizes it on recorded evidence) | Execute exactly one TaskPacket inside its write roots; run evidence commands; return a ReturnPacket. May delegate bounded lookups to its own nested subagents (one level). |
-| Reviewer | Fresh instance of `fa-reviewer` (`claude-fable-5`, xhigh), new instance every round, never resumed | Read the approved spec, candidate artifacts, and evidence; reproduce declared checks; return accepted, revise, blocked, or unable_to_verify. Read-only. |
+| Worker | Fresh instance per task carrying the `fa-worker-light` role (`claude-sonnet-5`) or the `fa-worker-complex` role (`claude-opus-4-8` baseline; `fa-worker-complex-opus5` / `fa-worker-complex-46` only when the manifest authorizes it on recorded evidence), spawned per Worker execution below | Execute exactly one TaskPacket inside its write roots; run evidence commands; return a ReturnPacket. May delegate bounded lookups to its own nested subagents (one level). |
+| Reviewer | Fresh instance carrying the `fa-reviewer` role (`claude-fable-5`, xhigh), new instance every round, never resumed, spawned per Worker execution below | Read the approved spec, candidate artifacts, and evidence; reproduce declared checks; return accepted, revise, blocked, or unable_to_verify. Read-only. |
+
+## Worker execution: sessions before subagents
+
+Every worker and reviewer runs under one of two mechanisms. Each spawn records its mechanism in the spawn record; the manifest's `runtime.spawn_mechanism` records the run default. Sessions are the point of this workflow: a separate session gives each worker genuinely fresh context and machine-checkable model attestation, so `headless` is the default and `agent_tool` exists only as a recorded downgrade.
+
+**`headless` (default).** Each worker and each reviewer round is its own Claude Code session via `claude -p`. Before first dispatch, write each needed role text (the body of the matching `fa-*` agent definition, frontmatter stripped) to `<run-root>/roles/<agent-name>.md`. Dispatch each task as a background process:
+
+```bash
+claude -p "TaskPacket: <packet path>. Run root: <run root>." \
+  --model <authorized model id> --effort <authorized effort> \
+  --append-system-prompt-file <run-root>/roles/<agent-name>.md \
+  --tools "Read,Write,Edit,Glob,Grep,Bash" \
+  --max-turns <40 light | 80 complex | 60 reviewer> \
+  --permission-mode acceptEdits --allowedTools "Bash" \
+  --add-dir <run root> <write roots> \
+  --output-format json > <run-root>/evidence/<task-id>.result.json
+```
+
+Reviewer rounds use `--tools "Read,Glob,Grep,Bash"` and `--disallowedTools "Write,Edit"`. `bypassPermissions` only when the approved manifest authorizes it explicitly. The saved result JSON is the attestation surface: its `session_id` is the spawn identity and its per-model usage/cost block is the model_record. Headless mode does not depend on agent-registry visibility at all.
+
+**`agent_tool` (recorded fallback only).** Used only when headless is unavailable (CLI unauthenticated or absent) and the approved manifest records the downgrade. Spawn `agent-ops:fa-*`; if plugin-qualified names are missing from the registry, identical user-scope `fa-*` definitions are acceptable — record which definition served. In-session model attestation is weaker (partially verified by design); ReturnPacket handling must say so.
+
+If neither mechanism is available, stop and ask (interactive) or end `blocked` (unattended). Never substitute a mechanism or model silently.
 
 Workers never approve, integrate, review, contact the user, or spawn peer workers. The reviewer never builds, repairs, writes, approves on the user's behalf, synthesizes, or becomes lead. A ReturnPacket is evidence, not acceptance. Only the parent produces the final answer, and only after an `accepted` verdict.
 
 ## Procedure
 
-1. **Audit.** Verify the runtime supports every model the run needs (Opus 5 requires Claude Code >= 2.1.219). Record runtime versions and session identity in the RunManifest. Fail closed on unsupported mappings: stop and ask, never substitute silently.
+1. **Audit.** Verify the runtime supports every model the run needs (Opus 5 requires Claude Code >= 2.1.219). Probe headless availability with a minimal `claude -p` call; on auth failure, ask the user to run `claude login` (interactive) or record a `spawn_mechanism: agent_tool` downgrade that the manifest approval must cover. Record runtime versions, session identity, and the chosen spawn mechanism in the RunManifest. Fail closed on unsupported mappings: stop and ask, never substitute silently.
 2. **Plan.** Decompose into a task DAG. Interview the user (knowing-your-unknowns) for shape-changing unknowns. Write the RunManifest from `assets/run-manifest.template.json` with finite limits, exact write roots, and per-task model authorization. Read `references/protocol.md` before writing packets.
 3. **Approve.** Present the RunManifest summary to the user and get explicit approval before any dispatch. No blanket approvals.
-4. **Dispatch adaptively.** For each ready task: write a TaskPacket, validate it (`python3 scripts/validate_packets.py --root RUN_ROOT PACKET.json`), spawn the worker in the background with the packet path as its brief, and write the spawn evidence record. Add workers as the DAG unblocks; retire them as tasks finish. Respect the manifest's concurrency and launch caps. Repo-mutating tasks use worktree isolation or serialized dependencies.
+4. **Dispatch adaptively.** For each ready task: write a TaskPacket, validate it (`python3 scripts/validate_packets.py --root RUN_ROOT PACKET.json`), spawn the worker in the background per Worker execution (headless session by default) with the packet path as its brief, and write the spawn evidence record. Add workers as the DAG unblocks; retire them as tasks finish. Respect the manifest's concurrency and launch caps. Repo-mutating tasks use worktree isolation or serialized dependencies.
 5. **Collect.** Validate every ReturnPacket. Check attestation (requested model versus observed model); a mismatch quarantines the task's artifacts and forces re-dispatch or a user decision. Retry failed tasks up to the packet's limit with fresh instances.
 6. **Assemble.** Integrate inside declared scopes only, serialize shared-file edits, freeze the candidate, and record its hashes.
-7. **Review.** Spawn a fresh `fa-reviewer` with only: the approved spec, the candidate paths and hashes, the evidence records, and the packet paths. Never planner reasoning or worker transcripts. Validate the ReviewPacket. After review returns, re-verify the candidate hashes; any change is an integrity failure that stops the run.
+7. **Review.** Spawn a fresh `fa-reviewer` instance (a new headless session per round by default) with only: the approved spec, the candidate paths and hashes, the evidence records, and the packet paths. Never planner reasoning or worker transcripts. Validate the ReviewPacket. After review returns, re-verify the candidate hashes; any change is an integrity failure that stops the run.
 8. **Revise loop.** On `revise`, write narrow repair TaskPackets bound to the findings, rebuild, and submit to a new fresh reviewer instance. Never reuse a reviewer agent ID across rounds. Stop at the manifest's round limit and report honestly.
 9. **Synthesize.** Only after `accepted`: the parent writes the final deliverable and the completion claim, citing verdicts and evidence.
 10. **Clean up.** Stop remaining background agents, remove unchanged worktrees, close the run record with status and costs, and announce output paths. Never delete evidence.
