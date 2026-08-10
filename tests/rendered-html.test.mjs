@@ -52,18 +52,18 @@ async function render(pathname = "/") {
   );
 }
 
-test("server-renders the IA registry identity and exact public discovery", async () => {
+test("server-renders the depersonalized registry identity and exact public discovery", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   const text = withoutReactMarkers(html);
-  assert.match(text, /Israel(?:&#x27;|')s Plugin Registry/);
-  assert.match(text, /\bIA\b/);
-  assert.match(text, /21 public plugins and 158 bundled skills/);
+  assert.match(text, /Community Agent Plugins/);
+  assert.match(text, /\bAP\b/);
+  assert.match(text, /21 public plugins and 159 bundled skills/);
   assert.match(text, /21<\/strong><span>Public plugins/);
-  assert.match(text, /158<\/strong><span>Bundled skills/);
+  assert.match(text, /159<\/strong><span>Bundled skills/);
   assert.match(text, /4<\/strong><span>Outcome collections/);
   assert.match(text, /3<\/strong><span>Verified hosts/);
   assert.match(text, /What changed/);
@@ -152,7 +152,7 @@ test("only renders install actions for each verified host", async () => {
 
 test("renders all and only the public static plugin routes", async () => {
   assert.equal(totals.plugins, 21);
-  assert.equal(totals.skills, 158);
+  assert.equal(totals.skills, 159);
   assert.equal(visiblePlugins.length, 21);
 
   for (const plugin of visiblePlugins) {
@@ -198,7 +198,7 @@ test("serves public discovery exports from the visible catalog", async () => {
   const llmsResponse = await render("/llms.txt");
   assert.equal(llmsResponse.status, 200);
   const llms = await llmsResponse.text();
-  assert.match(llms, /Inventory: 21 plugins and 158 skills/);
+  assert.match(llms, /Inventory: 21 plugins and 159 skills/);
   assert.match(llms, /Install on Codex:/);
   assert.match(llms, /Install on Claude Code:/);
   assert.match(llms, /Install in Claude Cowork:/);

@@ -13,15 +13,15 @@ Verification is outcome-first and required by risk, not universally. Start from 
 
 1. Read the profile and plan without relying on the builder's summary.
 2. Inspect current files, hashes, manifests, permissions, and backup evidence.
-3. Run every safe deterministic check exactly as approved.
-4. Verify skills and plugins with the platform's validator: `claude plugin validate` and `claude doctor` on Claude Code, structural checks plus the live plugin list on Cowork, the official skill validators and `codex plugin list` on Codex.
-5. Prove installed listing, source-cache parity where a cache exists, and fresh-task discovery.
+3. Verify the requested target-state delta and unresolved count before checking support machinery. A passing validator cannot override unresolved required work.
+4. Run the smallest safe deterministic check set approved for the changed surfaces.
+5. Verify only changed skills and plugins with the platform's validator: `claude plugin validate` and `claude doctor` on Claude Code, structural checks plus the live plugin list on Cowork, the official skill validators and `codex plugin list` on Codex. Then prove installed listing, source-cache parity where a cache exists, and fresh-task discovery.
 6. On Cowork, additionally prove that changed files were committed to the connected folder on the user's device, not only staged in the sandbox.
-7. For context changes, compare total and section-level prompt size, front doors, hidden specialists, duplicates, deterministic route coverage, and actual explicit invocation.
-8. Re-run the frozen behavior suite after installation and capability-policy changes that alter default task-start context. Do not rely on a pre-rollout candidate result, and do not re-prove surfaces the change did not touch.
-9. Test connectors, Browser, Computer Use, hooks, rules, or optional capability bundles only when the plan requires them.
+7. For context changes, compare only the prompt and routing surfaces affected by the change, followed by one final behavior run when the global chain changed.
+8. When independent criticism is required, use one fresh critic on the integrated result. Inspect intermediate pieces only when risk or a finding requires it.
+9. Test connectors, Browser, Computer Use, Artifacts, hooks, rules, or optional capability bundles only when they changed, supplied evidence, or are required by acceptance.
 10. Evaluate each judgment criterion with file, line, command, or live-surface evidence.
-11. Emit a receipt with one result per required check.
+11. Emit one compact receipt with one result per required check.
 
-Use `../../references/verification-standard.md`. Missing, skipped, stale, stubbed, or renamed checks fail verification.
+Use `../../references/verification-standard.md`. A required missing, skipped, stale, stubbed, or renamed check fails verification. Unrequired checks should not be invented.
 Use `../../references/frontier-first-prompt-governance.md` for prompt-subtraction and skill-pilot acceptance.

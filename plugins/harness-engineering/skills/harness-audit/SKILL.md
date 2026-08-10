@@ -12,12 +12,14 @@ Read current state before proposing changes. Do not record credential values or 
 1. Resolve the platform per `../../references/platform-matrix.md`, then read its platform file for the surfaces that exist there.
 2. Run the harness's own deterministic check script first, if one exists (a smoke or validation script under the home scripts directory, or one the workspace contract names). Each failure enters the findings as a verified fact with the script's output as evidence. Skip re-deriving by hand anything the script already proves.
 3. Identify the instruction chain for that platform: the CLAUDE.md chain on Claude Code, app instructions plus connected-folder contract files on Cowork, the AGENTS.md chain on Codex.
-4. Inventory config key names, rules, hooks, skills, plugins, MCP and connector names, templates, projects, memory surfaces, automations or scheduled tasks, and optional capability bundles.
+4. Inventory only the surfaces needed to answer the request. Use a full config, rules, hooks, skills, plugins, MCP, connector, templates, projects, memory, automation, and optional-capability inventory only when scope or risk justifies it.
 5. Check for conflicts, placeholders, stale paths, duplicated ownership, missing validators, untrusted hooks, unsupported settings, cross-platform assumptions ported on similarity, and absent evidence.
 6. Run the over-constraint pass with `context-doctor`. Reasoning-echo instructions rank first because they cause refusals rather than quality drag; verification instructions rank second.
 7. Classify findings across information, execution, and feedback layers.
 8. Separate verified facts, inferred risks, and user decisions.
-9. Produce `audit.json` plus a short gap summary. Make no changes.
+9. Produce the smallest decision-useful audit. `audit.json` is optional unless a downstream machine operation needs it. Make no changes.
+
+An audit is support work. It does not count as progress on an implementation request. Stop when the next safe target action is known.
 
 ## Promote repeat findings to the deterministic layer
 

@@ -1,6 +1,6 @@
 {
   "name": "capability-operator",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
   "author": {
     "name": "Community Maintainers"

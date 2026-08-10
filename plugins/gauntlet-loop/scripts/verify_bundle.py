@@ -79,8 +79,8 @@ def verify(root: Path) -> dict[str, object]:
     if manifest.get("name") != "gauntlet-loop":
         errors.append("manifest name must be gauntlet-loop")
     version = manifest.get("version", "")
-    if version != "1.1.0":
-        errors.append("manifest version must be 1.1.0")
+    if version != "1.2.0":
+        errors.append("manifest version must be 1.2.0")
     claude_manifest_path = root / ".claude-plugin" / "plugin.json"
     try:
         claude_manifest = json.loads(claude_manifest_path.read_text(encoding="utf-8"))

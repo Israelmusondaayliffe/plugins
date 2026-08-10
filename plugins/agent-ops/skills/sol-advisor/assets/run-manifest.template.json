@@ -3,6 +3,7 @@
   "protocol_version": 1,
   "run_id": "sol-advisor-example-001",
   "mode": "standalone",
+  "run_type": "implementation",
   "activation": "explicit",
   "plan": {
     "status": "approved",
@@ -101,6 +102,11 @@
       "model": "gpt-5.6-luna",
       "reasoning_effort": "max",
       "dependencies": [],
+      "work_type": "implementation",
+      "expected_observable_delta": "Create the approved bounded implementation artifact.",
+      "unresolved_before": 1,
+      "support_artifact_limit": 1,
+      "immediate_decision": null,
       "allowed_write_paths": ["/workspace/approved-root"],
       "input_paths": [
         {
@@ -132,11 +138,18 @@
     }
   ],
   "budget": {
-    "max_task_launches": 4,
-    "max_concurrency": 2,
+    "budget_scope": "full_user_request",
+    "max_task_launches": 6,
+    "max_concurrency": 4,
     "max_critic_rounds_per_workstream": 1,
     "max_repair_rounds_per_workstream": 1,
-    "max_elapsed_minutes": 120
+    "max_critic_rounds_total": 1,
+    "max_repair_rounds_total": 1,
+    "max_final_verification_passes": 1,
+    "max_elapsed_minutes": 120,
+    "critic_scope": "integrated_run",
+    "high_cost_override_approved": false,
+    "cost_warning": null
   },
   "write_policy": {
     "mode": "disjoint_targets",

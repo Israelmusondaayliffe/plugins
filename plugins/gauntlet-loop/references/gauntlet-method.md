@@ -16,6 +16,9 @@ Use the Gauntlet only after explicit invocation for work whose value justifies a
 8. State is updated after material events, not only at session boundaries.
 9. Resource ceilings are finite and extensions require user approval.
 10. The user retains final authority.
+11. Progress means integrated target-state change, not support artifacts.
+12. Required unresolved work prevents project completion.
+13. Low-risk workstreams may share one fresh integrated critic.
 
 ## Stage gates
 

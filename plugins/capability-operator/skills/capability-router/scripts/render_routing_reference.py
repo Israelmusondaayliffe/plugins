@@ -32,6 +32,7 @@ def render(registry: dict) -> str:
         "cross-plugin-router": "Unclear or cross-plugin ownership uses `capability-operator:capability-router`.",
         "namespaced-before-loose": "Prefer namespaced plugin skills; keep loose mirrors as explicit or visibility fallbacks.",
         "companions-at-handoff": "Load companions only at documented handoff points.",
+        "outcome-contract-preserved": "A selected plugin controls method, while the parent preserves the user's outcome and definition of done.",
         "connector-before-workflow": "Select the data-owning connector before the workflow plugin.",
     }
     for number, key in enumerate(registry["routing_precedence"], 1):

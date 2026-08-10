@@ -30,7 +30,7 @@ export default async function Home() {
     <>
       <header className="site-header shell">
         <Link className="wordmark" href="/" aria-label={site.name}>
-          <span className="wordmark-mark">IA</span>
+          <span className="wordmark-mark">AP</span>
           <span>{site.name}</span>
         </Link>
         <nav aria-label="Primary navigation">

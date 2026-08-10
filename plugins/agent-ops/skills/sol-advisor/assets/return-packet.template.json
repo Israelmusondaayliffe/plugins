@@ -46,13 +46,20 @@
     {
       "command": "python3 -m unittest tests.test_bounded_change",
       "exit_code": 0,
-      "evidence_path": "evidence/sol-advisor-return.txt",
-      "evidence_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      "evidence_mode": "inline",
+      "summary": "The bounded check passed.",
+      "evidence_path": null,
+      "evidence_sha256": null
     }
   ],
+  "observable_delta": "Created the approved bounded implementation artifact.",
+  "primary_output_count": 1,
+  "unresolved_before": 1,
+  "unresolved_after": 0,
+  "support_artifact_count": 1,
   "uncertainties": [],
   "risks": [],
-  "next_action": "Submit this report for the required independent review.",
+  "next_target_action": "Submit the integrated result for the single final critic pass.",
   "authority": {
     "may_approve": false,
     "may_integrate": false,

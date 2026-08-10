@@ -18,9 +18,9 @@ Require an explicit request to use Sol Advisor, or an imperative equivalent such
 | Parent | `gpt-5.6-sol` High | plan, approve, integrate, and answer |
 | Routine worker | `gpt-5.6-luna` Max | bounded routine implementation and test evidence |
 | Complex worker | `gpt-5.6-terra` Max | bounded complex implementation and test evidence |
-| Reviewer | fresh non-fork `gpt-5.6-sol` XHigh | workstream criticism only |
+| Reviewer | fresh non-fork `gpt-5.6-sol` XHigh | one integrated final criticism pass |
 
-Each worker must be created through a fresh `create_thread` call and may not spawn workers. The reviewer must be a new task, never a fork, and may not build, repair, write, approve, integrate, or issue a final verdict. Workers cannot issue an acceptance or final verdict. Missing model or effort support stops the affected run. Do not substitute a different model or effort.
+Topology slots are available roles, not mandatory launches. Dispatch the smallest finite worker set needed for direct deliverables. Each dispatched worker must be created through a fresh `create_thread` call and may not spawn workers. The reviewer is one new task, never a fork, that reviews the integrated result across low-risk workstreams. It inspects intermediate pieces only when risk or a finding requires it, and may not build, repair, write, approve, integrate, or issue a final verdict. Workers cannot issue an acceptance or final verdict. Missing model or effort support stops the affected run. Do not substitute a different model or effort.
 
 ## Packet contract
 
@@ -38,13 +38,15 @@ Read `assets/runtime-profiles.json` before creating a run and validate it with:
 
 The profile is an evidence contract, not a capability claim. It defines Codex, Claude Code, and Cowork separately for fresh-task creation, exact model and effort selection, scheduling, durable state, hooks, and clean-task discovery. A required capability may proceed only after its profile-required evidence is present. If a capability is unsupported, unavailable, or lacks current evidence, stop that dispatch or requested operation. Do not replace a missing host capability with a different model, a forked task, a local loop, or an inferred discovery result.
 
+Sol Advisor is the Codex-specific fixed-model profile. On Claude Code and Cowork, route equivalent explicit work to the public Fable Advisor profile instead of pretending that Codex task-creation semantics exist there.
+
 ## Context policy
 
 The 150K checkpoint is an observation checkpoint, not a configuration change, retry trigger, or automatic compaction boundary. Record either observed_above_without_crossing or telemetry-unavailable when those are the available facts. Do not invent numeric occupancy and do not alter the checkpoint configuration.
 
 ## Authority and stop rules
 
-- Use finite launch, concurrency, retry, critic-round, repair-round, and elapsed-time limits. One budget covers the full user request. Conservative defaults: at most six total worker or reviewer launches, four concurrent tasks, one integrated critic round, one repair round, and one compact final verification pass; higher limits require a concrete cost warning and explicit approval.
+- Use one finite budget for the full user request, including discovery, implementation, review, repair, and final verification. Conservative defaults are six total worker or reviewer launches, four concurrent tasks, one integrated critic round, one repair round, and one compact final verification pass. Higher limits require a concrete cost warning and explicit approval.
 - Execution against the requested target is the primary work. Audit-only workers are exceptional: each needs a named immediate decision, and they never outnumber implementation workers on an implementation run.
 - Keep task write scopes disjoint or serialize them. Stop on overlap.
 - Do not pass the full parent transcript or hidden reasoning to workers.
@@ -53,4 +55,4 @@ The 150K checkpoint is an observation checkpoint, not a configuration change, re
 
 ## Completion
 
-Return a ReturnPacket with status `succeeded`, `blocked`, `failed`, or `escalate`, plus the exact TaskPacket path and hash, artifact hashes, criterion-to-evidence mapping, actual scope, commands, evidence, uncertainties, risks, and the next action. A successful return also reports `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`; an empty observable delta, or unresolved required work that did not improve, is not implementation success. Do not label the work accepted.
+Return a ReturnPacket with status `succeeded`, `blocked`, `failed`, or `escalate`, plus the exact TaskPacket path and hash, artifact hashes, criterion-to-evidence mapping, actual scope, commands, evidence, uncertainties, risks, `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`. An implementation return cannot succeed with zero observable delta or, when unresolved work existed, no unresolved reduction. Do not label the work accepted.

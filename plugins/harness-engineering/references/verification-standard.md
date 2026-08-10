@@ -9,6 +9,7 @@ Completion requires fresh evidence from the installed environment. Verification 
 - The instruction chain (CLAUDE.md, contract files, or AGENTS.md per platform) resolves in the intended order.
 - Plugin and skill manifests contain no placeholders.
 - Generated files contain no secrets or user-specific sample data.
+- Support artifacts stay within the approved cap.
 
 ## Behavioral checks
 
@@ -17,12 +18,13 @@ Completion requires fresh evidence from the installed environment. Verification 
 - Every hidden specialist has a deterministic front-door route and at least one actual explicit-invocation smoke.
 - Command policy allows safe examples and blocks forbidden examples.
 - Hooks run only after review and trust.
-- Connectors return an authenticated profile or a precise setup requirement.
-- Optional capability bundles (browser, computer use, device bridge) are tested only when the harness depends on them.
+- Changed or task-relevant connectors return an authenticated profile or a precise setup requirement.
+- Browser, Computer Use, and Artifacts are tested when changed, used, or required by acceptance. They remain preferred for rendered web work, native UI work, and polished structured deliverables.
+- Required items have terminal states. `Needs review`, deferred, audit-only, and backfill-only remain incomplete unless approved as final.
 
 ## Completion receipt
 
-List every required check once. Include the command or inspection, fresh result, evidence path, and pass or fail status. A missing or stale check is a failure, not a clean no-op.
+List every required check once in one compact receipt. Include the command or inspection, fresh result, evidence path, and pass or fail status. A required missing or stale check is a failure, not a clean no-op. Do not create checks for unchanged surfaces.
 
 Evidence is risk-tiered. Summarize ordinary low-risk commands inline: command, exit code, one-line result. Reserve separate evidence files for destructive, security, release, installation, or similarly high-risk operations. Do not require repeated unchanged-state proofs, duplicated receipts, or runtime-generated verifier scripts per worker or surface family.
 

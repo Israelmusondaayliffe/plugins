@@ -23,16 +23,16 @@ The fixed Sol Advisor topology can run only where every required capability has 
 
 ## RunManifest
 
-The RunManifest is the approved packet constitution. It requires mode, explicit activation, an approved plan with version, root-relative path, and SHA-256. Validation loads that plan file and verifies the declared hash before accepting the remaining goal, criteria, topology, parent runtime attestation, exact task DAG and authorization, runtime mapping, finite launch/concurrency/time/critic/repair limits, write policy, prohibited actions, context policy, and authority ownership.
+The RunManifest is the approved packet constitution. It requires mode, run type, explicit activation, an approved plan with version, root-relative path, and SHA-256. Validation loads that plan file and verifies the declared hash before accepting the remaining goal, criteria, topology, parent runtime attestation, exact task DAG and authorization, runtime mapping, one full-request budget, write policy, prohibited actions, context policy, and authority ownership.
 
-The DAG and authorization use the same task IDs and dependencies. Each authorization binds the task role, model, effort, reviewer, inputs with hashes, expected output, acceptance criteria, tools, evidence commands, stop conditions, finite limits, and exact write roots. The fixed topology contains only these edges:
+The DAG and authorization use the same task IDs and dependencies. Each authorization binds the task role, model, effort, work type, expected observable delta, unresolved count, support-artifact limit, immediate decision for read-only tasks, reviewer, inputs with hashes, expected output, acceptance criteria, tools, evidence commands, stop conditions, finite limits, and exact write roots. The fixed topology contains only these edges:
 
 1. parent to routine worker
 2. parent to complex worker
 3. routine worker to reviewer
 4. complex worker to reviewer
 
-For standalone runs, the parent owns state, budget, approval, integration, final answer, and terminal verdict. For `gauntlet_composed` runs, every one of those surfaces belongs to Gauntlet.
+For standalone runs, the parent owns state, budget, approval, integration, final answer, and terminal verdict. For `gauntlet_composed` runs, every one of those surfaces belongs to Gauntlet. The default full-request budget allows six total worker or reviewer launches, four concurrent tasks, one integrated critic round, one repair round, and one final verification pass. Higher launch or concurrency caps require an explicit cost warning and approval. The absolute validator ceiling is 24 launches and 8 concurrent tasks.
 
 ## TaskPacket
 
@@ -44,11 +44,13 @@ Workers may implement, test, and return evidence only. They may not spawn worker
 
 A ReturnPacket reports work. Its only statuses are `succeeded`, `blocked`, `failed`, and `escalate`. It includes the source TaskPacket path and hash, actual scope, artifact paths and hashes, evidence, criterion-to-evidence mapping, commands, uncertainty, risks, and next action. The validator loads the referenced TaskPacket and requires exact run, task, plan, scope, artifact, command, and criterion bindings in both standalone and composed runs. Every artifact must exactly match an expected output and resolve beneath that TaskPacket's authorized write roots.
 
-Every command evidence file is a hash-verified `SolAdvisorCommandEvidence` JSON record. It binds the run, task, TaskPacket path and hash, exact command, exit code, and SHA-256 hashes of its recorded stdout and stderr. Packet validation checks that record; it does not execute a command or claim independent reproduction. Every status has status evidence. `succeeded` maps every criterion to `met` and requires every evidence command to exit zero; blocked, failed, and escalated returns map at least one criterion to the matching outcome and may record failed commands.
+Ordinary low-risk command results use one inline command summary. Separate hash-verified `SolAdvisorCommandEvidence` JSON records are reserved for destructive, security, release, or installation operations. Packet validation checks the selected record mode; it does not execute a command or claim independent reproduction. Every status has status evidence. `succeeded` maps every criterion to `met` and requires every evidence command to exit zero; blocked, failed, and escalated returns map at least one criterion to the matching outcome and may record failed commands.
+
+Every ReturnPacket records `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`. For implementation work, success requires a non-empty delta, at least one primary output, and a smaller unresolved count when unresolved work existed. Support artifacts may not exceed the task authorization limit.
 
 ## ReviewPacket
 
-A ReviewPacket is issued only by the fresh Sol XHigh workstream critic. Its only verdicts are `accepted`, `revise`, `blocked`, and `unable_to_verify`. It includes exact TaskPacket and ReturnPacket paths and hashes, plan path/version/hash, artifacts, evidence paths and hashes, recorded reproduction commands, structured findings, fresh task request and response attestation, uncertainties, risks, and next action. The reviewed artifact records must exactly equal the referenced ReturnPacket artifact set and remain within the TaskPacket write authority.
+A ReviewPacket is issued only by the fresh Sol XHigh critic. Its only verdicts are `accepted`, `revise`, `blocked`, and `unable_to_verify`. By default one reviewer task inspects the integrated final result across the run and may emit bounded packet summaries for affected workstreams. The same reviewer ID may therefore be shared across workstream authorizations. It includes exact TaskPacket and ReturnPacket paths and hashes, plan path/version/hash, artifacts, evidence paths and hashes, recorded reproduction commands, structured findings, fresh task request and response attestation, uncertainties, risks, and next action. The reviewed artifact records must exactly equal the referenced ReturnPacket artifact set and remain within the TaskPacket write authority.
 
 The reviewer remains read-only and non-terminal. An `accepted` verdict requires every reproduction command to exit zero. The reviewer may not build, repair, write, accept work on behalf of Gauntlet, update state or budget, integrate, or replace the three-perspective verification panel.
 
@@ -60,4 +62,4 @@ Task and review runtime attestation binds run ID, task ID, reviewer ID where app
 
 ## Failure handling
 
-Fail closed for implicit activation, model substitution, unavailable required runtime proof, unbounded limits, cycles, unauthorized task IDs, unresolved dependencies, exhausted budgets, unsafe or overlapping scopes, competing authority, and missing or hash-mismatched evidence.
+Fail closed for implicit activation, model substitution, unavailable required runtime proof, unbounded or impractically large unapproved limits, cycles, unauthorized task IDs, unresolved dependencies, exhausted budgets, unsafe or overlapping scopes, competing authority, zero-delta implementation success, support-artifact overflow, and missing or hash-mismatched evidence.

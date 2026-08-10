@@ -4,6 +4,8 @@
 
 Use this policy only when ownership is unclear or a request spans more than one personal plugin. A focused request should load the owned skill directly.
 
+Explicit selection chooses the operating method, not the definition of done. The parent retains the user's requested target state, unresolved-work accounting, resource cap, and final completion decision across every route and handoff.
+
 ## Collision decisions
 
 | Collision | Primary route | Later handoff or exclusion |
@@ -30,6 +32,8 @@ Use this policy only when ownership is unclear or a request spans more than one 
 ## Connector order
 
 Select the connector that owns the data first. Then select the workflow plugin that operates on the retrieved material. Connector choice does not decide workflow ownership.
+
+Browser, Computer Use, and Artifacts are first-class execution surfaces. Prefer them when they best fit rendered web state, native interfaces, or polished structured deliverables. Verify only surfaces used by the task or changed by the work.
 
 ## Fallbacks
 

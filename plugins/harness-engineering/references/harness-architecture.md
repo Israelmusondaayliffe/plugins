@@ -8,6 +8,8 @@
 
 A useful harness is balanced across all three. Do not compensate for missing verification by adding more instructions.
 
+For change requests, the target-state delta is the primary output. Information and feedback work support execution and stay smaller than it. Reports, packets, tests, receipts, and critics are not progress by themselves.
+
 ## Scope hierarchy
 
 Platform file names differ (see `platform-matrix.md`); the hierarchy does not:
@@ -37,6 +39,15 @@ Prefer the least-free mechanism that fits:
 8. Inference
 
 Repeated corrections should move toward deterministic enforcement. On platforms without hooks (Cowork), the ladder compresses: scripts run by contract become the top rung.
+
+## Work-first controls
+
+- One budget covers exploration, audit, implementation, review, repair, and final verification for the full request.
+- Use the smallest sufficient topology. More available agents do not imply more launches.
+- One integrated critic may cover several low-risk workstreams.
+- Stop after one low-yield wave when unresolved work does not fall.
+- Completion requires terminal results for required items. `Needs review`, deferred, audit-only, and backfill-only are incomplete unless the user approved that outcome.
+- Browser, Computer Use, and Artifacts remain preferred execution surfaces. Connector and artifact checks stay limited to changed or task-relevant surfaces.
 
 ## Context architecture
 

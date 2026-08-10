@@ -40,7 +40,7 @@ class HarnessCtlTests(unittest.TestCase):
                     {
                         "version": 2,
                         "plugins": {
-                            "agent-ops@israel-plugins": [
+                            "agent-ops@community-agent-plugins": [
                                 {"scope": "user", "installPath": "/x/agent-ops/0.5.0", "version": "0.5.0"}
                             ]
                         },
@@ -51,10 +51,10 @@ class HarnessCtlTests(unittest.TestCase):
             installed = harnessctl.installed_plugin_inventory(home)
             self.assertEqual(
                 [(item["name"], item["marketplace"], item["version"]) for item in installed],
-                [("agent-ops", "israel-plugins", "0.5.0")],
+                [("agent-ops", "community-agent-plugins", "0.5.0")],
             )
 
-            nested = home / "plugins" / "cache" / "israel-plugins" / "agent-ops" / "0.5.0" / ".claude-plugin"
+            nested = home / "plugins" / "cache" / "community-agent-plugins" / "agent-ops" / "0.5.0" / ".claude-plugin"
             nested.mkdir(parents=True)
             (nested / "plugin.json").write_text(json.dumps({"name": "agent-ops", "version": "0.5.0"}), encoding="utf-8")
             scanned = harnessctl.directory_plugin_inventory(home / "plugins" / "cache")
@@ -72,6 +72,23 @@ class HarnessCtlTests(unittest.TestCase):
                 "run_id": "test-run",
                 "allowed_roots": [str(root)],
                 "approval_groups": ["workspace"],
+                "outcome": {
+                    "primary_metric": "changed files",
+                    "before_state": "one file is outdated",
+                    "target_state": "the file is updated",
+                    "unresolved_before": 1,
+                    "unresolved_target": 0,
+                    "expected_primary_outputs": 2,
+                },
+                "resource_budget": {
+                    "max_task_launches": 0,
+                    "max_support_artifacts": 2,
+                    "max_verification_passes": 1,
+                    "max_low_yield_waves": 1,
+                    "high_cost_approved": False,
+                    "cost_warning": None,
+                },
+                "support_artifacts": ["dry.json", "apply.json"],
                 "operations": [
                     {
                         "id": "update-existing",
@@ -118,6 +135,23 @@ class HarnessCtlTests(unittest.TestCase):
                 "run_id": "drift",
                 "allowed_roots": [str(root)],
                 "approval_groups": ["global"],
+                "outcome": {
+                    "primary_metric": "changed files",
+                    "before_state": "one file is current",
+                    "target_state": "the file is changed",
+                    "unresolved_before": 1,
+                    "unresolved_target": 0,
+                    "expected_primary_outputs": 1,
+                },
+                "resource_budget": {
+                    "max_task_launches": 0,
+                    "max_support_artifacts": 1,
+                    "max_verification_passes": 1,
+                    "max_low_yield_waves": 1,
+                    "high_cost_approved": False,
+                    "cost_warning": None,
+                },
+                "support_artifacts": ["receipt.json"],
                 "operations": [
                     {
                         "id": "drifted",
@@ -164,6 +198,23 @@ class HarnessCtlTests(unittest.TestCase):
                 "run_id": "shape",
                 "allowed_roots": [str(root)],
                 "approval_groups": ["workspace"],
+                "outcome": {
+                    "primary_metric": "created files",
+                    "before_state": "file missing",
+                    "target_state": "file created",
+                    "unresolved_before": 1,
+                    "unresolved_target": 0,
+                    "expected_primary_outputs": 1,
+                },
+                "resource_budget": {
+                    "max_task_launches": 0,
+                    "max_support_artifacts": 0,
+                    "max_verification_passes": 1,
+                    "max_low_yield_waves": 1,
+                    "high_cost_approved": False,
+                    "cost_warning": None,
+                },
+                "support_artifacts": [],
                 "operations": [
                     {
                         "id": "bad",
@@ -175,6 +226,64 @@ class HarnessCtlTests(unittest.TestCase):
             }
             with self.assertRaises(harnessctl.HarnessError):
                 harnessctl.validate_operations(base)
+
+    def test_work_first_budget_rejects_unapproved_high_cost_plan(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            plan = {
+                "schema_version": 1,
+                "run_id": "high-cost",
+                "allowed_roots": [temp],
+                "approval_groups": [],
+                "outcome": {
+                    "primary_metric": "resolved items",
+                    "before_state": "ten unresolved items",
+                    "target_state": "zero unresolved items",
+                    "unresolved_before": 10,
+                    "unresolved_target": 0,
+                    "expected_primary_outputs": 10,
+                },
+                "resource_budget": {
+                    "max_task_launches": 7,
+                    "max_support_artifacts": 1,
+                    "max_verification_passes": 1,
+                    "max_low_yield_waves": 1,
+                    "high_cost_approved": False,
+                    "cost_warning": None,
+                },
+                "support_artifacts": [],
+                "operations": [],
+            }
+            with self.assertRaisesRegex(harnessctl.HarnessError, "high_cost_approved"):
+                harnessctl.validate_operations(plan)
+
+    def test_support_artifact_cap_is_enforced(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            plan = {
+                "schema_version": 1,
+                "run_id": "artifact-cap",
+                "allowed_roots": [temp],
+                "approval_groups": [],
+                "outcome": {
+                    "primary_metric": "resolved items",
+                    "before_state": "one unresolved item",
+                    "target_state": "zero unresolved items",
+                    "unresolved_before": 1,
+                    "unresolved_target": 0,
+                    "expected_primary_outputs": 1,
+                },
+                "resource_budget": {
+                    "max_task_launches": 0,
+                    "max_support_artifacts": 1,
+                    "max_verification_passes": 1,
+                    "max_low_yield_waves": 1,
+                    "high_cost_approved": False,
+                    "cost_warning": None,
+                },
+                "support_artifacts": ["one.json", "two.json"],
+                "operations": [],
+            }
+            with self.assertRaisesRegex(harnessctl.HarnessError, "support_artifacts exceeds"):
+                harnessctl.validate_operations(plan)
 
 
 if __name__ == "__main__":

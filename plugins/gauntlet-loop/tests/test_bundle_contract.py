@@ -24,6 +24,11 @@ class BundleContractTests(unittest.TestCase):
             metadata = (skill / "agents" / "openai.yaml").read_text(encoding="utf-8")
             self.assertIn("allow_implicit_invocation: false", metadata)
 
+    def test_sol_advisor_registration_uses_work_first_next_action(self) -> None:
+        adapter = (ROOT / "scripts" / "sol_advisor_adapter.py").read_text(encoding="utf-8")
+        self.assertIn("returned['next_target_action']", adapter)
+        self.assertNotIn("returned['next_action']", adapter)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,9 +2,9 @@
   "schema_version": 1,
   "record_type": "site-curation",
   "site": {
-    "name": "Israel's Plugin Registry",
-    "identity": "Israel's Plugin Registry with the IA mark",
-    "description": "A public registry of IA plugins for Codex, Claude Code, and Claude Cowork."
+    "name": "Community Agent Plugins",
+    "identity": "Community Agent Plugins with the AP mark",
+    "description": "A public registry of plugins for Codex, Claude Code, and Claude Cowork."
   },
   "source": {
     "codex_marketplace": ".agents/plugins/marketplace.json",

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "generated_on": "2026-08-05",
-  "expected_owned_skill_count": 115,
+  "generated_on": "2026-08-10",
+  "expected_owned_skill_count": 116,
   "required_plugins": [
     "agent-ops",
     "brand-world-studio",
@@ -27,6 +27,7 @@
     "cross-plugin-router",
     "namespaced-before-loose",
     "companions-at-handoff",
+    "outcome-contract-preserved",
     "connector-before-workflow"
   ],
   "external_companions": [
@@ -366,6 +367,7 @@
         "agent-ops-router",
         "agent-system-audit",
         "cowork-handoff",
+        "fable-advisor",
         "goal-runner",
         "loop-goal-engineer",
         "loopy",
@@ -407,6 +409,12 @@
           "triggers": [
             "prompt for cowork to run"
           ]
+        },
+        {
+          "skill": "fable-advisor",
+          "triggers": [
+            "use fable advisor on claude code"
+          ]
         }
       ],
       "companions": [
@@ -415,7 +423,8 @@
       ],
       "handoffs": [
         "Send approved generic Goal and loop execution contracts to LoopKit.",
-        "Use ProofLoop only after an explicit request for learning and quarantined memory."
+        "Use ProofLoop only after an explicit request for learning and quarantined memory.",
+        "Preserve the parent-owned target state, unresolved-work count, and full-request budget across every Agent Ops route."
       ],
       "exclusions": [
         "Do not own generic host Goal, loop, resume, verification, or scheduling work.",

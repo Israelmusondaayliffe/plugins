@@ -3,5 +3,22 @@
   "run_id": "replace-me",
   "allowed_roots": [],
   "approval_groups": [],
+  "outcome": {
+    "primary_metric": "replace-me",
+    "before_state": "replace-me",
+    "target_state": "replace-me",
+    "unresolved_before": 1,
+    "unresolved_target": 0,
+    "expected_primary_outputs": 1
+  },
+  "resource_budget": {
+    "max_task_launches": 1,
+    "max_support_artifacts": 2,
+    "max_verification_passes": 1,
+    "max_low_yield_waves": 1,
+    "high_cost_approved": false,
+    "cost_warning": null
+  },
+  "support_artifacts": [],
   "operations": []
 }

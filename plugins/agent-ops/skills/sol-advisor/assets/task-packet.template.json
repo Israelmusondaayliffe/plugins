@@ -24,6 +24,11 @@
     "model": "gpt-5.6-luna",
     "reasoning_effort": "max",
     "dependencies": [],
+    "work_type": "implementation",
+    "expected_observable_delta": "Create the approved bounded implementation artifact.",
+    "unresolved_before": 1,
+    "support_artifact_limit": 1,
+    "immediate_decision": null,
     "allowed_write_paths": ["/workspace/approved-root"],
     "input_paths": [
       {

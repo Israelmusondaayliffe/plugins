@@ -9,13 +9,14 @@ Choose one primary route across the personal plugin portfolio. Keep the decision
 
 ## Routing precedence
 
-1. Honor an explicit plugin or skill selection.
+1. Honor an explicit plugin or skill selection as the operating method. Preserve the user's outcome and the parent's work-first definition of done.
 2. Route a narrow action to the owned individual skill.
 3. Route a multi-stage request within one domain to that plugin's front door.
 4. Use this router when several plugin domains compete or ownership is unclear.
 5. Prefer a namespaced plugin skill when its plugin is visible. Use a loose mirror only when explicitly selected or the plugin is not visible.
 6. Load companion plugins only at a documented handoff.
 7. Choose a data-owning connector before choosing the workflow plugin.
+8. Prefer Browser, Computer Use, or Artifacts when they are the best execution surface. Do not add blanket checks for unused connectors or surfaces.
 
 ## Workflow
 
@@ -25,6 +26,7 @@ Choose one primary route across the personal plugin portfolio. Keep the decision
 4. Fill every field in `assets/route-template.json`.
 5. Run `scripts/validate_routes.py --route <route-json>` before relying on a saved route artifact.
 6. Load only the primary skill. Add a companion later when its handoff condition becomes true.
+7. Confirm the route keeps the requested target-state delta, unresolved count, and total resource cap.
 
 For repeatable maintenance checks, run `scripts/route_request.py --task "<request>"`. The script applies explicit trigger and collision rules. Use judgment for requests that fall outside those deterministic rules, then validate the output schema.
 

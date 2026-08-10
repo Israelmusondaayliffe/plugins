@@ -272,6 +272,8 @@ def command_init(args: argparse.Namespace) -> dict[str, Any]:
                 "elapsed_minutes": 0,
                 "agent_launches": 0,
                 "peak_concurrency": 1,
+                "target_changes": 0,
+                "support_artifact_count": 0,
                 "critic_rounds": {},
             },
         },
@@ -449,6 +451,13 @@ def has_blocking_findings(path: Path) -> bool:
     return "[blocking]" in content or "severity: blocking" in content or "status: blocking" in content
 
 
+def has_required_unresolved(path: Path) -> bool:
+    if not path.is_file():
+        return False
+    content = path.read_text(encoding="utf-8").lower()
+    return "[required]" in content or "severity: required" in content or "status: required" in content
+
+
 def validate_budget_ledger(
     root: Path,
     program: dict[str, Any],
@@ -476,6 +485,10 @@ def validate_budget_ledger(
             errors.append(f"budget ledger {usage_key} must be a non-negative integer")
         elif isinstance(limit, int) and value > limit:
             errors.append(f"budget exhausted: {usage_key}={value} exceeds {budget_key}={limit}")
+    for usage_key in ("target_changes", "support_artifact_count"):
+        value = usage.get(usage_key)
+        if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+            errors.append(f"budget ledger {usage_key} must be a non-negative integer")
     rounds = usage.get("critic_rounds")
     if not isinstance(rounds, dict):
         errors.append("budget ledger critic_rounds must be an object")
@@ -583,6 +596,8 @@ def validate_ready_gate(root: Path, program: dict[str, Any]) -> list[str]:
             errors.append(f"{label} is missing or placeholder-only")
     if has_blocking_findings(root / "integration/contradiction-register.md"):
         errors.append("integration contradiction register contains blocking findings")
+    if has_required_unresolved(root / "verification/unresolved-findings.md"):
+        errors.append("required unresolved work prevents ready_for_verification")
     return errors
 
 
@@ -740,6 +755,8 @@ def validate_terminal_gate(root: Path, program: dict[str, Any], target: str) -> 
     elif f"Verdict: `{target}`" not in report.read_text(encoding="utf-8"):
         errors.append("final evidence report verdict does not match terminal state")
     if target in {"verified", "verified_with_caveats"}:
+        if has_required_unresolved(root / "verification" / "unresolved-findings.md"):
+            errors.append("required unresolved work prevents a verified verdict")
         if has_blocking_findings(root / "verification" / "unresolved-findings.md"):
             errors.append("blocking verification findings prevent a verified verdict")
         if has_blocking_findings(root / "integration" / "contradiction-register.md"):
@@ -1095,6 +1112,8 @@ def command_usage(args: argparse.Namespace) -> dict[str, Any]:
         "elapsed_minutes": args.elapsed_minutes,
         "agent_launches": args.agent_launches,
         "peak_concurrency": args.peak_concurrency,
+        "target_changes": args.target_changes,
+        "support_artifact_count": args.support_artifacts,
     }
     for key, value in updates.items():
         if value is not None:
@@ -1181,6 +1200,8 @@ def parser() -> argparse.ArgumentParser:
     usage.add_argument("--elapsed-minutes", type=int)
     usage.add_argument("--agent-launches", type=int)
     usage.add_argument("--peak-concurrency", type=int)
+    usage.add_argument("--target-changes", type=int)
+    usage.add_argument("--support-artifacts", type=int)
     usage.add_argument("--workstream")
     usage.add_argument("--critic-rounds", type=int)
     usage.set_defaults(handler=command_usage)

@@ -5,17 +5,19 @@ description: Execute an approved Harness Engineering plan as a bounded autonomou
 
 # Harness Runner
 
-Map the loop onto the platform's autonomy surface: Codex Goal mode on Codex, a long-running or headless session on Claude Code, an in-session driven loop (optionally continued by scheduled tasks) on Cowork. Use an installed loop or goal framework (for example LoopKit or a goal-runner skill) when present for contract, state, receipts, resume, and terminal-state validation.
+Map a sustained loop onto the platform's autonomy surface only when the user explicitly requests that mode. Use durable state only when the run must cross sessions or resume. Ordinary approved builds stay in the current task or session with one compact run ledger.
 
 ## Workflow
 
 1. Require the approved profile, audit, plan, allowed paths, caps, and stop rules.
-2. Create or validate durable state before changing files. On Cowork, durable state lives in a connected folder so a later session can resume it; sandbox-only state does not survive.
-3. Observe fresh state and choose one bounded action.
-4. Apply only an approved operation group.
-5. Run current checks and record a receipt.
-6. Continue only while progress is measurable and caps remain.
-7. Stop as waiting input, blocked, exhausted, failed, cancelled, or completed. Do not rename a failure as success.
-8. Send completion candidates to `harness-verifier`.
+2. Confirm the primary outcome metric, before and target states, unresolved count, total launch cap, and support-artifact cap.
+3. Create durable state only when the approved run needs it. On Cowork, durable state belongs in a connected folder because sandbox-only state does not survive.
+4. Observe fresh state and choose one bounded target action.
+5. Apply only an approved operation group.
+6. Record progress only when the requested target state changes. Tests, receipts, and reports are support work.
+7. Stop and re-plan after one wave with no unresolved-work reduction, or when support artifacts outgrow primary outputs.
+8. Continue only while target-state progress is measurable and the single run budget has capacity.
+9. Stop as waiting input, blocked, exhausted, failed, cancelled, or completed. Do not rename a failure as success.
+10. Send the integrated completion candidate to `harness-verifier` once.
 
 The run never grants broader filesystem, authentication, publication, or external-action authority.

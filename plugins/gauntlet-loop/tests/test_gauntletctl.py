@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import tempfile
 import unittest
@@ -30,6 +31,9 @@ class GauntletCtlTests(unittest.TestCase):
         self.assertTrue(self.init_result["valid"])
         self.assertEqual(self.init_result["state"], "intake")
         self.assertTrue((self.project / ".gauntlet" / "state.json").is_file())
+        ledger = json.loads((self.project / ".gauntlet" / "budget-ledger.json").read_text(encoding="utf-8"))
+        self.assertEqual(ledger["usage"]["target_changes"], 0)
+        self.assertEqual(ledger["usage"]["support_artifact_count"], 0)
 
     def test_invalid_transition_fails_closed(self) -> None:
         with self.assertRaises(gauntletctl.GauntletError):
@@ -89,6 +93,11 @@ class GauntletCtlTests(unittest.TestCase):
         errors = gauntletctl.validate_program(program, compiled=False)
         self.assertIn("program must require fresh judges", errors)
         self.assertIn("budget.max_agent_launches must be a positive integer", errors)
+
+    def test_required_unresolved_work_is_detected(self) -> None:
+        findings = self.project / ".gauntlet" / "verification" / "unresolved-findings.md"
+        findings.write_text("# Unresolved Findings\n\n[required] Finish the requested migration.\n", encoding="utf-8")
+        self.assertTrue(gauntletctl.has_required_unresolved(findings))
 
 
 if __name__ == "__main__":

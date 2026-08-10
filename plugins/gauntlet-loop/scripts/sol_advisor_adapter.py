@@ -949,7 +949,7 @@ def prepare_registration_updates(
             f"\n- {record['task_id']} [{returned['status']}] evidence `{evidence['path']}` sha256 `{evidence['sha256']}`."
         )
     markdown_updates[required_markdown["progress"]] += (
-        f"\n- {updated_record['task_id']} registered as `{returned['status']}` from `{return_relative}`; next action: {returned['next_action']}"
+        f"\n- {updated_record['task_id']} registered as `{returned['status']}` from `{return_relative}`; next target action: {returned['next_target_action']}"
     )
     event = {
         "previous_state": state.get("state"),
@@ -958,7 +958,7 @@ def prepare_registration_updates(
         "actor": "gauntlet-sol-advisor-adapter",
         "reason": f"Registered bounded Sol Advisor return {updated_record['task_id']} with status {returned['status']}",
         "related_artifacts": [task_relative, return_relative, ".gauntlet/artifact-register.md", ".gauntlet/source-register.md", ".gauntlet/progress.md"],
-        "required_next_action": returned["next_action"],
+        "required_next_action": returned["next_target_action"],
     }
     state["history"].append(event)
     state["updated_at"] = event["timestamp"]

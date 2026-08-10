@@ -2,12 +2,37 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Harness operations plan",
   "type": "object",
-  "required": ["schema_version", "run_id", "allowed_roots", "approval_groups", "operations"],
+  "required": ["schema_version", "run_id", "allowed_roots", "approval_groups", "outcome", "resource_budget", "support_artifacts", "operations"],
   "properties": {
     "schema_version": {"const": 1},
     "run_id": {"type": "string", "minLength": 1},
     "allowed_roots": {"type": "array", "items": {"type": "string"}, "minItems": 1},
     "approval_groups": {"type": "array", "items": {"type": "string"}},
+    "outcome": {
+      "type": "object",
+      "required": ["primary_metric", "before_state", "target_state", "unresolved_before", "unresolved_target", "expected_primary_outputs"],
+      "properties": {
+        "primary_metric": {"type": "string", "minLength": 1},
+        "before_state": {"type": "string", "minLength": 1},
+        "target_state": {"type": "string", "minLength": 1},
+        "unresolved_before": {"type": "integer", "minimum": 0},
+        "unresolved_target": {"type": "integer", "minimum": 0},
+        "expected_primary_outputs": {"type": "integer", "minimum": 1}
+      }
+    },
+    "resource_budget": {
+      "type": "object",
+      "required": ["max_task_launches", "max_support_artifacts", "max_verification_passes", "max_low_yield_waves", "high_cost_approved", "cost_warning"],
+      "properties": {
+        "max_task_launches": {"type": "integer", "minimum": 0, "maximum": 24},
+        "max_support_artifacts": {"type": "integer", "minimum": 0, "maximum": 12},
+        "max_verification_passes": {"const": 1},
+        "max_low_yield_waves": {"const": 1},
+        "high_cost_approved": {"type": "boolean"},
+        "cost_warning": {"type": ["string", "null"]}
+      }
+    },
+    "support_artifacts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
     "operations": {
       "type": "array",
       "items": {

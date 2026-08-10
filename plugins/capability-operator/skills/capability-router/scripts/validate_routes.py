@@ -70,6 +70,7 @@ def validate_registry(registry: Any, inventory_root: Path | None = None) -> list
         "cross-plugin-router",
         "namespaced-before-loose",
         "companions-at-handoff",
+        "outcome-contract-preserved",
         "connector-before-workflow",
     ]
     if precedence and precedence != expected_precedence:

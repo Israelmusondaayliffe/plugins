@@ -56,7 +56,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
     <>
       <header className="site-header shell detail-header">
         <Link className="wordmark" href="/" aria-label={site.name}>
-          <span className="wordmark-mark">IA</span>
+          <span className="wordmark-mark">AP</span>
           <span>{site.name}</span>
         </Link>
         <Link className="back-link" href="/#outcomes">

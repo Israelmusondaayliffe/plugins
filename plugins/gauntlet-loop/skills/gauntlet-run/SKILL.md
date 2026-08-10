@@ -49,17 +49,19 @@ If capability drift changes the safe topology, stop and recompile or ask the use
 1. Transition to `executing`.
 2. Dispatch only dependency-ready workstreams.
 3. Give each builder the bounded charter, allowed inputs, write targets, tests, evidence requirements, and stop conditions.
-4. After the builder returns, start a fresh critic with no inherited turns, equivalent to `fork_turns: "none"`.
-5. Give the critic the charter, output, tests, and evidence, not the builder's hidden discussion.
-6. Accept, revise, block, or fail according to the critic contract.
-7. Enforce the per-workstream critic-round limit.
-8. Persist state, progress, artifacts, evidence, failures, and the canonical handoff after every material event.
+4. Group completed low-risk workstreams into one integration wave. Start one fresh critic with no inherited turns, equivalent to `fork_turns: "none"`, for the integrated wave. Use an individual critic only for high-risk or independently consequential work.
+5. Give the critic the approved goals, integrated outputs, tests, and evidence, not builder discussions.
+6. Accept, revise, block, or fail according to the critic contract. One critic launch may produce the required schema reports for several covered low-risk workstreams.
+7. Enforce the total run budget and the compiled critic limits.
+8. Persist target-state changes, unresolved count, primary artifacts, support-artifact count, failures, and the canonical handoff after every material event.
 
 Critic reports must cover every compiled workstream criterion and point only to existing inspectable evidence files. A nonempty evidence string is not evidence.
 
-After agent launches, critic rounds, concurrency changes, or meaningful elapsed time, update the resource ledger:
+After agent launches, critic rounds, target changes, support-artifact changes, concurrency changes, or meaningful elapsed time, update the resource ledger:
 
-`python3 ../../scripts/gauntletctl.py usage --project-root <root> --elapsed-minutes <n> --agent-launches <n> --peak-concurrency <n>`
+`python3 ../../scripts/gauntletctl.py usage --project-root <root> --elapsed-minutes <n> --agent-launches <n> --peak-concurrency <n> --target-changes <n> --support-artifacts <n>`
+
+Progress means integrated deliverable delta. New reports, receipts, tests, or critic packets do not count as progress. Stop and re-plan when support artifacts grow while target changes or unresolved-work reduction stays flat.
 
 The lead agent owns orchestration and integration. A builder never issues its own acceptance verdict.
 
@@ -75,7 +77,7 @@ When a dependency wave completes:
 
 1. transition to `integrating`;
 2. inspect cross-workstream consistency;
-3. run integration checks;
+3. run checks only on changed or affected surfaces;
 4. record contradictions and provenance;
 5. repair within the approved plan and remaining budget;
 6. return to `executing` for the next wave.
@@ -106,4 +108,4 @@ When all workstreams and integration waves satisfy their gates, transition to `r
 
 ## Completion
 
-Complete only when execution and integration are finished within the approved scope and budget, evidence is indexed, unresolved issues are explicit, validation passes, and the state is `ready_for_verification`.
+Complete only when execution and integration are finished within the approved scope and budget, required work is resolved, evidence is indexed, non-required issues are explicit, validation passes, and the state is `ready_for_verification`. Required unresolved work fails completion.

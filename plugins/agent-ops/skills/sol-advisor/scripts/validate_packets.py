@@ -46,6 +46,10 @@ RETURN_STATUSES = {"succeeded", "blocked", "failed", "escalate"}
 REVIEW_VERDICTS = {"accepted", "revise", "blocked", "unable_to_verify"}
 CRITERION_RESULTS = {"met", "blocked", "failed", "escalate"}
 FINDING_SEVERITIES = {"blocking", "major", "minor", "info"}
+DEFAULT_MAX_TASK_LAUNCHES = 6
+ABSOLUTE_MAX_TASK_LAUNCHES = 24
+DEFAULT_MAX_CONCURRENCY = 4
+ABSOLUTE_MAX_CONCURRENCY = 8
 
 
 def add(errors: list[str], message: str) -> None:
@@ -98,6 +102,11 @@ def require_bool(value: Any, expected: bool, label: str, errors: list[str]) -> N
 def require_positive_int(value: Any, label: str, errors: list[str], *, minimum: int = 1) -> None:
     if not isinstance(value, int) or isinstance(value, bool) or value < minimum:
         add(errors, f"{label} must be a positive finite integer" if minimum == 1 else f"{label} must be an integer >= {minimum}")
+
+
+def require_nonnegative_int(value: Any, label: str, errors: list[str]) -> None:
+    if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+        add(errors, f"{label} must be a non-negative integer")
 
 
 def require_iso_timestamp(value: Any, label: str, errors: list[str]) -> None:
@@ -689,6 +698,11 @@ def validate_task_authorization(
         "model",
         "reasoning_effort",
         "dependencies",
+        "work_type",
+        "expected_observable_delta",
+        "unresolved_before",
+        "support_artifact_limit",
+        "immediate_decision",
         "allowed_write_paths",
         "input_paths",
         "expected_output",
@@ -716,6 +730,24 @@ def validate_task_authorization(
     dependencies = require_string_list(authorization.get("dependencies"), f"{label}.dependencies", errors, allow_empty=True)
     if authorization.get("task_id") in dependencies:
         add(errors, f"{label}.dependencies must not contain its own task ID")
+    work_type = authorization.get("work_type")
+    if work_type not in {"implementation", "read_only"}:
+        add(errors, f"{label}.work_type must be implementation or read_only")
+    expected_delta = authorization.get("expected_observable_delta")
+    if not isinstance(expected_delta, str):
+        add(errors, f"{label}.expected_observable_delta must be a string")
+    elif work_type == "implementation" and not expected_delta.strip():
+        add(errors, f"{label}.expected_observable_delta must name the target-state change")
+    require_nonnegative_int(authorization.get("unresolved_before"), f"{label}.unresolved_before", errors)
+    support_limit = authorization.get("support_artifact_limit")
+    require_nonnegative_int(support_limit, f"{label}.support_artifact_limit", errors)
+    if isinstance(support_limit, int) and not isinstance(support_limit, bool) and support_limit > 2:
+        add(errors, f"{label}.support_artifact_limit must not exceed 2")
+    immediate_decision = authorization.get("immediate_decision")
+    if work_type == "read_only":
+        require_string(immediate_decision, f"{label}.immediate_decision", errors)
+    elif immediate_decision is not None:
+        add(errors, f"{label}.immediate_decision must be null for implementation work")
     allowed_write_paths = validate_scope_paths(authorization.get("allowed_write_paths"), f"{label}.allowed_write_paths", errors)
     validate_file_records(
         authorization.get("input_paths"),
@@ -734,7 +766,7 @@ def validate_task_authorization(
     )
     validate_criteria(authorization.get("acceptance_criteria"), f"{label}.acceptance_criteria", errors)
     require_string_list(authorization.get("tools"), f"{label}.tools", errors)
-    require_string_list(authorization.get("evidence_commands"), f"{label}.evidence_commands", errors)
+    require_string_list(authorization.get("evidence_commands"), f"{label}.evidence_commands", errors, allow_empty=True)
     require_string_list(authorization.get("stop_conditions"), f"{label}.stop_conditions", errors)
     validate_task_limits(authorization.get("limits"), f"{label}.limits", errors)
     require_string(authorization.get("reviewer_id"), f"{label}.reviewer_id", errors)
@@ -754,7 +786,6 @@ def validate_task_dag_and_authorization(
         add(errors, "RunManifest.task_authorization must be a non-empty list")
         raw_authorizations = []
     authorizations: dict[str, dict[str, Any]] = {}
-    reviewer_ids: set[str] = set()
     root_criteria = {item["id"]: item["description"] for item in criteria}
     assigned_criteria: set[str] = set()
     all_scopes: list[tuple[str, Path]] = []
@@ -774,9 +805,6 @@ def validate_task_dag_and_authorization(
         if isinstance(reviewer_id, str):
             if reviewer_id == task_id:
                 add(errors, "RunManifest task reviewer_id must not equal its builder task_id")
-            if reviewer_id in reviewer_ids:
-                add(errors, "RunManifest task reviewer_ids must be unique and never reused")
-            reviewer_ids.add(reviewer_id)
         for criterion in authorization.get("acceptance_criteria", []):
             if isinstance(criterion, dict) and root_criteria.get(criterion.get("id")) != criterion.get("description"):
                 add(errors, "RunManifest.task_authorization criteria must be exact approved RunManifest criteria")
@@ -883,6 +911,7 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path | 
         "protocol_version",
         "run_id",
         "mode",
+        "run_type",
         "activation",
         "plan",
         "goal",
@@ -904,6 +933,9 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path | 
     require_string(data.get("run_id"), "RunManifest.run_id", errors)
     if data.get("mode") not in {"standalone", "gauntlet_composed"}:
         add(errors, "RunManifest.mode must be standalone or gauntlet_composed")
+    run_type = data.get("run_type")
+    if run_type not in {"implementation", "read_only"}:
+        add(errors, "RunManifest.run_type must be implementation or read_only")
     if data.get("activation") != "explicit":
         add(errors, "RunManifest.activation must be explicit")
     validate_plan(data.get("plan"), "RunManifest.plan", errors, root)
@@ -913,27 +945,82 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path | 
     validate_parent_runtime_attestation(data.get("parent_runtime_attestation"), data.get("run_id"), errors, root)
     validate_runtime_requirements(data.get("runtime_requirements"), errors)
     validate_task_dag_and_authorization(data, criteria, errors, root)
+    authorizations = [item for item in data.get("task_authorization", []) if isinstance(item, dict)]
+    implementation_count = sum(item.get("work_type") == "implementation" for item in authorizations)
+    read_only_count = sum(item.get("work_type") == "read_only" for item in authorizations)
+    if run_type == "implementation":
+        if implementation_count < 1:
+            add(errors, "RunManifest implementation runs require an implementation worker")
+        if read_only_count > implementation_count:
+            add(errors, "RunManifest read-only workers cannot outnumber implementation workers")
+    elif implementation_count:
+        add(errors, "RunManifest read_only runs cannot authorize implementation workers")
     budget = require_object(data.get("budget"), "RunManifest.budget", errors)
     require_keys(
         budget,
         {
+            "budget_scope",
             "max_task_launches",
             "max_concurrency",
             "max_critic_rounds_per_workstream",
             "max_repair_rounds_per_workstream",
+            "max_critic_rounds_total",
+            "max_repair_rounds_total",
+            "max_final_verification_passes",
             "max_elapsed_minutes",
+            "critic_scope",
+            "high_cost_override_approved",
+            "cost_warning",
         },
         "RunManifest.budget",
         errors,
     )
+    if budget.get("budget_scope") != "full_user_request":
+        add(errors, "RunManifest.budget.budget_scope must be full_user_request")
+    launches = budget.get("max_task_launches")
+    concurrency = budget.get("max_concurrency")
+    if not isinstance(launches, int) or isinstance(launches, bool) or not 1 <= launches <= ABSOLUTE_MAX_TASK_LAUNCHES:
+        add(errors, f"RunManifest.budget.max_task_launches must be from 1 to {ABSOLUTE_MAX_TASK_LAUNCHES}")
+    if not isinstance(concurrency, int) or isinstance(concurrency, bool) or not 1 <= concurrency <= ABSOLUTE_MAX_CONCURRENCY:
+        add(errors, f"RunManifest.budget.max_concurrency must be from 1 to {ABSOLUTE_MAX_CONCURRENCY}")
     for field in (
-        "max_task_launches",
-        "max_concurrency",
         "max_critic_rounds_per_workstream",
         "max_repair_rounds_per_workstream",
+        "max_critic_rounds_total",
+        "max_repair_rounds_total",
+        "max_final_verification_passes",
         "max_elapsed_minutes",
     ):
         require_positive_int(budget.get(field), f"RunManifest.budget.{field}", errors)
+    critic_rounds_total = budget.get("max_critic_rounds_total")
+    repair_rounds_total = budget.get("max_repair_rounds_total")
+    if (
+        isinstance(critic_rounds_total, int)
+        and not isinstance(critic_rounds_total, bool)
+        and critic_rounds_total > 2
+    ) or (
+        isinstance(repair_rounds_total, int)
+        and not isinstance(repair_rounds_total, bool)
+        and repair_rounds_total > 2
+    ):
+        add(errors, "RunManifest.budget permits at most two approved critic or repair rounds")
+    if budget.get("max_final_verification_passes") != 1:
+        add(errors, "RunManifest.budget.max_final_verification_passes must be 1")
+    if budget.get("critic_scope") != "integrated_run":
+        add(errors, "RunManifest.budget.critic_scope must be integrated_run")
+    if isinstance(launches, int) and not isinstance(launches, bool) and len(authorizations) + 1 > launches:
+        add(errors, "RunManifest.budget.max_task_launches must cover workers plus the integrated critic")
+    high_cost = (
+        isinstance(launches, int) and launches > DEFAULT_MAX_TASK_LAUNCHES
+    ) or (
+        isinstance(concurrency, int) and concurrency > DEFAULT_MAX_CONCURRENCY
+    ) or budget.get("max_critic_rounds_total") != 1 or budget.get("max_repair_rounds_total") != 1
+    if high_cost:
+        if budget.get("high_cost_override_approved") is not True:
+            add(errors, "RunManifest.budget high-cost limits require explicit approval")
+        require_string(budget.get("cost_warning"), "RunManifest.budget.cost_warning", errors)
+    elif budget.get("high_cost_override_approved") is not False or budget.get("cost_warning") is not None:
+        add(errors, "RunManifest.budget ordinary limits require high_cost_override_approved=false and cost_warning=null")
     prohibited = require_string_list(data.get("prohibited_actions"), "RunManifest.prohibited_actions", errors)
     if set(prohibited) != PROHIBITED_ACTIONS:
         add(errors, "RunManifest.prohibited_actions must be the exact bounded-worker prohibition set")
@@ -1112,19 +1199,27 @@ def validate_command_records(
     task_packet_sha256: Any,
 ) -> list[int]:
     exit_codes: list[int] = []
-    if not isinstance(value, list) or not value:
-        add(errors, f"{label} must be a non-empty list")
+    if not isinstance(value, list):
+        add(errors, f"{label} must be a list")
         return exit_codes
     for index, item in enumerate(value):
         item_label = f"{label}[{index}]"
         command = require_object(item, item_label, errors)
-        require_keys(command, {"command", "exit_code", "evidence_path", "evidence_sha256"}, item_label, errors)
+        require_keys(command, {"command", "exit_code", "evidence_mode", "summary", "evidence_path", "evidence_sha256"}, item_label, errors)
         require_string(command.get("command"), f"{item_label}.command", errors)
+        require_string(command.get("summary"), f"{item_label}.summary", errors)
         if not isinstance(command.get("exit_code"), int) or isinstance(command.get("exit_code"), bool):
             add(errors, f"{item_label}.exit_code must be an integer")
         else:
             exit_codes.append(command["exit_code"])
+        evidence_mode = command.get("evidence_mode")
+        if evidence_mode not in {"inline", "file"}:
+            add(errors, f"{item_label}.evidence_mode must be inline or file")
         path = command.get("evidence_path")
+        if evidence_mode == "inline":
+            if path is not None or command.get("evidence_sha256") is not None:
+                add(errors, f"{item_label} inline evidence must not create a separate evidence file")
+            continue
         if not isinstance(path, str) or evidence.get(path) != command.get("evidence_sha256"):
             add(errors, f"{item_label} must reference a verified evidence record")
         require_sha256(command.get("evidence_sha256"), f"{item_label}.evidence_sha256", errors)
@@ -1192,9 +1287,14 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path |
         "evidence",
         "criterion_to_evidence",
         "commands",
+        "observable_delta",
+        "primary_output_count",
+        "unresolved_before",
+        "unresolved_after",
+        "support_artifact_count",
         "uncertainties",
         "risks",
-        "next_action",
+        "next_target_action",
         "authority",
     }
     require_keys(data, required, "ReturnPacket", errors)
@@ -1265,9 +1365,16 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path |
         task_packet_path=data.get("task_packet_path"),
         task_packet_sha256=data.get("task_packet_sha256"),
     )
+    observable_delta = data.get("observable_delta")
+    if not isinstance(observable_delta, str):
+        add(errors, "ReturnPacket.observable_delta must be a string")
+    for field in ("primary_output_count", "unresolved_before", "unresolved_after", "support_artifact_count"):
+        require_nonnegative_int(data.get(field), f"ReturnPacket.{field}", errors)
+    if isinstance(data.get("unresolved_before"), int) and isinstance(data.get("unresolved_after"), int) and data["unresolved_after"] > data["unresolved_before"]:
+        add(errors, "ReturnPacket.unresolved_after cannot exceed unresolved_before")
     require_string_list(data.get("uncertainties"), "ReturnPacket.uncertainties", errors, allow_empty=True)
     require_string_list(data.get("risks"), "ReturnPacket.risks", errors, allow_empty=True)
-    require_string(data.get("next_action"), "ReturnPacket.next_action", errors)
+    require_string(data.get("next_target_action"), "ReturnPacket.next_target_action", errors)
     if status == "succeeded" and any(result != "met" for result in results):
         add(errors, "ReturnPacket.status=succeeded requires every criterion mapping to be met")
     if status == "succeeded" and any(exit_code != 0 for exit_code in command_exit_codes):
@@ -1296,6 +1403,21 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path |
                     add(errors, f"ReturnPacket.{field} must exactly match the referenced TaskPacket")
             if scope.get("allowed_write_paths") != task_packet.get("scope", {}).get("allowed_write_paths"):
                 add(errors, "ReturnPacket.scope.allowed_write_paths must exactly match the referenced TaskPacket")
+            task_authorization = task_packet.get("authorization", {})
+            if data.get("unresolved_before") != task_authorization.get("unresolved_before"):
+                add(errors, "ReturnPacket.unresolved_before must match the TaskPacket authorization")
+            support_limit = task_authorization.get("support_artifact_limit")
+            if isinstance(data.get("support_artifact_count"), int) and isinstance(support_limit, int) and data["support_artifact_count"] > support_limit:
+                add(errors, "ReturnPacket.support_artifact_count exceeds the TaskPacket limit")
+            if status == "succeeded" and task_authorization.get("work_type") == "implementation":
+                if not isinstance(observable_delta, str) or not observable_delta.strip():
+                    add(errors, "ReturnPacket implementation success requires a non-empty observable_delta")
+                if not isinstance(data.get("primary_output_count"), int) or data["primary_output_count"] < 1:
+                    add(errors, "ReturnPacket implementation success requires primary_output_count >= 1")
+                unresolved_before = data.get("unresolved_before")
+                unresolved_after = data.get("unresolved_after")
+                if isinstance(unresolved_before, int) and unresolved_before > 0 and isinstance(unresolved_after, int) and unresolved_after >= unresolved_before:
+                    add(errors, "ReturnPacket implementation success must reduce unresolved work")
             task_allowed = validate_scope_paths(
                 task_packet.get("scope", {}).get("allowed_write_paths"),
                 "ReturnPacket referenced TaskPacket.scope.allowed_write_paths",
