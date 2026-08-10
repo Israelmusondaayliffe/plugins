@@ -44,7 +44,8 @@ The 150K checkpoint is an observation checkpoint, not a configuration change, re
 
 ## Authority and stop rules
 
-- Use finite launch, concurrency, retry, critic-round, repair-round, and elapsed-time limits.
+- Use finite launch, concurrency, retry, critic-round, repair-round, and elapsed-time limits. One budget covers the full user request. Conservative defaults: at most six total worker or reviewer launches, four concurrent tasks, one integrated critic round, one repair round, and one compact final verification pass; higher limits require a concrete cost warning and explicit approval.
+- Execution against the requested target is the primary work. Audit-only workers are exceptional: each needs a named immediate decision, and they never outnumber implementation workers on an implementation run.
 - Keep task write scopes disjoint or serialize them. Stop on overlap.
 - Do not pass the full parent transcript or hidden reasoning to workers.
 - Stop on an unsupported model or effort, stale plan, exhausted budget, missing approval, unsafe scope, forged evidence, or cycle.
@@ -52,4 +53,4 @@ The 150K checkpoint is an observation checkpoint, not a configuration change, re
 
 ## Completion
 
-Return a ReturnPacket with status `succeeded`, `blocked`, `failed`, or `escalate`, plus the exact TaskPacket path and hash, artifact hashes, criterion-to-evidence mapping, actual scope, commands, evidence, uncertainties, risks, and the next action. Do not label the work accepted.
+Return a ReturnPacket with status `succeeded`, `blocked`, `failed`, or `escalate`, plus the exact TaskPacket path and hash, artifact hashes, criterion-to-evidence mapping, actual scope, commands, evidence, uncertainties, risks, and the next action. A successful return also reports `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`; an empty observable delta, or unresolved required work that did not improve, is not implementation success. Do not label the work accepted.

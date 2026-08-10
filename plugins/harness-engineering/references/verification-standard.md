@@ -1,6 +1,6 @@
 # Verification Standard
 
-Completion requires fresh evidence from the installed environment.
+Completion requires fresh evidence from the installed environment. Verification is required by risk, not universally: verify changed or task-relevant surfaces, and do not re-prove unchanged state. Progress is an observable target-state delta plus a falling unresolved-work count. A passing validator never outweighs required items still marked needs-review, deferred, audit-only, backfill-only, or otherwise unfinished; unresolved required work blocks completion.
 
 ## Structural checks
 
@@ -24,4 +24,6 @@ Completion requires fresh evidence from the installed environment.
 
 List every required check once. Include the command or inspection, fresh result, evidence path, and pass or fail status. A missing or stale check is a failure, not a clean no-op.
 
-For prompt subtraction, include the frozen baseline, raw outputs, scorer version, normalized category comparison, and post-install rerun. For local plugin updates, accept the documented base version plus `+codex.<cachebuster>`, then require installed listing, exact source/cache parity, and fresh discovery.
+Evidence is risk-tiered. Summarize ordinary low-risk commands inline: command, exit code, one-line result. Reserve separate evidence files for destructive, security, release, installation, or similarly high-risk operations. Do not require repeated unchanged-state proofs, duplicated receipts, or runtime-generated verifier scripts per worker or surface family.
+
+For prompt subtraction, include the frozen baseline, raw outputs, scorer version, normalized category comparison, and post-install rerun. For local plugin updates, use the platform's supported flow: on Claude Code, a version bump plus marketplace refresh and plugin update; on Codex, the documented base version plus `+codex.<cachebuster>`. Then require installed listing, exact source/cache parity, and fresh discovery.

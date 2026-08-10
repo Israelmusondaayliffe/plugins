@@ -44,15 +44,15 @@ Do not compare runs whose model, effort, tools, scorer, or task conditions diffe
 
 ## Behavior evaluation contract
 
-A useful permanent suite samples the decisions universal context is meant to protect:
+A useful permanent suite samples the decisions universal context is meant to protect. Keep it the same size or smaller over time; replace redundant test-centric cases before adding new ones:
 
-- authority and safety;
-- capability and source-owner routing;
-- file layers, output paths, and verification;
-- ask/proceed, confirmation, monitoring, and stopping;
-- voice, templates, and completion evidence.
+- authority, safety, and capability or source-owner routing;
+- actual implementation outranking audit artifacts, and process artifacts never counting as deliverables;
+- finite task topology, and a forced stop when usage is high but target-state delta is low;
+- unresolved required work reported as incomplete, and labels never making stale content current;
+- file layers, output paths, and evidence-backed completion.
 
-Run every case more than once at fixed settings. Freeze short examples for read-only diagnosis, scoped implementation, high-stakes confirmation, source-owner routing, UI verification, and evidence-backed completion.
+Run cases at fixed settings; repeat a case only when its risk or observed flakiness warrants it. Freeze short examples for read-only diagnosis, scoped implementation, high-stakes confirmation, source-owner routing, UI verification, and evidence-backed completion.
 
 Accept a subtraction batch only when:
 
@@ -92,7 +92,7 @@ A fresh explicit-invocation smoke also warned that skill descriptions were short
 4. Move detailed examples and conditional instructions to task-owned files.
 5. Move exact checks to deterministic mechanisms.
 6. Subtract one coherent instruction group at a time.
-7. Run the frozen suite twice.
+7. Run the frozen suite once; repeat only high-risk or historically flaky categories.
 8. Restore a failed batch, then add only the smallest missing routing or policy cue demonstrated by the failure.
 
 In the measured case, the first compact candidate lost the named internal-wiki owner and later lost the Capability Operator route after skill-catalog changes. Generic phrases such as "internal wiki connector" were not equivalent to the source owner required by the contract. The repair was a compact owner mapping, not restoration of the old manual. Re-run behavior checks after every mutation to task-start context, including capability-policy waves and reinstallations.
@@ -116,12 +116,12 @@ After each accepted wave:
 1. run the existing routing suite;
 2. run one deterministic front-door case per hidden specialist;
 3. validate each affected plugin;
-4. refresh the supported local cachebuster and reinstall each affected plugin independently;
+4. refresh through the platform's supported update flow (version bump plus marketplace refresh on Claude Code; local cachebuster on Codex) and reinstall each affected plugin independently;
 5. prove installed listing and exact source/cache parity;
 6. capture fresh prompt input;
 7. prove front doors remain visible and hidden specialists remain absent;
 8. run an actual explicit invocation smoke for a hidden specialist;
-9. rerun the universal behavior suite.
+9. rerun the behavior suite only when the wave changed default task-start context.
 
 Metadata absence is not reachability proof. A fresh `codex exec` or equivalent new-task invocation is stronger evidence than file inspection alone.
 
@@ -159,7 +159,7 @@ Stop immediately when:
 
 ## Self-verification rule
 
-Harness Engineering must accept its supported local development version shape. Validators and tests may require the stable base version, but they must also accept the documented `+codex.<cachebuster>` suffix. A validator that rejects the plugin's own supported update flow is stale even when installation succeeds.
+Harness Engineering must accept its supported local development version shape on each platform. On Claude Code the supported flow is a version bump plus marketplace refresh; on Codex, validators and tests may require the stable base version but must also accept the documented `+codex.<cachebuster>` suffix. A validator that rejects the plugin's own supported update flow is stale even when installation succeeds.
 
 Every Harness Engineering update ends with:
 
@@ -167,7 +167,7 @@ Every Harness Engineering update ends with:
 - complete unit tests;
 - text quality checks;
 - plugin validation;
-- cachebuster refresh through Plugin Creator;
+- the platform's supported update flow (marketplace refresh on Claude Code, cachebuster refresh on Codex);
 - reinstall from the owning local marketplace;
 - installed and enabled listing;
 - exact source/cache parity;

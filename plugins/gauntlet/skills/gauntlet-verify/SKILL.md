@@ -3,7 +3,7 @@ name: gauntlet-verify
 description: Loads only when the user explicitly asks to verify the gauntlet, asks whether a gauntlet run is actually done, or when a gauntlet run has reached a stopped or converged state with no consensus on disk. Spawns independent quality and integrity verifiers that never saw the build, collects their verdicts to disk, and computes consensus by script. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
   author: Community Maintainers
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Gauntlet verify
@@ -17,6 +17,7 @@ Independent verification of a stopped or converged run. Convergence is a critic 
 - **Exact inputs, nothing else.** Each verifier receives: the goal from `CONTEXT.md`, the success criteria from `PLAN.md`, the bar, the acceptance criterion for the piece, the artifact, and the inspection output. Nothing else. No round history, no critic verdicts, no builder notes, no other verifier's result, no path into `.gauntlet/sealed/`. Success criteria come from `PLAN.md`, never from later state.
 - **Parallel but never shared.** Verifiers may run in parallel, but they must not share context. Each is its own clean-context spawn seeded only from the input list above.
 - **`cannot-verify` is a first-class outcome.** It must survive into consensus and into the report. Missing inspection output, an unreachable source, an absent artifact, a moved rubric, or a plan hash mismatch all produce it. Absence of evidence is never a pass (INV-5).
+- **Unresolved required work blocks the run verdict.** While any required piece is non-converged, capped, blocked, or without consensus, the run cannot be reported complete or verified. The deterministic rollup treats a missing consensus as `unverifiable`, and no summary, label, or narration may upgrade it.
 - **Plan hash first.** Every verifier checks `plan_hash_matched` before anything else. A mismatch is reported and the result is `cannot-verify` regardless of what the artifact looks like. Success criteria or a rubric edited mid-run is an integrity failure, not a refinement.
 
 ## Integrity verifier mandate

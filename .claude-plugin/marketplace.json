@@ -11,7 +11,7 @@
       "name": "agent-ops",
       "source": "./plugins/agent-ops",
       "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-      "version": "0.4.3",
+      "version": "0.5.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -74,7 +74,7 @@
       "name": "gauntlet",
       "source": "./plugins/gauntlet",
       "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-      "version": "0.1.4",
+      "version": "0.2.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -83,7 +83,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.3.2",
+      "version": "2.4.0",
       "author": {
         "name": "Community Maintainers"
       }

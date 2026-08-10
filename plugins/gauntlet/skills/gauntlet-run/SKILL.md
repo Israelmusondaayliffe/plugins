@@ -3,7 +3,7 @@ name: gauntlet-run
 description: Loads only when a gauntlet prompt and bar exist and the user explicitly says run the gauntlet, gauntlet run, gauntlet loop, or resume the gauntlet. Executes the gauntlet round loop as a deterministic state machine over disk state, spawning fresh-context builders and blind critics, running declared inspections, and writing every round durably before the next begins. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
   author: Community Maintainers
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Gauntlet run
@@ -35,7 +35,7 @@ Select eligible pieces: status `looping`, under caps, in the current wave, owned
 
 **b. Snapshot.** The builder edits the real artifact. The lead snapshots it to `rounds/<piece>/<n>/artifact/`.
 
-**c. Run the declared inspection methods.** The lead runs every method the piece declares in `pieces.json`, and only methods from the closed set. For knowledge work this includes spawning the reader-proxy subagent from `${CLAUDE_PLUGIN_ROOT}/agents/reader-proxy.md` against the piece's frozen question set (mechanism in `references/reader-proxy.md` in this skill) and, where declared, producing the claim ledger and validating it:
+**c. Run the declared inspection methods.** If the builder's round produced no change (the snapshot's hash is identical to the previous round's snapshot), do not re-run the declared inspections; reuse the previous round's recorded inspection results, note the reuse in `results.json`, and treat the round as a no-delta round for the ledger. The lead runs every method the piece declares in `pieces.json`, and only methods from the closed set. For knowledge work this includes spawning the reader-proxy subagent from `${CLAUDE_PLUGIN_ROOT}/agents/reader-proxy.md` against the piece's frozen question set (mechanism in `references/reader-proxy.md` in this skill) and, where declared, producing the claim ledger and validating it:
 
 ```
 python3 ${CLAUDE_PLUGIN_ROOT}/scripts/claim_audit.py --run-dir <run-dir> --piece <piece-id>
@@ -62,6 +62,8 @@ It produces neutral A and B copies plus a sealed label map written outside `runs
 
 - Given: the goal, the bar description, the two neutral inspection outputs, the acceptance criterion.
 - Not given: which is ours, builder history, prior verdicts, other pieces.
+
+Low-risk pieces (declared `risk: low` in `pieces.json`) in the same lane and round may share one critic spawn that judges each blind pair separately in one pass; every other piece gets its own fresh critic. Sharing never relaxes blindness: the shared critic still receives only neutral inspection outputs.
 
 **f. Validate the verdict.** The critic returns a verdict plus exactly one largest gap, phrased so a builder can act on it. Record it:
 
@@ -100,6 +102,8 @@ python3 ${CLAUDE_PLUGIN_ROOT}/scripts/lock.py --run-dir <run-dir> heartbeat --la
 ## Write state after every round
 
 Write all state (`pieces.json`, `run.json`, round records, `cost.json`) after every round, not at the end of a session. A session that dies mid-wave must lose at most one round of work.
+
+`cost.json` is the resource ledger. Alongside `rounds_total`, `subagents_total`, `sessions_total`, `wall_clock_hours`, and `tokens`, record `target_changes_total` (target-state changes actually landed in the artifact) and `support_artifacts_total` (reports, receipts, and other support files produced). A round of high spend with no target-change growth counts toward the stop conditions, not toward progress.
 
 ## Resume behavior
 

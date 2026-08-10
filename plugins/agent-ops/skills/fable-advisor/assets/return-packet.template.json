@@ -37,12 +37,28 @@
  ],
  "commands": [
   {
-   "command": "REPLACE",
+   "command": "REPLACE low-risk command",
+   "exit_code": 0,
+   "risk": "low",
+   "summary": "REPLACE one-line result summary"
+  },
+  {
+   "command": "REPLACE high-risk command (destructive, security, release, or installation)",
    "exit_code": 0,
    "evidence_path": ".fable-advisor/runs/REPLACE-run-id/evidence/T1-cmd0.json",
    "evidence_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
   }
  ],
+ "work_report": {
+  "observable_delta": [
+   "REPLACE: target-state change actually made"
+  ],
+  "primary_output_count": 1,
+  "unresolved_before": 1,
+  "unresolved_after": 0,
+  "support_artifact_count": 0,
+  "next_target_action": "REPLACE"
+ },
  "runtime_attestation": {
   "agent_definition": "fa-worker-complex",
   "requested_model": "claude-opus-4-8",

@@ -33,6 +33,7 @@ For an end-to-end request, use this order: interview, audit, plan, approve, run,
 ## Contract
 
 - Investigate before asking factual questions.
+- For build, change, cleanup, and implementation requests, execution against the target is the primary work; exploration, plans, tests, receipts, critics, and reports are support and count as progress only when they directly enable or verify a requested target-state change. Unresolved required work blocks completion.
 - Keep audit and planning read-only.
 - Present the complete plan and operation groups before changing files.
 - Back up every existing file before an approved update.

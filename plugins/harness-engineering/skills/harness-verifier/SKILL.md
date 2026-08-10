@@ -7,6 +7,8 @@ description: Verify a generated or upgraded harness against its approved profile
 
 Verify without repairing during the verification pass. Use the platform file to know which proof surfaces exist; never mark a check passed on a surface the platform does not have.
 
+Verification is outcome-first and required by risk, not universally. Start from the observable target-state delta and the unresolved required-work count, and limit checks to changed or task-relevant surfaces. Passing validators never outweigh required items still marked needs-review, deferred, or otherwise unfinished; unresolved required work means the harness is not complete.
+
 ## Workflow
 
 1. Read the profile and plan without relying on the builder's summary.
@@ -16,7 +18,7 @@ Verify without repairing during the verification pass. Use the platform file to 
 5. Prove installed listing, source-cache parity where a cache exists, and fresh-task discovery.
 6. On Cowork, additionally prove that changed files were committed to the connected folder on the user's device, not only staged in the sandbox.
 7. For context changes, compare total and section-level prompt size, front doors, hidden specialists, duplicates, deterministic route coverage, and actual explicit invocation.
-8. Re-run the frozen behavior suite after all installation and capability-policy changes. Do not rely on a pre-rollout candidate result.
+8. Re-run the frozen behavior suite after installation and capability-policy changes that alter default task-start context. Do not rely on a pre-rollout candidate result, and do not re-prove surfaces the change did not touch.
 9. Test connectors, Browser, Computer Use, hooks, rules, or optional capability bundles only when the plan requires them.
 10. Evaluate each judgment criterion with file, line, command, or live-surface evidence.
 11. Emit a receipt with one result per required check.

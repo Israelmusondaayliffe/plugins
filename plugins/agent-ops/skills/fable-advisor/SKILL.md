@@ -54,11 +54,17 @@ If neither mechanism is available, stop and ask (interactive) or end `blocked` (
 
 Workers never approve, integrate, review, contact the user, or spawn peer workers. The reviewer never builds, repairs, writes, approves on the user's behalf, synthesizes, or becomes lead. A ReturnPacket is evidence, not acceptance. Only the parent produces the final answer, and only after an `accepted` verdict.
 
+## Work-first execution
+
+Execution against the requested target is the primary work. Exploration, plans, tests, receipts, and criticism are support: they count as progress only when they directly enable or verify a requested target-state change. Progress is measured as observable target-state delta plus a falling unresolved-work count; passing validators never outweighs required items still unfinished.
+
+Every implementation worker owns a direct deliverable or target-system mutation. A successful ReturnPacket carries a `work_report` with `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`; the parent rejects implementation success when the observable delta is empty or unresolved required work did not improve. Audit-only workers are exceptional: each must name the immediate decision it informs, and they never outnumber implementation workers on an implementation run.
+
 ## Procedure
 
 1. **Audit.** Verify the runtime supports every model the run needs (Opus 5 requires Claude Code >= 2.1.219). Probe headless availability with a minimal `claude -p` call; on auth failure, ask the user to run `claude login` (interactive) or record a `spawn_mechanism: agent_tool` downgrade that the manifest approval must cover. Record runtime versions, session identity, and the chosen spawn mechanism in the RunManifest. Fail closed on unsupported mappings: stop and ask, never substitute silently.
 2. **Plan.** Decompose into a task DAG. Interview the user (knowing-your-unknowns) for shape-changing unknowns. Write the RunManifest from `assets/run-manifest.template.json` with finite limits, exact write roots, and per-task model authorization. Read `references/protocol.md` before writing packets.
-3. **Approve.** Present the RunManifest summary to the user and get explicit approval before any dispatch. No blanket approvals.
+3. **Approve.** Present the RunManifest summary to the user, including total planned launches and expected usage, and get explicit approval before any dispatch. No blanket approvals.
 4. **Dispatch adaptively.** For each ready task: write a TaskPacket, validate it (`python3 scripts/validate_packets.py --root RUN_ROOT PACKET.json`), spawn the worker in the background per Worker execution (headless session by default) with the packet path as its brief, and write the spawn evidence record. Add workers as the DAG unblocks; retire them as tasks finish. Respect the manifest's concurrency and launch caps. Repo-mutating tasks use worktree isolation or serialized dependencies.
 5. **Collect.** Validate every ReturnPacket. Check attestation (requested model versus observed model); a mismatch quarantines the task's artifacts and forces re-dispatch or a user decision. Retry failed tasks up to the packet's limit with fresh instances.
 6. **Assemble.** Integrate inside declared scopes only, serialize shared-file edits, freeze the candidate, and record its hashes.
@@ -73,7 +79,7 @@ Workers never approve, integrate, review, contact the user, or spawn peer worker
 
 ## Limits (defaults, user-overridable in the manifest)
 
-Start 3 concurrent workers, cap 8. Max 24 worker launches per run. Retries: 2 per task, fresh instance each time. Review rounds: 3. Elapsed: 240 minutes. Worker-local nesting: one level. On rate limits, halve concurrency and back off. When a cap is reached, stop dispatching and report; "as many as needed" never means unbounded.
+One resource budget covers the full user request: discovery, audit, implementation, review, repair, and final verification. Defaults: at most 6 total worker and reviewer launches, 4 concurrent tasks, 1 integrated review round, 1 repair round, and 1 compact final verification pass. Retries use a fresh instance and count against the launch cap. Elapsed: 240 minutes. Worker-local nesting: one level. Higher limits require a concrete cost warning and the user's explicit approval, and a high-cost run states its expected usage before any dispatch. On rate limits, halve concurrency and back off. When a cap is reached, stop dispatching and report; "as many as needed" never means unbounded.
 
 ## Failure handling
 

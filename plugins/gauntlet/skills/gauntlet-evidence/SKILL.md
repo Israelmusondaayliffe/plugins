@@ -3,7 +3,7 @@ name: gauntlet-evidence
 description: Loads only when a gauntlet verification consensus exists on disk and the user explicitly asks for the gauntlet report, the gauntlet evidence report, or the receipts for a gauntlet run. Assembles EVIDENCE.md and EVIDENCE.json entirely from state files via script, with every number, path, command, and hash read from disk and never computed by the model. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.
 metadata:
   author: Community Maintainers
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Gauntlet evidence
@@ -35,7 +35,7 @@ Nine sections, this order, no additions, no omissions. The structure is `assets/
 6. **Artifact integrity.** SHA-256 of every artifact file at report time, from `hash_artifacts.py`.
 7. **What was not verified.** Mandatory, never omitted, never empty by silence. Every `cannot-verify`, every capped piece, every skipped inspection, every part of the goal that never became a piece, and every `not recorded` value printed anywhere in this report.
 8. **Known remaining gaps.** The last `gap.md` of every non-converged piece, verbatim.
-9. **Budget spent.** Rounds, subagents, sessions, wall clock, cost ledger, stop reason.
+9. **Budget spent.** Rounds, subagents, sessions, wall clock, cost ledger, target changes, support artifacts, stop reason.
 
 ## EVIDENCE.json parity
 

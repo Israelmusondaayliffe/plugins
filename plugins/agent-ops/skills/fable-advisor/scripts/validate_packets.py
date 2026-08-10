@@ -798,6 +798,18 @@ def validate_command_records(
     for index, item in enumerate(value):
         item_label = f"{label}[{index}]"
         command = require_object(item, item_label, errors)
+        if command.get("risk") == "low":
+            # Ordinary low-risk commands inline their result; separate evidence
+            # files are reserved for destructive, security, release, or
+            # installation commands.
+            require_keys(command, {"command", "exit_code", "risk", "summary"}, item_label, errors)
+            require_string(command.get("command"), f"{item_label}.command", errors)
+            require_string(command.get("summary"), f"{item_label}.summary", errors)
+            if not isinstance(command.get("exit_code"), int) or isinstance(command.get("exit_code"), bool):
+                add(errors, f"{item_label}.exit_code must be an integer")
+            else:
+                exit_codes.append(command["exit_code"])
+            continue
         require_keys(command, {"command", "exit_code", "evidence_path", "evidence_sha256"}, item_label, errors)
         require_string(command.get("command"), f"{item_label}.command", errors)
         if not isinstance(command.get("exit_code"), int) or isinstance(command.get("exit_code"), bool):
@@ -874,6 +886,7 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path) 
         "artifacts",
         "criterion_results",
         "commands",
+        "work_report",
         "runtime_attestation",
         "uncertainties",
         "risks",
@@ -982,11 +995,41 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path) 
         bound_packet_path=data.get("task_packet_path"),
         bound_packet_sha256=data.get("task_packet_sha256"),
     )
+    work_report = require_object(data.get("work_report"), "ReturnPacket.work_report", errors)
+    require_keys(
+        work_report,
+        {
+            "observable_delta",
+            "primary_output_count",
+            "unresolved_before",
+            "unresolved_after",
+            "support_artifact_count",
+            "next_target_action",
+        },
+        "ReturnPacket.work_report",
+        errors,
+    )
+    delta = require_string_list(
+        work_report.get("observable_delta"), "ReturnPacket.work_report.observable_delta", errors, allow_empty=True
+    )
+    for field in ("primary_output_count", "unresolved_before", "unresolved_after", "support_artifact_count"):
+        value = work_report.get(field)
+        if not isinstance(value, int) or isinstance(value, bool) or value < 0:
+            add(errors, f"ReturnPacket.work_report.{field} must be a non-negative integer")
+    require_string(work_report.get("next_target_action"), "ReturnPacket.work_report.next_target_action", errors)
+
     if status == "succeeded":
         if result_map and any(result != "met" for result in result_map.values()):
             add(errors, "ReturnPacket.status succeeded requires every criterion met")
         if any(code != 0 for code in exit_codes):
             add(errors, "ReturnPacket.status succeeded requires every evidence command to exit 0")
+        if not delta:
+            add(errors, "ReturnPacket.status succeeded requires a non-empty work_report.observable_delta")
+        before = work_report.get("unresolved_before")
+        after = work_report.get("unresolved_after")
+        if isinstance(before, int) and isinstance(after, int) and not isinstance(before, bool) and not isinstance(after, bool):
+            if not (after < before or (before == 0 and after == 0)):
+                add(errors, "ReturnPacket.status succeeded requires unresolved required work to improve")
     elif status in {"blocked", "failed", "escalate"}:
         expected_result = "escalate" if status == "escalate" else status
         if result_map and expected_result not in result_map.values():

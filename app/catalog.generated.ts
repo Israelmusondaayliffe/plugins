@@ -452,7 +452,7 @@ export const plugins = [
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
     "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. Generic Goals and loops on any host are owned by LoopKit.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.4.3",
+    "version": "0.5.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1144,7 +1144,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.3.2",
+    "version": "2.4.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1354,7 +1354,7 @@ export const plugins = [
     "shortDescription": "Explicit-only mega-project loop with blind critics.",
     "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts.",
     "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-    "version": "0.1.4",
+    "version": "0.2.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [

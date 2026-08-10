@@ -49,7 +49,7 @@ def main() -> int:
         version = platform_manifest.get("version")
         if platform_manifest.get("name") != "harness-engineering" or not isinstance(version, str) or not VERSION_PATTERN.fullmatch(version):
             fail(f"{platform} manifest identity or version is incorrect")
-        if platform_manifest.get("author", {}).get("name") != "Israel Ayliffe" or platform_manifest.get("license") != "MIT":
+        if platform_manifest.get("author", {}).get("name") != "Community Maintainers" or platform_manifest.get("license") != "MIT":
             fail(f"{platform} publisher or license metadata is incorrect")
         if "apps" in platform_manifest or "mcpServers" in platform_manifest or "hooks" in platform_manifest:
             fail(f"{platform} manifest declares a component that the plugin does not ship")

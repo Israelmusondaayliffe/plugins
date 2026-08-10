@@ -198,7 +198,18 @@ class Fixture:
             "scope": {"allowed_write_paths": authorization["allowed_write_paths"], "writes_observed": [self.rel("artifacts/T1/output.md")]},
             "artifacts": [{"path": self.rel("artifacts/T1/output.md"), "sha256": sha_file(artifact_path), "kind": "document"}],
             "criterion_results": [{"id": "C1", "result": "met", "evidence": "file exists"}],
-            "commands": [{"command": "test -f output.md", "exit_code": 0, "evidence_path": self.rel("evidence/T1-cmd0.json"), "evidence_sha256": cmd_sha}],
+            "commands": [
+                {"command": "test -f output.md", "exit_code": 0, "evidence_path": self.rel("evidence/T1-cmd0.json"), "evidence_sha256": cmd_sha},
+                {"command": "wc -l output.md", "exit_code": 0, "risk": "low", "summary": "1 line"},
+            ],
+            "work_report": {
+                "observable_delta": ["artifacts/T1/output.md created"],
+                "primary_output_count": 1,
+                "unresolved_before": 1,
+                "unresolved_after": 0,
+                "support_artifact_count": 0,
+                "next_target_action": "integrate",
+            },
             "runtime_attestation": {
                 "agent_definition": authorization["agent_definition"],
                 "requested_model": authorization["model"],
@@ -382,6 +393,25 @@ class FableAdvisorPacketTest(unittest.TestCase):
         write_json(paths["review"], review)
         errors = errors_for(self.tmp_path, paths["review"])
         self.assertTrue(any("blocking" in e for e in errors))
+
+
+    def test_succeeded_with_empty_observable_delta_fails(self):
+        paths = Fixture(self.tmp_path).build()
+        ret = json.loads(paths["return"].read_text())
+        ret["work_report"]["observable_delta"] = []
+        write_json(paths["return"], ret)
+        errors = errors_for(self.tmp_path, paths["return"])
+        self.assertTrue(any("observable_delta" in e for e in errors))
+
+
+    def test_succeeded_without_unresolved_improvement_fails(self):
+        paths = Fixture(self.tmp_path).build()
+        ret = json.loads(paths["return"].read_text())
+        ret["work_report"]["unresolved_before"] = 2
+        ret["work_report"]["unresolved_after"] = 2
+        write_json(paths["return"], ret)
+        errors = errors_for(self.tmp_path, paths["return"])
+        self.assertTrue(any("unresolved required work to improve" in e for e in errors))
 
 
     def test_authorization_drift_fails_task_packet(self):

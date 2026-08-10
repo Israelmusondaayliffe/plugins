@@ -404,6 +404,8 @@ def main(argv=None):
         "sessions_total": cost_value("sessions_total"),
         "wall_clock_hours": cost_value("wall_clock_hours"),
         "tokens": cost_value("tokens"),
+        "target_changes_total": cost_value("target_changes_total"),
+        "support_artifacts_total": cost_value("support_artifacts_total"),
         "notes": (cost or {}).get("notes", ""),
         "stop_reason": run["stop_reason"] if "stop_reason" in run else nr(
             "9 (Budget spent)", "run.json: stop_reason"
@@ -417,6 +419,8 @@ def main(argv=None):
         "- Sessions: %s" % budget["sessions_total"],
         "- Wall clock hours: %s" % budget["wall_clock_hours"],
         "- Cost ledger (tokens): %s" % budget["tokens"],
+        "- Target changes: %s" % budget["target_changes_total"],
+        "- Support artifacts: %s" % budget["support_artifacts_total"],
         "- Ledger notes: %s" % (budget["notes"] or "none"),
         "- Stop reason: %s" % budget["stop_reason"],
     ]
