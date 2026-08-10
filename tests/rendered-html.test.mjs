@@ -190,6 +190,7 @@ test("renders all and only the public static plugin routes", async () => {
 test("serves public discovery exports from the visible catalog", async () => {
   const pluginsResponse = await render("/plugins.json");
   assert.equal(pluginsResponse.status, 200);
+  assert.equal(pluginsResponse.headers.get("cache-control"), "no-store");
   const publicCatalog = await pluginsResponse.json();
   assert.deepEqual(publicCatalog.counts, totals);
   assert.equal(publicCatalog.plugins.length, 21);
@@ -197,6 +198,7 @@ test("serves public discovery exports from the visible catalog", async () => {
 
   const llmsResponse = await render("/llms.txt");
   assert.equal(llmsResponse.status, 200);
+  assert.equal(llmsResponse.headers.get("cache-control"), "no-store");
   const llms = await llmsResponse.text();
   assert.match(llms, /Inventory: 21 plugins and 159 skills/);
   assert.match(llms, /Install on Codex:/);

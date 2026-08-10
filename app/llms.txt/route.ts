@@ -6,7 +6,7 @@ import {
   totals,
 } from "../catalog.generated";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 function renderCatalog() {
   const lines = [
@@ -54,6 +54,9 @@ function renderCatalog() {
 
 export function GET() {
   return new Response(renderCatalog() + "\n", {
-    headers: { "content-type": "text/plain; charset=utf-8" },
+    headers: {
+      "cache-control": "no-store",
+      "content-type": "text/plain; charset=utf-8",
+    },
   });
 }
