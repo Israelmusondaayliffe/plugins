@@ -30,6 +30,36 @@ class HarnessCtlTests(unittest.TestCase):
             self.assertIn("redacted-sensitive-key", result["keys"])
             self.assertIn("enabled", result["keys"])
 
+    def test_plugin_inventory_reads_registry_and_nested_cache(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            home = Path(temp)
+            registry = home / "plugins" / "installed_plugins.json"
+            registry.parent.mkdir(parents=True)
+            registry.write_text(
+                json.dumps(
+                    {
+                        "version": 2,
+                        "plugins": {
+                            "agent-ops@israel-plugins": [
+                                {"scope": "user", "installPath": "/x/agent-ops/0.5.0", "version": "0.5.0"}
+                            ]
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            installed = harnessctl.installed_plugin_inventory(home)
+            self.assertEqual(
+                [(item["name"], item["marketplace"], item["version"]) for item in installed],
+                [("agent-ops", "israel-plugins", "0.5.0")],
+            )
+
+            nested = home / "plugins" / "cache" / "israel-plugins" / "agent-ops" / "0.5.0" / ".claude-plugin"
+            nested.mkdir(parents=True)
+            (nested / "plugin.json").write_text(json.dumps({"name": "agent-ops", "version": "0.5.0"}), encoding="utf-8")
+            scanned = harnessctl.directory_plugin_inventory(home / "plugins" / "cache")
+            self.assertEqual([(item["name"], item["version"]) for item in scanned], [("agent-ops", "0.5.0")])
+
     def test_dry_run_apply_and_rollback(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / "workspace"

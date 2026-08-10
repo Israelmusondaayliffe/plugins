@@ -309,12 +309,49 @@ def codex_plugin_inventory() -> list[dict[str, Any]]:
     )
 
 
+def installed_plugin_inventory(home: Path) -> list[dict[str, Any]]:
+    """List installed plugins from Claude Code's installed_plugins.json registry (schema version 2)."""
+    registry = home / "plugins" / "installed_plugins.json"
+    if not registry.is_file():
+        return []
+    try:
+        payload = json.loads(registry.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    plugins: list[dict[str, Any]] = []
+    for key, installs in (payload.get("plugins") or {}).items():
+        if not isinstance(installs, list) or not installs:
+            continue
+        name, _, marketplace = str(key).partition("@")
+        for install in installs:
+            if not isinstance(install, dict):
+                continue
+            plugins.append(
+                {
+                    "name": name,
+                    "marketplace": marketplace or None,
+                    "version": install.get("version"),
+                    "scope": install.get("scope"),
+                    "path": install.get("installPath"),
+                }
+            )
+    return sorted(plugins, key=lambda item: (str(item["name"]), str(item["version"])))
+
+
 def directory_plugin_inventory(root: Path) -> list[dict[str, Any]]:
-    """List plugins by reading manifests under a plugin directory (Claude Code cache or Cowork synced dir)."""
+    """List plugins by reading manifests under a plugin directory (Claude Code cache or Cowork synced dir).
+
+    Covers both layouts: flat (<root>/<plugin>/) and the Claude Code cache
+    nesting (<root>/<marketplace>/<plugin>/<version>/).
+    """
     plugins: list[dict[str, Any]] = []
     if not root.is_dir():
         return plugins
-    for manifest in sorted(root.glob("*/.claude-plugin/plugin.json")) + sorted(root.glob("*/.codex-plugin/plugin.json")):
+    manifests = []
+    for kind in (".claude-plugin", ".codex-plugin"):
+        manifests += sorted(root.glob(f"*/{kind}/plugin.json"))
+        manifests += sorted(root.glob(f"*/*/*/{kind}/plugin.json"))
+    for manifest in manifests:
         try:
             data = json.loads(manifest.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
@@ -386,7 +423,11 @@ def audit_environment(target: str, home_path: Path, workspace: Path | None) -> d
         plugins: list[dict[str, Any]] = codex_plugin_inventory()
     else:
         config = json_key_names(home / "settings.json")
-        plugins = directory_plugin_inventory(home / "plugins" / "cache") or directory_plugin_inventory(home / "plugins" / "synced")
+        plugins = (
+            installed_plugin_inventory(home)
+            or directory_plugin_inventory(home / "plugins" / "cache")
+            or directory_plugin_inventory(home / "plugins" / "synced")
+        )
 
     report: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
