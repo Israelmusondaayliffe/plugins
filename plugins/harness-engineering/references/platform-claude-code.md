@@ -39,6 +39,7 @@ Precedence from broadest to most specific, later files refine earlier ones:
 
 - `claude doctor` (CLI) and `/doctor` (in session) check installation health.
 - `claude plugin validate` checks manifests, hook configs, and frontmatter.
+- Prove installed listing and exact source-cache parity with `scripts/verify_install.py --platform claude`; it reads `installed_plugins.json` and the enabled-plugins map.
 - Prove discovery from a fresh session: the skill or plugin front door must appear in the capability inventory of a new task, not just on disk.
 
 ## Harness placement guidance

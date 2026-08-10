@@ -83,7 +83,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.5.0",
+      "version": "2.5.1",
       "author": {
         "name": "Community Maintainers"
       }

@@ -1144,7 +1144,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -1220,8 +1220,8 @@ export const plugins = [
       "skills": 13,
       "assets": 7,
       "references": 12,
-      "scripts": 5,
-      "files": 63
+      "scripts": 6,
+      "files": 66
     },
     "bundlesMcp": false,
     "bundlesApp": false
@@ -1417,7 +1417,7 @@ export const totals = {
   "skills": 159,
   "assets": 314,
   "references": 442,
-  "scripts": 393,
-  "files": 1806
+  "scripts": 394,
+  "files": 1809
 } as const;
 export type Plugin = (typeof plugins)[number];

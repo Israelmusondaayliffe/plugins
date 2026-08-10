@@ -22,11 +22,18 @@ On Claude 5 generation models the common defect in an inherited harness is over-
 
 ## Install
 
-Claude Cowork: build a deterministic archive with the registry packager, then upload it through Claude Desktop's **Cowork** > **Customize** > **Plugins** flow. Static archive validation does not prove a live Cowork installation or fresh-task discovery.
+Claude Cowork: build a portable ZIP, then select it through the custom-plugin upload in Claude Desktop's **Cowork** > **Customize** > **Plugins** flow:
+
+```bash
+python3 scripts/package_plugin.py build --output dist/harness-engineering.zip
+```
+
+The command performs static source-to-archive validation. `dist/` is intentionally ignored, so the ZIP is not tracked or released by this repository. Neither a live Cowork install nor fresh-task discovery is asserted here.
 
 Claude Code:
 
 ```bash
+claude plugin marketplace add Israelmusondaayliffe/plugins
 claude plugin install harness-engineering@community-agent-plugins
 ```
 
