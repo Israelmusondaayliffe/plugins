@@ -31,6 +31,10 @@ function withoutReactMarkers(html) {
   return html.replace(/<!--[\s\S]*?-->/g, "");
 }
 
+function escapeRegex(value) {
+  return value.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+}
+
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", process.pid + "-" + Date.now());
@@ -85,12 +89,19 @@ test("server-renders the depersonalized registry identity and exact public disco
   assert.match(html, /data-testid="collection-filter"/);
   assert.match(html, /data-testid="host-filter"/);
   assert.match(html, /aria-keyshortcuts="\/"/);
-  assert.match(html, /data-testid="plugin-preview"/);
+  assert.doesNotMatch(html, /data-testid="plugin-preview"/);
   assert.match(html, /aria-live="polite"/);
-  assert.match(text, /Copy only the action shown for a verified host/);
+  for (const plugin of visiblePlugins) {
+    assert.ok(
+      html.includes('data-testid="plugin-row-' + plugin.slug + '"') &&
+        html.includes('href="/plugins/' + plugin.slug + '"'),
+      plugin.slug + " must render as a direct detail-page link",
+    );
+    assert.match(text, new RegExp(escapeRegex(plugin.description)));
+  }
 });
 
-test("server-renders complete public records with source and related navigation", async () => {
+test("server-renders a guided public record with source and related navigation", async () => {
   const response = await render("/plugins/capability-operator");
   assert.equal(response.status, 200);
 
@@ -101,6 +112,21 @@ test("server-renders complete public records with source and related navigation"
   assert.match(text, /Verified hosts/);
   assert.match(text, /Version/);
   assert.match(text, /Bundled skills/);
+  assert.match(html, /aria-label="On this page"/);
+  for (const id of ["install", "start", "workflow", "skill-guide", "all-skills"]) {
+    assert.match(html, new RegExp('id="' + id + '"'));
+  }
+  assert.match(text, /Begin with the front door/);
+  assert.match(text, /What this plugin is best for/);
+  assert.match(text, /A practical way to use it/);
+  assert.match(text, /Start from the job in front of you/);
+  assert.match(text, /Worked example/);
+  assert.match(text, /Boundaries/);
+  assert.match(text, /Success signals/);
+  assert.ok(
+    (html.match(/Copy [^"]+ prompt:/g) ?? []).length >= 3,
+    "guide must render three prompt copy controls",
+  );
   assert.match(text, /Source you can inspect/);
   assert.match(
     html,
@@ -161,6 +187,16 @@ test("renders all and only the public static plugin routes", async () => {
     const html = await response.text();
     const platforms = hostSupport[plugin.slug].platforms;
 
+    assert.match(html, /id="start"/, plugin.slug + " start section must render");
+    assert.match(html, /id="workflow"/, plugin.slug + " workflow must render");
+    assert.match(html, /id="skill-guide"/, plugin.slug + " skill guide must render");
+    assert.match(html, /id="all-skills"/, plugin.slug + " complete skill list must render");
+    for (const quickStart of plugin.guide.quickStarts) {
+      assert.ok(
+        html.includes(quickStart.prompt.replaceAll("&", "&amp;")),
+        plugin.slug + " quick-start prompt must render",
+      );
+    }
     assert.equal(
       html.includes("codex plugin add " + plugin.slug + "@" + marketplaceName),
       platforms.includes("Codex"),
@@ -195,6 +231,11 @@ test("serves public discovery exports from the visible catalog", async () => {
   assert.deepEqual(publicCatalog.counts, totals);
   assert.equal(publicCatalog.plugins.length, 21);
   assert.equal(publicCatalog.collections.length, 4);
+  for (const plugin of publicCatalog.plugins) {
+    assert.ok(plugin.guide, plugin.slug + " guide must be public");
+    assert.equal(plugin.guide.quickStarts.length, 3);
+    assert.ok(plugin.guide.workflow.length >= 3);
+  }
 
   const llmsResponse = await render("/llms.txt");
   assert.equal(llmsResponse.status, 200);
@@ -204,6 +245,9 @@ test("serves public discovery exports from the visible catalog", async () => {
   assert.match(llms, /Install on Codex:/);
   assert.match(llms, /Install on Claude Code:/);
   assert.match(llms, /Install in Claude Cowork:/);
+  assert.match(llms, /Best for:/);
+  assert.match(llms, /Try asking:/);
+  assert.match(llms, /Recommended workflow:/);
 
   for (const value of [JSON.stringify(publicCatalog), llms]) {
     assert.doesNotMatch(value, /matt-partok-bundled-plugin-for-knowledge-work/i);

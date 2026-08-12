@@ -19,6 +19,7 @@ function generatedExport(name) {
 }
 
 const curation = readJson("docs/site-redesign/site-curation.json");
+const guideSource = readJson("docs/site-redesign/plugin-guides.json");
 const codexMarketplace = readJson(".agents/plugins/marketplace.json");
 const claudeMarketplace = readJson(".claude-plugin/marketplace.json");
 const catalog = generatedExport("plugins");
@@ -116,6 +117,69 @@ test("assigns every visible plugin to one approved outcome collection", () => {
     collections.flatMap((collection) => collection.plugins).sort(),
     [...curation.visibility.visible_plugins].sort(),
   );
+});
+
+test("gives every public plugin one complete, source-safe guide", () => {
+  const guideNames = Object.keys(guideSource.guides);
+  assert.deepEqual(guideNames.sort(), [...curation.visibility.visible_plugins].sort());
+  assert.equal(
+    guideNames.some((name) => curation.visibility.excluded_plugins.includes(name)),
+    false,
+  );
+
+  for (const plugin of catalog) {
+    const guide = guideSource.guides[plugin.slug];
+    const skills = new Set(plugin.skills.map((skill) => skill.name));
+    assert.ok(guide.bestFor.length >= 3, plugin.slug + " needs best-for guidance");
+    assert.equal(guide.quickStarts.length, 3, plugin.slug + " needs three prompts");
+    assert.ok(
+      guide.workflow.length >= 3 && guide.workflow.length <= 6,
+      plugin.slug + " needs a bounded workflow",
+    );
+    assert.ok(guide.skillPaths.length > 0, plugin.slug + " needs task-to-skill paths");
+    assert.ok(
+      guide.workedExample.steps.length >= 3,
+      plugin.slug + " needs a worked example",
+    );
+    assert.ok(guide.tips.length >= 2, plugin.slug + " needs tips");
+    assert.ok(guide.boundaries.length >= 2, plugin.slug + " needs boundaries");
+    assert.ok(
+      guide.successSignals.length >= 2,
+      plugin.slug + " needs success signals",
+    );
+
+    const referencedSkills = [
+      guide.startHere.skill,
+      ...guide.workflow.flatMap((step) => step.skills),
+      ...guide.skillPaths.map((path) => path.skill),
+    ];
+    for (const skill of referencedSkills) {
+      assert.ok(
+        skills.has(skill),
+        plugin.slug + " references unknown skill " + skill,
+      );
+    }
+    assert.equal(
+      new Set(guide.quickStarts.map((item) => item.prompt.toLowerCase())).size,
+      3,
+      plugin.slug + " prompts must be unique",
+    );
+    const text = JSON.stringify(guide);
+    for (const forbidden of [
+      "/Users/",
+      "~/.codex",
+      "~/.claude",
+      "@personal",
+      "personal-plugins-private",
+    ]) {
+      assert.equal(
+        text.toLowerCase().includes(forbidden.toLowerCase()),
+        false,
+        plugin.slug + " guide contains forbidden private text",
+      );
+    }
+    assert.deepEqual(plugin.guide, guide);
+  }
 });
 
 test("binds both machine-readable exports to the generated visible catalog", () => {

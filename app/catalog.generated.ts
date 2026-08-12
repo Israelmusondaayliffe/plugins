@@ -140,7 +140,121 @@ export const plugins = [
       "files": 33
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning a broad research question into a clear, answerable brief.",
+        "Building a report or recommendation from evidence instead of guesses.",
+        "Checking a draft for weak claims, missing sources, and unfinished work."
+      ],
+      "startHere": {
+        "skill": "using-knowledge-work-superpowers",
+        "why": "Use this front door when you know the outcome you want but are not sure which research, planning, writing, or review skill should handle it."
+      },
+      "quickStarts": [
+        {
+          "goal": "Research a question",
+          "prompt": "Research this question and build a concise, evidence-backed brief: [question]. Explain what is known, what is uncertain, and which sources support the answer."
+        },
+        {
+          "goal": "Plan substantial work",
+          "prompt": "Turn this request into a practical knowledge-work plan: [request]. Define the audience, scope, sources, deliverables, and checks before starting."
+        },
+        {
+          "goal": "Review a draft",
+          "prompt": "Review this draft for unsupported claims, missing evidence, unclear reasoning, and incomplete requirements. Show me the important fixes first: [draft]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Frame the job",
+          "instruction": "Define the decision, reader, scope, source of truth, constraints, and signs of success.",
+          "skills": [
+            "framing-knowledge-work"
+          ]
+        },
+        {
+          "title": "Make the plan",
+          "instruction": "Turn the frame into research, analysis, writing, and verification steps.",
+          "skills": [
+            "planning-knowledge-work"
+          ]
+        },
+        {
+          "title": "Research and test claims",
+          "instruction": "Gather appropriate sources and check the important claims before drafting conclusions.",
+          "skills": [
+            "systematic-research",
+            "evidence-first-analysis"
+          ]
+        },
+        {
+          "title": "Draft from the evidence",
+          "instruction": "Write the deliverable from the checked facts, with uncertainty and limitations made visible.",
+          "skills": [
+            "drafting-from-evidence"
+          ]
+        },
+        {
+          "title": "Review and finish",
+          "instruction": "Check requirements and evidence, then package the result with a clear handoff.",
+          "skills": [
+            "reviewing-knowledge-work",
+            "verification-before-delivery",
+            "finishing-a-deliverable"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need to define the question before researching",
+          "skill": "framing-knowledge-work",
+          "why": "It turns a loose request into a bounded job."
+        },
+        {
+          "need": "You need current or disputed facts",
+          "skill": "systematic-research",
+          "why": "It organizes a source-first investigation."
+        },
+        {
+          "need": "You already have a draft and need a serious review",
+          "skill": "reviewing-knowledge-work",
+          "why": "It checks the draft against requirements and evidence."
+        },
+        {
+          "need": "You received feedback and need to decide what to change",
+          "skill": "receiving-work-review",
+          "why": "It checks each finding before revising the work."
+        }
+      ],
+      "workedExample": {
+        "title": "From a broad market question to a decision brief",
+        "situation": "A team needs to understand whether a new service is worth testing, but the original request is too broad.",
+        "steps": [
+          "Frame the decision, intended reader, time window, and acceptable evidence.",
+          "Plan the research questions and prioritize primary or authoritative sources.",
+          "Test the main claims before writing the recommendation.",
+          "Draft the brief, disclose uncertainty, and verify every required section."
+        ],
+        "result": "A useful result is a short decision brief with traceable sources, clear uncertainty, and a recommendation tied to the evidence."
+      },
+      "tips": [
+        "Name the reader and the decision they need to make.",
+        "Give a time window when facts may have changed.",
+        "Separate must-answer questions from interesting side questions.",
+        "Share the source material you already trust."
+      ],
+      "boundaries": [
+        "It does not make weak evidence stronger. It should mark gaps and uncertainty.",
+        "It does not publish, send, buy, or approve anything unless you separately authorize that action.",
+        "Simple lookups may not need the full workflow."
+      ],
+      "successSignals": [
+        "The result answers the original question for the intended reader.",
+        "Important claims can be traced to appropriate sources.",
+        "Unknowns, limitations, and unfinished items are stated plainly."
+      ]
+    }
   },
   {
     "slug": "outcome-engine",
@@ -201,7 +315,119 @@ export const plugins = [
       "files": 27
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning a fuzzy idea into a result that can be checked.",
+        "Pressure-testing a plan before spending time or money.",
+        "Breaking an approved brief into small, verifiable pieces of work.",
+        "Carrying a project from clarification through delivery."
+      ],
+      "startHere": {
+        "skill": "outcome-engine",
+        "why": "Start here when you want one guided path from an unclear goal to a verified result. It chooses the narrower skills as the work becomes clear."
+      },
+      "quickStarts": [
+        {
+          "goal": "Clarify an idea",
+          "prompt": "Run Outcome Engine on this idea: [idea]. Help me define the real outcome, resolve the important decisions, and stop before implementation if approval is needed."
+        },
+        {
+          "goal": "Create a brief",
+          "prompt": "Turn these settled notes into an execution-ready outcome brief. Keep the decisions already made and identify only genuine gaps: [notes]."
+        },
+        {
+          "goal": "Plan the work",
+          "prompt": "Break this approved outcome into small action slices with dependencies, proof for each slice, and a clear definition of done: [outcome]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Resolve the goal",
+          "instruction": "Ask only the consequential questions needed to understand the desired result and constraints.",
+          "skills": [
+            "decision-grill"
+          ]
+        },
+        {
+          "title": "Write the outcome brief",
+          "instruction": "Turn settled context into a durable brief with scope, deliverables, boundaries, and proof.",
+          "skills": [
+            "to-outcome-brief"
+          ]
+        },
+        {
+          "title": "Slice the work",
+          "instruction": "Create small end-to-end units that can be completed and checked independently.",
+          "skills": [
+            "to-action-slices"
+          ]
+        },
+        {
+          "title": "Deliver with evidence",
+          "instruction": "Complete each approved slice through a check, change, and verify loop.",
+          "skills": [
+            "evidence-driven-delivery"
+          ]
+        },
+        {
+          "title": "Improve the system",
+          "instruction": "After the outcome is delivered, examine structural friction only when that review is useful.",
+          "skills": [
+            "improve-system-architecture"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "The idea is still unclear",
+          "skill": "decision-grill",
+          "why": "It resolves one important decision at a time."
+        },
+        {
+          "need": "The conversation is settled but not documented",
+          "skill": "to-outcome-brief",
+          "why": "It turns context into a durable handoff."
+        },
+        {
+          "need": "The work is too large to execute safely",
+          "skill": "to-action-slices",
+          "why": "It creates smaller results with their own checks."
+        },
+        {
+          "need": "The plan is approved and ready to implement",
+          "skill": "evidence-driven-delivery",
+          "why": "It keeps progress tied to observable changes."
+        }
+      ],
+      "workedExample": {
+        "title": "From a rough workshop idea to a ready plan",
+        "situation": "A creator wants to offer a workshop but has not settled the audience, promise, format, or proof of demand.",
+        "steps": [
+          "Clarify the audience, desired change, constraints, and no-go areas.",
+          "Create a brief for the workshop test rather than the entire future program.",
+          "Split the test into offer, landing copy, outreach draft, and evidence review.",
+          "Complete and verify each approved slice before calling the test ready."
+        ],
+        "result": "A useful result is a bounded workshop test with an approved brief, practical work units, and clear evidence for readiness."
+      },
+      "tips": [
+        "Describe the change you want, not only the artifact you want produced.",
+        "State what must remain unchanged.",
+        "Decide what evidence would make you confident enough to stop.",
+        "Use the full coordinator for multi-stage work and a specialist for one clear stage."
+      ],
+      "boundaries": [
+        "It does not treat a plan, checklist, or draft as proof that the outcome exists.",
+        "It pauses for approval when a decision or action would materially expand the agreed scope.",
+        "It does not grant permission to publish, send messages, purchase, or delete."
+      ],
+      "successSignals": [
+        "The desired result and definition of done are explicit.",
+        "Each action slice produces something observable and checkable.",
+        "Required work is complete or clearly marked unresolved."
+      ]
+    }
   },
   {
     "slug": "proofloop",
@@ -246,7 +472,114 @@ export const plugins = [
       "files": 38
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Running an important task through an evidence-gated refinement loop.",
+        "Reviewing proposed lessons before they influence later work.",
+        "Auditing whether a learning loop is improving results or adding noise."
+      ],
+      "startHere": {
+        "skill": "proofloop-run",
+        "why": "Use this only when you explicitly want ProofLoop to wrap a task. It keeps execution bounded and puts candidate lessons into review instead of treating them as trusted memory."
+      },
+      "quickStarts": [
+        {
+          "goal": "Run a bounded task",
+          "prompt": "Use ProofLoop to complete this task: [task]. Define the verifier, attempt limit, stop conditions, and evidence required before starting."
+        },
+        {
+          "goal": "Review candidate lessons",
+          "prompt": "Review these ProofLoop candidate lessons. Approve only lessons that are supported, safe, reusable, and narrow enough: [candidates]."
+        },
+        {
+          "goal": "Audit the system",
+          "prompt": "Audit whether ProofLoop is helping on these runs. Compare outcomes, verifier quality, memory usefulness, failures, cost, and drift: [run records]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Define the bounded run",
+          "instruction": "Set the task, evidence standard, maximum attempts, authority, and stop conditions.",
+          "skills": [
+            "proofloop-run"
+          ]
+        },
+        {
+          "title": "Execute and judge",
+          "instruction": "Produce a candidate result, judge it against the stated verifier, and refine only within the attempt limit.",
+          "skills": [
+            "proofloop-run"
+          ]
+        },
+        {
+          "title": "Verify the outcome",
+          "instruction": "Check the final result with fresh evidence and record failures without hiding them.",
+          "skills": [
+            "proofloop-run"
+          ]
+        },
+        {
+          "title": "Quarantine lessons",
+          "instruction": "Keep proposed learning separate until a person or authorized review approves it.",
+          "skills": [
+            "proofloop-memory-review"
+          ]
+        },
+        {
+          "title": "Audit over time",
+          "instruction": "Use read-only evidence to decide whether the loop is improving quality without harmful drift.",
+          "skills": [
+            "proofloop-audit"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You want to wrap one task in the protocol",
+          "skill": "proofloop-run",
+          "why": "It runs the bounded writer, judge, execution, and verification process."
+        },
+        {
+          "need": "You need to approve, reject, expire, or narrow a lesson",
+          "skill": "proofloop-memory-review",
+          "why": "It governs candidate memory instead of trusting it automatically."
+        },
+        {
+          "need": "You want to know whether the system is helping",
+          "skill": "proofloop-audit",
+          "why": "It performs a read-only effectiveness and safety review."
+        }
+      ],
+      "workedExample": {
+        "title": "Improving a recurring briefing task without uncontrolled learning",
+        "situation": "A team repeats the same briefing task and wants the process to improve without silently changing its rules.",
+        "steps": [
+          "Define the briefing requirements, verifier, attempt limit, and stop conditions.",
+          "Run one briefing through the bounded protocol and preserve the evidence.",
+          "Record proposed lessons as candidates rather than active instructions.",
+          "Review the candidates and later audit whether approved lessons improved results."
+        ],
+        "result": "A useful result is a verified briefing plus a reviewable learning record that cannot silently replace the source instructions."
+      },
+      "tips": [
+        "Give the verifier concrete requirements, not a vague quality score.",
+        "Keep attempt limits small enough to prevent endless refinement.",
+        "Treat candidate lessons as suggestions until reviewed.",
+        "Preserve failed runs because they are part of the evidence."
+      ],
+      "boundaries": [
+        "ProofLoop is explicit-only. Generic improvement requests should not trigger it.",
+        "It does not expand the authority of the wrapped task.",
+        "Candidate lessons do not become trusted instructions without the required review.",
+        "An audit is read-only and does not repair the system."
+      ],
+      "successSignals": [
+        "The run has a finite attempt limit and a specific verifier.",
+        "The final result includes evidence and honest failure records.",
+        "Learning candidates remain governed, reviewable, and reversible."
+      ]
+    }
   },
   {
     "slug": "writing-quality",
@@ -295,7 +628,119 @@ export const plugins = [
       "files": 34
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Choosing the right kind of writing help before changing a draft.",
+        "Drafting or rewriting serious prose for a specific reader and purpose.",
+        "Reviewing text without rewriting it.",
+        "Checking whether factual claims are supported and properly qualified."
+      ],
+      "startHere": {
+        "skill": "writing-quality-router",
+        "why": "Start here when the request could mean drafting, rewriting, review, claim checking, or final cleanup. It picks the smallest intervention that matches your intent."
+      },
+      "quickStarts": [
+        {
+          "goal": "Draft from intent",
+          "prompt": "Write this for [reader] so they can [decision or action]. Use this evidence and preserve these constraints: [material]."
+        },
+        {
+          "goal": "Review without rewriting",
+          "prompt": "Review this draft without rewriting it. Identify unclear intent, generic language, unsupported claims, and the highest-value fixes: [draft]."
+        },
+        {
+          "goal": "Check factual boundaries",
+          "prompt": "Check the claim boundaries in this draft. Separate supported facts, reasonable inferences, unsupported claims, and statements that need current verification: [draft]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Name the writing job",
+          "instruction": "Identify the reader, purpose, desired response, source material, and whether the request is draft, rewrite, review, or claim check.",
+          "skills": [
+            "writing-quality-router"
+          ]
+        },
+        {
+          "title": "Build the intent",
+          "instruction": "Shape the hierarchy and argument around what the reader needs to understand or do.",
+          "skills": [
+            "business-writing-intent-enforcer"
+          ]
+        },
+        {
+          "title": "Draft or rewrite",
+          "instruction": "Produce clear prose while preserving approved meaning, evidence, and voice.",
+          "skills": [
+            "writing-enforcer"
+          ]
+        },
+        {
+          "title": "Check claims",
+          "instruction": "Label unsupported facts, inference, uncertainty, and verification needs before publication.",
+          "skills": [
+            "claim-boundary-checker"
+          ]
+        },
+        {
+          "title": "Run the final prose check",
+          "instruction": "Remove filler, repetition, vague phrasing, and mechanical problems without changing the meaning.",
+          "skills": [
+            "writing-enforcer"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You are not sure what kind of writing help is needed",
+          "skill": "writing-quality-router",
+          "why": "It routes the request before text is changed."
+        },
+        {
+          "need": "The document lacks a clear reader or argument",
+          "skill": "business-writing-intent-enforcer",
+          "why": "It creates the communication structure first."
+        },
+        {
+          "need": "You need drafting, rewriting, or final prose cleanup",
+          "skill": "writing-enforcer",
+          "why": "It produces or refines the actual prose."
+        },
+        {
+          "need": "The draft contains factual or time-sensitive claims",
+          "skill": "claim-boundary-checker",
+          "why": "It separates evidence from inference and unsupported language."
+        }
+      ],
+      "workedExample": {
+        "title": "Turning rough product notes into credible launch copy",
+        "situation": "A team has accurate product notes, but the first draft is generic and makes claims the evidence does not support.",
+        "steps": [
+          "Define the intended reader, the action they should take, and the approved facts.",
+          "Build a message hierarchy around the reader's problem and the product's supported value.",
+          "Draft the copy in the requested voice.",
+          "Check every factual claim and remove or qualify unsupported language."
+        ],
+        "result": "A useful result is clear launch copy that sounds intentional, preserves the source meaning, and makes only supportable claims."
+      },
+      "tips": [
+        "Say whether you want a draft, a rewrite, or comments only.",
+        "Name the audience and the action the text should support.",
+        "Provide source material for factual claims.",
+        "List phrases, tone habits, or meaning that must be preserved."
+      ],
+      "boundaries": [
+        "A detect-only review should not silently rewrite your text.",
+        "The plugin cannot verify a claim without an appropriate source or access to current evidence.",
+        "Clear prose cannot repair a weak strategy or missing facts by itself."
+      ],
+      "successSignals": [
+        "The writing has a clear reader, purpose, and information order.",
+        "Claims are supported, qualified, or marked for verification.",
+        "The final text keeps the intended meaning and contains no filler."
+      ]
+    }
   },
   {
     "slug": "capability-operator",
@@ -368,7 +813,123 @@ export const plugins = [
       "files": 73
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Choosing the right installed plugin or skill for a request.",
+        "Inventorying capabilities on one host without changing them.",
+        "Finding overlap, unclear ownership, or stale plugin records.",
+        "Installing, releasing, and proving a plugin when explicitly requested."
+      ],
+      "startHere": {
+        "skill": "capability-router",
+        "why": "Use the router when you need the correct capability but do not already know its name. It should select the narrowest owner before any install or change."
+      },
+      "quickStarts": [
+        {
+          "goal": "Route a request",
+          "prompt": "Choose the best installed plugin or skill for this request: [request]. Explain the match, any missing capability, and whether the task requires a change."
+        },
+        {
+          "goal": "Inventory one host",
+          "prompt": "Create a read-only inventory of the plugins and skills visible on this host. Separate source files, installed state, and capabilities proven in a fresh task."
+        },
+        {
+          "goal": "Audit overlap",
+          "prompt": "Audit these skills for overlap and unclear ownership without changing anything. Recommend one primary route and explicit fallbacks: [skills or plugins]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Identify the host and goal",
+          "instruction": "Name the active host, requested outcome, and whether this is routing, inventory, audit, install, creation, or release.",
+          "skills": [
+            "capability-router"
+          ]
+        },
+        {
+          "title": "Inspect current state",
+          "instruction": "Read the authoritative records and distinguish source, cache, enabled listing, and fresh-task visibility.",
+          "skills": [
+            "capability-inventory"
+          ]
+        },
+        {
+          "title": "Choose or repair ownership",
+          "instruction": "Route the request, inspect overlap, or update portfolio ownership only within the approved scope.",
+          "skills": [
+            "skill-overlap-audit",
+            "plugin-portfolio-manager"
+          ]
+        },
+        {
+          "title": "Make the authorized change",
+          "instruction": "Install, create, or release only when the user asked for that state change.",
+          "skills": [
+            "plugin-install",
+            "skill-creator-pro",
+            "plugin-release"
+          ]
+        },
+        {
+          "title": "Prove discovery and parity",
+          "instruction": "Verify release evidence, installed parity, and fresh-task discovery for the changed plugin.",
+          "skills": [
+            "capability-release-verifier",
+            "fresh-task-discovery-verifier"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need the best existing capability",
+          "skill": "capability-router",
+          "why": "It resolves ownership before work starts."
+        },
+        {
+          "need": "You need a read-only map of what exists",
+          "skill": "capability-inventory",
+          "why": "It separates files from installed and discoverable state."
+        },
+        {
+          "need": "Two skills seem to do the same job",
+          "skill": "skill-overlap-audit",
+          "why": "It compares scope and recommends clearer ownership."
+        },
+        {
+          "need": "A plugin changed and needs proof",
+          "skill": "capability-release-verifier",
+          "why": "It checks the release chain rather than trusting filesystem presence."
+        }
+      ],
+      "workedExample": {
+        "title": "Finding the right capability before installing another plugin",
+        "situation": "A user wants help with a recurring research task and assumes a new plugin is required.",
+        "steps": [
+          "Route the request against the capabilities already visible on the active host.",
+          "Inventory the likely owners and distinguish installed state from source files.",
+          "Audit overlap if several skills appear to fit.",
+          "Recommend the primary route, and install something new only if a real gap remains and approval is given."
+        ],
+        "result": "A useful result is one clear primary capability, a reason it fits, and evidence for any claimed installation or discovery state."
+      },
+      "tips": [
+        "Name the host because availability can differ between hosts.",
+        "Say whether you want a read-only answer or an actual install or release.",
+        "Describe the outcome, not only the tool name you remember.",
+        "Ask for fresh-task proof when discovery matters."
+      ],
+      "boundaries": [
+        "Technical access does not authorize installation, deletion, publishing, or portfolio changes.",
+        "A source folder does not prove a plugin is installed or visible in a new task.",
+        "The plugin should not create a new capability when an existing owner already fits."
+      ],
+      "successSignals": [
+        "The chosen capability has a clear reason and owner.",
+        "Source, installed, enabled, and fresh-task states are not confused.",
+        "Any changed plugin has direct parity and discovery evidence."
+      ]
+    }
   },
   {
     "slug": "citizen-forge",
@@ -444,7 +1005,123 @@ export const plugins = [
       "files": 96
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning an internal-tool idea into a governed application plan.",
+        "Building or changing an internal app with explicit owners and policies.",
+        "Explaining a blocked application decision in plain language.",
+        "Operating and releasing an app through defined lifecycle controls."
+      ],
+      "startHere": {
+        "skill": "citizen-forge",
+        "why": "Start with the coordinator when the request spans idea, policy, build, release, or operations. It routes the job to the correct lifecycle stage."
+      },
+      "quickStarts": [
+        {
+          "goal": "Shape an app idea",
+          "prompt": "Help me turn this internal-tool idea into a safe application brief: [idea]. Identify users, data, decisions, owners, policies, and risks before building."
+        },
+        {
+          "goal": "Check release readiness",
+          "prompt": "Check whether this Citizen Forge application is ready to release. Verify the registered owner, policy decisions, tests, operating plan, and unresolved blockers: [app details]."
+        },
+        {
+          "goal": "Explain a block",
+          "prompt": "Explain why this application action was blocked in plain language. Name the rule, the evidence, the safe next step, and who must approve it: [event]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Define the idea",
+          "instruction": "Clarify the users, problem, desired decision or action, data involved, and measurable value.",
+          "skills": [
+            "citizen-idea"
+          ]
+        },
+        {
+          "title": "Register ownership and policy",
+          "instruction": "Record the application, accountable owner, data boundaries, permissions, and lifecycle controls.",
+          "skills": [
+            "citizen-register",
+            "citizen-provision"
+          ]
+        },
+        {
+          "title": "Build the bounded application",
+          "instruction": "Implement only the approved capabilities and deterministic policy behavior.",
+          "skills": [
+            "citizen-build"
+          ]
+        },
+        {
+          "title": "Check and release",
+          "instruction": "Verify readiness, document limits, and release only with the required approvals.",
+          "skills": [
+            "citizen-release"
+          ]
+        },
+        {
+          "title": "Operate and change safely",
+          "instruction": "Triage issues, explain policy decisions, and route material changes back through review.",
+          "skills": [
+            "citizen-operate",
+            "citizen-triage",
+            "citizen-explain",
+            "citizen-change"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You have an app idea but no safe brief",
+          "skill": "citizen-idea",
+          "why": "It defines the user, value, data, and decision boundary."
+        },
+        {
+          "need": "The app needs an owner and registry record",
+          "skill": "citizen-register",
+          "why": "It creates accountable lifecycle ownership."
+        },
+        {
+          "need": "You need to implement the approved application",
+          "skill": "citizen-build",
+          "why": "It builds within the agreed policy and scope."
+        },
+        {
+          "need": "A user needs to understand a blocked action",
+          "skill": "citizen-explain",
+          "why": "It translates policy evidence into a useful explanation."
+        }
+      ],
+      "workedExample": {
+        "title": "Building an internal request tracker",
+        "situation": "A small team wants an app that collects requests, assigns owners, and shows status without exposing restricted information.",
+        "steps": [
+          "Define who submits, who approves, which fields are sensitive, and what success means.",
+          "Register the owner and policy for viewing, editing, and escalating requests.",
+          "Build the approved form, status view, and deterministic access checks.",
+          "Verify the policy paths and operating plan before release."
+        ],
+        "result": "A useful result is an owned, registered internal app whose allowed actions, blocked actions, and operating responsibilities are clear."
+      },
+      "tips": [
+        "Start with one real internal decision or workflow.",
+        "Name the accountable owner before building.",
+        "List sensitive data and forbidden actions explicitly.",
+        "Describe the normal operating and support process, not only the first release."
+      ],
+      "boundaries": [
+        "It does not replace security, privacy, legal, or compliance review where those are required.",
+        "It should not provision access or release an app without the required authority.",
+        "A prototype is not automatically a governed production application."
+      ],
+      "successSignals": [
+        "The app has a named owner, registered purpose, and explicit policies.",
+        "Allowed and blocked actions behave predictably.",
+        "Release and ongoing operation have evidence and clear responsibilities."
+      ]
+    }
   },
   {
     "slug": "agent-ops",
@@ -513,7 +1190,122 @@ export const plugins = [
       "files": 84
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Designing a reusable agent system instead of a one-off prompt.",
+        "Defining authority, evidence, stops, handoffs, and failure behavior.",
+        "Auditing an agent workflow before it runs.",
+        "Choosing between a goal, loop, handoff, or broader agent architecture."
+      ],
+      "startHere": {
+        "skill": "agent-ops-router",
+        "why": "Use the router when you know the outcome but not the right agent pattern. It decides whether the job needs a single agent, loop, goal, handoff, or audit."
+      },
+      "quickStarts": [
+        {
+          "goal": "Design a system",
+          "prompt": "Design a bounded agent system for this outcome: [outcome]. Define ownership, authority, inputs, outputs, evidence, stops, failures, and handoffs."
+        },
+        {
+          "goal": "Audit before running",
+          "prompt": "Audit this agent system before it runs. Find unclear authority, missing evidence, unsafe handoffs, endless-loop risks, and weak completion rules: [system]."
+        },
+        {
+          "goal": "Choose the architecture",
+          "prompt": "Route this reusable agent request to the smallest suitable architecture. Explain whether it needs an agent, goal, loop, handoff, or another pattern: [request]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Choose the pattern",
+          "instruction": "Classify the outcome and select the smallest agent architecture that can own it safely.",
+          "skills": [
+            "agent-ops-router"
+          ]
+        },
+        {
+          "title": "Define the contract",
+          "instruction": "Specify inputs, outputs, authority, evidence, stop conditions, failure behavior, and human approvals.",
+          "skills": [
+            "agent-builder"
+          ]
+        },
+        {
+          "title": "Add orchestration only when needed",
+          "instruction": "Use goals or loops for sustained work and keep each one bounded by durable state and proof.",
+          "skills": [
+            "goal-runner",
+            "loop-goal-engineer",
+            "loopy"
+          ]
+        },
+        {
+          "title": "Prepare host handoffs",
+          "instruction": "When work moves between environments, preserve the contract and translate host-specific execution details.",
+          "skills": [
+            "cowork-handoff"
+          ]
+        },
+        {
+          "title": "Audit the whole system",
+          "instruction": "Check the architecture, authority, evidence, stops, and failure paths before relying on it.",
+          "skills": [
+            "agent-system-audit"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need the basic reusable agent contract",
+          "skill": "agent-builder",
+          "why": "It defines the system's job, authority, evidence, and stops."
+        },
+        {
+          "need": "You need a bounded goal that persists",
+          "skill": "goal-runner",
+          "why": "It wraps sustained work in explicit completion rules."
+        },
+        {
+          "need": "You need repeating work with checkpoints",
+          "skill": "loop-goal-engineer",
+          "why": "It designs the loop and its durable state."
+        },
+        {
+          "need": "You need an independent safety and completeness check",
+          "skill": "agent-system-audit",
+          "why": "It reviews the whole system before execution."
+        }
+      ],
+      "workedExample": {
+        "title": "Designing a weekly research agent",
+        "situation": "A team wants a recurring agent that watches a topic and produces a short update only when meaningful changes occur.",
+        "steps": [
+          "Choose a bounded loop rather than an always-on general agent.",
+          "Define sources, the meaning of a material change, the report format, and no-op behavior.",
+          "Set the schedule, durable checkpoint, evidence requirements, and stop conditions.",
+          "Audit authority and failure handling before activation."
+        ],
+        "result": "A useful result is a reusable agent contract that knows what to inspect, when to report, when to do nothing, and when to stop."
+      },
+      "tips": [
+        "Define the outcome before choosing the architecture.",
+        "Make no-op behavior explicit for recurring systems.",
+        "State which actions need human approval.",
+        "Describe failures and recovery before the first run."
+      ],
+      "boundaries": [
+        "It does not grant an agent more authority than the user supplied.",
+        "It does not make an unbounded task safe merely by adding more agents.",
+        "Host-specific setup may require a dedicated tool or connector.",
+        "Advisory skills do not execute changes unless the request authorizes them."
+      ],
+      "successSignals": [
+        "Every component has one clear job and owner.",
+        "Evidence, approval, stop, and failure rules are explicit.",
+        "The system can be resumed or audited without relying on hidden chat context."
+      ]
+    }
   },
   {
     "slug": "video-production-studio",
@@ -606,7 +1398,127 @@ export const plugins = [
       "files": 562
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning a video brief into a complete production plan.",
+        "Choosing the right video format and production path.",
+        "Building captions, graphics, and prompts for a video.",
+        "Checking a finished render before delivery."
+      ],
+      "startHere": {
+        "skill": "video-production-router",
+        "why": "Start here with the audience, message, available media, format, and deadline. It routes the job to the smallest suitable production workflow."
+      },
+      "quickStarts": [
+        {
+          "goal": "Route a video brief",
+          "prompt": "Route this video brief into a complete production plan: [brief]. Recommend the format, workflow, required media, review points, and delivery checks."
+        },
+        {
+          "goal": "Plan a product video",
+          "prompt": "Turn this product launch into a video workflow. Define the audience, core promise, story beats, visuals, captions, production method, and approval points: [launch details]."
+        },
+        {
+          "goal": "Check a render",
+          "prompt": "Run delivery quality control on this rendered video. Check picture, audio, captions, timing, safe areas, file properties, and the original brief: [video or path]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Route the brief",
+          "instruction": "Choose the production pattern from the message, audience, media, runtime, platform, and available tools.",
+          "skills": [
+            "video-production-router"
+          ]
+        },
+        {
+          "title": "Build the production prompt",
+          "instruction": "Translate the approved idea into scenes, timing, visual direction, audio, text, and constraints.",
+          "skills": [
+            "video-prompt-builder"
+          ]
+        },
+        {
+          "title": "Produce the right format",
+          "instruction": "Use the specialist for the chosen format and keep source media use within its approved rights and role.",
+          "skills": [
+            "general-video",
+            "media-use"
+          ]
+        },
+        {
+          "title": "Add communication layers",
+          "instruction": "Create readable captions and purposeful graphic overlays when the video needs them.",
+          "skills": [
+            "embedded-captions",
+            "graphic-overlays"
+          ]
+        },
+        {
+          "title": "Verify delivery",
+          "instruction": "Inspect the actual render against the brief and technical delivery requirements.",
+          "skills": [
+            "video-delivery-qc"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need a clear narrated explainer",
+          "skill": "faceless-explainer",
+          "why": "It structures an explanation without requiring an on-camera presenter."
+        },
+        {
+          "need": "You need a product launch story",
+          "skill": "product-launch-video",
+          "why": "It maps the product promise into a launch-focused sequence."
+        },
+        {
+          "need": "You need motion-led graphics",
+          "skill": "motion-graphics",
+          "why": "It handles animation-first visual communication."
+        },
+        {
+          "need": "You need a website turned into video",
+          "skill": "website-to-video",
+          "why": "It plans capture and presentation from an existing web surface."
+        },
+        {
+          "need": "You need final render checks",
+          "skill": "video-delivery-qc",
+          "why": "It verifies the delivered file rather than the production plan."
+        }
+      ],
+      "workedExample": {
+        "title": "A short launch explainer",
+        "situation": "A product team has approved messaging, interface captures, and a 45-second target but no production structure.",
+        "steps": [
+          "Route the brief to a product-launch workflow.",
+          "Turn the approved promise into timed scenes and define each media source.",
+          "Build the video with readable captions and restrained overlays.",
+          "Render the candidate and inspect picture, audio, timing, and brief alignment."
+        ],
+        "result": "A useful result is a delivery-ready video whose story, media, captions, and technical properties match the approved brief."
+      },
+      "tips": [
+        "Give the target platform, aspect ratio, runtime, and audience.",
+        "Separate approved media from media that still needs rights clearance.",
+        "Write one communication goal for each scene.",
+        "Review a rendered file, not only the timeline or source code."
+      ],
+      "boundaries": [
+        "The plugin does not supply rights to images, music, footage, logos, or voices.",
+        "Generation and rendering may require separate media or runtime tools.",
+        "Publishing or uploading needs separate approval.",
+        "A production plan is not proof that a final video rendered correctly."
+      ],
+      "successSignals": [
+        "The video has one clear audience and message.",
+        "Every scene, asset, and caption has a defined role.",
+        "The final render passes both brief and technical delivery checks."
+      ]
+    }
   },
   {
     "slug": "web-product-studio",
@@ -679,7 +1591,127 @@ export const plugins = [
       "files": 43
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Building a web product from an approved brief.",
+        "Redesigning an existing interface while preserving its real behavior.",
+        "Turning an image or screenshot into a working web surface.",
+        "Verifying the most important user flows in a browser."
+      ],
+      "startHere": {
+        "skill": "web-product-router",
+        "why": "Use the router when the job could be a new build, redesign, image implementation, or verification task. It chooses one visual authority and the correct delivery path."
+      },
+      "quickStarts": [
+        {
+          "goal": "Build from a brief",
+          "prompt": "Route and build this web product from the brief: [brief]. Preserve the named constraints, choose one visual direction, implement the core flows, and verify them in a browser."
+        },
+        {
+          "goal": "Redesign an interface",
+          "prompt": "Redesign this existing interface without changing its product behavior: [project or URL]. First map the current flows, then improve the visual system and verify the result."
+        },
+        {
+          "goal": "Implement a screenshot",
+          "prompt": "Turn this screenshot into a working responsive web surface: [image]. Reconstruct the visual rules, use real structure, and verify mobile and desktop behavior."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Route the web job",
+          "instruction": "Identify whether this is a new build, redesign, image-to-code task, or verification-only request.",
+          "skills": [
+            "web-product-router"
+          ]
+        },
+        {
+          "title": "Choose the visual authority",
+          "instruction": "Set one design constitution that governs type, color, spacing, components, motion, and responsive behavior.",
+          "skills": [
+            "design-constitution-selector"
+          ]
+        },
+        {
+          "title": "Implement the product",
+          "instruction": "Build the requested surface and preserve current behavior when the job is a redesign.",
+          "skills": [
+            "code-production-agent",
+            "redesign-existing-projects"
+          ]
+        },
+        {
+          "title": "Complete the requested output",
+          "instruction": "Check that the implementation is not a partial mockup and that every approved requirement has a terminal result.",
+          "skills": [
+            "full-output-enforcement"
+          ]
+        },
+        {
+          "title": "Verify real flows",
+          "instruction": "Run the important acceptance paths and inspect the rendered product at relevant viewport sizes.",
+          "skills": [
+            "acceptance-flow",
+            "playwright"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You are redesigning an existing project",
+          "skill": "redesign-existing-projects",
+          "why": "It starts from the current product and protects working behavior."
+        },
+        {
+          "need": "You are building from a visual reference",
+          "skill": "image-to-code",
+          "why": "It translates the reference into responsive structure and styles."
+        },
+        {
+          "need": "You need a new visual frontend direction",
+          "skill": "imagegen-frontend-web",
+          "why": "It supports intentional, high-quality frontend visual design."
+        },
+        {
+          "need": "You need fast browser-level implementation and QA",
+          "skill": "gstack",
+          "why": "It combines headless product work with verification."
+        },
+        {
+          "need": "You need to prove a critical user path",
+          "skill": "acceptance-flow",
+          "why": "It tests the outcome from the user's point of view."
+        }
+      ],
+      "workedExample": {
+        "title": "Redesigning a working directory",
+        "situation": "A directory already has good content and filters, but visitors must click twice to reach an item page and the detail pages are too thin.",
+        "steps": [
+          "Map the current routes, filters, design tokens, and mobile behavior.",
+          "Choose the existing design system as the visual authority.",
+          "Replace selector rows with direct links and expand the detail template.",
+          "Run build checks and browser tests for navigation, focus, responsive layout, and content."
+        ],
+        "result": "A useful result is a working redesign that keeps the product's identity, shortens the main path, and passes the agreed browser flows."
+      },
+      "tips": [
+        "Provide the repository or live URL and name the source of truth.",
+        "List behavior that must not change.",
+        "Define the top three user flows before styling.",
+        "Give exact viewport sizes when responsive details matter."
+      ],
+      "boundaries": [
+        "A screenshot does not reveal hidden product logic or data rules.",
+        "A local build does not prove the public deployment is current.",
+        "Deployment, domains, credentials, and paid services may require separate tools and approval.",
+        "A redesign should not silently rewrite product behavior."
+      ],
+      "successSignals": [
+        "The main user flows work in the rendered product.",
+        "The visual system is consistent across routes and viewport sizes.",
+        "Accessibility, error states, and completion checks are part of the result."
+      ]
+    }
   },
   {
     "slug": "model-prompt-lab",
@@ -740,7 +1772,127 @@ export const plugins = [
       "files": 82
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Choosing a verified prompt workflow for a specific model.",
+        "Building production prompts with explicit inputs, outputs, and checks.",
+        "Auditing a prompt before moving it to another model.",
+        "Designing a representative benchmark for prompt decisions."
+      ],
+      "startHere": {
+        "skill": "model-prompt-router",
+        "why": "Start here when model choice or prompt format is part of the problem. It routes to a model-specific workflow only when the evidence supports that route."
+      },
+      "quickStarts": [
+        {
+          "goal": "Route a prompt job",
+          "prompt": "Route this prompt job to the right verified model workflow: [job]. State the model assumptions, required inputs, output contract, and checks."
+        },
+        {
+          "goal": "Audit a migration",
+          "prompt": "Audit this prompt before migrating it from [source model] to [target model]. Identify incompatible instructions, missing controls, and a safe test plan: [prompt]."
+        },
+        {
+          "goal": "Design a benchmark",
+          "prompt": "Design a small representative benchmark for this production prompt. Include normal cases, edge cases, scoring rules, and a decision threshold: [prompt and job]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Define the prompt job",
+          "instruction": "Name the model, task, inputs, required output, constraints, tools, and evidence for success.",
+          "skills": [
+            "model-prompt-router"
+          ]
+        },
+        {
+          "title": "Use the verified model workflow",
+          "instruction": "Build the prompt with the specialist whose model contract matches the confirmed target.",
+          "skills": [
+            "gpt-5-4-production-prompter",
+            "gpt-5-6-production-prompter",
+            "fable-5-production-prompter"
+          ]
+        },
+        {
+          "title": "Audit migration risks",
+          "instruction": "When changing models, inspect assumptions and behavior instead of renaming the model in place.",
+          "skills": [
+            "prompt-migration-audit"
+          ]
+        },
+        {
+          "title": "Build a representative test",
+          "instruction": "Create cases and scoring that reflect the real production task.",
+          "skills": [
+            "prompt-benchmark-designer"
+          ]
+        },
+        {
+          "title": "Choose from measured evidence",
+          "instruction": "Compare results and revise the prompt or model route only when the benchmark justifies it.",
+          "skills": [
+            "model-prompt-router"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You have a verified GPT-5.6 prompt job",
+          "skill": "gpt-5-6-production-prompter",
+          "why": "It applies the production contract for that model family."
+        },
+        {
+          "need": "You have a verified GPT-5.4 prompt job",
+          "skill": "gpt-5-4-production-prompter",
+          "why": "It uses the matching production prompt workflow."
+        },
+        {
+          "need": "You have a Fable 5 prompt job",
+          "skill": "fable-5-production-prompter",
+          "why": "It composes the appropriate Fable production structure."
+        },
+        {
+          "need": "You are moving a prompt between models",
+          "skill": "prompt-migration-audit",
+          "why": "It finds assumptions that may not transfer."
+        },
+        {
+          "need": "You need evidence for a prompt decision",
+          "skill": "prompt-benchmark-designer",
+          "why": "It creates representative cases and scoring."
+        }
+      ],
+      "workedExample": {
+        "title": "Moving a production extraction prompt",
+        "situation": "A team wants to move a working extraction prompt to another model without losing schema compliance or evidence handling.",
+        "steps": [
+          "Define the input types, output schema, error behavior, and current success rate evidence.",
+          "Audit the original prompt for model-specific assumptions.",
+          "Build the target-model version with the verified specialist.",
+          "Run both prompts on representative normal and edge cases before choosing."
+        ],
+        "result": "A useful result is a target prompt with an explicit contract and measured evidence that supports or rejects the migration."
+      },
+      "tips": [
+        "Name the exact model and interface when known.",
+        "Provide representative inputs, including hard cases.",
+        "Define the output schema and failure behavior before prompt wording.",
+        "Compare measured outputs, not confidence in the prose."
+      ],
+      "boundaries": [
+        "Model behavior and interfaces can change, so unstable claims need current verification.",
+        "A polished prompt is not evidence that it performs well.",
+        "The plugin does not provide model access, credentials, or usage budget.",
+        "Do not transfer host-specific paths or tools into another environment without adaptation."
+      ],
+      "successSignals": [
+        "The prompt names its inputs, outputs, constraints, and failure behavior.",
+        "The chosen route matches a verified model contract.",
+        "Representative benchmark results support the final decision."
+      ]
+    }
   },
   {
     "slug": "strategy-room",
@@ -801,7 +1953,121 @@ export const plugins = [
       "files": 55
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Pressure-testing a decision before committing resources.",
+        "Finding hidden assumptions and missing evidence.",
+        "Generating genuinely different options instead of minor variations.",
+        "Turning a messy discussion into a clear recommendation."
+      ],
+      "startHere": {
+        "skill": "strategy-room-router",
+        "why": "Use the router when you have a decision but are unsure whether it needs an interview, assumption challenge, option exploration, uncertainty map, or final synthesis."
+      },
+      "quickStarts": [
+        {
+          "goal": "Pressure-test a decision",
+          "prompt": "Pressure-test this decision before I commit resources: [decision]. Ask one consequential question at a time, inspect discoverable facts, and track the assumptions that matter."
+        },
+        {
+          "goal": "Generate options",
+          "prompt": "Generate meaningfully different options for this choice, not small variations. Compare tradeoffs, evidence needs, reversibility, and failure modes: [choice]."
+        },
+        {
+          "goal": "Build an assumption register",
+          "prompt": "Create an assumption register for this decision: [decision]. Separate known facts, assumptions, uncertainties, tests, owners, and dates for review."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Frame the decision",
+          "instruction": "State the choice, stakes, deadline, constraints, decision owner, and information already known.",
+          "skills": [
+            "strategy-room-router"
+          ]
+        },
+        {
+          "title": "Challenge assumptions",
+          "instruction": "Identify the beliefs carrying the decision and test the most consequential ones first.",
+          "skills": [
+            "assumption-challenger",
+            "assumption-register"
+          ]
+        },
+        {
+          "title": "Explore distinct directions",
+          "instruction": "Generate options with different mechanisms, tradeoffs, and failure paths.",
+          "skills": [
+            "multi-direction-explorer"
+          ]
+        },
+        {
+          "title": "Choose a path",
+          "instruction": "Compare options against the real criteria and make uncertainty visible.",
+          "skills": [
+            "decision-wayfinder"
+          ]
+        },
+        {
+          "title": "Synthesize the decision",
+          "instruction": "Produce the recommendation, rationale, assumptions, risks, and next evidence step.",
+          "skills": [
+            "decision-synthesizer"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You want a hard-question interview",
+          "skill": "grill-me",
+          "why": "It resolves the decision one consequential question at a time."
+        },
+        {
+          "need": "You suspect the plan rests on weak beliefs",
+          "skill": "assumption-challenger",
+          "why": "It tests the assumptions with the highest downside."
+        },
+        {
+          "need": "You need more than one real direction",
+          "skill": "multi-direction-explorer",
+          "why": "It generates distinct mechanisms and tradeoffs."
+        },
+        {
+          "need": "You need a durable decision record",
+          "skill": "decision-synthesizer",
+          "why": "It turns the reasoning into a clear recommendation and record."
+        }
+      ],
+      "workedExample": {
+        "title": "Choosing how to launch a new service",
+        "situation": "A founder is choosing between a self-serve offer, a small cohort, and a high-touch service with limited demand evidence.",
+        "steps": [
+          "Define the decision deadline, capacity, revenue need, and acceptable risk.",
+          "Register assumptions about buyer urgency, price, delivery effort, and proof.",
+          "Explore options that differ in customer, mechanism, and commitment.",
+          "Select a reversible test and document why it best fits the evidence."
+        ],
+        "result": "A useful result is a clear decision with stated tradeoffs, testable assumptions, and the next evidence needed before a larger commitment."
+      },
+      "tips": [
+        "Name the actual commitment you are deciding about.",
+        "Provide constraints that cannot move.",
+        "Separate preferences from evidence.",
+        "Say which decisions are reversible and which are costly to undo."
+      ],
+      "boundaries": [
+        "It does not replace current market, legal, financial, or technical research when those facts matter.",
+        "It should not force a recommendation when key evidence is missing.",
+        "A decision memo does not authorize execution.",
+        "Interview workflows should pause for your answers."
+      ],
+      "successSignals": [
+        "The decision and criteria are explicit.",
+        "Important assumptions have evidence, tests, or owners.",
+        "The recommendation explains tradeoffs and the next review point."
+      ]
+    }
   },
   {
     "slug": "brand-world-studio",
@@ -862,7 +2128,121 @@ export const plugins = [
       "files": 70
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning approved positioning into a usable visual brand brief.",
+        "Choosing an image-model workflow for a specific visual job.",
+        "Creating production-ready image prompt packs.",
+        "Checking a set of visuals for brand consistency."
+      ],
+      "startHere": {
+        "skill": "brand-world-router",
+        "why": "Start here with the approved positioning, audience, deliverable, and references. It decides whether the next job is briefing, system design, model routing, prompting, or consistency review."
+      },
+      "quickStarts": [
+        {
+          "goal": "Build a brand brief",
+          "prompt": "Turn this approved positioning into a production-ready brand brief: [positioning]. Define the audience, promise, personality, visual principles, constraints, and required deliverables."
+        },
+        {
+          "goal": "Route an image job",
+          "prompt": "Choose the right image-model and prompt workflow for this visual job: [job]. Use only verified model facts and explain the decision criteria."
+        },
+        {
+          "goal": "Check consistency",
+          "prompt": "Check this image series against the approved brand system. Identify consistent choices, drift, unsupported elements, and the smallest corrections: [brand system and images]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Confirm the brand foundation",
+          "instruction": "Start from approved positioning, audience, promise, personality, and non-negotiable constraints.",
+          "skills": [
+            "brand-brief-builder"
+          ]
+        },
+        {
+          "title": "Build the visual system",
+          "instruction": "Turn the brief into repeatable rules for color, type, composition, imagery, materials, and art direction.",
+          "skills": [
+            "brandkit"
+          ]
+        },
+        {
+          "title": "Choose the production route",
+          "instruction": "Select the appropriate model workflow from verified capabilities and the specific visual task.",
+          "skills": [
+            "brand-model-router"
+          ]
+        },
+        {
+          "title": "Create the prompt pack",
+          "instruction": "Produce model-ready prompts with subject, composition, style, constraints, and variation logic.",
+          "skills": [
+            "gpt-image-2-unified",
+            "nano-banana-unified"
+          ]
+        },
+        {
+          "title": "Verify consistency",
+          "instruction": "Compare generated or designed assets against the approved system and record the drift.",
+          "skills": [
+            "brand-consistency-verifier"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You have positioning but no production brief",
+          "skill": "brand-brief-builder",
+          "why": "It turns strategy into clear creative requirements."
+        },
+        {
+          "need": "You need a repeatable visual identity system",
+          "skill": "brandkit",
+          "why": "It defines the rules that keep outputs related."
+        },
+        {
+          "need": "You need to choose an image workflow",
+          "skill": "brand-model-router",
+          "why": "It routes from the visual job and verified capabilities."
+        },
+        {
+          "need": "You need to inspect a finished series",
+          "skill": "brand-consistency-verifier",
+          "why": "It compares assets with the approved visual rules."
+        }
+      ],
+      "workedExample": {
+        "title": "Creating a visual system for a new editorial series",
+        "situation": "A team has approved positioning and article topics but needs a consistent cover-image world across many releases.",
+        "steps": [
+          "Turn the positioning into a brief with audience, mood, visual principles, and exclusions.",
+          "Define a repeatable composition, palette, image language, and variation system.",
+          "Choose the verified image workflow and build a prompt pack for several topics.",
+          "Generate candidates and check the series against the approved system."
+        ],
+        "result": "A useful result is an inspectable brand system and prompt pack that produce related images without making every image identical."
+      },
+      "tips": [
+        "Bring approved positioning before asking for visual direction.",
+        "Separate inspiration from elements you own or may reproduce.",
+        "Describe what must stay consistent and what may vary.",
+        "Review a group of outputs together to see drift."
+      ],
+      "boundaries": [
+        "The plugin does not grant rights to reference images, logos, typefaces, or recognizable people.",
+        "Image generation requires access to an appropriate model or tool.",
+        "Model capabilities and interfaces should be verified when current behavior matters.",
+        "A prompt pack is not proof that the generated series is consistent."
+      ],
+      "successSignals": [
+        "The visual choices trace back to the approved brand brief.",
+        "Consistency rules and allowed variation are both clear.",
+        "Finished assets are checked as a system, not only one at a time."
+      ]
+    }
   },
   {
     "slug": "founder-revenue-engine",
@@ -923,7 +2303,126 @@ export const plugins = [
       "files": 158
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Researching recent signals that may reveal an early customer.",
+        "Turning evidence into a focused ideal-customer hypothesis.",
+        "Building a clear commercial narrative from a validated audience.",
+        "Drafting bounded outreach or founder-led content without sending it."
+      ],
+      "startHere": {
+        "skill": "founder-revenue-router",
+        "why": "Use the router when you want revenue progress but are unsure whether the next step is signal research, customer definition, narrative, outreach, or content."
+      },
+      "quickStarts": [
+        {
+          "goal": "Find early-customer signals",
+          "prompt": "Research recent signals and build an evidence-backed early-customer hypothesis for [offer]. Separate observed signals, inferences, risks, and the next validation step."
+        },
+        {
+          "goal": "Build a narrative",
+          "prompt": "Turn this validated customer hypothesis into a commercial narrative. Explain the costly problem, why it matters now, the credible promise, proof, and objections: [hypothesis]."
+        },
+        {
+          "goal": "Draft outreach",
+          "prompt": "Draft a small outreach sequence for this validated audience and offer. Personalize from real signals, keep the claims supported, and do not send anything: [audience and offer]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Find current signals",
+          "instruction": "Research recent events, language, constraints, and buying clues from appropriate sources.",
+          "skills": [
+            "last30days"
+          ]
+        },
+        {
+          "title": "Form the customer hypothesis",
+          "instruction": "Convert signals into a narrow audience, costly problem, trigger, evidence, and testable assumptions.",
+          "skills": [
+            "signal-to-icp"
+          ]
+        },
+        {
+          "title": "Build the commercial story",
+          "instruction": "Explain the problem, urgency, promise, proof, difference, and objections without inventing claims.",
+          "skills": [
+            "market-narrative-builder"
+          ]
+        },
+        {
+          "title": "Choose the contact path",
+          "instruction": "Find plausible first customers or draft a small outreach sequence tied to real evidence.",
+          "skills": [
+            "first-customer-finder",
+            "outreach-sequence-builder"
+          ]
+        },
+        {
+          "title": "Publish only when authorized",
+          "instruction": "Draft founder-led content from the same evidence and keep sending or publishing as a separate approval step.",
+          "skills": [
+            "linkedin-viral-content-creator"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need fresh market or audience signals",
+          "skill": "last30days",
+          "why": "It researches recent evidence before positioning is written."
+        },
+        {
+          "need": "You have signals but no focused audience",
+          "skill": "signal-to-icp",
+          "why": "It turns observations into a testable customer hypothesis."
+        },
+        {
+          "need": "You need a clear reason to buy",
+          "skill": "market-narrative-builder",
+          "why": "It builds the commercial story from validated inputs."
+        },
+        {
+          "need": "You want a draft sequence",
+          "skill": "outreach-sequence-builder",
+          "why": "It creates bounded outreach without sending it."
+        },
+        {
+          "need": "You need likely first-customer targets",
+          "skill": "first-customer-finder",
+          "why": "It looks for plausible prospects based on the validated hypothesis."
+        }
+      ],
+      "workedExample": {
+        "title": "Testing an early service offer",
+        "situation": "A founder has a useful service idea but the audience is broad and the claimed urgency is based on intuition.",
+        "steps": [
+          "Research recent signals and language around the problem.",
+          "Choose a narrow audience with a visible trigger and costly need.",
+          "Build a commercial narrative using only supported evidence.",
+          "Draft a small outreach sequence and define what response would validate the hypothesis."
+        ],
+        "result": "A useful result is a testable customer hypothesis, credible narrative, and bounded outreach draft tied to observed signals."
+      },
+      "tips": [
+        "Name the offer, price range, geography, and time window when relevant.",
+        "Share evidence from real customer conversations.",
+        "Separate a hypothesis from a verified customer fact.",
+        "Define what response would count as useful validation."
+      ],
+      "boundaries": [
+        "Research results and prospect details can become stale and may need current verification.",
+        "The plugin does not send outreach, publish posts, purchase data, or access accounts without separate authority and tools.",
+        "It should not invent customer pain, demand, proof, or personalization.",
+        "Legal and platform rules may require additional review."
+      ],
+      "successSignals": [
+        "The target customer is narrow enough to test.",
+        "Claims and personalization trace to real evidence.",
+        "The next contact step is bounded and has a clear learning goal."
+      ]
+    }
   },
   {
     "slug": "continuity-vault",
@@ -976,7 +2475,120 @@ export const plugins = [
       "files": 48
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Extracting reusable knowledge while preserving the original source.",
+        "Deciding where a lesson belongs and what authority it should have.",
+        "Connecting related knowledge into an inspectable graph.",
+        "Finding stale, conflicting, or superseded instructions."
+      ],
+      "startHere": {
+        "skill": "continuity-router",
+        "why": "Start here when knowledge needs to move from a conversation or document into a durable system. It chooses extraction, promotion, graphing, or audit without replacing the source."
+      },
+      "quickStarts": [
+        {
+          "goal": "Extract reusable knowledge",
+          "prompt": "Extract reusable knowledge from this source without replacing it: [source]. Preserve provenance, separate facts from instructions, and mark uncertainty and expiry."
+        },
+        {
+          "goal": "Choose where it belongs",
+          "prompt": "Decide where this knowledge belongs and what authority it should have: [knowledge]. Preserve the original source and explain the promotion decision."
+        },
+        {
+          "goal": "Audit for staleness",
+          "prompt": "Audit these sources for stale facts, conflicting instructions, superseded guidance, and unclear ownership. Do not change anything: [sources]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Identify source and purpose",
+          "instruction": "Record where the knowledge came from, why it matters, and whether it is fact, preference, decision, instruction, or example.",
+          "skills": [
+            "continuity-router"
+          ]
+        },
+        {
+          "title": "Extract without replacing",
+          "instruction": "Create reusable candidates with provenance, context, uncertainty, and source links intact.",
+          "skills": [
+            "frontier-extraction"
+          ]
+        },
+        {
+          "title": "Decide promotion and authority",
+          "instruction": "Choose the right durable home and keep recall aids below authoritative project instructions.",
+          "skills": [
+            "knowledge-promotion-policy"
+          ]
+        },
+        {
+          "title": "Connect related knowledge",
+          "instruction": "Build an inspectable graph when relationships, dependencies, or ownership matter.",
+          "skills": [
+            "graphify"
+          ]
+        },
+        {
+          "title": "Audit over time",
+          "instruction": "Check for drift, conflict, expiry, and supersession without silently rewriting sources.",
+          "skills": [
+            "staleness-and-conflict-audit"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need reusable candidates from a source",
+          "skill": "frontier-extraction",
+          "why": "It extracts while preserving provenance and authority."
+        },
+        {
+          "need": "You need to decide whether knowledge should become durable",
+          "skill": "knowledge-promotion-policy",
+          "why": "It governs destination, authority, expiry, and review."
+        },
+        {
+          "need": "You need to map relationships",
+          "skill": "graphify",
+          "why": "It makes linked concepts and dependencies inspectable."
+        },
+        {
+          "need": "You suspect old or conflicting guidance",
+          "skill": "staleness-and-conflict-audit",
+          "why": "It performs a read-only conflict and freshness review."
+        }
+      ],
+      "workedExample": {
+        "title": "Promoting lessons from a finished project",
+        "situation": "A team finished a project and wants future work to benefit from it without turning one-off details into permanent rules.",
+        "steps": [
+          "Identify the authoritative project sources and the lessons worth considering.",
+          "Extract candidates with context, evidence, and provenance.",
+          "Promote only broadly reusable items to the appropriate durable location.",
+          "Link related decisions and schedule review for facts likely to become stale."
+        ],
+        "result": "A useful result is a small set of traceable, scoped knowledge records that help later work without replacing the original project evidence."
+      },
+      "tips": [
+        "Provide the original source, not only a remembered summary.",
+        "Label facts, decisions, preferences, and instructions separately.",
+        "Add dates or expiry for facts likely to change.",
+        "Keep one-off project context out of global rules."
+      ],
+      "boundaries": [
+        "Recall aids are not automatically authoritative instructions.",
+        "Extraction should not delete, replace, or silently edit the source.",
+        "Private or sensitive information needs an appropriate storage and access decision.",
+        "An audit identifies conflicts but does not resolve them without approval."
+      ],
+      "successSignals": [
+        "Every promoted item retains provenance and scope.",
+        "Authority and destination are explicit.",
+        "Stale, conflicting, and uncertain items remain visible rather than silently merged."
+      ]
+    }
   },
   {
     "slug": "data-storytelling-studio",
@@ -1021,7 +2633,115 @@ export const plugins = [
       "files": 28
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Choosing the right format for checked analysis.",
+        "Turning evidence into an executive readout.",
+        "Checking whether a chart supports the claim beside it.",
+        "Making decisions, caveats, and next actions visible in a data story."
+      ],
+      "startHere": {
+        "skill": "analysis-to-story-router",
+        "why": "Start here after the analysis is checked. It chooses the smallest useful output, such as a readout, report, deck, dashboard, or publishable site."
+      },
+      "quickStarts": [
+        {
+          "goal": "Choose the format",
+          "prompt": "Choose the right output format for this checked analysis: [analysis]. Use the audience, decision, evidence density, update frequency, and delivery setting to explain the choice."
+        },
+        {
+          "goal": "Audit chart messages",
+          "prompt": "Audit whether each chart supports the claim beside it. Flag misleading encodings, missing context, unsupported conclusions, and accessibility problems: [charts and claims]."
+        },
+        {
+          "goal": "Build a readout",
+          "prompt": "Turn this checked evidence into an executive readout. Lead with the decision, show only useful evidence, state caveats, and name the required next actions: [evidence]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Confirm analysis is ready",
+          "instruction": "Begin with checked data and clearly label unresolved quality or methodology issues.",
+          "skills": [
+            "analysis-to-story-router"
+          ]
+        },
+        {
+          "title": "Define the decision and reader",
+          "instruction": "Name what the audience must understand, decide, or do and how they will receive the story.",
+          "skills": [
+            "analysis-to-story-router"
+          ]
+        },
+        {
+          "title": "Choose the output",
+          "instruction": "Select the format from evidence density, interaction needs, update frequency, and decision context.",
+          "skills": [
+            "analysis-to-story-router"
+          ]
+        },
+        {
+          "title": "Build the decision story",
+          "instruction": "Organize evidence around the decision, alternatives, caveats, and actions.",
+          "skills": [
+            "executive-readout-builder"
+          ]
+        },
+        {
+          "title": "Audit each visual claim",
+          "instruction": "Verify that every chart, label, and annotation supports the nearby message without distortion.",
+          "skills": [
+            "chart-message-audit"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You do not know whether to make a report, deck, dashboard, or site",
+          "skill": "analysis-to-story-router",
+          "why": "It chooses from the audience, decision, and delivery context."
+        },
+        {
+          "need": "Leaders need a concise decision package",
+          "skill": "executive-readout-builder",
+          "why": "It turns checked evidence into decisions, caveats, and actions."
+        },
+        {
+          "need": "You already have charts and claims",
+          "skill": "chart-message-audit",
+          "why": "It checks whether the visual evidence actually supports the message."
+        }
+      ],
+      "workedExample": {
+        "title": "Explaining a customer-retention change",
+        "situation": "An analysis shows retention fell in one segment, but leaders need to know whether to change onboarding, pricing, or measurement.",
+        "steps": [
+          "Confirm the metric definition, comparison period, and data-quality caveats.",
+          "Choose a short executive readout because the immediate need is a decision, not ongoing monitoring.",
+          "Build the story around what changed, where, likely explanations, and what remains uncertain.",
+          "Audit each chart against its claim and end with a bounded next test."
+        ],
+        "result": "A useful result is a concise readout that helps leaders decide what to test while keeping evidence and caveats visible."
+      },
+      "tips": [
+        "Bring checked analysis, not only raw data.",
+        "Name the decision the output must support.",
+        "Use one claim per chart whenever possible.",
+        "Put caveats near the conclusion they limit."
+      ],
+      "boundaries": [
+        "The plugin does not repair unreliable analysis by changing its presentation.",
+        "It should not imply causation from descriptive evidence alone.",
+        "Interactive or published outputs may require separate build and hosting tools.",
+        "Executive clarity does not justify hiding material uncertainty."
+      ],
+      "successSignals": [
+        "The format fits the audience and decision.",
+        "Each visual supports its stated claim.",
+        "The result makes evidence, caveats, decisions, and next actions easy to find."
+      ]
+    }
   },
   {
     "slug": "model-evaluation-lab",
@@ -1070,7 +2790,115 @@ export const plugins = [
       "files": 36
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Planning a reproducible comparison between models.",
+        "Running a benchmark with stable inputs and scoring.",
+        "Normalizing raw evaluation results into a fair comparison.",
+        "Writing a model-selection memo that separates measurement from judgment."
+      ],
+      "startHere": {
+        "skill": "model-evaluation-router",
+        "why": "Use the router when the decision is clear but the evaluation stage is not. It directs the work to planning, running, normalizing, or selection."
+      },
+      "quickStarts": [
+        {
+          "goal": "Design an evaluation",
+          "prompt": "Design a reproducible evaluation for this model decision: [decision]. Define the real task, representative cases, controls, scoring, cost and latency measures, and decision rule."
+        },
+        {
+          "goal": "Run a benchmark",
+          "prompt": "Run this approved benchmark using stable inputs and record raw outputs, settings, failures, scores, cost, and timing without changing the rubric: [benchmark]."
+        },
+        {
+          "goal": "Write a selection memo",
+          "prompt": "Write a model-selection memo from these benchmark results. Separate measured results from judgment, explain tradeoffs, and state where the evidence is too weak: [results]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Frame the model decision",
+          "instruction": "Name the production task, candidates, constraints, risks, and who will use the result.",
+          "skills": [
+            "model-evaluation-router"
+          ]
+        },
+        {
+          "title": "Design the evaluation",
+          "instruction": "Build representative cases, stable controls, scoring rules, and a decision threshold before running models.",
+          "skills": [
+            "model-evaluation-plan"
+          ]
+        },
+        {
+          "title": "Run the benchmark",
+          "instruction": "Execute the approved cases consistently and preserve raw outputs, settings, failures, cost, and timing.",
+          "skills": [
+            "benchmark-runner"
+          ]
+        },
+        {
+          "title": "Normalize results",
+          "instruction": "Make outputs and scores comparable without erasing meaningful failure differences.",
+          "skills": [
+            "benchmark-runner"
+          ]
+        },
+        {
+          "title": "Make the selection",
+          "instruction": "Write a decision memo that separates measurements, tradeoffs, assumptions, and judgment.",
+          "skills": [
+            "model-selection-memo"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need the experiment design",
+          "skill": "model-evaluation-plan",
+          "why": "It defines cases, controls, scoring, and the decision rule."
+        },
+        {
+          "need": "The benchmark is approved and ready to execute",
+          "skill": "benchmark-runner",
+          "why": "It runs and normalizes the comparison while preserving evidence."
+        },
+        {
+          "need": "You need a recommendation from measured results",
+          "skill": "model-selection-memo",
+          "why": "It separates observed performance from the final judgment."
+        }
+      ],
+      "workedExample": {
+        "title": "Choosing a model for support-ticket classification",
+        "situation": "A team needs a model that classifies tickets into a fixed schema, handles ambiguous cases, and stays within latency and cost limits.",
+        "steps": [
+          "Define representative normal, ambiguous, multilingual, and malformed tickets.",
+          "Set schema accuracy, abstention quality, latency, and cost measures before running.",
+          "Run each candidate with fixed settings and preserve raw outputs and failures.",
+          "Compare the normalized results and write a selection memo with tradeoffs."
+        ],
+        "result": "A useful result is a reproducible evidence package and a model choice tied to the real production constraints."
+      },
+      "tips": [
+        "Use production-like cases, not only easy examples.",
+        "Freeze the rubric before looking at results.",
+        "Preserve raw failures and invalid outputs.",
+        "Measure operational constraints alongside answer quality."
+      ],
+      "boundaries": [
+        "The plugin does not provide model access, credentials, or evaluation budget.",
+        "A small benchmark supports only the cases it represents.",
+        "Model behavior can change, so old results may need rerunning.",
+        "The final choice still contains judgment and should say so."
+      ],
+      "successSignals": [
+        "Inputs, settings, rubric, and raw results are reproducible.",
+        "Failures remain visible in the comparison.",
+        "The selection follows a stated decision rule and documents tradeoffs."
+      ]
+    }
   },
   {
     "slug": "loopkit",
@@ -1136,7 +2964,126 @@ export const plugins = [
       "files": 45
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning a recurring task into a bounded, resumable loop.",
+        "Scheduling a loop with meaningful no-op behavior.",
+        "Resuming work from a durable checkpoint.",
+        "Diagnosing a loop that repeats, stalls, or claims completion too early."
+      ],
+      "startHere": {
+        "skill": "loopkit",
+        "why": "Start with the front door when the work repeats or must persist across sessions. It chooses design, run, resume, schedule, verification, or diagnosis."
+      },
+      "quickStarts": [
+        {
+          "goal": "Design a loop",
+          "prompt": "Turn this recurring task into a bounded loop: [task]. Define the target state, inputs, durable state, iteration steps, evidence, no-op behavior, stop conditions, and maximum work per run."
+        },
+        {
+          "goal": "Resume a run",
+          "prompt": "Resume the active LoopKit run from its durable checkpoint. First inspect the current state, unresolved work, prior evidence, and stop conditions, then continue only the next valid step."
+        },
+        {
+          "goal": "Diagnose repetition",
+          "prompt": "Diagnose why this loop keeps repeating or stalling: [loop records]. Check state transitions, progress measures, blockers, verifier rules, no-op behavior, and stop conditions without changing the loop."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Design the loop contract",
+          "instruction": "Define the target state, scope, iteration, durable state, evidence, limits, no-op behavior, and stops.",
+          "skills": [
+            "loop-designer"
+          ]
+        },
+        {
+          "title": "Validate before running",
+          "instruction": "Check that states, transitions, ownership, evidence, and failure behavior are coherent.",
+          "skills": [
+            "loop-verifier"
+          ]
+        },
+        {
+          "title": "Run one bounded iteration",
+          "instruction": "Read current state, make the smallest meaningful change, verify it, and persist the checkpoint.",
+          "skills": [
+            "loop-runner"
+          ]
+        },
+        {
+          "title": "Resume from evidence",
+          "instruction": "Continue from durable state rather than reconstructing progress from chat memory.",
+          "skills": [
+            "loop-resumer"
+          ]
+        },
+        {
+          "title": "Schedule or diagnose",
+          "instruction": "Add a schedule only after the loop works manually, and use diagnosis when progress stops falling.",
+          "skills": [
+            "loop-scheduler",
+            "loop-doctor"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need the loop contract",
+          "skill": "loop-designer",
+          "why": "It defines bounded repetition and durable state."
+        },
+        {
+          "need": "You are ready to execute an iteration",
+          "skill": "loop-runner",
+          "why": "It advances one valid step and records evidence."
+        },
+        {
+          "need": "A prior run stopped",
+          "skill": "loop-resumer",
+          "why": "It continues from the checkpoint without restarting."
+        },
+        {
+          "need": "The loop should run on a schedule",
+          "skill": "loop-scheduler",
+          "why": "It adds timing after manual behavior is proven."
+        },
+        {
+          "need": "The loop is repeating or stalled",
+          "skill": "loop-doctor",
+          "why": "It examines the contract, state, and verifier for the cause."
+        }
+      ],
+      "workedExample": {
+        "title": "A weekly change-monitoring loop",
+        "situation": "A team wants a weekly report about a topic, but only when sources show a meaningful change.",
+        "steps": [
+          "Define authoritative sources, the meaning of a meaningful change, report format, and no-op receipt.",
+          "Create states for checking, reporting, blocked, and complete, with a durable last-seen checkpoint.",
+          "Run and verify one manual iteration before scheduling.",
+          "Schedule the loop and diagnose it if reports repeat without new evidence."
+        ],
+        "result": "A useful result is a resumable loop that reports real changes, records clean no-op runs, and stops or escalates under defined conditions."
+      },
+      "tips": [
+        "Make progress measurable as a shrinking difference from the target state.",
+        "Define what happens when nothing changed.",
+        "Set a maximum amount of work per iteration.",
+        "Prove one manual run before adding a schedule."
+      ],
+      "boundaries": [
+        "A loop does not gain permission to send, publish, delete, or purchase.",
+        "Scheduling depends on a host surface that can actually wake the task.",
+        "A successful manual run does not prove the schedule has fired.",
+        "Repeated unchanged state is a diagnosis signal, not proof of progress."
+      ],
+      "successSignals": [
+        "State and progress survive across sessions.",
+        "Each iteration produces evidence, a valid no-op receipt, or an explicit blocker.",
+        "The loop has finite limits and unambiguous stop conditions."
+      ]
+    }
   },
   {
     "slug": "harness-engineering",
@@ -1224,7 +3171,138 @@ export const plugins = [
       "files": 66
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Designing a personal AI operating harness from real work needs.",
+        "Auditing an existing setup for broken context, routing, plugins, or proof.",
+        "Building a reversible harness from an approved plan.",
+        "Verifying that the installed harness is visible and behaves correctly in a fresh task."
+      ],
+      "startHere": {
+        "skill": "harness-engineering",
+        "why": "Use the coordinator when you want to design, audit, build, repair, or verify a full harness. It begins from sources and routes each phase to the matching specialist."
+      },
+      "quickStarts": [
+        {
+          "goal": "Design a harness",
+          "prompt": "Design my AI operating harness from the work I actually do. Interview me about outcomes, sources, tools, risks, approvals, and current friction before proposing the architecture."
+        },
+        {
+          "goal": "Audit the current setup",
+          "prompt": "Audit my current AI harness on this host. Inspect authoritative sources first, separate source files from installed and fresh-task state, and recommend repairs without changing anything."
+        },
+        {
+          "goal": "Verify the harness",
+          "prompt": "Verify that my harness really works. Check configuration, plugin parity, enabled listings, fresh-task discovery, routing behavior, and the highest-risk acceptance flows."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Interview from real work",
+          "instruction": "Identify recurring outcomes, sources of truth, tools, boundaries, approval points, and current failures.",
+          "skills": [
+            "harness-interview"
+          ]
+        },
+        {
+          "title": "Inspect the current harness",
+          "instruction": "Check context, rules, plugins, skills, connectors, routing, and host-native state before proposing changes.",
+          "skills": [
+            "harness-audit",
+            "context-doctor"
+          ]
+        },
+        {
+          "title": "Plan the target state",
+          "instruction": "Design the smallest architecture that owns the needed capabilities and keeps changes reversible.",
+          "skills": [
+            "harness-planner",
+            "agents-md-engineer"
+          ]
+        },
+        {
+          "title": "Build the approved change",
+          "instruction": "Implement only the approved rules, plugins, skills, prompts, and routing for the active host.",
+          "skills": [
+            "harness-builder",
+            "plugin-engineer",
+            "skill-engineer",
+            "model-prompt-engineer"
+          ]
+        },
+        {
+          "title": "Verify installed behavior",
+          "instruction": "Check source, cache or install parity, enabled state, fresh-task discovery, routing, and relevant acceptance behavior.",
+          "skills": [
+            "harness-verifier",
+            "harness-runner"
+          ]
+        },
+        {
+          "title": "Maintain with evidence",
+          "instruction": "Make later repairs through bounded, reversible maintenance instead of untracked drift.",
+          "skills": [
+            "harness-maintainer"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You are starting from needs and constraints",
+          "skill": "harness-interview",
+          "why": "It discovers the real operating requirements before architecture."
+        },
+        {
+          "need": "You want a read-only current-state review",
+          "skill": "harness-audit",
+          "why": "It maps evidence, gaps, and risks without repair."
+        },
+        {
+          "need": "You have an approved target design",
+          "skill": "harness-builder",
+          "why": "It implements the bounded harness change."
+        },
+        {
+          "need": "Context files are too large, stale, or conflicting",
+          "skill": "context-doctor",
+          "why": "It diagnoses the context system specifically."
+        },
+        {
+          "need": "You need proof after a change",
+          "skill": "harness-verifier",
+          "why": "It checks installed and fresh-task behavior, not only files."
+        }
+      ],
+      "workedExample": {
+        "title": "Repairing a harness that plans but does not finish",
+        "situation": "A user has strong instructions and many plugins, but tasks produce audits and plans while required implementation remains unfinished.",
+        "steps": [
+          "Interview for the real definition of progress, authority limits, and completion evidence.",
+          "Audit task rules, plugin ownership, routing, and examples of incomplete runs.",
+          "Plan a small repair that makes observable target-state change the primary progress measure.",
+          "Build reversibly and verify the new rule, installed parity, fresh-task discovery, and behavior on a representative task."
+        ],
+        "result": "A useful result is a host-native harness whose rules, capabilities, and proof chain support the user's real work and behave correctly in a fresh task."
+      },
+      "tips": [
+        "Bring examples of real successful and failed tasks.",
+        "Name the active host and its authoritative configuration locations.",
+        "Keep personal workflow requirements separate from public plugin packages.",
+        "Require fresh-task behavior checks after material plugin or routing changes."
+      ],
+      "boundaries": [
+        "A repository copy is not proof of the active global or installed harness.",
+        "Host-specific paths, formats, and capabilities must be adapted rather than copied blindly.",
+        "Backups and approval are required before broad or difficult-to-reverse changes.",
+        "Validation scripts prove only the facts they directly check."
+      ],
+      "successSignals": [
+        "The harness maps real outcomes to clear capability owners.",
+        "Source, installed, enabled, and fresh-task states agree for changed components.",
+        "Representative tasks follow the intended routing, authority, and completion rules."
+      ]
+    }
   },
   {
     "slug": "operating-graph",
@@ -1288,7 +3366,128 @@ export const plugins = [
       "files": 61
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Designing a multi-stage agent workflow as explicit nodes and connections.",
+        "Running a goal through an adaptive but governed graph.",
+        "Inspecting why work took the wrong path or stalled.",
+        "Reorganizing a graph while preserving contracts and approvals."
+      ],
+      "startHere": {
+        "skill": "graph-engineering",
+        "why": "Start with the coordinator when you need to design, run, inspect, rewrite, or verify an operating graph. It routes each graph phase and keeps the goal and contracts consistent."
+      },
+      "quickStarts": [
+        {
+          "goal": "Design a graph",
+          "prompt": "Design an operating graph for this goal: [goal]. Define typed nodes, inputs, outputs, edges, routing rules, approvals, evidence, failures, and completion conditions."
+        },
+        {
+          "goal": "Run a graph",
+          "prompt": "Run this approved goal as an operating graph. Inspect current state first, follow the node contracts, preserve evidence at each transition, and stop at approval gates: [graph and goal]."
+        },
+        {
+          "goal": "Inspect and improve",
+          "prompt": "Inspect this operating graph and explain why it is stalling, duplicating work, or choosing the wrong route. Recommend the smallest safe rewrite without changing it: [graph records]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Restate the goal",
+          "instruction": "Define the target state, scope, authority, evidence, and completion rule before drawing the graph.",
+          "skills": [
+            "graph-engineering"
+          ]
+        },
+        {
+          "title": "Design typed nodes",
+          "instruction": "Give each node one job, input contract, output contract, owner, verifier, and failure behavior.",
+          "skills": [
+            "graph-design"
+          ]
+        },
+        {
+          "title": "Connect and validate",
+          "instruction": "Define edges, routing conditions, state changes, approval gates, and loop limits.",
+          "skills": [
+            "graph-design",
+            "graph-verify"
+          ]
+        },
+        {
+          "title": "Run from current state",
+          "instruction": "Execute only ready nodes, preserve evidence, and choose transitions from explicit conditions.",
+          "skills": [
+            "graph-run"
+          ]
+        },
+        {
+          "title": "Inspect, debug, or rewrite",
+          "instruction": "Use recorded state to find faults and reorganize only after contracts and migration safety are clear.",
+          "skills": [
+            "graph-inspect",
+            "graph-debug",
+            "graph-rewrite"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need a new graph architecture",
+          "skill": "graph-design",
+          "why": "It defines nodes, edges, contracts, and governance."
+        },
+        {
+          "need": "The graph is approved and ready to execute",
+          "skill": "graph-run",
+          "why": "It advances ready nodes from recorded state."
+        },
+        {
+          "need": "You need a read-only map of current behavior",
+          "skill": "graph-inspect",
+          "why": "It shows nodes, transitions, state, and evidence."
+        },
+        {
+          "need": "The graph is failing or stuck",
+          "skill": "graph-debug",
+          "why": "It traces the failure to contracts, routing, state, or evidence."
+        },
+        {
+          "need": "The architecture needs safe reorganization",
+          "skill": "graph-rewrite",
+          "why": "It plans contract-preserving migration."
+        }
+      ],
+      "workedExample": {
+        "title": "A governed content-production graph",
+        "situation": "A team wants research, drafting, fact checking, review, and publication preparation to adapt to evidence without losing approvals.",
+        "steps": [
+          "Define the final content package and the authority boundary for publication.",
+          "Create typed research, analysis, drafting, claim-check, review, and packaging nodes.",
+          "Add edges for failed evidence, revision, approval, and completion with finite loop limits.",
+          "Run from recorded state and inspect the graph if work repeats or bypasses a gate."
+        ],
+        "result": "A useful result is an inspectable graph where every transition has a reason, evidence is preserved, and publication remains behind explicit approval."
+      },
+      "tips": [
+        "Give each node one clear responsibility.",
+        "Define outputs so the next node can verify them.",
+        "Use explicit edge conditions instead of vague agent judgment.",
+        "Set limits on any edge that can repeat."
+      ],
+      "boundaries": [
+        "A graph does not expand the authority of its nodes.",
+        "More nodes do not automatically improve a simple workflow.",
+        "Rewriting a live graph may require migration and rollback planning.",
+        "Inspection and debugging do not authorize changes."
+      ],
+      "successSignals": [
+        "Every node and edge has an explicit contract.",
+        "Current state and evidence explain why each transition occurred.",
+        "Failures, approvals, loops, and completion all have bounded behavior."
+      ]
+    }
   },
   {
     "slug": "gauntlet-loop",
@@ -1346,7 +3545,125 @@ export const plugins = [
       "files": 96
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Running an explicitly named, high-stakes Codex project through approved stages.",
+        "Splitting a large project into bounded workstreams with durable handoffs.",
+        "Using fresh critics and independent verification on a completed candidate.",
+        "Resuming a long project from recorded state instead of starting over."
+      ],
+      "startHere": {
+        "skill": "gauntlet",
+        "why": "Invoke the Gauntlet front door by name for a project that truly needs formal planning, bounded workstreams, criticism, handoff, and independent verification."
+      },
+      "quickStarts": [
+        {
+          "goal": "Plan and run",
+          "prompt": "$gauntlet-loop:gauntlet Plan and run this as a Gauntlet project: [project]. Define the finite workstreams, evidence, approval gates, usage cap, handoffs, critics, and final verifier."
+        },
+        {
+          "goal": "Resume a project",
+          "prompt": "$gauntlet-loop:gauntlet Resume the active Gauntlet project from its durable state. Report completed, active, blocked, and unresolved work before continuing."
+        },
+        {
+          "goal": "Verify the result",
+          "prompt": "$gauntlet-loop:gauntlet-verify Independently verify this Gauntlet project against the approved brief, completed artifacts, evidence, unresolved items, and release criteria."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Compile the project",
+          "instruction": "Turn the request and available evidence into a bounded project contract suitable for Gauntlet review.",
+          "skills": [
+            "gauntlet-compile"
+          ]
+        },
+        {
+          "title": "Approve the plan",
+          "instruction": "Define finite workstreams, deliverables, ownership, evidence, resource caps, stops, and final verification.",
+          "skills": [
+            "gauntlet-plan"
+          ]
+        },
+        {
+          "title": "Run bounded workstreams",
+          "instruction": "Complete target-state changes and preserve compact evidence and unresolved-work counts.",
+          "skills": [
+            "gauntlet-run"
+          ]
+        },
+        {
+          "title": "Create durable handoffs",
+          "instruction": "Record state, decisions, artifacts, evidence, and next valid actions for continuation.",
+          "skills": [
+            "gauntlet-handoff"
+          ]
+        },
+        {
+          "title": "Verify independently",
+          "instruction": "Use fresh context to check the whole result against the approved brief before completion or release.",
+          "skills": [
+            "gauntlet-verify"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "The raw request needs a Gauntlet-ready contract",
+          "skill": "gauntlet-compile",
+          "why": "It compiles the project before planning."
+        },
+        {
+          "need": "You need the approved workstream plan",
+          "skill": "gauntlet-plan",
+          "why": "It sets ownership, proof, caps, and stops."
+        },
+        {
+          "need": "The plan is approved and ready to execute",
+          "skill": "gauntlet-run",
+          "why": "It runs bounded workstreams toward the target state."
+        },
+        {
+          "need": "Work must continue in another session",
+          "skill": "gauntlet-handoff",
+          "why": "It preserves durable state and the next valid action."
+        },
+        {
+          "need": "You need a fresh completion decision",
+          "skill": "gauntlet-verify",
+          "why": "It independently checks the integrated result."
+        }
+      ],
+      "workedExample": {
+        "title": "A multi-part public release",
+        "situation": "A large release includes code, documentation, data, accessibility checks, deployment, and public verification with several independent workstreams.",
+        "steps": [
+          "Compile the brief, boundaries, authoritative sources, and release evidence.",
+          "Approve a finite plan with deliverables and ownership for each workstream.",
+          "Execute the actual release changes, using critics only after integrated candidates exist.",
+          "Create durable handoffs and run a fresh end-to-end verifier before release."
+        ],
+        "result": "A useful result is the completed public release plus compact evidence that every required workstream reached a terminal state."
+      },
+      "tips": [
+        "Reserve Gauntlet for work large enough to justify its coordination cost.",
+        "Set a finite worker and usage cap before launching workstreams.",
+        "Track unresolved required items as a number that must fall.",
+        "Use one integrated fresh review when possible."
+      ],
+      "boundaries": [
+        "Gauntlet is explicit-only and must be named.",
+        "It does not broaden permission for external, destructive, paid, or sensitive actions.",
+        "Plans, critics, and handoffs are support work, not substitutes for the requested change.",
+        "An unresolved required item prevents a complete verdict unless the user approved that state."
+      ],
+      "successSignals": [
+        "Every workstream has a concrete deliverable and terminal status.",
+        "Support work stays proportional to completed target-state work.",
+        "A fresh verifier confirms the integrated result against the approved brief."
+      ]
+    }
   },
   {
     "slug": "gauntlet",
@@ -1409,7 +3726,126 @@ export const plugins = [
       "files": 74
     },
     "bundlesMcp": false,
-    "bundlesApp": false
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Running an explicitly named, high-stakes project in Claude Code or Cowork.",
+        "Coordinating approved workstreams with blind criticism and evidence reports.",
+        "Preserving a long project's state across sessions.",
+        "Independently verifying a completed Gauntlet candidate."
+      ],
+      "startHere": {
+        "skill": "gauntlet",
+        "why": "Invoke this front door by name only for work that needs the full Claude-oriented Gauntlet method. It should not load for ordinary planning or implementation."
+      },
+      "quickStarts": [
+        {
+          "goal": "Run a Gauntlet project",
+          "prompt": "$gauntlet:gauntlet Run the gauntlet on this project: [project]. Build the approved brief, finite workstreams, evidence rules, critics, handoffs, and final verification before execution."
+        },
+        {
+          "goal": "Resume the Gauntlet",
+          "prompt": "$gauntlet:gauntlet Resume the active gauntlet from its durable handoff. Show current state and unresolved required work, then continue the next authorized step."
+        },
+        {
+          "goal": "Verify the run",
+          "prompt": "$gauntlet:gauntlet-verify Verify this gauntlet run against the approved brief, artifact evidence, critic findings, unresolved items, and release requirements."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Create the brief",
+          "instruction": "Define the target state, scope, sources, constraints, success criteria, and approvals.",
+          "skills": [
+            "gauntlet-brief"
+          ]
+        },
+        {
+          "title": "Prepare the execution prompt",
+          "instruction": "Translate the approved brief into bounded workstreams, resource caps, handoffs, critics, and stop rules.",
+          "skills": [
+            "gauntlet-prompt"
+          ]
+        },
+        {
+          "title": "Run the workstreams",
+          "instruction": "Complete the requested target-state changes and preserve evidence for each required result.",
+          "skills": [
+            "gauntlet-run"
+          ]
+        },
+        {
+          "title": "Package evidence and handoff",
+          "instruction": "Record artifacts, checks, decisions, unresolved work, and next valid actions for durable continuation.",
+          "skills": [
+            "gauntlet-evidence",
+            "gauntlet-handoff"
+          ]
+        },
+        {
+          "title": "Verify with fresh context",
+          "instruction": "Independently compare the integrated candidate with the approved brief and evidence before completion.",
+          "skills": [
+            "gauntlet-verify"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need the formal project brief",
+          "skill": "gauntlet-brief",
+          "why": "It defines the result and approval boundary."
+        },
+        {
+          "need": "You need an execution-ready Gauntlet prompt",
+          "skill": "gauntlet-prompt",
+          "why": "It encodes workstreams, caps, critics, and stops."
+        },
+        {
+          "need": "You are executing the approved project",
+          "skill": "gauntlet-run",
+          "why": "It carries the target-state work through bounded workstreams."
+        },
+        {
+          "need": "You need a durable continuation record",
+          "skill": "gauntlet-handoff",
+          "why": "It preserves state across sessions."
+        },
+        {
+          "need": "You need an independent completion verdict",
+          "skill": "gauntlet-verify",
+          "why": "It checks the result from fresh context."
+        }
+      ],
+      "workedExample": {
+        "title": "Rebuilding a multi-part documentation system",
+        "situation": "A documentation rebuild spans source analysis, information architecture, writing, examples, validation, and publication preparation across several sessions.",
+        "steps": [
+          "Create and approve a brief with the source hierarchy and exact definition of done.",
+          "Prepare finite workstreams and define evidence for each deliverable.",
+          "Execute the actual documentation changes and preserve compact evidence.",
+          "Hand off durable state between sessions and use a fresh verifier on the integrated result."
+        ],
+        "result": "A useful result is a complete documentation system whose artifacts, source fidelity, checks, and unresolved items are independently inspectable."
+      },
+      "tips": [
+        "Use the explicit Gauntlet name so it cannot trigger accidentally.",
+        "Set resource limits and deliverables before worker activity.",
+        "Keep evidence compact and tied to the final requirements.",
+        "Do not call the project complete while required work remains in review or deferred."
+      ],
+      "boundaries": [
+        "The plugin is available only on its verified Claude hosts.",
+        "It does not grant permission for publishing, external messages, destructive changes, purchases, or secrets access.",
+        "Blind critics improve review independence but do not replace direct proof.",
+        "Gauntlet overhead is not justified for small or one-step tasks."
+      ],
+      "successSignals": [
+        "The approved brief remains the completion authority.",
+        "All required deliverables have terminal results and evidence.",
+        "Fresh verification checks the integrated candidate rather than trusting workstream reports."
+      ]
+    }
   }
 ] as const;
 export const totals = {

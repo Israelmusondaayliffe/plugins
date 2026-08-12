@@ -45,6 +45,20 @@ function renderCatalog() {
     if (plugin.platforms.includes("Claude Cowork")) {
       lines.push("Install in Claude Cowork: https://github.com/Israelmusondaayliffe/plugins");
     }
+    lines.push("Best for:");
+    for (const item of plugin.guide.bestFor) {
+      lines.push(`- ${item}`);
+    }
+    lines.push("Try asking:");
+    for (const item of plugin.guide.quickStarts) {
+      lines.push(`- ${item.prompt}`);
+    }
+    lines.push("Recommended workflow:");
+    plugin.guide.workflow.forEach((step, index) => {
+      lines.push(
+        `${index + 1}. ${step.title}: ${step.instruction} Skills: ${step.skills.join(", ")}.`,
+      );
+    });
     lines.push(`Bundled skills: ${plugin.skills.map((skill) => skill.name).join(", ")}.`);
     lines.push("");
   }

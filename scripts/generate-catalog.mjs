@@ -21,6 +21,9 @@ const hostSupport = JSON.parse(
 const curation = JSON.parse(
   readFileSync(join(root, "docs/site-redesign/site-curation.json"), "utf8"),
 );
+const guideSource = JSON.parse(
+  readFileSync(join(root, "docs/site-redesign/plugin-guides.json"), "utf8"),
+);
 const claudePluginNames = new Set(
   claudeMarketplace.plugins.map((plugin) => plugin.name),
 );
@@ -253,13 +256,141 @@ const totalsFor = (records) => records.reduce(
   { plugins: 0, skills: 0, assets: 0, references: 0, scripts: 0, files: 0 },
 );
 
-const plugins = visiblePluginNames.map((name) =>
+let plugins = visiblePluginNames.map((name) =>
   allPlugins.find((plugin) => plugin.slug === name),
 );
 
 if (plugins.some((plugin) => !plugin)) {
   throw new Error("Site curation resolved to a missing generated plugin record");
 }
+
+if (
+  guideSource.schema_version !== 1 ||
+  guideSource.record_type !== "plugin-guides" ||
+  !guideSource.guides ||
+  typeof guideSource.guides !== "object" ||
+  Array.isArray(guideSource.guides)
+) {
+  throw new Error("Plugin guides must use the plugin-guides schema version 1");
+}
+
+const guideNames = Object.keys(guideSource.guides);
+const missingGuides = visiblePluginNames.filter((name) => !guideNames.includes(name));
+const excludedGuides = excludedPluginNames.filter((name) => guideNames.includes(name));
+const unknownGuides = guideNames.filter((name) => !visiblePluginNames.includes(name));
+if (missingGuides.length || excludedGuides.length || unknownGuides.length) {
+  throw new Error(
+    [
+      missingGuides.length ? `Visible plugins missing guides: ${missingGuides.join(", ")}` : "",
+      excludedGuides.length ? `Excluded plugins with guides: ${excludedGuides.join(", ")}` : "",
+      unknownGuides.length ? `Unknown plugin guides: ${unknownGuides.join(", ")}` : "",
+    ].filter(Boolean).join("\n"),
+  );
+}
+
+function requireText(value, label) {
+  if (typeof value !== "string" || !value.trim()) {
+    throw new Error(`${label} must be a non-empty string`);
+  }
+}
+
+function requireTextArray(value, label, minimum) {
+  if (!Array.isArray(value) || value.length < minimum) {
+    throw new Error(`${label} must contain at least ${minimum} items`);
+  }
+  value.forEach((item, index) => requireText(item, `${label}[${index}]`));
+}
+
+for (const plugin of plugins) {
+  const guide = guideSource.guides[plugin.slug];
+  const label = `Guide for ${plugin.slug}`;
+  const availableSkills = new Set(plugin.skills.map((skill) => skill.name));
+  const assertSkill = (skill, path) => {
+    requireText(skill, `${label} ${path}`);
+    if (!availableSkills.has(skill)) {
+      throw new Error(`${label} references unknown skill ${skill} at ${path}`);
+    }
+  };
+
+  requireTextArray(guide.bestFor, `${label} bestFor`, 3);
+  if (!guide.startHere || typeof guide.startHere !== "object") {
+    throw new Error(`${label} startHere must be an object`);
+  }
+  assertSkill(guide.startHere.skill, "startHere.skill");
+  requireText(guide.startHere.why, `${label} startHere.why`);
+
+  if (!Array.isArray(guide.quickStarts) || guide.quickStarts.length !== 3) {
+    throw new Error(`${label} quickStarts must contain exactly 3 prompts`);
+  }
+  const promptTexts = guide.quickStarts.map((item, index) => {
+    if (!item || typeof item !== "object") {
+      throw new Error(`${label} quickStarts[${index}] must be an object`);
+    }
+    requireText(item.goal, `${label} quickStarts[${index}].goal`);
+    requireText(item.prompt, `${label} quickStarts[${index}].prompt`);
+    return item.prompt.trim().toLowerCase();
+  });
+  if (new Set(promptTexts).size !== promptTexts.length) {
+    throw new Error(`${label} quickStarts contains duplicate prompts`);
+  }
+
+  if (!Array.isArray(guide.workflow) || guide.workflow.length < 3 || guide.workflow.length > 6) {
+    throw new Error(`${label} workflow must contain 3 to 6 steps`);
+  }
+  guide.workflow.forEach((step, index) => {
+    if (!step || typeof step !== "object" || !Array.isArray(step.skills) || !step.skills.length) {
+      throw new Error(`${label} workflow[${index}] is malformed`);
+    }
+    requireText(step.title, `${label} workflow[${index}].title`);
+    requireText(step.instruction, `${label} workflow[${index}].instruction`);
+    step.skills.forEach((skill) => assertSkill(skill, `workflow[${index}].skills`));
+  });
+
+  if (!Array.isArray(guide.skillPaths) || !guide.skillPaths.length) {
+    throw new Error(`${label} skillPaths must not be empty`);
+  }
+  guide.skillPaths.forEach((path, index) => {
+    requireText(path.need, `${label} skillPaths[${index}].need`);
+    assertSkill(path.skill, `skillPaths[${index}].skill`);
+    requireText(path.why, `${label} skillPaths[${index}].why`);
+  });
+
+  const example = guide.workedExample;
+  if (!example || typeof example !== "object") {
+    throw new Error(`${label} workedExample must be an object`);
+  }
+  requireText(example.title, `${label} workedExample.title`);
+  requireText(example.situation, `${label} workedExample.situation`);
+  requireTextArray(example.steps, `${label} workedExample.steps`, 3);
+  requireText(example.result, `${label} workedExample.result`);
+  requireTextArray(guide.tips, `${label} tips`, 2);
+  requireTextArray(guide.boundaries, `${label} boundaries`, 2);
+  requireTextArray(guide.successSignals, `${label} successSignals`, 2);
+
+  const serializedGuide = JSON.stringify(guide);
+  const privatePatterns = [
+    ["/Users/", "personal filesystem path"],
+    ["~/.codex", "private Codex path"],
+    ["~/.claude", "private Claude path"],
+    ["@personal", "private marketplace name"],
+    ["personal-plugins-private", "private repository name"],
+  ];
+  for (const [pattern, description] of privatePatterns) {
+    if (serializedGuide.includes(pattern)) {
+      throw new Error(`${label} contains ${description}`);
+    }
+  }
+  for (const host of ["Codex", "Claude Code", "Claude Cowork"]) {
+    if (!plugin.platforms.includes(host) && serializedGuide.includes(host)) {
+      throw new Error(`${label} claims unsupported host ${host}`);
+    }
+  }
+}
+
+plugins = plugins.map((plugin) => ({
+  ...plugin,
+  guide: guideSource.guides[plugin.slug],
+}));
 
 const totals = totalsFor(plugins);
 

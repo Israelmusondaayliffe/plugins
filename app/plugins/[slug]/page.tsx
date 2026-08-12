@@ -104,7 +104,20 @@ export default async function PluginPage({ params }: PluginPageProps) {
           </dl>
         </section>
 
-        <section className="detail-install" aria-labelledby="install-title">
+        <nav className="detail-nav" aria-label="On this page">
+          <span>On this page</span>
+          <a href="#install">Install</a>
+          <a href="#start">Start</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#skill-guide">Skill guide</a>
+          <a href="#all-skills">All skills</a>
+        </nav>
+
+        <section
+          className="detail-install"
+          aria-labelledby="install-title"
+          id="install"
+        >
           <div>
             <p className="kicker">Verified installation</p>
             <h2 id="install-title">Install on a verified host.</h2>
@@ -158,7 +171,167 @@ export default async function PluginPage({ params }: PluginPageProps) {
           </div>
         </section>
 
-        <section className="skill-list-section">
+        <section
+          className="guide-section guide-start"
+          aria-labelledby="start-title"
+          id="start"
+        >
+          <div className="section-heading detail-section-heading">
+            <p className="kicker">Start here</p>
+            <h2 id="start-title">Begin with the front door.</h2>
+            <p>
+              You do not need to memorize every skill. Start with{" "}
+              <code>{plugin.guide.startHere.skill}</code> and describe the
+              result you want.
+            </p>
+          </div>
+          <div className="start-here-card">
+            <div>
+              <p className="guide-eyebrow">Recommended first skill</p>
+              <h3>{plugin.guide.startHere.skill}</h3>
+              <p>{plugin.guide.startHere.why}</p>
+            </div>
+            <div className="quick-starts" aria-label="Copyable starting prompts">
+              {plugin.guide.quickStarts.map((item) => (
+                <article key={item.goal}>
+                  <p className="guide-eyebrow">{item.goal}</p>
+                  <CopyCommand
+                    command={item.prompt}
+                    label={item.goal + " prompt"}
+                  />
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="guide-section best-for-section"
+          aria-labelledby="best-for-title"
+        >
+          <div className="section-heading detail-section-heading">
+            <p className="kicker">Good fit</p>
+            <h2 id="best-for-title">What this plugin is best for.</h2>
+          </div>
+          <ul className="best-for-list">
+            {plugin.guide.bestFor.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          className="guide-section workflow-section"
+          aria-labelledby="workflow-title"
+          id="workflow"
+        >
+          <div className="section-heading detail-section-heading">
+            <p className="kicker">Recommended workflow</p>
+            <h2 id="workflow-title">A practical way to use it.</h2>
+            <p>
+              Follow these steps in order for a complete job. For a smaller
+              request, use only the step that fits.
+            </p>
+          </div>
+          <ol className="workflow-list">
+            {plugin.guide.workflow.map((step, index) => (
+              <li key={step.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.instruction}</p>
+                  <p className="skill-route">
+                    Skills:{" "}
+                    {step.skills.map((skill, skillIndex) => (
+                      <span key={skill}>
+                        {skillIndex > 0 ? ", " : ""}
+                        <code>{skill}</code>
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section
+          className="guide-section skill-guide-section"
+          aria-labelledby="skill-guide-title"
+          id="skill-guide"
+        >
+          <div className="section-heading detail-section-heading">
+            <p className="kicker">Choose the right skill</p>
+            <h2 id="skill-guide-title">Start from the job in front of you.</h2>
+            <p>
+              Find the sentence closest to what you need, then name that skill
+              in your request.
+            </p>
+          </div>
+          <div className="skill-paths">
+            {plugin.guide.skillPaths.map((path) => (
+              <article key={path.need}>
+                <p>{path.need}</p>
+                <h3>{path.skill}</h3>
+                <p>{path.why}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="guide-section worked-example"
+          aria-labelledby="example-title"
+        >
+          <div className="section-heading detail-section-heading">
+            <p className="kicker">Worked example</p>
+            <h2 id="example-title">{plugin.guide.workedExample.title}</h2>
+            <p>{plugin.guide.workedExample.situation}</p>
+          </div>
+          <div className="example-body">
+            <ol>
+              {plugin.guide.workedExample.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+            <div>
+              <p className="guide-eyebrow">What a useful result looks like</p>
+              <p>{plugin.guide.workedExample.result}</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="guidance-grid" aria-label="Practical guidance">
+          <article>
+            <p className="kicker">Better inputs</p>
+            <h2>Tips.</h2>
+            <ul>
+              {plugin.guide.tips.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+          <article>
+            <p className="kicker">Know the limits</p>
+            <h2>Boundaries.</h2>
+            <ul>
+              {plugin.guide.boundaries.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+          <article>
+            <p className="kicker">Completion check</p>
+            <h2>Success signals.</h2>
+            <ul>
+              {plugin.guide.successSignals.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
+        <section className="skill-list-section" id="all-skills">
           <div className="section-heading detail-section-heading">
             <p className="kicker">Bundled capabilities</p>
             <h2>Every skill in this plugin.</h2>

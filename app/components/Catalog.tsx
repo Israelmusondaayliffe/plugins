@@ -2,11 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { collections, marketplaceName, plugins } from "../catalog.generated";
-import { CopyCommand } from "./CopyCommand";
-
-const repositoryUrl =
-  "https://github.com/Israelmusondaayliffe/plugins";
+import { collections, plugins } from "../catalog.generated";
 const categories = [
   "All",
   ...Array.from(new Set(plugins.map((plugin) => plugin.category))),
@@ -18,24 +14,6 @@ const hostOptions = [
   "Claude Cowork",
 ] as const;
 
-function commandFor(platform: string, slug: string) {
-  if (platform === "Codex") {
-    return "codex plugin add " + slug + "@" + marketplaceName;
-  }
-
-  if (platform === "Claude Code") {
-    return "/plugin install " + slug + "@" + marketplaceName;
-  }
-
-  return repositoryUrl;
-}
-
-function commandLabelFor(platform: string) {
-  if (platform === "Codex") return "Codex install command";
-  if (platform === "Claude Code") return "Claude Code install command";
-  return "Claude Cowork marketplace URL";
-}
-
 export function Catalog() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
@@ -43,9 +21,7 @@ export function Catalog() {
   const [host, setHost] =
     useState<(typeof hostOptions)[number]>("All hosts");
   const [sortMode, setSortMode] = useState<"curated" | "skills">("curated");
-  const [selectedSlug, setSelectedSlug] = useState(plugins[0].slug);
   const searchRef = useRef<HTMLInputElement>(null);
-  const previewRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -67,7 +43,6 @@ export function Catalog() {
         setCollectionSlug("all");
         setHost("All hosts");
         setSortMode("curated");
-        setSelectedSlug(plugins[0].slug);
         window.requestAnimationFrame(() => searchRef.current?.focus());
       }
     }
@@ -99,6 +74,7 @@ export function Catalog() {
         plugin.slug,
         plugin.description,
         plugin.longDescription,
+        JSON.stringify(plugin.guide),
         ...plugin.skills.map((skill) => skill.name + " " + skill.description),
       ]
         .join(" ")
@@ -122,31 +98,13 @@ export function Catalog() {
     );
   }, [category, collectionSlug, host, query, sortMode]);
 
-  const selectedPlugin =
-    matches.find((plugin) => plugin.slug === selectedSlug) ?? matches[0] ?? null;
-  const selectedCollection = selectedPlugin
-    ? collections.find((collection) =>
-        collection.plugins.some((item) => item === selectedPlugin.slug),
-      )
-    : null;
-
   function resetCatalog() {
     setQuery("");
     setCategory("All");
     setCollectionSlug("all");
     setHost("All hosts");
     setSortMode("curated");
-    setSelectedSlug(plugins[0].slug);
     searchRef.current?.focus();
-  }
-
-  function selectPlugin(slug: string) {
-    setSelectedSlug(slug);
-    if (!window.matchMedia("(max-width: 880px)").matches) return;
-    window.requestAnimationFrame(() => {
-      previewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      previewRef.current?.focus({ preventScroll: true });
-    });
   }
 
   return (
@@ -278,86 +236,45 @@ export function Catalog() {
         </div>
       </div>
 
-      {matches.length > 0 && selectedPlugin ? (
-        <div className="registry-layout">
-          <div className="registry-list" aria-label="Plugin registry">
-            {matches.map((plugin, index) => {
-              const selected = selectedPlugin.slug === plugin.slug;
-              return (
-                <button
-                  aria-pressed={selected}
-                  className="registry-row"
-                  data-testid={"plugin-row-" + plugin.slug}
-                  key={plugin.slug}
-                  onClick={() => selectPlugin(plugin.slug)}
-                  onFocus={() => setSelectedSlug(plugin.slug)}
-                  type="button"
-                >
-                  <span className="registry-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+      {matches.length > 0 ? (
+        <div className="registry-list" aria-label="Plugin registry">
+          {matches.map((plugin, index) => {
+            const collection = collections.find((item) =>
+              item.plugins.some((slug) => slug === plugin.slug),
+            );
+            return (
+              <Link
+                className="registry-row"
+                data-testid={"plugin-row-" + plugin.slug}
+                href={"/plugins/" + plugin.slug}
+                key={plugin.slug}
+              >
+                <span className="registry-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="registry-main">
                   <span className="registry-name">{plugin.name}</span>
-                  <span className="registry-category">{plugin.category}</span>
+                  <span className="registry-description">
+                    {plugin.description}
+                  </span>
+                </span>
+                <span className="registry-meta">
+                  <span className="registry-category">
+                    {collection?.name ?? plugin.category}
+                  </span>
+                  <span className="registry-hosts" aria-label="Verified hosts">
+                    {plugin.platforms.join(" / ")}
+                  </span>
                   <span className="registry-count">
                     {plugin.counts.skills} skills
                   </span>
-                  <span className="registry-arrow" aria-hidden="true">
-                    ↗
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          <aside
-            className="registry-preview"
-            data-testid="plugin-preview"
-            key={selectedPlugin.slug}
-            aria-label={selectedPlugin.name + " selected plugin"}
-            ref={previewRef}
-            tabIndex={-1}
-          >
-            <div className="preview-topline">
-              <span>{selectedCollection?.name ?? selectedPlugin.category}</span>
-              <span>{selectedPlugin.counts.skills} skills</span>
-            </div>
-            <div className="platform-list" aria-label="Verified runtime hosts">
-              {selectedPlugin.platforms.map((platform) => (
-                <span key={platform}>{platform}</span>
-              ))}
-            </div>
-            <p className="preview-install-note">{selectedPlugin.runtimeNote}</p>
-            <div className="preview-copy">
-              <p className="preview-label">Purpose</p>
-              <h3>{selectedPlugin.name}</h3>
-              <p>{selectedPlugin.description}</p>
-            </div>
-            <div className="preview-skills">
-              <span>Bundled skills</span>
-              <ul>
-                {selectedPlugin.skills.slice(0, 5).map((skill) => (
-                  <li key={skill.name}>{skill.name}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="preview-actions">
-              {selectedPlugin.platforms.map((platform) => (
-                <CopyCommand
-                  command={commandFor(platform, selectedPlugin.slug)}
-                  compact
-                  key={platform}
-                  label={commandLabelFor(platform)}
-                />
-              ))}
-              <p className="preview-install-note">
-                Copy only the action shown for a verified host, or inspect the
-                complete record.
-              </p>
-              <Link href={"/plugins/" + selectedPlugin.slug}>
-                Open plugin record
+                </span>
+                <span className="registry-arrow" aria-hidden="true">
+                  ↗
+                </span>
               </Link>
-            </div>
-          </aside>
+            );
+          })}
         </div>
       ) : (
         <div className="empty-state">
