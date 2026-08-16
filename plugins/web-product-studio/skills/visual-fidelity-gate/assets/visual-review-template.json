@@ -20,5 +20,7 @@
   "source_hash": "64-character lowercase sha256",
   "artifact_hash": "64-character lowercase sha256",
   "decision": "repair",
-  "incomplete_wording": "The runtime works, but the hero remains visually incomplete because the named mismatch is unresolved."
+  "incomplete_wording": "The runtime works, but the hero remains visually incomplete because the named mismatch is unresolved.",
+  "control_case": false,
+  "control_limitation": ""
 }

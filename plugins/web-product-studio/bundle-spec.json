@@ -53,7 +53,7 @@
     },
     {
       "prompt": "Build a cinematic WebGPU ocean website whose calm and violent states must match the supplied references.",
-      "expected_skill": "visual-fidelity-gate",
+      "expected_skill": "web-product-router",
       "evidence_file": "skills/web-product-router/references/routing.md",
       "evidence_contains": "Freeze secondary features until an independent hero review"
     }

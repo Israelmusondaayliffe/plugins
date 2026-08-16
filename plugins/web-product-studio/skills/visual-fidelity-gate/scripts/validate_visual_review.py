@@ -166,6 +166,19 @@ def validate(data: dict[str, Any]) -> list[str]:
         errors.append("secondary_features_started_before_visual_pass must be boolean")
     if data.get("secondary_features_started_before_visual_pass") is True:
         errors.append("secondary features started before visual acceptance")
+    control_case = data.get("control_case", False)
+    if not isinstance(control_case, bool):
+        errors.append("control_case must be boolean")
+        control_case = False
+    if control_case:
+        if score != 10:
+            errors.append("a mechanics-only control case must score 10")
+        if not nonempty(data.get("control_limitation")) or "does not prove" not in data["control_limitation"].lower():
+            errors.append("a mechanics-only control case must state that it does not prove visual quality")
+        if len(reference_paths) != 1 or len(rendered_paths) != 1:
+            errors.append("a mechanics-only control case must use one reference and one rendered path")
+        elif reference_paths[0].read_bytes() != rendered_paths[0].read_bytes():
+            errors.append("a mechanics-only control case must use the same reference and rendered bytes")
     for field in HASH_FIELDS:
         if not (isinstance(data.get(field), str) and re.fullmatch(r"[0-9a-f]{64}", data[field])):
             errors.append(f"{field} must be a 64-character lowercase sha256")

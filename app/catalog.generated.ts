@@ -762,7 +762,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
         "name": "capability-inventory",
@@ -1540,7 +1540,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
         "name": "acceptance-flow",
@@ -3125,7 +3125,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
         "name": "agents-md-engineer",

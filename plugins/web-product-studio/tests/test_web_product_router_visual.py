@@ -49,6 +49,11 @@ class WebProductRouterVisualTests(unittest.TestCase):
         metadata = (ROOT / "skills/visual-fidelity-gate/agents/openai.yaml").read_text(encoding="utf-8")
         self.assertIn("allow_implicit_invocation: false", metadata)
 
+    def test_composite_visual_case_keeps_router_as_front_door(self) -> None:
+        bundle = json.loads((ROOT / "bundle-spec.json").read_text(encoding="utf-8"))
+        case = next(item for item in bundle["routing_cases"] if "WebGPU ocean" in item["prompt"])
+        self.assertEqual(case["expected_skill"], "web-product-router")
+
     def test_declared_trigger_corpus_cannot_bypass_gate(self) -> None:
         corpus = json.loads((ROOT / "skills/visual-fidelity-gate/evals/evals.json").read_text(encoding="utf-8"))
         for prompt in corpus["should_trigger"]:
