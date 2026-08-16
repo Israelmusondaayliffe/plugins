@@ -430,8 +430,8 @@
       "successSignals": ["The video has one clear audience and message.", "Every scene, asset, and caption has a defined role.", "The final render passes both brief and technical delivery checks."]
     },
     "web-product-studio": {
-      "bestFor": ["Building a web product from an approved brief.", "Redesigning an existing interface while preserving its real behavior.", "Turning an image or screenshot into a working web surface.", "Verifying the most important user flows in a browser."],
-      "startHere": {"skill": "web-product-router", "why": "Use the router when the job could be a new build, redesign, image implementation, or verification task. It chooses one visual authority and the correct delivery path."},
+      "bestFor": ["Building a web product from an approved brief.", "Redesigning an existing interface while preserving its real behavior.", "Turning an image or screenshot into a working web surface.", "Verifying the most important user flows in a browser.", "Locking a load-bearing visual hero before feature expansion."],
+      "startHere": {"skill": "web-product-router", "why": "Use the router when the job could be a new build, redesign, image implementation, or verification task. It chooses one visual authority and hands likeness-dependent hero work to the hidden visual-fidelity-gate specialist before secondary features."},
       "quickStarts": [
         {"goal": "Build from a brief", "prompt": "Route and build this web product from the brief: [brief]. Preserve the named constraints, choose one visual direction, implement the core flows, and verify them in a browser."},
         {"goal": "Redesign an interface", "prompt": "Redesign this existing interface without changing its product behavior: [project or URL]. First map the current flows, then improve the visual system and verify the result."},
@@ -441,6 +441,7 @@
         {"title": "Route the web job", "instruction": "Identify whether this is a new build, redesign, image-to-code task, or verification-only request.", "skills": ["web-product-router"]},
         {"title": "Choose the visual authority", "instruction": "Set one design constitution that governs type, color, spacing, components, motion, and responsive behavior.", "skills": ["design-constitution-selector"]},
         {"title": "Implement the product", "instruction": "Build the requested surface and preserve current behavior when the job is a redesign.", "skills": ["code-production-agent", "redesign-existing-projects"]},
+        {"title": "Lock the representative hero", "instruction": "For likeness-dependent or picture-led work, validate the source-bound hero separately before expanding secondary features.", "skills": ["visual-fidelity-gate"]},
         {"title": "Complete the requested output", "instruction": "Check that the implementation is not a partial mockup and that every approved requirement has a terminal result.", "skills": ["full-output-enforcement"]},
         {"title": "Verify real flows", "instruction": "Run the important acceptance paths and inspect the rendered product at relevant viewport sizes.", "skills": ["acceptance-flow", "playwright"]}
       ],
@@ -450,6 +451,8 @@
         {"need": "You need a new visual frontend direction", "skill": "imagegen-frontend-web", "why": "It supports intentional, high-quality frontend visual design."},
         {"need": "You need fast browser-level implementation and QA", "skill": "gstack", "why": "It combines headless product work with verification."},
         {"need": "You need to prove a critical user path", "skill": "acceptance-flow", "why": "It tests the outcome from the user's point of view."
+        },
+        {"need": "The first-glance hero must match a visual reference", "skill": "visual-fidelity-gate", "why": "It locks the target, reviews the representative hero independently, and stops below the visual threshold."
         }
       ],
       "workedExample": {"title": "Redesigning a working directory", "situation": "A directory already has good content and filters, but visitors must click twice to reach an item page and the detail pages are too thin.", "steps": ["Map the current routes, filters, design tokens, and mobile behavior.", "Choose the existing design system as the visual authority.", "Replace selector rows with direct links and expand the detail template.", "Run build checks and browser tests for navigation, focus, responsive layout, and content."], "result": "A useful result is a working redesign that keeps the product's identity, shortens the main path, and passes the agreed browser flows."},

@@ -29,7 +29,7 @@
       "name": "capability-operator",
       "source": "./plugins/capability-operator",
       "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.4.2",
+      "version": "0.5.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -83,7 +83,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.5.1",
+      "version": "2.6.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -182,7 +182,7 @@
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "author": {
         "name": "Community Maintainers"
       }

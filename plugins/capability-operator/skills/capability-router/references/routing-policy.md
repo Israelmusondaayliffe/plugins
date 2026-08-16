@@ -18,6 +18,7 @@ Explicit selection chooses the operating method, not the definition of done. The
 | Data storytelling versus analysis | Data Storytelling Studio when analysis is already checked | Exclude exploratory analysis. Hand production to the selected artifact capability. |
 | Capability maintenance versus continuity | Capability Operator | Hand durable knowledge decisions to Continuity Vault after the maintenance decision is verified. |
 | Web versus video | Video Production Studio when the requested deliverable is video | Use website capture as an input, not as a web product build. |
+| Visual-quality gate inside a web product | Web Product Studio | Keep `web-product-router` primary; hand a load-bearing hero to hidden `web-product-studio:visual-fidelity-gate` before secondary features. Ordinary CRUD and cosmetic fixes stay ungated. |
 
 ## Required handoffs
 

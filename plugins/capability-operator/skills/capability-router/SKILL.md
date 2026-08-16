@@ -18,6 +18,8 @@ Choose one primary route across the personal plugin portfolio. Keep the decision
 7. Choose a data-owning connector before choosing the workflow plugin.
 8. Prefer Browser, Computer Use, or Artifacts when they are the best execution surface. Do not add blanket checks for unused connectors or surfaces.
 
+For likeness-dependent, realistic, cinematic, procedural, shader, WebGL, WebGPU, 3D, simulation, or motion-led web work, keep Web Product Studio's `web-product-router` as the primary route and hand the representative hero to its hidden, implicit-off `visual-fidelity-gate` specialist. Do not make that specialist a default prompt route, and do not route ordinary CRUD, spacing, color, chart, or backend work through it.
+
 ## Workflow
 
 1. Read `assets/routing-registry.json` for ownership, front doors, direct skills, companions, handoffs, exclusions, and lifecycle state.

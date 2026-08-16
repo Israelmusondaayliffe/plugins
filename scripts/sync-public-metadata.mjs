@@ -12,14 +12,14 @@ const ownerProfile = `https://github.com/${repositoryOwner}`;
 const versions = {
   "agent-ops": "0.5.1",
   "brand-world-studio": "0.2.0",
-  "capability-operator": "0.4.2",
+  "capability-operator": "0.5.0",
   "citizen-forge": "1.1.0",
   "continuity-vault": "0.2.1",
   "data-storytelling-studio": "0.2.0",
   "founder-revenue-engine": "0.2.0",
   "gauntlet": "0.2.0",
   "gauntlet-loop": "1.2.0",
-  "harness-engineering": "2.5.1",
+  "harness-engineering": "2.6.0",
   "knowledge-work-superpowers": "0.2.1",
   "loopkit": "0.3.0",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",
@@ -30,7 +30,7 @@ const versions = {
   "proofloop": "0.2.0",
   "strategy-room": "0.2.1",
   "video-production-studio": "0.3.0",
-  "web-product-studio": "0.3.1",
+  "web-product-studio": "0.4.0",
   "writing-quality": "0.2.0",
 };
 

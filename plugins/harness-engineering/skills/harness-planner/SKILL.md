@@ -18,8 +18,9 @@ Plan the outcome, scopes, operations, approvals, evidence, and rollback. Leave n
 7. Prefer scripts, rules, hooks, sandbox settings, and templates when behavior must be exact, within what the platform supports.
 8. Define separate approval groups using `../../references/safety-and-approvals.md`.
 9. Generate file previews, operations, expected hashes, the smallest proportional checks, failure stops, and rollback actions.
-10. Use the smallest sufficient topology. A launch cap above six requires a usage warning, a finite expected output per worker, and explicit approval.
-11. Present the human plan and machine operations together.
-12. Do not begin implementation until the user accepts the plan or explicitly requests end-to-end execution.
+10. When the outcome depends on visual, editorial, strategic, experiential, or other human judgment, name the task-owned qualitative acceptance artifact, its owner, evidence surface, threshold, and failure stop. Keep it separate from functional proof.
+11. Use the smallest sufficient topology. A launch cap above six requires a usage warning, a finite expected output per worker, and explicit approval.
+12. Present the human plan and machine operations together.
+13. Do not begin implementation until the user accepts the plan or explicitly requests end-to-end execution.
 
 Start from `../../assets/harness-plan.template.json`. Validate it with `python3 ../../scripts/harnessctl.py validate-operations PLAN.json`.

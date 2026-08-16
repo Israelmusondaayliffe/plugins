@@ -1,7 +1,10 @@
 {
   "agent-ops": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "brand-world-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
-  "capability-operator": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "capability-operator": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "note": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior."
+  },
   "citizen-forge": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "continuity-vault": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "data-storytelling-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
@@ -14,7 +17,10 @@
     "platforms": ["Codex"],
     "note": "Verified for Codex. Its multi-agent execution contract depends on Codex fresh-task semantics, so Claude runtime parity is not claimed."
   },
-  "harness-engineering": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "harness-engineering": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "note": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior."
+  },
   "knowledge-work-superpowers": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "loopkit": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "matt-partok-bundled-plugin-for-knowledge-work": {
@@ -28,6 +34,9 @@
   "proofloop": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "strategy-room": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "video-production-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
-  "web-product-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "web-product-studio": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "note": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior."
+  },
   "writing-quality": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] }
 }

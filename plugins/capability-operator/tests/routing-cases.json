@@ -74,6 +74,19 @@
       "expected": {"primary_route": "web-product-studio:playwright", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "playwright", "companions": [], "excluded_routes": []}
     },
     {
+      "id": "web-visual-composite",
+      "kind": "composite",
+      "task": "Build a cinematic website hero from a visual reference.",
+      "expected": {"primary_route": "web-product-studio:web-product-router", "route_type": "plugin-router", "plugin": "web-product-studio", "skill": "web-product-router", "companions": [], "excluded_routes": []}
+    },
+    {
+      "id": "web-visual-focused",
+      "kind": "focused",
+      "task": "Use the visual fidelity gate to lock and review the visual hero.",
+      "explicit_skill": "visual-fidelity-gate",
+      "expected": {"primary_route": "web-product-studio:visual-fidelity-gate", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "visual-fidelity-gate", "companions": [], "excluded_routes": []}
+    },
+    {
       "id": "prompt-composite",
       "kind": "composite",
       "task": "Choose the right model and create then test a production prompt.",

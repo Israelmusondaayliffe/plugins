@@ -7,7 +7,7 @@
       "steps": [
         {
           "action": "Open the homepage",
-          "expected": "The repository contains 22 plugins and 181 skills. The page reports 21 public plugins and 159 bundled skills, and the catalog includes LoopKit and Harness Engineering.",
+          "expected": "The repository contains 22 plugins and 182 skills. The page reports 21 public plugins and 160 bundled skills, and the catalog includes LoopKit and Harness Engineering.",
           "evidence": "Rendered DOM assertion and production screenshot"
         }
       ],

@@ -17,6 +17,12 @@ the model gets.]
 
 [List actions Codex may take without asking and actions that need approval.]
 
+## Quality
+
+[List global output, safety, sourcing, and verification requirements.]
+
+When a visual or experiential deliverable depends on likeness, realism, or a named reference, establish a viewable target before full implementation. Functional or runtime proof cannot substitute for fresh rendered comparison, and completion wording must state any remaining visual mismatch.
+
 ## Routing
 
 [Explain where internal data, public research, files, Browser, and Computer Use should

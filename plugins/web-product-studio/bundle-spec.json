@@ -1,6 +1,6 @@
 {
   "plugin": "web-product-studio",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "skills": [
     "acceptance-flow",
     "code-production-agent",
@@ -11,11 +11,13 @@
     "imagegen-frontend-web",
     "playwright",
     "redesign-existing-projects",
+    "visual-fidelity-gate",
     "web-product-router"
   ],
   "coordinator_skills": [
     "acceptance-flow",
     "design-constitution-selector",
+    "visual-fidelity-gate",
     "web-product-router"
   ],
   "companions": [
@@ -27,7 +29,8 @@
   ],
   "guardrails": [
     "Load exactly one design constitution or none.",
-    "Prove user-facing completion through browser-verifiable acceptance flows."
+    "Prove user-facing completion through browser-verifiable acceptance flows.",
+    "Freeze secondary features until an independent source-bound hero review scores at least 7 with no P0, P1, or P2 visual gap."
   ],
   "routing_cases": [
     {
@@ -47,6 +50,12 @@
       "expected_skill": "acceptance-flow",
       "evidence_file": "skills/acceptance-flow/SKILL.md",
       "evidence_contains": "browser-verifiable user flows"
+    },
+    {
+      "prompt": "Build a cinematic WebGPU ocean website whose calm and violent states must match the supplied references.",
+      "expected_skill": "web-product-router",
+      "evidence_file": "skills/web-product-router/references/routing.md",
+      "evidence_contains": "Freeze secondary features until an independent hero review"
     }
   ]
 }
