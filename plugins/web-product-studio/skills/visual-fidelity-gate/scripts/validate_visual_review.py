@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import importlib.util
 import re
 import sys
 from pathlib import Path
@@ -17,7 +18,7 @@ PREVIOUS = {
     "hero-spike": {"target-locked", "hero-spike"},
     "visual-passed": {"hero-spike"},
     "full-build": {"visual-passed"},
-    "final-reviewed": {"full-build", "visual-passed"},
+    "final-reviewed": {"full-build"},
 }
 GATE_STATES = {"pending", "passed", "failed", "blocked"}
 FAIL_DECISIONS = {"repair", "method-switch", "incomplete"}
@@ -77,6 +78,17 @@ def viewable_file(path: Path) -> bool:
     if suffix == ".webm":
         return payload.startswith(b"\x1aE\xdf\xa3")
     return False
+
+
+def validate_contract(contract: dict[str, Any]) -> list[str]:
+    """Run the sibling contract validator against the review's bound contract."""
+    validator_path = Path(__file__).with_name("validate_visual_contract.py")
+    spec = importlib.util.spec_from_file_location("visual_contract_validator", validator_path)
+    if spec is None or spec.loader is None:
+        return ["contract validator could not be loaded"]
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.validate(contract)
 
 
 def validate(data: dict[str, Any]) -> list[str]:
@@ -163,6 +175,7 @@ def validate(data: dict[str, Any]) -> list[str]:
         if data.get("contract_hash") != expected_contract_hash:
             errors.append("contract_hash does not match contract_path")
     if contract is not None:
+        errors.extend(f"contract: {error}" for error in validate_contract(contract))
         if contract.get("secondary_features_started") is not False:
             errors.append("contract must preserve the secondary-feature freeze")
         if contract.get("visual_gate") == "passed":
@@ -216,6 +229,8 @@ def validate(data: dict[str, Any]) -> list[str]:
             errors.append("visual-passed and later states require visual_gate passed")
         if data.get("decision") not in {"proceed", "complete"}:
             errors.append("visual-passed and later states require a proceed or complete decision")
+    if data.get("visual_gate") == "passed" and state not in {"visual-passed", "full-build", "final-reviewed"}:
+        errors.append("visual_gate cannot be passed before the visual-passed state")
     if score < 7:
         if state not in {"target-locked", "hero-spike"}:
             errors.append("a score below 7 cannot advance beyond hero-spike")

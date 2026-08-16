@@ -196,6 +196,34 @@ class VisualFidelityGateTests(unittest.TestCase):
             review["differences"] = [{"severity": "P2", "description": "Required lensing is absent."}]
             self.assertTrue(any("P0, P1, or P2" in error for error in REVIEW.validate(review)))
 
+    def test_final_review_requires_full_build(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            review = valid_passing_review(Path(directory))
+            review["state"] = "final-reviewed"
+            review["previous_state"] = "visual-passed"
+            self.assertTrue(any("invalid transition" in error for error in REVIEW.validate(review)))
+
+    def test_visual_gate_cannot_pass_during_hero_spike(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            review = valid_passing_review(Path(directory))
+            review["state"] = "hero-spike"
+            review["previous_state"] = "target-locked"
+            review["differences"] = [{"severity": "P1", "description": "The first-glance silhouette is wrong."}]
+            self.assertTrue(any("cannot be passed before" in error for error in REVIEW.validate(review)))
+
+    def test_review_runs_the_full_contract_validator(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            review = valid_passing_review(Path(directory))
+            contract_path = Path(review["contract_path"])
+            contract = json.loads(contract_path.read_text(encoding="utf-8"))
+            del contract["objective"]
+            del contract["medium"]
+            contract_path.write_text(json.dumps(contract, indent=2) + "\n", encoding="utf-8")
+            review["contract_hash"] = REVIEW.hashlib.sha256(contract_path.read_bytes()).hexdigest()
+            errors = REVIEW.validate(review)
+            self.assertTrue(any("contract: objective must be non-empty" in error for error in errors))
+            self.assertTrue(any("contract: medium must be an object" in error for error in errors))
+
 
 if __name__ == "__main__":
     unittest.main()
