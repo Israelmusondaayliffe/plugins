@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "should_trigger": [
+    "Build an Interstellar-like black hole hero whose silhouette and lensing must match the reference.",
+    "Create a convincing WebGPU storm ocean with calm and violent states.",
+    "Build a cinematic video-led website hero from this approved frame.",
+    "Match this supplied screenshot in WebGL.",
+    "Create a photoreal material study as the first screen.",
+    "Build an immersive 3D product landing page where the object carries the experience.",
+    "Reproduce this named film frame at desktop and mobile crops.",
+    "Create a shader-led simulation whose extreme state must be recognizable without labels.",
+    "Build a premium motion hero controlled by this visual reference.",
+    "Make the landing page look recognizably like the supplied concept art."
+  ],
+  "should_not_trigger": [
+    "Fix the login form validation.",
+    "Add a database migration.",
+    "Make the settings page spacing cleaner.",
+    "Change the button color to blue.",
+    "Audit this website without editing it.",
+    "Add a chart to the dashboard.",
+    "Repair a broken API route.",
+    "Update the footer copy.",
+    "Add keyboard focus styles.",
+    "Create a routine CRUD admin page."
+  ],
+  "functional_cases": [
+    "Gargantua stops before feature expansion below 7.",
+    "Procedural Ocean stops or switches method below 7.",
+    "Video Hero stops before secondary features below 7.",
+    "A source-bound score of at least 7 with only P3 gaps may proceed."
+  ]
+}

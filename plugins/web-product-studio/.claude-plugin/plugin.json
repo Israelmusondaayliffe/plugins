@@ -1,6 +1,6 @@
 {
   "name": "web-product-studio",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
   "author": {
     "name": "Community Maintainers"

@@ -1,6 +1,6 @@
 {
   "plugin": "capability-operator",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "skills": [
     "capability-inventory",
     "capability-router",

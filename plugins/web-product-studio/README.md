@@ -12,6 +12,7 @@ Web Product Studio coordinates coherent frontend and web app work from brief thr
 - image-to-code
 - imagegen-frontend-web
 - redesign-existing-projects
+- visual-fidelity-gate (hidden, explicit or router-routed only)
 - gstack
 - playwright
 
@@ -40,6 +41,7 @@ These style skills are not bundled. The selector loads exactly one when needed.
 - Do not load multiple broad visual constitutions.
 - Diagnostic requests do not authorize implementation.
 - Rendered browser flows are the primary completion surface for user-facing behavior.
+- For likeness-dependent or picture-led work, the router invokes the hidden visual-fidelity-gate specialist before secondary features. Functional completion and visual completion remain separate, and work below the visual threshold is reported as incomplete.
 
 ## Verification
 

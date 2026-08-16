@@ -1,0 +1,6 @@
+interface:
+  display_name: "Visual Fidelity Gate"
+  short_description: "Lock and review a load-bearing web hero"
+  default_prompt: "Use $visual-fidelity-gate to lock the visual target and review the representative hero before feature expansion."
+policy:
+  allow_implicit_invocation: false

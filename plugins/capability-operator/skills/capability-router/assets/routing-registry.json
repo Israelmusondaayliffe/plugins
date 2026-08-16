@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "generated_on": "2026-08-10",
-  "expected_owned_skill_count": 116,
+  "expected_owned_skill_count": 117,
   "required_plugins": [
     "agent-ops",
     "brand-world-studio",
@@ -586,7 +586,9 @@
       "front_door": "web-product-router",
       "composite_triggers": [
         "web product from brief through implementation and visual qa",
-        "build redesign and verify this web app"
+        "build redesign and verify this web app",
+        "build a cinematic website hero from a visual reference",
+        "build a visual reference led web product"
       ],
       "owned_skills": [
         "acceptance-flow",
@@ -598,6 +600,7 @@
         "imagegen-frontend-web",
         "playwright",
         "redesign-existing-projects",
+        "visual-fidelity-gate",
         "web-product-router"
       ],
       "direct_routes": [
@@ -634,13 +637,21 @@
           "triggers": [
             "redesign this existing project"
           ]
+        },
+        {
+          "skill": "visual-fidelity-gate",
+          "triggers": [
+            "use the visual fidelity gate",
+            "lock and review the visual hero"
+          ]
         }
       ],
       "companions": [
         "brand-world-studio"
       ],
       "handoffs": [
-        "Receive approved brand direction for implementation."
+        "Receive approved brand direction for implementation.",
+        "For likeness-dependent or picture-led work, route the representative hero to web-product-studio:visual-fidelity-gate before secondary features."
       ],
       "exclusions": [
         "Do not own a video deliverable built from a website."

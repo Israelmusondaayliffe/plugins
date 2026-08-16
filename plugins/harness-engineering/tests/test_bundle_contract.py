@@ -57,5 +57,16 @@ class BundleContractTests(unittest.TestCase):
             self.assertIn("Cowork", text, f"{path} does not mention Cowork")
             self.assertIn("Claude Code", text, f"{path} does not mention Claude Code")
             self.assertIn("Codex", text, f"{path} does not mention Codex")
+
+    def test_qualitative_acceptance_cannot_be_replaced_by_functional_proof(self) -> None:
+        standard = (ROOT / "references" / "verification-standard.md").read_text(encoding="utf-8")
+        planner = (ROOT / "skills" / "harness-planner" / "SKILL.md").read_text(encoding="utf-8")
+        verifier = (ROOT / "skills" / "harness-verifier" / "SKILL.md").read_text(encoding="utf-8")
+        template = (ROOT / "assets" / "global-agents.template.md").read_text(encoding="utf-8")
+        self.assertIn("functional_result", standard)
+        self.assertIn("qualitative_result", standard)
+        self.assertIn("task-owned qualitative acceptance artifact", planner)
+        self.assertIn("below-threshold qualitative result prevents a complete verdict", verifier)
+        self.assertIn("Functional or runtime proof cannot substitute", template)
 if __name__ == "__main__":
     unittest.main()

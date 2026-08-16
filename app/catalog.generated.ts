@@ -748,7 +748,7 @@ export const plugins = [
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
     "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.2",
+    "version": "0.5.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1526,7 +1526,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -1579,16 +1579,20 @@ export const plugins = [
         "description": "Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS."
       },
       {
+        "name": "visual-fidelity-gate",
+        "description": "Lock and validate a source-bound visual target before full web implementation, then enforce an independent hero review, a 7 of 10 threshold, method-switch conditions, and honest incomplete status. Use for likeness-dependent, realistic, cinematic, procedural, shader, WebGL, WebGPU, 3D, simulation, motion-led, immersive, or reference-controlled web experiences where the picture is load-bearing."
+      },
+      {
         "name": "web-product-router",
-        "description": "Routes web product requests to greenfield build, redesign, image-first implementation, targeted fix, or quality assurance. Use when a frontend or web app request could trigger several build and design skills. Selects one primary path, one design constitution, and browser-verifiable acceptance flows before implementation."
+        "description": "Routes web product requests to greenfield build, redesign, image-first implementation, targeted fix, quality assurance, or a source-bound visual-fidelity gate. Use when a frontend or web app request could trigger several build and design skills, especially when likeness, realism, a named reference, procedural graphics, WebGL, WebGPU, 3D, simulation, or a motion-led hero is load-bearing. Selects one primary path, one visual authority, and browser-verifiable acceptance before implementation."
       }
     ],
     "counts": {
-      "skills": 10,
-      "assets": 7,
-      "references": 7,
-      "scripts": 6,
-      "files": 43
+      "skills": 11,
+      "assets": 9,
+      "references": 8,
+      "scripts": 8,
+      "files": 53
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1597,11 +1601,12 @@ export const plugins = [
         "Building a web product from an approved brief.",
         "Redesigning an existing interface while preserving its real behavior.",
         "Turning an image or screenshot into a working web surface.",
-        "Verifying the most important user flows in a browser."
+        "Verifying the most important user flows in a browser.",
+        "Locking a load-bearing visual hero before feature expansion."
       ],
       "startHere": {
         "skill": "web-product-router",
-        "why": "Use the router when the job could be a new build, redesign, image implementation, or verification task. It chooses one visual authority and the correct delivery path."
+        "why": "Use the router when the job could be a new build, redesign, image implementation, or verification task. It chooses one visual authority and hands likeness-dependent hero work to the hidden visual-fidelity-gate specialist before secondary features."
       },
       "quickStarts": [
         {
@@ -1638,6 +1643,13 @@ export const plugins = [
           "skills": [
             "code-production-agent",
             "redesign-existing-projects"
+          ]
+        },
+        {
+          "title": "Lock the representative hero",
+          "instruction": "For likeness-dependent or picture-led work, validate the source-bound hero separately before expanding secondary features.",
+          "skills": [
+            "visual-fidelity-gate"
           ]
         },
         {
@@ -1681,6 +1693,11 @@ export const plugins = [
           "need": "You need to prove a critical user path",
           "skill": "acceptance-flow",
           "why": "It tests the outcome from the user's point of view."
+        },
+        {
+          "need": "The first-glance hero must match a visual reference",
+          "skill": "visual-fidelity-gate",
+          "why": "It locks the target, reviews the representative hero independently, and stops below the visual threshold."
         }
       ],
       "workedExample": {
@@ -3091,7 +3108,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.5.1",
+    "version": "2.6.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3850,10 +3867,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 21,
-  "skills": 159,
-  "assets": 314,
-  "references": 442,
-  "scripts": 394,
-  "files": 1809
+  "skills": 160,
+  "assets": 316,
+  "references": 443,
+  "scripts": 396,
+  "files": 1819
 } as const;
 export type Plugin = (typeof plugins)[number];
