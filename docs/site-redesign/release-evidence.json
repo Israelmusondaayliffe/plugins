@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "record_type": "release-evidence",
+  "source_commit": "pending-final-release-commit",
+  "build": {"command": "npm test", "passed": false},
+  "browser": {"acceptance_flow": "docs/site-redesign/acceptance-flow.json", "passed": false, "independent_evaluator": "pending"},
+  "sites": {"version": "pending", "deployment_status": "pending", "deployed_url": "https://israel-codex-plugins.israelayliffe.chatgpt.site"},
+  "access": {"audience": "public", "anonymous_test_required": true, "anonymous_test_passed": null},
+  "unresolved_non_blocking": []
+}

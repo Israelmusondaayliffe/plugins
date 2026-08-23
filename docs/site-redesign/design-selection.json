@@ -1,36 +1,37 @@
 {
-  "selected": "design-taste-frontend",
+  "selected": "Wada Paper with locally persisted Sumi mode",
   "evidence": [
-    "The supplied references use editorial scale, rough print texture, stark composition, and a restrained black, cream, and coral palette.",
-    "The current site feels toy-like because bordered cards, colored gradients, and offset box shadows repeat across the catalog.",
-    "A public developer registry benefits from information hierarchy, purposeful interaction, keyboard access, and disciplined motion."
+    "The supplied Sanzō Wada reference uses warm paper, charcoal ink, muted red identifiers, compact functional controls, and a dark Sumi counterpart.",
+    "Wada combination #284 gives the four outcome groups exact functional markers without using colored text as the only signal.",
+    "The catalog job benefits from an archival index, fine rules, measured spacing, and verified host actions instead of a full-screen marketing hero."
   ],
-  "rationale": "Design Taste supports the needed editorial marketing surface while requiring accessible states, motivated motion, restrained color, and fewer card containers.",
+  "rationale": "The Wada reference is the sole visual authority. Paper is the default reading surface, Sumi is device-local, and the interface stays focused on finding, checking, and installing a plugin.",
+  "design_constitution": null,
   "dials": {
     "current": {
       "designVariance": 5,
       "motionIntensity": 3,
-      "visualDensity": 6
+      "visualDensity": 5
     },
     "target": {
-      "designVariance": 7,
-      "motionIntensity": 6,
-      "visualDensity": 5
+      "designVariance": 6,
+      "motionIntensity": 2,
+      "visualDensity": 7
     }
   },
   "audit": {
-    "preserve": ["Public route slugs", "Primary navigation labels", "Install commands", "Generated catalog source", "Keyboard focus and reduced-motion support"],
-    "replace": ["Repeated bordered card grid", "Multi-color card gradients", "Offset shadow hover treatment", "Decorative dot eyebrows", "Framed and rotated hero artwork"],
-    "interactionGoal": "Use an indexed registry with a live selected-plugin preview, keyboard search shortcuts, clear selection state, and compact install feedback."
+    "preserve": ["All 21 public route slugs", "Generated catalog source", "Host-specific install commands", "Search and filter behavior", "Keyboard focus and reduced-motion support"],
+    "replace": ["Full-screen marketing hero", "Plugin constellation artwork", "Grain overlay", "Dark-only presentation", "Generic SaaS cards"],
+    "interactionGoal": "Put search, outcome, category, host, and sort controls in the first working viewport with an accessible persisted theme control and exact copy feedback."
   },
   "rejected": [
     {
-      "name": "minimalist-ui",
-      "reason": "Too restrained for the expressive printmaking references and the requested visual upgrade."
+      "name": "Wada combination #268",
+      "reason": "The Light Brown Drab, Raw Sienna, Deep Slate Olive, and Nile Blue direction was studied but is too muted for four quickly distinguishable functional outcomes."
     },
     {
-      "name": "industrial-brutalist-ui",
-      "reason": "The references are tactile and editorial, not raw interface brutalism."
+      "name": "Wada combination #336",
+      "reason": "The Eosine Pink, Hay’s Russet, Pale Lemon Yellow, and Blackish Olive direction was studied but reads more decorative than operational for this registry."
     }
   ]
 }

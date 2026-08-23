@@ -2,13 +2,13 @@
   "flows": [
     {
       "id": "F1",
-      "name": "See the complete current marketplace",
+      "name": "See the current public catalog immediately",
       "preconditions": ["The site is deployed from the current main branch"],
       "steps": [
         {
           "action": "Open the homepage",
-          "expected": "The repository contains 22 plugins and 182 skills. The page reports 21 public plugins and 160 bundled skills, and the catalog includes LoopKit and Harness Engineering.",
-          "evidence": "Rendered DOM assertion and production screenshot"
+          "expected": "The compact Wada masthead, registry description, 21 public plugins, 160 bundled skills, and catalog controls are visible without a marketing-art hero.",
+          "evidence": "Rendered DOM assertion and matching-viewport screenshot"
         }
       ],
       "status": "passed"
@@ -33,17 +33,12 @@
     },
     {
       "id": "F3",
-      "name": "Inspect and install a selected plugin",
+      "name": "Inspect and copy a verified install action",
       "preconditions": ["The homepage catalog is visible"],
       "steps": [
         {
-          "action": "Select Harness Engineering in the registry",
-          "expected": "The preview shows its description, featured skills, and exact install command.",
-          "evidence": "Browser selection and preview assertions"
-        },
-        {
-          "action": "Copy the install command",
-          "expected": "The button confirms the copy and the visible command matches Harness Engineering exactly.",
+          "action": "Open Harness Engineering and copy its Codex install command",
+          "expected": "The detail record renders and the copy control confirms the exact host-supported command.",
           "evidence": "Button feedback and command text assertion"
         },
         {
@@ -61,8 +56,52 @@
       "steps": [
         {
           "action": "Open the homepage and navigate through the catalog controls",
-          "expected": "The hero, filters, registry rows, selected preview, and install commands remain readable without horizontal overflow.",
+          "expected": "The masthead, controls, rows, records, and install commands remain readable and touch-usable without horizontal overflow.",
           "evidence": "Responsive screenshot and overflow assertion"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "F5",
+      "name": "Switch and persist the reading theme",
+      "preconditions": ["Paper is the default theme and local storage is empty"],
+      "steps": [
+        {
+          "action": "Switch from Paper to Sumi",
+          "expected": "The control communicates its state and the exact Sumi tokens apply without changing catalog content.",
+          "evidence": "ARIA state, computed token, and screenshot assertions"
+        },
+        {
+          "action": "Reload the page",
+          "expected": "Sumi remains active from device-local storage, then can be returned to Paper.",
+          "evidence": "Local storage and reload assertion"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "F6",
+      "name": "Respect host support boundaries",
+      "preconditions": ["All-host, Codex-only, and Claude-only records exist"],
+      "steps": [
+        {
+          "action": "Open an all-host plugin, Gauntlet Loop, and Gauntlet",
+          "expected": "Each page renders only the installation actions documented for that plugin’s supported hosts.",
+          "evidence": "Rendered host-card and exact-command assertions"
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "F7",
+      "name": "Preserve the public export and privacy boundary",
+      "preconditions": ["The generated catalog reflects repository main"],
+      "steps": [
+        {
+          "action": "Check every public record, both exports, and the excluded compatibility route",
+          "expected": "All 21 public routes and both exports work, the deprecated Matt package is absent from every public surface, and its route returns 404.",
+          "evidence": "Rendered-route suite, export scan, and anonymous request assertions"
         }
       ],
       "status": "passed"

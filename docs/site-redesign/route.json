@@ -1,8 +1,8 @@
 {
-  "route": "redesign",
-  "objective": "Turn the existing public plugin catalog into a serious, interactive developer registry that exposes all 22 plugins and makes installation fast and trustworthy.",
-  "design_constitution": "design-taste-frontend",
-  "implementation_skills": ["redesign-existing-projects", "acceptance-flow"],
+  "route": "sites-artifact",
+  "objective": "Redesign the existing public catalog as a Wada-inspired registry for the 21 curated plugins and 160 public skills while preserving the 22-package repository and its installable compatibility package.",
+  "design_constitution": null,
+  "implementation_skills": ["sites-artifact-director", "redesign-existing-projects", "acceptance-flow"],
   "acceptance_flow": "docs/site-redesign/acceptance-flow.json",
-  "rationale": "The repository, routes, catalog generator, and hosting project already work. The requested outcome is a visual and interaction overhaul with the existing information architecture preserved."
+  "rationale": "The repository, routes, generator, and hosting project already work. The supplied Sanzō Wada repository is the sole visual authority for a working-first redesign with the public curation boundary preserved."
 }

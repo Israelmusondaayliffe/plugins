@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { Catalog } from "./components/Catalog";
 import { CopyCommand } from "./components/CopyCommand";
+import { ThemeToggle } from "./components/ThemeToggle";
 import { marketplaceName, plugins, site, totals } from "./catalog.generated";
 
 const repositoryUrl =
@@ -33,95 +33,41 @@ export default async function Home() {
           <span className="wordmark-mark">AP</span>
           <span>{site.name}</span>
         </Link>
-        <nav aria-label="Primary navigation">
-          <a href="#outcomes">Outcomes</a>
-          <a href="#install">Install</a>
-          <a href={repositoryUrl}>GitHub</a>
-        </nav>
+        <div className="header-actions">
+          <nav aria-label="Primary navigation">
+            <a href="#outcomes">Catalog</a>
+            <a href="#install">Install</a>
+            <a href={repositoryUrl}>GitHub</a>
+          </nav>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main>
-        <section className="hero shell" aria-labelledby="hero-title">
-          <figure className="hero-art" aria-hidden="true">
-            <Image
-              alt=""
-              fill
-              priority
-              sizes="(max-width: 800px) 100vw, 62vw"
-              src="/plugin-constellation.png"
-              unoptimized
-            />
-          </figure>
-          <div className="hero-copy">
+        <section className="registry-intro shell" aria-labelledby="hero-title">
+          <div className="registry-intro-copy">
             <p className="kicker">
-              Public plugins for Codex, Claude Code, and Claude Cowork
+              Community Agent Plugins · Public registry
             </p>
-            <h1 id="hero-title">
-              Systems for work
-              <br />
-              that has to hold.
-            </h1>
+            <h1 id="hero-title">Choose the work. Check the host. Install the plugin.</h1>
             <p className="hero-lede">
-              {totals.plugins} public plugins and {totals.skills} bundled
-              skills, arranged by the outcome you need and the host you use.
-              Every record separates discovery from verified runtime support.
+              A practical index of {totals.plugins} public plugins and {totals.skills} bundled
+              skills for Codex, Claude Code, and Claude Cowork. Search by the
+              outcome you need, then use only the install action verified for your host.
             </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#outcomes">
-                Browse by outcome
-              </a>
-              <a className="button button-quiet" href={repositoryUrl}>
-                View source
-              </a>
-            </div>
           </div>
-        </section>
-
-        <section className="proof-strip shell" aria-label="Registry totals">
-          <div>
-            <strong>{totals.plugins}</strong>
-            <span>Public plugins</span>
+          <div className="registry-totals" aria-label="Registry totals">
+            <div><strong>{totals.plugins}</strong><span>Public plugins</span></div>
+            <div><strong>{totals.skills}</strong><span>Bundled skills</span></div>
+            <div><strong>04</strong><span>Outcome groups</span></div>
+            <div><strong>03</strong><span>Verified hosts</span></div>
           </div>
-          <div>
-            <strong>{totals.skills}</strong>
-            <span>Bundled skills</span>
-          </div>
-          <div>
-            <strong>4</strong>
-            <span>Outcome collections</span>
-          </div>
-          <div>
-            <strong>3</strong>
-            <span>Verified hosts</span>
-          </div>
-        </section>
-
-        <section
-          className="changes-strip shell"
-          aria-labelledby="what-changed-title"
-        >
-          <div>
-            <p className="kicker">What changed</p>
-            <h2 id="what-changed-title">A clearer way into the registry.</h2>
-          </div>
-          <ul>
-            <li>
-              <strong>Added</strong> Gauntlet and Gauntlet Loop.
-            </li>
-            <li>
-              <strong>Expanded</strong> Capability Operator, Agent Ops, and
-              Harness Engineering.
-            </li>
-            <li>
-              <strong>Clarified</strong> which runtime hosts are verified for
-              every plugin.
-            </li>
-          </ul>
         </section>
 
         <section className="catalog-section shell" id="outcomes">
           <div className="section-heading">
-            <h2>Start with the outcome. Then choose your host.</h2>
+            <p className="kicker">Registry index</p>
+            <h2>Start with the outcome. Then choose the host.</h2>
             <p>
               Search every public plugin and bundled skill, narrow the registry
               by outcome, category, or verified runtime host, then inspect the
@@ -129,6 +75,18 @@ export default async function Home() {
             </p>
           </div>
           <Catalog />
+        </section>
+
+        <section className="changes-strip shell" aria-labelledby="what-changed-title">
+          <div>
+            <p className="kicker">Current edition</p>
+            <h2 id="what-changed-title">A maintained registry, not a marketing list.</h2>
+          </div>
+          <ul>
+            <li><strong>Added</strong> Gauntlet and Gauntlet Loop.</li>
+            <li><strong>Expanded</strong> Capability Operator, Agent Ops, and Harness Engineering.</li>
+            <li><strong>Clarified</strong> verified runtime support on every public record.</li>
+          </ul>
         </section>
 
         <section className="install-section" id="install">

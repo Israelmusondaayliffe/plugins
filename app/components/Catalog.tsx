@@ -244,12 +244,15 @@ export function Catalog() {
             );
             return (
               <Link
-                className="registry-row"
+                className={
+                  "registry-row outcome-" + (collection?.slug ?? "uncategorized")
+                }
+                data-outcome={collection?.slug ?? "uncategorized"}
                 data-testid={"plugin-row-" + plugin.slug}
                 href={"/plugins/" + plugin.slug}
                 key={plugin.slug}
               >
-                <span className="registry-index">
+                <span className="registry-index" aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="registry-main">

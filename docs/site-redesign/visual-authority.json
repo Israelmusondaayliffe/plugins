@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "record_type": "visual-authority",
+  "selected_direction": "Wada Paper with locally persisted Sumi mode and combination #284 outcome markers",
+  "source_refs": [
+    "https://sanzo-wada-color-repository.israelayliffe.chatgpt.site",
+    "/Users/israelayliffe/Codex-Workspace/PROJECTS/sanzo-wada-color-repository"
+  ],
+  "design_constitution": null,
+  "rules": {
+    "layout": ["Compact masthead", "Registry description, totals, and controls in the first viewport", "Archival index rows and fine rules"],
+    "color": ["Paper #F8F5EF with raised #FCFBF8 and muted #EFEDE8", "Sumi #121214 with raised #1A1819 and muted #242122", "Editorial accent #B33C49 in Paper and #D45662 in Sumi", "Combination #284 markers: #FFDD00, #00B49B, #E2625E, #004F46"],
+    "typography": ["Georgia-style editorial headings", "Avenir or Helvetica controls and body", "Monospace only for commands, versions, counts, and machine-readable values"],
+    "imagery": ["No generated decorative artwork", "Deterministic typographic social preview with AP seal and #284 swatches"],
+    "material": ["Warm paper fields", "Fine neutral rules", "Measured spacing", "Restrained radii"],
+    "motion": ["Short functional state transitions only", "Honor reduced motion"],
+    "signature_tension": ["Archival editorial character paired with exact runtime installation facts"]
+  },
+  "avoid": ["Gradients", "Glass effects", "Decorative noise", "Generic SaaS cards", "Oversized slogan copy", "Colored text as the only accessibility signal"],
+  "rejected_directions": [
+    {"name": "Wada combination #268", "reason": "Studied but too muted for four fast functional distinctions."},
+    {"name": "Wada combination #336", "reason": "Studied but more decorative than operational for the registry."}
+  ]
+}

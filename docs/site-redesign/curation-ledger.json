@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "record_type": "curation-ledger",
+  "source_manifest": "docs/site-redesign/source-manifest.json",
+  "decisions": [
+    {
+      "source_id": "wada-live-reference",
+      "decision": "selected",
+      "reason": "It is the user-supplied visual reference and provides the exact Paper and Sumi system required for this redesign.",
+      "useful_qualities": ["warm paper", "editorial serif", "fine rules", "compact controls", "muted red identifiers"],
+      "intended_role": "Sole visual authority"
+    },
+    {
+      "source_id": "public-plugin-main",
+      "decision": "selected",
+      "reason": "It is the current source of truth for public inventory, runtime support, and commands.",
+      "useful_qualities": ["generated counts", "explicit allowlist", "host records", "stable routes"],
+      "intended_role": "Catalog and runtime truth"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyCommand } from "../../components/CopyCommand";
+import { ThemeToggle } from "../../components/ThemeToggle";
 import {
   collections,
   marketplaceName,
@@ -59,13 +60,14 @@ export default async function PluginPage({ params }: PluginPageProps) {
           <span className="wordmark-mark">AP</span>
           <span>{site.name}</span>
         </Link>
-        <Link className="back-link" href="/#outcomes">
-          Back to registry
-        </Link>
+        <div className="header-actions">
+          <Link className="back-link" href="/#outcomes">Back to registry</Link>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main className="plugin-detail shell">
-        <section className="detail-hero">
+        <section className={"detail-hero outcome-" + (collection?.slug ?? "uncategorized")}>
           <div className="detail-heading">
             <p className="kicker">
               {collection?.name ?? plugin.category} collection

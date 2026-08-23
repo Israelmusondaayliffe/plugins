@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 import { site, totals } from "./catalog.generated";
 import "./globals.css";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
 
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
@@ -42,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      images: [{ url: origin + "/og.png", width: 1536, height: 1024 }],
+      images: [{ url: origin + "/og.png", width: 1200, height: 630 }],
       type: "website",
     },
     twitter: {
@@ -60,8 +55,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={spaceGrotesk.variable + " " + ibmPlexMono.variable}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'try{if(localStorage.getItem("community-agent-plugins-theme")==="sumi")document.documentElement.dataset.theme="sumi"}catch(e){}',
+          }}
+        />
+      </head>
+      <body className={ibmPlexMono.variable}>
         {children}
       </body>
     </html>

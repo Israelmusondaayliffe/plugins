@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "record_type": "artifact-brief",
+  "artifact": {
+    "title": "Community Agent Plugins",
+    "job": "registry",
+    "audience": "Codex, Claude Code, and Claude Cowork users evaluating Israel Ayliffe’s public plugin marketplace.",
+    "use_moment": "When a visitor needs to browse, compare, inspect, or install a public plugin from the current main branch.",
+    "outcome": "A working-first Wada registry with 21 public plugins, 160 public skills, exact host actions, and no exposure of the deprecated compatibility package."
+  },
+  "content": {
+    "spine": ["Registry description and totals", "Search and filters", "Public plugin records", "Verified installation", "Guides and skills", "Machine exports"],
+    "source_paths": [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", "docs/host-support.json", "docs/site-redesign/site-curation.json", "scripts/generate-catalog.mjs"],
+    "required_provenance": ["Current public repository main", "User-owned Wada reference site"]
+  },
+  "records": {
+    "source_manifest": "docs/site-redesign/source-manifest.json",
+    "curation_ledger": "docs/site-redesign/curation-ledger.json",
+    "visual_authority": "docs/site-redesign/visual-authority.json",
+    "acceptance_flow": "docs/site-redesign/acceptance-flow.json",
+    "release_evidence": "docs/site-redesign/release-evidence.json"
+  },
+  "release": {
+    "audience": "public",
+    "anonymous_test_required": true
+  },
+  "documentation": {
+    "what_worked": "The existing generated catalog, guides, host records, routes, and exports remain the functional spine.",
+    "what_failed": "The former full-screen artwork hero delayed the working catalog and gave the registry an AI-generated marketing appearance.",
+    "what_caused_the_fix": "The supplied Wada reference and exact #284 mapping established a direct visual and functional system.",
+    "next_time": "Start future catalog revisions from generated inventory and matching-viewport rendered evidence."
+  }
+}

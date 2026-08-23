@@ -111,13 +111,16 @@ if (readme.includes("Install any plugin")) {
 }
 
 const route = readJson("docs/site-redesign/route.json");
-if (!route.objective.includes(`all ${pluginCount} plugins`)) {
-  errors.push("Site redesign route has a stale plugin count");
+if (!route.objective.includes(`${pluginCount}-package repository`)) {
+  errors.push("Site redesign route has a stale repository plugin count");
 }
 const acceptance = readJson("docs/site-redesign/acceptance-flow.json");
 const marketplaceExpectation = acceptance.flows?.[0]?.steps?.[0]?.expected ?? "";
-if (!marketplaceExpectation.includes(expectedCountText)) {
-  errors.push("Site redesign acceptance flow has stale marketplace totals");
+if (
+  !marketplaceExpectation.includes(`${curation.expected_totals.plugins} public plugins`) ||
+  !marketplaceExpectation.includes(`${curation.expected_totals.skills} bundled skills`)
+) {
+  errors.push("Site redesign acceptance flow has stale public Site totals");
 }
 
 const repositoryMetadata = readJson(".github/repository-metadata.json");

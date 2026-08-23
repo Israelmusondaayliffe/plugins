@@ -68,9 +68,9 @@ test("server-renders the depersonalized registry identity and exact public disco
   assert.match(text, /21 public plugins and 160 bundled skills/);
   assert.match(text, /21<\/strong><span>Public plugins/);
   assert.match(text, /160<\/strong><span>Bundled skills/);
-  assert.match(text, /4<\/strong><span>Outcome collections/);
-  assert.match(text, /3<\/strong><span>Verified hosts/);
-  assert.match(text, /What changed/);
+  assert.match(text, /04<\/strong><span>Outcome groups/);
+  assert.match(text, /03<\/strong><span>Verified hosts/);
+  assert.match(text, /Current edition/);
   assert.match(text, /Gauntlet and Gauntlet Loop/);
   assert.match(text, /Capability Operator, Agent Ops, and\s+Harness Engineering/);
 
@@ -89,6 +89,9 @@ test("server-renders the depersonalized registry identity and exact public disco
   assert.match(html, /data-testid="collection-filter"/);
   assert.match(html, /data-testid="host-filter"/);
   assert.match(html, /aria-keyshortcuts="\/"/);
+  assert.match(html, /data-testid="theme-toggle"/);
+  assert.match(html, /aria-label="Switch to Sumi theme"/);
+  assert.doesNotMatch(html, /plugin-constellation/);
   assert.doesNotMatch(html, /data-testid="plugin-preview"/);
   assert.match(html, /aria-live="polite"/);
   for (const plugin of visiblePlugins) {

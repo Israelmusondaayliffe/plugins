@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "record_type": "source-manifest",
+  "midjourney_waiver_reason": "The user supplied a more specific live Wada reference and explicitly required deterministic typography rather than generated decorative artwork.",
+  "inspection_complete": true,
+  "sources": [
+    {
+      "id": "wada-live-reference",
+      "source_type": "explicit-reference",
+      "locator": "https://sanzo-wada-color-repository.israelayliffe.chatgpt.site",
+      "access_class": "public",
+      "ownership": "user-owned",
+      "prompt_status": "not-applicable",
+      "public_eligibility": "allowed",
+      "intended_role": "Sole visual authority for color, typography, paper material, layout rhythm, and Sumi behavior",
+      "inspected": true
+    },
+    {
+      "id": "public-plugin-main",
+      "source_type": "public-research",
+      "locator": "https://github.com/Israelmusondaayliffe/plugins/tree/main",
+      "access_class": "public",
+      "ownership": "user-owned",
+      "prompt_status": "not-applicable",
+      "public_eligibility": "allowed",
+      "intended_role": "Canonical manifests, skills, host support, generator, guides, routes, and install commands",
+      "inspected": true
+    }
+  ]
+}
