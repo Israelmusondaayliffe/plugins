@@ -1,0 +1,7 @@
+interface:
+  display_name: "Capability Matcher and Brief Builder"
+  short_description: "Matches the right capability and builds its brief"
+  default_prompt: "Use $capability-matcher-and-brief-builder to compare these candidates, find alternatives if needed, and create a handoff brief."
+
+policy:
+  allow_implicit_invocation: true

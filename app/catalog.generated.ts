@@ -52,10 +52,273 @@ export const collections = [
       "strategy-room",
       "data-storytelling-studio",
       "continuity-vault",
-      "model-prompt-lab"
+      "model-prompt-lab",
+      "signal-to-system"
     ]
   }
 ] as const;
+export const signalToSystemStages = [
+  {
+    "slug": "sense",
+    "name": "Sense",
+    "description": "Notice what matters before committing.",
+    "skills": [
+      "curiosity-compass",
+      "signal-scout",
+      "research-to-decision-map"
+    ]
+  },
+  {
+    "slug": "decide",
+    "name": "Decide",
+    "description": "Choose the work, the capability, or the test.",
+    "skills": [
+      "workflow-clinic",
+      "capability-matcher-and-brief-builder",
+      "experiment-designer-and-ledger"
+    ]
+  },
+  {
+    "slug": "make",
+    "name": "Make",
+    "description": "Turn intent into a usable working system.",
+    "skills": [
+      "workshop-workbench",
+      "creative-project-control-room"
+    ]
+  },
+  {
+    "slug": "compound",
+    "name": "Compound",
+    "description": "Carry useful work into its next form.",
+    "skills": [
+      "session-compounder",
+      "proof-to-product-mapper"
+    ]
+  }
+] as const;
+export const signalToSystemGuides = {
+  "curiosity-compass": {
+    "stage": "sense",
+    "chooserLabel": "Choose among messy ideas",
+    "summary": "Rank a scattered set of ideas into zero to three worthwhile directions with visible criteria, uncertainty, and a cheap first test.",
+    "useWhen": [
+      "Several ideas are competing for attention.",
+      "You need a defensible focus before planning or research."
+    ],
+    "notFor": [
+      "A choice is already settled.",
+      "You already have a research body that should drive a bounded decision."
+    ],
+    "illustrativePrompt": "Use Curiosity Compass on these ideas: [ideas]. Rank zero to three worthwhile directions using visible criteria, uncertainty, and the cheapest useful first test. Do not force a winner if none clears the viability floor.",
+    "method": [
+      "Define the decision and ranking criteria.",
+      "Compare each candidate with evidence status and uncertainty visible.",
+      "Select zero to three viable directions.",
+      "Define the cheapest first test for the leading direction."
+    ],
+    "usefulResult": "A ranked decision record that shows why each direction did or did not qualify, plus one small next test.",
+    "evidenceBoundary": "The ranking is a decision aid, not proof of demand or future success."
+  },
+  "signal-scout": {
+    "stage": "sense",
+    "chooserLabel": "Find current changes and useful links",
+    "summary": "Scan current public sources for cited needs, patterns, changes, opportunities, and links without pretending to provide persistent monitoring.",
+    "useWhen": [
+      "Recent public evidence matters.",
+      "You need working links and a fast view of recurring or emerging signals."
+    ],
+    "notFor": [
+      "You need a full systematic research project.",
+      "The answer can be made from stable supplied sources alone."
+    ],
+    "illustrativePrompt": "Use Signal Scout to scan current public sources for [topic] over [time window]. Return cited signals, repeated patterns, important changes, useful links, search limits, and the next sensible move.",
+    "method": [
+      "Define the topic, audience, time window, and source classes.",
+      "Search the web and available public communities.",
+      "Separate direct evidence, inference, and unknowns.",
+      "Rank signals and suggest the smallest useful follow-up."
+    ],
+    "usefulResult": "A time-stamped signal snapshot with source links, pattern strength, limits, and a practical next move.",
+    "evidenceBoundary": "A scan is a current snapshot. It does not claim exhaustive coverage or ongoing monitoring."
+  },
+  "research-to-decision-map": {
+    "stage": "sense",
+    "chooserLabel": "Turn existing research into a decision",
+    "summary": "Map an existing body of research, judge whether it is sufficient, and make the decision logic visible before commitment.",
+    "useWhen": [
+      "Material research has already been gathered.",
+      "A bounded product, policy, or strategy decision is waiting."
+    ],
+    "notFor": [
+      "Research still needs to be done from scratch.",
+      "You are ranking unrelated early ideas or choosing a provider."
+    ],
+    "illustrativePrompt": "Use Research to Decision Map on this research: [sources or files]. Map claims, contradictions, gaps, and sufficiency, then give a provisional recommendation only if justified and stop for my decision before finalizing the record.",
+    "method": [
+      "Define the decision contract.",
+      "Map claims to evidence and material contradictions.",
+      "Judge sufficiency and state a provisional recommendation when justified.",
+      "Ask for the user's choice, then create the final decision record."
+    ],
+    "usefulResult": "An evidence map and final decision record that preserves what was known, uncertain, contradicted, and chosen.",
+    "evidenceBoundary": "The skill does not fill evidence gaps with confidence or turn a provisional recommendation into a user decision."
+  },
+  "workflow-clinic": {
+    "stage": "decide",
+    "chooserLabel": "Fix a recurring workflow",
+    "summary": "Diagnose a repeated workflow and design a better future state with explicit human, AI, automation, controls, and handoffs.",
+    "useWhen": [
+      "Repeated work is slow, fragile, confusing, or wasteful.",
+      "Roles and handoffs are unclear."
+    ],
+    "notFor": [
+      "You need general project planning.",
+      "You want integrations implemented without first understanding the workflow."
+    ],
+    "illustrativePrompt": "Use Workflow Clinic on this recurring process: [workflow]. Map the current state, diagnose the real bottlenecks, assign human, AI, automation, and control roles, then propose one bounded pilot without implementing integrations.",
+    "method": [
+      "Define the recurring job and current participants.",
+      "Map the real current state and failure points.",
+      "Design the future state with explicit roles and controls.",
+      "Propose a bounded pilot with measures and rollback."
+    ],
+    "usefulResult": "A current-state diagnosis, a clear future-state workflow, and a small pilot that can test whether the redesign helps.",
+    "evidenceBoundary": "A redesigned diagram is a proposal. It is not proof that the workflow performs better in practice."
+  },
+  "capability-matcher-and-brief-builder": {
+    "stage": "decide",
+    "chooserLabel": "Choose who or what should do the work",
+    "summary": "Match an outcome to a qualified person, agent, tool, product, or service and create a ready handoff when a candidate qualifies.",
+    "useWhen": [
+      "The job is clear but the best capability is not.",
+      "You need to compare supplied or current candidates against explicit requirements."
+    ],
+    "notFor": [
+      "You need broad strategy or plugin portfolio governance.",
+      "The decision would require guessing private traits, price, or availability."
+    ],
+    "illustrativePrompt": "Use Capability Matcher and Brief Builder for this outcome: [outcome]. Define the must-haves, compare [candidate set or current options], keep unknowns visible, recommend only a qualified match, and create the handoff brief.",
+    "method": [
+      "Define the outcome, must-haves, constraints, and disqualifiers.",
+      "Build the candidate set from supplied and current evidence.",
+      "Compare fit without inventing missing facts.",
+      "Recommend a qualified match or a fallback, then write the handoff brief."
+    ],
+    "usefulResult": "A traceable candidate comparison, a qualified recommendation or honest no-match result, and a brief the selected capability can use.",
+    "evidenceBoundary": "Public information cannot establish private fit, live availability, or final price unless those facts are directly verified."
+  },
+  "experiment-designer-and-ledger": {
+    "stage": "decide",
+    "chooserLabel": "Test an important assumption cheaply",
+    "summary": "Turn one assumption into the cheapest useful experiment with a prediction, measure, stop rule, evidence plan, and result ledger.",
+    "useWhen": [
+      "One uncertain assumption could change the next decision.",
+      "A product, service, workshop, workflow, community, or creative idea needs a real test."
+    ],
+    "notFor": [
+      "You need a large experiment program managed.",
+      "You want an untested idea described as proven."
+    ],
+    "illustrativePrompt": "Use Experiment Designer and Ledger to test this assumption: [assumption]. Define the cheapest useful experiment, prediction, measure, stop rule, evidence plan, and result ledger before any test begins.",
+    "method": [
+      "Name the decision and one critical assumption.",
+      "Precommit the prediction, measure, threshold, and stop rule.",
+      "Run or hand off the bounded test without changing the rules afterward.",
+      "Record raw observations, result status, and the decision."
+    ],
+    "usefulResult": "A small test with precommitted rules and a portable ledger that distinguishes observations, interpretation, and decision.",
+    "evidenceBoundary": "One experiment is evidence for its stated assumption and context, not universal proof."
+  },
+  "workshop-workbench": {
+    "stage": "make",
+    "chooserLabel": "Build a run-ready workshop",
+    "summary": "Inspect source knowledge, recommend the right deliverables for the audience and stage, then create only the selected run-ready package.",
+    "useWhen": [
+      "Existing knowledge should become a workshop, class, or facilitated session.",
+      "The facilitator needs the right package, not every possible document."
+    ],
+    "notFor": [
+      "There is no source knowledge to support the teaching.",
+      "You only need finished slides with no workshop design."
+    ],
+    "illustrativePrompt": "Use Workshop Workbench on these source materials: [files or links]. Recommend the right workshop deliverables for [audience and stage], ask me to choose, then build only the selected run-ready package.",
+    "method": [
+      "Inspect the source, audience, promise, format, and readiness gaps.",
+      "Recommend a right-sized package and explain what each item enables.",
+      "Ask the user to select the package.",
+      "Build and check the run of show, facilitator materials, and participant experience."
+    ],
+    "usefulResult": "A source-grounded package that a facilitator can actually run, with open decisions and unsupported claims clearly marked.",
+    "evidenceBoundary": "A complete workshop package does not prove audience demand, learning impact, or facilitator readiness."
+  },
+  "creative-project-control-room": {
+    "stage": "make",
+    "chooserLabel": "Control a multi-asset creative project",
+    "summary": "Keep brief, references, assets, decisions, owners, approvals, risks, and delivery state in one source-of-truth control pack.",
+    "useWhen": [
+      "A creative project spans several assets, people, tools, or approvals.",
+      "Intent and production reality are drifting apart."
+    ],
+    "notFor": [
+      "You need a specialist to generate one asset.",
+      "A generic project tracker is sufficient."
+    ],
+    "illustrativePrompt": "Use Creative Project Control Room for this project: [project]. Create one control pack for the brief, references, assets, decisions, owners, approvals, risks, and delivery state. Preserve unknowns and do not generate the assets themselves.",
+    "method": [
+      "Establish the working brief and success conditions.",
+      "Register references and assets with source and status.",
+      "Track decisions, owners, approvals, and risks.",
+      "Maintain delivery state and recovery actions as work changes."
+    ],
+    "usefulResult": "One inspectable control pack that lets collaborators see what is approved, missing, at risk, and ready for delivery.",
+    "evidenceBoundary": "A control record reports source and status. It does not prove the quality of an asset that has not been inspected."
+  },
+  "session-compounder": {
+    "stage": "compound",
+    "chooserLabel": "Get more value from a completed session",
+    "summary": "Inspect session notes, preserve what happened, recommend worthwhile derivatives, and create only the outputs the user selects.",
+    "useWhen": [
+      "A meeting, interview, workshop, or working session has finished.",
+      "The source may contain decisions, follow-ups, knowledge, or reusable material beyond a summary."
+    ],
+    "notFor": [
+      "There is no source record of the session.",
+      "You want invented decisions, quotes, ownership, or consent."
+    ],
+    "illustrativePrompt": "Use Session Compounder on these notes: [notes]. Extract decisions, commitments, unresolved questions, and reusable material faithfully, recommend worthwhile outputs, then ask me what to create and for which audience.",
+    "method": [
+      "Record the source and its limitations.",
+      "Extract decisions, commitments, questions, and reusable material faithfully.",
+      "Recommend derivative outputs with audience and permission needs.",
+      "Create only the selected outputs and preserve unresolved gaps."
+    ],
+    "usefulResult": "A faithful session record plus selected follow-ups or reusable outputs with audience, permission, attribution, and source status visible.",
+    "evidenceBoundary": "Notes can support extraction but cannot supply missing consent, exact quotes, owners, or decisions."
+  },
+  "proof-to-product-mapper": {
+    "stage": "compound",
+    "chooserLabel": "Turn proven work into a reusable form",
+    "summary": "Assess proven or promising work, compare reusable forms, and define the cheapest next validation without building the full product by default.",
+    "useWhen": [
+      "A method, service, guide, workshop, template, system, skill, or plugin may deserve a reusable form.",
+      "The strength of the proof should shape the product decision."
+    ],
+    "notFor": [
+      "The work is only an unsupported idea.",
+      "You want a full product built before qualification."
+    ],
+    "illustrativePrompt": "Use Proof to Product Mapper on this work: [artifact and evidence]. Grade the proof, compare suitable reusable forms, recommend the minimum useful version, and define the cheapest next validation without calling the work proven unless the evidence supports it.",
+    "method": [
+      "Identify the underlying work, user, result, and existing evidence.",
+      "Grade the evidence and material gaps.",
+      "Compare delivery forms, access, economics, maintenance, and distribution.",
+      "Recommend the minimum useful version and next validation."
+    ],
+    "usefulResult": "A productization brief that ties the chosen form, scope, claims, and next validation to the actual strength of the evidence.",
+    "evidenceBoundary": "A polished container does not improve weak proof. Claims must stay within the evidence grade."
+  }
+} as const;
 export const plugins = [
   {
     "slug": "knowledge-work-superpowers",
@@ -81,6 +344,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -280,6 +544,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -449,6 +714,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -601,6 +867,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -762,6 +1029,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
@@ -954,6 +1222,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -1143,6 +1412,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -1327,6 +1597,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -1540,6 +1811,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
@@ -1750,6 +2022,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -1931,6 +2204,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -2106,6 +2380,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -2281,6 +2556,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -2461,6 +2737,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -2627,6 +2904,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -2780,6 +3058,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -2942,6 +3221,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -3125,6 +3405,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
@@ -3344,6 +3625,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
     "skills": [
       {
@@ -3527,6 +3809,7 @@ export const plugins = [
     "platforms": [
       "Codex"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified for Codex. Its multi-agent execution contract depends on Codex fresh-task semantics, so Claude runtime parity is not claimed.",
     "skills": [
       {
@@ -3704,6 +3987,7 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
+    "supportStatus": "verified",
     "runtimeNote": "Verified for Claude Code and Claude Cowork. The legacy runtime still expects Claude environment conventions and is not claimed as Codex-compatible.",
     "skills": [
       {
@@ -3863,14 +4147,233 @@ export const plugins = [
         "Fresh verification checks the integrated candidate rather than trusting workstream reports."
       ]
     }
+  },
+  {
+    "slug": "signal-to-system",
+    "name": "Signal to System",
+    "shortDescription": "Turn messy work into decisions, artifacts, and reusable systems.",
+    "longDescription": "Signal to System packages ten independent skills for sensing opportunities, making evidence-aware decisions, producing useful work, and compounding what has been learned. It works from text and files, searches the current web when accuracy depends on live information, and uses connected or interactive tools only when the user requests them.",
+    "description": "Ten practical skills for turning messy ideas, live signals, evidence, workflows, sessions, and proven practices into decisions and reusable artifacts.",
+    "version": "0.1.0-beta.1",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompts": [
+      "Help me decide which of these ideas deserves attention.",
+      "Scan the current web for signals around this problem.",
+      "Turn this repeated work into a better reusable system."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Experimental beta support is declared for Codex and Claude Code. Claude Cowork runtime support is intentionally withheld until fresh behavior testing is complete.",
+    "skills": [
+      {
+        "name": "capability-matcher-and-brief-builder",
+        "description": "Match an outcome to a qualified person, agent, tool, product, or service, compare supplied and current candidates, and create a ready-to-use handoff brief when a candidate qualifies. Use when the user must choose who or what should do the work. Do not use for broader policy or strategy decisions, plugin portfolio governance, or inferring private traits, price, or availability."
+      },
+      {
+        "name": "creative-project-control-room",
+        "description": "Create and maintain one source-of-truth control pack for a multi-asset creative project, including brief, references, assets, decisions, owners, approvals, risks, and delivery state. Use to coordinate creative production. Do not replace specialist asset generation or act as a generic project manager."
+      },
+      {
+        "name": "curiosity-compass",
+        "description": "Rank a messy set of ideas, questions, or opportunities into zero to three worthwhile directions using visible criteria, uncertainty, and a cheap first test. Use when the user does not yet know what deserves attention. Do not use for a settled choice that already has a research record or for ordinary project planning."
+      },
+      {
+        "name": "experiment-designer-and-ledger",
+        "description": "Turn one important assumption into the cheapest useful experiment with a prediction, measure, stop rule, evidence plan, and portable result ledger. Use to test a product, workflow, workshop, service, community, or creative hypothesis. Do not manage a large experiment program or call an untested result proof."
+      },
+      {
+        "name": "proof-to-product-mapper",
+        "description": "Assess proven or promising work, choose an appropriate reusable form, and create a productization brief plus the cheapest next validation. Use for methods, services, guides, templates, workshops, internal systems, skills, plugins, or paid products. Do not call an idea proven or build the full product by default."
+      },
+      {
+        "name": "research-to-decision-map",
+        "description": "Turn an existing body of research into an evidence map, sufficiency judgment, provisional recommendation when justified, user-confirmed choice, and final decision record. Use after material evidence has been gathered for a policy, product, strategy, or other bounded decision. Do not use to perform research from scratch, rank unrelated early ideas, or choose a person, agent, tool, product, or service."
+      },
+      {
+        "name": "session-compounder",
+        "description": "Inspect meeting, interview, workshop, or working-session notes and recommend worthwhile decisions, follow-ups, knowledge, and derivative outputs before creating the selected set. Use when a completed session should produce more than a summary. Do not invent decisions, quotes, ownership, or consent."
+      },
+      {
+        "name": "signal-scout",
+        "description": "Perform an on-demand scan of current public sources to find cited needs, patterns, changes, opportunities, and useful links. Use for live community, creator, education, consulting, research, or market signals. Do not claim persistent monitoring or replace a full systematic research project."
+      },
+      {
+        "name": "workflow-clinic",
+        "description": "Diagnose a recurring workflow and design a better future state with explicit human, AI, automation, controls, and handoffs. Use for repeated work that is slow, fragile, confusing, or wasteful. Do not use for general project planning or silently implement integrations."
+      },
+      {
+        "name": "workshop-workbench",
+        "description": "Inspect source knowledge, recommend the right workshop deliverables for the user's stage and audience, obtain a selection, then create a run-ready package. Use for workshops, classes, facilitated sessions, and learning experiences. Do not generate every possible document or finished slides by default."
+      }
+    ],
+    "counts": {
+      "skills": 10,
+      "assets": 12,
+      "references": 3,
+      "scripts": 1,
+      "files": 51
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Choosing which ideas, questions, or opportunities deserve attention.",
+        "Turning current signals and research into a decision or a small test.",
+        "Improving recurring work, workshops, and multi-asset creative projects.",
+        "Converting completed sessions and proven work into reusable value."
+      ],
+      "startHere": {
+        "skill": "curiosity-compass",
+        "why": "Use Curiosity Compass when you have several possible directions and no settled starting point. If your job is already clear, choose its dedicated skill instead."
+      },
+      "quickStarts": [
+        {
+          "goal": "Choose a direction",
+          "prompt": "Use Curiosity Compass on these ideas: [ideas]. Rank zero to three worthwhile directions with visible criteria, uncertainty, and the cheapest useful first test."
+        },
+        {
+          "goal": "Scan current signals",
+          "prompt": "Use Signal Scout to scan current public sources for [topic]. Return cited patterns, changes, useful links, limits, and the next sensible move."
+        },
+        {
+          "goal": "Compound a session",
+          "prompt": "Use Session Compounder on these notes: [notes]. Preserve what actually happened, recommend worthwhile derivative outputs, and ask me what to create before producing them."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Sense what matters",
+          "instruction": "Rank possible directions, scan current signals, or map an existing research body before committing.",
+          "skills": [
+            "curiosity-compass",
+            "signal-scout",
+            "research-to-decision-map"
+          ]
+        },
+        {
+          "title": "Decide what to do",
+          "instruction": "Diagnose the workflow, match the right capability, or define the cheapest experiment that could change the decision.",
+          "skills": [
+            "workflow-clinic",
+            "capability-matcher-and-brief-builder",
+            "experiment-designer-and-ledger"
+          ]
+        },
+        {
+          "title": "Make the work usable",
+          "instruction": "Build a run-ready workshop package or establish one control pack for a complex creative project.",
+          "skills": [
+            "workshop-workbench",
+            "creative-project-control-room"
+          ]
+        },
+        {
+          "title": "Compound what worked",
+          "instruction": "Turn a completed session into selected reusable outputs or map proven work into the right reusable form.",
+          "skills": [
+            "session-compounder",
+            "proof-to-product-mapper"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You have too many possible directions",
+          "skill": "curiosity-compass",
+          "why": "It ranks zero to three worthwhile directions without forcing a winner."
+        },
+        {
+          "need": "You need current changes, recurring needs, or useful links",
+          "skill": "signal-scout",
+          "why": "It performs a cited, time-bounded scan of public sources."
+        },
+        {
+          "need": "You already have research and need a decision",
+          "skill": "research-to-decision-map",
+          "why": "It exposes evidence, gaps, contradictions, and the decision gate."
+        },
+        {
+          "need": "A repeated workflow is slow, fragile, or confusing",
+          "skill": "workflow-clinic",
+          "why": "It diagnoses the current state before assigning human, AI, and automation roles."
+        },
+        {
+          "need": "You must choose who or what should do the work",
+          "skill": "capability-matcher-and-brief-builder",
+          "why": "It qualifies candidates against the job and creates a usable handoff."
+        },
+        {
+          "need": "An important assumption needs a cheap real test",
+          "skill": "experiment-designer-and-ledger",
+          "why": "It precommits a measure, stop rule, and portable result record."
+        },
+        {
+          "need": "Knowledge needs to become a run-ready workshop",
+          "skill": "workshop-workbench",
+          "why": "It recommends the right package for the audience and stage before building it."
+        },
+        {
+          "need": "A multi-asset creative project needs one control record",
+          "skill": "creative-project-control-room",
+          "why": "It keeps brief, references, assets, decisions, approvals, risks, and delivery state together."
+        },
+        {
+          "need": "A completed session should produce more than a summary",
+          "skill": "session-compounder",
+          "why": "It preserves the source and recommends only worthwhile derivative outputs."
+        },
+        {
+          "need": "Proven or promising work may deserve a reusable form",
+          "skill": "proof-to-product-mapper",
+          "why": "It matches the form and next validation to the strength of the evidence."
+        }
+      ],
+      "workedExample": {
+        "title": "Illustrative route from signal to reusable workshop",
+        "situation": "A community builder notices repeated questions about an emerging practice but does not yet know whether the pattern deserves a workshop.",
+        "steps": [
+          "Use Signal Scout to check whether the need appears across current public sources and preserve the links.",
+          "Use Experiment Designer and Ledger to define the cheapest workshop-interest test with a prediction and stop rule.",
+          "If the evidence is sufficient, use Workshop Workbench to recommend and build only the materials needed for the first session.",
+          "After the session, use Session Compounder to preserve decisions and ask which follow-up or reusable outputs are worth creating."
+        ],
+        "result": "A useful result would be a traceable chain from cited public signals to a bounded test, a right-sized workshop package, and permission-aware follow-up outputs. This is an illustrative route, not a claimed outcome."
+      },
+      "tips": [
+        "Name the job already in front of you. You do not need to run all ten skills.",
+        "Give links, files, notes, or research when you already have them.",
+        "Ask for web search when current facts or working links matter.",
+        "Keep publishing, messaging, purchases, and other external actions behind explicit approval."
+      ],
+      "boundaries": [
+        "The plugin has no hidden router and does not require a fixed pipeline.",
+        "Connections are used when requested or clearly necessary, not scanned by default.",
+        "A prompt or template is not proof that a real outcome occurred.",
+        "The skills do not invent evidence, consent, ownership, prices, availability, or completed decisions."
+      ],
+      "successSignals": [
+        "The selected skill matches the actual job and stops outside its boundary.",
+        "Current claims have links and source status, while unknowns remain visible.",
+        "The output can be used by another person or agent without reconstructing the reasoning."
+      ]
+    }
   }
 ] as const;
 export const totals = {
-  "plugins": 21,
-  "skills": 160,
-  "assets": 316,
-  "references": 443,
-  "scripts": 396,
-  "files": 1819
+  "plugins": 22,
+  "skills": 170,
+  "assets": 328,
+  "references": 446,
+  "scripts": 397,
+  "files": 1870
 } as const;
 export type Plugin = (typeof plugins)[number];

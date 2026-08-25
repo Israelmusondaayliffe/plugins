@@ -1977,6 +1977,339 @@ h3,
   color: var(--canvas);
 }
 
+.signal-chooser {
+  border-top: 1px solid var(--line);
+  padding-bottom: clamp(82px, 10vw, 132px);
+}
+
+.signal-chooser-layout {
+  align-items: start;
+  display: grid;
+  gap: clamp(28px, 5vw, 72px);
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  margin-top: 48px;
+}
+
+.signal-needs {
+  border-top: 1px solid var(--line);
+}
+
+.signal-stage {
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 150px minmax(0, 1fr);
+  padding: 22px 0;
+}
+
+.signal-stage-heading p {
+  color: var(--accent);
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.signal-stage-heading span {
+  color: var(--paper-soft);
+  display: block;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.signal-stage-options {
+  display: grid;
+  gap: 8px;
+}
+
+.signal-stage-options button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  display: grid;
+  gap: 3px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 64px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.signal-stage-options button:hover {
+  background: var(--panel);
+  border-color: var(--line-strong);
+}
+
+.signal-stage-options button[aria-pressed="true"] {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--canvas);
+}
+
+.signal-stage-options button > span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+}
+
+.signal-stage-options small {
+  color: var(--paper-soft);
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.54rem;
+  line-height: 1.4;
+  max-width: 150px;
+  text-align: right;
+}
+
+.signal-stage-options button[aria-pressed="true"] small {
+  color: var(--canvas-soft);
+}
+
+.signal-recommendation {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  min-height: 420px;
+  padding: clamp(24px, 3.4vw, 44px);
+  position: sticky;
+  top: 84px;
+}
+
+.signal-recommendation h3 {
+  font-size: clamp(2.15rem, 4vw, 4rem);
+  line-height: 0.98;
+  margin: 20px 0;
+}
+
+.signal-recommendation > p,
+.signal-recommendation-empty > p:last-child {
+  color: var(--paper-soft);
+  line-height: 1.65;
+}
+
+.signal-recommendation-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 330px;
+}
+
+.signal-prompt {
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  padding-top: 20px;
+}
+
+.signal-prompt > p {
+  color: var(--paper-soft);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.signal-guide-link {
+  align-items: center;
+  border-bottom: 1px solid var(--line-strong);
+  display: flex;
+  font-weight: 650;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 26px;
+  min-height: 48px;
+}
+
+.signal-guide-link:hover {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.skill-list .signal-skill-row {
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 46px minmax(0, 1fr) 24px;
+  padding: 29px 0;
+  transition: background-color 140ms ease;
+}
+
+.skill-list .signal-skill-row:hover,
+.skill-list .signal-skill-row:focus-visible {
+  background: var(--panel);
+}
+
+.skill-list .signal-skill-row > span:first-child,
+.signal-row-arrow {
+  color: var(--accent);
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.62rem;
+}
+
+.signal-skill-page {
+  padding-bottom: clamp(100px, 12vw, 180px);
+}
+
+.signal-skill-hero {
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  border-left: 2px solid var(--outcome-color, var(--accent));
+  display: grid;
+  gap: clamp(44px, 8vw, 120px);
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  padding: clamp(52px, 7vw, 92px) 0 clamp(46px, 6vw, 76px) clamp(24px, 3vw, 42px);
+}
+
+.signal-skill-hero h1 {
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
+  line-height: 0.92;
+  margin-bottom: 28px;
+  overflow-wrap: anywhere;
+}
+
+.signal-skill-hero > div > p:last-child {
+  color: var(--paper-soft);
+  line-height: 1.65;
+  margin-bottom: 0;
+  max-width: 780px;
+}
+
+.signal-skill-position {
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+.signal-skill-position > div {
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 13px 0;
+}
+
+.signal-skill-position dt,
+.signal-skill-position dd {
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  font-size: 0.64rem;
+  margin: 0;
+}
+
+.signal-skill-position dt {
+  color: var(--paper-soft);
+  text-transform: uppercase;
+}
+
+.signal-fit-grid {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding-top: clamp(72px, 10vw, 130px);
+}
+
+.signal-fit-grid article {
+  background: var(--panel);
+  min-height: 320px;
+  padding: clamp(24px, 4vw, 48px);
+}
+
+.signal-fit-grid h2,
+.signal-request h2,
+.signal-result h2,
+.signal-source h2 {
+  font-size: clamp(2rem, 3.5vw, 3.8rem);
+  line-height: 1;
+}
+
+.signal-fit-grid ul {
+  color: var(--paper-soft);
+  line-height: 1.6;
+  margin: 30px 0 0;
+  padding-left: 20px;
+}
+
+.signal-fit-grid li + li {
+  margin-top: 12px;
+}
+
+.signal-request,
+.signal-result,
+.signal-source {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: clamp(36px, 7vw, 100px);
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  padding-top: clamp(72px, 10vw, 130px);
+  scroll-margin-top: 76px;
+}
+
+.signal-request > div > p:last-child,
+.signal-result > div > p:last-child,
+.signal-source > div > p:last-child {
+  color: var(--paper-soft);
+  line-height: 1.65;
+}
+
+.signal-request .copy-command {
+  align-self: start;
+}
+
+.signal-result aside {
+  background: var(--paper);
+  color: var(--canvas);
+  padding: clamp(24px, 3.5vw, 44px);
+}
+
+.signal-result aside .guide-eyebrow {
+  color: var(--canvas-soft);
+}
+
+.signal-result aside p:last-child {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.signal-source .signal-guide-link {
+  align-self: start;
+  margin-top: 0;
+}
+
+.signal-skill-directory {
+  border-top: 1px solid var(--line);
+  margin-top: clamp(80px, 11vw, 150px);
+  padding-top: 24px;
+}
+
+.signal-skill-directory > p {
+  color: var(--accent);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.signal-skill-directory > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.signal-skill-directory a {
+  border: 1px solid var(--line);
+  font-size: 0.72rem;
+  min-height: 40px;
+  padding: 10px 12px;
+}
+
+.signal-skill-directory a:hover,
+.signal-skill-directory a[aria-current="page"] {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--canvas);
+}
+
 .empty-state button {
   background: var(--paper);
   color: var(--canvas);
@@ -1984,7 +2317,12 @@ h3,
 
 @media (max-width: 900px) {
   .registry-intro,
-  .section-heading {
+  .section-heading,
+  .signal-chooser-layout,
+  .signal-skill-hero,
+  .signal-request,
+  .signal-result,
+  .signal-source {
     grid-template-columns: 1fr;
   }
 
@@ -1998,6 +2336,11 @@ h3,
 
   .section-heading .kicker {
     margin-bottom: -2px;
+  }
+
+  .signal-recommendation {
+    min-height: auto;
+    position: static;
   }
 }
 
@@ -2066,6 +2409,37 @@ h3,
   .detail-hero {
     border-left-width: 2px;
     padding-left: 18px;
+  }
+
+  .signal-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-stage-heading span {
+    max-width: 280px;
+  }
+
+  .signal-stage-options button {
+    grid-template-columns: 1fr;
+  }
+
+  .signal-stage-options small {
+    max-width: none;
+    text-align: left;
+  }
+
+  .skill-list .signal-skill-row {
+    gap: 14px;
+    grid-template-columns: 30px minmax(0, 1fr) 18px;
+  }
+
+  .signal-skill-hero {
+    border-left-width: 2px;
+    padding-left: 18px;
+  }
+
+  .signal-fit-grid {
+    grid-template-columns: 1fr;
   }
 }
 

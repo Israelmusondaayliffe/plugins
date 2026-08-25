@@ -4,13 +4,13 @@
   "artifact": {
     "title": "Community Agent Plugins",
     "job": "registry",
-    "audience": "Codex, Claude Code, and Claude Cowork users evaluating Israel Ayliffe’s public plugin marketplace.",
+    "audience": "Codex, Claude Code, and Claude Cowork users evaluating the public community plugin marketplace.",
     "use_moment": "When a visitor needs to browse, compare, inspect, or install a public plugin from the current main branch.",
-    "outcome": "A working-first Wada registry with 21 public plugins, 160 public skills, exact host actions, and no exposure of the deprecated compatibility package."
+    "outcome": "A working-first Wada registry with 22 public plugins, 170 public skills, a ten-skill Signal to System chooser, exact host actions, and no exposure of the deprecated compatibility package."
   },
   "content": {
-    "spine": ["Registry description and totals", "Search and filters", "Public plugin records", "Verified installation", "Guides and skills", "Machine exports"],
-    "source_paths": [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", "docs/host-support.json", "docs/site-redesign/site-curation.json", "scripts/generate-catalog.mjs"],
+    "spine": ["Registry description and totals", "Search and filters", "Public plugin records", "Signal to System chooser", "Ten skill guides", "Host-specific installation", "Machine exports"],
+    "source_paths": [".agents/plugins/marketplace.json", ".claude-plugin/marketplace.json", "docs/host-support.json", "docs/site-redesign/site-curation.json", "docs/site-redesign/signal-to-system-guides.json", "scripts/generate-catalog.mjs"],
     "required_provenance": ["Current public repository main", "User-owned Wada reference site"]
   },
   "records": {

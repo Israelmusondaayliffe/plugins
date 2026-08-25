@@ -1,0 +1,7 @@
+interface:
+  display_name: "Workflow Clinic"
+  short_description: "Diagnoses and redesigns recurring workflows"
+  default_prompt: "Use $workflow-clinic to diagnose this recurring process and redesign the human, AI, and automation split."
+
+policy:
+  allow_implicit_invocation: true

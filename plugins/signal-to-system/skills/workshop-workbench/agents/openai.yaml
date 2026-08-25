@@ -1,0 +1,7 @@
+interface:
+  display_name: "Workshop Workbench"
+  short_description: "Builds the workshop materials the user actually needs"
+  default_prompt: "Use $workshop-workbench to inspect these sources, recommend the right workshop package, and ask before building it."
+
+policy:
+  allow_implicit_invocation: true

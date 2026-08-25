@@ -161,6 +161,15 @@
       }
     },
     {
+      "name": "signal-to-system",
+      "source": "./plugins/signal-to-system",
+      "description": "Ten practical skills for turning messy ideas, live signals, evidence, workflows, sessions, and proven practices into decisions and reusable artifacts.",
+      "version": "0.1.0-beta.1",
+      "author": {
+        "name": "Community Maintainers"
+      }
+    },
+    {
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",

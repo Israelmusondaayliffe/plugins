@@ -12,13 +12,12 @@ const readJson = (path) => JSON.parse(readFileSync(join(root, path), "utf8"));
 const readText = (path) => readFileSync(join(root, path), "utf8");
 const errors = [];
 const expected = {
-  repositoryPlugins: 22,
-  repositorySkills: 182,
-  sitePlugins: 21,
-  siteSkills: 160,
+  repositoryPlugins: 23,
+  repositorySkills: 192,
+  sitePlugins: 22,
+  siteSkills: 170,
 };
 const mattSlug = "matt-partok-bundled-plugin-for-knowledge-work";
-const mattDisplayName = "Matt Partok Bundled Plugin For Knowledge Work";
 
 const codexMarketplace = readJson(".agents/plugins/marketplace.json");
 const claudeMarketplace = readJson(".claude-plugin/marketplace.json");
@@ -99,8 +98,16 @@ if (JSON.stringify(sorted(curatedNames)) !== JSON.stringify(sorted(repositoryNam
   errors.push("Site curation does not account for every repository plugin exactly once");
 }
 if (JSON.stringify(excludedNames) !== JSON.stringify([mattSlug])) {
-  errors.push("Site curation must exclude exactly the Matt bundle");
+  errors.push("Site curation must exclude only the Matt compatibility bundle");
 }
+
+const excludedPublicIdentities = excludedNames.map((slug) => {
+  const manifest = readJson(`plugins/${slug}/.codex-plugin/plugin.json`);
+  return {
+    slug,
+    displayName: manifest.interface?.displayName ?? slug,
+  };
+});
 if (visibleNames.length !== expected.sitePlugins) {
   errors.push(`Site curation exposes ${visibleNames.length} plugins, expected ${expected.sitePlugins}`);
 }
@@ -150,6 +157,7 @@ const expectedCollections = [
       "data-storytelling-studio",
       "continuity-vault",
       "model-prompt-lab",
+      "signal-to-system",
     ],
   },
 ];
@@ -196,8 +204,10 @@ if (JSON.stringify(sitePlugins?.map((plugin) => plugin.slug)) !== JSON.stringify
 if (JSON.stringify(generatedCollections) !== JSON.stringify(curation.collections)) {
   errors.push("Generated collections differ from the Site curation record");
 }
-if (catalog.includes(mattSlug) || catalog.includes(mattDisplayName)) {
-  errors.push("Matt bundle appears in the generated client catalog");
+for (const identity of excludedPublicIdentities) {
+  if (catalog.includes(identity.slug) || catalog.includes(identity.displayName)) {
+    errors.push(`${identity.displayName} appears in the generated client catalog`);
+  }
 }
 
 const routePaths = ["app/plugins.json/route.ts", "app/llms.txt/route.ts"];
@@ -210,8 +220,10 @@ for (const routePath of routePaths) {
   if (!routeSource.includes("plugins") || !routeSource.includes("totals")) {
     errors.push(`${routePath} is not bound to the generated visible catalog`);
   }
-  if (routeSource.includes(mattSlug) || routeSource.includes(mattDisplayName)) {
-    errors.push(`${routePath} contains the Matt bundle`);
+  for (const identity of excludedPublicIdentities) {
+    if (routeSource.includes(identity.slug) || routeSource.includes(identity.displayName)) {
+      errors.push(`${routePath} contains excluded plugin ${identity.displayName}`);
+    }
   }
 }
 
@@ -231,8 +243,10 @@ for (const directory of ["app", "public", "build", "worker", "dist"]) {
     } catch {
       continue;
     }
-    if (source.includes(mattSlug) || source.includes(mattDisplayName)) {
-      errors.push(`Public Site surface contains the Matt bundle: ${path.slice(root.length)}`);
+    for (const identity of excludedPublicIdentities) {
+      if (source.includes(identity.slug) || source.includes(identity.displayName)) {
+        errors.push(`Public Site surface contains excluded plugin ${identity.displayName}: ${path.slice(root.length)}`);
+      }
     }
   }
 }

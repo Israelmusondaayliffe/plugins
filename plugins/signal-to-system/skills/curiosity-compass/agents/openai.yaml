@@ -1,0 +1,7 @@
+interface:
+  display_name: "Curiosity Compass"
+  short_description: "Ranks messy ideas into worthwhile directions"
+  default_prompt: "Use $curiosity-compass to rank these ideas and identify the cheapest useful first test."
+
+policy:
+  allow_implicit_invocation: true

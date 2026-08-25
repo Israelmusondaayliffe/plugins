@@ -1,0 +1,7 @@
+interface:
+  display_name: "Research to Decision Map"
+  short_description: "Turns gathered evidence into a decision record"
+  default_prompt: "Use $research-to-decision-map to map this evidence, recommend a direction, and confirm my final choice."
+
+policy:
+  allow_implicit_invocation: true

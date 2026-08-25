@@ -1,0 +1,44 @@
+{
+  "name": "signal-to-system",
+  "version": "0.1.0-beta.1",
+  "description": "Ten practical skills for turning messy ideas, live signals, evidence, workflows, sessions, and proven practices into decisions and reusable artifacts.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/signal-to-system",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "sensemaking",
+    "decision-support",
+    "workflows",
+    "experiments",
+    "workshops",
+    "creative-operations",
+    "knowledge-reuse",
+    "codex",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Signal to System",
+    "shortDescription": "Turn messy work into decisions, artifacts, and reusable systems.",
+    "longDescription": "Signal to System packages ten independent skills for sensing opportunities, making evidence-aware decisions, producing useful work, and compounding what has been learned. It works from text and files, searches the current web when accuracy depends on live information, and uses connected or interactive tools only when the user requests them.",
+    "developerName": "Community Maintainers",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/signal-to-system",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Help me decide which of these ideas deserves attention.",
+      "Scan the current web for signals around this problem.",
+      "Turn this repeated work into a better reusable system."
+    ],
+    "brandColor": "#9F4A32"
+  }
+}

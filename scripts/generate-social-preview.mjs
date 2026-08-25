@@ -14,9 +14,9 @@ const svg = `
   <text x="54" y="252" fill="#292729" font-family="Georgia, Times New Roman, serif" font-size="70">Choose the work.</text>
   <text x="54" y="330" fill="#292729" font-family="Georgia, Times New Roman, serif" font-size="70">Check the host.</text>
   <text x="54" y="408" fill="#292729" font-family="Georgia, Times New Roman, serif" font-size="70">Install the plugin.</text>
-  <text x="925" y="236" fill="#292729" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="52">21</text>
+  <text x="925" y="236" fill="#292729" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="52">22</text>
   <text x="925" y="268" fill="#6B6864" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="15">PUBLIC PLUGINS</text>
-  <text x="925" y="354" fill="#292729" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="52">160</text>
+  <text x="925" y="354" fill="#292729" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="52">170</text>
   <text x="925" y="386" fill="#6B6864" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="15">BUNDLED SKILLS</text>
   <line x1="54" y1="476" x2="1146" y2="476" stroke="#DEDAD3"/>
   <rect x="54" y="514" width="232" height="16" fill="#FFDD00"/>

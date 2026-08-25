@@ -3,7 +3,7 @@
   "evidence": [
     "The supplied Sanzō Wada reference uses warm paper, charcoal ink, muted red identifiers, compact functional controls, and a dark Sumi counterpart.",
     "Wada combination #284 gives the four outcome groups exact functional markers without using colored text as the only signal.",
-    "The catalog job benefits from an archival index, fine rules, measured spacing, and verified host actions instead of a full-screen marketing hero."
+    "The catalog job benefits from an archival index, fine rules, measured spacing, and documented host actions instead of a full-screen marketing hero."
   ],
   "rationale": "The Wada reference is the sole visual authority. Paper is the default reading surface, Sumi is device-local, and the interface stays focused on finding, checking, and installing a plugin.",
   "design_constitution": null,
@@ -20,7 +20,7 @@
     }
   },
   "audit": {
-    "preserve": ["All 21 public route slugs", "Generated catalog source", "Host-specific install commands", "Search and filter behavior", "Keyboard focus and reduced-motion support"],
+    "preserve": ["All existing public route slugs", "Generated catalog source", "Host-specific install commands", "Search and filter behavior", "Keyboard focus and reduced-motion support"],
     "replace": ["Full-screen marketing hero", "Plugin constellation artwork", "Grain overlay", "Dark-only presentation", "Generic SaaS cards"],
     "interactionGoal": "Put search, outcome, category, host, and sort controls in the first working viewport with an accessible persisted theme control and exact copy feedback."
   },

@@ -32,6 +32,11 @@
   "operating-graph": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "outcome-engine": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "proofloop": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "signal-to-system": {
+    "platforms": ["Codex", "Claude Code"],
+    "status": "declared-beta",
+    "note": "Experimental beta support is declared for Codex and Claude Code. Claude Cowork runtime support is intentionally withheld until fresh behavior testing is complete."
+  },
   "strategy-room": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "video-production-studio": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
   "web-product-studio": {

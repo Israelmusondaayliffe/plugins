@@ -13,9 +13,16 @@
     {
       "source_id": "public-plugin-main",
       "decision": "selected",
-      "reason": "It is the current source of truth for public inventory, runtime support, and commands.",
-      "useful_qualities": ["generated counts", "explicit allowlist", "host records", "stable routes"],
+      "reason": "It is the current source of truth for public inventory, runtime support, commands, and the ten Signal to System skills.",
+      "useful_qualities": ["generated counts", "explicit allowlist", "host records", "stable routes", "source-bound skill guides"],
       "intended_role": "Catalog and runtime truth"
+    },
+    {
+      "source_id": "public-plugin-main",
+      "decision": "selected-for-signal-integration",
+      "reason": "Signal to System is a community plugin with ten independently usable skills. The Site should help visitors choose a skill without inventing a router or a fixed pipeline.",
+      "useful_qualities": ["four plain-language stages", "ten explicit skills", "copyable requests", "inspectable GitHub source"],
+      "intended_role": "Dedicated chooser and ten public skill-guide routes"
     }
   ]
 }

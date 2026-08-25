@@ -1,0 +1,22 @@
+{
+  "name": "signal-to-system",
+  "version": "0.1.0-beta.1",
+  "description": "Ten practical skills for turning messy ideas, live signals, evidence, workflows, sessions, and proven practices into decisions and reusable artifacts.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/signal-to-system",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "sensemaking",
+    "decision-support",
+    "workflows",
+    "experiments",
+    "workshops",
+    "creative-operations",
+    "knowledge-reuse",
+    "codex",
+    "claude-code"
+  ]
+}

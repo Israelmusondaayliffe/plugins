@@ -188,11 +188,11 @@ export function Catalog() {
           role="group"
         >
           <span className="control-label" id="host-filter-label">
-            Verified host
+            Host
           </span>
           <div
             className="filter-list"
-            aria-label="Filter by verified host"
+            aria-label="Filter by host"
             data-testid="host-filter"
           >
             {hostOptions.map((item) => (
@@ -265,7 +265,14 @@ export function Catalog() {
                   <span className="registry-category">
                     {collection?.name ?? plugin.category}
                   </span>
-                  <span className="registry-hosts" aria-label="Verified hosts">
+                  <span
+                    className="registry-hosts"
+                    aria-label={
+                      plugin.supportStatus === "declared-beta"
+                        ? "Declared beta hosts"
+                        : "Verified hosts"
+                    }
+                  >
                     {plugin.platforms.join(" / ")}
                   </span>
                   <span className="registry-count">

@@ -789,6 +789,69 @@
       "tips": ["Use the explicit Gauntlet name so it cannot trigger accidentally.", "Set resource limits and deliverables before worker activity.", "Keep evidence compact and tied to the final requirements.", "Do not call the project complete while required work remains in review or deferred."],
       "boundaries": ["The plugin is available only on its verified Claude hosts.", "It does not grant permission for publishing, external messages, destructive changes, purchases, or secrets access.", "Blind critics improve review independence but do not replace direct proof.", "Gauntlet overhead is not justified for small or one-step tasks."],
       "successSignals": ["The approved brief remains the completion authority.", "All required deliverables have terminal results and evidence.", "Fresh verification checks the integrated candidate rather than trusting workstream reports."]
+    },
+    "signal-to-system": {
+      "bestFor": [
+        "Choosing which ideas, questions, or opportunities deserve attention.",
+        "Turning current signals and research into a decision or a small test.",
+        "Improving recurring work, workshops, and multi-asset creative projects.",
+        "Converting completed sessions and proven work into reusable value."
+      ],
+      "startHere": {
+        "skill": "curiosity-compass",
+        "why": "Use Curiosity Compass when you have several possible directions and no settled starting point. If your job is already clear, choose its dedicated skill instead."
+      },
+      "quickStarts": [
+        {"goal": "Choose a direction", "prompt": "Use Curiosity Compass on these ideas: [ideas]. Rank zero to three worthwhile directions with visible criteria, uncertainty, and the cheapest useful first test."},
+        {"goal": "Scan current signals", "prompt": "Use Signal Scout to scan current public sources for [topic]. Return cited patterns, changes, useful links, limits, and the next sensible move."},
+        {"goal": "Compound a session", "prompt": "Use Session Compounder on these notes: [notes]. Preserve what actually happened, recommend worthwhile derivative outputs, and ask me what to create before producing them."}
+      ],
+      "workflow": [
+        {"title": "Sense what matters", "instruction": "Rank possible directions, scan current signals, or map an existing research body before committing.", "skills": ["curiosity-compass", "signal-scout", "research-to-decision-map"]},
+        {"title": "Decide what to do", "instruction": "Diagnose the workflow, match the right capability, or define the cheapest experiment that could change the decision.", "skills": ["workflow-clinic", "capability-matcher-and-brief-builder", "experiment-designer-and-ledger"]},
+        {"title": "Make the work usable", "instruction": "Build a run-ready workshop package or establish one control pack for a complex creative project.", "skills": ["workshop-workbench", "creative-project-control-room"]},
+        {"title": "Compound what worked", "instruction": "Turn a completed session into selected reusable outputs or map proven work into the right reusable form.", "skills": ["session-compounder", "proof-to-product-mapper"]}
+      ],
+      "skillPaths": [
+        {"need": "You have too many possible directions", "skill": "curiosity-compass", "why": "It ranks zero to three worthwhile directions without forcing a winner."},
+        {"need": "You need current changes, recurring needs, or useful links", "skill": "signal-scout", "why": "It performs a cited, time-bounded scan of public sources."},
+        {"need": "You already have research and need a decision", "skill": "research-to-decision-map", "why": "It exposes evidence, gaps, contradictions, and the decision gate."},
+        {"need": "A repeated workflow is slow, fragile, or confusing", "skill": "workflow-clinic", "why": "It diagnoses the current state before assigning human, AI, and automation roles."},
+        {"need": "You must choose who or what should do the work", "skill": "capability-matcher-and-brief-builder", "why": "It qualifies candidates against the job and creates a usable handoff."},
+        {"need": "An important assumption needs a cheap real test", "skill": "experiment-designer-and-ledger", "why": "It precommits a measure, stop rule, and portable result record."},
+        {"need": "Knowledge needs to become a run-ready workshop", "skill": "workshop-workbench", "why": "It recommends the right package for the audience and stage before building it."},
+        {"need": "A multi-asset creative project needs one control record", "skill": "creative-project-control-room", "why": "It keeps brief, references, assets, decisions, approvals, risks, and delivery state together."},
+        {"need": "A completed session should produce more than a summary", "skill": "session-compounder", "why": "It preserves the source and recommends only worthwhile derivative outputs."},
+        {"need": "Proven or promising work may deserve a reusable form", "skill": "proof-to-product-mapper", "why": "It matches the form and next validation to the strength of the evidence."}
+      ],
+      "workedExample": {
+        "title": "Illustrative route from signal to reusable workshop",
+        "situation": "A community builder notices repeated questions about an emerging practice but does not yet know whether the pattern deserves a workshop.",
+        "steps": [
+          "Use Signal Scout to check whether the need appears across current public sources and preserve the links.",
+          "Use Experiment Designer and Ledger to define the cheapest workshop-interest test with a prediction and stop rule.",
+          "If the evidence is sufficient, use Workshop Workbench to recommend and build only the materials needed for the first session.",
+          "After the session, use Session Compounder to preserve decisions and ask which follow-up or reusable outputs are worth creating."
+        ],
+        "result": "A useful result would be a traceable chain from cited public signals to a bounded test, a right-sized workshop package, and permission-aware follow-up outputs. This is an illustrative route, not a claimed outcome."
+      },
+      "tips": [
+        "Name the job already in front of you. You do not need to run all ten skills.",
+        "Give links, files, notes, or research when you already have them.",
+        "Ask for web search when current facts or working links matter.",
+        "Keep publishing, messaging, purchases, and other external actions behind explicit approval."
+      ],
+      "boundaries": [
+        "The plugin has no hidden router and does not require a fixed pipeline.",
+        "Connections are used when requested or clearly necessary, not scanned by default.",
+        "A prompt or template is not proof that a real outcome occurred.",
+        "The skills do not invent evidence, consent, ownership, prices, availability, or completed decisions."
+      ],
+      "successSignals": [
+        "The selected skill matches the actual job and stops outside its boundary.",
+        "Current claims have links and source status, while unknowns remain visible.",
+        "The output can be used by another person or agent without reconstructing the reasoning."
+      ]
     }
   }
 }

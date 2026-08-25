@@ -22,6 +22,7 @@ const versions = {
   "operating-graph": "0.2.0",
   "outcome-engine": "1.1.1",
   "proofloop": "0.2.0",
+  "signal-to-system": "0.1.0-beta.1",
   "strategy-room": "0.2.1",
   "video-production-studio": "0.3.0",
   "web-product-studio": "0.4.0",
@@ -42,7 +43,7 @@ if (claudeMarketplace.name !== "community-agent-plugins") {
 const codexNames = codexMarketplace.plugins.map((entry) => entry.name).sort();
 const claudeNames = claudeMarketplace.plugins.map((entry) => entry.name).sort();
 if (JSON.stringify(codexNames) !== JSON.stringify(Object.keys(versions).sort())) {
-  throw new Error("Codex marketplace inventory differs from the approved 22-plugin set");
+  throw new Error("Codex marketplace inventory differs from the approved 23-plugin set");
 }
 if (JSON.stringify(claudeNames) !== JSON.stringify(codexNames)) {
   throw new Error("Claude marketplace inventory differs from Codex");

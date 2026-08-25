@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "record_type": "signal-to-system-guides",
+  "plugin": "signal-to-system",
+  "stages": [
+    {"slug": "sense", "name": "Sense", "description": "Notice what matters before committing.", "skills": ["curiosity-compass", "signal-scout", "research-to-decision-map"]},
+    {"slug": "decide", "name": "Decide", "description": "Choose the work, the capability, or the test.", "skills": ["workflow-clinic", "capability-matcher-and-brief-builder", "experiment-designer-and-ledger"]},
+    {"slug": "make", "name": "Make", "description": "Turn intent into a usable working system.", "skills": ["workshop-workbench", "creative-project-control-room"]},
+    {"slug": "compound", "name": "Compound", "description": "Carry useful work into its next form.", "skills": ["session-compounder", "proof-to-product-mapper"]}
+  ],
+  "guides": {
+    "curiosity-compass": {
+      "stage": "sense",
+      "chooserLabel": "Choose among messy ideas",
+      "summary": "Rank a scattered set of ideas into zero to three worthwhile directions with visible criteria, uncertainty, and a cheap first test.",
+      "useWhen": ["Several ideas are competing for attention.", "You need a defensible focus before planning or research."],
+      "notFor": ["A choice is already settled.", "You already have a research body that should drive a bounded decision."],
+      "illustrativePrompt": "Use Curiosity Compass on these ideas: [ideas]. Rank zero to three worthwhile directions using visible criteria, uncertainty, and the cheapest useful first test. Do not force a winner if none clears the viability floor.",
+      "method": ["Define the decision and ranking criteria.", "Compare each candidate with evidence status and uncertainty visible.", "Select zero to three viable directions.", "Define the cheapest first test for the leading direction."],
+      "usefulResult": "A ranked decision record that shows why each direction did or did not qualify, plus one small next test.",
+      "evidenceBoundary": "The ranking is a decision aid, not proof of demand or future success."
+    },
+    "signal-scout": {
+      "stage": "sense",
+      "chooserLabel": "Find current changes and useful links",
+      "summary": "Scan current public sources for cited needs, patterns, changes, opportunities, and links without pretending to provide persistent monitoring.",
+      "useWhen": ["Recent public evidence matters.", "You need working links and a fast view of recurring or emerging signals."],
+      "notFor": ["You need a full systematic research project.", "The answer can be made from stable supplied sources alone."],
+      "illustrativePrompt": "Use Signal Scout to scan current public sources for [topic] over [time window]. Return cited signals, repeated patterns, important changes, useful links, search limits, and the next sensible move.",
+      "method": ["Define the topic, audience, time window, and source classes.", "Search the web and available public communities.", "Separate direct evidence, inference, and unknowns.", "Rank signals and suggest the smallest useful follow-up."],
+      "usefulResult": "A time-stamped signal snapshot with source links, pattern strength, limits, and a practical next move.",
+      "evidenceBoundary": "A scan is a current snapshot. It does not claim exhaustive coverage or ongoing monitoring."
+    },
+    "research-to-decision-map": {
+      "stage": "sense",
+      "chooserLabel": "Turn existing research into a decision",
+      "summary": "Map an existing body of research, judge whether it is sufficient, and make the decision logic visible before commitment.",
+      "useWhen": ["Material research has already been gathered.", "A bounded product, policy, or strategy decision is waiting."],
+      "notFor": ["Research still needs to be done from scratch.", "You are ranking unrelated early ideas or choosing a provider."],
+      "illustrativePrompt": "Use Research to Decision Map on this research: [sources or files]. Map claims, contradictions, gaps, and sufficiency, then give a provisional recommendation only if justified and stop for my decision before finalizing the record.",
+      "method": ["Define the decision contract.", "Map claims to evidence and material contradictions.", "Judge sufficiency and state a provisional recommendation when justified.", "Ask for the user's choice, then create the final decision record."],
+      "usefulResult": "An evidence map and final decision record that preserves what was known, uncertain, contradicted, and chosen.",
+      "evidenceBoundary": "The skill does not fill evidence gaps with confidence or turn a provisional recommendation into a user decision."
+    },
+    "workflow-clinic": {
+      "stage": "decide",
+      "chooserLabel": "Fix a recurring workflow",
+      "summary": "Diagnose a repeated workflow and design a better future state with explicit human, AI, automation, controls, and handoffs.",
+      "useWhen": ["Repeated work is slow, fragile, confusing, or wasteful.", "Roles and handoffs are unclear."],
+      "notFor": ["You need general project planning.", "You want integrations implemented without first understanding the workflow."],
+      "illustrativePrompt": "Use Workflow Clinic on this recurring process: [workflow]. Map the current state, diagnose the real bottlenecks, assign human, AI, automation, and control roles, then propose one bounded pilot without implementing integrations.",
+      "method": ["Define the recurring job and current participants.", "Map the real current state and failure points.", "Design the future state with explicit roles and controls.", "Propose a bounded pilot with measures and rollback."],
+      "usefulResult": "A current-state diagnosis, a clear future-state workflow, and a small pilot that can test whether the redesign helps.",
+      "evidenceBoundary": "A redesigned diagram is a proposal. It is not proof that the workflow performs better in practice."
+    },
+    "capability-matcher-and-brief-builder": {
+      "stage": "decide",
+      "chooserLabel": "Choose who or what should do the work",
+      "summary": "Match an outcome to a qualified person, agent, tool, product, or service and create a ready handoff when a candidate qualifies.",
+      "useWhen": ["The job is clear but the best capability is not.", "You need to compare supplied or current candidates against explicit requirements."],
+      "notFor": ["You need broad strategy or plugin portfolio governance.", "The decision would require guessing private traits, price, or availability."],
+      "illustrativePrompt": "Use Capability Matcher and Brief Builder for this outcome: [outcome]. Define the must-haves, compare [candidate set or current options], keep unknowns visible, recommend only a qualified match, and create the handoff brief.",
+      "method": ["Define the outcome, must-haves, constraints, and disqualifiers.", "Build the candidate set from supplied and current evidence.", "Compare fit without inventing missing facts.", "Recommend a qualified match or a fallback, then write the handoff brief."],
+      "usefulResult": "A traceable candidate comparison, a qualified recommendation or honest no-match result, and a brief the selected capability can use.",
+      "evidenceBoundary": "Public information cannot establish private fit, live availability, or final price unless those facts are directly verified."
+    },
+    "experiment-designer-and-ledger": {
+      "stage": "decide",
+      "chooserLabel": "Test an important assumption cheaply",
+      "summary": "Turn one assumption into the cheapest useful experiment with a prediction, measure, stop rule, evidence plan, and result ledger.",
+      "useWhen": ["One uncertain assumption could change the next decision.", "A product, service, workshop, workflow, community, or creative idea needs a real test."],
+      "notFor": ["You need a large experiment program managed.", "You want an untested idea described as proven."],
+      "illustrativePrompt": "Use Experiment Designer and Ledger to test this assumption: [assumption]. Define the cheapest useful experiment, prediction, measure, stop rule, evidence plan, and result ledger before any test begins.",
+      "method": ["Name the decision and one critical assumption.", "Precommit the prediction, measure, threshold, and stop rule.", "Run or hand off the bounded test without changing the rules afterward.", "Record raw observations, result status, and the decision."],
+      "usefulResult": "A small test with precommitted rules and a portable ledger that distinguishes observations, interpretation, and decision.",
+      "evidenceBoundary": "One experiment is evidence for its stated assumption and context, not universal proof."
+    },
+    "workshop-workbench": {
+      "stage": "make",
+      "chooserLabel": "Build a run-ready workshop",
+      "summary": "Inspect source knowledge, recommend the right deliverables for the audience and stage, then create only the selected run-ready package.",
+      "useWhen": ["Existing knowledge should become a workshop, class, or facilitated session.", "The facilitator needs the right package, not every possible document."],
+      "notFor": ["There is no source knowledge to support the teaching.", "You only need finished slides with no workshop design."],
+      "illustrativePrompt": "Use Workshop Workbench on these source materials: [files or links]. Recommend the right workshop deliverables for [audience and stage], ask me to choose, then build only the selected run-ready package.",
+      "method": ["Inspect the source, audience, promise, format, and readiness gaps.", "Recommend a right-sized package and explain what each item enables.", "Ask the user to select the package.", "Build and check the run of show, facilitator materials, and participant experience."],
+      "usefulResult": "A source-grounded package that a facilitator can actually run, with open decisions and unsupported claims clearly marked.",
+      "evidenceBoundary": "A complete workshop package does not prove audience demand, learning impact, or facilitator readiness."
+    },
+    "creative-project-control-room": {
+      "stage": "make",
+      "chooserLabel": "Control a multi-asset creative project",
+      "summary": "Keep brief, references, assets, decisions, owners, approvals, risks, and delivery state in one source-of-truth control pack.",
+      "useWhen": ["A creative project spans several assets, people, tools, or approvals.", "Intent and production reality are drifting apart."],
+      "notFor": ["You need a specialist to generate one asset.", "A generic project tracker is sufficient."],
+      "illustrativePrompt": "Use Creative Project Control Room for this project: [project]. Create one control pack for the brief, references, assets, decisions, owners, approvals, risks, and delivery state. Preserve unknowns and do not generate the assets themselves.",
+      "method": ["Establish the working brief and success conditions.", "Register references and assets with source and status.", "Track decisions, owners, approvals, and risks.", "Maintain delivery state and recovery actions as work changes."],
+      "usefulResult": "One inspectable control pack that lets collaborators see what is approved, missing, at risk, and ready for delivery.",
+      "evidenceBoundary": "A control record reports source and status. It does not prove the quality of an asset that has not been inspected."
+    },
+    "session-compounder": {
+      "stage": "compound",
+      "chooserLabel": "Get more value from a completed session",
+      "summary": "Inspect session notes, preserve what happened, recommend worthwhile derivatives, and create only the outputs the user selects.",
+      "useWhen": ["A meeting, interview, workshop, or working session has finished.", "The source may contain decisions, follow-ups, knowledge, or reusable material beyond a summary."],
+      "notFor": ["There is no source record of the session.", "You want invented decisions, quotes, ownership, or consent."],
+      "illustrativePrompt": "Use Session Compounder on these notes: [notes]. Extract decisions, commitments, unresolved questions, and reusable material faithfully, recommend worthwhile outputs, then ask me what to create and for which audience.",
+      "method": ["Record the source and its limitations.", "Extract decisions, commitments, questions, and reusable material faithfully.", "Recommend derivative outputs with audience and permission needs.", "Create only the selected outputs and preserve unresolved gaps."],
+      "usefulResult": "A faithful session record plus selected follow-ups or reusable outputs with audience, permission, attribution, and source status visible.",
+      "evidenceBoundary": "Notes can support extraction but cannot supply missing consent, exact quotes, owners, or decisions."
+    },
+    "proof-to-product-mapper": {
+      "stage": "compound",
+      "chooserLabel": "Turn proven work into a reusable form",
+      "summary": "Assess proven or promising work, compare reusable forms, and define the cheapest next validation without building the full product by default.",
+      "useWhen": ["A method, service, guide, workshop, template, system, skill, or plugin may deserve a reusable form.", "The strength of the proof should shape the product decision."],
+      "notFor": ["The work is only an unsupported idea.", "You want a full product built before qualification."],
+      "illustrativePrompt": "Use Proof to Product Mapper on this work: [artifact and evidence]. Grade the proof, compare suitable reusable forms, recommend the minimum useful version, and define the cheapest next validation without calling the work proven unless the evidence supports it.",
+      "method": ["Identify the underlying work, user, result, and existing evidence.", "Grade the evidence and material gaps.", "Compare delivery forms, access, economics, maintenance, and distribution.", "Recommend the minimum useful version and next validation."],
+      "usefulResult": "A productization brief that ties the chosen form, scope, claims, and next validation to the actual strength of the evidence.",
+      "evidenceBoundary": "A polished container does not improve weak proof. Claims must stay within the evidence grade."
+    }
+  }
+}

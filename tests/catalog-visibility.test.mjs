@@ -8,6 +8,7 @@ const readJson = (path) =>
 const readText = (path) => readFileSync(new URL(path, root), "utf8");
 const mattSlug = "matt-partok-bundled-plugin-for-knowledge-work";
 const mattDisplayName = "Matt Partok Bundled Plugin For Knowledge Work";
+const signalSlug = "signal-to-system";
 
 function generatedExport(name) {
   const catalog = readText("app/catalog.generated.ts");
@@ -25,6 +26,8 @@ const claudeMarketplace = readJson(".claude-plugin/marketplace.json");
 const catalog = generatedExport("plugins");
 const totals = generatedExport("totals");
 const collections = generatedExport("collections");
+const signalToSystemStages = generatedExport("signalToSystemStages");
+const signalToSystemGuides = generatedExport("signalToSystemGuides");
 const repositorySkills = codexMarketplace.plugins.reduce(
   (total, plugin) =>
     total +
@@ -35,32 +38,37 @@ const repositorySkills = codexMarketplace.plugins.reduce(
 );
 
 test("keeps the complete repository inventory separate from the Site inventory", () => {
-  assert.equal(codexMarketplace.plugins.length, 22);
-  assert.equal(claudeMarketplace.plugins.length, 22);
-  assert.equal(repositorySkills, 182);
-  assert.equal(curation.visibility.visible_plugins.length, 21);
+  assert.equal(codexMarketplace.plugins.length, 23);
+  assert.equal(claudeMarketplace.plugins.length, 23);
+  assert.equal(repositorySkills, 192);
+  assert.equal(curation.visibility.visible_plugins.length, 22);
   assert.equal(curation.visibility.excluded_plugins.length, 1);
-  assert.equal(curation.expected_totals.plugins, 21);
-  assert.equal(curation.expected_totals.skills, 160);
-  assert.equal(totals.plugins, 21);
-  assert.equal(totals.skills, 160);
+  assert.equal(curation.expected_totals.plugins, 22);
+  assert.equal(curation.expected_totals.skills, 170);
+  assert.equal(totals.plugins, 22);
+  assert.equal(totals.skills, 170);
 });
 
-test("excludes the Matt bundle from every generated Site surface", () => {
+test("excludes only the repository-only compatibility plugin", () => {
   const catalogText = readText("app/catalog.generated.ts");
   assert.deepEqual(curation.visibility.excluded_plugins, [mattSlug]);
-  assert.equal(catalog.some((plugin) => plugin.slug === mattSlug), false);
-  assert.doesNotMatch(catalogText, new RegExp(mattSlug));
-  assert.doesNotMatch(catalogText, new RegExp(mattDisplayName));
+  for (const [slug, displayName] of [[mattSlug, mattDisplayName]]) {
+    assert.equal(catalog.some((plugin) => plugin.slug === slug), false);
+    assert.doesNotMatch(catalogText, new RegExp(slug));
+    assert.doesNotMatch(catalogText, new RegExp(displayName));
+  }
   for (const routePath of ["app/plugins.json/route.ts", "app/llms.txt/route.ts"]) {
     assert.equal(existsSync(new URL(routePath, root)), true);
     const route = readText(routePath);
-    assert.doesNotMatch(route, new RegExp(mattSlug));
-    assert.doesNotMatch(route, new RegExp(mattDisplayName));
+    for (const [slug, displayName] of [[mattSlug, mattDisplayName]]) {
+      assert.doesNotMatch(route, new RegExp(slug));
+      assert.doesNotMatch(route, new RegExp(displayName));
+    }
   }
   for (const collection of collections) {
     assert.equal(collection.plugins.includes(mattSlug), false);
   }
+  assert.equal(catalog.some((plugin) => plugin.slug === signalSlug), true);
 });
 
 test("assigns every visible plugin to one approved outcome collection", () => {
@@ -109,6 +117,7 @@ test("assigns every visible plugin to one approved outcome collection", () => {
           "data-storytelling-studio",
           "continuity-vault",
           "model-prompt-lab",
+          "signal-to-system",
         ],
       },
     ],
@@ -117,6 +126,26 @@ test("assigns every visible plugin to one approved outcome collection", () => {
     collections.flatMap((collection) => collection.plugins).sort(),
     [...curation.visibility.visible_plugins].sort(),
   );
+});
+
+test("binds all ten Signal to System skills to one stage and one guide", () => {
+  const signalPlugin = catalog.find((plugin) => plugin.slug === signalSlug);
+  assert.ok(signalPlugin);
+  const skillNames = signalPlugin.skills.map((skill) => skill.name).sort();
+  assert.equal(signalToSystemStages.length, 4);
+  assert.deepEqual(
+    signalToSystemStages.flatMap((stage) => stage.skills).sort(),
+    skillNames,
+  );
+  assert.deepEqual(Object.keys(signalToSystemGuides).sort(), skillNames);
+  for (const [skill, guide] of Object.entries(signalToSystemGuides)) {
+    assert.ok(guide.illustrativePrompt.includes("["), skill + " needs an adaptable request");
+    assert.ok(guide.method.length >= 3, skill + " needs a working method");
+    assert.ok(guide.useWhen.length >= 2, skill + " needs fit guidance");
+    assert.ok(guide.notFor.length >= 2, skill + " needs boundary guidance");
+    const stage = signalToSystemStages.find((item) => item.slug === guide.stage);
+    assert.ok(stage?.skills.includes(skill), skill + " must match its declared stage");
+  }
 });
 
 test("gives every public plugin one complete, source-safe guide", () => {

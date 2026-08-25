@@ -1,0 +1,7 @@
+interface:
+  display_name: "Session Compounder"
+  short_description: "Turns completed sessions into selected reusable outputs"
+  default_prompt: "Use $session-compounder to inspect these session notes, recommend worthwhile outputs, and wait for my selection."
+
+policy:
+  allow_implicit_invocation: true

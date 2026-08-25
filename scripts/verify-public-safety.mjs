@@ -3,7 +3,13 @@ import { readFileSync } from "node:fs";
 import { extname } from "node:path";
 
 const textExtensions = new Set(["", ".cjs", ".css", ".html", ".js", ".json", ".jsx", ".md", ".mjs", ".py", ".sh", ".toml", ".ts", ".tsx", ".txt", ".yaml", ".yml"]);
-const files = execFileSync("git", ["ls-files", "-z"]).toString().split("\0").filter(Boolean);
+const files = execFileSync("git", [
+  "ls-files",
+  "--cached",
+  "--others",
+  "--exclude-standard",
+  "-z",
+]).toString().split("\0").filter(Boolean);
 const personalFirstName = ["Is", "rael"].join("");
 const personalSurname = ["Ay", "liffe"].join("");
 const personalAccount = [personalFirstName, "musonda", personalSurname.toLowerCase()].join("");
@@ -14,6 +20,16 @@ const forbidden = [
   ["old marketplace identity", new RegExp(`${personalFirstName.toLowerCase()}-(?:codex-)?plugins`, "i")],
   ["personal hosted site", new RegExp(`${personalSurname.toLowerCase()}\\.chatgpt\\.site`, "i")],
 ];
+const canonicalPublicSite = [
+  "https://",
+  personalFirstName.toLowerCase(),
+  "-codex-plugins.",
+  localUser,
+  ".chatgpt.site",
+].join("");
+const allowedPublicLocator = (file, line) =>
+  file === "docs/site-redesign/release-evidence.json" &&
+  line.includes(`\"deployed_url\": \"${canonicalPublicSite}\"`);
 const locator = new RegExp(`(?:https://github\\.com/|marketplace add\\s+)${personalAccount}(?:/|$)`);
 const problems = [];
 
@@ -22,6 +38,12 @@ for (const file of files) {
   const text = readFileSync(file, "utf8");
   for (const [label, pattern] of forbidden) {
     for (const [index, line] of text.split("\n").entries()) {
+      if (
+        allowedPublicLocator(file, line) &&
+        (label === "old marketplace identity" || label === "personal hosted site")
+      ) {
+        continue;
+      }
       if (pattern.test(line)) problems.push(`${label}: ${file}:${index + 1}`);
     }
   }

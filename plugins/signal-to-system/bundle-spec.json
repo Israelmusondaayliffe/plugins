@@ -1,0 +1,41 @@
+{
+  "plugin": "signal-to-system",
+  "version": "0.1.0-beta.1",
+  "status": "experimental-beta",
+  "hosts": [
+    "Codex",
+    "Claude Code"
+  ],
+  "stages": {
+    "sense": [
+      "curiosity-compass",
+      "signal-scout",
+      "research-to-decision-map"
+    ],
+    "decide": [
+      "workflow-clinic",
+      "capability-matcher-and-brief-builder",
+      "experiment-designer-and-ledger"
+    ],
+    "make": [
+      "workshop-workbench",
+      "creative-project-control-room"
+    ],
+    "compound": [
+      "session-compounder",
+      "proof-to-product-mapper"
+    ]
+  },
+  "optional_multi_agent_modes": [
+    "signal-scout",
+    "research-to-decision-map",
+    "capability-matcher-and-brief-builder",
+    "workshop-workbench"
+  ],
+  "shared_references": [
+    "references/source-and-tool-policy.md",
+    "references/evidence-and-artifact-policy.md",
+    "references/advanced-execution.md"
+  ],
+  "router_policy": "No router ships in the beta. Add a lightweight selector only if fresh-session discovery tests show repeated misrouting."
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Experiment Designer and Ledger"
+  short_description: "Designs the cheapest useful test and evidence ledger"
+  default_prompt: "Use $experiment-designer-and-ledger to turn this assumption into a bounded test and portable evidence record."
+
+policy:
+  allow_implicit_invocation: true

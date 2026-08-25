@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyCommand } from "../../components/CopyCommand";
+import { SignalSkillChooser } from "../../components/SignalSkillChooser";
 import { ThemeToggle } from "../../components/ThemeToggle";
 import {
   collections,
@@ -52,6 +53,8 @@ export default async function PluginPage({ params }: PluginPageProps) {
         )
         .slice(0, 3)
     : [];
+  const isSignalToSystem = plugin.slug === "signal-to-system";
+  const isDeclaredBeta = plugin.supportStatus === "declared-beta";
 
   return (
     <>
@@ -86,7 +89,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
               <dd>{plugin.counts.skills}</dd>
             </div>
             <div>
-              <dt>Verified hosts</dt>
+              <dt>{isDeclaredBeta ? "Declared beta hosts" : "Verified hosts"}</dt>
               <dd>
                 <span className="host-badges">
                   {plugin.platforms.map((platform) => (
@@ -109,6 +112,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
         <nav className="detail-nav" aria-label="On this page">
           <span>On this page</span>
           <a href="#install">Install</a>
+          {isSignalToSystem && <a href="#choose">Choose</a>}
           <a href="#start">Start</a>
           <a href="#workflow">Workflow</a>
           <a href="#skill-guide">Skill guide</a>
@@ -121,8 +125,12 @@ export default async function PluginPage({ params }: PluginPageProps) {
           id="install"
         >
           <div>
-            <p className="kicker">Verified installation</p>
-            <h2 id="install-title">Install on a verified host.</h2>
+            <p className="kicker">
+              {isDeclaredBeta ? "Beta package installation" : "Verified installation"}
+            </p>
+            <h2 id="install-title">
+              {isDeclaredBeta ? "Install on a declared beta host." : "Install on a verified host."}
+            </h2>
             <p className="install-note">
               {plugin.runtimeNote} Package manifests and runtime verification
               are separate claims.
@@ -173,6 +181,8 @@ export default async function PluginPage({ params }: PluginPageProps) {
           </div>
         </section>
 
+        {isSignalToSystem && <SignalSkillChooser />}
+
         <section
           className="guide-section guide-start"
           aria-labelledby="start-title"
@@ -180,16 +190,31 @@ export default async function PluginPage({ params }: PluginPageProps) {
         >
           <div className="section-heading detail-section-heading">
             <p className="kicker">Start here</p>
-            <h2 id="start-title">Begin with the front door.</h2>
-            <p>
-              You do not need to memorize every skill. Start with{" "}
-              <code>{plugin.guide.startHere.skill}</code> and describe the
-              result you want.
-            </p>
+            <h2 id="start-title">
+              {isSignalToSystem
+                ? "Start with the job, not a hidden router."
+                : "Begin with the front door."}
+            </h2>
+            {isSignalToSystem ? (
+              <p>
+                Each skill works independently. Use the chooser when you want a
+                recommendation, or name the exact skill when the job is clear.
+              </p>
+            ) : (
+              <p>
+                You do not need to memorize every skill. Start with{" "}
+                <code>{plugin.guide.startHere.skill}</code> and describe the
+                result you want.
+              </p>
+            )}
           </div>
           <div className="start-here-card">
             <div>
-              <p className="guide-eyebrow">Recommended first skill</p>
+              <p className="guide-eyebrow">
+                {isSignalToSystem
+                  ? "Default when the direction is unclear"
+                  : "Recommended first skill"}
+              </p>
               <h3>{plugin.guide.startHere.skill}</h3>
               <p>{plugin.guide.startHere.why}</p>
             </div>
@@ -286,7 +311,9 @@ export default async function PluginPage({ params }: PluginPageProps) {
           aria-labelledby="example-title"
         >
           <div className="section-heading detail-section-heading">
-            <p className="kicker">Worked example</p>
+            <p className="kicker">
+              {isSignalToSystem ? "Illustrative route" : "Worked example"}
+            </p>
             <h2 id="example-title">{plugin.guide.workedExample.title}</h2>
             <p>{plugin.guide.workedExample.situation}</p>
           </div>
@@ -339,15 +366,31 @@ export default async function PluginPage({ params }: PluginPageProps) {
             <h2>Every skill in this plugin.</h2>
           </div>
           <div className="skill-list">
-            {plugin.skills.map((skill, index) => (
-              <article key={skill.name}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{skill.name}</h3>
-                  <p>{skill.description}</p>
-                </div>
-              </article>
-            ))}
+            {plugin.skills.map((skill, index) => {
+              const content = (
+                <>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{skill.name}</h3>
+                    <p>{skill.description}</p>
+                  </div>
+                  {isSignalToSystem && (
+                    <span className="signal-row-arrow" aria-hidden="true">↗</span>
+                  )}
+                </>
+              );
+              return isSignalToSystem ? (
+                <Link
+                  className="signal-skill-row"
+                  href={"/plugins/signal-to-system/skills/" + skill.name}
+                  key={skill.name}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <article key={skill.name}>{content}</article>
+              );
+            })}
           </div>
         </section>
 

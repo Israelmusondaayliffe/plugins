@@ -24,6 +24,12 @@ const curation = JSON.parse(
 const guideSource = JSON.parse(
   readFileSync(join(root, "docs/site-redesign/plugin-guides.json"), "utf8"),
 );
+const signalGuideSource = JSON.parse(
+  readFileSync(
+    join(root, "docs/site-redesign/signal-to-system-guides.json"),
+    "utf8",
+  ),
+);
 const claudePluginNames = new Set(
   claudeMarketplace.plugins.map((plugin) => plugin.name),
 );
@@ -165,12 +171,16 @@ const allPlugins = marketplace.plugins.map((entry) => {
   const claudeManifest = JSON.parse(readFileSync(claudeManifestPath, "utf8"));
   const support = hostSupport[entry.name];
   const allowedPlatforms = new Set(["Codex", "Claude Code", "Claude Cowork"]);
+  const allowedSupportStatuses = new Set(["verified", "declared-beta"]);
   if (
     !Array.isArray(support.platforms) ||
     support.platforms.length === 0 ||
     support.platforms.some((platform) => !allowedPlatforms.has(platform))
   ) {
     throw new Error(`Invalid host-support record for ${entry.name}`);
+  }
+  if (!allowedSupportStatuses.has(support.status ?? "verified")) {
+    throw new Error(`Invalid host-support status for ${entry.name}`);
   }
   const expectedSource = `./plugins/${entry.name}`;
   if (
@@ -187,9 +197,17 @@ const allPlugins = marketplace.plugins.map((entry) => {
       throw new Error(`Manifest ${field} mismatch for ${entry.name}`);
     }
   }
-  for (const keyword of ["codex", "claude-code", "cowork"]) {
+  const platformKeywords = new Map([
+    ["Codex", "codex"],
+    ["Claude Code", "claude-code"],
+    ["Claude Cowork", "cowork"],
+  ]);
+  for (const platform of support.platforms) {
+    const keyword = platformKeywords.get(platform);
     if (!manifest.keywords?.includes(keyword)) {
-      throw new Error(`Missing ${keyword} platform keyword for ${entry.name}`);
+      throw new Error(
+        `Missing ${keyword} keyword for declared ${platform} support in ${entry.name}`,
+      );
     }
   }
   const files = walk(pluginRoot);
@@ -234,6 +252,7 @@ const allPlugins = marketplace.plugins.map((entry) => {
     capabilities: manifest.interface?.capabilities ?? [],
     defaultPrompts: (manifest.interface?.defaultPrompt ?? []).map(cleanText),
     platforms: support.platforms,
+    supportStatus: support.status ?? "verified",
     runtimeNote: cleanText(
       support.note ?? `Verified runtime support: ${support.platforms.join(", ")}.`,
     ),
@@ -387,6 +406,103 @@ for (const plugin of plugins) {
   }
 }
 
+if (
+  signalGuideSource.schema_version !== 1 ||
+  signalGuideSource.record_type !== "signal-to-system-guides" ||
+  signalGuideSource.plugin !== "signal-to-system" ||
+  !Array.isArray(signalGuideSource.stages) ||
+  signalGuideSource.stages.length !== 4 ||
+  !signalGuideSource.guides ||
+  typeof signalGuideSource.guides !== "object" ||
+  Array.isArray(signalGuideSource.guides)
+) {
+  throw new Error("Signal to System guides must use schema version 1");
+}
+
+const signalPlugin = plugins.find((plugin) => plugin.slug === "signal-to-system");
+if (!signalPlugin) {
+  throw new Error("Signal to System must be visible before its skill guides are generated");
+}
+
+const signalSkillNames = signalPlugin.skills.map((skill) => skill.name);
+const signalGuideNames = Object.keys(signalGuideSource.guides);
+const signalStageSlugs = signalGuideSource.stages.map((stage) => stage.slug);
+const signalStageSkills = signalGuideSource.stages.flatMap((stage) => stage.skills ?? []);
+const missingSignalGuides = signalSkillNames.filter(
+  (name) => !signalGuideNames.includes(name),
+);
+const unknownSignalGuides = signalGuideNames.filter(
+  (name) => !signalSkillNames.includes(name),
+);
+const missingSignalStageSkills = signalSkillNames.filter(
+  (name) => !signalStageSkills.includes(name),
+);
+const unknownSignalStageSkills = signalStageSkills.filter(
+  (name) => !signalSkillNames.includes(name),
+);
+if (
+  duplicateNames(signalStageSlugs).length ||
+  duplicateNames(signalStageSkills).length ||
+  missingSignalGuides.length ||
+  unknownSignalGuides.length ||
+  missingSignalStageSkills.length ||
+  unknownSignalStageSkills.length
+) {
+  throw new Error(
+    [
+      duplicateNames(signalStageSlugs).length
+        ? "Signal stages must have unique slugs"
+        : "",
+      duplicateNames(signalStageSkills).length
+        ? "Signal skills must belong to exactly one stage"
+        : "",
+      missingSignalGuides.length
+        ? `Signal skills missing guides: ${missingSignalGuides.join(", ")}`
+        : "",
+      unknownSignalGuides.length
+        ? `Unknown Signal skill guides: ${unknownSignalGuides.join(", ")}`
+        : "",
+      missingSignalStageSkills.length
+        ? `Signal skills missing stages: ${missingSignalStageSkills.join(", ")}`
+        : "",
+      unknownSignalStageSkills.length
+        ? `Unknown Signal stage skills: ${unknownSignalStageSkills.join(", ")}`
+        : "",
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  );
+}
+
+signalGuideSource.stages.forEach((stage, index) => {
+  requireText(stage.slug, `Signal stage[${index}].slug`);
+  requireText(stage.name, `Signal stage[${index}].name`);
+  requireText(stage.description, `Signal stage[${index}].description`);
+  if (!Array.isArray(stage.skills) || !stage.skills.length) {
+    throw new Error(`Signal stage[${index}] must include skills`);
+  }
+});
+
+for (const [skill, guide] of Object.entries(signalGuideSource.guides)) {
+  const label = `Signal guide for ${skill}`;
+  requireText(guide.stage, `${label} stage`);
+  if (!signalStageSlugs.includes(guide.stage)) {
+    throw new Error(`${label} references unknown stage ${guide.stage}`);
+  }
+  const stage = signalGuideSource.stages.find((item) => item.slug === guide.stage);
+  if (!stage.skills.includes(skill)) {
+    throw new Error(`${label} is not assigned to its declared stage`);
+  }
+  requireText(guide.chooserLabel, `${label} chooserLabel`);
+  requireText(guide.summary, `${label} summary`);
+  requireTextArray(guide.useWhen, `${label} useWhen`, 2);
+  requireTextArray(guide.notFor, `${label} notFor`, 2);
+  requireText(guide.illustrativePrompt, `${label} illustrativePrompt`);
+  requireTextArray(guide.method, `${label} method`, 3);
+  requireText(guide.usefulResult, `${label} usefulResult`);
+  requireText(guide.evidenceBoundary, `${label} evidenceBoundary`);
+}
+
 plugins = plugins.map((plugin) => ({
   ...plugin,
   guide: guideSource.guides[plugin.slug],
@@ -445,6 +561,8 @@ const output = `// Generated by scripts/generate-catalog.mjs. Do not edit direct
   `export const marketplaceName = ${JSON.stringify(marketplace.name)} as const;\n` +
   `export const site = ${JSON.stringify(curation.site, null, 2)} as const;\n` +
   `export const collections = ${JSON.stringify(curation.collections, null, 2)} as const;\n` +
+  `export const signalToSystemStages = ${JSON.stringify(signalGuideSource.stages, null, 2)} as const;\n` +
+  `export const signalToSystemGuides = ${JSON.stringify(signalGuideSource.guides, null, 2)} as const;\n` +
   `export const plugins = ${JSON.stringify(plugins, null, 2)} as const;\n` +
   `export const totals = ${JSON.stringify(totals, null, 2)} as const;\n` +
   `export type Plugin = (typeof plugins)[number];\n`;

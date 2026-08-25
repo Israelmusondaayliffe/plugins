@@ -1,0 +1,32 @@
+{
+  "fixture_status": "synthetic-routing-tests-not-runtime-proof",
+  "cases": [
+    {"id": "cc-positive", "kind": "positive", "prompt": "Rank these raw ideas and tell me which deserve attention, including none if they are all weak.", "expected_skill": "curiosity-compass"},
+    {"id": "ss-positive", "kind": "positive", "prompt": "Scan the current web for signals around this community problem and give me current links.", "expected_skill": "signal-scout"},
+    {"id": "rd-positive", "kind": "positive", "prompt": "Turn this existing research on three membership policies into an evidence-aware decision record.", "expected_skill": "research-to-decision-map"},
+    {"id": "wc-positive", "kind": "positive", "prompt": "Diagnose this recurring approval workflow and redesign the human, AI, and automation split.", "expected_skill": "workflow-clinic"},
+    {"id": "cm-positive", "kind": "positive", "prompt": "Compare these consultants, find current alternatives, and brief a qualified choice.", "expected_skill": "capability-matcher-and-brief-builder"},
+    {"id": "ed-positive", "kind": "positive", "prompt": "Design the cheapest falsifiable experiment and keep an append-only result ledger.", "expected_skill": "experiment-designer-and-ledger"},
+    {"id": "ww-positive", "kind": "positive", "prompt": "Turn these talk notes into the minimum workshop package I actually need.", "expected_skill": "workshop-workbench"},
+    {"id": "cp-positive", "kind": "positive", "prompt": "Create a control room for this multi-asset creative campaign.", "expected_skill": "creative-project-control-room"},
+    {"id": "sc-positive", "kind": "positive", "prompt": "Turn this session transcript into selected permission-safe reusable outputs.", "expected_skill": "session-compounder"},
+    {"id": "pp-positive", "kind": "positive", "prompt": "Decide how this promising repeated method should be validated before becoming a reusable product.", "expected_skill": "proof-to-product-mapper"},
+    {"id": "ideas-not-decision-record", "kind": "near_neighbor", "prompt": "I only have five unrelated ideas and no research yet. Which deserve investigation?", "expected_skill": "curiosity-compass"},
+    {"id": "live-scan-not-existing-research", "kind": "near_neighbor", "prompt": "I do not have a research pack. Search what people are saying this month and cite it.", "expected_skill": "signal-scout"},
+    {"id": "policy-not-capability", "kind": "near_neighbor", "prompt": "Here is completed research on three pricing policies. Decide which policy is best supported.", "expected_skill": "research-to-decision-map"},
+    {"id": "tool-choice-not-policy", "kind": "near_neighbor", "prompt": "Here is research on three software tools. Choose a qualified tool for this job and write the handoff brief.", "expected_skill": "capability-matcher-and-brief-builder"},
+    {"id": "pilot-outline-not-experiment", "kind": "near_neighbor", "prompt": "Redesign our intake workflow and include a small operational pilot outline.", "expected_skill": "workflow-clinic"},
+    {"id": "experiment-not-workflow", "kind": "near_neighbor", "prompt": "The workflow is already designed. Precommit a prediction, sample, confounders, and result ledger for its test.", "expected_skill": "experiment-designer-and-ledger"},
+    {"id": "workshop-not-session-derivatives", "kind": "near_neighbor", "prompt": "These notes came from a talk, but my goal is a two-hour facilitated workshop package.", "expected_skill": "workshop-workbench"},
+    {"id": "campaign-control-not-workshop", "kind": "near_neighbor", "prompt": "Track the brief, assets, owners, approvals, and delivery state for this campaign.", "expected_skill": "creative-project-control-room"},
+    {"id": "session-derivatives-not-product", "kind": "near_neighbor", "prompt": "Inspect this one meeting transcript and recommend which internal outputs are worth creating.", "expected_skill": "session-compounder"},
+    {"id": "repeated-proof-not-transcript", "kind": "near_neighbor", "prompt": "This method has repeated evidence across several runs. Map its next validation and possible reusable form.", "expected_skill": "proof-to-product-mapper"}
+  ],
+  "exclusions": [
+    {"prompt": "Write the React code for this landing page.", "reason": "implementation request"},
+    {"prompt": "Generate a finished video from these clips.", "reason": "media production request"},
+    {"prompt": "Monitor Reddit every hour forever.", "reason": "persistent monitoring is not supported"},
+    {"prompt": "Send this email without showing me the draft.", "reason": "unauthorized external action"},
+    {"prompt": "Summarize this paragraph in one sentence.", "reason": "ordinary summarization"}
+  ]
+}

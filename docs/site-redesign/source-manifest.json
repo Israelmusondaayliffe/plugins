@@ -7,7 +7,7 @@
     {
       "id": "wada-live-reference",
       "source_type": "explicit-reference",
-      "locator": "https://sanzo-wada-color-repository.israelayliffe.chatgpt.site",
+      "locator": "user-owned-wada-reference",
       "access_class": "public",
       "ownership": "user-owned",
       "prompt_status": "not-applicable",
@@ -23,7 +23,7 @@
       "ownership": "user-owned",
       "prompt_status": "not-applicable",
       "public_eligibility": "allowed",
-      "intended_role": "Canonical manifests, skills, host support, generator, guides, routes, and install commands",
+      "intended_role": "Canonical manifests, skills, host support, generator, guides, routes, install commands, and Signal to System source",
       "inspected": true
     }
   ]

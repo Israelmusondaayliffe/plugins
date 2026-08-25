@@ -34,7 +34,8 @@
       "harness-engineering",
       "operating-graph",
       "gauntlet-loop",
-      "gauntlet"
+      "gauntlet",
+      "signal-to-system"
     ],
     "excluded_plugins": [
       "matt-partok-bundled-plugin-for-knowledge-work"
@@ -47,8 +48,8 @@
     }
   },
   "expected_totals": {
-    "plugins": 21,
-    "skills": 160
+    "plugins": 22,
+    "skills": 170
   },
   "collections": [
     {
@@ -97,7 +98,8 @@
         "strategy-room",
         "data-storytelling-studio",
         "continuity-vault",
-        "model-prompt-lab"
+        "model-prompt-lab",
+        "signal-to-system"
       ]
     }
   ]

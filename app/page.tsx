@@ -53,14 +53,14 @@ export default async function Home() {
             <p className="hero-lede">
               A practical index of {totals.plugins} public plugins and {totals.skills} bundled
               skills for Codex, Claude Code, and Claude Cowork. Search by the
-              outcome you need, then use only the install action verified for your host.
+              outcome you need, then use only the install action documented for your host.
             </p>
           </div>
           <div className="registry-totals" aria-label="Registry totals">
             <div><strong>{totals.plugins}</strong><span>Public plugins</span></div>
             <div><strong>{totals.skills}</strong><span>Bundled skills</span></div>
             <div><strong>04</strong><span>Outcome groups</span></div>
-            <div><strong>03</strong><span>Verified hosts</span></div>
+            <div><strong>03</strong><span>Supported hosts</span></div>
           </div>
         </section>
 
@@ -70,7 +70,7 @@ export default async function Home() {
             <h2>Start with the outcome. Then choose the host.</h2>
             <p>
               Search every public plugin and bundled skill, narrow the registry
-              by outcome, category, or verified runtime host, then inspect the
+              by outcome, category, or host, then inspect the
               exact record before you install.
             </p>
           </div>
@@ -83,9 +83,9 @@ export default async function Home() {
             <h2 id="what-changed-title">A maintained registry, not a marketing list.</h2>
           </div>
           <ul>
-            <li><strong>Added</strong> Gauntlet and Gauntlet Loop.</li>
-            <li><strong>Expanded</strong> Capability Operator, Agent Ops, and Harness Engineering.</li>
-            <li><strong>Clarified</strong> verified runtime support on every public record.</li>
+            <li><strong>Added</strong> Signal to System with ten public skill guides.</li>
+            <li><strong>Introduced</strong> a chooser that starts from the job in front of you.</li>
+            <li><strong>Clarified</strong> host support and evidence status on every public record.</li>
           </ul>
         </section>
 

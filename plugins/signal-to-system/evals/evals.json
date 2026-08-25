@@ -1,0 +1,79 @@
+{
+  "skill_name": "signal-to-system",
+  "fixture_status": "synthetic-behavior-tests-not-real-world-proof",
+  "evals": [
+    {
+      "id": 1,
+      "expected_skill": "curiosity-compass",
+      "prompt": "Inspect the attached synthetic list of twelve possible community projects. Rank the strongest directions and give me a cheap first test. If none is ready, say so.",
+      "expected_output": "Shows every candidate against visible criteria, applies a viability floor, permits a zero-winner result, and gives a bounded first test only for a viable direction.",
+      "files": ["evals/fixtures/curiosity-projects.md"]
+    },
+    {
+      "id": 2,
+      "expected_skill": "signal-scout",
+      "prompt": "Search the current web for what independent educators are struggling with when turning live sessions into reusable resources. Give me links and patterns, and report failed searches or weak coverage.",
+      "expected_output": "Produces a dated search log and one of four honest scan statuses, cites current underlying sources, separates experience from fact, and does not manufacture a signal or claim monitoring.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "expected_skill": "research-to-decision-map",
+      "prompt": "Inspect the attached synthetic research on three membership models. Map the evidence, judge whether it is sufficient, and ask me before recording a final decision.",
+      "follow_up_prompt": "Choose the strongest supported option if the evidence is sufficient. If it is not, decline and name the smallest missing evidence.",
+      "expected_output": "Labels source and evidence status, chooses recommend, provisional, or decline pending evidence, pauses at the user gate, and only then creates a final decision record.",
+      "files": ["evals/fixtures/membership-model-research.md"]
+    },
+    {
+      "id": 4,
+      "expected_skill": "workflow-clinic",
+      "prompt": "Our weekly content approval process is slow and confusing. Redesign the workflow and show what people, AI, and automation should each own.",
+      "expected_output": "Maps and diagnoses the recurring workflow, creates a controlled future state and high-level pilot outline, and routes evidence-grade test design to Experiment Designer and Ledger.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "expected_skill": "capability-matcher-and-brief-builder",
+      "prompt": "Compare the three fictional facilitators in the attached fixture and prepare a handoff only if someone meets every must-have. Treat every unverified current detail as unknown.",
+      "expected_output": "Returns qualified, provisional, or no qualified match, labels cost and availability unknowns, and creates a final handoff only for a qualified candidate.",
+      "files": ["evals/fixtures/facilitator-candidates.md"]
+    },
+    {
+      "id": 6,
+      "expected_skill": "experiment-designer-and-ledger",
+      "prompt": "We think a monthly office hour will improve member retention. Design the cheapest useful test and start an evidence ledger.",
+      "expected_output": "Precommits prediction, sample, measure, stop rule, and confounders, uses append-only versioned records, preserves raw evidence, and never calls an untested result proof.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "expected_skill": "workshop-workbench",
+      "prompt": "Inspect the attached synthetic talk notes, recommend what package I need for a two-hour pilot, and ask me before producing all the materials.",
+      "follow_up_prompt": "Create the recommended minimum package. Keep it in draft if a critical decision is missing.",
+      "expected_output": "Inspects the source, recommends a right-sized deliverable set, waits for selection, and never calls a package run-ready while critical blockers remain.",
+      "files": ["evals/fixtures/workshop-notes.md"]
+    },
+    {
+      "id": 8,
+      "expected_skill": "creative-project-control-room",
+      "prompt": "Create one control pack from the attached synthetic campaign brief with references, assets, decisions, owners, approvals, risks, and delivery state.",
+      "expected_output": "Creates a source-of-truth control artifact, preserves proposed, draft, and approved status, records approval evidence, and avoids unauthorized asset generation or external action.",
+      "files": ["evals/fixtures/creative-brief.md"]
+    },
+    {
+      "id": 9,
+      "expected_skill": "session-compounder",
+      "prompt": "Review the attached synthetic interview transcript, tell me which reusable outputs are genuinely worth making, and wait for my selection.",
+      "follow_up_prompt": "Create only the internal decision summary. Do not create a public artifact.",
+      "expected_output": "Preserves provenance, distinguishes decisions from ideas, records reuse permission and audience, waits for selection, and blocks outward reuse when permission is absent.",
+      "files": ["evals/fixtures/session-transcript.md"]
+    },
+    {
+      "id": 10,
+      "expected_skill": "proof-to-product-mapper",
+      "prompt": "The attached synthetic onboarding method worked twice but is not fully proven. Decide what to test next before it becomes a reusable offer.",
+      "expected_output": "Labels the evidence as promising, compares delivery form separately from access and economics, and creates a validation test without presenting the method as proven.",
+      "files": ["evals/fixtures/onboarding-method.md"]
+    }
+  ]
+}

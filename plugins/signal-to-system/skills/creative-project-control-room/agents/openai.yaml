@@ -1,0 +1,7 @@
+interface:
+  display_name: "Creative Project Control Room"
+  short_description: "Controls multi-asset creative projects from one record"
+  default_prompt: "Use $creative-project-control-room to create one source-of-truth control pack for this creative project."
+
+policy:
+  allow_implicit_invocation: true

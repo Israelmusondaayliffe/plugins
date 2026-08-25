@@ -28,6 +28,7 @@ const versions = {
   "operating-graph": "0.2.0",
   "outcome-engine": "1.1.1",
   "proofloop": "0.2.0",
+  "signal-to-system": "0.1.0-beta.1",
   "strategy-room": "0.2.1",
   "video-production-studio": "0.3.0",
   "web-product-studio": "0.4.0",

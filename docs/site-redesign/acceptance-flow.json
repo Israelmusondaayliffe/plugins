@@ -3,14 +3,8 @@
     {
       "id": "F1",
       "name": "See the current public catalog immediately",
-      "preconditions": ["The site is deployed from the current main branch"],
-      "steps": [
-        {
-          "action": "Open the homepage",
-          "expected": "The compact Wada masthead, registry description, 21 public plugins, 160 bundled skills, and catalog controls are visible without a marketing-art hero.",
-          "evidence": "Rendered DOM assertion and matching-viewport screenshot"
-        }
-      ],
+      "preconditions": ["The site is built from the current source"],
+      "steps": [{"action": "Open the homepage", "expected": "The compact Wada masthead, registry description, 22 public plugins, 170 bundled skills, and catalog controls are visible without a marketing-art hero.", "evidence": "Rendered DOM assertion and matching-viewport screenshot"}],
       "status": "passed"
     },
     {
@@ -18,16 +12,8 @@
       "name": "Find a plugin quickly",
       "preconditions": ["The homepage catalog is visible"],
       "steps": [
-        {
-          "action": "Press slash and type loopkit",
-          "expected": "Search receives focus and the registry narrows to LoopKit.",
-          "evidence": "Browser focus and visible result assertions"
-        },
-        {
-          "action": "Press Escape",
-          "expected": "The search clears and the full registry returns.",
-          "evidence": "Browser input value and result count assertions"
-        }
+        {"action": "Press slash and type signal to system", "expected": "Search receives focus and the registry narrows to Signal to System.", "evidence": "Browser focus and visible result assertions"},
+        {"action": "Press Escape", "expected": "The search clears and the full registry returns.", "evidence": "Browser input value and result count assertions"}
       ],
       "status": "passed"
     },
@@ -36,16 +22,8 @@
       "name": "Inspect and copy a verified install action",
       "preconditions": ["The homepage catalog is visible"],
       "steps": [
-        {
-          "action": "Open Harness Engineering and copy its Codex install command",
-          "expected": "The detail record renders and the copy control confirms the exact host-supported command.",
-          "evidence": "Button feedback and command text assertion"
-        },
-        {
-          "action": "Open the plugin record",
-          "expected": "The Harness Engineering detail route renders its skills and package facts.",
-          "evidence": "URL and rendered DOM assertions"
-        }
+        {"action": "Open Signal to System and copy its Codex install command", "expected": "The detail record renders and the copy control confirms the exact Codex command.", "evidence": "Button feedback and command text assertion"},
+        {"action": "Inspect the host actions", "expected": "Only Codex and Claude Code install actions are present because Claude Cowork is not verified for this plugin.", "evidence": "Rendered host-card assertions"}
       ],
       "status": "passed"
     },
@@ -53,13 +31,7 @@
       "id": "F4",
       "name": "Use the registry on a narrow screen",
       "preconditions": ["The browser viewport is 390 by 844"],
-      "steps": [
-        {
-          "action": "Open the homepage and navigate through the catalog controls",
-          "expected": "The masthead, controls, rows, records, and install commands remain readable and touch-usable without horizontal overflow.",
-          "evidence": "Responsive screenshot and overflow assertion"
-        }
-      ],
+      "steps": [{"action": "Open the homepage, Signal detail page, chooser, and one skill guide", "expected": "The masthead, controls, rows, chooser, skill guide, and install commands remain readable and touch-usable without horizontal overflow.", "evidence": "Responsive screenshots and overflow assertions"}],
       "status": "passed"
     },
     {
@@ -67,43 +39,47 @@
       "name": "Switch and persist the reading theme",
       "preconditions": ["Paper is the default theme and local storage is empty"],
       "steps": [
-        {
-          "action": "Switch from Paper to Sumi",
-          "expected": "The control communicates its state and the exact Sumi tokens apply without changing catalog content.",
-          "evidence": "ARIA state, computed token, and screenshot assertions"
-        },
-        {
-          "action": "Reload the page",
-          "expected": "Sumi remains active from device-local storage, then can be returned to Paper.",
-          "evidence": "Local storage and reload assertion"
-        }
+        {"action": "Switch from Paper to Sumi on a Signal route", "expected": "The control communicates its state and the exact Sumi tokens apply without changing content or chooser state.", "evidence": "ARIA state and computed token assertions"},
+        {"action": "Reload the page", "expected": "Sumi remains active from device-local storage, then can be returned to Paper.", "evidence": "Local storage and reload assertion"}
       ],
       "status": "passed"
     },
     {
       "id": "F6",
       "name": "Respect host support boundaries",
-      "preconditions": ["All-host, Codex-only, and Claude-only records exist"],
-      "steps": [
-        {
-          "action": "Open an all-host plugin, Gauntlet Loop, and Gauntlet",
-          "expected": "Each page renders only the installation actions documented for that plugin’s supported hosts.",
-          "evidence": "Rendered host-card and exact-command assertions"
-        }
-      ],
+      "preconditions": ["All-host, Codex-only, Claude-only, and Signal records exist"],
+      "steps": [{"action": "Open representative plugin records", "expected": "Each page renders only the installation actions documented for that plugin's supported hosts.", "evidence": "Rendered host-card and exact-command assertions"}],
       "status": "passed"
     },
     {
       "id": "F7",
       "name": "Preserve the public export and privacy boundary",
-      "preconditions": ["The generated catalog reflects repository main"],
+      "preconditions": ["The generated catalog reflects repository source"],
+      "steps": [{"action": "Check every public record, both exports, and the excluded compatibility route", "expected": "All 22 public plugin routes and both exports work, the deprecated Matt package is absent from every public surface, and its route returns 404.", "evidence": "Rendered-route suite, export scan, and anonymous request assertions"}],
+      "status": "passed"
+    },
+    {
+      "id": "F8",
+      "name": "Choose the right Signal to System skill",
+      "preconditions": ["The Signal to System detail page is visible"],
       "steps": [
-        {
-          "action": "Check every public record, both exports, and the excluded compatibility route",
-          "expected": "All 21 public routes and both exports work, the deprecated Matt package is absent from every public surface, and its route returns 404.",
-          "evidence": "Rendered-route suite, export scan, and anonymous request assertions"
-        }
+        {"action": "Choose the need to find current changes and useful links", "expected": "The chooser recommends Signal Scout, explains the fit, and shows a copyable illustrative request.", "evidence": "Selected-state, recommendation, and prompt assertions"},
+        {"action": "Open the recommended skill guide", "expected": "The Signal Scout page opens and preserves the chooser's recommendation context in plain language.", "evidence": "URL and skill-title assertions"}
       ],
+      "status": "passed"
+    },
+    {
+      "id": "F9",
+      "name": "Inspect every Signal to System skill",
+      "preconditions": ["Signal to System is in the public catalog"],
+      "steps": [{"action": "Open each of the ten skill links", "expected": "Every route renders the correct stage, purpose, fit, boundaries, illustrative request, working method, useful result, and inspectable GitHub source.", "evidence": "Static route and rendered content assertions"}],
+      "status": "passed"
+    },
+    {
+      "id": "F10",
+      "name": "Keep examples honest",
+      "preconditions": ["The Signal detail and skill pages are rendered"],
+      "steps": [{"action": "Inspect public examples and outcomes", "expected": "Prompts are labeled illustrative, useful-result descriptions are expectations rather than proof, and no fabricated testimonial or completed outcome is presented.", "evidence": "Copy scan and rendered page assertions"}],
       "status": "passed"
     }
   ]

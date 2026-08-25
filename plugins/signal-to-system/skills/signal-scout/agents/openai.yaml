@@ -1,0 +1,7 @@
+interface:
+  display_name: "Signal Scout"
+  short_description: "Scans current public signals with cited evidence"
+  default_prompt: "Use $signal-scout to scan the current web for signals around this question and provide direct links."
+
+policy:
+  allow_implicit_invocation: true

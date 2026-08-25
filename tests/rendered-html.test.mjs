@@ -22,6 +22,7 @@ const marketplaceName = generatedExport("marketplaceName");
 const visiblePlugins = generatedExport("plugins");
 const totals = generatedExport("totals");
 const collections = generatedExport("collections");
+const signalToSystemGuides = generatedExport("signalToSystemGuides");
 const hostSupport = JSON.parse(
   readFileSync(new URL("docs/host-support.json", root), "utf8"),
 );
@@ -65,14 +66,15 @@ test("server-renders the depersonalized registry identity and exact public disco
   const text = withoutReactMarkers(html);
   assert.match(text, /Community Agent Plugins/);
   assert.match(text, /\bAP\b/);
-  assert.match(text, /21 public plugins and 160 bundled skills/);
-  assert.match(text, /21<\/strong><span>Public plugins/);
-  assert.match(text, /160<\/strong><span>Bundled skills/);
+  assert.match(text, /22 public plugins and 170 bundled skills/);
+  assert.match(text, /22<\/strong><span>Public plugins/);
+  assert.match(text, /170<\/strong><span>Bundled skills/);
   assert.match(text, /04<\/strong><span>Outcome groups/);
-  assert.match(text, /03<\/strong><span>Verified hosts/);
+  assert.match(text, /03<\/strong><span>Supported hosts/);
   assert.match(text, /Current edition/);
-  assert.match(text, /Gauntlet and Gauntlet Loop/);
-  assert.match(text, /Capability Operator, Agent Ops, and\s+Harness Engineering/);
+  assert.match(text, /Signal to System with ten public skill guides/);
+  assert.match(text, /chooser that starts from the job in front of you/);
+  assert.match(text, /host support and evidence status/);
 
   assert.equal(collections.length, 4);
   for (const collection of [
@@ -102,6 +104,62 @@ test("server-renders the depersonalized registry identity and exact public disco
     );
     assert.match(text, new RegExp(escapeRegex(plugin.description)));
   }
+});
+
+test("renders the Signal to System chooser and its ten skill guides", async () => {
+  const response = await render("/plugins/signal-to-system");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const text = withoutReactMarkers(html);
+  assert.match(text, /Signal to System/);
+  assert.match(text, /What is in front of you/);
+  assert.match(text, /Ten skills · one job at a time/);
+  assert.match(text, /Start with the job, not a hidden router/);
+  assert.match(html, /data-testid="signal-skill-chooser"/);
+  assert.match(html, /data-testid="signal-choice-signal-scout"/);
+  assert.match(html, /href="\/plugins\/signal-to-system\/skills\/signal-scout"/);
+  assert.match(html, /data-install-host="Codex"/);
+  assert.match(html, /data-install-host="Claude Code"/);
+  assert.doesNotMatch(html, /data-install-host="Claude Cowork"/);
+  assert.match(text, /Declared beta hosts/);
+  assert.match(text, /Beta package installation/);
+  assert.match(text, /Install on a declared beta host/);
+  assert.match(html, /codex plugin add signal-to-system@community-agent-plugins/);
+  assert.match(html, /\/plugin install signal-to-system@community-agent-plugins/);
+
+  for (const [skill, guide] of Object.entries(signalToSystemGuides)) {
+    const skillResponse = await render(
+      "/plugins/signal-to-system/skills/" + skill,
+    );
+    assert.equal(skillResponse.status, 200, skill + " guide must render");
+    const skillHtml = await skillResponse.text();
+    const skillText = withoutReactMarkers(skillHtml);
+    const displayName = skill
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" ");
+    assert.match(skillText, new RegExp(escapeRegex(displayName)));
+    assert.match(skillText, /Illustrative request/);
+    assert.match(skillText, /This is a starting request, not a claimed test result/);
+    assert.ok(
+      skillHtml.includes(guide.illustrativePrompt.replaceAll("&", "&amp;")),
+      skill + " request must render",
+    );
+    assert.match(skillText, /Evidence boundary/);
+    assert.match(
+      skillHtml,
+      new RegExp(
+        "github.com/" + owner +
+          "/plugins/blob/main/plugins/signal-to-system/skills/" + skill +
+          "/SKILL.md",
+      ),
+    );
+  }
+
+  const unknownSkill = await render(
+    "/plugins/signal-to-system/skills/not-a-signal-skill",
+  );
+  assert.equal(unknownSkill.status, 404);
 });
 
 test("server-renders a guided public record with source and related navigation", async () => {
@@ -145,7 +203,7 @@ test("server-renders a guided public record with source and related navigation",
   assert.match(html, /aria-live="polite"/);
 });
 
-test("only renders install actions for each verified host", async () => {
+test("only renders install actions for each documented host", async () => {
   const codexOnlyResponse = await render("/plugins/gauntlet-loop");
   assert.equal(codexOnlyResponse.status, 200);
   const codexOnlyHtml = await codexOnlyResponse.text();
@@ -180,9 +238,9 @@ test("only renders install actions for each verified host", async () => {
 });
 
 test("renders all and only the public static plugin routes", async () => {
-  assert.equal(totals.plugins, 21);
-  assert.equal(totals.skills, 160);
-  assert.equal(visiblePlugins.length, 21);
+  assert.equal(totals.plugins, 22);
+  assert.equal(totals.skills, 170);
+  assert.equal(visiblePlugins.length, 22);
 
   for (const plugin of visiblePlugins) {
     const response = await render("/plugins/" + plugin.slug);
@@ -232,7 +290,7 @@ test("serves public discovery exports from the visible catalog", async () => {
   assert.equal(pluginsResponse.headers.get("cache-control"), "no-store");
   const publicCatalog = await pluginsResponse.json();
   assert.deepEqual(publicCatalog.counts, totals);
-  assert.equal(publicCatalog.plugins.length, 21);
+  assert.equal(publicCatalog.plugins.length, 22);
   assert.equal(publicCatalog.collections.length, 4);
   for (const plugin of publicCatalog.plugins) {
     assert.ok(plugin.guide, plugin.slug + " guide must be public");
@@ -244,7 +302,7 @@ test("serves public discovery exports from the visible catalog", async () => {
   assert.equal(llmsResponse.status, 200);
   assert.equal(llmsResponse.headers.get("cache-control"), "no-store");
   const llms = await llmsResponse.text();
-  assert.match(llms, /Inventory: 21 plugins and 160 skills/);
+  assert.match(llms, /Inventory: 22 plugins and 170 skills/);
   assert.match(llms, /Install on Codex:/);
   assert.match(llms, /Install on Claude Code:/);
   assert.match(llms, /Install in Claude Cowork:/);
