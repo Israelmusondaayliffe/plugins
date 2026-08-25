@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "record_type": "release-evidence",
-  "source_commit": "captured-by-saved-site-version",
+  "source_commit": "c4a3ed308444c91336a9d53890451b0f480030bd",
   "build": {"command": "npm test", "passed": true},
   "browser": {"acceptance_flow": "docs/site-redesign/acceptance-flow.json", "passed": true, "independent_evaluator": "fresh-integrated-review-passed"},
-  "sites": {"version": "pending", "deployment_status": "pending", "deployed_url": "https://israel-codex-plugins.israelayliffe.chatgpt.site"},
-  "access": {"audience": "public", "anonymous_test_required": true, "anonymous_test_passed": null},
+  "sites": {"version": 15, "deployment_status": "succeeded", "deployed_url": "https://israel-codex-plugins.israelayliffe.chatgpt.site"},
+  "access": {"audience": "public", "anonymous_test_required": true, "anonymous_test_passed": true},
   "unresolved_non_blocking": []
 }
