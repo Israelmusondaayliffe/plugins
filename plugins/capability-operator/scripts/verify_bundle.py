@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify a personal plugin bundle against its bundle specification."""
+"""Verify a capability plugin bundle against its bundle specification."""
 
 from __future__ import annotations
 
@@ -81,6 +81,7 @@ def main() -> int:
         "assets/route-template.json",
         "assets/routing-registry.json",
         "references/routing-policy.md",
+        "scripts/generate_local_registry.py",
         "scripts/render_routing_reference.py",
         "scripts/render_portfolio_ledger.py",
         "scripts/route_request.py",

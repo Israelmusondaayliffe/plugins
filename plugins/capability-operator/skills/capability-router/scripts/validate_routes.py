@@ -60,6 +60,10 @@ def validate_registry(registry: Any, inventory_root: Path | None = None) -> list
     errors: list[str] = []
     if not isinstance(registry, dict):
         return ["registry root must be an object"]
+    if "needs_semantic_review" not in registry:
+        errors.append("needs_semantic_review must be present")
+    elif not isinstance(registry["needs_semantic_review"], bool):
+        errors.append("needs_semantic_review must be a boolean")
 
     required_plugins = string_list(registry.get("required_plugins"), "required_plugins", errors, allow_empty=False)
     precedence = string_list(registry.get("routing_precedence"), "routing_precedence", errors, allow_empty=False)
@@ -151,8 +155,8 @@ def validate_registry(registry: Any, inventory_root: Path | None = None) -> list
         errors.append(f"owned skill count is {len(all_owned)}, expected {expected_count}")
 
     collisions = registry.get("collision_rules")
-    if not isinstance(collisions, list) or len(collisions) != 9:
-        errors.append("collision_rules must contain exactly nine cases")
+    if not isinstance(collisions, list):
+        errors.append("collision_rules must be a list")
         collisions = []
     seen_collision_ids: set[str] = set()
     for rule in collisions:

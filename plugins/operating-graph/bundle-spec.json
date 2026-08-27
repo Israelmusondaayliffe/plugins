@@ -1,6 +1,6 @@
 {
   "plugin": "operating-graph",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "explicit_only": true,
   "skills": [
     "graph-debug",

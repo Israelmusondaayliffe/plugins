@@ -18,7 +18,7 @@ Identify the requested operation before touching a run:
 - Diagnose corruption, deadlock, or failure: use `$graph-debug`.
 - Judge the final outcome: use `$graph-verify`.
 
-Explain the boundary when relevant: local loops correct work inside one node, while Operating Graph coordinates and reorganizes work across nodes. Operating Graph owns topology and scheduling even when a node uses LoopKit.
+Explain the boundary when relevant: local loops correct work inside one node, while Operating Graph coordinates and reorganizes work across nodes. Operating Graph owns topology and scheduling even when a node uses an optional local loop capability. It does not require that companion.
 
 Operating Graph is an agent-workflow graph, not a knowledge graph. It may consume knowledge artifacts, but knowledge-relationship indexing belongs to its source-owning capability.
 

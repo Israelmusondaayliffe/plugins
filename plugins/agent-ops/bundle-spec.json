@@ -1,6 +1,6 @@
 {
   "plugin": "agent-ops",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "skills": [
     "agent-builder",
     "agent-ops-router",
@@ -24,6 +24,7 @@
     "fable-advisor"
   ],
   "companions": [
+    "loopkit",
     "outcome-engine",
     "proofloop",
     "superpowers",
@@ -31,8 +32,8 @@
   ],
   "guardrails": [
     "Do not run autonomous work without authority, evidence, and stop conditions.",
-    "Generic Goals and loops on Claude Code, Claude Cowork, and Codex are owned by LoopKit.",
-    "General idea-to-result work remains owned by Outcome Engine."
+    "All sibling companions are optional; Agent Ops keeps complete local agent design, audit, and compatibility fallback capability when they are absent.",
+    "LoopKit may handle generic Goals and loops when installed, and Outcome Engine may handle general idea-to-result work when installed."
   ],
   "routing_cases": [
     {

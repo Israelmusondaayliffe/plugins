@@ -1015,7 +1015,7 @@ export const plugins = [
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
     "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1042,7 +1042,7 @@ export const plugins = [
       },
       {
         "name": "capability-router",
-        "description": "Routes unclear, multi-stage, or cross-plugin requests on Claude Code, Claude Cowork, or Codex to one primary personal plugin or owned skill, with bounded companions, handoffs, exclusions, load order, and verification needs. Use when plugin versus skill ownership is unclear, several personal plugins overlap, a request spans capability domains, or the harness needs a deterministic routing decision. Explicit user selections still win, and focused requests should call the narrow owned skill directly."
+        "description": "Routes unclear, multi-stage, or cross-plugin requests on Claude Code, Claude Cowork, or Codex to one primary local plugin or owned skill, with bounded companions, handoffs, exclusions, load order, and verification needs. Use when plugin versus skill ownership is unclear, several local plugins overlap, a request spans capability domains, or the harness needs a deterministic routing decision. Explicit user selections still win, and focused requests should call the narrow owned skill directly."
       },
       {
         "name": "fresh-task-discovery-verifier",
@@ -1077,8 +1077,8 @@ export const plugins = [
       "skills": 10,
       "assets": 10,
       "references": 16,
-      "scripts": 20,
-      "files": 73
+      "scripts": 21,
+      "files": 74
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1396,9 +1396,9 @@ export const plugins = [
     "slug": "agent-ops",
     "name": "Agent Ops",
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
-    "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. Generic Goals and loops on any host are owned by LoopKit.",
+    "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. LoopKit is an optional companion for generic Goals and loops; Agent Ops keeps a bundled local fallback when it is absent.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1421,7 +1421,7 @@ export const plugins = [
       },
       {
         "name": "agent-ops-router",
-        "description": "Route reusable agent-system requests among agent design and agent-system audit. Use when a user asks to build a reusable agent, define an agent tool contract, choose an agent architecture, or audit an agent system's authority and stops. Generic Goals, bounded loops, resume, verification, and schedules, on Claude Code, Claude Cowork, or Codex, route to LoopKit."
+        "description": "Route reusable agent-system requests among agent design and agent-system audit. Use when a user asks to build a reusable agent, define an agent tool contract, choose an agent architecture, or audit an agent system's authority and stops. Generic Goal and loop work can use LoopKit as an optional companion or the bundled local fallback."
       },
       {
         "name": "agent-system-audit",
@@ -1437,15 +1437,15 @@ export const plugins = [
       },
       {
         "name": "goal-runner",
-        "description": "Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Redirect Goal contract, execution, verification, and resume work, on Claude Code, Claude Cowork, or Codex, to the matching LoopKit skill. Generic goal or completion requests should trigger LoopKit directly."
+        "description": "Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Use LoopKit as an optional companion when available; otherwise use this skill's bundled local contract, execution, verification, and resume tools. Generic requests do not activate this historical name."
       },
       {
         "name": "loop-goal-engineer",
-        "description": "Explicit-only compatibility shim for the historical Loop Goal Engineer name. Use only when the user explicitly says loop-goal-engineer or Loop Goal Engineer. Redirect loop design, scheduling, and diagnosis, on Claude Code, Claude Cowork, or Codex, to LoopKit. Generic loop, Goal, recurring-task, and schedule requests should trigger LoopKit directly."
+        "description": "Explicit-only compatibility shim for the historical Loop Goal Engineer name. Use only when the user explicitly says loop-goal-engineer or Loop Goal Engineer. Use LoopKit as an optional companion when available; otherwise use this skill's bundled local design, scheduling, and diagnosis tools. Generic requests do not activate this historical name."
       },
       {
         "name": "loopy",
-        "description": "Explicit-only compatibility shim for the historical Loopy name. Use only when the user explicitly says Loopy or asks for the Loop Library workflow. Redirect generic loop design, run, verification, resume, and diagnosis, on Claude Code, Claude Cowork, or Codex, to LoopKit. Retain the bundled legacy references only for an explicitly requested Loop Library discovery or publication task."
+        "description": "Explicit-only compatibility shim for the historical Loopy name. Use only when the user explicitly says Loopy or asks for the Loop Library workflow. Use LoopKit as an optional companion when available; otherwise use the bundled local design, run, verification, resume, diagnosis, and Loop Library workflows. Generic requests do not activate this historical name."
       },
       {
         "name": "sol-advisor",
@@ -1457,7 +1457,7 @@ export const plugins = [
       "assets": 17,
       "references": 19,
       "scripts": 11,
-      "files": 84
+      "files": 85
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -3202,7 +3202,7 @@ export const plugins = [
     "shortDescription": "Bounded loops with durable evidence on Claude Code, Cowork, and Codex.",
     "longDescription": "LoopKit turns repeatable work into bounded loops on Claude Code, Claude Cowork, and Codex. It creates durable contracts, runs evidence-gated iterations, restores compact checkpoints, prepares scheduled tasks on the host scheduling surface, and diagnoses stalled or unsafe runs.",
     "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3612,7 +3612,7 @@ export const plugins = [
     "shortDescription": "Engineer and run adaptive agent organizations.",
     "longDescription": "Transforms complex goals into typed, executable agent graphs with shared state, evidence, verification, bounded runtime restructuring, and human authority controls.",
     "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -4377,7 +4377,7 @@ export const totals = {
   "skills": 171,
   "assets": 328,
   "references": 465,
-  "scripts": 402,
-  "files": 1897
+  "scripts": 403,
+  "files": 1899
 } as const;
 export type Plugin = (typeof plugins)[number];

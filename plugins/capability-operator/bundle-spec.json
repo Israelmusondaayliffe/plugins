@@ -1,6 +1,6 @@
 {
   "plugin": "capability-operator",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "skills": [
     "capability-inventory",
     "capability-router",
@@ -20,7 +20,8 @@
     "plugin-portfolio-manager",
     "skill-overlap-audit"
   ],
-  "companions": [
+  "companions": [],
+  "optional_companion_examples": [
     "plugin-creator",
     "skill-creator",
     "plugin-eval",

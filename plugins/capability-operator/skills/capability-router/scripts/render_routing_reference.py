@@ -11,25 +11,38 @@ from validate_routes import load_json, validate_registry
 
 def front_door(record: dict) -> str:
     value = record.get("front_door")
-    return f"`{record['plugin']}:{value}`" if value else "Explicit ProofLoop skill only"
+    return f"`{record['plugin']}:{value}`" if value else "Explicit skill selection only"
 
 
 def render(registry: dict) -> str:
     lines = [
         "# Capability Routing Reference",
         "",
-        "> Generated from `capability-operator:capability-router/assets/routing-registry.json`. Edit the registry, then regenerate this file.",
+        "> Generated from the selected capability registry. Edit the registry, validate it, then regenerate this file.",
         "",
         f"Snapshot date: {registry['generated_on']}",
         "",
         "## Routing precedence",
         "",
     ]
+    if registry.get("needs_semantic_review"):
+        lines[6:6] = [
+            "Status: generated starting point. Review semantic fields and set `needs_semantic_review` to `false` before implicit routing.",
+            "",
+        ]
+    operator = next(
+        (record for record in registry["plugins"] if record["plugin"] == "capability-operator"),
+        None,
+    )
+    if operator and operator.get("front_door"):
+        cross_plugin_label = f"Unclear or cross-plugin ownership uses `capability-operator:{operator['front_door']}`."
+    else:
+        cross_plugin_label = "Unclear or cross-plugin ownership requires an explicit selection."
     labels = {
         "explicit-selection": "An explicit plugin or skill selection wins.",
         "focused-owned-skill": "A narrow action calls the owned skill directly.",
         "plugin-front-door": "A multi-stage request uses the plugin front door.",
-        "cross-plugin-router": "Unclear or cross-plugin ownership uses `capability-operator:capability-router`.",
+        "cross-plugin-router": cross_plugin_label,
         "namespaced-before-loose": "Prefer namespaced plugin skills; keep loose mirrors as explicit or visibility fallbacks.",
         "companions-at-handoff": "Load companions only at documented handoff points.",
         "outcome-contract-preserved": "A selected plugin controls method, while the parent preserves the user's outcome and definition of done.",
@@ -62,7 +75,7 @@ def render(registry: dict) -> str:
         "",
         "## Lifecycle and fallback",
         "",
-        "All listed personal plugins are active. Prefer their namespaced skills when visible in the task. Use an identical loose mirror only after an explicit selection or a verified plugin-visibility failure.",
+        "Use each lifecycle field as recorded. Prefer namespaced skills when visible in the task. Use an identical loose mirror only after an explicit selection or a verified plugin-visibility failure.",
         "",
     ])
     return "\n".join(lines)

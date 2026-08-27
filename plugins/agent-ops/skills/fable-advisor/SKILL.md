@@ -13,7 +13,7 @@ It is unrelated to Claude Code's built-in "advisor" feature (`advisorModel`, `--
 
 Require an explicit request: "Use Fable Advisor" or an equivalent imperative such as "run this as a Fable Advisor multi-session run." Quoted, explanatory, negated, conditional, and incidental references are not activation. Complexity, model names, agent language, or a request that merely has several tasks never activate it. A later same-request revocation ("but don't activate it", an immediate "no") cancels activation. Record the quoted imperative in the RunManifest as the activation record.
 
-If activation is absent or revoked, use the normal routing owners (agent-ops-router, loopkit, outcome-engine, or plain in-session work).
+If activation is absent or revoked, use agent-ops-router or plain in-session work. LoopKit and Outcome Engine are optional companion routers when installed.
 
 ## Roles and authority
 
@@ -88,7 +88,7 @@ Fail closed on: implicit activation, model or effort mismatch, missing attestati
 ## Collisions
 
 - Gauntlet: while a gauntlet run is active, gauntlet owns state, budget, approval, integration, final answer, and terminal verdict. Fable Advisor activates inside it only if the user explicitly composes them, and then supplies only bounded packets and workstream criticism.
-- Generic goals, loops, schedules: loopkit owns them. Agent design and audit: agent-ops-router owns them.
+- Generic goals, loops, schedules: use the optional LoopKit companion when installed, or the Agent Ops local fallback after explicit Agent Ops selection. Agent design and audit: agent-ops-router owns them.
 - Dynamic workflows / ultracode: separate opt-in surfaces; Fable Advisor neither requires nor implies them.
 
 ## Completion

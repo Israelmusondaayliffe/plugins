@@ -12,7 +12,7 @@ LoopKit is a dual-host plugin for bounded, resumable work on Claude Code, Claude
 - `loop-scheduler`: scheduled-task preparation and first-run checks
 - `loop-doctor`: diagnosis for repetition, drift, weak verification, and unsafe authority
 
-State is host-scoped. Resolve the host home first (`~/.claude` on Claude Code / Cowork, `${CODEX_HOME:-~/.codex}` on Codex), then store runs under `<host-home>/loopkit/runs/<workspace-hash>/`. LoopKit does not depend on external agent CLIs, MCP servers, or network access.
+State is host-scoped. Resolve the host home first (`~/.claude` on Claude Code / Cowork, `${CODEX_HOME:-~/.codex}` on Codex), then store runs under `<host-home>/loopkit/runs/<workspace-hash>/`. LoopKit does not depend on sibling plugins, external agent CLIs, MCP servers, or network access. Optional compatibility shims may hand work to LoopKit, but its local contracts, state, verification, resume, scheduling, and diagnosis remain complete when they are absent.
 
 ## Install
 

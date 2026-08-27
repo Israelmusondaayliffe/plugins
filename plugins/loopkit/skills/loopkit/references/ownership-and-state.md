@@ -3,9 +3,9 @@
 ## Ownership
 
 - LoopKit owns generic loop and goal contracts (Codex Goals or Claude Code `/goal`), execution, receipts, resume, scheduling, and runtime diagnosis on Claude Code, Claude Cowork, and Codex.
-- Agent Ops owns reusable agent design, agent-system routing, and agent-system audit.
-- Outcome Engine owns general idea-to-result shaping when no feedback loop is needed.
-- ProofLoop remains explicit-only.
+- Optional agent-design companions remain responsible for their own reusable-agent contracts and routing.
+- General idea-to-result workflows remain outside LoopKit when no feedback loop is needed.
+- Optional learning protocols remain outside LoopKit and require explicit selection.
 
 ## State lookup
 

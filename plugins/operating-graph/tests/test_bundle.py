@@ -30,6 +30,11 @@ class BundleTests(unittest.TestCase):
             self.assertIn("allow_implicit_invocation: false", metadata.read_text(encoding="utf-8"))
             self.assertIn("explicit-only", skill.read_text(encoding="utf-8"))
 
+    def test_front_door_has_no_named_loop_plugin_dependency(self) -> None:
+        front_door = (ROOT / "skills/graph-engineering/SKILL.md").read_text(encoding="utf-8")
+        self.assertNotIn("LoopKit", front_door)
+        self.assertIn("does not require that companion", front_door)
+
 
 if __name__ == "__main__":
     unittest.main()

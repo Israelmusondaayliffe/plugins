@@ -10,9 +10,9 @@ const claude = JSON.parse(readFileSync(claudePath, "utf8"));
 const repositoryOwner = ["Is", "rael", "musonda", "ayliffe"].join("");
 const ownerProfile = `https://github.com/${repositoryOwner}`;
 const versions = {
-  "agent-ops": "0.5.1",
+  "agent-ops": "0.5.2",
   "brand-world-studio": "0.2.0",
-  "capability-operator": "0.5.0",
+  "capability-operator": "0.6.0",
   "citizen-forge": "1.1.0",
   "continuity-vault": "0.2.1",
   "data-storytelling-studio": "0.2.0",
@@ -21,11 +21,11 @@ const versions = {
   "gauntlet-loop": "1.2.0",
   "harness-engineering": "2.7.0",
   "knowledge-work-superpowers": "0.2.1",
-  "loopkit": "0.3.0",
+  "loopkit": "0.3.1",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",
   "model-evaluation-lab": "0.2.0",
   "model-prompt-lab": "0.2.0",
-  "operating-graph": "0.2.0",
+  "operating-graph": "0.2.1",
   "outcome-engine": "1.1.1",
   "proofloop": "0.2.0",
   "signal-to-system": "0.1.0-beta.1",

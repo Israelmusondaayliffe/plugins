@@ -65,6 +65,27 @@ class StateRootTests(unittest.TestCase):
             self.assertEqual(state_root(), Path("/tmp/codex-home/loopkit").resolve())
 
 
+class StandaloneContractTests(unittest.TestCase):
+    def test_plugin_declares_complete_local_operation_without_siblings(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        compatibility = (ROOT / "docs/compatibility.md").read_text(encoding="utf-8")
+        router = (ROOT / "skills/loopkit/SKILL.md").read_text(encoding="utf-8")
+        ownership = (ROOT / "skills/loopkit/references/ownership-and-state.md").read_text(encoding="utf-8")
+        bundle = json.loads((ROOT / "bundle-spec.json").read_text(encoding="utf-8"))
+        evals = (ROOT / "evals/evals.json").read_text(encoding="utf-8")
+        self.assertIn("does not depend on sibling plugins", readme)
+        self.assertIn("remain complete when they are absent", readme)
+        self.assertIn("does not require Agent Ops", compatibility)
+        self.assertNotIn("scheduled for removal", compatibility)
+        self.assertEqual(bundle["compatibility"]["agent_ops"], "optional")
+        self.assertNotIn("remove_in", bundle["compatibility"])
+        self.assertNotIn("route to Agent Ops", router)
+        self.assertIn("When none is available", router)
+        self.assertNotIn("ProofLoop", ownership)
+        self.assertNotIn("Routes to Agent Ops", evals)
+        self.assertIn("when that optional companion is available", evals)
+
+
 class LoopKitCoreTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()

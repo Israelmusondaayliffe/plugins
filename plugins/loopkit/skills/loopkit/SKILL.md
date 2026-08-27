@@ -25,7 +25,7 @@ Routes:
 - Prepare or operate a scheduled task: load `agents/agent-schedule.md`, then `loop-scheduler`.
 - Diagnose drift, repetition, unsafe authority, or false completion: load `agents/agent-diagnose.md`, then `loop-doctor`.
 
-If the user asks for a reusable agent definition or an agent-system audit, route to Agent Ops. If the user explicitly names `goal-runner`, `loop-goal-engineer`, or `loopy`, their Agent Ops compatibility shims may be used for the 0.1.x transition window.
+If the user asks for a reusable agent definition or an agent-system audit, use an installed agent-design companion only when the user selected it or its documented handoff applies. When none is available, state that the request is outside LoopKit and continue only with any requested loop work. If the user explicitly names `goal-runner`, `loop-goal-engineer`, or `loopy`, an installed compatibility shim may be used during its transition window.
 
 ## Handoff gates
 
