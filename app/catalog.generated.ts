@@ -326,7 +326,7 @@ export const plugins = [
     "shortDescription": "Evidence-first workflows for research, analysis, writing, and delivery",
     "longDescription": "Frame substantial knowledge work, plan it, research systematically, test claims against evidence, draft from sources, review the result, and verify it before delivery.",
     "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -526,7 +526,7 @@ export const plugins = [
     "shortDescription": "Turn unclear goals into verified results.",
     "longDescription": "Clarify decisions, write durable briefs, create independent action slices, execute from evidence, and improve the systems behind the work.",
     "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -2190,7 +2190,7 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2233,7 +2233,7 @@ export const plugins = [
       },
       {
         "name": "strategy-room-router",
-        "description": "Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and hands execution to Outcome Engine only after the recommendation is accepted."
+        "description": "Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and produces a self-contained handoff when no optional execution companion is available."
       }
     ],
     "counts": {

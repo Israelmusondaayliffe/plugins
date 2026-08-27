@@ -45,10 +45,15 @@
 - "Run the whole Outcome Engine on this launch."
 - "Help me think this through, brief it, break it down, and complete the first slice."
 
+## Durable handoff
+
+- "Prepare this action slice so another task can continue without this conversation."
+- "Write a self-contained handoff for the next agent inside the approved output folder."
+
 ## Near misses
 
 - A direct request to edit one sentence should use a writing skill.
 - A direct request to look up one fact should use research or web tools.
 - A direct request to fix a known software bug should use diagnosis and implementation skills.
 - A request to send, publish, assign, purchase, or delete needs explicit authorization at that action boundary.
-- A request for a durable fresh-task handoff belongs to Continuity Vault.
+- A request for a durable fresh-task handoff can use Continuity Vault when that optional companion is installed. When it is absent, Outcome Engine writes a self-contained handoff artifact inside the user-approved output root and does not rely on conversation history.

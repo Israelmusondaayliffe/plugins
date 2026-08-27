@@ -108,4 +108,14 @@ Ask:
 
 ## Handoff
 
-When the source ledger is ready, load `knowledge-work-superpowers:evidence-first-analysis` to test the claims. For independent question groups and permitted multi-agent work, load `knowledge-work-superpowers:dispatching-parallel-research`. Route a durable fresh-task research handoff to Continuity Vault.
+When the source ledger is ready, load `knowledge-work-superpowers:evidence-first-analysis` to test the claims. For independent question groups and permitted multi-agent work, load `knowledge-work-superpowers:dispatching-parallel-research`.
+
+Continuity Vault is an optional companion for a durable fresh-task research handoff. Use it only when it is installed and visible in the current task. If it is absent, write `research-handoff.md` inside the active user-approved output root. Do not block the handoff or rely on conversation history.
+
+The local handoff must be self-contained and include:
+
+- The complete current source ledger, copied without changing its contents.
+- Open questions and unresolved conflicts.
+- Research boundaries, exclusions, and the stop condition.
+- The next action for the receiving task.
+- The current verification state, including what was checked and what remains unverified.

@@ -62,6 +62,80 @@ def write_temp(content: str) -> Path:
 
 
 class ValidatorTests(unittest.TestCase):
+    def test_manifest_versions_match_release(self):
+        versions = {
+            json.loads(
+                (PLUGIN_ROOT / ".claude-plugin" / "plugin.json").read_text(
+                    encoding="utf-8"
+                )
+            )["version"],
+            json.loads(
+                (PLUGIN_ROOT / ".codex-plugin" / "plugin.json").read_text(
+                    encoding="utf-8"
+                )
+            )["version"],
+        }
+        self.assertEqual(versions, {"1.1.2"})
+
+    def test_continuity_vault_is_optional_with_local_handoff(self):
+        front_door = (
+            PLUGIN_ROOT / "skills" / "outcome-engine" / "SKILL.md"
+        ).read_text(encoding="utf-8")
+        routing = (
+            PLUGIN_ROOT
+            / "skills"
+            / "outcome-engine"
+            / "references"
+            / "routing-examples.md"
+        ).read_text(encoding="utf-8")
+        slices = (
+            PLUGIN_ROOT / "skills" / "to-action-slices" / "SKILL.md"
+        ).read_text(encoding="utf-8")
+
+        for phrase in (
+            "Continuity Vault as an optional companion",
+            "When Continuity Vault is absent",
+            "self-contained handoff artifact",
+            "user-approved output root",
+            "source artifact paths",
+            "settled decisions",
+            "open questions",
+            "scope boundaries",
+            "proof and verification state",
+            "exact next action",
+            "Do not rely on conversation history",
+        ):
+            self.assertIn(phrase, front_door)
+
+        for phrase in (
+            "optional companion is installed",
+            "self-contained handoff artifact",
+            "user-approved output root",
+            "does not rely on conversation history",
+        ):
+            self.assertIn(phrase, routing)
+
+        for phrase in (
+            "When Continuity Vault is absent",
+            "self-contained handoff artifact",
+            "user-approved output root",
+            "slice ID and acceptance checks",
+            "blockers and dependencies",
+            "proof and verification state",
+            "exact next action",
+            "Do not rely on conversation history",
+        ):
+            self.assertIn(phrase, slices)
+
+        self.assertNotIn(
+            "Route a durable cross-task or delegated-slice handoff to Continuity Vault",
+            front_door,
+        )
+        self.assertNotIn(
+            "belongs to Continuity Vault",
+            routing,
+        )
+
     def test_brief_validator_accepts_complete_brief(self):
         path = write_temp(VALID_BRIEF)
         try:

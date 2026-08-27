@@ -14,8 +14,8 @@ Make uncertainty legible without pretending the full route is known. The deliver
 - Separate fog, which is not yet understood, from frontier, which is understood enough to decide next.
 - Map dependencies between decisions. A blocking edge is a decision whose resolution makes one or more downstream decisions possible.
 - Resolve one blocking decision per working context. Do not spread attention across the whole map.
-- Keep the map in a local file when the user authorizes file output. External tracker updates require separate authority.
-- Stop before execution. Hand accepted decisions to Outcome Engine.
+- Keep the map in a local file when the user authorizes file output. Use `<approved-output-root>/strategy-room/decision-map.md`. External tracker updates require separate authority.
+- Stop before execution. Use an execution companion only when it is available and explicitly selected.
 
 ## Workflow
 
@@ -36,4 +36,6 @@ Use `assets/decision-map-template.md`. Keep each node compact: stable ID and pre
 
 Return the destination, current fog, frontier, next blocking edge, why it blocks progress, the decision just settled if any, and the recommended next action. The result is complete when another fresh context can locate the map and take up exactly one next decision without rereading the full conversation.
 
-Route a settled destination that needs a brief or action slices to Outcome Engine. Route durable cross-task continuation to Continuity Vault.
+When an execution companion is available and explicitly selected, route a settled destination after separate execution authorization. Otherwise create `<approved-output-root>/strategy-room/execution-handoff.md` with the accepted decision, rationale, assumptions, evidence, risks, conditions, acceptance checks, next actions, and owner, then stop before execution.
+
+Continuity Vault is optional. When it is absent, keep the durable decision map at `<approved-output-root>/strategy-room/decision-map.md` using `assets/decision-map-template.md`. If no output root is authorized, ask for one before writing and keep the complete map in the current task until approval.

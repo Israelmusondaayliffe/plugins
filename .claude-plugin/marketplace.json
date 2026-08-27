@@ -92,7 +92,7 @@
       "name": "knowledge-work-superpowers",
       "source": "./plugins/knowledge-work-superpowers",
       "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -146,7 +146,7 @@
       "name": "outcome-engine",
       "source": "./plugins/outcome-engine",
       "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -173,7 +173,7 @@
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
