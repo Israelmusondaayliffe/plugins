@@ -4,7 +4,7 @@
       "id": "F1",
       "name": "See the current public catalog immediately",
       "preconditions": ["The site is built from the current source"],
-      "steps": [{"action": "Open the homepage", "expected": "The compact Wada masthead, registry description, 22 public plugins, 170 bundled skills, and catalog controls are visible without a marketing-art hero.", "evidence": "Rendered DOM assertion and matching-viewport screenshot"}],
+      "steps": [{"action": "Open the homepage", "expected": "The compact Wada masthead, registry description, 22 public plugins, 171 bundled skills, and catalog controls are visible without a marketing-art hero.", "evidence": "Rendered DOM assertion and matching-viewport screenshot"}],
       "status": "passed"
     },
     {

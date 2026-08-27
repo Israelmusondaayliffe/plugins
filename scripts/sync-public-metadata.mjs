@@ -19,7 +19,7 @@ const versions = {
   "founder-revenue-engine": "0.2.0",
   "gauntlet": "0.2.0",
   "gauntlet-loop": "1.2.0",
-  "harness-engineering": "2.6.0",
+  "harness-engineering": "2.7.0",
   "knowledge-work-superpowers": "0.2.1",
   "loopkit": "0.3.0",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",

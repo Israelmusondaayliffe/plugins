@@ -3388,7 +3388,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.6.0",
+    "version": "2.7.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3459,14 +3459,18 @@ export const plugins = [
       {
         "name": "skill-engineer",
         "description": "Create or upgrade a missing skill identified during harness design for Claude Code, Claude Cowork, or Codex, with evidence that the skill fixes a repeated failure. Use when the harness plan requires a new reusable workflow, validator, script, reference set, or asset bundle that is not already supplied by an installed skill or plugin."
+      },
+      {
+        "name": "unslop-harness-repair",
+        "description": "Repair writing-quality drift in an AI operating harness or explicitly approved plugins through a read-only audit, hash freeze, user-approved bounded edits, protected-material checks, residual reconciliation, integrated review, and release proof. Use when the user affirmatively requests an Unslop harness repair or when Harness Maintainer loads this specialist for prose-changing maintenance. Do not use for ordinary document editing, explanation-only requests, cache cleanup, authentication, version-only changes, binaries, or code-only maintenance."
       }
     ],
     "counts": {
-      "skills": 13,
+      "skills": 14,
       "assets": 7,
-      "references": 12,
-      "scripts": 6,
-      "files": 66
+      "references": 31,
+      "scripts": 11,
+      "files": 93
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -4370,10 +4374,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 22,
-  "skills": 170,
+  "skills": 171,
   "assets": 328,
-  "references": 446,
-  "scripts": 397,
-  "files": 1870
+  "references": 465,
+  "scripts": 402,
+  "files": 1897
 } as const;
 export type Plugin = (typeof plugins)[number];

@@ -16,6 +16,8 @@ It does not copy one person's setup. It resolves the target platform, interviews
 
 The `harness-engineering` front door routes an end-to-end request through those phases.
 
+`unslop-harness-repair` is the explicit-only specialist for prose-changing harness and plugin maintenance. It bundles the complete Unslop engine, so Writing Quality is not a runtime dependency. Harness Engineering controls its audit, freeze, approval, bounded repair, integrated review, and release proof.
+
 ## Context doctrine
 
 On Claude 5 generation models the common defect in an inherited harness is over-constraint rather than absence. Anthropic removed over 80 percent of Claude Code's system prompt for Opus 5 and Fable 5 with no measurable loss on their coding evaluations. `references/claude5-context-doctrine.md` carries the rules that follow from that, and `context-doctor` applies them as a read-only audit with a deterministic scanner at `skills/context-doctor/scripts/context_scan.py`. The doctrine separates model compensation, which is removable, from user policy and taste, which is not.
@@ -78,6 +80,7 @@ See `references/frontier-first-prompt-governance.md` for the complete subtractio
 - `harness-runner`
 - `harness-verifier`
 - `harness-maintainer`
+- `unslop-harness-repair` (explicit-only repair for harness and approved-plugin prose)
 
 ## Local tooling
 

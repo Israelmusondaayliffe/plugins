@@ -6,7 +6,7 @@
     "job": "registry",
     "audience": "Codex, Claude Code, and Claude Cowork users evaluating the public community plugin marketplace.",
     "use_moment": "When a visitor needs to browse, compare, inspect, or install a public plugin from the current main branch.",
-    "outcome": "A working-first Wada registry with 22 public plugins, 170 public skills, a ten-skill Signal to System chooser, exact host actions, and no exposure of the deprecated compatibility package."
+    "outcome": "A working-first Wada registry with 22 public plugins, 171 public skills, a ten-skill Signal to System chooser, exact host actions, and no exposure of the deprecated compatibility package."
   },
   "content": {
     "spine": ["Registry description and totals", "Search and filters", "Public plugin records", "Signal to System chooser", "Ten skill guides", "Host-specific installation", "Machine exports"],

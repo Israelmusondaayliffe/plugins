@@ -24,6 +24,7 @@ EXPECTED_SKILLS = {
     "model-prompt-engineer",
     "plugin-engineer",
     "skill-engineer",
+    "unslop-harness-repair",
 }
 TEXT_SUFFIXES = {".md", ".json", ".yaml", ".yml", ".py"}
 VERSION_PATTERN = re.compile(r"^\d+\.\d+\.\d+$")
@@ -85,11 +86,16 @@ def main() -> int:
             markers = ("[" + "TODO:", "__" + "REPLACE_ME__")
             if any(marker in text for marker in markers):
                 fail(f"placeholder remains in {path}")
-            if "\u2014" in text:
-                fail(f"em dash remains in {path}")
             personal_path = "/Users/" + "israelayliffe"
             if personal_path in text:
                 fail(f"personal absolute path remains in {path}")
+            relative = path.relative_to(root)
+            bundled_unslop_source = (
+                relative.parts[:4] == ("skills", "unslop-harness-repair", "references", "unslop-engine")
+                or relative.parts[:4] == ("skills", "unslop-harness-repair", "scripts", "unslop-engine")
+            )
+            if "\u2014" in text and not bundled_unslop_source:
+                fail(f"em dash remains in {path}")
 
     required = [
         root / "README.md",
@@ -98,12 +104,29 @@ def main() -> int:
         root / "SECURITY.md",
         root / "TERMS.md",
         root / "scripts" / "harnessctl.py",
+        root / "skills" / "unslop-harness-repair" / "scripts" / "unslop_repair.py",
+        root / "skills" / "unslop-harness-repair" / "references" / "repair-contract.md",
+        root / "skills" / "unslop-harness-repair" / "references" / "unslop-engine-contract.md",
+        root / "skills" / "unslop-harness-repair" / "references" / "unslop-engine-manifest.json",
+        root / "skills" / "unslop-harness-repair" / "references" / "worker-contract.md",
+        root / "skills" / "unslop-harness-repair" / "scripts" / "unslop-engine" / "emdash_replacer.py",
+        root / "skills" / "unslop-harness-repair" / "scripts" / "unslop-engine" / "protected_material_validator.py",
+        root / "skills" / "unslop-harness-repair" / "scripts" / "unslop-engine" / "quality_validator.py",
+        root / "skills" / "unslop-harness-repair" / "scripts" / "unslop-engine" / "voice_profiler.py",
         root / "schemas" / "profile.schema.json",
         root / "schemas" / "operations.schema.json",
     ]
     missing = [str(path) for path in required if not path.is_file()]
     if missing:
         fail(f"required files missing: {missing}")
+    engine_check = subprocess.run(
+        [sys.executable, str(root / "skills/unslop-harness-repair/scripts/unslop_repair.py"), "engine-check"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if engine_check.returncode != 0:
+        fail(f"bundled Unslop engine check failed: {engine_check.stdout}{engine_check.stderr}")
     print(json.dumps({"plugin": "harness-engineering", "version": manifest["version"], "skills_validated": validations}, indent=2))
     return 0
 
