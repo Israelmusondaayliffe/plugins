@@ -22,7 +22,7 @@ This document provides expanded frameworks for each analysis lens in the Assumpt
 - What data quality, structure, or availability is assumed?
 
 **Market/Domain Assumptions**
-- What competitive landscape or market conditions are assumed?
+- What competitive field or market conditions are assumed?
 - What regulatory or legal environment is assumed?
 - What timing or urgency is assumed?
 
@@ -93,7 +93,7 @@ Classify uncertainties by type:
 
 **Optimistic Viewpoints**
 - What breakthrough could accelerate this 10x?
-- What unexpected synergy might emerge?
+- What unexpected combined benefit might emerge?
 - What tailwind could amplify impact?
 - What is the best-case scenario if all stars align?
 
@@ -280,14 +280,14 @@ For AI prompts, use this specialized framework:
 ### Model-Specific Considerations
 
 **Claude Sonnet 4.5**
-- Leverage extended context window (200K tokens) for comprehensive examples
+- Use the extended context window (200K tokens) for complete examples
 - Use structured thinking prompts for complex reasoning
 - Specify output format preferences (markdown, code blocks, artifacts)
-- Utilize tool-calling for computational tasks
+- Use tool-calling for computational tasks
 
 **GPT-5** (anticipated capabilities)
 - Assume advanced reasoning and multi-step planning
-- Leverage improved math and logical reasoning
+- Use improved math and logical reasoning
 - Consider video/multimodal capabilities if applicable
 - Use system message for persona/role framing
 

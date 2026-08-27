@@ -23,14 +23,14 @@ Make uncertainty legible without pretending the full route is known. The deliver
 2. Inspect the conversation and closest sources. Preserve already-settled decisions.
 3. List material decision nodes. Connect each node to prerequisites and downstream choices.
 4. Mark each node as `settled`, `frontier`, `fog`, `blocked`, or `deferred`.
-5. Identify the frontier decision with the greatest downstream unlocking effect. This is the next blocking edge.
+5. Identify the frontier decision with the greatest effect on downstream decisions. This is the next blocking edge.
 6. Name what evidence or user judgment can resolve it. Recommend a default when evidence supports one.
 7. Resolve only that decision, update the map, and recalculate the frontier.
 8. Stop when the next blocking edge is named, or continue one edge at a time if the user asks.
 
 ## Decision map
 
-Use `assets/decision-map-template.md`. Keep each node compact: stable ID and precise label, status, prerequisites, decisions unlocked, owner, evidence source, current options, recommendation, acceptance test, and decision record when settled.
+Use `assets/decision-map-template.md`. Keep each node compact: stable ID and precise label, status, prerequisites, decisions made possible, owner, evidence source, current options, recommendation, acceptance test, and decision record when settled.
 
 ## Completion contract
 

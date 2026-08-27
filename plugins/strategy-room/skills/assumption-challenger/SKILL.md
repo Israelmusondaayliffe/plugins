@@ -141,7 +141,7 @@ When the input is an AI prompt (for Claude, GPT, Gemini, or any model), the plan
 - Are constraints and guardrails explicit?
 - Is chain-of-thought or reasoning encouraged?
 - Are edge cases handled?
-- Does the prompt leverage model-specific capabilities?
+- Does the prompt use model-specific capabilities?
 - Are model limitations being overlooked?
 - Is the prompt structured for token efficiency?
 

@@ -24,7 +24,7 @@ Use `assets/final_report_template.md` as the structure. Skim `references/example
 Three sentences max. The TL;DR is the most-read part of the report. It should answer:
 
 - What is the most important thing the user needs to know?
-- What is the highest-leverage change they could make?
+- What change would improve the result most?
 - What is the level of confidence in this analysis?
 
 The TL;DR is not a summary of the report. It is a verdict.
@@ -44,13 +44,13 @@ Frame each priority as a specific recommended action, not a general observation.
 
 The body follows the seven-section structure from the template. Map verified findings to the right section:
 
-1. **Identified Assumptions** — from Lens 1 verified findings
-2. **Blind Spots and Uncertainties** — from Lens 2 verified findings
-3. **Alternate Viewpoints** — from Lens 3 verified findings
-4. **Contradictions and Tensions** — from Lens 4 verified findings
-5. **Challenges and Questions** — derived from findings across all lenses, framed as pointed questions for the user
-6. **Recommendations for Refinement** — concrete, actionable suggestions tied to specific findings
-7. **Meta-Reflections** — from Lens 5 verified findings, plus what this analysis itself could not evaluate
+1. **Identified Assumptions**: from Lens 1 verified findings
+2. **Blind Spots and Uncertainties**: from Lens 2 verified findings
+3. **Alternate Viewpoints**: from Lens 3 verified findings
+4. **Contradictions and Tensions**: from Lens 4 verified findings
+5. **Challenges and Questions**: derived from findings across all lenses, framed as pointed questions for the user
+6. **Recommendations for Refinement**: concrete, actionable suggestions tied to specific findings
+7. **Meta-Reflections**: from Lens 5 verified findings, plus what this analysis itself could not evaluate
 
 Effort mode shapes section depth:
 
