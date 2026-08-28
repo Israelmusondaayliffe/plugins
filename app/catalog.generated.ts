@@ -2723,7 +2723,7 @@ export const plugins = [
     "shortDescription": "Keep reusable knowledge findable and trustworthy on Claude Code, Claude Cowork, and Codex.",
     "longDescription": "Continuity Vault routes work through source-preserving extraction, governed promotion, relationship mapping, recall, and staleness audits while keeping workspace files authoritative. It runs on Claude Code, Claude Cowork, and Codex, and treats the host instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) plus workspace source files as the authority layer.",
     "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2765,8 +2765,8 @@ export const plugins = [
       "skills": 5,
       "assets": 8,
       "references": 13,
-      "scripts": 5,
-      "files": 48
+      "scripts": 6,
+      "files": 50
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -3044,7 +3044,7 @@ export const plugins = [
     "shortDescription": "Plan, run, normalize, and decide model evaluations.",
     "longDescription": "Model Evaluation Lab turns a model choice into a fixed evaluation plan, a reproducible run contract, normalized results, and a decision memo that separates measurement from judgment and deployment conditions.",
     "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -3080,10 +3080,10 @@ export const plugins = [
     ],
     "counts": {
       "skills": 4,
-      "assets": 8,
+      "assets": 10,
       "references": 4,
-      "scripts": 8,
-      "files": 36
+      "scripts": 9,
+      "files": 40
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -4375,9 +4375,9 @@ export const plugins = [
 export const totals = {
   "plugins": 22,
   "skills": 171,
-  "assets": 328,
+  "assets": 330,
   "references": 466,
-  "scripts": 403,
-  "files": 1901
+  "scripts": 405,
+  "files": 1907
 } as const;
 export type Plugin = (typeof plugins)[number];

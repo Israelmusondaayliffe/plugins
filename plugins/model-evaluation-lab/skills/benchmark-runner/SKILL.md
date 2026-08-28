@@ -12,16 +12,29 @@ Execute the frozen plan on the authorized backend or normalize completed case re
 ## Workflow
 
 1. Validate that the evaluation plan is frozen and `plan_ready` is true.
-2. Load `references/workflow.md` and choose local execution or an installed companion backend.
-3. Record the plan hash, model and prompt identifiers, environment, dataset version, tool state, repetitions, and cost-accounting method.
-4. Execute every frozen case or delegate it to the named backend. Do not add cases after results are visible.
-5. Save raw case-level results before aggregation.
-6. Run `scripts/normalize_results.py RAW.json NORMALIZED.json`.
-7. Run `scripts/validate_output.py NORMALIZED.json` before handoff.
+2. Load `references/workflow.md`.
+3. If completed raw case results were supplied, run `scripts/normalize_results.py RAW.json NORMALIZED.json`, then run `scripts/validate_output.py NORMALIZED.json`. Normalization does not require an execution backend.
+4. Otherwise, check for an authorized local runner or installed remote backend.
+5. If a backend is available, record the plan hash, model and prompt identifiers, environment, dataset version, tool state, repetitions, and cost-accounting method.
+6. Execute every frozen case or delegate it to the named backend. Do not add cases after results are visible.
+7. Save raw case-level results before aggregation, then normalize and validate them.
+8. If no backend is available, use the Execution-blocked handoff below and stop.
+
+## Execution-blocked handoff
+
+Fill `assets/execution-blocked-template.json` and run `scripts/validate_blocked_handoff.py HANDOFF.json`. Record:
+
+- the frozen plan hash and case count;
+- the required backend;
+- missing credential names or tools without secret values;
+- the frozen safety stops;
+- an exact rerun command or the named owner who can run it.
+
+Set `execution_complete`, `measured_results_complete`, and `model_selection_complete` to false. Set `winner` to null. Do not create run records, scores, latency, cost, safety results, a model selection, or a winner claim. Planning, schema validation, and normalization of supplied raw results remain available.
 
 ## Boundaries
 
-The runner does not invent missing executions, scores, latency, cost, or safety outcomes. It does not change the frozen plan to improve a candidate's result.
+The runner does not invent missing executions, scores, latency, cost, safety outcomes, model selection, or a winner. It does not change the frozen plan to improve a candidate's result.
 
 ## Error recovery
 
@@ -29,4 +42,4 @@ Mark the run partial when an execution fails or coverage differs. Preserve succe
 
 ## Reliability
 
-Backend invocation depends on the installed execution surface. Result normalization, aggregation, validation, and completeness checks are deterministic scripts.
+Backend invocation depends on the installed execution surface. Result normalization, aggregation, blocked-handoff validation, and completeness checks are deterministic scripts.

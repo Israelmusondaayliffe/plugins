@@ -13,16 +13,46 @@ def main() -> int:
     errors: list[str] = []
     try:
         manifest = json.loads((root / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+        claude_manifest = json.loads(
+            (root / ".claude-plugin/plugin.json").read_text(encoding="utf-8")
+        )
         spec = json.loads((root / "bundle-spec.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         print(json.dumps({"valid": False, "errors": [str(exc)]}, indent=2))
         return 2
     plugin_name = manifest.get("name")
     directory_names = {root.name, root.parent.name}
-    if spec.get("plugin") != plugin_name or plugin_name not in directory_names:
+    if (
+        spec.get("plugin") != plugin_name
+        or claude_manifest.get("name") != plugin_name
+        or plugin_name not in directory_names
+    ):
         errors.append("plugin name must match the source or cache directory")
-    if manifest.get("version") != spec.get("version"):
-        errors.append("manifest and bundle spec versions differ")
+    versions = {
+        manifest.get("version"),
+        claude_manifest.get("version"),
+        spec.get("version"),
+    }
+    if len(versions) != 1:
+        errors.append("plugin manifests and bundle spec versions differ")
+    backend_policy = spec.get("execution_backend_policy", {})
+    required_policy = {
+        "required_for_execution": True,
+        "no_backend_state": "execution-blocked",
+        "planning_available": True,
+        "schema_validation_available": True,
+        "normalize_supplied_results_available": True,
+        "handoff_schema": "skills/benchmark-runner/assets/execution-blocked-schema.json",
+    }
+    if backend_policy != required_policy:
+        errors.append("execution_backend_policy does not match the no-backend contract")
+    for relative in (
+        "skills/benchmark-runner/assets/execution-blocked-schema.json",
+        "skills/benchmark-runner/assets/execution-blocked-template.json",
+        "skills/benchmark-runner/scripts/validate_blocked_handoff.py",
+    ):
+        if not (root / relative).is_file():
+            errors.append(f"missing no-backend contract file: {relative}")
     expected = set(spec.get("skills", []))
     actual = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
     if actual != expected:
@@ -55,6 +85,12 @@ def main() -> int:
         evidence = str(case.get("evidence_contains", ""))
         if not evidence_path.is_file() or evidence not in evidence_path.read_text(encoding="utf-8", errors="replace"):
             errors.append(f"routing evidence failed: {case.get('evidence_file')} | {evidence}")
+    if not any(
+        case.get("expected_skill") == "benchmark-runner"
+        and case.get("evidence_contains") == "Execution-blocked handoff"
+        for case in spec.get("routing_cases", [])
+    ):
+        errors.append("routing cases must cover the no-execution-backend path")
     result = {
         "valid": not errors,
         "plugin": plugin_name,

@@ -47,7 +47,7 @@
       "name": "continuity-vault",
       "source": "./plugins/continuity-vault",
       "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -119,7 +119,7 @@
       "name": "model-evaluation-lab",
       "source": "./plugins/model-evaluation-lab",
       "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
