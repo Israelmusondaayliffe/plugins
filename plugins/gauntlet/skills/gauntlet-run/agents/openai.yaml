@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Run"
+  short_description: "Run the Gauntlet round loop"
+
+policy:
+  allow_implicit_invocation: false

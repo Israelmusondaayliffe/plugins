@@ -11,7 +11,7 @@ const versions = {
   "continuity-vault": "0.2.2",
   "data-storytelling-studio": "0.2.1",
   "founder-revenue-engine": "0.2.2",
-  "gauntlet": "0.2.1",
+  "gauntlet": "0.2.2",
   "gauntlet-loop": "1.2.0",
   "harness-engineering": "2.7.0",
   "knowledge-work-superpowers": "0.2.2",
@@ -50,6 +50,12 @@ if (JSON.stringify(claudeNames) !== JSON.stringify(codexNames)) {
 }
 for (const [name, expected] of Object.entries(versions)) {
   const pluginRoot = join(root, "plugins", name);
+  const marketplaceEntry = claudeMarketplace.plugins.find(
+    (entry) => entry.name === name,
+  );
+  if (marketplaceEntry?.version !== expected) {
+    throw new Error(`${name} marketplace version mismatch: expected ${expected}`);
+  }
   const codex = JSON.parse(
     readFileSync(join(pluginRoot, ".codex-plugin/plugin.json"), "utf8"),
   );

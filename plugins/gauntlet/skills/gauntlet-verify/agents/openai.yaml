@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Verify"
+  short_description: "Verify a Gauntlet run independently"
+
+policy:
+  allow_implicit_invocation: false
