@@ -10,7 +10,7 @@ The plain-language rule applies throughout: if a simpler word conveys the same m
 
 ---
 
-## Tier 1 — Always Replace
+## Tier 1: always replace
 
 | Replace | With |
 |---|---|
@@ -79,7 +79,7 @@ The plain-language rule applies throughout: if a simpler word conveys the same m
 
 ---
 
-## Tier 2 — Flag When 2+ in Same Paragraph
+## Tier 2: flag when 2+ appear in the same paragraph
 
 | Replace | With |
 |---|---|
@@ -122,7 +122,7 @@ The plain-language rule applies throughout: if a simpler word conveys the same m
 
 ---
 
-## Tier 3 — Flag at High Density (3%+ of total words)
+## Tier 3: flag at high density (3%+ of total words)
 
 These are normal words. Only flag when the text is saturated with them.
 
@@ -191,4 +191,4 @@ These substitute a generic thumbs-up for a specific reason. Say why something ma
 
 ## Source
 
-Tier system adapted from avoid-ai-writing (conorbronsdon, MIT license) and humanizer/blader. Table extended with the plain-language rule (simple words always preferred) and OQE-v3 patterns.
+Tier system adapted from avoid-ai-writing (conorbronsdon, MIT license) and humanizer/blader. Table extended with the simple-words-first Rule Zero and OQE-v3 patterns.

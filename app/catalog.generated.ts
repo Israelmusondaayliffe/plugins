@@ -853,7 +853,7 @@ export const plugins = [
     "shortDescription": "Route and verify serious writing work.",
     "longDescription": "Writing Quality separates intent architecture, rewriting, detect-only review, claim support, and final prose validation so each request receives the smallest sufficient intervention.",
     "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -880,7 +880,7 @@ export const plugins = [
       },
       {
         "name": "writing-enforcer",
-        "description": "Unified writing enforcer that removes AI patterns, preserves voice, injects soul, and ensures plain human-sounding prose. Combines humanizer, output-quality-enforcer, and anti-AI style detection into one workflow. Use when asked to humanize this, remove AI feel, make this sound like me, clean this up, too robotic, too generic, sound more human, or to improve any text that reads as AI-generated or over-polished. Two modes: DETECT (flag patterns only) and REWRITE (full pipeline, default). Applies the plain-language rule: simpler words always beat complex words. Enforces voice, soul, intent, and the 36-pattern AI-tell taxonomy. Runs deterministic scripts for em-dash removal and quality scoring."
+        "description": "Applies the complete local 47-pattern Unslop method to ordinary prose while preserving source-backed voice and exact protected material. Use when the user asks to humanize, tighten, clean up, remove AI patterns, make prose sound like them, audit writing without rewriting, or validate a draft. Supports DETECT for report-only review and REWRITE only when the user authorizes prose changes."
       },
       {
         "name": "writing-quality-router",
@@ -890,9 +890,9 @@ export const plugins = [
     "counts": {
       "skills": 4,
       "assets": 3,
-      "references": 14,
-      "scripts": 7,
-      "files": 34
+      "references": 19,
+      "scripts": 10,
+      "files": 43
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -4376,8 +4376,8 @@ export const totals = {
   "plugins": 22,
   "skills": 171,
   "assets": 330,
-  "references": 466,
-  "scripts": 405,
-  "files": 1907
+  "references": 471,
+  "scripts": 408,
+  "files": 1916
 } as const;
 export type Plugin = (typeof plugins)[number];

@@ -7,7 +7,7 @@ description: Routes writing requests to intent architecture, rewriting, detect-o
 
 ## Overview
 
-Choose the smallest writing workflow that can satisfy the request. Do not rewrite text when the user asked only for findings.
+Writing Quality owns ordinary prose work. Choose the smallest writing workflow that can satisfy the request. Do not rewrite text when the user asked only for findings.
 
 ## Workflow
 
@@ -16,9 +16,9 @@ Choose the smallest writing workflow that can satisfy the request. Do not rewrit
 3. Record the route in assets/route-template.json and run scripts/validate_route.py.
 4. Execute the selected skill:
    - intent-architecture: business-writing-intent-enforcer
-   - rewrite: business-writing-intent-enforcer, then writing-enforcer
-   - detect-only: writing-enforcer in report-only mode
-   - validation: writing-enforcer against the supplied draft and constraints
+   - rewrite: business-writing-intent-enforcer, then writing-enforcer with its source-backed 47-pattern method
+   - detect-only: writing-enforcer in `DETECT` report-only mode
+   - validation: writing-enforcer against the supplied draft, protected-material boundary, and constraints
 5. Use claim-boundary-checker when factual claims exceed the supplied evidence or are unstable.
 6. Recheck that the final response matches the requested operation and did not silently expand the factual scope.
 
@@ -31,7 +31,11 @@ Choose the smallest writing workflow that can satisfy the request. Do not rewrit
 
 ## Reliability Notes
 
-The model interprets intent and performs the prose work. The validator enforces one allowed route and a recorded rationale. Claim support is checked separately so style edits do not fabricate evidence.
+The model interprets intent and performs the prose work. The validator enforces one allowed route and a recorded rationale. Claim support is checked separately so style edits do not fabricate evidence. Raw Writing Enforcer scores are report-only; the contextual floor is 8.0 and the target is 10.0 with all hard gates clear.
+
+## Ownership boundary
+
+Writing Quality owns ordinary documents, emails, posts, and other prose. Harness Engineering's separate Unslop specialist owns harness and plugin maintenance. Neither capability imports or requires the other at runtime.
 
 ## Resources
 

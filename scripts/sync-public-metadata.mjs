@@ -32,7 +32,7 @@ const versions = {
   "strategy-room": "0.2.2",
   "video-production-studio": "0.3.1",
   "web-product-studio": "0.4.1",
-  "writing-quality": "0.2.0",
+  "writing-quality": "0.2.1",
 };
 
 codex.name = "community-agent-plugins";

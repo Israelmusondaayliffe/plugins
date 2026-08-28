@@ -137,9 +137,9 @@ Comprehensive catalog of AI writing patterns sourced from Wikipedia's "Signs of 
 **After:**
 > Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonization, remain common, especially in the south.
 
-**Detection:** Run `scripts/quality_validator.py` for automated detection. Two or more of these words in same paragraph = strong AI signal.
+**Detection:** Run `scripts/unslop-engine/quality_validator.py` for automated detection. Two or more of these words in the same paragraph is a strong signal.
 
-**Severity:** High. Already covered in `references/negative-style-guide.md`, included here for completeness.
+**Severity:** High. Already covered in `references/unslop-engine/negative-style-guide.md`, included here for completeness.
 
 ---
 
@@ -239,7 +239,7 @@ Comprehensive catalog of AI writing patterns sourced from Wikipedia's "Signs of 
 **After:**
 > The term is primarily promoted by Dutch institutions, not by the people themselves. You don't say "Netherlands, Europe" as an address, yet this mislabeling continues in official documents.
 
-**Detection:** Run `scripts/emdash_replacer.py`. Already a Critical Rule in this skill.
+**Detection:** Use `scripts/unslop-engine/quality_validator.py` and contextual review. Repair only assistant-authored editable prose. Preserve protected exact material.
 
 **Severity:** Critical. Non-negotiable replacement rule.
 
@@ -257,7 +257,7 @@ Comprehensive catalog of AI writing patterns sourced from Wikipedia's "Signs of 
 
 **Detection:** More than 5% of text in bold. Multiple bold phrases in same sentence. Bold used for every proper noun or acronym.
 
-**Severity:** Medium. Already in `references/negative-style-guide.md` formatting anti-patterns.
+**Severity:** Medium. Already in `references/unslop-engine/negative-style-guide.md` formatting anti-patterns.
 
 ---
 
@@ -392,7 +392,7 @@ Comprehensive catalog of AI writing patterns sourced from Wikipedia's "Signs of 
 - "The system has the ability to process" -> "The system can process"
 - "It is important to note that the data shows" -> "The data shows"
 
-**Detection:** Already covered in `references/negative-style-guide.md` Category 7.
+**Detection:** Already covered in `references/unslop-engine/negative-style-guide.md` Category 7.
 
 **Severity:** Medium. Common across all AI output.
 
@@ -467,4 +467,4 @@ Comprehensive catalog of AI writing patterns sourced from Wikipedia's "Signs of 
 
 ## SOURCE
 
-This taxonomy is based on [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing), maintained by WikiProject AI Cleanup. Adapted and extended for production writing contexts beyond Wikipedia.
+This taxonomy adapts [Wikipedia:Signs of AI writing, revision 1371562925](https://en.wikipedia.org/w/index.php?oldid=1371562925&title=Wikipedia:Signs_of_AI_writing), written by its Wikipedia contributors and maintained by WikiProject AI Cleanup. The local version reorganizes, condenses, and extends the material for production writing outside Wikipedia. This file is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and license details.

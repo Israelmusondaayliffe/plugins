@@ -1,7 +1,8 @@
 # Negative Style Guide
 
-Comprehensive inventory of patterns to eliminate. Use with `scripts/cliche_detector.py` for automated detection.
+Comprehensive inventory of patterns to eliminate. Use `scripts/unslop-engine/quality_validator.py` for automated signals and this inventory for contextual review.
 
+<!-- harness-quality-gate: literal-list-start -->
 ## Core Principle
 
 Negative style guides are more effective than positive guides because they're concrete and testable. "Don't use delve" is actionable. "Write clearly" is not.
@@ -162,8 +163,8 @@ Negative style guides are more effective than positive guides because they're co
 
 | Original | Replace With |
 |----------|--------------|
-| "This works — it saves time" | "This works. It saves time" |
-| "This works — really well" | "This works, really well" |
+| "This works [em dash] it saves time" | "This works. It saves time" |
+| "This works [em dash] really well" | "This works, really well" |
 
 **Rule:** If what follows could be a sentence → period + capitalize. Otherwise → comma + lowercase.
 
@@ -220,7 +221,7 @@ Negative style guides are more effective than positive guides because they're co
 ## Detection Script Usage
 
 ```bash
-python scripts/cliche_detector.py content.txt
+python3 scripts/unslop-engine/quality_validator.py content.txt --verbose
 ```
 
 **Output:**
@@ -411,11 +412,23 @@ Delete and see if meaning changes. Usually doesn't.
 
 **Fix:** Replace with straight quotes: " and '
 
+## Category 18: Context-Sensitive Abstraction and Specificity
+
+Treat abstract metaphor nouns as warnings, not automatic failures. Replace decorative terms such as substrate, wedge, vector, locus, vantage, nexus, bedrock, scaffolding, modality, gold-plating, ratchet, endgame, north star, and flywheel with the real component or mechanism. Keep legitimate technical vocabulary.
+
+Use three manual tests:
+
+- **Portability:** Could the sentence appear unchanged in another project's copy?
+- **Mechanism:** Does the sentence name what happens, who acts, or what the reader should do?
+- **Distance:** Does it name the actual reader, team, system, or event instead of vague people or abstractions?
+
+If a sentence fails a test and the source supplies no specific replacement, cut or qualify it. Do not invent details.
+
 ## Pre-Output Checklist
 
 Before shipping any content:
 
-- [ ] Zero em-dashes
+- [ ] Zero authored em dashes in editable prose; protected exact material is unchanged
 - [ ] Zero high-priority AI tells
 - [ ] <3 medium-priority issues
 - [ ] Zero hedge language in conclusions
@@ -426,6 +439,9 @@ Before shipping any content:
 - [ ] Zero significance inflation claims
 - [ ] Zero sycophantic/chatbot language artifacts
 - [ ] Zero curly quotation marks
+- [ ] Generic claims pass portability, mechanism, and distance checks
+- [ ] Supplied opinions, emotions, and first-person voice remain clear
+- [ ] No personality or experience invented
 
 If any fail, revise before shipping.
 
@@ -439,4 +455,5 @@ If any fail, revise before shipping.
 
 **When in doubt, be specific.** Most AI tells are vague abstractions. Specificity is the cure.
 
-**Clean is not enough.** Sterile writing that passes every check but has no personality is itself an AI tell. See Phase 3 (Soul Injection) in SKILL.md.
+**Clean is not enough.** Sterile writing that passes every check but erases the writer's personality is itself a failure. See Phase 3 (Voice Recovery) in SKILL.md. Recover only traits present in the source; never invent opinions or experience.
+<!-- harness-quality-gate: literal-list-end -->

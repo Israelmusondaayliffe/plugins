@@ -7,9 +7,7 @@ Systematically replaces em-dashes with appropriate punctuation.
 - Continuation: comma + keep lowercase
 
 Usage:
-    python emdash_replacer.py input.txt [output.txt]
-    python emdash_replacer.py input.txt --in-place
-    python emdash_replacer.py --text "Content with — dashes"
+    python emdash_replacer.py scratch-input.txt scratch-output.txt
 """
 
 import argparse
@@ -214,11 +212,12 @@ def process_file(input_path: str, output_path: str = None, in_place: bool = Fals
     processed, count = replace_emdashes(text)
     
     if in_place:
-        output_file = input_file
-    elif output_path:
-        output_file = Path(output_path)
-    else:
-        output_file = input_file.with_suffix('.processed' + input_file.suffix)
+        raise ValueError("in-place punctuation rewriting is forbidden")
+    if not output_path:
+        raise ValueError("a separate scratch output path is required")
+    output_file = Path(output_path)
+    if output_file.resolve() == input_file.resolve():
+        raise ValueError("scratch output must differ from the input path")
     
     output_file.write_text(processed, encoding='utf-8')
     
@@ -234,25 +233,16 @@ def main():
         description='Replace em-dashes with appropriate punctuation'
     )
     parser.add_argument('input', nargs='?', help='Input file path')
-    parser.add_argument('output', nargs='?', help='Output file path (optional)')
-    parser.add_argument('--in-place', '-i', action='store_true',
-                       help='Modify file in place')
-    parser.add_argument('--text', '-t', help='Process text directly instead of file')
+    parser.add_argument('output', nargs='?', help='Separate scratch output file path')
     
     args = parser.parse_args()
-    
-    if args.text:
-        processed, count = replace_emdashes(args.text)
-        print(f"Processed text ({count} em-dashes replaced):")
-        print(processed)
-        return
-    
+
     if not args.input:
         parser.print_help()
         sys.exit(1)
     
     try:
-        result = process_file(args.input, args.output, args.in_place)
+        result = process_file(args.input, args.output)
         print(f"Em-dash replacement complete:")
         print(f"  Input: {result['input']}")
         print(f"  Output: {result['output']}")

@@ -200,7 +200,7 @@
       "name": "writing-quality",
       "source": "./plugins/writing-quality",
       "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }

@@ -147,7 +147,7 @@ This reference organizes commonly overused phrases and patterns by domain for sy
 - "keep in mind"
 
 **Fresh alternatives:**
-- Delete most of these—they're filler
+- Delete most of these. They're filler
 - If something is actually complex, say "this requires careful attention to X"
 - If simple, let the simplicity speak for itself
 
@@ -254,7 +254,7 @@ This reference organizes commonly overused phrases and patterns by domain for sy
 - "the key takeaway"
 
 **Fresh alternatives:**
-- Often these are filler—just make the clear statement
+- Often these are filler. Just make the clear statement
 - If rephrasing needed, just rephrase without announcing it
 
 ## Social Media & Content
@@ -311,7 +311,7 @@ These appear everywhere and are instant AI tells:
 **Replacement strategy:**
 - Be literal instead of metaphorical
 - If metaphor needed, use fresh, context-specific ones
-- Often the metaphor is hiding vague thinking—be more precise
+- Often the metaphor is hiding vague thinking. Be more precise
 
 ### Intensifiers & Hedges
 **Overused intensifiers:**
@@ -391,6 +391,6 @@ After replacing cliches:
 - Overuse of particular connecting words
 
 **Final validation:**
-- Read aloud—does it sound human?
+- Read aloud. Does it sound human?
 - Compare to exemplar work in domain
 - Check: would this pass as human-written to expert reader?

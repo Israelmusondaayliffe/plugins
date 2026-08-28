@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Quality Validator V3
+Quality Validator V5
 
 Objective quality scoring for content.
-Checks 8 categories: AI tells, cliches, hedge language, em-dashes,
+Checks AI tells, cliches, hedge language, em-dashes,
 copula avoidance, -ing constructions, significance inflation,
 sycophantic tone, curly quotes, negative parallelisms, rule of three,
-and generic positive conclusions.
+generic positive conclusions, and modern structural slop.
 
 Based on Wikipedia's WikiProject AI Cleanup taxonomy + V2 detection.
 
@@ -75,6 +75,9 @@ class ValidationResult:
     generic_conclusion_count: int = 0
     generic_conclusion_issues: List[Issue] = field(default_factory=list)
 
+    structural_slop_count: int = 0
+    structural_slop_issues: List[Issue] = field(default_factory=list)
+
     technical_score: float = 0.0
 
     def to_dict(self) -> dict:
@@ -91,6 +94,7 @@ class ValidationResult:
             'negative_parallelism_count': self.negative_parallelism_count,
             'rule_of_three_count': self.rule_of_three_count,
             'generic_conclusion_count': self.generic_conclusion_count,
+            'structural_slop_count': self.structural_slop_count,
             'technical_score': self.technical_score,
             'issues': {
                 'emdash': [{'line': i.line, 'text': i.text} for i in self.emdash_issues],
@@ -105,6 +109,15 @@ class ValidationResult:
                 'negative_parallelisms': [{'line': i.line, 'text': i.text} for i in self.negative_parallelism_issues],
                 'rule_of_three': [{'line': i.line, 'text': i.text} for i in self.rule_of_three_issues],
                 'generic_conclusions': [{'line': i.line, 'text': i.text} for i in self.generic_conclusion_issues],
+                'structural_slop': [
+                    {
+                        'line': i.line,
+                        'text': i.text,
+                        'severity': i.severity,
+                        'suggestion': i.suggestion,
+                    }
+                    for i in self.structural_slop_issues
+                ],
             }
         }
 
@@ -133,6 +146,8 @@ HIGH_SEVERITY_AI_TELLS = {
     'nuanced': '[remove or be specific]',
     'holistic': '[explain specifically]',
     'pivotal': 'important',
+    'groundbreaking': '[replace with evidence or remove]',
+    'robust': '[describe the strength specifically]',
     'unparalleled': '[remove hyperbole]',
     'harness': 'use',
     'harnessing': 'using',
@@ -245,6 +260,9 @@ SIGNIFICANCE_PHRASES = [
     "marking a pivotal",
     "marking a significant",
     "marking a key",
+    "marks a pivotal",
+    "marks a significant",
+    "marks a key",
     "setting the stage for",
     "a testament to",
     "is a testament",
@@ -310,6 +328,63 @@ GENERIC_CONCLUSION_PHRASES = [
     "as we look to the future",
     "the possibilities are endless",
     "only time will tell",
+]
+
+STRUCTURAL_SLOP_PATTERNS = [
+    (
+        r"(?im)^\s*(?:here[’']s the thing|here[’']s what i mean|let me be clear|i[’']ll be honest|the uncomfortable truth is)\b",
+        "throat-clearing opener",
+        "medium",
+        "Cut the setup and start with the claim unless the phrase carries real voice or context.",
+    ),
+    (
+        r"(?i)\b(?:what most people get wrong|what nobody tells you|the part everyone misses|this is the part most people skip)\b",
+        "faux-insight setup",
+        "high",
+        "Remove the exclusivity claim and state the supported point directly.",
+    ),
+    (
+        r"(?im)^\s*(?:the best part|the key|the secret|the detail that makes it work):\s+[a-z]",
+        "colon reveal",
+        "medium",
+        "Rewrite as a plain sentence. Keep colons for lists, labels, and quotations.",
+    ),
+    (
+        r"(?i)(?:\bwhat if i told you\b|\bthink about it:|\bplot twist:)",
+        "rhetorical setup",
+        "medium",
+        "Drop the setup and state the point.",
+    ),
+    (
+        r"(?i)\b(?:that[’']s it\.\s+that[’']s the whole thing|not an? [^.!?]{1,50}\.\s+not an? [^.!?]{1,50}\.\s+an? [^.!?]{1,50}[.!?])",
+        "dramatic fragmentation",
+        "medium",
+        "State the point in a complete sentence unless the fragments are a real voice marker.",
+    ),
+    (
+        r"(?im)^\s*(?:in conclusion|ultimately|overall),",
+        "summary-recap ending",
+        "medium",
+        "Cut the recap cue and end on a concrete point, decision, or next action.",
+    ),
+    (
+        r"(?i)\b(?:the rest of this (?:essay|article|section)|in the next section|what follows will)\b",
+        "meta joiner",
+        "medium",
+        "Delete the announcement and let the writing move to the next point.",
+    ),
+    (
+        r"(?i)\b(?:the implications are significant|the reasons are structural|this is concerning|this matters)\b",
+        "vague declarative",
+        "medium",
+        "Name the supported implication, reason, mechanism, or next action.",
+    ),
+    (
+        r"(?i)\b(?:decision|strategy|framework|system|document|plan|analysis)\s+(?:believes|decides|discovers|wants|hopes)\b",
+        "false agency",
+        "medium",
+        "Name the actual person or process when known.",
+    ),
 ]
 
 
@@ -552,13 +627,30 @@ def check_generic_conclusions(text: str) -> List[Issue]:
     return issues
 
 
+def check_structural_slop(text: str) -> List[Issue]:
+    """Check explicit structural patterns added in the no-ai-slop parity review."""
+    issues = []
+    for pattern, name, severity, suggestion in STRUCTURAL_SLOP_PATTERNS:
+        for match in re.finditer(pattern, text):
+            line_num = get_line_number(text, match.start())
+            context = get_context(text, match.start(), match.end(), 30)
+            issues.append(Issue(
+                line=line_num,
+                text=context,
+                category="structural_slop",
+                severity=severity,
+                suggestion=f"{name}: {suggestion}",
+            ))
+    return issues
+
+
 # === SCORING ===
 
 def calculate_technical_score(result: ValidationResult) -> float:
     """
     Calculate technical score 0-10.
 
-    V3 scoring (expanded from V2):
+    V5 scoring (expanded from V4):
     - Em-dash elimination: 1.5 points (1.5=zero, 0.75=1-2, 0=3+)
     - AI-tell elimination: 2 points (2=zero, 1.5=1-2, 0.5=3-5, 0=6+)
     - Cliche elimination: 1 point (1=zero, 0.5=1-2, 0=3+)
@@ -568,6 +660,7 @@ def calculate_technical_score(result: ValidationResult) -> float:
     - Significance inflation: 1 point (1=zero, 0.5=1-2, 0=3+)
     - Sycophancy/chatbot artifacts: 0.5 points (0.5=zero, 0=any)
     - Base: 1 point
+    - Structural slop: subtract 0.5 per issue, up to 2 points
     """
     score = 1.0
 
@@ -620,7 +713,8 @@ def calculate_technical_score(result: ValidationResult) -> float:
     if result.sycophancy_count == 0:
         score += 0.5
 
-    return min(10.0, score)
+    score -= min(2.0, result.structural_slop_count * 0.5)
+    return max(0.0, min(10.0, score))
 
 
 def validate_content(text: str) -> ValidationResult:
@@ -665,6 +759,9 @@ def validate_content(text: str) -> ValidationResult:
     result.generic_conclusion_issues = check_generic_conclusions(text)
     result.generic_conclusion_count = len(result.generic_conclusion_issues)
 
+    result.structural_slop_issues = check_structural_slop(text)
+    result.structural_slop_count = len(result.structural_slop_issues)
+
     # Calculate technical score
     result.technical_score = calculate_technical_score(result)
 
@@ -674,7 +771,7 @@ def validate_content(text: str) -> ValidationResult:
 def format_report(result: ValidationResult, verbose: bool = False) -> str:
     """Format validation results as readable report."""
     lines = [
-        "QUALITY VALIDATION REPORT (V3)",
+        "QUALITY VALIDATION REPORT (V5)",
         "=" * 50,
         "",
         f"Technical Score: {result.technical_score:.1f}/10",
@@ -692,6 +789,7 @@ def format_report(result: ValidationResult, verbose: bool = False) -> str:
         f"  Negative parallelisms:  {result.negative_parallelism_count} found {'✓' if result.negative_parallelism_count == 0 else '⚠'}",
         f"  Rule of three:          {result.rule_of_three_count} found {'✓' if result.rule_of_three_count == 0 else '⚠'}",
         f"  Generic conclusions:    {result.generic_conclusion_count} found {'✓' if result.generic_conclusion_count == 0 else '✗'}",
+        f"  Structural slop:        {result.structural_slop_count} found {'✓' if result.structural_slop_count == 0 else '✗'}",
         "",
     ]
 
@@ -708,7 +806,8 @@ def format_report(result: ValidationResult, verbose: bool = False) -> str:
             [('CURLY QUOTE', result.curly_quote_issues)] +
             [('NEGATIVE PARALLELISM', result.negative_parallelism_issues)] +
             [('RULE OF THREE', result.rule_of_three_issues)] +
-            [('GENERIC CONCLUSION', result.generic_conclusion_issues)]
+            [('GENERIC CONCLUSION', result.generic_conclusion_issues)] +
+            [('STRUCTURAL SLOP', result.structural_slop_issues)]
         )
 
         for category_name, issues in all_issues:
@@ -724,22 +823,22 @@ def format_report(result: ValidationResult, verbose: bool = False) -> str:
     lines.append("ASSESSMENT:")
     if result.technical_score >= 9:
         lines.append("  ✓ Excellent - Ready to ship")
-    elif result.technical_score >= 7:
-        lines.append("  ✓ Good - Acceptable quality")
+    elif result.technical_score >= 8:
+        lines.append("  ✓ Good - Meets the quality floor")
     elif result.technical_score >= 5:
         lines.append("  ⚠ Below threshold - Revision recommended")
     else:
         lines.append("  ✗ Poor - Major revision needed")
 
     lines.append("")
-    lines.append("NOTE: Voice consistency and soul check require manual assessment.")
+    lines.append("NOTE: Voice consistency, proportional editing, and source-backed texture require manual assessment.")
 
     return "\n".join(lines)
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Validate content quality objectively (V3 - expanded taxonomy)'
+        description='Validate content quality objectively (V5 - merged Unslop taxonomy)'
     )
     parser.add_argument('input', help='Input file path')
     parser.add_argument('--verbose', '-v', action='store_true',
@@ -764,7 +863,7 @@ def main():
             print(format_report(result, verbose=args.verbose))
 
         # Exit code based on score
-        if result.technical_score >= 7:
+        if result.technical_score >= 8:
             sys.exit(0)
         else:
             sys.exit(1)

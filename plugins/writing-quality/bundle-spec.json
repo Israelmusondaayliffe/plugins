@@ -1,6 +1,6 @@
 {
   "plugin": "writing-quality",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     "business-writing-intent-enforcer",
     "claim-boundary-checker",
@@ -16,8 +16,39 @@
     "documents",
     "google-drive"
   ],
+  "writing_enforcer_engine": {
+    "pattern_count": 47,
+    "manifest": "skills/writing-enforcer/references/unslop-engine-manifest.json",
+    "migration_source_sha256": "512f4daa985c7b52503c9c2cb7fb32c1cb4c36efd649d4072e3fec692d4131a6",
+    "runtime_dependency_on_harness_unslop": false,
+    "contextual_score_floor": 8.0,
+    "contextual_score_target": 10.0,
+    "raw_script_scores_are_verdicts": false
+  },
+  "ownership": {
+    "ordinary_prose_owner": "writing-quality",
+    "harness_and_plugin_maintenance_owner": "harness-engineering:unslop-harness-repair",
+    "writing_quality_requires_harness_unslop": false,
+    "harness_unslop_requires_writing_quality": false
+  },
+  "protected_subtrees": {
+    "skills/business-writing-intent-enforcer": {
+      "files": 6,
+      "inventory_sha256": "dbb298d21a334bca28d10ea221e45ed24429c40cfd9cd03f2fceb1885b8dddae"
+    },
+    "skills/claim-boundary-checker": {
+      "files": 4,
+      "inventory_sha256": "266b2c10d03a23a534644d6f795dc095e269bc5a1088cdcaa16347d3ce2e0952"
+    }
+  },
   "guardrails": [
-    "Detect-only review does not mutate prose.",
+    "DETECT is report-only and does not mutate prose.",
+    "REWRITE requires explicit authority and makes the minimum effective edit.",
+    "Voice recovery uses only the selected source or an explicit user-supplied sample.",
+    "Never invent personality, facts, examples, certainty, identity, experience, results, opinions, emotions, or first-person claims.",
+    "Protected exact material remains unchanged.",
+    "Punctuation helpers operate only on reviewed scratch prose with separate input and output paths.",
+    "Raw scanner scores are report-only evidence; contextual qualification and hard gates decide the result.",
     "Unsupported claims are removed, qualified, sourced, or marked unverified."
   ],
   "routing_cases": [
@@ -31,7 +62,7 @@
       "prompt": "Flag issues in this draft but do not rewrite it.",
       "expected_skill": "writing-enforcer",
       "evidence_file": "skills/writing-quality-router/SKILL.md",
-      "evidence_contains": "writing-enforcer in report-only mode"
+      "evidence_contains": "writing-enforcer in `DETECT` report-only mode"
     },
     {
       "prompt": "Which statements in this launch copy lack support?",
