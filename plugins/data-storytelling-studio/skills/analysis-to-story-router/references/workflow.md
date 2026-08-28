@@ -29,3 +29,9 @@ Select one primary delivery format. Add a secondary export only when another aud
 - `disputed`: stop production and return the disagreement to the analysis owner.
 
 The router owns format and handoff decisions. Analytical companions own calculations and domain methods.
+
+## Zero-companion fallback
+
+All companions are optional. The required_companions field records the capabilities a later production step needs. It does not report installation and does not block creation of the route artifact.
+
+When no selected companion is available, create a self-contained local Markdown or JSON story brief. Include the source artifact paths and evidence limits from the route artifact. Record the selected format, missing production capabilities, risks, and exact next skill. Mark unsupported production or publication incomplete. Do not claim that the final artifact was delivered.

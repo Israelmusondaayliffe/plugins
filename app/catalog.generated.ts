@@ -1583,7 +1583,7 @@ export const plugins = [
     "shortDescription": "Plan, produce, and verify video assets.",
     "longDescription": "Video Production Studio routes briefs across explainers, launches, music, slideshows, website and PR stories, captions, overlays, prompts, HyperFrames implementation, and final delivery checks.",
     "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Media",
     "license": null,
     "capabilities": [],
@@ -1666,7 +1666,7 @@ export const plugins = [
       "assets": 158,
       "references": 208,
       "scripts": 91,
-      "files": 562
+      "files": 563
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1797,7 +1797,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -2366,7 +2366,7 @@ export const plugins = [
     "shortDescription": "Turn approved positioning into a coherent visual world.",
     "longDescription": "Brand World Studio routes approved strategy into a visual brief, identity system, image-model choice, production prompt pack, and consistency review without inventing upstream positioning.",
     "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Design",
     "license": null,
     "capabilities": [],
@@ -2542,7 +2542,7 @@ export const plugins = [
     "shortDescription": "Turn market signals into evidence-backed early revenue work on Claude Code, Cowork, or Codex.",
     "longDescription": "Founder Revenue Engine converts recent market signals into a bounded ICP, commercial narrative, outreach drafts, and founder-led content on Claude Code, Claude Cowork, and Codex while keeping sends and account changes unauthorized by default.",
     "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Sales",
     "license": null,
     "capabilities": [],
@@ -2591,9 +2591,9 @@ export const plugins = [
     "counts": {
       "skills": 7,
       "assets": 8,
-      "references": 16,
+      "references": 17,
       "scripts": 115,
-      "files": 158
+      "files": 159
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2890,7 +2890,7 @@ export const plugins = [
     "shortDescription": "Turn checked analysis into decision-facing stories.",
     "longDescription": "Data Storytelling Studio preserves the analytical source of truth while routing it to the right delivery format, auditing visual claims, and producing an answer-first executive readout with explicit evidence and caveats.",
     "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -4376,8 +4376,8 @@ export const totals = {
   "plugins": 22,
   "skills": 171,
   "assets": 328,
-  "references": 465,
+  "references": 466,
   "scripts": 403,
-  "files": 1899
+  "files": 1901
 } as const;
 export type Plugin = (typeof plugins)[number];

@@ -1,6 +1,6 @@
 {
   "plugin": "web-product-studio",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "skills": [
     "acceptance-flow",
     "code-production-agent",
@@ -21,15 +21,16 @@
     "web-product-router"
   ],
   "companions": [
-    "build-web-apps",
-    "supabase",
-    "github",
-    "codex-security",
-    "browser"
+    {"name": "build-web-apps", "required": false, "purpose": "Optional hosted web-app implementation surface"},
+    {"name": "supabase", "required": false, "purpose": "Optional backend and data service"},
+    {"name": "github", "required": false, "purpose": "Optional repository and pull-request operations"},
+    {"name": "codex-security", "required": false, "purpose": "Optional specialist security review"},
+    {"name": "browser", "required": false, "purpose": "Optional rendered verification surface"},
+    {"name": "playwright", "required": false, "purpose": "Optional repeatable browser automation"}
   ],
   "guardrails": [
     "Load exactly one design constitution or none.",
-    "Prove user-facing completion through browser-verifiable acceptance flows.",
+    "Prove user-facing completion through browser-verifiable acceptance flows, or mark rendered acceptance incomplete when no browser surface is available.",
     "Freeze secondary features until an independent source-bound hero review scores at least 7 with no P0, P1, or P2 visual gap."
   ],
   "routing_cases": [

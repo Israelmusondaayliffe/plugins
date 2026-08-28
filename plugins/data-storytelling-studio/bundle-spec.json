@@ -1,6 +1,6 @@
 {
   "plugin": "data-storytelling-studio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     "analysis-to-story-router",
     "chart-message-audit",
@@ -18,12 +18,14 @@
     {"name": "sites", "required": false, "purpose": "Publish interactive decision artifacts"},
     {"name": "writing-quality", "required": false, "purpose": "Validate human-facing narrative quality"},
     {"name": "knowledge-work-superpowers", "required": false, "purpose": "Plan, evidence, review, and finish knowledge work"},
-    {"name": "data-analytics", "required": false, "purpose": "Optional specialist analysis and dashboard workflows when installed"}
+    {"name": "data-analytics", "required": false, "purpose": "Optional specialist analysis and dashboard workflows when installed"},
+    {"name": "documents", "required": false, "purpose": "Build long-form decision reports when installed"}
   ],
   "guardrails": [
     "The analytical source remains authoritative and the plugin must not silently recalculate it.",
     "Every claim must point to evidence or be labeled as judgment.",
-    "A polished visual cannot repair missing, weak, or contradictory evidence."
+    "A polished visual cannot repair missing, weak, or contradictory evidence.",
+    "The required_companions field records production needs, not installation evidence or a hard runtime dependency."
   ],
   "routing_cases": [
     {
@@ -46,6 +48,13 @@
       "expected_skill": "executive-readout-builder",
       "evidence_file": "skills/executive-readout-builder/SKILL.md",
       "evidence_contains": "Set `publish_ready` to false"
+    },
+    {
+      "kind": "fallback",
+      "prompt": "Prepare a local story brief when none of the selected production companions are installed.",
+      "expected_skill": "analysis-to-story-router",
+      "evidence_file": "skills/analysis-to-story-router/SKILL.md",
+      "evidence_contains": "self-contained local Markdown or JSON story brief"
     }
   ]
 }

@@ -23,6 +23,7 @@ def main() -> int:
     errors: list[str] = []
     try:
         manifest = json.loads((root / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+        claude_manifest = json.loads((root / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
         spec = json.loads((root / "bundle-spec.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         print(json.dumps({"valid": False, "errors": [str(exc)]}, indent=2))
@@ -31,6 +32,8 @@ def main() -> int:
         fail(errors, "plugin name must match the source directory")
     if manifest.get("version") != spec.get("version"):
         fail(errors, "manifest and bundle spec versions differ")
+    if claude_manifest.get("name") != manifest.get("name") or claude_manifest.get("version") != manifest.get("version"):
+        fail(errors, "Claude and Codex manifest identity differs")
     expected = set(spec.get("skills", []))
     actual = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
     if actual != expected:
@@ -74,6 +77,39 @@ def main() -> int:
     for required in ("README.md", "bundle-spec.json"):
         if not (root / required).is_file():
             fail(errors, f"missing {required}")
+    expected_companions = {
+        "canva",
+        "creative-production",
+        "strategy-room",
+        "writing-quality",
+    }
+    companions = spec.get("companions", [])
+    if not isinstance(companions, list) or {
+        item.get("name") for item in companions if isinstance(item, dict)
+    } != expected_companions:
+        fail(errors, "optional companion set differs")
+    elif any(item.get("required") is not False for item in companions):
+        fail(errors, "every companion must be optional")
+    fallback_contracts = {
+        "README.md": [
+            "<approved-output-root>/brand-world-studio/positioning-gap.md",
+            "owned visual brief, prompt-pack, brandkit, and consistency-review path",
+        ],
+        "skills/brand-world-router/SKILL.md": [
+            "Local positioning fallback",
+            "unsupported claims",
+            "Stop after the positioning-gap handoff",
+        ],
+        "skills/brand-world-router/references/workflow.md": [
+            "Creative Production, Canva, Writing Quality, and Strategy Room are optional companions",
+            "exact next decision",
+        ],
+    }
+    for relative, phrases in fallback_contracts.items():
+        text = (root / relative).read_text(encoding="utf-8", errors="replace")
+        for phrase in phrases:
+            if phrase not in text:
+                fail(errors, f"fallback contract missing from {relative}: {phrase}")
     result = {
         "valid": not errors,
         "plugin": root.name,

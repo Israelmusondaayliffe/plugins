@@ -1,6 +1,6 @@
 {
   "plugin": "video-production-studio",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "skills": [
     "embedded-captions",
     "faceless-explainer",
@@ -28,9 +28,31 @@
     "browser",
     "computer-use"
   ],
+  "companion_policy": "optional-at-runtime",
+  "completion_states": {
+    "planning-complete": {
+      "required_artifacts": [
+        "video-brief.md",
+        "storyboard.md",
+        "shot-list.md",
+        "asset-ledger.md",
+        "runtime-requirements.md",
+        "delivery-checklist.md"
+      ],
+      "rendering_status": "incomplete",
+      "visual_qc_status": "incomplete"
+    },
+    "rendered-delivery-complete": {
+      "requires_renderer": true,
+      "requires_video_delivery_qc": true,
+      "rendering_status": "complete",
+      "visual_qc_status": "complete"
+    }
+  },
   "guardrails": [
-    "HyperFrames is the default runtime unless the source or user selects Remotion.",
-    "Every render requires technical and visual delivery checks."
+    "HyperFrames is the preferred runtime when it is installed and visible unless the source or user selects Remotion.",
+    "External production surfaces are optional and their absence must not block the planning-complete path.",
+    "Every rendered-delivery-complete result requires technical and visual delivery checks."
   ],
   "routing_cases": [
     {
@@ -50,6 +72,13 @@
       "expected_skill": "video-delivery-qc",
       "evidence_file": "skills/video-delivery-qc/SKILL.md",
       "evidence_contains": "Use before handing off any video export"
+    },
+    {
+      "prompt": "Plan this video when no renderer or external production surface is available.",
+      "expected_skill": "video-production-router",
+      "expected_completion_state": "planning-complete",
+      "evidence_file": "skills/video-production-router/SKILL.md",
+      "evidence_contains": "No-renderer planning path"
     }
   ]
 }

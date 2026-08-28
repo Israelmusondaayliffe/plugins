@@ -5,12 +5,12 @@ import { fileURLToPath } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const versions = {
   "agent-ops": "0.5.2",
-  "brand-world-studio": "0.2.0",
+  "brand-world-studio": "0.2.1",
   "capability-operator": "0.6.0",
   "citizen-forge": "1.1.0",
   "continuity-vault": "0.2.1",
-  "data-storytelling-studio": "0.2.0",
-  "founder-revenue-engine": "0.2.0",
+  "data-storytelling-studio": "0.2.1",
+  "founder-revenue-engine": "0.2.1",
   "gauntlet": "0.2.0",
   "gauntlet-loop": "1.2.0",
   "harness-engineering": "2.7.0",
@@ -24,8 +24,8 @@ const versions = {
   "proofloop": "0.2.0",
   "signal-to-system": "0.1.0-beta.1",
   "strategy-room": "0.2.2",
-  "video-production-studio": "0.3.0",
-  "web-product-studio": "0.4.0",
+  "video-production-studio": "0.3.1",
+  "web-product-studio": "0.4.1",
   "writing-quality": "0.2.0",
 };
 const codexMarketplace = JSON.parse(

@@ -1,6 +1,6 @@
 {
   "name": "video-production-studio",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
   "author": {
     "name": "Community Maintainers"
