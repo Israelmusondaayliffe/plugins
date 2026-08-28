@@ -110,14 +110,14 @@ export default async function SignalSkillPage({ params }: SignalSkillPageProps) 
         <section className="signal-fit-grid" id="fit" aria-label="Skill fit">
           <article>
             <p className="kicker">Use when</p>
-            <h2>This is the right tool when.</h2>
+            <h2>Use this skill when</h2>
             <ul>
               {guide.useWhen.map((item) => <li key={item}>{item}</li>)}
             </ul>
           </article>
           <article>
             <p className="kicker">Choose another skill when</p>
-            <h2>This is not the job.</h2>
+            <h2>Use another skill for these jobs</h2>
             <ul>
               {guide.notFor.map((item) => <li key={item}>{item}</li>)}
             </ul>
@@ -142,7 +142,7 @@ export default async function SignalSkillPage({ params }: SignalSkillPageProps) 
         <section className="guide-section workflow-section" id="method" aria-labelledby="method-title">
           <div className="section-heading detail-section-heading">
             <p className="kicker">Working method</p>
-            <h2 id="method-title">How the skill approaches the job.</h2>
+            <h2 id="method-title">How this skill works</h2>
           </div>
           <ol className="workflow-list">
             {guide.method.map((step, index) => (
@@ -157,7 +157,7 @@ export default async function SignalSkillPage({ params }: SignalSkillPageProps) 
         <section className="signal-result" id="result" aria-labelledby="result-title">
           <div>
             <p className="kicker">What a useful result includes</p>
-            <h2 id="result-title">A usable artifact with honest limits.</h2>
+            <h2 id="result-title">A result you can use, with clear limits.</h2>
             <p>{guide.usefulResult}</p>
           </div>
           <aside>

@@ -20,7 +20,7 @@
       "name": "brand-world-studio",
       "source": "./plugins/brand-world-studio",
       "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -65,7 +65,7 @@
       "name": "founder-revenue-engine",
       "source": "./plugins/founder-revenue-engine",
       "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -74,7 +74,7 @@
       "name": "gauntlet",
       "source": "./plugins/gauntlet",
       "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -173,7 +173,7 @@
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "author": {
         "name": "Community Maintainers"
       }
@@ -191,7 +191,7 @@
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "author": {
         "name": "Community Maintainers"
       }

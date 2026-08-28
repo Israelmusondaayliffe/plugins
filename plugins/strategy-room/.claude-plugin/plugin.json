@@ -1,6 +1,6 @@
 {
   "name": "strategy-room",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
   "author": {
     "name": "Community Maintainers"

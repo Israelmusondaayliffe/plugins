@@ -500,7 +500,7 @@ export const plugins = [
           "Test the main claims before writing the recommendation.",
           "Draft the brief, disclose uncertainty, and verify every required section."
         ],
-        "result": "A useful result is a short decision brief with traceable sources, clear uncertainty, and a recommendation tied to the evidence."
+        "result": "The finished decision brief traces its sources, states uncertainty clearly, and ties the recommendation to the evidence."
       },
       "tips": [
         "Name the reader and the decision they need to make.",
@@ -674,10 +674,10 @@ export const plugins = [
           "Split the test into offer, landing copy, outreach draft, and evidence review.",
           "Complete and verify each approved slice before calling the test ready."
         ],
-        "result": "A useful result is a bounded workshop test with an approved brief, practical work units, and clear evidence for readiness."
+        "result": "The finished workshop test has an approved brief, practical work units, and clear readiness evidence."
       },
       "tips": [
-        "Describe the change you want, not only the artifact you want produced.",
+        "Describe the intended change as well as the artifact you want produced.",
         "State what must remain unchanged.",
         "Decide what evidence would make you confident enough to stop.",
         "Use the full coordinator for multi-stage work and a specialist for one clear stage."
@@ -826,7 +826,7 @@ export const plugins = [
           "Record proposed lessons as candidates rather than active instructions.",
           "Review the candidates and later audit whether approved lessons improved results."
         ],
-        "result": "A useful result is a verified briefing plus a reviewable learning record that cannot silently replace the source instructions."
+        "result": "The briefing is verified, and its learning record remains reviewable without replacing the source instructions."
       },
       "tips": [
         "Give the verifier concrete requirements, not a vague quality score.",
@@ -989,7 +989,7 @@ export const plugins = [
           "Draft the copy in the requested voice.",
           "Check every factual claim and remove or qualify unsupported language."
         ],
-        "result": "A useful result is clear launch copy that sounds intentional, preserves the source meaning, and makes only supportable claims."
+        "result": "The launch copy is clear and intentional, preserves the source meaning, and makes only supportable claims."
       },
       "tips": [
         "Say whether you want a draft, a rewrite, or comments only.",
@@ -1179,12 +1179,12 @@ export const plugins = [
           "Audit overlap if several skills appear to fit.",
           "Recommend the primary route, and install something new only if a real gap remains and approval is given."
         ],
-        "result": "A useful result is one clear primary capability, a reason it fits, and evidence for any claimed installation or discovery state."
+        "result": "The selected primary capability has a clear fit, backed by evidence for every installation or discovery claim."
       },
       "tips": [
         "Name the host because availability can differ between hosts.",
         "Say whether you want a read-only answer or an actual install or release.",
-        "Describe the outcome, not only the tool name you remember.",
+        "Describe the outcome instead of relying on the tool name you remember.",
         "Ask for fresh-task proof when discovery matters."
       ],
       "boundaries": [
@@ -1372,13 +1372,13 @@ export const plugins = [
           "Build the approved form, status view, and deterministic access checks.",
           "Verify the policy paths and operating plan before release."
         ],
-        "result": "A useful result is an owned, registered internal app whose allowed actions, blocked actions, and operating responsibilities are clear."
+        "result": "The internal app is owned and registered, with clear allowed actions, blocked actions, and operating responsibilities."
       },
       "tips": [
         "Start with one real internal decision or workflow.",
         "Name the accountable owner before building.",
         "List sensitive data and forbidden actions explicitly.",
-        "Describe the normal operating and support process, not only the first release."
+        "Describe normal operation and support after the first release."
       ],
       "boundaries": [
         "It does not replace security, privacy, legal, or compliance review where those are required.",
@@ -1556,7 +1556,7 @@ export const plugins = [
           "Set the schedule, durable checkpoint, evidence requirements, and stop conditions.",
           "Audit authority and failure handling before activation."
         ],
-        "result": "A useful result is a reusable agent contract that knows what to inspect, when to report, when to do nothing, and when to stop."
+        "result": "The reusable agent contract says what to inspect, when to report, when to do nothing, and when to stop."
       },
       "tips": [
         "Define the outcome before choosing the architecture.",
@@ -1770,13 +1770,13 @@ export const plugins = [
           "Build the video with readable captions and restrained overlays.",
           "Render the candidate and inspect picture, audio, timing, and brief alignment."
         ],
-        "result": "A useful result is a delivery-ready video whose story, media, captions, and technical properties match the approved brief."
+        "result": "The delivery-ready video matches the approved brief in story, media, captions, and technical properties."
       },
       "tips": [
         "Give the target platform, aspect ratio, runtime, and audience.",
         "Separate approved media from media that still needs rights clearance.",
         "Write one communication goal for each scene.",
-        "Review a rendered file, not only the timeline or source code."
+        "Review the rendered file as well as the timeline or source code."
       ],
       "boundaries": [
         "The plugin does not supply rights to images, music, footage, logos, or voices.",
@@ -1797,7 +1797,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -1820,7 +1820,7 @@ export const plugins = [
       },
       {
         "name": "code-production-agent",
-        "description": "Production-grade coding agent for non-coders. Transforms plain English into working software through mandatory research, planning, approval, and validated execution. Handles building new apps/features/components/APIs, debugging and refactoring existing code, system design, performance optimization, and clean architecture restructuring. Five subagents (Planner, Builder, Fixer, Designer, Reviewer) coordinate through strict phase workflow. Includes deterministic code validation scripts for linting, error scanning, complexity analysis, structure checks. Use when user says \"build me\", \"create an app\", \"make a website\", \"fix this code\", \"debug this\", \"refactor\", \"optimize performance\", \"design a system\", \"clean up this codebase\", \"build an API\", \"create a component\", or describes any software idea or code problem in plain language. Also triggers on \"help me code\", \"I need software\", \"what's wrong with this code\", \"make this faster\", \"restructure this\", or any coding request from a non-technical user."
+        "description": "Coding agent for non-coders that turns plain-English requirements into software through required research, planning, approval, and validated execution. Handles building new apps/features/components/APIs, debugging and refactoring existing code, system design, performance optimization, and clean architecture restructuring. Five subagents (Planner, Builder, Fixer, Designer, Reviewer) coordinate through strict phase workflow. Includes deterministic code validation scripts for linting, error scanning, complexity analysis, structure checks. Use when user says \"build me\", \"create an app\", \"make a website\", \"fix this code\", \"debug this\", \"refactor\", \"optimize performance\", \"design a system\", \"clean up this codebase\", \"build an API\", \"create a component\", or describes any software idea or code problem in plain language. Also triggers on \"help me code\", \"I need software\", \"what's wrong with this code\", \"make this faster\", \"restructure this\", or any coding request from a non-technical user."
       },
       {
         "name": "design-constitution-selector",
@@ -1828,7 +1828,7 @@ export const plugins = [
       },
       {
         "name": "full-output-enforcement",
-        "description": "Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output."
+        "description": "Guides long code-generation tasks through continuation rules, placeholder checks, and clean token-limit splits. Use for exhaustive, unabridged output."
       },
       {
         "name": "gstack",
@@ -1836,11 +1836,11 @@ export const plugins = [
       },
       {
         "name": "image-to-code",
-        "description": "Elite website image-to-code skill for Claude Code, Claude Cowork, and Codex. For visually important web tasks, it must first generate the design image(s) itself, deeply analyze them, then implement the website to match them as closely as possible. On any of these hosts, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop."
+        "description": "Image-to-code workflow for Claude Code, Claude Cowork, and Codex. For visually important web tasks, it must first generate the design images, analyze them, and implement the website to match them as closely as possible. On any of these hosts, it must prefer large, readable, section-specific images instead of tiny compressed boards, generate fresh standalone images for sections or detail views instead of cropping old ones, avoid lazy under-generation, avoid cards-inside-cards-inside-cards UI, and keep the hero clean, spacious, readable, and visible on a small laptop."
       },
       {
         "name": "imagegen-frontend-web",
-        "description": "Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE - generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate."
+        "description": "Generates website design references for landing pages, marketing sites, and product comps. It creates one separate horizontal image for every section; an eight-section landing page produces eight images. Never compress multiple sections into one image. It requires varied composition, background treatment, calls to action, hero scale, a shared narrative concept, second-read details, and one consistent palette so developers or coding models can recreate the design."
       },
       {
         "name": "playwright",
@@ -1848,7 +1848,7 @@ export const plugins = [
       },
       {
         "name": "redesign-existing-projects",
-        "description": "Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS."
+        "description": "Audits existing websites and apps, identifies generic AI patterns, applies the skill's design standards, and checks that existing functionality still works. Supports any CSS framework or vanilla CSS."
       },
       {
         "name": "visual-fidelity-gate",
@@ -1981,7 +1981,7 @@ export const plugins = [
           "Replace selector rows with direct links and expand the detail template.",
           "Run build checks and browser tests for navigation, focus, responsive layout, and content."
         ],
-        "result": "A useful result is a working redesign that keeps the product's identity, shortens the main path, and passes the agreed browser flows."
+        "result": "The working redesign keeps the product's identity, shortens the main path, and passes the agreed browser flows."
       },
       "tips": [
         "Provide the repository or live URL and name the source of truth.",
@@ -2163,7 +2163,7 @@ export const plugins = [
           "Build the target-model version with the verified specialist.",
           "Run both prompts on representative normal and edge cases before choosing."
         ],
-        "result": "A useful result is a target prompt with an explicit contract and measured evidence that supports or rejects the migration."
+        "result": "The target prompt has an explicit contract and measured evidence that supports or rejects the migration."
       },
       "tips": [
         "Name the exact model and interface when known.",
@@ -2190,7 +2190,7 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2209,7 +2209,7 @@ export const plugins = [
     "skills": [
       {
         "name": "assumption-challenger",
-        "description": "Tier 3 research-first assumption challenger. Researches the subject deeply via web search to become a domain expert, builds a challenge plan, executes multi-lens scrutiny, triple-verifies findings against research, and ships a recommendations report. Use when user says \"challenge assumptions,\" \"analyze blind spots,\" \"what am I missing,\" \"critique this,\" \"find contradictions,\" \"stress test this,\" \"what could go wrong,\" \"tear this apart,\" or asks for rigorous adversarial review of plans, prompts, strategies, ideas, business cases, technical decisions, or AI prompts. Five-agent pipeline (researcher, planner, challenger, verifier, synthesizer). Three effort modes (light, standard, deep). Mandatory web search before challenge so the critique is grounded in current facts and expert disagreement, not training-data instinct."
+        "description": "Tier 3 research-first assumption challenger. It researches current sources, builds a challenge plan, examines the subject through several lenses, checks findings against the research, and returns a recommendations report. Use when user says \"challenge assumptions,\" \"analyze blind spots,\" \"what am I missing,\" \"critique this,\" \"find contradictions,\" \"stress test this,\" \"what could go wrong,\" \"tear this apart,\" or asks for rigorous adversarial review of plans, prompts, strategies, ideas, business cases, technical decisions, or AI prompts. Five-agent pipeline (researcher, planner, challenger, verifier, synthesizer). Three effort modes (light, standard, deep). Mandatory web search before challenge so the critique is grounded in current facts and expert disagreement, not training-data instinct."
       },
       {
         "name": "assumption-register",
@@ -2339,7 +2339,7 @@ export const plugins = [
           "Explore options that differ in customer, mechanism, and commitment.",
           "Select a reversible test and document why it best fits the evidence."
         ],
-        "result": "A useful result is a clear decision with stated tradeoffs, testable assumptions, and the next evidence needed before a larger commitment."
+        "result": "The decision states its tradeoffs, testable assumptions, and the next evidence needed before a larger commitment."
       },
       "tips": [
         "Name the actual commitment you are deciding about.",
@@ -2366,7 +2366,7 @@ export const plugins = [
     "shortDescription": "Turn approved positioning into a coherent visual world.",
     "longDescription": "Brand World Studio routes approved strategy into a visual brief, identity system, image-model choice, production prompt pack, and consistency review without inventing upstream positioning.",
     "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Design",
     "license": null,
     "capabilities": [],
@@ -2401,7 +2401,7 @@ export const plugins = [
       },
       {
         "name": "brandkit",
-        "description": "Premium brand-kit image generation skill for creating high-end brand-guidelines boards, logo systems, identity decks, and visual-world presentations. Trained for minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app brand systems. Optimized for intentional logo concepting, refined composition, sparse typography, strong symbolic meaning, premium mockups, art-directed imagery, and flexible grid layouts."
+        "description": "Creates brand-guidelines boards, logo systems, identity decks, and visual-world presentations across minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app styles. It directs logo concepts, composition, sparse typography, symbols, mockups, imagery, and grid layouts."
       },
       {
         "name": "gpt-image-2-unified",
@@ -2515,7 +2515,7 @@ export const plugins = [
           "Choose the verified image workflow and build a prompt pack for several topics.",
           "Generate candidates and check the series against the approved system."
         ],
-        "result": "A useful result is an inspectable brand system and prompt pack that produce related images without making every image identical."
+        "result": "The brand system and prompt pack are inspectable and produce related images without making every image identical."
       },
       "tips": [
         "Bring approved positioning before asking for visual direction.",
@@ -2532,7 +2532,7 @@ export const plugins = [
       "successSignals": [
         "The visual choices trace back to the approved brand brief.",
         "Consistency rules and allowed variation are both clear.",
-        "Finished assets are checked as a system, not only one at a time."
+        "Finished assets are checked together and individually."
       ]
     }
   },
@@ -2542,7 +2542,7 @@ export const plugins = [
     "shortDescription": "Turn market signals into evidence-backed early revenue work on Claude Code, Cowork, or Codex.",
     "longDescription": "Founder Revenue Engine converts recent market signals into a bounded ICP, commercial narrative, outreach drafts, and founder-led content on Claude Code, Claude Cowork, and Codex while keeping sends and account changes unauthorized by default.",
     "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Sales",
     "license": null,
     "capabilities": [],
@@ -2573,7 +2573,7 @@ export const plugins = [
       },
       {
         "name": "linkedin-viral-content-creator",
-        "description": "Create viral LinkedIn posts combining probability-driven consensus-breaking with 69 proven templates and complete post workflow. Use when writing LinkedIn posts, creating hooks, improving drafts, or generating contrarian content. Enforces no-fabrication rule and a configurable voice profile. Six-phase workflow maps consensus, generates hooks via dual method (tail sampling plus templates), applies PRISM humanization, writes body, enforces quality, and delivers multiple options with rationale."
+        "description": "Create LinkedIn posts using a probability-driven consensus-breaking method and 69 included templates. Use when writing LinkedIn posts, creating hooks, improving drafts, or generating contrarian content. Enforces no-fabrication rule and a configurable voice profile. Six-phase workflow maps consensus, generates hooks via dual method (tail sampling plus templates), applies PRISM humanization, writes body, enforces quality, and delivers multiple options with rationale."
       },
       {
         "name": "market-narrative-builder",
@@ -2696,7 +2696,7 @@ export const plugins = [
           "Build a commercial narrative using only supported evidence.",
           "Draft a small outreach sequence and define what response would validate the hypothesis."
         ],
-        "result": "A useful result is a testable customer hypothesis, credible narrative, and bounded outreach draft tied to observed signals."
+        "result": "The customer hypothesis is testable, the narrative is credible, and the bounded outreach draft is tied to observed signals."
       },
       "tips": [
         "Name the offer, price range, geography, and time window when relevant.",
@@ -2863,10 +2863,10 @@ export const plugins = [
           "Promote only broadly reusable items to the appropriate durable location.",
           "Link related decisions and schedule review for facts likely to become stale."
         ],
-        "result": "A useful result is a small set of traceable, scoped knowledge records that help later work without replacing the original project evidence."
+        "result": "The knowledge records are traceable, scoped, and useful to later work without replacing the original project evidence."
       },
       "tips": [
-        "Provide the original source, not only a remembered summary.",
+        "Provide the original source instead of a remembered summary.",
         "Label facts, decisions, preferences, and instructions separately.",
         "Add dates or expiry for facts likely to change.",
         "Keep one-off project context out of global rules."
@@ -3017,10 +3017,10 @@ export const plugins = [
           "Build the story around what changed, where, likely explanations, and what remains uncertain.",
           "Audit each chart against its claim and end with a bounded next test."
         ],
-        "result": "A useful result is a concise readout that helps leaders decide what to test while keeping evidence and caveats visible."
+        "result": "The concise readout helps leaders decide what to test while keeping evidence and caveats visible."
       },
       "tips": [
-        "Bring checked analysis, not only raw data.",
+        "Bring checked analysis rather than raw data alone.",
         "Name the decision the output must support.",
         "Use one claim per chart whenever possible.",
         "Put caveats near the conclusion they limit."
@@ -3175,10 +3175,10 @@ export const plugins = [
           "Run each candidate with fixed settings and preserve raw outputs and failures.",
           "Compare the normalized results and write a selection memo with tradeoffs."
         ],
-        "result": "A useful result is a reproducible evidence package and a model choice tied to the real production constraints."
+        "result": "The evidence package is reproducible, and the model choice is tied to the real production constraints."
       },
       "tips": [
-        "Use production-like cases, not only easy examples.",
+        "Use production-like cases, including hard examples.",
         "Freeze the rubric before looking at results.",
         "Preserve raw failures and invalid outputs.",
         "Measure operational constraints alongside answer quality."
@@ -3361,7 +3361,7 @@ export const plugins = [
           "Run and verify one manual iteration before scheduling.",
           "Schedule the loop and diagnose it if reports repeat without new evidence."
         ],
-        "result": "A useful result is a resumable loop that reports real changes, records clean no-op runs, and stops or escalates under defined conditions."
+        "result": "The resumable loop reports real changes, records clean no-op runs, and stops or escalates under defined conditions."
       },
       "tips": [
         "Make progress measurable as a shrinking difference from the target state.",
@@ -3573,7 +3573,7 @@ export const plugins = [
         {
           "need": "You need proof after a change",
           "skill": "harness-verifier",
-          "why": "It checks installed and fresh-task behavior, not only files."
+          "why": "It checks the installed capability, fresh-task behavior, and the files."
         }
       ],
       "workedExample": {
@@ -3585,7 +3585,7 @@ export const plugins = [
           "Plan a small repair that makes observable target-state change the primary progress measure.",
           "Build reversibly and verify the new rule, installed parity, fresh-task discovery, and behavior on a representative task."
         ],
-        "result": "A useful result is a host-native harness whose rules, capabilities, and proof chain support the user's real work and behave correctly in a fresh task."
+        "result": "The host-native harness supports the user's real work, with its rules, capabilities, and proof chain verified in a fresh task."
       },
       "tips": [
         "Bring examples of real successful and failed tasks.",
@@ -3771,7 +3771,7 @@ export const plugins = [
           "Add edges for failed evidence, revision, approval, and completion with finite loop limits.",
           "Run from recorded state and inspect the graph if work repeats or bypasses a gate."
         ],
-        "result": "A useful result is an inspectable graph where every transition has a reason, evidence is preserved, and publication remains behind explicit approval."
+        "result": "The graph is inspectable: every transition has a reason, evidence is preserved, and publication remains behind explicit approval."
       },
       "tips": [
         "Give each node one clear responsibility.",
@@ -3948,7 +3948,7 @@ export const plugins = [
           "Execute the actual release changes, using critics only after integrated candidates exist.",
           "Create durable handoffs and run a fresh end-to-end verifier before release."
         ],
-        "result": "A useful result is the completed public release plus compact evidence that every required workstream reached a terminal state."
+        "result": "The public release is complete, with compact evidence that every required workstream reached a terminal state."
       },
       "tips": [
         "Reserve Gauntlet for work large enough to justify its coordination cost.",
@@ -3975,7 +3975,7 @@ export const plugins = [
     "shortDescription": "Explicit-only mega-project loop with blind critics.",
     "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts.",
     "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3996,7 +3996,7 @@ export const plugins = [
     "skills": [
       {
         "name": "gauntlet",
-        "description": "Loads only when the user explicitly invokes the gauntlet by name with one of these trigger phrases: gauntlet, run the gauntlet, gauntlet loop, gauntlet mode, gauntlet run, the big one, mega project mode, max run, ultracode run, beat this bar, blind critic loop, Claude of Duty method, resume the gauntlet, gauntlet handoff. Acts as the front door and router for the gauntlet mega-project method, prechecking the surface and routing to the brief, prompt, run, verify, evidence, and handoff stages. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
+        "description": "Loads only when the user explicitly invokes the gauntlet by name with one of these trigger phrases: gauntlet, run the gauntlet, gauntlet loop, gauntlet mode, gauntlet run, the big one, mega project mode, max run, ultracode run, beat this bar, blind critic loop, Claude of Duty method, resume the gauntlet, gauntlet handoff. It is the front door and router for the gauntlet mega-project method. It prechecks the surface and routes to the brief, prompt, run, verify, evidence, and handoff stages. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet."
       },
       {
         "name": "gauntlet-brief",
@@ -4131,7 +4131,7 @@ export const plugins = [
           "Execute the actual documentation changes and preserve compact evidence.",
           "Hand off durable state between sessions and use a fresh verifier on the integrated result."
         ],
-        "result": "A useful result is a complete documentation system whose artifacts, source fidelity, checks, and unresolved items are independently inspectable."
+        "result": "The documentation system makes its artifacts, source fidelity, checks, and unresolved items independently inspectable."
       },
       "tips": [
         "Use the explicit Gauntlet name so it cannot trigger accidentally.",
@@ -4350,7 +4350,7 @@ export const plugins = [
           "If the evidence is sufficient, use Workshop Workbench to recommend and build only the materials needed for the first session.",
           "After the session, use Session Compounder to preserve decisions and ask which follow-up or reusable outputs are worth creating."
         ],
-        "result": "A useful result would be a traceable chain from cited public signals to a bounded test, a right-sized workshop package, and permission-aware follow-up outputs. This is an illustrative route, not a claimed outcome."
+        "result": "The illustrative route ends with a traceable chain from cited public signals to a bounded test, a right-sized workshop package, and permission-aware follow-up outputs. This is not a claimed outcome."
       },
       "tips": [
         "Name the job already in front of you. You do not need to run all ten skills.",

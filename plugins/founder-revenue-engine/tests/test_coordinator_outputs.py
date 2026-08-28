@@ -29,7 +29,7 @@ class CoordinatorOutputTests(unittest.TestCase):
             )["version"],
             SPEC["version"],
         }
-        self.assertEqual(versions, {"0.2.1"})
+        self.assertEqual(versions, {"0.2.2"})
         expected = {
             "sales",
             "creative-production",

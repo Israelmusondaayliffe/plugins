@@ -254,7 +254,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
         >
           <div className="section-heading detail-section-heading">
             <p className="kicker">Recommended workflow</p>
-            <h2 id="workflow-title">A practical way to use it.</h2>
+            <h2 id="workflow-title">Use this workflow.</h2>
             <p>
               Follow these steps in order for a complete job. For a smaller
               request, use only the step that fits.
@@ -423,7 +423,7 @@ export default async function PluginPage({ params }: PluginPageProps) {
 
         <section className="package-section">
           <div>
-            <h2>Source you can inspect.</h2>
+            <h2>Inspect the source.</h2>
             <a
               className="text-link"
               href={repositoryUrl + "/tree/main/plugins/" + plugin.slug}

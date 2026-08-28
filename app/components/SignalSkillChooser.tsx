@@ -104,8 +104,8 @@ export function SignalSkillChooser() {
               <p className="guide-eyebrow">Your recommendation</p>
               <h3>Choose one need to begin.</h3>
               <p>
-                Each choice maps to one independently usable skill. The result
-                will appear here without changing the page.
+                Each choice selects one independently usable skill. Your
+                recommendation appears here.
               </p>
             </div>
           )}

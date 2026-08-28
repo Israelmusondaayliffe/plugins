@@ -1,6 +1,6 @@
 ---
 name: linkedin-viral-content-creator
-description: Create viral LinkedIn posts combining probability-driven consensus-breaking with 69 proven templates and complete post workflow. Use when writing LinkedIn posts, creating hooks, improving drafts, or generating contrarian content. Enforces no-fabrication rule and a configurable voice profile. Six-phase workflow maps consensus, generates hooks via dual method (tail sampling plus templates), applies PRISM humanization, writes body, enforces quality, and delivers multiple options with rationale.
+description: Create LinkedIn posts using a probability-driven consensus-breaking method and 69 included templates. Use when writing LinkedIn posts, creating hooks, improving drafts, or generating contrarian content. Enforces no-fabrication rule and a configurable voice profile. Six-phase workflow maps consensus, generates hooks via dual method (tail sampling plus templates), applies PRISM humanization, writes body, enforces quality, and delivers multiple options with rationale.
 ---
 
 # LinkedIn Viral Content Creator
