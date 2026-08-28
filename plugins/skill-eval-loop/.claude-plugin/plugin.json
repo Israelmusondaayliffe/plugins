@@ -1,0 +1,22 @@
+{
+  "name": "skill-eval-loop",
+  "version": "0.1.0",
+  "description": "Run bounded regression and repair cycles for skills and plugins with a complete local evaluator and optional OpenAI Plugin Eval analysis.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/skill-eval-loop",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "skills",
+    "plugins",
+    "evaluation",
+    "regression",
+    "loops",
+    "cowork"
+  ],
+  "skills": "./skills/"
+}

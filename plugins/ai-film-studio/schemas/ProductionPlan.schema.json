@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/ProductionPlan/v1",
+  "title": "ProductionPlan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "film_brief_id", "film_brief_sha256", "status", "naming_contract", "scene_graph", "stages", "dependencies", "owners", "evidence_gates", "schedule", "cost_limits", "failure_budget", "external_actions", "completion_criteria"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/ProductionPlan/v1"},
+    "id": {"type": "string", "pattern": "^plan_[a-z0-9_]+$"},
+    "film_brief_id": {"type": "string", "pattern": "^brief_[a-z0-9_]+$"},
+    "film_brief_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "status": {"enum": ["draft", "approved", "superseded"]},
+    "naming_contract": {"type": "string", "minLength": 1},
+    "scene_graph": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["scene_id", "sequence_id", "purpose", "depends_on"], "properties": {"scene_id": {"type": "string"}, "sequence_id": {"type": "string"}, "purpose": {"type": "string"}, "depends_on": {"type": "array", "items": {"type": "string"}}}}},
+    "stages": {"type": "array", "minItems": 11, "items": {"type": "object", "required": ["number", "name", "inputs", "outputs", "owner", "evidence_gate"], "properties": {"number": {"type": "integer", "minimum": 1}, "name": {"type": "string"}, "inputs": {"type": "array", "items": {"type": "string"}}, "outputs": {"type": "array", "items": {"type": "string"}}, "owner": {"type": "string"}, "evidence_gate": {"type": "string"}}}},
+    "dependencies": {"type": "array", "items": {"type": "object", "required": ["from", "to"], "properties": {"from": {"type": "string"}, "to": {"type": "string"}}}},
+    "owners": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "evidence_gates": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "schedule": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "cost_limits": {"type": "object", "required": ["currency", "project_ceiling", "per_action_preview"], "properties": {"currency": {"type": "string"}, "project_ceiling": {"type": "integer", "minimum": 0}, "per_action_preview": {"const": true}}},
+    "failure_budget": {"type": "integer", "minimum": 1},
+    "external_actions": {"type": "array", "items": {"type": "string"}},
+    "completion_criteria": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "loop-observatory",
+  "version": "0.1.0",
+  "description": "Read-only telemetry, portfolio reporting, and judge calibration for bounded agent loops.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/loop-observatory",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "loops",
+    "telemetry",
+    "evaluation",
+    "codex",
+    "claude-code",
+    "cowork"
+  ]
+}

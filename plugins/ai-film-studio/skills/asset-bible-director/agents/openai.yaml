@@ -1,0 +1,5 @@
+interface:
+  display_name: "Asset Bible Director"
+  short_description: "Define reusable assets, states, and stress tests."
+policy:
+  allow_implicit_invocation: false

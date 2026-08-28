@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/performance-bible/v1",
+  "id": "performance_fixture_courier",
+  "character_asset_id": "@char_fixture_courier_neutral",
+  "status": "approved",
+  "observable_profile": {"body_history": "Shoulders held forward from carrying work, but feet remain planted before a decision.", "movement_pattern": "A compact, measured walk with weight settling before turns.", "triggered_behavior": "Touches the delivery seal only when a promise is challenged.", "mask_and_crack": "Professional calm breaks into a held breath when the friend names the message.", "eye_life": "Gaze checks the friend, the message, then the exit; blinks slow under control and faster after the challenge."},
+  "locked_voice_descriptor": "A steady low voice with clipped phrasing that becomes quieter when pressure rises.",
+  "scene_adaptation_rules": ["Keep the seal touch only when the promise is challenged.", "Translate walking energy into hand restraint when seated."]
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Iteration Supervisor"
+  short_description: "Plan evidence-based iteration without live execution."
+policy:
+  allow_implicit_invocation: false

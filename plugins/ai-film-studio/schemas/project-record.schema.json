@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/project-record/v1",
+  "title": "ProjectRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "status", "creative_intent", "format", "constraints", "acceptance_criteria", "open_decisions"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/project-record/v1"},
+    "id": {"type": "string", "pattern": "^project_[a-z0-9_]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"enum": ["draft", "approved", "archived"]},
+    "creative_intent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["premise", "central_pressure", "audience_promise", "smallest_test_scene"],
+      "properties": {
+        "premise": {"type": "string", "minLength": 1},
+        "central_pressure": {"type": "string", "minLength": 1},
+        "audience_promise": {"type": "string", "minLength": 1},
+        "smallest_test_scene": {"type": "string", "minLength": 1}
+      }
+    },
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["medium", "target_duration_seconds", "delivery_intent"],
+      "properties": {
+        "medium": {"type": "string", "minLength": 1},
+        "target_duration_seconds": {"type": "integer", "minimum": 1},
+        "delivery_intent": {"type": "string", "minLength": 1}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["must_preserve", "external_action_policy"],
+      "properties": {
+        "must_preserve": {"type": "array", "items": {"type": "string"}},
+        "external_action_policy": {"const": "approval-required"}
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "evidence"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9_-]+$"},
+          "evidence": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "open_decisions": {"type": "array", "items": {"type": "string"}}
+  }
+}

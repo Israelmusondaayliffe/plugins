@@ -1,0 +1,5 @@
+interface:
+  display_name: "Performance Director"
+  short_description: "Create observable performance and voice continuity."
+policy:
+  allow_implicit_invocation: false

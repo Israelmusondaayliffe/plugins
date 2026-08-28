@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "failure_geography_drift",
+  "fixture_kind": "failure",
+  "scenario": "An alternate location angle moves the anchor or reverses the stated light logic.",
+  "record_chain": ["AssetRecord", "ShotRecord", "AuditPacket"],
+  "expected_status": "hold: update or replace the location map before shot continuation",
+  "evidence": ["Reverse-angle evidence disagrees with the geography lock."]
+}

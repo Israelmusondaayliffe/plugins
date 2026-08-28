@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "failure_stale_reference",
+  "fixture_kind": "failure",
+  "scenario": "A PromptPacket includes a reference not listed as active in its ShotRecord.",
+  "record_chain": ["ShotRecord", "PromptPacket", "VerificationPacket"],
+  "expected_status": "failed: remove the stale reference and re-verify the packet",
+  "evidence": ["PromptPacket references exceed active ShotRecord asset IDs."]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "last30days",
+  "version": "3.16.1",
+  "description": "Recent-signal research across social, community, market, code, and web sources on Codex, Claude Code, and Claude Cowork.",
+  "author": {
+    "name": "mvanhorn"
+  },
+  "homepage": "https://github.com/mvanhorn/last30days-skill",
+  "repository": "https://github.com/mvanhorn/last30days-skill",
+  "license": "MIT",
+  "keywords": [
+    "recent research",
+    "social listening",
+    "trend discovery",
+    "competitor research",
+    "watchlists",
+    "briefings",
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Last 30 Days Research",
+    "shortDescription": "Research recent community signals across many sources.",
+    "longDescription": "A multi-workflow research plugin for Codex, Claude Code, and Claude Cowork built around last30days v3.16.0. It adds routing, source diagnostics, watchlists, briefings, comparisons, discovery, and the complete pinned research engine.",
+    "developerName": "mvanhorn",
+    "category": "Productivity",
+    "capabilities": [
+      "Multi-source research",
+      "Trend discovery",
+      "Competitor comparison",
+      "Watchlists",
+      "Briefings",
+      "Source diagnostics"
+    ],
+    "websiteURL": "https://github.com/mvanhorn/last30days-skill",
+    "defaultPrompt": [
+      "Research what people said about AI coding agents in the last 30 days.",
+      "Compare Claude Code, Codex, and Gemini CLI using recent community evidence.",
+      "Check my last30days source health and show the fixes."
+    ],
+    "brandColor": "#0F766E"
+  }
+}

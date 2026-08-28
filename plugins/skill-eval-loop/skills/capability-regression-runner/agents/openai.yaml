@@ -1,0 +1,6 @@
+interface:
+  display_name: Capability Regression Runner
+  short_description: Compare a candidate with its pinned baseline
+  default_prompt: Use $capability-regression-runner to run a bounded capability regression check.
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"ai-film-studio/film-advisor-packet/v1",
+  "title":"FilmAdvisorPacket",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema_version","packet_id","activation","route","project_root","production_contract","requested_actions"],
+  "properties":{
+    "schema_version":{"const":"ai-film-studio/film-advisor-packet/v1"},
+    "packet_id":{"type":"string","pattern":"^film_packet_[a-z0-9_]+$"},
+    "activation":{"type":"object","additionalProperties":false,"required":["mode","invocation"],"properties":{"mode":{"const":"explicit"},"invocation":{"const":"film-advisor"}}},
+    "route":{"enum":["concept","brief","architecture","assets","performance","geography","shots","adapter","iteration","finish"]},
+    "project_root":{"type":"string","minLength":1},
+    "production_contract":{"type":"object","additionalProperties":false,"required":["status","film_brief_id","film_brief_sha256"],"properties":{"status":{"enum":["draft","approved"]},"film_brief_id":{"type":"string"},"film_brief_sha256":{"type":"string","pattern":"^$|^[a-f0-9]{64}$"}}},
+    "requested_actions":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["type","target","approval"],"properties":{"type":{"enum":["plan","draft","validate","paid_generation","account_authentication","upload","purchase","destructive_replacement","publication","material_scope_expansion"]},"target":{"type":"string","minLength":1},"approval":{"type":"object","additionalProperties":false,"required":["status","id","action_type","target","evidence"],"properties":{"status":{"enum":["not_granted","approved"]},"id":{"type":"string"},"action_type":{"type":"string"},"target":{"type":"string"},"evidence":{"type":"object"}}}}}}
+  }
+}

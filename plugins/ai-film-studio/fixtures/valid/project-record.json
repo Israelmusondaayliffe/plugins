@@ -1,0 +1,11 @@
+{
+  "schema_version": "ai-film-studio/project-record/v1",
+  "id": "project_fixture_film",
+  "title": "Fixture Film",
+  "status": "approved",
+  "creative_intent": {"premise": "A courier must decide whether to deliver a message that will end a friendship.", "central_pressure": "The deadline forces a choice between loyalty and duty.", "audience_promise": "A contained moral thriller with a visible decision.", "smallest_test_scene": "The courier sees the friend at the delivery threshold."},
+  "format": {"medium": "short narrative film", "target_duration_seconds": 120, "delivery_intent": "internal review"},
+  "constraints": {"must_preserve": ["identity", "geography", "approval gates"], "external_action_policy": "approval-required"},
+  "acceptance_criteria": [{"id": "threshold-scene", "evidence": "A record identifies the choice, location, assets, and first frame."}],
+  "open_decisions": []
+}

@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "target": "./skills/last30days",
+  "limits": {
+    "max_iterations": 3,
+    "max_minutes": 30,
+    "max_tokens": null
+  },
+  "trigger_cases": [
+    {
+      "id": "tp01-standard-recent-research",
+      "prompt": "Research what practitioners have said about agent memory systems in the last 30 days.",
+      "should_trigger": true,
+      "expected": "The Last30Days front door routes to last30days:last30days for standard recent-signal research."
+    },
+    {
+      "id": "tp02-comparison",
+      "prompt": "Compare Claude Code and Codex using community evidence from the last 30 days.",
+      "should_trigger": true,
+      "expected": "The research specialist runs in comparison mode with entity-specific evidence."
+    },
+    {
+      "id": "tp03-recommendations",
+      "prompt": "Based on the last 30 days, recommend the best local coding agents for a small team.",
+      "should_trigger": true,
+      "expected": "The research specialist runs in recommendations mode and ranks evidence-backed picks."
+    },
+    {
+      "id": "tp04-hiring-signals",
+      "prompt": "Use recent hiring signals to show what Anthropic is investing in now.",
+      "should_trigger": true,
+      "expected": "The research specialist runs the hiring-signals path."
+    },
+    {
+      "id": "tp05-person-research",
+      "prompt": "Research Simon Willison's recent work and community discussion from the past month.",
+      "should_trigger": true,
+      "expected": "The research specialist uses person-mode resolution before retrieval."
+    },
+    {
+      "id": "tp06-project-research",
+      "prompt": "What has changed around OpenClaw in the last 30 days? Include GitHub and community evidence.",
+      "should_trigger": true,
+      "expected": "The research specialist uses project and repository resolution."
+    },
+    {
+      "id": "tp07-freshness-verification",
+      "prompt": "Run recent research on MCP servers and verify the freshness of the source-grounded claims.",
+      "should_trigger": true,
+      "expected": "The research specialist enables freshness verification."
+    },
+    {
+      "id": "tp08-competitor-mode",
+      "prompt": "Find three competitors to Tella and compare their current community signals.",
+      "should_trigger": true,
+      "expected": "The research specialist uses competitor discovery and comparison."
+    },
+    {
+      "id": "tp09-agent-json",
+      "prompt": "Return machine-readable JSON for an agent containing recent evidence about AI browser tools.",
+      "should_trigger": true,
+      "expected": "The research specialist uses the stable agent JSON profile without prose synthesis."
+    },
+    {
+      "id": "tp10-explicit-specialist",
+      "prompt": "$last30days:last30days research recent prompt-engineering practices.",
+      "should_trigger": true,
+      "expected": "Explicit specialist invocation loads last30days:last30days even though it is hidden from implicit context."
+    },
+    {
+      "id": "tn01-historical-research",
+      "prompt": "Write a history of expert systems from 1960 to 1990.",
+      "should_trigger": false,
+      "expected": "Last30Days stays silent because recency is not requested."
+    },
+    {
+      "id": "tn02-email",
+      "prompt": "Triage my inbox and tell me which messages need replies.",
+      "should_trigger": false,
+      "expected": "Gmail owns the task."
+    },
+    {
+      "id": "tn03-calendar",
+      "prompt": "Find two free hours on my calendar tomorrow.",
+      "should_trigger": false,
+      "expected": "Google Calendar owns the task."
+    },
+    {
+      "id": "tn04-code-review",
+      "prompt": "Review this local Python diff for correctness bugs.",
+      "should_trigger": false,
+      "expected": "Code review stays outside Last30Days."
+    },
+    {
+      "id": "tn05-writing-rewrite",
+      "prompt": "Rewrite this memo so it sounds direct and human.",
+      "should_trigger": false,
+      "expected": "Writing Quality owns the task."
+    },
+    {
+      "id": "tn06-memory-recall",
+      "prompt": "What did we decide about the harness in the previous task?",
+      "should_trigger": false,
+      "expected": "Codex Mem owns prior-task recall."
+    },
+    {
+      "id": "tn07-watchlist-sibling",
+      "prompt": "Add OpenAI Agents SDK to my Last30Days watchlist.",
+      "should_trigger": false,
+      "expected": "The Last30Days front door routes to last30days-watchlist, not the research specialist."
+    },
+    {
+      "id": "tn08-health-sibling",
+      "prompt": "Check whether my Last30Days source providers are healthy.",
+      "should_trigger": false,
+      "expected": "The Last30Days front door routes to last30days-health, not the research specialist."
+    },
+    {
+      "id": "tn09-briefing-sibling",
+      "prompt": "Generate today's saved Last30Days briefing.",
+      "should_trigger": false,
+      "expected": "The Last30Days front door routes to last30days-briefing, not the research specialist."
+    },
+    {
+      "id": "tn10-image-generation",
+      "prompt": "Generate a watercolor image of a research library.",
+      "should_trigger": false,
+      "expected": "Image generation owns the task."
+    }
+  ],
+  "functional_cases": [
+    {
+      "id": "fn01-launcher-contract",
+      "prompt": "Inspect the canonical run_last30days.sh launcher and its help output.",
+      "expected": "The launcher resolves the packaged engine and preserves the documented CLI contract."
+    },
+    {
+      "id": "fn02-standard-mock",
+      "prompt": "Run a standard mock research case.",
+      "expected": "The run completes with a bounded date window, ranked evidence, citations, and source coverage disclosure."
+    },
+    {
+      "id": "fn03-comparison-mock",
+      "prompt": "Run a mock comparison research case.",
+      "expected": "The output separates entity evidence and provides a supported comparison verdict."
+    },
+    {
+      "id": "fn04-recommendations-mock",
+      "prompt": "Run a mock recommendations research case.",
+      "expected": "Recommendations are signal-weighted, caveated, and traceable to evidence."
+    },
+    {
+      "id": "fn05-date-window",
+      "prompt": "Run with --as-of 2026-07-15 --days 14.",
+      "expected": "The reported research window is the requested 14-day interval ending 2026-07-15."
+    },
+    {
+      "id": "fn06-agent-json",
+      "prompt": "Run a mock case with --emit=json --json-profile=agent.",
+      "expected": "The stable flat agent JSON contract is valid JSON and contains source and window metadata."
+    },
+    {
+      "id": "fn07-permission-preflight",
+      "prompt": "Run --preflight without a topic.",
+      "expected": "The engine reports permissions and external side effects without publishing, purchasing, or mutating external systems."
+    },
+    {
+      "id": "fn08-partial-source-disclosure",
+      "prompt": "Run with a deliberately limited mock source set.",
+      "expected": "The result names unavailable or unused source classes instead of implying complete coverage."
+    },
+    {
+      "id": "fn09-no-implicit-publish",
+      "prompt": "Run standard research without publish flags.",
+      "expected": "No public upload or publication occurs without explicit opt-in."
+    },
+    {
+      "id": "fn10-cli-flags-unchanged",
+      "prompt": "Compare the post-candidate launcher help with the frozen baseline help.",
+      "expected": "All existing flags and aliases remain unchanged."
+    },
+    {
+      "id": "fn11-save-path",
+      "prompt": "Run a mock case with an explicit local output path.",
+      "expected": "The artifact is written only to the requested local path and is readable."
+    },
+    {
+      "id": "fn12-engine-unchanged",
+      "prompt": "Compare all files under scripts between source and candidate.",
+      "expected": "The research engine, launcher, and CLI implementation are byte-identical."
+    }
+  ],
+  "rubric": [
+    {
+      "id": "rb01-invariants",
+      "criterion": "Stable invariants, research flow, mode selection, and completion boundaries remain explicit and actionable.",
+      "ground_truth": "The frozen source SKILL.md and this suite's functional expectations."
+    },
+    {
+      "id": "rb02-grounding",
+      "criterion": "Claims require citations, source coverage is disclosed, and partial evidence is not presented as complete coverage.",
+      "ground_truth": "Mock outputs, live smoke receipts, and the frozen source grounding contract."
+    },
+    {
+      "id": "rb03-permissions",
+      "criterion": "Publishing, paid research, credential access, and other external side effects require explicit user intent.",
+      "ground_truth": "Preflight output, CLI help, and the Security and Permissions section of the frozen source."
+    },
+    {
+      "id": "rb04-cli-compatibility",
+      "criterion": "The research engine and CLI flags are unchanged by prompt-layer compaction.",
+      "ground_truth": "Frozen script fingerprints and baseline launcher help."
+    },
+    {
+      "id": "rb05-progressive-disclosure",
+      "criterion": "SKILL.md is concise enough for task loading while conditional operations, examples, and recovery remain discoverable in named references.",
+      "ground_truth": "The 6000-word soft ceiling and the planned reference split."
+    },
+    {
+      "id": "rb06-output-quality",
+      "criterion": "Standard, comparison, and recommendations outputs remain structured, useful, evidence-backed, and explicit about uncertainty.",
+      "ground_truth": "The annotated synthesis examples and three live smoke cases."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "failure_unverified_model_claim",
+  "fixture_kind": "failure",
+  "scenario": "A future-model profile attempts to claim an unverified surface capability.",
+  "record_chain": ["PromptPacket", "VerificationPacket"],
+  "expected_status": "blocked: use the future-model template and collect live evidence first",
+  "evidence": ["No verified profile or current surface evidence exists."]
+}

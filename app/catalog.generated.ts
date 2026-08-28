@@ -15,7 +15,8 @@ export const collections = [
       "web-product-studio",
       "brand-world-studio",
       "video-production-studio",
-      "founder-revenue-engine"
+      "founder-revenue-engine",
+      "ai-film-studio"
     ]
   },
   {
@@ -39,7 +40,10 @@ export const collections = [
       "capability-operator",
       "harness-engineering",
       "model-evaluation-lab",
-      "proofloop"
+      "proofloop",
+      "loop-observatory",
+      "practice-compiler",
+      "skill-eval-loop"
     ]
   },
   {
@@ -53,7 +57,9 @@ export const collections = [
       "data-storytelling-studio",
       "continuity-vault",
       "model-prompt-lab",
-      "signal-to-system"
+      "signal-to-system",
+      "guide-production-studio",
+      "last30days"
     ]
   }
 ] as const;
@@ -4370,14 +4376,1000 @@ export const plugins = [
         "The output can be used by another person or agent without reconstructing the reasoning."
       ]
     }
+  },
+  {
+    "slug": "ai-film-studio",
+    "name": "AI Film Studio",
+    "shortDescription": "Plan AI film work through explicit records and gates.",
+    "longDescription": "An explicit-only, record-driven workflow for film concepts, production plans, reusable assets, performance, geography, continuity, model-neutral prompt packets, review, and delivery preparation. Named companion plugins are optional. The bundled film grill, packet builder, and bounded planner keep the core workflow usable when companions are absent.",
+    "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
+    "version": "0.2.0",
+    "category": "Media",
+    "license": null,
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompts": [
+      "Use AI Film Studio to grill this film idea and prepare an approval-ready FilmBrief.",
+      "Use Film Advisor to build the approved film plan with the best verified host topology.",
+      "Use AI Film Studio to prepare a continuity-safe, model-ready shot handoff."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Package and local workflow support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group.",
+    "skills": [
+      {
+        "name": "ai-film-studio",
+        "description": "Explicit-only film-brief direction that turns an approved concept into a durable FilmBrief."
+      },
+      {
+        "name": "asset-bible-director",
+        "description": "Explicit-only direction of reusable character, location, prop, and state records for AI film production."
+      },
+      {
+        "name": "film-advisor",
+        "description": "Explicit-only front door for a bounded AI film-production workflow."
+      },
+      {
+        "name": "film-prompt-director",
+        "description": "Explicit-only model-neutral prompt packet direction governed by declared adapter contracts."
+      },
+      {
+        "name": "film-wayfinder",
+        "description": "Explicit-only film concept wayfinding that turns an uncertain idea into a testable dramatic premise."
+      },
+      {
+        "name": "iteration-supervisor",
+        "description": "Explicit-only evidence and iteration supervision for AI film generations without initiating live jobs."
+      },
+      {
+        "name": "performance-director",
+        "description": "Explicit-only direction of observable character performance and voice continuity records."
+      },
+      {
+        "name": "post-delivery-director",
+        "description": "Explicit-only direction of post-production, delivery readiness, and reusable learning capture."
+      },
+      {
+        "name": "production-architect",
+        "description": "Explicit-only planning for a durable film-production system, dependencies, and handoffs."
+      },
+      {
+        "name": "shot-continuity-director",
+        "description": "Explicit-only direction of a single legible film shot from approved records and continuity locks."
+      },
+      {
+        "name": "visual-development-director",
+        "description": "Explicit-only visual development and scene geography direction for repeatable blocking."
+      }
+    ],
+    "counts": {
+      "skills": 11,
+      "assets": 0,
+      "references": 10,
+      "scripts": 3,
+      "files": 122
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning a film idea into an approval-ready brief and production plan.",
+        "Keeping characters, locations, props, performance, and shot continuity consistent.",
+        "Preparing model-neutral shot packets before model-specific formatting.",
+        "Reviewing iterations and delivery records without starting generation or publication."
+      ],
+      "startHere": {
+        "skill": "ai-film-studio",
+        "why": "Start with the front door when a film project spans concept, planning, assets, continuity, prompts, iteration, or delivery."
+      },
+      "quickStarts": [
+        {
+          "goal": "Grill a film idea",
+          "prompt": "Use AI Film Studio to grill this film idea and prepare an approval-ready FilmBrief: [idea]. Keep assumptions, unknowns, and approval gates visible."
+        },
+        {
+          "goal": "Build a production plan",
+          "prompt": "Turn this approved FilmBrief into a production plan with assets, locations, performances, shots, continuity records, review points, and the smallest useful tests: [brief]."
+        },
+        {
+          "goal": "Prepare a shot packet",
+          "prompt": "Prepare a model-neutral shot packet from these approved records: [records]. Include references, geography, first frame, action, performance, sound, and constraints."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Define the film",
+          "instruction": "Grill the idea, record the intended result, and stop for approval before production planning.",
+          "skills": [
+            "film-wayfinder"
+          ]
+        },
+        {
+          "title": "Build the production structure",
+          "instruction": "Turn the approved brief into scenes, dependencies, tests, evidence, and approval points.",
+          "skills": [
+            "production-architect"
+          ]
+        },
+        {
+          "title": "Lock reusable assets",
+          "instruction": "Define characters, props, locations, visual direction, and observable performance before shots.",
+          "skills": [
+            "asset-bible-director",
+            "visual-development-director",
+            "performance-director"
+          ]
+        },
+        {
+          "title": "Prepare continuity-safe shots",
+          "instruction": "Use approved records to preserve geography, state, action, sound, and reference inheritance in each shot packet.",
+          "skills": [
+            "shot-continuity-director",
+            "film-prompt-director"
+          ]
+        },
+        {
+          "title": "Review iterations and delivery",
+          "instruction": "Change one controlled variable, record evidence, and prepare a delivery package without publishing it.",
+          "skills": [
+            "iteration-supervisor",
+            "post-delivery-director"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "The idea needs questioning and a decision record",
+          "skill": "film-wayfinder",
+          "why": "It supplies a complete film-specific interview and brief path."
+        },
+        {
+          "need": "The approved brief needs a production system",
+          "skill": "production-architect",
+          "why": "It maps scenes, dependencies, evidence, and approval points."
+        },
+        {
+          "need": "Characters, props, or locations drift between shots",
+          "skill": "asset-bible-director",
+          "why": "It creates stable identities, states, and reusable references."
+        },
+        {
+          "need": "A shot needs a complete neutral handoff",
+          "skill": "film-prompt-director",
+          "why": "It creates the model-neutral packet before any optional formatter."
+        },
+        {
+          "need": "A candidate changed and needs a controlled review",
+          "skill": "iteration-supervisor",
+          "why": "It records the variable, evidence, verdict, and next test."
+        }
+      ],
+      "workedExample": {
+        "title": "A continuity-safe short film plan",
+        "situation": "A creator has a short-film idea and a preferred generation surface, but the character state, location geography, and approval points are not yet defined.",
+        "steps": [
+          "Grill the idea and approve one FilmBrief.",
+          "Create stable asset and geography records before writing shots.",
+          "Build a model-neutral packet for each approved shot.",
+          "Test one shot, record the evidence, and change one variable at a time."
+        ],
+        "result": "The creator receives a production-ready record system and bounded shot packets. No generation or publication is claimed."
+      },
+      "tips": [
+        "Approve the FilmBrief before building shot detail.",
+        "Give each reusable asset a stable identity and explicit state.",
+        "Separate observable action from mood labels.",
+        "Verify the selected model surface before using model-specific syntax."
+      ],
+      "boundaries": [
+        "The plugin does not grant rights to source material or generated media.",
+        "It does not sign in, upload, purchase, generate, replace files, or publish without separate authority.",
+        "A model profile is a planning contract, not proof of current model behavior.",
+        "A prepared packet is not proof that a rendered shot matches it."
+      ],
+      "successSignals": [
+        "The brief, assets, geography, performance, and shots agree.",
+        "Every generation-sized action has a clear approval and evidence boundary.",
+        "A model-neutral packet remains complete when optional companion formatters are absent."
+      ]
+    }
+  },
+  {
+    "slug": "guide-production-studio",
+    "name": "Guide Production Studio",
+    "shortDescription": "Build useful, source-grounded practical guides.",
+    "longDescription": "Guide Production Studio turns approved sources and tested methods into clear practical guides. It preserves public provenance, protects private implementation material, chooses structure from the reader's job, requires real examples and visual evidence where needed, and stops at human review before publication.",
+    "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
+    "version": "0.1.1",
+    "category": "Productivity",
+    "license": null,
+    "capabilities": [],
+    "defaultPrompts": [
+      "Build a practical guide from these sources and preserve the public provenance.",
+      "Design the right page architecture for this reference guide before writing it.",
+      "Review this guide as a cold reader and tell me what still blocks use."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Package and local validation support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group.",
+    "skills": [
+      {
+        "name": "guide-acceptance-review",
+        "description": "Independently review a practical guide as a cold reader against its contract, sources, evidence, structure, visual teaching, and usefulness. Use when a guide is awaiting human approval, publication, baseline pinning, or scale. The reviewer must differ from the producer and cannot self-approve."
+      },
+      {
+        "name": "guide-production-router",
+        "description": "Route source-grounded practical guides across source mapping, architecture, writing, and independent review. Use when building or rebuilding manuals, how-to pages, prompt guides, or reference libraries where context, evidence, examples, visual teaching, and human acceptance matter. Do not use for simple copyediting, workshops, or publication-only work."
+      },
+      {
+        "name": "guide-source-mapper",
+        "description": "Map sources, evidence status, rights, public provenance, and private exclusions before guide design. Use when deciding what can be taught or named publicly, whether an example was actually run, and whether enough evidence exists to write without invention. Do not use for final prose or publication."
+      },
+      {
+        "name": "practical-guide-architect",
+        "description": "Design a practical guide after its sources are mapped. Use when choosing one page, layered sections, or child pages; defining beginner and expert paths; removing repetition; and making each component solve a reader problem. Do not use before evidence status is known."
+      },
+      {
+        "name": "practical-guide-builder",
+        "description": "Write or rebuild an approved practical guide from a validated contract. Use when the guide needs plain-language context, exact actions, real examples, reusable prompts or templates, troubleshooting, and visual evidence. Do not invent unsupported material or publish."
+      }
+    ],
+    "counts": {
+      "skills": 5,
+      "assets": 2,
+      "references": 4,
+      "scripts": 5,
+      "files": 27
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Turning approved sources into a practical guide.",
+        "Separating public provenance from private implementation material.",
+        "Choosing a guide structure from the reader's job.",
+        "Running a cold-reader and human-acceptance review before publication."
+      ],
+      "startHere": {
+        "skill": "guide-production-router",
+        "why": "Start with the router when a guide needs source mapping, architecture, writing, and independent acceptance."
+      },
+      "quickStarts": [
+        {
+          "goal": "Map guide sources",
+          "prompt": "Map these guide sources by evidence status, rights, public attribution, private exclusions, and unsupported material: [sources]."
+        },
+        {
+          "goal": "Design the guide",
+          "prompt": "Design a practical guide for [reader and job] from this approved source map. Choose the structure, beginner and expert paths, examples, and visual evidence needs."
+        },
+        {
+          "goal": "Review a candidate",
+          "prompt": "Review this practical guide as an independent cold reader against its contract, sources, evidence, structure, visual teaching, and first useful action: [guide]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Map the sources",
+          "instruction": "Record provenance, evidence status, rights, private exclusions, and unsupported material before drafting.",
+          "skills": [
+            "guide-source-mapper"
+          ]
+        },
+        {
+          "title": "Design for the reader's job",
+          "instruction": "Choose one page, layered sections, or child pages and define the path from context to action.",
+          "skills": [
+            "practical-guide-architect"
+          ]
+        },
+        {
+          "title": "Build the practical guide",
+          "instruction": "Write source-backed context, exact actions, real examples, reusable materials, troubleshooting, and needed visual evidence.",
+          "skills": [
+            "practical-guide-builder"
+          ]
+        },
+        {
+          "title": "Run independent acceptance",
+          "instruction": "Test usefulness, source fidelity, and cold-reader completion before human approval or publication.",
+          "skills": [
+            "guide-acceptance-review"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need to know what can be used",
+          "skill": "guide-source-mapper",
+          "why": "It separates public attribution, private transformation, and forbidden material."
+        },
+        {
+          "need": "The source map needs a usable structure",
+          "skill": "practical-guide-architect",
+          "why": "It organizes the guide around the reader's job."
+        },
+        {
+          "need": "The contract is approved and writing can begin",
+          "skill": "practical-guide-builder",
+          "why": "It builds the guide without inventing missing evidence."
+        },
+        {
+          "need": "The candidate needs an independent check",
+          "skill": "guide-acceptance-review",
+          "why": "It tests whether a cold reader can use the guide."
+        }
+      ],
+      "workedExample": {
+        "title": "A source-grounded operating guide",
+        "situation": "A team has public references, private working notes, and a tested method that new readers need to apply safely.",
+        "steps": [
+          "Classify each source and record what must remain private.",
+          "Design the guide around the reader's first useful action.",
+          "Write only supported examples and name visual evidence still needed.",
+          "Run a cold-reader check and stop for human acceptance."
+        ],
+        "result": "The guide is usable, traceable, and ready for human review without exposing private implementation material."
+      },
+      "tips": [
+        "Map evidence before choosing a structure.",
+        "Use examples that were actually run or label their status.",
+        "Explain why each action matters before adding optional detail.",
+        "Test the first useful action with a reader who did not build the guide."
+      ],
+      "boundaries": [
+        "The plugin does not create rights to private or third-party sources.",
+        "It does not invent missing examples, proof, screenshots, or outcomes.",
+        "A validator pass does not replace cold-reader evidence.",
+        "Publication remains a separate approval step."
+      ],
+      "successSignals": [
+        "Every important claim traces to an approved source or evidence record.",
+        "The structure helps the intended reader complete a useful action.",
+        "Private implementation details remain outside the public guide."
+      ]
+    }
+  },
+  {
+    "slug": "last30days",
+    "name": "Last 30 Days Research",
+    "shortDescription": "Research recent community signals across many sources.",
+    "longDescription": "A multi-workflow research plugin for Codex, Claude Code, and Claude Cowork built around last30days v3.16.0. It adds routing, source diagnostics, watchlists, briefings, comparisons, discovery, and the complete pinned research engine.",
+    "description": "Recent-signal research across social, community, market, code, and web sources on Codex, Claude Code, and Claude Cowork.",
+    "version": "3.16.1",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Multi-source research",
+      "Trend discovery",
+      "Competitor comparison",
+      "Watchlists",
+      "Briefings",
+      "Source diagnostics"
+    ],
+    "defaultPrompts": [
+      "Research what people said about AI coding agents in the last 30 days.",
+      "Compare Claude Code, Codex, and Gemini CLI using recent community evidence.",
+      "Check my last30days source health and show the fixes."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "The pinned research engine and public wrapper declare Codex, Claude Code, and Claude Cowork support. Source availability, credentials, and optional tools vary by host.",
+    "skills": [
+      {
+        "name": "last30days",
+        "description": "Research what people actually say about any topic in the last 30 days. Pulls posts and engagement from Reddit, X, YouTube, TikTok, Hacker News, Polymarket, GitHub, and the web. Includes a doctor health check to diagnose broken or missing sources."
+      },
+      {
+        "name": "last30days-briefing",
+        "description": "Generate or retrieve daily and weekly briefings from stored last30days watchlist findings. Use for morning research briefs, weekly recent-signal summaries, monitored-topic recaps, and concise updates from the local watchlist store."
+      },
+      {
+        "name": "last30days-health",
+        "description": "Diagnose and repair the last30days runtime, permissions, credentials, source coverage, and post-run failures. Use when setup is incomplete, Python is too old, a source is missing, browser-cookie access is requested, or research returned partial coverage."
+      },
+      {
+        "name": "last30days-router",
+        "description": "Route multi-stage recent-signal work across last30days research, comparisons, trend discovery, source diagnostics, watchlists, and briefings. Use when a request spans more than one last30days workflow, asks what the plugin can do, or does not clearly identify the right focused workflow."
+      },
+      {
+        "name": "last30days-watchlist",
+        "description": "Manage recurring last30days topic monitoring, run stored topics, inspect deltas, set budgets, and configure optional delivery. Use for watchlists, ongoing social listening, change detection, scheduled topic research, or monitored competitor signals."
+      }
+    ],
+    "counts": {
+      "skills": 5,
+      "assets": 0,
+      "references": 1,
+      "scripts": 115,
+      "files": 134
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Researching what changed around a topic in a recent time window.",
+        "Comparing current community and market signals across entities.",
+        "Checking source health, permissions, and partial coverage.",
+        "Managing recurring topic watchlists and briefings."
+      ],
+      "startHere": {
+        "skill": "last30days-router",
+        "why": "Start with the router when the request may need research, diagnostics, watchlists, or a saved briefing."
+      },
+      "quickStarts": [
+        {
+          "goal": "Research a recent topic",
+          "prompt": "Research what practitioners said about [topic] in the last 30 days. Cite the evidence, name source coverage, and separate findings from uncertainty."
+        },
+        {
+          "goal": "Compare current signals",
+          "prompt": "Compare [entity A] and [entity B] using recent community, code, market, and web evidence. Keep source gaps and date windows visible."
+        },
+        {
+          "goal": "Check source health",
+          "prompt": "Check my Last30Days runtime and source health. Start with safe preflight and diagnostics, then explain only the fixes supported by the results."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Choose the workflow",
+          "instruction": "Route the request to research, health, watchlist, or briefing without running unrelated checks.",
+          "skills": [
+            "last30days-router"
+          ]
+        },
+        {
+          "title": "Research the recent window",
+          "instruction": "Resolve the subject, select sources, retrieve evidence, rank findings, and disclose partial coverage.",
+          "skills": [
+            "last30days"
+          ]
+        },
+        {
+          "title": "Diagnose weak coverage",
+          "instruction": "Use safe preflight and diagnostics before changing credentials, tools, or cookie access.",
+          "skills": [
+            "last30days-health"
+          ]
+        },
+        {
+          "title": "Track or summarize",
+          "instruction": "Add an approved topic to the local watchlist or generate a briefing from stored findings.",
+          "skills": [
+            "last30days-watchlist",
+            "last30days-briefing"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need current research or a comparison",
+          "skill": "last30days",
+          "why": "It runs the pinned multi-source research engine."
+        },
+        {
+          "need": "A source, runtime, or permission is not working",
+          "skill": "last30days-health",
+          "why": "It separates safe checks from approval-gated fixes."
+        },
+        {
+          "need": "A topic should be monitored repeatedly",
+          "skill": "last30days-watchlist",
+          "why": "It manages stored topics, deltas, schedules, and local budgets."
+        },
+        {
+          "need": "Stored findings need a daily or weekly summary",
+          "skill": "last30days-briefing",
+          "why": "It builds a briefing from the local watchlist store."
+        }
+      ],
+      "workedExample": {
+        "title": "A recent tool comparison",
+        "situation": "A team wants to compare two developer tools using current practitioner evidence rather than remembered reputation.",
+        "steps": [
+          "Define the tools, audience, time window, and useful evidence classes.",
+          "Run recent research with entity-specific queries and source disclosure.",
+          "Separate repeated signals, isolated reports, failed sources, and unknowns.",
+          "Write the comparison from the evidence and state what still needs direct testing."
+        ],
+        "result": "The team receives a dated, cited comparison with clear coverage limits. The report does not claim exhaustive research."
+      },
+      "tips": [
+        "Name the exact time window and subject.",
+        "Use preflight before enabling cookie or credential access.",
+        "Treat failed sources differently from true zero-result sources.",
+        "Verify old saved findings before using them for a current decision."
+      ],
+      "boundaries": [
+        "Source availability, credentials, rate limits, and optional tools vary by host.",
+        "The plugin does not guarantee exhaustive coverage of every public source.",
+        "Publishing, webhook delivery, cookie access, and credential writes need explicit authority.",
+        "A recent-signal report is not a substitute for direct product testing."
+      ],
+      "successSignals": [
+        "The report states the date window and sources that returned evidence.",
+        "Claims link to current evidence and name partial coverage.",
+        "Optional external actions remain behind clear approval gates."
+      ]
+    }
+  },
+  {
+    "slug": "loop-observatory",
+    "name": "Loop Observatory",
+    "shortDescription": "Measure loop outcomes and judge quality.",
+    "longDescription": "Normalize terminal LoopKit and registered Operating Graph runs, compare acceptance and exhaustion patterns, and audit judge calibration without modifying source runs.",
+    "description": "Read-only telemetry, portfolio reporting, and judge calibration for bounded agent loops.",
+    "version": "0.1.0",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "defaultPrompts": [
+      "Ingest new terminal loop runs without changing their source files.",
+      "Build a portfolio report for my registered loops.",
+      "Audit loop judges for false passes and false failures."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Local ingestion, reporting, calibration, and generic repair handoffs are declared for Codex, Claude Code, and Claude Cowork.",
+    "skills": [
+      {
+        "name": "judge-calibration-audit",
+        "description": "Detect false passes, false failures, escalation clusters, and repeated disagreement between loop judges and later human labels. Use when evaluating judge quality or ground-truth problems. Do not repair judges or alter run records."
+      },
+      {
+        "name": "loop-observatory",
+        "description": "Route read-only cross-loop telemetry work. Use when the user asks to ingest LoopKit or registered Operating Graph runs, compare loop performance across versions or time, calculate acceptance metrics, identify limit exhaustion, or audit judge calibration. Do not use to design, execute, schedule, or directly repair one loop."
+      },
+      {
+        "name": "loop-portfolio-report",
+        "description": "Use when normalized loop outcomes must be compared across engines, versions, models, or time periods, including acceptance, exhaustion, duration, stop reasons, and evidenced cost. Requires ingested runs and keeps missing data unknown."
+      },
+      {
+        "name": "loop-run-ingestor",
+        "description": "Use when terminal LoopKit or registered Operating Graph runs need idempotent normalization, source registration, corrupt-run handling, or duplicate checks. Read only. Does not execute or repair loops."
+      }
+    ],
+    "counts": {
+      "skills": 4,
+      "assets": 1,
+      "references": 2,
+      "scripts": 1,
+      "files": 26
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Ingesting bounded loop records without changing their sources.",
+        "Comparing acceptance, exhaustion, duration, cost evidence, and stop reasons.",
+        "Auditing false passes and false failures against human labels.",
+        "Preparing a repair handoff for the capability that owns a failed loop."
+      ],
+      "startHere": {
+        "skill": "loop-observatory",
+        "why": "Start with the front door when loop evidence needs ingestion, comparison, calibration, or a repair handoff."
+      },
+      "quickStarts": [
+        {
+          "goal": "Ingest loop evidence",
+          "prompt": "Ingest these bounded loop records read-only: [paths]. Normalize known fields, keep missing evidence unknown, and report corrupt or incomplete records separately."
+        },
+        {
+          "goal": "Compare loop outcomes",
+          "prompt": "Compare these loop runs by engine, version, model, acceptance, exhaustion, duration, stop reason, and evidenced cost: [records]."
+        },
+        {
+          "goal": "Audit judge calibration",
+          "prompt": "Audit these machine verdicts against human labels. Report false passes, false failures, unlabeled runs, and the exact evidence behind each disagreement: [records]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Ingest without mutation",
+          "instruction": "Discover supported run records, normalize fields, and preserve unknown or corrupt evidence states.",
+          "skills": [
+            "loop-run-ingestor"
+          ]
+        },
+        {
+          "title": "Compare the portfolio",
+          "instruction": "Report outcome, stop, duration, cost, and evidence differences across selected runs.",
+          "skills": [
+            "loop-portfolio-report"
+          ]
+        },
+        {
+          "title": "Audit judge disagreement",
+          "instruction": "Compare machine verdicts with human labels and exclude unlabeled records from disagreement rates.",
+          "skills": [
+            "judge-calibration-audit"
+          ]
+        },
+        {
+          "title": "Hand repair to the owner",
+          "instruction": "Prepare a complete generic handoff or prefer an installed owner without claiming the repair occurred.",
+          "skills": [
+            "loop-observatory"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "Raw loop records need normalization",
+          "skill": "loop-run-ingestor",
+          "why": "It reads supported sources and keeps missing evidence unknown."
+        },
+        {
+          "need": "Several runs need comparison",
+          "skill": "loop-portfolio-report",
+          "why": "It compares outcomes without filling evidence gaps."
+        },
+        {
+          "need": "Machine and human verdicts disagree",
+          "skill": "judge-calibration-audit",
+          "why": "It measures false passes and failures against labels."
+        }
+      ],
+      "workedExample": {
+        "title": "Comparing two loop engines",
+        "situation": "A team has run the same bounded task through two loop systems and wants to know where completion judgments differ.",
+        "steps": [
+          "Register and ingest both run roots without changing them.",
+          "Normalize acceptance, stop, duration, and cost evidence.",
+          "Compare outcomes and audit machine verdicts against available human labels.",
+          "Prepare a repair handoff for the owner of the failed loop."
+        ],
+        "result": "The comparison shows supported differences and missing evidence. It does not claim a repair or infer unknown costs."
+      },
+      "tips": [
+        "Keep source run folders read-only.",
+        "Do not convert missing cost or acceptance evidence into zero.",
+        "Exclude unlabeled runs from judge-disagreement rates.",
+        "Route repair to the owner of the loop contract."
+      ],
+      "boundaries": [
+        "The plugin observes and compares loops. It does not own their execution or repair.",
+        "A machine verdict is not a human acceptance label.",
+        "Missing evidence remains unknown.",
+        "An emitted handoff does not prove the receiving capability is installed or that repair occurred."
+      ],
+      "successSignals": [
+        "Normalized records preserve source evidence and unknown states.",
+        "Comparisons separate observed outcomes from inference.",
+        "Repair work leaves the observer through a complete, owner-aware handoff."
+      ]
+    }
+  },
+  {
+    "slug": "practice-compiler",
+    "name": "Practice Compiler",
+    "shortDescription": "Turn repeated work into reviewed improvements",
+    "longDescription": "Scan an exact session window, distinguish user, automation, subagent, and synthetic traces, group semantic variants, and stage deduplicated proposals with session-and-line evidence. Read-only stdout mode is available before persistence or approval.",
+    "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
+    "version": "0.2.0",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompts": [
+      "Scan my recent Codex sessions for repeated friction.",
+      "Review the staged practice improvement proposals.",
+      "Prepare a handoff for this approved proposal."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Codex session roots are the Codex default. Claude project roots and other trace roots require the documented explicit options.",
+    "skills": [
+      {
+        "name": "approved-practice-handoff",
+        "description": "Use when an explicitly approved Practice Compiler proposal needs a skill-eval, skill-creation, harness, continuity, or content-workflow handoff. Routes to the existing owner, produces a handoff file only, and never applies the change."
+      },
+      {
+        "name": "practice-compiler",
+        "description": "Mines an exact Codex session window for repeated tasks, recurring feedback, follow-up instructions, failed commands, and reusable workflows, then stages semantically grouped, redacted proposals with session-and-line evidence. Use when a user asks what their sessions reveal, what should become a skill or workflow, what feedback keeps recurring, or what follow-up instructions they repeatedly add. Supports read-only stdout preview and source classification. Does not change the harness, publish content, or replace Codex Mem."
+      },
+      {
+        "name": "practice-proposal-review",
+        "description": "Reviews, ranks, approves, rejects, or defers Practice Compiler proposals using their redacted evidence and occurrence counts. Use when deciding which repeated session patterns deserve a skill, AGENTS.md rule, hook, tool fix, config change, durable note, or content idea. Records decisions without applying changes."
+      },
+      {
+        "name": "session-signal-scan",
+        "description": "Scans local Codex session JSONL for repeated tasks, recurring feedback, follow-up instructions, real tool calls, and failed commands. Use for exact-window session mining or when separating organic user work from automation, subagent, and synthetic traces. Supports a write-free stdout preview; persistent mode writes redacted signals, deduplicated proposal records, and an incremental cursor."
+      }
+    ],
+    "counts": {
+      "skills": 4,
+      "assets": 1,
+      "references": 2,
+      "scripts": 1,
+      "files": 22
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Scanning a bounded session window for repeated friction or correction patterns.",
+        "Separating user, automation, subagent, and synthetic traces.",
+        "Staging redacted practice proposals with line-level evidence.",
+        "Approving a proposal for handoff without applying the destination change."
+      ],
+      "startHere": {
+        "skill": "practice-compiler",
+        "why": "Start with the front door when repeated session evidence needs scanning, review, or a destination handoff."
+      },
+      "quickStarts": [
+        {
+          "goal": "Scan recent sessions",
+          "prompt": "Scan this exact session window for repeated work practices and friction: [window or roots]. Redact sensitive values, separate source classes, and stage only repeated evidence."
+        },
+        {
+          "goal": "Review proposals",
+          "prompt": "Review these staged practice proposals. Reject one-offs and generic advice, rank supported improvements, and record approve, reject, or defer decisions without applying changes: [proposals]."
+        },
+        {
+          "goal": "Prepare a handoff",
+          "prompt": "Prepare a complete handoff for this approved proposal: [proposal]. Include redacted evidence, occurrences, decision note, destination class, authority boundary, and required next proof."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Scan a bounded source window",
+          "instruction": "Read selected Codex, Claude, or explicit JSONL roots and emit redacted evidence without copying transcript dumps.",
+          "skills": [
+            "session-signal-scan"
+          ]
+        },
+        {
+          "title": "Review repeated proposals",
+          "instruction": "Rank evidence, reject weak patterns, and record a human decision without applying the destination change.",
+          "skills": [
+            "practice-proposal-review"
+          ]
+        },
+        {
+          "title": "Prepare the destination handoff",
+          "instruction": "Use an installed preferred owner when available or emit the complete generic handoff contract.",
+          "skills": [
+            "approved-practice-handoff"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "Session records need a read-only scan",
+          "skill": "session-signal-scan",
+          "why": "It classifies sources, redacts evidence, and groups repeated patterns."
+        },
+        {
+          "need": "Staged proposals need a decision",
+          "skill": "practice-proposal-review",
+          "why": "It records approve, reject, or defer without changing the destination."
+        },
+        {
+          "need": "An approved proposal needs a usable next step",
+          "skill": "approved-practice-handoff",
+          "why": "It prepares an owner-aware or generic handoff with bounded authority."
+        }
+      ],
+      "workedExample": {
+        "title": "Turning repeated corrections into a proposal",
+        "situation": "Several sessions contain the same user correction, but the team does not yet know whether it belongs in a skill, rule, tool, or durable note.",
+        "steps": [
+          "Scan the exact session roots and time window.",
+          "Redact secrets and group only repeated evidence across distinct sessions.",
+          "Review the staged proposal and record the destination decision.",
+          "Prepare a bounded handoff for the destination owner without applying the change."
+        ],
+        "result": "The repeated practice becomes a traceable proposal and handoff. No destination mutation is claimed."
+      },
+      "tips": [
+        "Use exact source roots and dates.",
+        "Keep stdout mode for a read-only preview.",
+        "Require evidence from more than one distinct session for a repeated pattern.",
+        "Approve a handoff separately from the destination change."
+      ],
+      "boundaries": [
+        "The scanner stores short redacted evidence, not transcript dumps.",
+        "A repeated mention is not automatically a useful practice.",
+        "Approval creates a handoff record only.",
+        "Named companion owners are preferences, not standalone requirements."
+      ],
+      "successSignals": [
+        "Each proposal cites repeated, redacted source evidence.",
+        "One-offs, injected context, and synthetic verification traces stay separated.",
+        "The handoff states the destination, authority, requested outcome, and next proof."
+      ]
+    }
+  },
+  {
+    "slug": "skill-eval-loop",
+    "name": "Skill Eval Loop",
+    "shortDescription": "Make skill and plugin regressions visible",
+    "longDescription": "Build a prompt suite, validate supplied case and rubric evidence locally, compare against a pinned baseline, and stage bounded candidate repairs without changing the source before approval. OpenAI Plugin Eval adds optional static analysis when installed.",
+    "description": "Run bounded regression and repair cycles for skills and plugins with a complete local evaluator and optional OpenAI Plugin Eval analysis.",
+    "version": "0.1.0",
+    "category": "Productivity",
+    "license": "MIT",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompts": [
+      "Build an eval suite for this skill.",
+      "Run a regression check against the baseline.",
+      "Stage a bounded repair cycle for this plugin."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Local suite, evidence, baseline, staging, and promotion controls are declared for all three hosts. OpenAI Plugin Eval is an optional enhanced analyzer.",
+    "skills": [
+      {
+        "name": "capability-regression-runner",
+        "description": "Use when a skill or plugin needs a regression check, candidate comparison, pinned baseline, or receipt. Runs local case and rubric checks without editing source, with optional OpenAI Plugin Eval analysis."
+      },
+      {
+        "name": "capability-repair-cycle",
+        "description": "Use when a failed skill or plugin eval needs the smallest candidate repair tested against the full suite. Edits an isolated copy and promotes only after a passing receipt and explicit approval."
+      },
+      {
+        "name": "eval-suite-builder",
+        "description": "Use when defining how a skill or plugin should be tested. Builds ten positive and ten near-miss trigger cases, functional checks, and ground-truth rubric criteria without editing the target."
+      },
+      {
+        "name": "skill-eval-loop",
+        "description": "Use when a skill or plugin needs an evidence-backed eval loop with trigger tests, a pinned baseline, regression checks, and approval-gated repair. Routes suite design, test runs, and staged fixes."
+      }
+    ],
+    "counts": {
+      "skills": 4,
+      "assets": 1,
+      "references": 2,
+      "scripts": 1,
+      "files": 24
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Building a reusable regression suite for a skill or plugin.",
+        "Running local case and rubric evidence through bounded limits.",
+        "Comparing a candidate with a pinned baseline.",
+        "Staging and promoting a passing candidate only after explicit approval."
+      ],
+      "startHere": {
+        "skill": "skill-eval-loop",
+        "why": "Start with the front door when a capability needs suite design, a regression run, repair staging, or approval-gated promotion."
+      },
+      "quickStarts": [
+        {
+          "goal": "Build a regression suite",
+          "prompt": "Build a regression suite for this skill: [path]. Include at least ten trigger cases, ten stay-silent cases, functional cases, rubric criteria, limits, and evidence requirements."
+        },
+        {
+          "goal": "Run a local evaluation",
+          "prompt": "Run this approved suite against [candidate] using these case and rubric results: [files]. Enforce limits, compare the pinned baseline, and write an honest receipt without requiring an external evaluator."
+        },
+        {
+          "goal": "Stage a bounded repair",
+          "prompt": "Stage an isolated copy of [target] for this accepted evaluation finding: [finding]. Preserve the source fingerprint and do not promote without explicit approval and a passing receipt."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Build and validate the suite",
+          "instruction": "Define trigger, stay-silent, functional, rubric, limit, and evidence contracts before evaluation.",
+          "skills": [
+            "eval-suite-builder"
+          ]
+        },
+        {
+          "title": "Run the regression",
+          "instruction": "Validate supplied evidence, fingerprint the target, enforce limits, compare the baseline, and record analyzer availability.",
+          "skills": [
+            "capability-regression-runner"
+          ]
+        },
+        {
+          "title": "Stage the repair",
+          "instruction": "Copy the candidate into isolated staging and apply only accepted findings within the bounded cycle.",
+          "skills": [
+            "capability-repair-cycle"
+          ]
+        },
+        {
+          "title": "Promote only after approval",
+          "instruction": "Require a passing receipt, unchanged source fingerprint, and explicit approval before replacing the target.",
+          "skills": [
+            "skill-eval-loop"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need the suite contract",
+          "skill": "eval-suite-builder",
+          "why": "It defines representative cases, rubric evidence, and limits."
+        },
+        {
+          "need": "You need a baseline or candidate result",
+          "skill": "capability-regression-runner",
+          "why": "It runs the local evidence path and optional enhanced analysis."
+        },
+        {
+          "need": "A failed candidate needs a bounded repair",
+          "skill": "capability-repair-cycle",
+          "why": "It stages changes without granting promotion authority."
+        }
+      ],
+      "workedExample": {
+        "title": "Protecting a routing skill from regression",
+        "situation": "A routing skill needs a wording change, but its positive triggers, stay-silent cases, and functional handoffs must remain stable.",
+        "steps": [
+          "Build and validate the suite before editing.",
+          "Run the baseline from supplied case and rubric evidence.",
+          "Stage the candidate and rerun the same suite within fixed limits.",
+          "Promote only after a passing receipt and explicit approval."
+        ],
+        "result": "The candidate has a comparable local receipt and a controlled promotion path. No external analyzer score is invented when the analyzer is absent."
+      },
+      "tips": [
+        "Freeze the suite before comparing candidates.",
+        "Keep case evidence and independent rubric evidence separate.",
+        "Use the local evaluator when the optional enhanced analyzer is absent.",
+        "Pin only passing runs as baselines."
+      ],
+      "boundaries": [
+        "The plugin does not generate trustworthy case or rubric evidence by itself.",
+        "An unavailable enhanced analyzer must remain visible in the receipt.",
+        "Staging does not authorize source replacement.",
+        "Promotion requires a passing receipt, explicit approval, and an unchanged source fingerprint."
+      ],
+      "successSignals": [
+        "The suite covers trigger, stay-silent, functional, rubric, and resource limits.",
+        "Receipts distinguish local evidence from optional enhanced analysis.",
+        "Only an explicitly approved passing candidate can replace the source."
+      ]
+    }
   }
 ] as const;
 export const totals = {
-  "plugins": 22,
-  "skills": 171,
-  "assets": 330,
-  "references": 471,
-  "scripts": 408,
-  "files": 1923
+  "plugins": 28,
+  "skills": 204,
+  "assets": 335,
+  "references": 492,
+  "scripts": 534,
+  "files": 2278
 } as const;
 export type Plugin = (typeof plugins)[number];

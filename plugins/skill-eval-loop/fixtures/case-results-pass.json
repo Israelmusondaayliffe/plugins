@@ -1,0 +1,25 @@
+{
+  "results": [
+    {"id":"p1","passed":true,"evidence":"fixture trigger trace p1"},
+    {"id":"p2","passed":true,"evidence":"fixture trigger trace p2"},
+    {"id":"p3","passed":true,"evidence":"fixture trigger trace p3"},
+    {"id":"p4","passed":true,"evidence":"fixture trigger trace p4"},
+    {"id":"p5","passed":true,"evidence":"fixture trigger trace p5"},
+    {"id":"p6","passed":true,"evidence":"fixture trigger trace p6"},
+    {"id":"p7","passed":true,"evidence":"fixture trigger trace p7"},
+    {"id":"p8","passed":true,"evidence":"fixture trigger trace p8"},
+    {"id":"p9","passed":true,"evidence":"fixture trigger trace p9"},
+    {"id":"p10","passed":true,"evidence":"fixture trigger trace p10"},
+    {"id":"n1","passed":true,"evidence":"fixture silence trace n1"},
+    {"id":"n2","passed":true,"evidence":"fixture silence trace n2"},
+    {"id":"n3","passed":true,"evidence":"fixture silence trace n3"},
+    {"id":"n4","passed":true,"evidence":"fixture silence trace n4"},
+    {"id":"n5","passed":true,"evidence":"fixture silence trace n5"},
+    {"id":"n6","passed":true,"evidence":"fixture silence trace n6"},
+    {"id":"n7","passed":true,"evidence":"fixture silence trace n7"},
+    {"id":"n8","passed":true,"evidence":"fixture silence trace n8"},
+    {"id":"n9","passed":true,"evidence":"fixture silence trace n9"},
+    {"id":"n10","passed":true,"evidence":"fixture silence trace n10"},
+    {"id":"f1","passed":true,"evidence":"fixture returned the exact title"}
+  ]
+}

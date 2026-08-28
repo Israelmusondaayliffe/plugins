@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/GenerationAttempt/v1",
+  "title": "GenerationAttempt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "prompt_packet_id", "prompt_packet_sha256", "status", "inputs", "model_id", "model_profile_version", "output_references", "change_made", "verdict", "failure_class", "cost", "rights_notes", "approval"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/GenerationAttempt/v1"},
+    "id": {"type": "string", "pattern": "^attempt_[a-z0-9_]+$"},
+    "prompt_packet_id": {"type": "string", "pattern": "^prompt_[a-z0-9_]+$"},
+    "prompt_packet_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "status": {"enum": ["planned", "blocked", "observed"]},
+    "inputs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "model_id": {"type": "string"},
+    "model_profile_version": {"type": "string"},
+    "output_references": {"type": "array", "items": {"type": "string"}},
+    "change_made": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["not_run", "approved", "rejected", "inconclusive", "simplify"]},
+    "failure_class": {"enum": ["none", "source_asset", "geography", "performance", "physics", "prompt_control", "reference_leakage", "dialogue_leakage", "slop", "budget", "adapter_uncertainty", "inconclusive"]},
+    "cost": {"type": "object", "required": ["currency", "amount"], "properties": {"currency": {"type": "string"}, "amount": {"type": "integer", "minimum": 0}}},
+    "rights_notes": {"type": "array", "items": {"type": "string"}},
+    "approval": {"type": "object", "required": ["required", "approval_id", "cost_preview"], "properties": {"required": {"type": "boolean"}, "approval_id": {"type": "string"}, "cost_preview": {"type": "string"}}}
+  }
+}

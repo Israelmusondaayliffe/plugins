@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "target": "/tmp/fixture-skill",
+  "limits": {"max_iterations": 3, "max_minutes": 10, "max_tokens": 100000},
+  "trigger_cases": [
+    {"id":"p1","prompt":"Use the fixture skill for this title.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p2","prompt":"Read this fixture with the fixture workflow.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p3","prompt":"Apply the fixture title reader.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p4","prompt":"I need the fixture skill now.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p5","prompt":"Process this title using fixture-skill.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p6","prompt":"Run the test fixture title workflow.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p7","prompt":"Can this fixture skill read my title?", "should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p8","prompt":"Use the local fixture reader.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p9","prompt":"Return the title with the fixture instructions.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"p10","prompt":"Test the fixture title skill.","should_trigger":true,"expected":"fixture skill loads"},
+    {"id":"n1","prompt":"Write a title from scratch.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n2","prompt":"Translate this title.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n3","prompt":"Delete the fixture.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n4","prompt":"Evaluate a plugin.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n5","prompt":"Summarize this PDF.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n6","prompt":"Build a recurring loop.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n7","prompt":"Read my email.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n8","prompt":"Create a spreadsheet.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n9","prompt":"Review this code diff.","should_trigger":false,"expected":"fixture skill stays silent"},
+    {"id":"n10","prompt":"Find duplicate skills.","should_trigger":false,"expected":"fixture skill stays silent"}
+  ],
+  "functional_cases": [{"id":"f1","prompt":"Return the fixture title.","expected":"exact title is returned"}],
+  "rubric": [{"id":"r1","criterion":"No unsupported claims","ground_truth":"fixtures/minimal-skill/SKILL.md"}]
+}

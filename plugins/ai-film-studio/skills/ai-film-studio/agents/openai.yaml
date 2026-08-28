@@ -1,0 +1,5 @@
+interface:
+  display_name: "AI Film Studio"
+  short_description: "Create a durable FilmBrief from an approved concept."
+policy:
+  allow_implicit_invocation: false

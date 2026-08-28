@@ -1,0 +1,6 @@
+interface:
+  display_name: "Last30Days Briefing"
+  short_description: "Generate or retrieve daily and weekly briefings from stored last30days watchl..."
+  default_prompt: "$last30days-briefing Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

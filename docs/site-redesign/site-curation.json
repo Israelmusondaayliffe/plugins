@@ -35,7 +35,13 @@
       "operating-graph",
       "gauntlet-loop",
       "gauntlet",
-      "signal-to-system"
+      "signal-to-system",
+      "ai-film-studio",
+      "guide-production-studio",
+      "last30days",
+      "loop-observatory",
+      "practice-compiler",
+      "skill-eval-loop"
     ],
     "excluded_plugins": [
       "matt-partok-bundled-plugin-for-knowledge-work"
@@ -48,8 +54,8 @@
     }
   },
   "expected_totals": {
-    "plugins": 22,
-    "skills": 171
+    "plugins": 28,
+    "skills": 204
   },
   "collections": [
     {
@@ -61,7 +67,8 @@
         "web-product-studio",
         "brand-world-studio",
         "video-production-studio",
-        "founder-revenue-engine"
+        "founder-revenue-engine",
+        "ai-film-studio"
       ]
     },
     {
@@ -85,7 +92,10 @@
         "capability-operator",
         "harness-engineering",
         "model-evaluation-lab",
-        "proofloop"
+        "proofloop",
+        "loop-observatory",
+        "practice-compiler",
+        "skill-eval-loop"
       ]
     },
     {
@@ -99,7 +109,9 @@
         "data-storytelling-studio",
         "continuity-vault",
         "model-prompt-lab",
-        "signal-to-system"
+        "signal-to-system",
+        "guide-production-studio",
+        "last30days"
       ]
     }
   ]

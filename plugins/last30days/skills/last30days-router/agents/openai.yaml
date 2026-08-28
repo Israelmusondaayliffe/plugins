@@ -1,0 +1,6 @@
+interface:
+  display_name: "Last30Days Router"
+  short_description: "Route multi-stage recent-signal work across last30days research, comparisons,..."
+  default_prompt: "$last30days-router Use this skill for the request."
+policy:
+  allow_implicit_invocation: true

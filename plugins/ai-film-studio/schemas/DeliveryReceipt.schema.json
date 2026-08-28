@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/DeliveryReceipt/v1",
+  "title": "DeliveryReceipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "film_brief_id", "status", "completed_criteria", "unresolved_limitations", "asset_inventory", "final_files", "provenance", "model_versions", "costs", "verification_evidence", "external_delivery"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/DeliveryReceipt/v1"},
+    "id": {"type": "string", "pattern": "^delivery_[a-z0-9_]+$"},
+    "film_brief_id": {"type": "string", "pattern": "^brief_[a-z0-9_]+$"},
+    "status": {"enum": ["draft", "ready_for_review", "approved_for_external_delivery", "delivered"]},
+    "completed_criteria": {"type": "array", "items": {"type": "string"}},
+    "unresolved_limitations": {"type": "array", "items": {"type": "string"}},
+    "asset_inventory": {"type": "array", "items": {"type": "string"}},
+    "final_files": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "provenance": {"type": "array", "items": {"type": "string"}},
+    "model_versions": {"type": "array", "items": {"type": "string"}},
+    "costs": {"type": "object", "required": ["currency", "total"], "properties": {"currency": {"type": "string"}, "total": {"type": "integer", "minimum": 0}}},
+    "verification_evidence": {"type": "array", "items": {"type": "string"}},
+    "external_delivery": {"type": "object", "required": ["required", "target", "approval_id"], "properties": {"required": {"type": "boolean"}, "target": {"type": "string"}, "approval_id": {"type": "string"}}}
+  }
+}

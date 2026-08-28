@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/VerificationPacket/v1",
+  "title": "VerificationPacket",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "fix_packet_id", "role", "model", "effort", "fresh_task", "forked", "thread_id", "target_artifacts", "status", "checks", "evidence", "authority"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/VerificationPacket/v1"},
+    "id": {"type": "string", "pattern": "^verification_[a-z0-9_]+$"},
+    "fix_packet_id": {"type": "string", "pattern": "^fix_[a-z0-9_]+$"},
+    "role": {"const": "verifier"}, "model": {"const": "gpt-5.6-sol"}, "effort": {"const": "xhigh"}, "fresh_task": {"const": true}, "forked": {"const": false},
+    "thread_id": {"type": "string", "minLength": 1},
+    "target_artifacts": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "status": {"enum": ["pending", "passed", "failed"]},
+    "checks": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "authority": {"type": "object", "required": ["may_write", "may_approve", "may_integrate", "may_issue_final_verdict"], "properties": {"may_write": {"const": false}, "may_approve": {"const": false}, "may_integrate": {"const": false}, "may_issue_final_verdict": {"const": false}}}
+  }
+}

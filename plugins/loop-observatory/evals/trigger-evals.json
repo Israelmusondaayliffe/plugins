@@ -1,0 +1,25 @@
+{
+  "skill": "loop-observatory",
+  "queries": [
+    {"query": "Ingest the latest terminal LoopKit runs into my loop telemetry store", "should_trigger": true},
+    {"query": "Register this Operating Graph run root and normalize its receipts", "should_trigger": true},
+    {"query": "Compare human acceptance rates across all my agent loops", "should_trigger": true},
+    {"query": "Which loops repeatedly exhaust their iteration limits?", "should_trigger": true},
+    {"query": "Build a weekly loop portfolio report", "should_trigger": true},
+    {"query": "Audit my loop judges for false passes", "should_trigger": true},
+    {"query": "Find judge verdicts that conflict with later human labels", "should_trigger": true},
+    {"query": "Calculate cost per accepted loop result where evidence exists", "should_trigger": true},
+    {"query": "Show escalation clusters across LoopKit and Operating Graph", "should_trigger": true},
+    {"query": "Check whether the same run was ingested twice", "should_trigger": true},
+    {"query": "Design a bounded goal loop for this coding task", "should_trigger": false},
+    {"query": "Run my LoopKit contract until it passes", "should_trigger": false},
+    {"query": "Repair this broken loop judge", "should_trigger": false},
+    {"query": "Schedule this loop to run every hour", "should_trigger": false},
+    {"query": "Create a new skill from this workflow", "should_trigger": false},
+    {"query": "Evaluate whether this plugin manifest is valid", "should_trigger": false},
+    {"query": "Search my prior Codex sessions for a decision", "should_trigger": false},
+    {"query": "Promote this note into durable workspace knowledge", "should_trigger": false},
+    {"query": "Debug an Operating Graph node failure", "should_trigger": false},
+    {"query": "Write a project status update", "should_trigger": false}
+  ]
+}

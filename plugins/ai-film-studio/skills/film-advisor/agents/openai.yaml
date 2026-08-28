@@ -1,0 +1,5 @@
+interface:
+  display_name: "Film Advisor"
+  short_description: "Explicitly route a bounded AI film production task."
+policy:
+  allow_implicit_invocation: false

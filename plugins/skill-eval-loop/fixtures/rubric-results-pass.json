@@ -1,0 +1,5 @@
+{
+  "results": [
+    {"id":"r1","passed":true,"evidence":"independent fixture check found no unsupported claim"}
+  ]
+}

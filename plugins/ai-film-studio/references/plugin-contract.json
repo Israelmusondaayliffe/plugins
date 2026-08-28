@@ -1,0 +1,57 @@
+{
+  "contract_version": "ai-film-studio/plugin-contract/v1",
+  "name": "ai-film-studio",
+  "version": "0.2.0",
+  "visibility": "public",
+  "publish": true,
+  "activation": {
+    "mode": "explicit-only",
+    "implicit_activation": false,
+    "activate_on_quoted_name": false,
+    "activate_on_negated_name": false,
+    "activate_on_conditional_name": false,
+    "activate_on_incidental_film_language": false,
+    "accepted_invocations": ["$ai-film-studio:ai-film-studio", "Use AI Film Studio", "$ai-film-studio:film-advisor", "Use Film Advisor", "film-advisor", "/film-advisor", "@ai-film-studio/film-advisor"]
+  },
+  "skills": [
+    "ai-film-studio",
+    "film-wayfinder",
+    "production-architect",
+    "asset-bible-director",
+    "performance-director",
+    "visual-development-director",
+    "shot-continuity-director",
+    "film-prompt-director",
+    "iteration-supervisor",
+    "post-delivery-director",
+    "film-advisor"
+  ],
+  "record_interfaces": "schemas/stable-record-interfaces.json",
+  "protocol": {
+    "name": "film-advisor",
+    "version": "v1",
+    "input_schema": "schemas/film-advisor-packet.schema.json",
+    "runtime": "scripts/film_advisor.py",
+    "topology": "references/film-advisor-topology.json"
+  },
+  "capability_composition": {
+    "local_core": {
+      "grill_and_wayfinder": "ai-film-studio:film-wayfinder",
+      "outcome_contracts": "ai-film-studio:ai-film-studio",
+      "prompt_packet": "ai-film-studio:film-prompt-director",
+      "runtime_planner": "ai-film-studio:film-advisor"
+    },
+    "optional_companions": {
+      "general_decision_interview": "strategy-room:strategy-room-router",
+      "general_outcome_contracts": "outcome-engine:outcome-engine",
+      "model_specific_prompt_format": "video-production-studio:video-prompt-builder",
+      "plugin_lifecycle": "harness-engineering:harness-engineering",
+      "installation_and_catalog": "capability-operator:capability-router"
+    }
+  },
+  "validation": {
+    "bundle": "python3 scripts/validate_bundle.py .",
+    "tests": "python3 -m unittest discover -s tests -v",
+    "plugin_creator": "plugin-creator:scripts/validate_plugin.py ."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "last30days",
+  "version": "3.16.1",
+  "description": "Recent-signal research across social, community, market, code, and web sources on Codex, Claude Code, and Claude Cowork.",
+  "author": {
+    "name": "mvanhorn"
+  },
+  "homepage": "https://github.com/mvanhorn/last30days-skill",
+  "repository": "https://github.com/mvanhorn/last30days-skill",
+  "license": "MIT",
+  "keywords": [
+    "recent research",
+    "social listening",
+    "trend discovery",
+    "competitor research",
+    "watchlists",
+    "briefings",
+    "codex",
+    "claude-code",
+    "cowork"
+  ]
+}

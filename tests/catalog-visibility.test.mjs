@@ -47,15 +47,15 @@ const repositorySkills = codexMarketplace.plugins.reduce(
 );
 
 test("keeps the complete repository inventory separate from the Site inventory", () => {
-  assert.equal(codexMarketplace.plugins.length, 23);
-  assert.equal(claudeMarketplace.plugins.length, 23);
-  assert.equal(repositorySkills, 193);
-  assert.equal(curation.visibility.visible_plugins.length, 22);
+  assert.equal(codexMarketplace.plugins.length, 29);
+  assert.equal(claudeMarketplace.plugins.length, 29);
+  assert.equal(repositorySkills, 226);
+  assert.equal(curation.visibility.visible_plugins.length, 28);
   assert.equal(curation.visibility.excluded_plugins.length, 1);
-  assert.equal(curation.expected_totals.plugins, 22);
-  assert.equal(curation.expected_totals.skills, 171);
-  assert.equal(totals.plugins, 22);
-  assert.equal(totals.skills, 171);
+  assert.equal(curation.expected_totals.plugins, 28);
+  assert.equal(curation.expected_totals.skills, 204);
+  assert.equal(totals.plugins, 28);
+  assert.equal(totals.skills, 204);
 });
 
 test("excludes only the repository-only compatibility plugin", () => {
@@ -113,6 +113,7 @@ test("assigns every visible plugin to one approved outcome collection", () => {
           "brand-world-studio",
           "video-production-studio",
           "founder-revenue-engine",
+          "ai-film-studio",
         ],
       },
       {
@@ -133,6 +134,9 @@ test("assigns every visible plugin to one approved outcome collection", () => {
           "harness-engineering",
           "model-evaluation-lab",
           "proofloop",
+          "loop-observatory",
+          "practice-compiler",
+          "skill-eval-loop",
         ],
       },
       {
@@ -145,6 +149,8 @@ test("assigns every visible plugin to one approved outcome collection", () => {
           "continuity-vault",
           "model-prompt-lab",
           "signal-to-system",
+          "guide-production-studio",
+          "last30days",
         ],
       },
     ],

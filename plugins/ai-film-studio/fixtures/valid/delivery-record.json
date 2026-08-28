@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/delivery-record/v1",
+  "id": "delivery_fixture_internal",
+  "project_id": "project_fixture_film",
+  "status": "ready_for_review",
+  "source_records": ["shot_fixture_threshold_001", "iteration_fixture_threshold_001"],
+  "acceptance_criteria": ["Review story clarity, geography, identity, and sound against named records."],
+  "external_delivery": {"required": false, "approval_id": ""}
+}

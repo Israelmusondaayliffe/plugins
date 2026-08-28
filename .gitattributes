@@ -1,0 +1,4 @@
+# Preserve known whitespace in the pinned Last30Days upstream payload.
+plugins/last30days/skills/last30days/scripts/lib/pipeline.py whitespace=-blank-at-eof
+plugins/last30days/skills/last30days/scripts/lib/providers.py whitespace=-trailing-space
+plugins/last30days/skills/last30days/scripts/watchlist.py whitespace=-trailing-space

@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "e2e_30_second_proof_of_concept",
+  "fixture_kind": "end-to-end",
+  "scenario": "A 30-second proof of concept moves from FilmBrief through a single continuity-safe ShotRecord and a delegated PromptPacket. It does not initiate a generation.",
+  "record_chain": ["FilmBrief", "ProductionPlan", "AssetRecord", "ShotRecord", "PromptPacket", "GenerationAttempt", "VerificationPacket"],
+  "expected_status": "planning-ready with external execution blocked until explicit approval",
+  "evidence": ["First frame, asset states, geography, and adapter ownership are named.", "GenerationAttempt remains planned with no live action required."]
+}

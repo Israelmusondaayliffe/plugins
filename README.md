@@ -48,6 +48,7 @@ Cowork-supported plugin and install it from the catalog.
 | Plugin | Purpose |
 | --- | --- |
 | agent-ops | Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior. |
+| ai-film-studio | Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks. |
 | brand-world-studio | Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification. |
 | capability-operator | Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex. |
 | citizen-forge | Governed internal application creation for non-technical owners, with deterministic policy and lifecycle controls. |
@@ -56,22 +57,26 @@ Cowork-supported plugin and install it from the catalog.
 | founder-revenue-engine | Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex. |
 | gauntlet | Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. |
 | gauntlet-loop | Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification. |
+| guide-production-studio | Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance. |
 | harness-engineering | Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow. |
 | knowledge-work-superpowers | A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery. |
+| last30days | Recent-signal research across social, community, market, code, and web sources on Codex, Claude Code, and Claude Cowork. |
+| loop-observatory | Read-only telemetry, portfolio reporting, and judge calibration for bounded agent loops. |
 | loopkit | Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion. |
 | matt-partok-bundled-plugin-for-knowledge-work | Deprecated compatibility release of Matt Pocock's adapted workflow. Migrate to Strategy Room, Outcome Engine, Knowledge Work Superpowers, Continuity Vault, Capability Operator, Web Product Studio, and Harness Engineering. |
 | model-evaluation-lab | Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions. |
 | model-prompt-lab | Verified model routing, production prompt architecture, migration audits, and benchmark design on Claude Code, Claude Cowork, and Codex. |
 | outcome-engine | Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software. |
 | operating-graph | Design, run, inspect, and safely reorganize adaptive agent operating graphs. |
+| practice-compiler | Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals. |
 | proofloop | Governed agent learning ledger and evaluation wrapper with bounded refinement, verification, quarantined memory, and read-only audit. |
 | signal-to-system | Ten practical skills for turning messy ideas, live signals, evidence, workflows, sessions, and proven practices into decisions and reusable artifacts. |
+| skill-eval-loop | Run bounded regression and repair cycles for skills and plugins with a complete local evaluator and optional OpenAI Plugin Eval analysis. |
 | strategy-room | Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking. |
 | video-production-studio | End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video. |
 | web-product-studio | Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex. |
 | writing-quality | Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation. |
-
-The marketplace currently contains 23 plugins and 193 skills. The packages also
+The marketplace currently contains 29 plugins and 226 skills. The packages also
 include their supporting scripts, references, assets, and agent definitions.
 LoopKit includes local lifecycle hooks. The marketplace does not currently
 bundle MCP servers or app connectors.

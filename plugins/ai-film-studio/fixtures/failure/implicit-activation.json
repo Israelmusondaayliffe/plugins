@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "failure_implicit_activation",
+  "fixture_kind": "failure",
+  "scenario": "An ordinary filmmaking question mentions the plugin only incidentally.",
+  "record_chain": ["TaskPacket"],
+  "expected_status": "stopped: Film Advisor must not activate without explicit invocation",
+  "evidence": ["Activation mode is not explicit."]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: Loop Portfolio Report
+  short_description: Compare accepted outcomes and exhausted runs
+  default_prompt: Use $loop-portfolio-report to report across normalized loop runs.
+policy:
+  allow_implicit_invocation: false

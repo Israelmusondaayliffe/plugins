@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/ShotRecord/v1",
+  "title": "ShotRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "scene_id", "purpose", "duration_seconds", "status", "target_model", "active_references", "geography", "first_frame", "action_beats", "performance", "camera", "lens", "light", "physics", "dialogue", "sound", "constraints"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/ShotRecord/v1"},
+    "id": {"type": "string", "pattern": "^shot_[a-z0-9_]+$"},
+    "scene_id": {"type": "string", "pattern": "^scene_[a-z0-9_]+$"},
+    "purpose": {"type": "string", "minLength": 1},
+    "duration_seconds": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["draft", "ready_for_prompt", "tested", "approved", "retired"]},
+    "target_model": {"type": "string", "minLength": 1},
+    "active_references": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["asset_id", "version", "controls", "must_not_transfer"], "properties": {"asset_id": {"type": "string"}, "version": {"type": "integer", "minimum": 1}, "controls": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "must_not_transfer": {"type": "array", "items": {"type": "string"}}}}},
+    "geography": {"type": "object", "required": ["location_asset_id", "axis", "camera_side", "screen_direction", "landmarks"], "properties": {"location_asset_id": {"type": "string"}, "axis": {"type": "string"}, "camera_side": {"type": "string"}, "screen_direction": {"type": "string"}, "landmarks": {"type": "array", "items": {"type": "string"}}}},
+    "first_frame": {"type": "string", "minLength": 1},
+    "action_beats": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["start_second", "end_second", "action"], "properties": {"start_second": {"type": "integer", "minimum": 0}, "end_second": {"type": "integer", "minimum": 1}, "action": {"type": "string"}}}},
+    "performance": {"type": "array", "items": {"type": "string"}},
+    "camera": {"type": "string", "minLength": 1},
+    "lens": {"type": "string", "minLength": 1},
+    "light": {"type": "string", "minLength": 1},
+    "physics": {"type": "array", "items": {"type": "string"}},
+    "dialogue": {"type": "array", "items": {"type": "object", "required": ["speaker_asset_id", "line", "voice_asset_id"], "properties": {"speaker_asset_id": {"type": "string"}, "line": {"type": "string"}, "voice_asset_id": {"type": "string"}}}},
+    "sound": {"type": "array", "items": {"type": "string"}},
+    "constraints": {"type": "array", "items": {"type": "string"}}
+  }
+}

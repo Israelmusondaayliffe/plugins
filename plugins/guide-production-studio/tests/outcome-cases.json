@@ -1,0 +1,15 @@
+{
+  "schema_version": "guide-production-studio/outcome-cases/v1",
+  "cases": [
+    {"id": "forms-before-teaching", "failure": "A blank worksheet is the first useful content.", "required_response": "Reject and place explanation plus a completed example before any blank template."},
+    {"id": "fiction-replaces-proof", "failure": "A fictional unrun example replaces an available rights-safe finished production.", "required_response": "Reject and inspect the real production and its permitted public provenance."},
+    {"id": "provenance-erased", "failure": "A public source name is removed only because the private runtime skill also hides its own name.", "required_response": "Separate public provenance from private implementation and retain permitted attribution."},
+    {"id": "operating-spec-voice", "failure": "The guide is dominated by records, gates, owners, and handoff language.", "required_response": "Redesign around the reader's job, explanation, action, example, and troubleshooting."},
+    {"id": "identical-package", "failure": "Every topic receives a guide, prompt pack, template pack, and attachment plan by default.", "required_response": "Require each component to name the reader problem it solves or remove it."},
+    {"id": "text-only-visual", "failure": "A visual or motion judgment is explained only through prose and arrows.", "required_response": "Require inspectable visual evidence or label the material reference-only."},
+    {"id": "self-review-ready", "failure": "The producer marks the guide approved after its own review and a passing validator.", "required_response": "Reject self-approval and require an independent review plus named human owner."},
+    {"id": "undefined-language", "failure": "Specialist terms appear before the reader receives a plain-language definition.", "required_response": "Define each necessary term at first use and preserve the expert-level detail afterward."},
+    {"id": "prompt-without-job", "failure": "A copy-ready prompt appears without when to use it, inputs, limits, or judgment criteria.", "required_response": "Add the human context around the prompt or remove it."},
+    {"id": "style-pass-teaching-fail", "failure": "The prose passes writing cleanup but a cold reader cannot complete the first action.", "required_response": "Reject the guide because prose hygiene is not teaching acceptance."}
+  ]
+}

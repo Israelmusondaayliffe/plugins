@@ -1,0 +1,25 @@
+{
+  "skill_name": "practice-compiler",
+  "queries": [
+    {"query":"Read my last twenty Codex sessions and show what I keep correcting.","should_trigger":true},
+    {"query":"What repeated terminal workflow should become a skill or command?","should_trigger":true},
+    {"query":"Mine my work traces for things that would make tomorrow easier.","should_trigger":true},
+    {"query":"Find commands that failed several times before I got the syntax right.","should_trigger":true},
+    {"query":"Stage ideas from my recent Codex work, but do not change anything.","should_trigger":true},
+    {"query":"Which corrections belong in AGENTS.md instead of another chat?","should_trigger":true},
+    {"query":"Review the practice proposals and reject the one-offs.","should_trigger":true},
+    {"query":"Prepare a handoff for the approved skill update proposal.","should_trigger":true},
+    {"query":"Did I repeat any useful workflow that could become a tutorial?","should_trigger":true},
+    {"query":"Scan yesterday's JSONL for tool friction and redact secrets.","should_trigger":true},
+    {"query":"What did Codex decide about the plugin architecture last week?","should_trigger":false},
+    {"query":"Turn this single successful workflow into a packaged skill.","should_trigger":false},
+    {"query":"Audit the global harness for stale instructions.","should_trigger":false},
+    {"query":"Search my memory timeline for the repository cleanup.","should_trigger":false},
+    {"query":"Improve this existing skill against its regression suite.","should_trigger":false},
+    {"query":"Write a LinkedIn post from this idea.","should_trigger":false},
+    {"query":"Create a hook that blocks secrets before commit.","should_trigger":false},
+    {"query":"Fix this CLI's argument parser.","should_trigger":false},
+    {"query":"Summarize this one terminal transcript.","should_trigger":false},
+    {"query":"Promote this research note into the durable vault.","should_trigger":false}
+  ]
+}

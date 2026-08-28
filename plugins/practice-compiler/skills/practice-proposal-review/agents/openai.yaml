@@ -1,0 +1,6 @@
+interface:
+  display_name: Practice Proposal Review
+  short_description: Deduplicate and rank staged practice proposals
+  default_prompt: Use $practice-proposal-review to review staged practice proposals.
+policy:
+  allow_implicit_invocation: false

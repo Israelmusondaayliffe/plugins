@@ -1,0 +1,35 @@
+{
+  "name": "guide-production-studio",
+  "version": "0.1.1",
+  "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
+  "keywords": [
+    "guides",
+    "source-mapping",
+    "writing",
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/guide-production-studio",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Guide Production Studio",
+    "shortDescription": "Build useful, source-grounded practical guides.",
+    "longDescription": "Guide Production Studio turns approved sources and tested methods into clear practical guides. It preserves public provenance, protects private implementation material, chooses structure from the reader's job, requires real examples and visual evidence where needed, and stops at human review before publication.",
+    "developerName": "Community Maintainers",
+    "category": "Productivity",
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/guide-production-studio",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Build a practical guide from these sources and preserve the public provenance.",
+      "Design the right page architecture for this reference guide before writing it.",
+      "Review this guide as a cold reader and tell me what still blocks use."
+    ]
+  }
+}

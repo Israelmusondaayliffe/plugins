@@ -1,0 +1,6 @@
+interface:
+  display_name: Session Signal Scan
+  short_description: Scan session traces without changing anything
+  default_prompt: Use $session-signal-scan to stage redacted signals from recent sessions.
+policy:
+  allow_implicit_invocation: false

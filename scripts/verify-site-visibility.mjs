@@ -12,10 +12,10 @@ const readJson = (path) => JSON.parse(readFileSync(join(root, path), "utf8"));
 const readText = (path) => readFileSync(join(root, path), "utf8");
 const errors = [];
 const expected = {
-  repositoryPlugins: 23,
-  repositorySkills: 193,
-  sitePlugins: 22,
-  siteSkills: 171,
+  repositoryPlugins: 29,
+  repositorySkills: 226,
+  sitePlugins: 28,
+  siteSkills: 204,
 };
 const mattSlug = "matt-partok-bundled-plugin-for-knowledge-work";
 
@@ -126,6 +126,7 @@ const expectedCollections = [
       "brand-world-studio",
       "video-production-studio",
       "founder-revenue-engine",
+      "ai-film-studio",
     ],
   },
   {
@@ -146,6 +147,9 @@ const expectedCollections = [
       "harness-engineering",
       "model-evaluation-lab",
       "proofloop",
+      "loop-observatory",
+      "practice-compiler",
+      "skill-eval-loop",
     ],
   },
   {
@@ -158,6 +162,8 @@ const expectedCollections = [
       "continuity-vault",
       "model-prompt-lab",
       "signal-to-system",
+      "guide-production-studio",
+      "last30days",
     ],
   },
 ];

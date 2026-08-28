@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/PromptPacket/v1",
+  "title": "PromptPacket",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "shot_record_id", "shot_record_sha256", "model_profile_id", "model_profile_version", "status", "format_owner", "normalized_shot_record", "compiled_prompt", "validator_result", "source_references", "prompt_sha256", "external_action_policy"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/PromptPacket/v1"},
+    "id": {"type": "string", "pattern": "^prompt_[a-z0-9_]+$"},
+    "shot_record_id": {"type": "string", "pattern": "^shot_[a-z0-9_]+$"},
+    "shot_record_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "model_profile_id": {"type": "string", "pattern": "^[a-z0-9.-]+$"},
+    "model_profile_version": {"type": "string", "minLength": 1},
+    "status": {"enum": ["draft", "delegated", "validated", "blocked"]},
+    "format_owner": {"type": "string", "minLength": 1},
+    "normalized_shot_record": {"type": "object"},
+    "compiled_prompt": {"type": "string"},
+    "validator_result": {"type": "object", "required": ["status", "validator", "evidence"], "properties": {"status": {"enum": ["unrun", "passed", "failed", "delegated"]}, "validator": {"type": "string"}, "evidence": {"type": "array", "items": {"type": "string"}}}},
+    "source_references": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "prompt_sha256": {"type": "string", "pattern": "^$|^[a-f0-9]{64}$"},
+    "external_action_policy": {"const": "approval-required"}
+  }
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Shot Continuity Director"
+  short_description: "Plan a continuity-safe shot from approved records."
+policy:
+  allow_implicit_invocation: false
