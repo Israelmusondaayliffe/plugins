@@ -2,7 +2,7 @@
 
 Manga, comics, storyboards, panel sequences. Sequential art with characters, story beats, and narrative progression rendered as a single multi-panel image (or as a storyboard series via SERIES).
 
-**Inheritance**: ADAPT from `nano-banana-unified/agents/agent-create.md` (Sequential Art / Comics sub-template). Panel structure, art-style specification, and dialogue-in-quotes discipline are model-agnostic. Adapted: leverage GPT Image 2's 8-output consistency (Spud & Garlic 4-page vintage comic demo, OpenAI Seinen manga demo). For multi-page narratives, recommend routing to SERIES; for single-page multi-panel, handle here.
+**Inheritance**: ADAPT from `nano-banana-unified/agents/agent-create.md` (Sequential Art / Comics sub-template). Panel structure, art-style specification, and dialogue-in-quotes discipline are model-agnostic. Adapted to use GPT Image 2's 8-output consistency (Spud & Garlic 4-page vintage comic demo, OpenAI Seinen manga demo). For multi-page narratives, recommend routing to SERIES; for single-page multi-panel, handle here.
 
 ## Scope
 
