@@ -3,3 +3,15 @@ rewritten concepts adapted from mattpocock/skills at revision
 9603c1cc8118d08bc1b3bf34cf714f62178dea3b. The adapted concepts remain subject
 to the upstream MIT license and copyright notice. No upstream skill is copied
 wholesale.
+
+The bundled Unslop engine under `skills/unslop-harness-repair` is a dated
+snapshot of the Writing Enforcer capability. Its merged provenance includes
+material from `humanizer`, copyright 2025 Siqi Chen (MIT), and selected or
+paraphrased material from `stop-slop`, copyright 2025 Hardik Pandya (MIT),
+`no-ai-slop`, copyright 2026 Peter Yang (MIT, reviewed at commit
+61c21c351da4dcb40946a11fead978f2078a2c65), and `avoid-ai-writing` by Conor
+Bronsdon, copyright 2026 (MIT). The adapted pattern taxonomy contains material
+from `Wikipedia:Signs of AI writing`, revision 1371562925, under CC BY-SA 4.0.
+The full source record and third-party terms are preserved in
+`skills/unslop-harness-repair/references/unslop-engine/source-provenance.md` and
+`skills/unslop-harness-repair/references/unslop-engine/THIRD_PARTY_NOTICES.md`.

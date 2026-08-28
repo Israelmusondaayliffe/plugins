@@ -326,7 +326,7 @@ export const plugins = [
     "shortDescription": "Evidence-first workflows for research, analysis, writing, and delivery",
     "longDescription": "Frame substantial knowledge work, plan it, research systematically, test claims against evidence, draft from sources, review the result, and verify it before delivery.",
     "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -526,7 +526,7 @@ export const plugins = [
     "shortDescription": "Turn unclear goals into verified results.",
     "longDescription": "Clarify decisions, write durable briefs, create independent action slices, execute from evidence, and improve the systems behind the work.",
     "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -853,7 +853,7 @@ export const plugins = [
     "shortDescription": "Route and verify serious writing work.",
     "longDescription": "Writing Quality separates intent architecture, rewriting, detect-only review, claim support, and final prose validation so each request receives the smallest sufficient intervention.",
     "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -880,7 +880,7 @@ export const plugins = [
       },
       {
         "name": "writing-enforcer",
-        "description": "Unified writing enforcer that removes AI patterns, preserves voice, injects soul, and ensures plain human-sounding prose. Combines humanizer, output-quality-enforcer, and anti-AI style detection into one workflow. Use when asked to humanize this, remove AI feel, make this sound like me, clean this up, too robotic, too generic, sound more human, or to improve any text that reads as AI-generated or over-polished. Two modes: DETECT (flag patterns only) and REWRITE (full pipeline, default). Applies the plain-language rule: simpler words always beat complex words. Enforces voice, soul, intent, and the 36-pattern AI-tell taxonomy. Runs deterministic scripts for em-dash removal and quality scoring."
+        "description": "Applies the complete local 47-pattern Unslop method to ordinary prose while preserving source-backed voice and exact protected material. Use when the user asks to humanize, tighten, clean up, remove AI patterns, make prose sound like them, audit writing without rewriting, or validate a draft. Supports DETECT for report-only review and REWRITE only when the user authorizes prose changes."
       },
       {
         "name": "writing-quality-router",
@@ -890,9 +890,9 @@ export const plugins = [
     "counts": {
       "skills": 4,
       "assets": 3,
-      "references": 14,
-      "scripts": 7,
-      "files": 34
+      "references": 19,
+      "scripts": 10,
+      "files": 43
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1015,7 +1015,7 @@ export const plugins = [
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
     "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1042,7 +1042,7 @@ export const plugins = [
       },
       {
         "name": "capability-router",
-        "description": "Routes unclear, multi-stage, or cross-plugin requests on Claude Code, Claude Cowork, or Codex to one primary personal plugin or owned skill, with bounded companions, handoffs, exclusions, load order, and verification needs. Use when plugin versus skill ownership is unclear, several personal plugins overlap, a request spans capability domains, or the harness needs a deterministic routing decision. Explicit user selections still win, and focused requests should call the narrow owned skill directly."
+        "description": "Routes unclear, multi-stage, or cross-plugin requests on Claude Code, Claude Cowork, or Codex to one primary local plugin or owned skill, with bounded companions, handoffs, exclusions, load order, and verification needs. Use when plugin versus skill ownership is unclear, several local plugins overlap, a request spans capability domains, or the harness needs a deterministic routing decision. Explicit user selections still win, and focused requests should call the narrow owned skill directly."
       },
       {
         "name": "fresh-task-discovery-verifier",
@@ -1077,8 +1077,8 @@ export const plugins = [
       "skills": 10,
       "assets": 10,
       "references": 16,
-      "scripts": 20,
-      "files": 73
+      "scripts": 21,
+      "files": 74
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1396,9 +1396,9 @@ export const plugins = [
     "slug": "agent-ops",
     "name": "Agent Ops",
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
-    "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. Generic Goals and loops on any host are owned by LoopKit.",
+    "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. LoopKit is an optional companion for generic Goals and loops; Agent Ops keeps a bundled local fallback when it is absent.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1421,7 +1421,7 @@ export const plugins = [
       },
       {
         "name": "agent-ops-router",
-        "description": "Route reusable agent-system requests among agent design and agent-system audit. Use when a user asks to build a reusable agent, define an agent tool contract, choose an agent architecture, or audit an agent system's authority and stops. Generic Goals, bounded loops, resume, verification, and schedules, on Claude Code, Claude Cowork, or Codex, route to LoopKit."
+        "description": "Route reusable agent-system requests among agent design and agent-system audit. Use when a user asks to build a reusable agent, define an agent tool contract, choose an agent architecture, or audit an agent system's authority and stops. Generic Goal and loop work can use LoopKit as an optional companion or the bundled local fallback."
       },
       {
         "name": "agent-system-audit",
@@ -1437,15 +1437,15 @@ export const plugins = [
       },
       {
         "name": "goal-runner",
-        "description": "Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Redirect Goal contract, execution, verification, and resume work, on Claude Code, Claude Cowork, or Codex, to the matching LoopKit skill. Generic goal or completion requests should trigger LoopKit directly."
+        "description": "Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Use LoopKit as an optional companion when available; otherwise use this skill's bundled local contract, execution, verification, and resume tools. Generic requests do not activate this historical name."
       },
       {
         "name": "loop-goal-engineer",
-        "description": "Explicit-only compatibility shim for the historical Loop Goal Engineer name. Use only when the user explicitly says loop-goal-engineer or Loop Goal Engineer. Redirect loop design, scheduling, and diagnosis, on Claude Code, Claude Cowork, or Codex, to LoopKit. Generic loop, Goal, recurring-task, and schedule requests should trigger LoopKit directly."
+        "description": "Explicit-only compatibility shim for the historical Loop Goal Engineer name. Use only when the user explicitly says loop-goal-engineer or Loop Goal Engineer. Use LoopKit as an optional companion when available; otherwise use this skill's bundled local design, scheduling, and diagnosis tools. Generic requests do not activate this historical name."
       },
       {
         "name": "loopy",
-        "description": "Explicit-only compatibility shim for the historical Loopy name. Use only when the user explicitly says Loopy or asks for the Loop Library workflow. Redirect generic loop design, run, verification, resume, and diagnosis, on Claude Code, Claude Cowork, or Codex, to LoopKit. Retain the bundled legacy references only for an explicitly requested Loop Library discovery or publication task."
+        "description": "Explicit-only compatibility shim for the historical Loopy name. Use only when the user explicitly says Loopy or asks for the Loop Library workflow. Use LoopKit as an optional companion when available; otherwise use the bundled local design, run, verification, resume, diagnosis, and Loop Library workflows. Generic requests do not activate this historical name."
       },
       {
         "name": "sol-advisor",
@@ -1457,7 +1457,7 @@ export const plugins = [
       "assets": 17,
       "references": 19,
       "scripts": 11,
-      "files": 84
+      "files": 85
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1583,7 +1583,7 @@ export const plugins = [
     "shortDescription": "Plan, produce, and verify video assets.",
     "longDescription": "Video Production Studio routes briefs across explainers, launches, music, slideshows, website and PR stories, captions, overlays, prompts, HyperFrames implementation, and final delivery checks.",
     "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Media",
     "license": null,
     "capabilities": [],
@@ -1666,7 +1666,7 @@ export const plugins = [
       "assets": 158,
       "references": 208,
       "scripts": 91,
-      "files": 562
+      "files": 563
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1797,7 +1797,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -2190,7 +2190,7 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2233,7 +2233,7 @@ export const plugins = [
       },
       {
         "name": "strategy-room-router",
-        "description": "Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and hands execution to Outcome Engine only after the recommendation is accepted."
+        "description": "Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and produces a self-contained handoff when no optional execution companion is available."
       }
     ],
     "counts": {
@@ -2366,7 +2366,7 @@ export const plugins = [
     "shortDescription": "Turn approved positioning into a coherent visual world.",
     "longDescription": "Brand World Studio routes approved strategy into a visual brief, identity system, image-model choice, production prompt pack, and consistency review without inventing upstream positioning.",
     "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Design",
     "license": null,
     "capabilities": [],
@@ -2542,7 +2542,7 @@ export const plugins = [
     "shortDescription": "Turn market signals into evidence-backed early revenue work on Claude Code, Cowork, or Codex.",
     "longDescription": "Founder Revenue Engine converts recent market signals into a bounded ICP, commercial narrative, outreach drafts, and founder-led content on Claude Code, Claude Cowork, and Codex while keeping sends and account changes unauthorized by default.",
     "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Sales",
     "license": null,
     "capabilities": [],
@@ -2591,9 +2591,9 @@ export const plugins = [
     "counts": {
       "skills": 7,
       "assets": 8,
-      "references": 16,
+      "references": 17,
       "scripts": 115,
-      "files": 158
+      "files": 159
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2723,7 +2723,7 @@ export const plugins = [
     "shortDescription": "Keep reusable knowledge findable and trustworthy on Claude Code, Claude Cowork, and Codex.",
     "longDescription": "Continuity Vault routes work through source-preserving extraction, governed promotion, relationship mapping, recall, and staleness audits while keeping workspace files authoritative. It runs on Claude Code, Claude Cowork, and Codex, and treats the host instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) plus workspace source files as the authority layer.",
     "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2765,8 +2765,8 @@ export const plugins = [
       "skills": 5,
       "assets": 8,
       "references": 13,
-      "scripts": 5,
-      "files": 48
+      "scripts": 6,
+      "files": 50
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2890,7 +2890,7 @@ export const plugins = [
     "shortDescription": "Turn checked analysis into decision-facing stories.",
     "longDescription": "Data Storytelling Studio preserves the analytical source of truth while routing it to the right delivery format, auditing visual claims, and producing an answer-first executive readout with explicit evidence and caveats.",
     "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -3044,7 +3044,7 @@ export const plugins = [
     "shortDescription": "Plan, run, normalize, and decide model evaluations.",
     "longDescription": "Model Evaluation Lab turns a model choice into a fixed evaluation plan, a reproducible run contract, normalized results, and a decision memo that separates measurement from judgment and deployment conditions.",
     "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -3080,10 +3080,10 @@ export const plugins = [
     ],
     "counts": {
       "skills": 4,
-      "assets": 8,
+      "assets": 10,
       "references": 4,
-      "scripts": 8,
-      "files": 36
+      "scripts": 9,
+      "files": 40
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -3202,7 +3202,7 @@ export const plugins = [
     "shortDescription": "Bounded loops with durable evidence on Claude Code, Cowork, and Codex.",
     "longDescription": "LoopKit turns repeatable work into bounded loops on Claude Code, Claude Cowork, and Codex. It creates durable contracts, runs evidence-gated iterations, restores compact checkpoints, prepares scheduled tasks on the host scheduling surface, and diagnoses stalled or unsafe runs.",
     "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3388,7 +3388,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.6.0",
+    "version": "2.7.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3459,14 +3459,18 @@ export const plugins = [
       {
         "name": "skill-engineer",
         "description": "Create or upgrade a missing skill identified during harness design for Claude Code, Claude Cowork, or Codex, with evidence that the skill fixes a repeated failure. Use when the harness plan requires a new reusable workflow, validator, script, reference set, or asset bundle that is not already supplied by an installed skill or plugin."
+      },
+      {
+        "name": "unslop-harness-repair",
+        "description": "Repair writing-quality drift in an AI operating harness or explicitly approved plugins through a read-only audit, hash freeze, user-approved bounded edits, protected-material checks, residual reconciliation, integrated review, and release proof. Use when the user affirmatively requests an Unslop harness repair or when Harness Maintainer loads this specialist for prose-changing maintenance. Do not use for ordinary document editing, explanation-only requests, cache cleanup, authentication, version-only changes, binaries, or code-only maintenance."
       }
     ],
     "counts": {
-      "skills": 13,
+      "skills": 14,
       "assets": 7,
-      "references": 12,
-      "scripts": 6,
-      "files": 66
+      "references": 31,
+      "scripts": 11,
+      "files": 93
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -3608,7 +3612,7 @@ export const plugins = [
     "shortDescription": "Engineer and run adaptive agent organizations.",
     "longDescription": "Transforms complex goals into typed, executable agent graphs with shared state, evidence, verification, bounded runtime restructuring, and human authority controls.",
     "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -4370,10 +4374,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 22,
-  "skills": 170,
-  "assets": 328,
-  "references": 446,
-  "scripts": 397,
-  "files": 1870
+  "skills": 171,
+  "assets": 330,
+  "references": 471,
+  "scripts": 408,
+  "files": 1916
 } as const;
 export type Plugin = (typeof plugins)[number];

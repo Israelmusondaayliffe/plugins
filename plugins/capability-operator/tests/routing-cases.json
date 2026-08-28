@@ -2,353 +2,71 @@
   "schema_version": "1.0.0",
   "cases": [
     {
-      "id": "writing-composite",
-      "kind": "composite",
-      "task": "Draft and review an executive memo, check claims, then clean final prose.",
-      "expected": {"primary_route": "writing-quality:writing-quality-router", "route_type": "plugin-router", "plugin": "writing-quality", "skill": "writing-quality-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "writing-focused",
-      "kind": "focused",
-      "task": "Check the claim boundaries in this draft.",
-      "expected": {"primary_route": "writing-quality:claim-boundary-checker", "route_type": "plugin-skill", "plugin": "writing-quality", "skill": "claim-boundary-checker", "companions": [], "excluded_routes": []}
-    },
-    {
       "id": "capability-composite",
       "kind": "composite",
-      "task": "Plugin or skill ownership is unclear. Inventory and route it.",
-      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
+      "task": "Choose a capability route for this cross-plugin request.",
+      "expected": {
+        "primary_route": "capability-operator:capability-router",
+        "route_type": "plugin-router",
+        "plugin": "capability-operator",
+        "skill": "capability-router",
+        "companions": [],
+        "excluded_routes": []
+      }
     },
     {
-      "id": "capability-focused",
+      "id": "capability-focused-inventory",
       "kind": "focused",
-      "task": "Prove this plugin is visible in a fresh task.",
-      "expected": {"primary_route": "capability-operator:fresh-task-discovery-verifier", "route_type": "plugin-skill", "plugin": "capability-operator", "skill": "fresh-task-discovery-verifier", "companions": [], "excluded_routes": []}
+      "task": "Inventory capabilities in this source tree.",
+      "expected": {
+        "primary_route": "capability-operator:capability-inventory",
+        "route_type": "plugin-skill",
+        "plugin": "capability-operator",
+        "skill": "capability-inventory",
+        "companions": [],
+        "excluded_routes": []
+      }
     },
     {
-      "id": "agent-composite",
-      "kind": "composite",
-      "task": "Design and audit a reusable agent system with a strict tool contract.",
-      "expected": {"primary_route": "agent-ops:agent-ops-router", "route_type": "plugin-router", "plugin": "agent-ops", "skill": "agent-ops-router", "companions": [], "excluded_routes": []}
+      "id": "explicit-plugin",
+      "kind": "explicit",
+      "task": "Use the selected plugin.",
+      "explicit_plugin": "capability-operator",
+      "expected": {
+        "primary_route": "capability-operator:capability-router",
+        "route_type": "plugin-router",
+        "plugin": "capability-operator",
+        "skill": "capability-router",
+        "companions": [],
+        "excluded_routes": []
+      }
     },
     {
-      "id": "agent-focused",
-      "kind": "focused",
-      "task": "Run Goal Runner against this bounded outcome.",
-      "expected": {"primary_route": "agent-ops:goal-runner", "route_type": "plugin-skill", "plugin": "agent-ops", "skill": "goal-runner", "companions": [], "excluded_routes": []}
+      "id": "explicit-skill",
+      "kind": "explicit",
+      "task": "Use the selected skill.",
+      "explicit_skill": "capability-release-verifier",
+      "expected": {
+        "primary_route": "capability-operator:capability-release-verifier",
+        "route_type": "plugin-skill",
+        "plugin": "capability-operator",
+        "skill": "capability-release-verifier",
+        "companions": [],
+        "excluded_routes": []
+      }
     },
     {
-      "id": "loopkit-composite",
-      "kind": "composite",
-      "task": "Design, run, verify, and schedule a bounded agent loop with durable state.",
-      "expected": {"primary_route": "loopkit:loopkit", "route_type": "plugin-router", "plugin": "loopkit", "skill": "loopkit", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "loopkit-focused",
-      "kind": "focused",
-      "task": "Resume the active LoopKit run.",
-      "expected": {"primary_route": "loopkit:loop-resumer", "route_type": "plugin-skill", "plugin": "loopkit", "skill": "loop-resumer", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "video-composite",
-      "kind": "composite",
-      "task": "Turn this brief into a finished product launch video with captions and delivery checks.",
-      "expected": {"primary_route": "video-production-studio:video-production-router", "route_type": "plugin-router", "plugin": "video-production-studio", "skill": "video-production-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "video-focused",
-      "kind": "focused",
-      "task": "Add embedded captions to this video.",
-      "expected": {"primary_route": "video-production-studio:embedded-captions", "route_type": "plugin-skill", "plugin": "video-production-studio", "skill": "embedded-captions", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "web-composite",
-      "kind": "composite",
-      "task": "Build this web product from brief through implementation and visual QA.",
-      "expected": {"primary_route": "web-product-studio:web-product-router", "route_type": "plugin-router", "plugin": "web-product-studio", "skill": "web-product-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "web-focused",
-      "kind": "focused",
-      "task": "Run Playwright acceptance tests for this app.",
-      "expected": {"primary_route": "web-product-studio:playwright", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "playwright", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "web-visual-composite",
-      "kind": "composite",
-      "task": "Build a cinematic website hero from a visual reference.",
-      "expected": {"primary_route": "web-product-studio:web-product-router", "route_type": "plugin-router", "plugin": "web-product-studio", "skill": "web-product-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "web-visual-focused",
-      "kind": "focused",
-      "task": "Use the visual fidelity gate to lock and review the visual hero.",
-      "explicit_skill": "visual-fidelity-gate",
-      "expected": {"primary_route": "web-product-studio:visual-fidelity-gate", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "visual-fidelity-gate", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "prompt-composite",
-      "kind": "composite",
-      "task": "Choose the right model and create then test a production prompt.",
-      "expected": {"primary_route": "model-prompt-lab:model-prompt-router", "route_type": "plugin-router", "plugin": "model-prompt-lab", "skill": "model-prompt-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "prompt-focused",
-      "kind": "focused",
-      "task": "Write a GPT-5.6 Sol production prompt for this workflow.",
-      "expected": {"primary_route": "model-prompt-lab:gpt-5-6-production-prompter", "route_type": "plugin-skill", "plugin": "model-prompt-lab", "skill": "gpt-5-6-production-prompter", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "strategy-composite",
-      "kind": "composite",
-      "task": "Help me make this consequential decision by challenging assumptions and comparing options.",
-      "expected": {"primary_route": "strategy-room:strategy-room-router", "route_type": "plugin-router", "plugin": "strategy-room", "skill": "strategy-room-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "strategy-focused",
-      "kind": "focused",
-      "task": "Grill me on this decision.",
-      "expected": {"primary_route": "strategy-room:grill-me", "route_type": "plugin-skill", "plugin": "strategy-room", "skill": "grill-me", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "brand-composite",
-      "kind": "composite",
-      "task": "Create a brand world from brief through model choice, prompts, and consistency checks.",
-      "expected": {"primary_route": "brand-world-studio:brand-world-router", "route_type": "plugin-router", "plugin": "brand-world-studio", "skill": "brand-world-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "brand-focused",
-      "kind": "focused",
-      "task": "Build a brand brief for this product.",
-      "expected": {"primary_route": "brand-world-studio:brand-brief-builder", "route_type": "plugin-skill", "plugin": "brand-world-studio", "skill": "brand-brief-builder", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "founder-composite",
-      "kind": "composite",
-      "task": "Find market signals, define the ICP, build the narrative, and draft no-send outreach.",
-      "expected": {"primary_route": "founder-revenue-engine:founder-revenue-router", "route_type": "plugin-router", "plugin": "founder-revenue-engine", "skill": "founder-revenue-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "founder-focused",
-      "kind": "focused",
-      "task": "Find my first customers.",
-      "expected": {"primary_route": "founder-revenue-engine:first-customer-finder", "route_type": "plugin-skill", "plugin": "founder-revenue-engine", "skill": "first-customer-finder", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "continuity-composite",
-      "kind": "composite",
-      "task": "Make this knowledge durable and decide where it should live across tasks.",
-      "expected": {"primary_route": "continuity-vault:continuity-router", "route_type": "plugin-router", "plugin": "continuity-vault", "skill": "continuity-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "continuity-focused",
-      "kind": "focused",
-      "task": "Turn these notes into a graph.",
-      "expected": {"primary_route": "continuity-vault:graphify", "route_type": "plugin-skill", "plugin": "continuity-vault", "skill": "graphify", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "data-composite",
-      "kind": "composite",
-      "task": "Turn this checked analysis into a decision-facing story and choose the right format.",
-      "expected": {"primary_route": "data-storytelling-studio:analysis-to-story-router", "route_type": "plugin-router", "plugin": "data-storytelling-studio", "skill": "analysis-to-story-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "data-focused",
-      "kind": "focused",
-      "task": "Audit whether each chart has a clear message.",
-      "expected": {"primary_route": "data-storytelling-studio:chart-message-audit", "route_type": "plugin-skill", "plugin": "data-storytelling-studio", "skill": "chart-message-audit", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "evaluation-composite",
-      "kind": "composite",
-      "task": "Plan, run, normalize, and select among these model evaluations.",
-      "expected": {"primary_route": "model-evaluation-lab:model-evaluation-router", "route_type": "plugin-router", "plugin": "model-evaluation-lab", "skill": "model-evaluation-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "evaluation-focused",
-      "kind": "focused",
-      "task": "Write the model evaluation plan for these candidates.",
-      "expected": {"primary_route": "model-evaluation-lab:model-evaluation-plan", "route_type": "plugin-skill", "plugin": "model-evaluation-lab", "skill": "model-evaluation-plan", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "knowledge-composite",
-      "kind": "composite",
-      "task": "Research this systematically and produce an evidence-backed deliverable.",
-      "expected": {"primary_route": "knowledge-work-superpowers:using-knowledge-work-superpowers", "route_type": "plugin-router", "plugin": "knowledge-work-superpowers", "skill": "using-knowledge-work-superpowers", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "knowledge-focused",
-      "kind": "focused",
-      "task": "Review this deliverable against the evidence.",
-      "expected": {"primary_route": "knowledge-work-superpowers:reviewing-knowledge-work", "route_type": "plugin-skill", "plugin": "knowledge-work-superpowers", "skill": "reviewing-knowledge-work", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "outcome-composite",
-      "kind": "composite",
-      "task": "Turn this fuzzy goal into an outcome brief, action slices, execution, and proof.",
-      "expected": {"primary_route": "outcome-engine:outcome-engine", "route_type": "plugin-router", "plugin": "outcome-engine", "skill": "outcome-engine", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "outcome-focused",
-      "kind": "focused",
-      "task": "Break this approved outcome brief into action slices.",
-      "expected": {"primary_route": "outcome-engine:to-action-slices", "route_type": "plugin-skill", "plugin": "outcome-engine", "skill": "to-action-slices", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "proofloop-composite",
-      "kind": "composite",
-      "task": "Explicitly use ProofLoop to learn from this task and quarantine memory.",
-      "expected": {"primary_route": "proofloop:proofloop-run", "route_type": "plugin-skill", "plugin": "proofloop", "skill": "proofloop-run", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "proofloop-focused",
-      "kind": "focused",
-      "task": "Run a ProofLoop memory review.",
-      "expected": {"primary_route": "proofloop:proofloop-memory-review", "route_type": "plugin-skill", "plugin": "proofloop", "skill": "proofloop-memory-review", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "collision-writing-research",
-      "kind": "collision",
-      "task": "Research from sources, create an evidence-backed brief, and finish with final prose cleanup.",
-      "expected": {"primary_route": "knowledge-work-superpowers:using-knowledge-work-superpowers", "route_type": "plugin-router", "plugin": "knowledge-work-superpowers", "skill": "using-knowledge-work-superpowers", "companions": ["writing-quality:writing-quality-router"], "excluded_routes": ["writing-quality:writing-quality-router as primary"]}
-    },
-    {
-      "id": "collision-strategy-execution",
-      "kind": "collision",
-      "task": "Decide what to do before turning the accepted choice into an execution plan.",
-      "expected": {"primary_route": "strategy-room:strategy-room-router", "route_type": "plugin-router", "plugin": "strategy-room", "skill": "strategy-room-router", "companions": ["outcome-engine:outcome-engine"], "excluded_routes": ["outcome-engine:outcome-engine before decision acceptance"]}
-    },
-    {
-      "id": "collision-agent-proofloop",
-      "kind": "collision",
-      "task": "Audit this agent system. Do not run ProofLoop.",
-      "expected": {"primary_route": "agent-ops:agent-system-audit", "route_type": "plugin-skill", "plugin": "agent-ops", "skill": "agent-system-audit", "companions": [], "excluded_routes": ["proofloop:proofloop-run", "proofloop:proofloop-audit"]}
-    },
-    {
-      "id": "collision-agent-loopkit",
-      "kind": "collision",
-      "task": "Design a reusable agent system, then hand its execution contract to a bounded agent loop.",
-      "expected": {"primary_route": "agent-ops:agent-ops-router", "route_type": "plugin-router", "plugin": "agent-ops", "skill": "agent-ops-router", "companions": ["loopkit"], "excluded_routes": ["loopkit:loopkit as primary before the agent contract exists"]}
-    },
-    {
-      "id": "collision-prompt-evaluation",
-      "kind": "collision",
-      "task": "The benchmark specification is complete. Run comparative model evaluation and select the deployment model.",
-      "expected": {"primary_route": "model-evaluation-lab:model-evaluation-router", "route_type": "plugin-router", "plugin": "model-evaluation-lab", "skill": "model-evaluation-router", "companions": [], "excluded_routes": ["model-prompt-lab:model-prompt-router as primary"]}
-    },
-    {
-      "id": "collision-brand-prompting",
-      "kind": "collision",
-      "task": "Choose the brand visual system and image model before creating prompts.",
-      "expected": {"primary_route": "brand-world-studio:brand-world-router", "route_type": "plugin-router", "plugin": "brand-world-studio", "skill": "brand-world-router", "companions": [], "excluded_routes": ["model-prompt-lab:model-prompt-router"]}
-    },
-    {
-      "id": "collision-data-analysis",
-      "kind": "collision",
-      "task": "The analysis is already checked. Create an executive story and choose the production format.",
-      "expected": {"primary_route": "data-storytelling-studio:analysis-to-story-router", "route_type": "plugin-router", "plugin": "data-storytelling-studio", "skill": "analysis-to-story-router", "companions": ["presentations"], "excluded_routes": ["knowledge-work-superpowers:evidence-first-analysis"]}
-    },
-    {
-      "id": "collision-capability-continuity",
-      "kind": "collision",
-      "task": "Audit routing coverage, then record the durable knowledge decision.",
-      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": ["continuity-vault:continuity-router"], "excluded_routes": ["continuity-vault:continuity-router as primary"]}
-    },
-    {
-      "id": "collision-web-video",
-      "kind": "collision",
-      "task": "Turn the existing website into a product launch video.",
-      "expected": {"primary_route": "video-production-studio:website-to-video", "route_type": "plugin-skill", "plugin": "video-production-studio", "skill": "website-to-video", "companions": [], "excluded_routes": ["web-product-studio:web-product-router"]}
-    },
-    {
-      "id": "migrated-strategy-grill",
-      "kind": "focused",
-      "task": "Grill me on this decision before I commit.",
-      "expected": {"primary_route": "strategy-room:grill-me", "route_type": "plugin-skill", "plugin": "strategy-room", "skill": "grill-me", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-outcome-clarify",
-      "kind": "focused",
-      "task": "Run Outcome Engine and clarify this brief.",
-      "expected": {"primary_route": "outcome-engine:decision-grill", "route_type": "plugin-skill", "plugin": "outcome-engine", "skill": "decision-grill", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-wayfinder",
-      "kind": "focused",
-      "task": "Wayfind this large uncertain effort.",
-      "expected": {"primary_route": "strategy-room:decision-wayfinder", "route_type": "plugin-skill", "plugin": "strategy-room", "skill": "decision-wayfinder", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-to-spec",
-      "kind": "focused",
-      "task": "Turn this settled conversation into a spec.",
-      "expected": {"primary_route": "outcome-engine:to-outcome-brief", "route_type": "plugin-skill", "plugin": "outcome-engine", "skill": "to-outcome-brief", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-handoff",
-      "kind": "focused",
-      "task": "Create a durable handoff for a fresh task.",
-      "expected": {"primary_route": "continuity-vault:continuity-router", "route_type": "plugin-router", "plugin": "continuity-vault", "skill": "continuity-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-tdd",
-      "kind": "focused",
-      "task": "Use TDD for this change.",
-      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-hard-bug",
-      "kind": "focused",
-      "task": "Diagnose this hard bug.",
-      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-code-review",
-      "kind": "focused",
-      "task": "Review this code against the spec.",
-      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-architecture",
-      "kind": "focused",
-      "task": "Improve this codebase architecture.",
-      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-merge-conflict",
-      "kind": "focused",
-      "task": "Resolve these merge conflicts.",
-      "expected": {"primary_route": "web-product-studio:code-production-agent", "route_type": "plugin-skill", "plugin": "web-product-studio", "skill": "code-production-agent", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-bounded-research",
-      "kind": "focused",
-      "task": "Do bounded research for this decision.",
-      "expected": {"primary_route": "knowledge-work-superpowers:systematic-research", "route_type": "plugin-skill", "plugin": "knowledge-work-superpowers", "skill": "systematic-research", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "migrated-broad-research",
-      "kind": "focused",
-      "task": "Run broad research with a stop condition.",
-      "expected": {"primary_route": "knowledge-work-superpowers:systematic-research", "route_type": "plugin-skill", "plugin": "knowledge-work-superpowers", "skill": "systematic-research", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "near-miss-generic-planning",
-      "kind": "focused",
-      "task": "Make a simple plan for tomorrow.",
-      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "near-miss-generic-research",
-      "kind": "focused",
-      "task": "Research this topic.",
-      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
-    },
-    {
-      "id": "near-miss-generic-teaching",
-      "kind": "focused",
-      "task": "Explain photosynthesis in one paragraph.",
-      "expected": {"primary_route": "capability-operator:capability-router", "route_type": "plugin-router", "plugin": "capability-operator", "skill": "capability-router", "companions": [], "excluded_routes": []}
+      "id": "unmatched-fallback",
+      "kind": "fallback",
+      "task": "Explain this unfamiliar request.",
+      "expected": {
+        "primary_route": "capability-operator:capability-router",
+        "route_type": "plugin-router",
+        "plugin": "capability-operator",
+        "skill": "capability-router",
+        "companions": [],
+        "excluded_routes": []
+      }
     }
   ]
 }

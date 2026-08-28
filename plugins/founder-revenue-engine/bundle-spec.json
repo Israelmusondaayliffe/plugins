@@ -1,6 +1,6 @@
 {
   "plugin": "founder-revenue-engine",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     "first-customer-finder",
     "founder-revenue-router",
@@ -22,12 +22,15 @@
     {"name": "gmail", "required": false, "purpose": "Email actions after action-time authorization"},
     {"name": "google-calendar", "required": false, "purpose": "Meeting actions after action-time authorization"},
     {"name": "canva", "required": false, "purpose": "Campaign asset production"},
-    {"name": "writing-quality", "required": false, "purpose": "Final commercial prose validation"}
+    {"name": "writing-quality", "required": false, "purpose": "Optional final commercial prose validation"},
+    {"name": "brand-world-studio", "required": false, "purpose": "Campaign visual expression when installed"},
+    {"name": "strategy-room", "required": false, "purpose": "Offer and positioning decisions when installed"}
   ],
   "guardrails": [
     "Signals must remain source-linked and bounded by the stated evidence window.",
     "Unsupported proof is removed or labeled as a hypothesis.",
-    "Research and drafts never authorize sends, scheduling, CRM writes, or account changes."
+    "Research and drafts never authorize sends, scheduling, CRM writes, or account changes.",
+    "Every companion is optional; missing companions use the plugin-owned copy or decision fallback."
   ],
   "routing_cases": [
     {
@@ -50,6 +53,20 @@
       "expected_skill": "outreach-sequence-builder",
       "evidence_file": "skills/outreach-sequence-builder/SKILL.md",
       "evidence_contains": "Stop before sending"
+    },
+    {
+      "kind": "fallback",
+      "prompt": "Validate this commercial draft without the Writing Quality companion.",
+      "expected_skill": "market-narrative-builder",
+      "evidence_file": "skills/market-narrative-builder/SKILL.md",
+      "evidence_contains": "plugin-owned commercial-copy checks"
+    },
+    {
+      "kind": "fallback",
+      "prompt": "Record the unresolved offer decision without Strategy Room and stop before drafting claims.",
+      "expected_skill": "founder-revenue-router",
+      "evidence_file": "skills/founder-revenue-router/SKILL.md",
+      "evidence_contains": "local commercial-decision gap"
     }
   ]
 }

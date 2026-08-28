@@ -93,7 +93,7 @@ Flag any finding that looks like a generic pattern-match rather than a specific,
 
 ### Step 5: Cross-Lens Verification
 
-Look at the challenger's cross-lens convergent findings. These are the highest-leverage items. Verify them with extra rigor:
+Look at the challenger's cross-lens convergent findings. These have the broadest effect on the report. Verify them with extra rigor:
 
 - Do they really converge, or did the challenger force-match findings that aren't actually about the same root issue?
 - Do they survive the evidence, reasoning, and counter-evidence checks under each lens they appear in?

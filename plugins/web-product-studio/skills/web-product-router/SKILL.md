@@ -18,8 +18,18 @@ Choose the build mode before loading implementation and design skills. Keep visu
 5. Define browser-verifiable flows with acceptance-flow.
 6. Record assets/route-template.json and run scripts/validate_route.py.
 7. For a required visual gate, lock the contract and pass the representative hero review before secondary feature work.
-8. Load only the route owners and implementation companions.
-9. Verify the acceptance flows and fresh rendered comparisons in the host browser surface. Use Playwright when repeatable automation or browser diagnostics are needed.
+8. Use the owned code-production-agent as the default implementation owner. Load an optional external companion only when it is installed and needed for the selected route.
+9. Verify the acceptance flows and fresh rendered comparisons in an available host browser surface. Use Playwright only when it is available and repeatable automation or browser diagnostics are needed.
+
+## Standalone fallback contract
+
+- Build Web Apps, Supabase, GitHub, security review tools, Browser, Playwright, and selectable design systems are optional companions. Their absence does not block the owned route, code-production, acceptance-flow, or file-verification work.
+- Without Build Web Apps, use code-production-agent to implement directly inside the user-approved project or output root.
+- Without Supabase, do not claim a working backend. Use a local substitute only when the brief permits it; otherwise mark the backend blocked and name the missing proof.
+- Without GitHub, keep changes local and do not claim a commit, pull request, or remote state.
+- Without a security review companion, run the available local checks and mark specialist security review unverified.
+- Without Browser or Playwright, run the available build, file, and test checks. Return the implementation paths and test evidence, mark rendered and visual acceptance incomplete, and name the exact browser flows and comparisons still required.
+- When file output is authorized, record this status at `<approved-output-root>/web-product-studio/delivery-status.md`. If no output root is authorized, return the complete status in the current task and ask before writing it.
 
 ## Error Handling
 
@@ -29,6 +39,7 @@ Choose the build mode before loading implementation and design skills. Keep visu
 - If a high-visual-stakes objective has no valid visual contract, stop before general implementation.
 - If the hero scores below 7 or retains a P0, P1, or P2 visual gap, repair, switch the declared method, or report visual incompleteness before feature expansion.
 - If a flow cannot be observed, mark it blocked rather than complete.
+- If no rendered surface is available, do not use functional or file checks as a substitute for rendered proof.
 
 ## Reliability Notes
 

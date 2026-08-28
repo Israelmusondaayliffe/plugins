@@ -19,11 +19,16 @@ Continuity Vault packages source-preserving extraction, governed knowledge promo
 
 Run `scripts/check_companions.py` to see which optional companions are installed. Missing optional companions do not block owned workflows.
 
+When Claude Mem or another recall companion is absent, `continuity-router` can run a bounded local search across exact workspace roots the user authorized in the current task. The fallback records the query, roots searched, authority checks, and matches. It returns `no-evidence` when nothing supports the requested recall.
+
+When no writing companion is available, the router can create a direct evidence digest from a closed set of files inside those authorized roots. The local helper records source hashes and exact excerpts without promoting or mutating any source. Notion and Google Drive remain optional source owners. Read from them only through their own authorized surfaces.
+
 ## Boundaries
 
 - Workspace files and the active instruction chain remain authoritative.
 - Memory and Chronicle are recall surfaces, not sources of truth.
 - Extraction, audits, and promotion decisions do not authorize silent source mutation.
+- A local fallback never promotes, overwrites, deletes, or resolves conflicts without existing authority.
 
 ## Verification
 

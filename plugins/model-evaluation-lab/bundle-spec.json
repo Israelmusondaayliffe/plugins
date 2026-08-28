@@ -1,6 +1,6 @@
 {
   "plugin": "model-evaluation-lab",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     "benchmark-runner",
     "model-evaluation-plan",
@@ -20,10 +20,19 @@
     {"name": "knowledge-work-superpowers", "required": false, "purpose": "Evidence planning, review, and delivery"},
     {"name": "writing-quality", "required": false, "purpose": "Human-facing decision memo validation"}
   ],
+  "execution_backend_policy": {
+    "required_for_execution": true,
+    "no_backend_state": "execution-blocked",
+    "planning_available": true,
+    "schema_validation_available": true,
+    "normalize_supplied_results_available": true,
+    "handoff_schema": "skills/benchmark-runner/assets/execution-blocked-schema.json"
+  },
   "guardrails": [
     "Fix the evaluation plan before inspecting candidate results.",
     "Record model, prompt, tool, dataset, and environment conditions needed for reproduction.",
-    "Separate measured results from judgment, and distinguish whole-session usage from marginal prompt or plugin cost."
+    "Separate measured results from judgment, and distinguish whole-session usage from marginal prompt or plugin cost.",
+    "When execution is blocked, do not fabricate runs, scores, latency, cost, safety results, model selection, or a winner."
   ],
   "routing_cases": [
     {
@@ -53,6 +62,13 @@
       "expected_skill": "model-selection-memo",
       "evidence_file": "skills/model-selection-memo/SKILL.md",
       "evidence_contains": "Set `decision_ready` to false"
+    },
+    {
+      "kind": "failure",
+      "prompt": "Run this frozen evaluation even though no execution backend is available.",
+      "expected_skill": "benchmark-runner",
+      "evidence_file": "skills/benchmark-runner/SKILL.md",
+      "evidence_contains": "Execution-blocked handoff"
     }
   ]
 }

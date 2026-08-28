@@ -17,7 +17,7 @@ Does NOT handle: single-image generation, image editing, show-me angles, or bran
 
 ## Inputs
 
-- Uploaded image (product, person, concept, object) — typical input
+- Uploaded image (product, person, concept, object): typical input
 - Optional: text-only concept for grid
 - Optional: platform target, grid size preference, campaign type
 
@@ -34,12 +34,12 @@ Does NOT handle: single-image generation, image editing, show-me angles, or bran
 
 What makes this methodology distinctive:
 
-1. **Storytelling over product shots** — Grids tell narratives about lifestyle/aspiration
-2. **Compositional boldness** — Subject isn't always hero/centered. Sometimes corner element, barely visible, background detail
-3. **Extreme context diversity** — Private jets, art galleries, architectural displays, urban lifestyle
-4. **Lived experience** — Real activities, emotions, scenarios. Not posed elegance
-5. **Architectural/environmental drama** — Space, geometry, reflections as storytelling elements
-6. **Breaking photography rules** — Subject out of focus, occluded, as texture in larger scene
+1. **Storytelling over product shots**: Grids tell narratives about lifestyle/aspiration
+2. **Compositional boldness**: Subject isn't always hero/centered. Sometimes corner element, barely visible, background detail
+3. **Extreme context diversity**: Private jets, art galleries, architectural displays, urban lifestyle
+4. **Lived experience**: Real activities, emotions, scenarios. Not posed elegance
+5. **Architectural/environmental drama**: Space, geometry, reflections as storytelling elements
+6. **Breaking photography rules**: Subject out of focus, occluded, as texture in larger scene
 
 **Key insight:** Each image in grid should feel like DIFFERENT PHOTO SHOOT.
 
@@ -114,7 +114,7 @@ Select 9 concepts per grid from these banks. Mix categories for diversity.
 - Fragmented/multiplied (reflections, repetition, kaleidoscope)
 - Negative space dominance (subject occupies <30% of frame)
 - Material juxtaposition (unexpected surface pairing)
-- Depth layering (foreground/midground/background interplay)
+- Depth layering (foreground/midground/background relationship)
 - Motion blur or implied movement
 - Abstract crop (extreme close-up becoming abstract)
 - Light study (dramatic lighting as co-star)

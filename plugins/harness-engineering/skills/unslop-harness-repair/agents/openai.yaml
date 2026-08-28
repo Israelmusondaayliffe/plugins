@@ -1,0 +1,7 @@
+interface:
+  display_name: "Unslop Harness Repair"
+  short_description: "Repair harness prose without semantic drift."
+  default_prompt: "Use $unslop-harness-repair to audit, freeze, and repair approved harness or plugin prose."
+
+policy:
+  allow_implicit_invocation: false

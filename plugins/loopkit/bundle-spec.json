@@ -1,6 +1,6 @@
 {
   "plugin": "loopkit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "state_root": {
     "claude-code": "~/.claude/loopkit",
     "cowork": "~/.claude/loopkit",
@@ -24,8 +24,8 @@
     "Hook output is checkpoint-only and capped at 4096 bytes."
   ],
   "compatibility": {
-    "agent_ops": "0.2.x",
+    "agent_ops": "optional",
     "temporary_shims": ["goal-runner", "loop-goal-engineer", "loopy"],
-    "remove_in": "loopkit 0.2.0 and agent-ops 0.3.0"
+    "status": "Agent Ops owns these optional explicit-only compatibility identities; LoopKit does not require them."
   }
 }

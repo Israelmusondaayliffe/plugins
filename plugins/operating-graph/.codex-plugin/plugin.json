@@ -1,6 +1,6 @@
 {
   "name": "operating-graph",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
   "author": {
     "name": "Community Maintainers"

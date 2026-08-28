@@ -4,13 +4,15 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 
-SCRIPT_PATH = Path(__file__).parents[1] / "scripts" / "verify_research_bundle.py"
+PLUGIN_ROOT = Path(__file__).parents[1]
+SCRIPT_PATH = PLUGIN_ROOT / "scripts" / "verify_research_bundle.py"
 SPEC = importlib.util.spec_from_file_location("verify_research_bundle", SCRIPT_PATH)
 if SPEC is None or SPEC.loader is None:
     raise RuntimeError(f"Could not load {SCRIPT_PATH}")
@@ -47,6 +49,28 @@ class VerifyResearchBundleTests(unittest.TestCase):
         findings = MODULE.validate_bundle(self.bundle, "deliverable")
         missing = {finding.path.name for finding in findings if finding.message == "required file is missing"}
         self.assertEqual(missing, {"deliverable.md", "review.md", "delivery-note.md"})
+
+    def test_systematic_research_has_local_handoff_fallback(self) -> None:
+        skill = (PLUGIN_ROOT / "skills" / "systematic-research" / "SKILL.md").read_text(encoding="utf-8")
+        required = [
+            "Continuity Vault is an optional companion",
+            "research-handoff.md",
+            "The complete current source ledger",
+            "Open questions",
+            "Research boundaries",
+            "The next action",
+            "The current verification state",
+        ]
+        for text in required:
+            with self.subTest(text=text):
+                self.assertIn(text, skill)
+
+    def test_manifest_versions_match_release(self) -> None:
+        versions = {
+            json.loads((PLUGIN_ROOT / directory / "plugin.json").read_text(encoding="utf-8"))["version"]
+            for directory in (".claude-plugin", ".codex-plugin")
+        }
+        self.assertEqual(versions, {"0.2.2"})
 
 
 if __name__ == "__main__":

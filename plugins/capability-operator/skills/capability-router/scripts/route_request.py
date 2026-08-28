@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Route a request through the personal capability registry."""
+"""Route a request through a validated local capability registry."""
 
 from __future__ import annotations
 
@@ -70,9 +70,12 @@ def route_task(
         if record.get("explicit_only"):
             for direct in record.get("direct_routes", []):
                 if contains_all(task, direct.get("triggers", [])):
-                    return build_route(explicit_plugin, direct["skill"], "plugin-skill", "The explicit protocol request matches this ProofLoop action.")
-            raise ValueError("ProofLoop requires an explicit run, audit, or memory-review action")
+                    return build_route(explicit_plugin, direct["skill"], "plugin-skill", "The explicit plugin and request match this owned skill.")
+            raise ValueError(f"explicit-only plugin {explicit_plugin} requires an explicit skill")
         return build_route(explicit_plugin, record["front_door"], "plugin-router", "The user's explicit plugin selection wins.")
+
+    if registry.get("needs_semantic_review") is not False:
+        raise ValueError("generated registry needs semantic review before implicit routing")
 
     for rule in registry.get("collision_rules", []):
         if contains_all(task, rule.get("match_all", [])):
@@ -88,7 +91,7 @@ def route_task(
 
     direct_matches: list[tuple[int, str, str]] = []
     for plugin, record in index.items():
-        if record.get("explicit_only") and "proofloop" not in task:
+        if record.get("explicit_only"):
             continue
         for direct in record.get("direct_routes", []):
             triggers = direct.get("triggers", [])
@@ -119,13 +122,30 @@ def route_task(
             plugin = best[0][1]
             return build_route(plugin, index[plugin]["front_door"], "plugin-router", "The request spans several stages within one plugin domain.")
 
-    return build_route(
-        "capability-operator",
-        "capability-router",
-        "plugin-router",
-        "Ownership is unclear or several plugin domains remain plausible.",
-        verification=["Inspect the detailed routing policy and confirm one primary route before loading companions."],
-    )
+    fallback = index.get("capability-operator")
+    if fallback and fallback.get("front_door"):
+        return build_route(
+            "capability-operator",
+            fallback["front_door"],
+            "plugin-router",
+            "Ownership is unclear or several plugin domains remain plausible.",
+            verification=["Inspect the detailed routing policy and confirm one primary route before loading companions."],
+        )
+    eligible = [
+        (name, record["front_door"])
+        for name, record in index.items()
+        if not record.get("explicit_only") and record.get("front_door")
+    ]
+    if len(eligible) == 1:
+        plugin, skill = eligible[0]
+        return build_route(
+            plugin,
+            skill,
+            "plugin-router",
+            "This registry has one available front door.",
+            verification=["Confirm the generated semantic fields before relying on implicit routing."],
+        )
+    raise ValueError("no deterministic route matched; select a plugin or skill explicitly")
 
 
 def default_registry_path() -> Path:

@@ -25,7 +25,7 @@ Examples:
 2. Identify the first thin path that exposes important unknowns early.
 3. Draft slices in dependency order. Give each slice a unique ID.
 4. For each slice, state its outcome, proof surface, acceptance checks, blockers, and boundaries.
-5. Size each slice so a fresh context can understand, execute, and prove it from the brief plus the slice alone. If it cannot, split it or create a durable Continuity Vault handoff.
+5. Size each slice so a fresh context can understand, execute, and prove it from the brief plus the slice alone. If it cannot, split it or prepare the durable handoff described below.
 6. Add enabling work only when it is required for a complete slice. Prefer small preparation inside the slice that needs it.
 7. Present the proposed breakdown for a granularity and dependency check before creating external tickets or assigning work.
 8. Use `assets/action-slices-template.json` for a machine-checkable local plan.
@@ -36,6 +36,12 @@ python3 scripts/validate_action_slices.py PATH
 ```
 
 10. Fix every validation failure before handoff.
+
+## Durable slice handoff
+
+Continuity Vault is an optional companion. When it is installed, it can own a durable cross-task or delegated-slice handoff.
+
+When Continuity Vault is absent, write a self-contained handoff artifact inside the user-approved output root. Include the outcome, source artifact paths, settled decisions, open questions, scope boundaries, slice ID and acceptance checks, blockers and dependencies, proof and verification state, and exact next action. Do not rely on conversation history. If the user has not approved an output root, ask for one before writing the handoff.
 
 ## Wide-change exception
 

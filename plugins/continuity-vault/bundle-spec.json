@@ -1,6 +1,6 @@
 {
   "plugin": "continuity-vault",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "skills": [
     "continuity-router",
     "frontier-extraction",
@@ -23,7 +23,9 @@
   "guardrails": [
     "The active instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) and workspace source files remain authoritative.",
     "Memory and Chronicle are recall surfaces and must be rechecked before load-bearing use.",
-    "Audits do not silently overwrite, delete, or resolve conflicts in source material."
+    "Audits do not silently overwrite, delete, or resolve conflicts in source material.",
+    "Local recall searches only exact workspace roots the user authorized in the current task and records the query, roots, authority checks, and matches.",
+    "An empty local search returns no-evidence, and a direct digest remains bound to a closed source set with exact source hashes."
   ],
   "routing_cases": [
     {
@@ -53,6 +55,13 @@
       "expected_skill": "staleness-and-conflict-audit",
       "evidence_file": "skills/staleness-and-conflict-audit/SKILL.md",
       "evidence_contains": "never resolves a conflict by silently editing or deleting"
+    },
+    {
+      "kind": "boundary",
+      "prompt": "Find prior context without a memory companion and summarize a closed local source set.",
+      "expected_skill": "continuity-router",
+      "evidence_file": "skills/continuity-router/SKILL.md",
+      "evidence_contains": "Bounded local fallback"
     }
   ]
 }

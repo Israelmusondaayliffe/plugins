@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "engine": "bundled-unslop",
+  "source_capability": "writing-quality:writing-enforcer",
+  "snapshot_date": "2026-08-27",
+  "runtime_dependency_on_writing_quality": false,
+  "files": {
+    "references/unslop-engine/THIRD_PARTY_NOTICES.md": "4808995df3ca0558cceb9ba48ce0c54f37d9d1a5c1eae365149788d28237a916",
+    "references/unslop-engine/ai-pattern-taxonomy.md": "7896ce474c615a930d1c4170d0ffc69c878ede25bfcbd68d3e65c4a1af43cb42",
+    "references/unslop-engine/cliche-inventory.md": "a67fd2d102be8a6c8b31fcaf34c1ba9939a04ed8629853620d006d938c5708d5",
+    "references/unslop-engine/context-profiles.md": "1cba066f0be7ca710e9c77b1c76fd9442c673f4b5c62ec1588f68d77696c7eb6",
+    "references/unslop-engine/critique-frameworks.md": "dce5eca1ed2996dffdb973c5aa8dceabd072416e9f0ea234f2c067504cf548c0",
+    "references/unslop-engine/divergence-patterns.md": "bc2ce074f56ec469f513f32ce2e13a4bed5ac016533677da963ddb243372fd51",
+    "references/unslop-engine/extended-patterns.md": "9e5d589e47c298a21d9ee8640c1b2cffbdeb01ae57a0af16c2364990a8b22d8c",
+    "references/unslop-engine/failure-recovery.md": "76c58f7371f1d9767aad5e14e793ecc60f21e4c4158d7346befc5904e2a7be98",
+    "references/unslop-engine/negative-style-guide.md": "c87257650e7cfe988daa6b259a05121db0e9d4f0f4ac5ea15ee3593b62c79030",
+    "references/unslop-engine/source-provenance.md": "d164792a292ebc8c2272478c518786fd696a6f76315d764872bc81dfebce1d07",
+    "references/unslop-engine/unslop-policy.md": "66fa042c75300a0bee972b05d8d5c6c1e558f1ebf32bc3872234cc032b57908c",
+    "references/unslop-engine/validation-criteria.md": "5fada8f38e1d60a8deb1988b32b54fe583ea3316fdc1c665dec2c05c018d350f",
+    "references/unslop-engine/voice-extraction-guide.md": "8f989eadeaac96845b4015adfe1e0fb8260d64121098c7d5b69ff8d620b272ee",
+    "references/unslop-engine/workflow.md": "7387311a4ddb7c9de13b2094bd8a994ad0d2884d02c7024c9aa4de0fb882fdec",
+    "references/unslop-engine/word-replacement-table.md": "bba5adf7daf19b7137b2dd48d9c161226b8c7620f89fc5cbf45430a5a831c3b6",
+    "scripts/unslop-engine/emdash_replacer.py": "33ad2e7fc7d0600796bf0b6d5095b4d78259bbd22976ef8763446f3056d5c287",
+    "scripts/unslop-engine/protected_material_validator.py": "ee5404f7216df98dcf62c276b4c002b576145e96fbe658e39e588804c47a16bb",
+    "scripts/unslop-engine/quality_validator.py": "63979ee26e354592f7f571b4a627d3fea71fe262e356adbe6e245311f45bfbbb",
+    "scripts/unslop-engine/voice_profiler.py": "011eba7392b783b0de677f7ba97c544ab5e957488396d0d5de5f2cd8f828a4f3"
+  }
+}

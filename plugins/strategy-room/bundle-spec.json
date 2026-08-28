@@ -1,6 +1,6 @@
 {
   "plugin": "strategy-room",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "skills": [
     "assumption-challenger",
     "assumption-register",
@@ -19,7 +19,8 @@
     {"name": "knowledge-work-superpowers", "required": false, "purpose": "Evidence-led research and deliverables"},
     {"name": "outcome-engine", "required": false, "purpose": "Execution after an accepted decision"},
     {"name": "proofloop", "required": false, "purpose": "Extended verification"},
-    {"name": "writing-quality", "required": false, "purpose": "Final decision-record prose"}
+    {"name": "writing-quality", "required": false, "purpose": "Optional final prose review"},
+    {"name": "continuity-vault", "required": false, "purpose": "Optional cross-task continuity"}
   ],
   "guardrails": [
     "Strategy Room owns pre-commitment reasoning and stops before execution.",
@@ -53,7 +54,7 @@
       "prompt": "Choose an option and execute it without another authorization step.",
       "expected_skill": "strategy-room-router",
       "evidence_file": "skills/strategy-room-router/SKILL.md",
-      "evidence_contains": "Do not execute the selected option"
+      "evidence_contains": "Stop before execution"
     }
   ]
 }

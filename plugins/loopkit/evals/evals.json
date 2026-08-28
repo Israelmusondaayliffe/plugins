@@ -40,7 +40,7 @@
     {
       "id": 7,
       "prompt": "Design a reusable subagent with a strict tool allowlist.",
-      "expected_output": "Does not route to LoopKit. Routes to Agent Ops agent-builder.",
+      "expected_output": "Does not route to LoopKit. Uses Agent Ops agent-builder when that optional companion is available; otherwise reports that subagent design is outside LoopKit.",
       "files": []
     },
     {
@@ -52,7 +52,7 @@
     {
       "id": 9,
       "prompt": "Use ProofLoop on this deliverable.",
-      "expected_output": "Honors the explicit ProofLoop selection instead of routing to LoopKit.",
+      "expected_output": "Honors the explicit ProofLoop selection when that optional companion is available. If it is unavailable, reports the missing selection instead of substituting LoopKit.",
       "files": []
     },
     {
@@ -70,7 +70,7 @@
     {
       "id": 12,
       "prompt": "Audit this multi-agent architecture for excess authority.",
-      "expected_output": "Routes to Agent Ops agent-system-audit rather than LoopKit loop-doctor.",
+      "expected_output": "Uses Agent Ops agent-system-audit when that optional companion is available; otherwise reports that agent-system auditing is outside LoopKit rather than substituting loop-doctor.",
       "files": []
     }
   ]

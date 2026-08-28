@@ -42,23 +42,23 @@ Findings count by effort mode:
 
 ### Step 3: Run the Lenses
 
-**Lens 1 — Hidden Assumptions**
+**Lens 1: Hidden Assumptions**
 
 Identify what the user takes for granted but does not state. Categorize each assumption (context, user, technical, market, process). Cross-reference each with dossier findings to see whether the assumption is supported, contested, or unaddressed by external evidence.
 
-**Lens 2 — Blind Spots and Uncertainties**
+**Lens 2: Blind Spots and Uncertainties**
 
 Map information gaps, structural blind spots, temporal blind spots (what happens at scale, over time, in degraded modes), and boundary conditions. Tag each as reducible (research can resolve), irreducible (must be navigated adaptively), or unknown unknown (broad scenario planning needed).
 
-**Lens 3 — Alternate Viewpoints**
+**Lens 3: Alternate Viewpoints**
 
 Generate 3 to 5 alternate perspectives the user is not currently holding. Pull from: skeptical/adversarial, optimistic/aspirational, domain expert (use the dossier to identify which expert disagreements exist), stakeholder, temporal (past/future self), and unconventional angles. Each alternate viewpoint must surface something the user's current framing misses.
 
-**Lens 4 — Contradictions and Tensions**
+**Lens 4: Contradictions and Tensions**
 
 Map conflicts between: stated goals and proposed methods, competing values, theory and practice, structure and culture, resource constraints and ambition. For each contradiction, classify as productive tension (worth designing around) or fatal flaw (requires resolution).
 
-**Lens 5 — Meta-Analysis**
+**Lens 5: Meta-Analysis**
 
 Surface the cognitive biases likely shaping the user's input. Use the bias taxonomy in `references/cognitive_biases.md`. Also surface the limits of this very analysis: what aspects could not be evaluated, what assumptions the analysis itself is making, where human judgment is needed.
 
@@ -109,4 +109,4 @@ Findings that fail these checks should be revised before handoff.
 - Restating the user's input back as a finding ("the user is doing X"). A finding adds something the user did not say.
 - Generic findings ("there may be regulatory risks"). Findings must be specific. ("HIPAA's recent 2025 amendment around AI training data creates X risk for the user's stated approach.")
 - Confidence inflation. If the evidence is thin, mark it Low or Speculative. The verifier will catch inflated confidence and downgrade you.
-- Skipping cross-lens synthesis. Convergent findings are the highest-leverage items in the final report.
+- Skipping cross-lens synthesis. Convergent findings affect the most downstream work in the final report.

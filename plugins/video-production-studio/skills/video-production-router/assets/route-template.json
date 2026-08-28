@@ -4,7 +4,19 @@
   "duration_seconds": 60,
   "width": 1080,
   "height": 1920,
-  "runtime": "hyperframes",
-  "skills": ["faceless-explainer", "embedded-captions", "video-delivery-qc"],
+  "runtime": "none",
+  "renderer_available": false,
+  "completion_state": "planning-complete",
+  "planning_artifacts": [
+    "video-brief.md",
+    "storyboard.md",
+    "shot-list.md",
+    "asset-ledger.md",
+    "runtime-requirements.md",
+    "delivery-checklist.md"
+  ],
+  "rendering_status": "incomplete",
+  "visual_qc_status": "incomplete",
+  "skills": ["faceless-explainer"],
   "rationale": "Why this path fits the brief"
 }

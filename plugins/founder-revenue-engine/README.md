@@ -12,14 +12,17 @@ Founder Revenue Engine packages the path from recent market signals to an eviden
 - first-customer-finder
 - linkedin-viral-content-creator
 
-## Companion capabilities
+## Optional companion capabilities
 
 - Sales and Creative Production for connected workflows when installed
 - Gmail and Google Calendar for separately authorized actions
-- Canva for campaign assets
-- Writing Quality for final commercial prose validation
+- Canva and Brand World Studio for campaign assets when installed
+- Writing Quality for optional final commercial prose validation
+- Strategy Room for unresolved offer or positioning decisions when installed
 
 Run `scripts/check_companions.py` to see which optional companions are installed. Missing optional companions do not block owned workflows.
+
+When Writing Quality is absent, use the plugin-owned checks in skills/founder-revenue-router/references/commercial-copy-checks.md. When Strategy Room is absent and the offer or positioning remains unresolved, write a local commercial-decision gap with the evidence, assumptions, open questions, prohibited claims, and exact next decision. Stop before inventing the decision.
 
 ## Boundaries
 

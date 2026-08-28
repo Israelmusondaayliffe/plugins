@@ -159,35 +159,11 @@ Ask yourself:
 - Am I capturing what's distinctive, not just what's present?
 - Have I missed any signature patterns?
 
-## Known User Profiles
+## Source-bound voice profiles
 
-### Example Profile (Pre-Built)
+Do not ship a pre-built profile for a named person. Build a profile only from writing the user supplied or explicitly selected for the current task. Record the source and confidence beside the profile. Opinions, emotions, first-person claims, characteristic phrases, and identity signals must be traceable to that source.
 
-```
-VOICE PROFILE: EXAMPLE WRITER
-========================
-Tone: Curious, practical, collaborative, direct without warmth loss
-Sentence style: Short and punchy, fragments for emphasis
-Structure: Hybrid - prose for explanation, structured for frameworks
-
-PRESERVE:
-- "Here's the thing"
-- "I tested" / "I found" / "I built"
-- Questions embedded in exploration
-- Showing uncertainty when present
-- Process visibility (show work, not just results)
-
-BANNED:
-- Em-dashes (—) → always replace
-- AI clichés: delve, leverage, unlock, journey, game-changer
-- Business jargon: synergy, scalable, robust, disruptive
-- Hedge language: kind of, sort of, probably, maybe
-- Generic transitions: however, moreover, furthermore
-
-EMPHASIS METHOD: Structural (short paragraphs, line breaks)
-
-CONFIDENCE: High (extensive sample data)
-```
+If no source sample exists, use the restrained fallback below. It is a clarity profile, not a claim about the user's voice.
 
 ### Generic Professional Profile
 
@@ -220,8 +196,8 @@ CONFIDENCE: Low (default when no user data)
 **Situation:** Content too short or generic to extract patterns.
 
 **Response:**
-1. Check user memory for stored preferences
-2. Apply generic professional profile
+1. Ask for a representative sample or an explicit style instruction
+2. If none is available, apply the generic professional clarity profile
 3. Use light-touch editing only
 4. Flag: "I couldn't detect a strong voice pattern. I've applied minimal changes."
 

@@ -17,4 +17,9 @@ Supporting skills:
 - video-prompt-builder for model-ready generation prompts.
 - remotion-to-hyperframes for an explicit migration.
 
-Default runtime: HyperFrames. Remotion remains a companion for explicit Remotion tasks and existing Remotion projects.
+Runtime selection:
+
+- Prefer HyperFrames when it is installed and visible.
+- Use Remotion for explicit Remotion tasks and existing Remotion projects when it is installed and visible.
+- Treat Browser, Computer Use, and other external production surfaces as optional.
+- When no renderer is available, keep the selected production route and produce the six-file planning bundle defined by the router. Mark the result `planning-complete`, with rendering and visual QC incomplete.

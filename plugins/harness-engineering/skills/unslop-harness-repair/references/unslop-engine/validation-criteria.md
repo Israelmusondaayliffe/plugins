@@ -1,7 +1,8 @@
 # Validation Criteria
 
-Objective scoring rubrics for consistent quality assessment. Use with `scripts/quality_validator.py` for deterministic checks.
+Objective scoring rubrics for consistent quality assessment. Use with `scripts/unslop-engine/quality_validator.py` for deterministic checks.
 
+<!-- harness-quality-gate: literal-list-start -->
 ## Three-Tier Validation Model
 
 ### Tier 1: Structural Integrity (Gate Pass/Fail)
@@ -41,13 +42,13 @@ These must ALL pass before proceeding:
 - Subtract 1 for structure preference violation
 - Minimum 0
 
-**Threshold:** Score ≥7 required. Below 7 → revise with voice profile focus.
+**Threshold:** Score at least 8 required. Target 10. Below 8 means revise with voice profile focus.
 
 ### Tier 3: Technical Quality (Score 0-10)
 
 | Component | Weight | Scoring |
 |-----------|--------|---------|
-| Em-dash elimination | 1.5 points | 1.5 = zero, 0.75 = 1-2, 0 = 3+ |
+| Authored em-dash elimination | 1.5 points | 1.5 = zero in editable prose, 0 = any; protected exact material is excluded |
 | AI-tell elimination | 2 points | 2 = zero, 1.5 = 1-2, 0.5 = 3-5, 0 = 6+ |
 | Cliche elimination | 1 point | 1 = zero, 0.5 = 1-2, 0 = 3+ |
 | Hedge elimination | 1 point | 1 = zero in conclusions, 0.5 = 1-2, 0 = 3+ |
@@ -65,17 +66,20 @@ These must ALL pass before proceeding:
 - Rule of three (forced triplets)
 - Generic positive conclusions
 
-**Threshold:** Score >= 7 required. Below 7, revise specific failing components.
+**Structural-slop deduction (V5):**
+- Subtract 0.5 per explicit structural-slop hit, up to 2 points.
+
+**Threshold:** Score at least 8 required. Target 10. Below 8 means revise specific failing components.
 
 ## Composite Quality Score
 
-**Formula (V3):**
+**Formula (V5):**
 ```
-Overall = (Voice x 0.35) + (Technical x 0.35) + (Soul x 0.1) + (Intent x 0.2)
+Overall = (Voice x 0.35) + (Technical x 0.35) + (Texture x 0.1) + (Intent x 0.2)
 
 Where:
   Intent = 10 if Tier 1 passes, 0 if fails
-  Soul = 10 if soul check passes, 0 if fails (see Phase 3 in SKILL.md)
+  Texture = 10 if source-backed voice texture remains, 0 if the edit erased it or invented personality
 ```
 
 **Interpretation:**
@@ -83,7 +87,7 @@ Where:
 |-------|---------------|--------|
 | 9-10 | Excellent | Ship confidently |
 | 8-8.9 | Good | Ship, note minor improvements possible |
-| 7-7.9 | Acceptable | Ship with caveats or offer revision |
+| 7-7.9 | Below threshold | Revise before shipping |
 | 6-6.9 | Below threshold | Revise before shipping |
 | 5-5.9 | Poor | Major revision needed |
 | <5 | Failed | Return to Phase 1 |
@@ -93,16 +97,16 @@ Where:
 ### Em-Dash Detection
 
 **What counts as em-dash:**
-- Standard em-dash: —
+- Standard em-dash: `U+2014`
 - Double hyphen used as em-dash: --
-- En-dash used as em-dash: –
+- En-dash used as em-dash: `U+2013`
 
 **Severity levels:**
-- Zero em-dashes: Full points
-- 1-2 em-dashes: Warning, -1 point
-- 3+ em-dashes: Critical failure, -2 points
+- Zero authored em dashes in editable prose: Pass
+- 1+ em-dashes in authored prose: Critical failure
+- Em-dashes inside protected exact material: Preserve and exclude from the authored-prose count
 
-**Note:** Script detection is deterministic. Run `scripts/emdash_replacer.py` to ensure zero.
+**Note:** Script detection is deterministic. If needed, run `scripts/unslop-engine/emdash_replacer.py` only on a scratch prose-only copy. Preserve protected exact material.
 
 ### AI-Tell Detection
 
@@ -137,7 +141,7 @@ Where:
 - streamline
 - optimize
 
-**See `references/negative-style-guide.md` and `references/ai-pattern-taxonomy.md` for complete inventories.**
+**See `references/unslop-engine/negative-style-guide.md` and `references/unslop-engine/ai-pattern-taxonomy.md` for complete inventories.**
 
 ### Cliché Detection
 
@@ -164,7 +168,7 @@ Where:
 - world-class
 - next-generation
 
-**See `references/cliche-inventory.md` for complete inventory by domain.**
+**See `references/unslop-engine/cliche-inventory.md` for complete inventory by domain.**
 
 ### Hedge Language Detection
 
@@ -193,7 +197,7 @@ Where:
    - If ANY no → clarify before proceeding
 
 2. **Voice profile extraction:**
-   - Create profile per `references/voice-extraction-guide.md`
+   - Create profile per `references/unslop-engine/voice-extraction-guide.md`
    - Confidence level: High/Medium/Low
    - If Low → use light-touch editing
 
@@ -201,7 +205,7 @@ Where:
 
 1. **Run technical validation:**
    ```bash
-   python scripts/quality_validator.py output.txt --verbose
+   python3 scripts/unslop-engine/quality_validator.py output.txt --verbose
    ```
 
 2. **Score voice consistency:**
@@ -211,13 +215,16 @@ Where:
 
 3. **Calculate composite:**
    - Apply formula
-   - If <7 → identify lowest component → revise that component
+   - If below 8, identify the lowest component and revise only inside the approved group
 
 4. **Final checks:**
-   - [ ] Em-dash count = 0
+   - [ ] Authored editable-prose em-dash count = 0; protected exact material is unchanged
    - [ ] Fabrication count = 0
    - [ ] Voice profile checklist passes
-   - [ ] Quality score ≥7
+   - [ ] Portability, mechanism, distance, and reader-backtracking checks pass
+   - [ ] Supplied opinions, emotions, and first-person voice remain clear
+   - [ ] Protected exact material is unchanged
+   - [ ] Contextual quality score is at least 8; target 10
 
 ### When Scores Conflict
 
@@ -237,29 +244,30 @@ Where:
 
 | Metric | Minimum | Target | Excellent |
 |--------|---------|--------|-----------|
-| Em-dashes | 0 | 0 | 0 |
+| Authored em dashes in editable prose | 0 | 0 | 0 |
 | AI tells | <3 | 0 | 0 |
 | Clichés | <3 | <1 | 0 |
 | Hedges (conclusions) | <2 | 0 | 0 |
-| Voice score | 7 | 8 | 9+ |
-| Technical score | 7 | 8 | 9+ |
-| Composite | 7 | 8 | 9+ |
+| Voice score | 8 | 10 | 10 |
+| Technical score | 8 | 10 | 10 |
+| Composite | 8 | 10 | 10 |
 
 ## Validation Script Usage
 
 **Basic:**
 ```bash
-python scripts/quality_validator.py content.txt
+python3 scripts/unslop-engine/quality_validator.py content.txt
 ```
 
-**With voice profile:**
+**Create a voice profile, then run the quality scan:**
 ```bash
-python scripts/quality_validator.py content.txt --voice-profile example_profile.json
+python3 scripts/unslop-engine/voice_profiler.py source.txt --output source_voice_profile.json
+python3 scripts/unslop-engine/quality_validator.py content.txt
 ```
 
 **Verbose output:**
 ```bash
-python scripts/quality_validator.py content.txt --verbose
+python3 scripts/unslop-engine/quality_validator.py content.txt --verbose
 ```
 
 **Output format:**
@@ -287,3 +295,4 @@ Overall: PASS (pending voice assessment)
 **Objective scores enable objective improvement.** "Make it better" becomes "increase technical score from 6 to 8 by removing these 3 AI tells."
 
 **But voice is subjective.** That's why it gets 40% weight and human judgment. Scripts handle technical. Judgment handles voice.
+<!-- harness-quality-gate: literal-list-end -->

@@ -11,15 +11,15 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 | Intent unknown | Cannot state purpose | Wrong improvements applied | Phase 1 discovery |
 | Voice profile empty | No markers detected | Generic output overwrites user | Light touch only |
 | Fabrication detected | Claims without source | User credibility damaged | Remove or flag |
-| Em-dashes remaining | Count > 0 after processing | User's critical rule violated | Re-run script |
+| Authored em dashes remain in editable prose | Authored count > 0 | User's critical rule violated | Repair the approved prose-only span |
 
 ### Quality Failures (Revise and Retry)
 
 | Failure | Signal | Impact | Recovery |
 |---------|--------|--------|----------|
-| Voice score < 7 | Profile comparison fails | Sounds unlike user | Rollback, lighter touch |
-| Technical score < 7 | Multiple AI tells remain | Sounds like AI | Re-apply techniques |
-| Composite < 7 | Overall quality insufficient | Not ready to ship | Identify lowest dimension |
+| Voice score < 8 | Profile comparison fails | Sounds unlike user | Rollback, lighter touch |
+| Technical score < 8 | Multiple AI tells remain | Sounds like AI | Re-apply techniques |
+| Composite < 8 | Overall quality insufficient | Not ready to ship | Identify lowest dimension |
 
 ### Soft Failures (Flag and Proceed)
 
@@ -85,10 +85,10 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 
 **Recovery Steps:**
 
-1. **Check user memory:**
-   - Look for stored voice preferences
-   - Look for previous interactions
-   - Apply known profile if found
+1. **Check current task sources:**
+   - Look for writing samples the user supplied or explicitly selected
+   - Look for explicit voice instructions in the current request
+   - Apply only markers that are traceable to those sources
 
 2. **Request sample:**
    ```
@@ -109,7 +109,7 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
    - Don't adjust tone
    - Flag: "I've made minimal changes to preserve your style."
 
-**Prevention:** Build voice profile database over time. Reference previous work.
+**Prevention:** Ask for a representative sample when voice matters. Reuse a prior profile only when the user explicitly selects it and its source remains available.
 
 ### FM-3: Fabrication Detected
 
@@ -146,11 +146,11 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 
 **Prevention:** Fabrication check is Tier 1 gate. Never skip.
 
-### FM-4: Em-Dashes Remaining
+### FM-4: Authored em dashes remain
 
 **Symptoms:**
-- `scripts/emdash_replacer.py` output count > 0
-- Manual review finds — characters
+- `scripts/unslop-engine/quality_validator.py` reports authored dash punctuation in editable prose
+- Manual review finds an authored em dash outside protected exact material
 
 **Root Causes:**
 - Script not run
@@ -159,10 +159,11 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 
 **Recovery Steps:**
 
-1. **Re-run script:**
+1. **Use a scratch prose-only copy:**
    ```bash
-   python scripts/emdash_replacer.py content.txt
+   python3 scripts/unslop-engine/emdash_replacer.py content.txt
    ```
+   Review the diff and apply only the approved prose edit. Never run the replacer across a raw harness or plugin file.
 
 2. **Manual verification:**
    - Search for "—" character
@@ -174,8 +175,8 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
    - Rule: Could be sentence? → period + capitalize. Otherwise → comma.
 
 4. **Final check:**
-   - Count must equal zero
-   - No exceptions
+   - Authored editable-prose count must equal zero
+   - Protected exact material must remain byte-for-byte unchanged
 
 **Fallback:** Period + capitalize is the safer default when ambiguous.
 
@@ -187,7 +188,7 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 - Characteristic phrases missing
 - Tone shifted significantly
 - Output "sounds generic"
-- Voice score < 7/10
+- Voice score < 8/10
 
 **Root Causes:**
 - Techniques too aggressive
@@ -225,7 +226,7 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 - AI tells remaining in output
 - Clichés not eliminated
 - Hedge language in conclusions
-- Technical score < 7/10
+- Technical score < 8/10
 
 **Root Causes:**
 - Techniques applied too lightly
@@ -235,7 +236,7 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 **Recovery Steps:**
 
 1. **Identify failing components:**
-   - Run `scripts/quality_validator.py --verbose`
+   - Run `scripts/unslop-engine/quality_validator.py content.txt --verbose`
    - List specific issues
 
 2. **Target specific issues:**
@@ -325,10 +326,10 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 
 **Prevention:** This is an expected edge case. Default to period.
 
-### FM-9: Soul Stripped During Polish (V3 Addition)
+### FM-9: Voice Stripped During Polish
 
 **Symptoms:**
-- Phase 3 added personality and rhythm
+- Phase 3 preserved source-backed personality and rhythm
 - Phase 4 technical polish removed it
 - Output passes technical checks but reads flat
 - "Clean but lifeless" despite high technical score
@@ -337,7 +338,7 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 - Aggressive cliche scrubbing removed personality-carrying phrases
 - Divergence enforcement flattened mixed feelings into decisive statements
 - AI-tell removal stripped conversational elements
-- Voice consistency check didn't account for soul
+- Voice consistency check did not account for the writer's useful roughness
 
 **Recovery Steps:**
 
@@ -345,24 +346,24 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
    - Where did personality disappear?
    - Which specific technical fix caused it?
 
-2. **Identify soul-carrying elements:**
+2. **Identify source-backed voice elements:**
    - First-person perspective ("I keep thinking about...")
    - Rhythm variation (short/long sentence mix)
    - Specific feelings ("unsettling" vs. "concerning")
    - Tangents or asides that add humanity
 
-3. **Restore soul, accept lower technical score:**
+3. **Restore source-backed voice, accept a lower technical score:**
    - Put back personality-carrying phrases
    - Accept medium-priority AI tells if they carry voice
-   - Soul > sterile perfection
+   - Recognizable voice > sterile perfection
 
-4. **Re-validate with soul gate:**
+4. **Re-validate with the voice-texture gate:**
    - Does it still have a pulse?
    - Would a human recognize this as human-written?
 
-**Fallback:** "I've restored personality at the cost of one remaining medium-priority pattern. The content has life in it now."
+**Fallback:** "I restored a source-backed voice marker at the cost of one remaining medium-priority pattern."
 
-**Prevention:** Run soul preservation check (Step 4.8) immediately after technical polish. Don't wait until final validation.
+**Prevention:** Run the voice-texture preservation check immediately after technical polish. Never add opinions, feelings, anecdotes, or first-person experience that the source did not supply.
 
 ## Escalation Paths
 

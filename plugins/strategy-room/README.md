@@ -12,14 +12,21 @@ Strategy Room packages source-first interviews, uncertain-effort wayfinding, ass
 - assumption-challenger
 - multi-direction-explorer
 
-## Companion capabilities
+## Optional companion capabilities
 
-- Knowledge Work Superpowers for evidence-led research
+- Knowledge Work Superpowers for additional evidence-led research
 - Outcome Engine for execution after an accepted decision
-- Proofloop for extended verification
-- Writing Quality for final decision-record prose
+- ProofLoop for extended verification
+- Writing Quality for optional final prose review
+- Continuity Vault for optional cross-task continuity
 
 Run `scripts/check_companions.py` to see which optional companions are installed. Missing optional companions do not block owned workflows.
+
+## Local fallbacks
+
+- Without an execution companion, Strategy Room emits a self-contained execution brief or decision handoff. It includes the accepted decision, rationale, assumptions, evidence, risks, conditions, acceptance checks, next actions, and owner. Strategy Room then stops before execution.
+- Without Continuity Vault, Strategy Room writes the decision map to `<approved-output-root>/strategy-room/decision-map.md` from `skills/decision-wayfinder/assets/decision-map-template.md`. It writes an execution handoff, when needed, to `<approved-output-root>/strategy-room/execution-handoff.md`.
+- The approved output root comes from the active host or the user's explicit file authorization. If neither supplies one, ask the user to approve a local root before writing. Do not substitute conversation history for the durable file.
 
 ## Boundaries
 

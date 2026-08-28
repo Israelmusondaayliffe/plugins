@@ -7,26 +7,28 @@ Agent Ops packages reusable agent design, agent-system routing, and agent-system
 - agent-ops-router
 - agent-system-audit
 - agent-builder
-- goal-runner (explicit-only LoopKit compatibility shim through Agent Ops 0.3.x)
-- loop-goal-engineer (explicit-only LoopKit compatibility shim through Agent Ops 0.3.x)
-- loopy (explicit-only LoopKit compatibility shim through Agent Ops 0.3.x)
+- goal-runner (explicit-only historical compatibility shim with an optional LoopKit handoff)
+- loop-goal-engineer (explicit-only historical compatibility shim with an optional LoopKit handoff)
+- loopy (explicit-only historical compatibility shim with an optional LoopKit handoff)
 
-Generic Goals and loops, on Claude Code, Claude Cowork, or Codex, now route to LoopKit. The three historical names remain for one compatibility release and are scheduled for removal in Agent Ops 0.4.0 after LoopKit reaches 0.2.0.
+Generic Goals and loops normally route to LoopKit when that optional companion is available. If it is absent, an explicit Agent Ops request uses the bundled local fallback. The three historical names keep their explicit-only activation boundary.
 
-## Companion capabilities
+## Optional companion capabilities
 
-- Outcome Engine for general idea-to-result delivery
-- LoopKit for generic Goals, bounded loops, verification, resume, scheduling, and runtime diagnosis on any host
-- ProofLoop for bounded evidence and learning checks
-- Superpowers for composable development workflows
-- Plugin Eval for trigger and bundle evaluation
+Agent Ops does not require a sibling plugin for reusable agent design, audit, or its local compatibility fallback.
+
+- Outcome Engine can handle general idea-to-result delivery when installed.
+- LoopKit can handle generic Goals, bounded loops, verification, resume, scheduling, and runtime diagnosis on any host when installed.
+- ProofLoop can add bounded evidence and learning checks when installed.
+- Superpowers can add composable development workflows when installed.
+- Plugin Eval can add trigger and bundle evaluation when installed.
 
 ## Boundaries
 
-- Outcome Engine owns general outcome workflows. LoopKit owns generic Goals and loops. Agent Ops owns reusable agent-system design and audit.
+- Agent Ops owns reusable agent-system design and audit. Optional companions keep their own domains when installed, but their absence does not narrow Agent Ops capability.
 - Missing authority, evidence, or stop conditions blocks autonomous execution.
 - Audits remain read-only unless a repair is separately requested.
 
 ## Verification
 
-Run scripts/verify_bundle.py and validate each skill. Scenario tests must cover agent design, audit, and the LoopKit handoff.
+Run scripts/verify_bundle.py and validate each skill. Scenario tests must cover agent design, audit, the optional LoopKit handoff, and the local fallback.

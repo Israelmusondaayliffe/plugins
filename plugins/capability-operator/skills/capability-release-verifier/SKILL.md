@@ -19,7 +19,7 @@ Read [acceptance profiles](references/acceptance-profiles.md), then choose exact
 
 1. Resolve the source owner and exact release target.
 2. Copy [evidence receipt template](assets/evidence-receipt-template.json).
-3. Run the profile’s required checks using the source-owning tools:
+3. Run the profile's required checks using the source-owning tools:
    - Plugin Creator for local scaffold, validation, cachebuster, and reinstall.
    - Plugin Portfolio Manager for ownership and lifecycle records.
    - Fresh Task Discovery Verifier for clean-process prompt visibility.

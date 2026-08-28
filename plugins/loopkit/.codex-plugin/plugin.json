@@ -1,6 +1,6 @@
 {
   "name": "loopkit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
   "author": {
     "name": "Community Maintainers"

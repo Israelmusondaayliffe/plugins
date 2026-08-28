@@ -147,11 +147,11 @@ The challenger may produce findings that pattern-match across all subjects ("reg
 
 ## Cross-Lens Verification
 
-The challenger's cross-lens convergent findings (where the same root issue surfaces in multiple lenses) are the highest-leverage items in the report. Verify them with extra rigor:
+The challenger's cross-lens convergent findings, where the same root issue surfaces in multiple lenses, have the broadest effect on the report. Verify them with extra rigor:
 
 - Do they really converge, or did the challenger force-match findings that aren't actually about the same root issue?
 - Do they survive the three checks under each lens they appear in?
-- Is the convergence robust enough that surfacing it as a single high-priority item is justified?
+- Is the convergence strong enough to justify surfacing it as a single high-priority item?
 
 A convergent finding that survives extra rigor is gold. A convergent finding that doesn't is worse than a single-lens finding because its apparent multi-angle support inflates its claim.
 

@@ -16,7 +16,7 @@ Web Product Studio coordinates coherent frontend and web app work from brief thr
 - gstack
 - playwright
 
-## Selectable design companions
+## Optional design companions
 
 - design-taste-frontend
 - gpt-taste
@@ -28,7 +28,7 @@ Web Product Studio coordinates coherent frontend and web app work from brief thr
 
 These style skills are not bundled. The selector loads exactly one when needed.
 
-## Platform companions
+## Optional platform companions
 
 - Build Web Apps
 - Supabase
@@ -36,11 +36,13 @@ These style skills are not bundled. The selector loads exactly one when needed.
 - Security review tooling: Codex Security on Codex, the security review command on Claude Code
 - Browser tooling (the in-app browser pane on Claude Code, the built-in Browser on Codex), with Playwright for repeatable automation and diagnostics
 
+All companions are optional. Web Product Studio keeps route selection, code production, acceptance-flow design, and file verification inside this plugin. Without a browser surface, it reports the implementation and test evidence, marks rendered and visual acceptance incomplete, and names the exact browser proof still required. Without an authorized output root, it returns that status in the current task instead of writing a file.
+
 ## Boundaries
 
 - Do not load multiple broad visual constitutions.
 - Diagnostic requests do not authorize implementation.
-- Rendered browser flows are the primary completion surface for user-facing behavior.
+- Rendered browser flows are the primary completion surface for user-facing behavior. File and test checks cannot replace them.
 - For likeness-dependent or picture-led work, the router invokes the hidden visual-fidelity-gate specialist before secondary features. Functional completion and visual completion remain separate, and work below the visual threshold is reported as incomplete.
 
 ## Verification

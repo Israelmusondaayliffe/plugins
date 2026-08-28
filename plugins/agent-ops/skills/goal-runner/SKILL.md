@@ -1,6 +1,6 @@
 ---
 name: goal-runner
-description: Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Redirect Goal contract, execution, verification, and resume work, on Claude Code, Claude Cowork, or Codex, to the matching LoopKit skill. Generic goal or completion requests should trigger LoopKit directly.
+description: Explicit-only compatibility shim for the historical Goal Runner name. Use only when the user explicitly says goal-runner or Goal Runner. Use LoopKit as an optional companion when available; otherwise use this skill's bundled local contract, execution, verification, and resume tools. Generic requests do not activate this historical name.
 metadata:
   author: Community Maintainers
   version: 1.2.0-compat
@@ -8,9 +8,9 @@ metadata:
 
 # Goal Runner compatibility shim
 
-This historical name remains available through Agent Ops 0.3.x. LoopKit now owns generic Goal and loop execution on Claude Code, Claude Cowork, and Codex.
+LoopKit is the preferred optional companion for generic Goal and loop execution on Claude Code, Claude Cowork, and Codex.
 
-Route the explicit request as follows:
+When LoopKit is available, route the explicit request as follows:
 
 - Create or reshape a Goal contract: `loopkit:loop-designer`.
 - Execute a ready Goal contract: `loopkit:loop-runner`.
@@ -18,6 +18,13 @@ Route the explicit request as follows:
 - Continue interrupted work: `loopkit:loop-resumer`.
 - Multi-stage or ambiguous work: `loopkit:loopkit`.
 
-Use LoopKit's state root, receipt validator, checkpoint hooks, and terminal-state rules. Do not create a separate Goal Runner state format. Preserve any existing historical contract and progress files as read-only migration evidence, then initialize a LoopKit run only with the user's requested goal and boundaries.
+When LoopKit is absent, complete the explicit request with the bundled local fallback:
 
-This shim is scheduled for removal in Agent Ops 0.4.0 after LoopKit reaches 0.2.0.
+- Load `references/completion-doctrine.md` and `references/environments.md`.
+- Create a new versioned contract and progress pair with `scripts/init_run.py` only when execution or resume needs durable state.
+- Validate the contract with `scripts/verify_contract.py` before execution and at the completion check.
+- Use the bundled agent roles for contract shaping, execution, fresh verification, and resume when the host supports them. Use the documented degraded check when it does not.
+
+Do not lower the acceptance standard in fallback mode. Reuse an active compatible contract instead of creating duplicate state. Keep pre-existing historical contract and progress files read-only as migration evidence. The initializer refuses to overwrite an existing version.
+
+This historical compatibility identity remains explicit-only while Agent Ops bundles it.

@@ -40,7 +40,9 @@ Load `references/measurement-notes.md` when evaluating plugin cost, benchmark us
 - Do not execute a slice without an observable acceptance check and proof surface.
 - Do not mark the plan complete until every required slice has fresh proof.
 - Do not execute more than one fresh-context-sized slice unless the task explicitly authorizes the next slice.
-- Route a durable cross-task or delegated-slice handoff to Continuity Vault instead of relying on conversation history.
+- Treat Continuity Vault as an optional companion for a durable cross-task or delegated-slice handoff. When it is installed, route the handoff there.
+- When Continuity Vault is absent, write a self-contained handoff artifact inside the user-approved output root. Include the outcome, source artifact paths, settled decisions, open questions, scope boundaries, current action slice, blockers, proof and verification state, and exact next action. Do not rely on conversation history.
+- If the user has not approved an output root, ask for one before writing the handoff.
 - Do not publish, send, assign, purchase, delete, or change external state without task-specific authorization.
 
 ## Resume logic

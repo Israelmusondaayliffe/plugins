@@ -15,7 +15,7 @@ Create a small sequence that earns a reply without pretending a relationship or 
 2. Choose sequence length and message objectives with references/workflow.md.
 3. Draft messages that use specific evidence, one clear ask, and honest personalization boundaries.
 4. Fill assets/output-template.json and run scripts/validate_output.py.
-5. Run writing-quality on the final copy.
+5. Use Writing Quality for optional final copy validation when installed. When it is absent, apply the plugin-owned commercial-copy checks in ../founder-revenue-router/references/commercial-copy-checks.md.
 6. Deliver drafts only. Stop before sending, scheduling, CRM writes, or account changes.
 
 ## Error Handling

@@ -31,6 +31,29 @@ def route(objective: str, gate: bool) -> dict:
 
 
 class WebProductRouterVisualTests(unittest.TestCase):
+    def test_release_versions_and_optional_companions_match(self) -> None:
+        bundle = json.loads((ROOT / "bundle-spec.json").read_text(encoding="utf-8"))
+        claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
+        codex = json.loads((ROOT / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+        self.assertEqual({bundle["version"], claude["version"], codex["version"]}, {"0.4.1"})
+        expected = {"browser", "build-web-apps", "codex-security", "github", "playwright", "supabase"}
+        self.assertEqual({item["name"] for item in bundle["companions"]}, expected)
+        self.assertTrue(all(item["required"] is False for item in bundle["companions"]))
+
+    def test_standalone_fallback_keeps_completion_honest(self) -> None:
+        router = (ROOT / "skills/web-product-router/SKILL.md").read_text(encoding="utf-8")
+        routing = (ROOT / "skills/web-product-router/references/routing.md").read_text(encoding="utf-8")
+        for phrase in (
+            "Standalone fallback contract",
+            "code-production-agent",
+            "mark rendered and visual acceptance incomplete",
+            "exact browser flows and comparisons still required",
+            "<approved-output-root>/web-product-studio/delivery-status.md",
+        ):
+            self.assertIn(phrase, router)
+        self.assertIn("Build Web Apps is an optional implementation companion", routing)
+        self.assertIn("mark rendered and visual acceptance incomplete", routing)
+
     def test_webgl_reference_cannot_bypass_gate(self) -> None:
         errors = ROUTER.validate(route("Build a WebGL hero that must match the reference.", False))
         self.assertIn("the objective requires visual_gate_required true", errors)

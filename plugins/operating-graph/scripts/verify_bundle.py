@@ -23,8 +23,8 @@ def main() -> int:
     if manifest.get("name") != "operating-graph" or spec.get("plugin") != "operating-graph":
         errors.append("manifest and bundle spec must identify operating-graph")
     version = manifest.get("version", "")
-    if version != "0.2.0":
-        errors.append("manifest version must be 0.2.0")
+    if version != "0.2.1":
+        errors.append("manifest version must be 0.2.1")
     if spec.get("version") != version:
         errors.append("manifest and bundle spec versions differ")
     try:

@@ -25,8 +25,9 @@ Resolve the target platform (Claude Code, Claude Cowork, or Codex) using `../../
 8. Model-specific prompt work: load `model-prompt-engineer`.
 9. Sustained approved build: load `harness-runner`.
 10. Completion claim: load `harness-verifier`.
-11. Drift or update work: load `harness-maintainer`.
-12. Over-constrained or inherited context: load `context-doctor` before rewriting anything.
+11. Affirmative Unslop repair of a harness or approved plugins: load `unslop-harness-repair`.
+12. Drift or update work: load `harness-maintainer`. When that maintenance may change human-facing harness prose, the maintainer also loads `unslop-harness-repair` as its bounded repair specialist.
+13. Over-constrained or inherited context: load `context-doctor` before rewriting anything.
 
 For an end-to-end request, use this order: interview, audit, plan, approve, run, verify, hand off.
 

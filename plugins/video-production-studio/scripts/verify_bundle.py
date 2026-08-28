@@ -8,6 +8,16 @@ import re
 from pathlib import Path
 
 
+PLANNING_ARTIFACTS = {
+    "video-brief.md",
+    "storyboard.md",
+    "shot-list.md",
+    "asset-ledger.md",
+    "runtime-requirements.md",
+    "delivery-checklist.md",
+}
+
+
 def fail(errors: list[str], message: str) -> None:
     errors.append(message)
 
@@ -23,14 +33,36 @@ def main() -> int:
     errors: list[str] = []
     try:
         manifest = json.loads((root / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
+        claude_manifest = json.loads((root / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
         spec = json.loads((root / "bundle-spec.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         print(json.dumps({"valid": False, "errors": [str(exc)]}, indent=2))
         return 2
-    if manifest.get("name") != root.name or spec.get("plugin") != root.name:
+    if (
+        manifest.get("name") != root.name
+        or claude_manifest.get("name") != root.name
+        or spec.get("plugin") != root.name
+    ):
         fail(errors, "plugin name must match the source directory")
-    if manifest.get("version") != spec.get("version"):
-        fail(errors, "manifest and bundle spec versions differ")
+    versions = {manifest.get("version"), claude_manifest.get("version"), spec.get("version")}
+    if len(versions) != 1:
+        fail(errors, "plugin manifests and bundle spec versions differ")
+    if spec.get("companion_policy") != "optional-at-runtime":
+        fail(errors, "companion_policy must be optional-at-runtime")
+    required_companions = {"hyperframes", "remotion", "browser", "computer-use"}
+    if not required_companions.issubset(set(spec.get("companions", []))):
+        fail(errors, "bundle must list the optional production companions")
+    completion_states = spec.get("completion_states", {})
+    planning = completion_states.get("planning-complete", {})
+    rendered = completion_states.get("rendered-delivery-complete", {})
+    if set(planning.get("required_artifacts", [])) != PLANNING_ARTIFACTS:
+        fail(errors, "planning-complete must require the complete planning bundle")
+    if planning.get("rendering_status") != "incomplete" or planning.get("visual_qc_status") != "incomplete":
+        fail(errors, "planning-complete must leave rendering and visual QC incomplete")
+    if rendered.get("requires_renderer") is not True or rendered.get("requires_video_delivery_qc") is not True:
+        fail(errors, "rendered-delivery-complete must require a renderer and video delivery QC")
+    if rendered.get("rendering_status") != "complete" or rendered.get("visual_qc_status") != "complete":
+        fail(errors, "rendered-delivery-complete must require completed rendering and visual QC")
     expected = set(spec.get("skills", []))
     actual = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}
     if actual != expected:
@@ -59,6 +91,9 @@ def main() -> int:
     for case in cases:
         if case.get("expected_skill") not in expected:
             fail(errors, f"routing case expects an unbundled skill: {case.get('expected_skill')}")
+        expected_state = case.get("expected_completion_state")
+        if expected_state is not None and expected_state not in completion_states:
+            fail(errors, f"routing case expects an unknown completion state: {expected_state}")
         evidence_file = case.get("evidence_file")
         evidence_contains = case.get("evidence_contains")
         if not isinstance(evidence_file, str) or not isinstance(evidence_contains, str):
@@ -71,6 +106,12 @@ def main() -> int:
         evidence_text = evidence_path.read_text(encoding="utf-8", errors="replace")
         if evidence_contains not in evidence_text:
             fail(errors, f"routing evidence not found in {evidence_file}: {evidence_contains}")
+    if not any(
+        case.get("expected_skill") == "video-production-router"
+        and case.get("expected_completion_state") == "planning-complete"
+        for case in cases
+    ):
+        fail(errors, "routing cases must cover the no-renderer planning path")
     for required in ("README.md", "bundle-spec.json"):
         if not (root / required).is_file():
             fail(errors, f"missing {required}")
@@ -81,6 +122,8 @@ def main() -> int:
         "skill_count": len(actual),
         "coordinator_skill_count": len(spec.get("coordinator_skills", [])),
         "routing_case_count": len(cases),
+        "completion_state_count": len(completion_states),
+        "companion_policy": spec.get("companion_policy"),
         "errors": errors,
     }
     print(json.dumps(result, indent=2))

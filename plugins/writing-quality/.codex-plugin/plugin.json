@@ -1,6 +1,6 @@
 {
   "name": "writing-quality",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
   "author": {
     "name": "Community Maintainers"

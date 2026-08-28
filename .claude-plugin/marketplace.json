@@ -11,7 +11,7 @@
       "name": "agent-ops",
       "source": "./plugins/agent-ops",
       "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-      "version": "0.5.1",
+      "version": "0.5.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -20,7 +20,7 @@
       "name": "brand-world-studio",
       "source": "./plugins/brand-world-studio",
       "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -29,7 +29,7 @@
       "name": "capability-operator",
       "source": "./plugins/capability-operator",
       "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -47,7 +47,7 @@
       "name": "continuity-vault",
       "source": "./plugins/continuity-vault",
       "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -56,7 +56,7 @@
       "name": "data-storytelling-studio",
       "source": "./plugins/data-storytelling-studio",
       "description": "Routes checked analysis into decision-facing visual stories, executive readouts, reports, decks, dashboards, and publishable sites.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -65,7 +65,7 @@
       "name": "founder-revenue-engine",
       "source": "./plugins/founder-revenue-engine",
       "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -83,7 +83,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.6.0",
+      "version": "2.7.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -92,7 +92,7 @@
       "name": "knowledge-work-superpowers",
       "source": "./plugins/knowledge-work-superpowers",
       "description": "A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -101,7 +101,7 @@
       "name": "loopkit",
       "source": "./plugins/loopkit",
       "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -119,7 +119,7 @@
       "name": "model-evaluation-lab",
       "source": "./plugins/model-evaluation-lab",
       "description": "Plans reproducible model evaluations, normalizes benchmark runs, and produces measured model-selection decisions.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -137,7 +137,7 @@
       "name": "operating-graph",
       "source": "./plugins/operating-graph",
       "description": "Design, run, inspect, and safely reorganize adaptive agent operating graphs.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -146,7 +146,7 @@
       "name": "outcome-engine",
       "source": "./plugins/outcome-engine",
       "description": "Turn unclear goals into verified outcomes across research, writing, operations, creative work, personal planning, and software.",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -173,7 +173,7 @@
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -182,7 +182,7 @@
       "name": "video-production-studio",
       "source": "./plugins/video-production-studio",
       "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -191,7 +191,7 @@
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -200,7 +200,7 @@
       "name": "writing-quality",
       "source": "./plugins/writing-quality",
       "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }

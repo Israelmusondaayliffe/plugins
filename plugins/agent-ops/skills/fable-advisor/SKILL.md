@@ -13,7 +13,7 @@ It is unrelated to Claude Code's built-in "advisor" feature (`advisorModel`, `--
 
 Require an explicit request: "Use Fable Advisor" or an equivalent imperative such as "run this as a Fable Advisor multi-session run." Quoted, explanatory, negated, conditional, and incidental references are not activation. Complexity, model names, agent language, or a request that merely has several tasks never activate it. A later same-request revocation ("but don't activate it", an immediate "no") cancels activation. Record the quoted imperative in the RunManifest as the activation record.
 
-If activation is absent or revoked, use the normal routing owners (agent-ops-router, loopkit, outcome-engine, or plain in-session work).
+If activation is absent or revoked, use agent-ops-router or plain in-session work. LoopKit and Outcome Engine are optional companion routers when installed.
 
 ## Roles and authority
 
@@ -48,7 +48,7 @@ claude -p "TaskPacket: <packet path>. Run root: <run root>." \
 
 Reviewer rounds use `--tools "Read,Glob,Grep,Bash"` and `--disallowedTools "Write,Edit"`. `bypassPermissions` only when the approved manifest authorizes it explicitly. The saved result JSON is the attestation surface: its `session_id` is the spawn identity and its per-model usage/cost block is the model_record. Headless mode does not depend on agent-registry visibility at all.
 
-**`agent_tool` (recorded fallback only).** Used only when headless is unavailable (CLI unauthenticated or absent) and the approved manifest records the downgrade. Spawn `agent-ops:fa-*`; if plugin-qualified names are missing from the registry, identical user-scope `fa-*` definitions are acceptable — record which definition served. In-session model attestation is weaker (partially verified by design); ReturnPacket handling must say so.
+**`agent_tool` (recorded fallback only).** Used only when headless is unavailable (CLI unauthenticated or absent) and the approved manifest records the downgrade. Spawn `agent-ops:fa-*`; if plugin-qualified names are missing from the registry, identical user-scope `fa-*` definitions are acceptable. Record which definition served. In-session model attestation is weaker (partially verified by design); ReturnPacket handling must say so.
 
 If neither mechanism is available, stop and ask (interactive) or end `blocked` (unattended). Never substitute a mechanism or model silently.
 
@@ -88,7 +88,7 @@ Fail closed on: implicit activation, model or effort mismatch, missing attestati
 ## Collisions
 
 - Gauntlet: while a gauntlet run is active, gauntlet owns state, budget, approval, integration, final answer, and terminal verdict. Fable Advisor activates inside it only if the user explicitly composes them, and then supplies only bounded packets and workstream criticism.
-- Generic goals, loops, schedules: loopkit owns them. Agent design and audit: agent-ops-router owns them.
+- Generic goals, loops, schedules: use the optional LoopKit companion when installed, or the Agent Ops local fallback after explicit Agent Ops selection. Agent design and audit: agent-ops-router owns them.
 - Dynamic workflows / ultracode: separate opt-in surfaces; Fable Advisor neither requires nor implies them.
 
 ## Completion

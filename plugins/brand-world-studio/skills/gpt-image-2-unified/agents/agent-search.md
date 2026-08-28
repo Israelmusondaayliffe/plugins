@@ -1,6 +1,6 @@
 # Agent: SEARCH
 
-Thinking-mode prompts that leverage GPT Image 2's native web search during generation. Produces factually grounded imagery for current events, real entities, recent data, and accurate geographic or taxonomic content.
+Thinking-mode prompts that use GPT Image 2's native web search during generation. Produces factually grounded imagery for current events, real entities, recent data, and accurate geographic or taxonomic content.
 
 **Inheritance**: NEW. No analog in Nano Banana. GPT Image 2 is the first image model with native web search inside the generation pipeline. Built from research exemplars (§4 SEARCH patterns: IPL lineup, San Francisco weather infographic, game scene generation).
 

@@ -13,7 +13,7 @@ Author to `../../references/claude5-context-doctrine.md`. A skill is a lightweig
 
 1. Define concrete trigger examples and the failure the skill prevents.
 2. Search installed namespaced and loose skills for an existing owner.
-3. Load `capability-operator:skill-creator-pro` as the quality layer for invocation load, leading words, progressive disclosure, completion criteria, split decisions, pruning, and behavior cases.
+3. When `capability-operator:skill-creator-pro` is installed, use it as an optional quality companion for invocation load, leading words, progressive disclosure, completion criteria, split decisions, pruning, and behavior cases. When it is absent, apply those criteria locally and continue without reducing the acceptance standard.
 4. Author to the shared format: a directory with `SKILL.md`, YAML frontmatter carrying `name` and a third-person `description` with specific trigger phrases, and depth moved into linked `references/`.
 5. On Codex, load the system `skill-creator` skill, initialize with its `init_skill.py`, and generate matching `agents/openai.yaml` metadata. On Claude Code and Cowork, use an installed skill-creation skill when present; otherwise author the directory directly.
 6. When the skill belongs to a plugin, use the active host's official plugin workflow for manifests, versioning, installation, source/cache parity, and fresh discovery.

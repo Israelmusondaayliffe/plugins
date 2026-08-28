@@ -1,6 +1,6 @@
 {
   "plugin": "brand-world-studio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "skills": [
     "brand-brief-builder",
     "brand-consistency-verifier",
@@ -19,10 +19,12 @@
   "companions": [
     {"name": "creative-production", "required": false, "purpose": "Broader creative exploration workflows when installed"},
     {"name": "canva", "required": false, "purpose": "Canva asset production and delivery"},
-    {"name": "writing-quality", "required": false, "purpose": "Final customer-facing copy validation"}
+    {"name": "writing-quality", "required": false, "purpose": "Final customer-facing copy validation"},
+    {"name": "strategy-room", "required": false, "purpose": "Unresolved positioning decisions"}
   ],
   "guardrails": [
     "Positioning and commercial strategy must be supplied or settled upstream.",
+    "When positioning is missing and no strategy companion is selected, write a local positioning-gap handoff and stop.",
     "Source assets required for an edit must be present before editing begins.",
     "A generated series is accepted only against the approved brand brief and references."
   ],
