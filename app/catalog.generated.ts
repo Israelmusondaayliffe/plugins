@@ -3975,7 +3975,7 @@ export const plugins = [
     "shortDescription": "Explicit-only mega-project loop with blind critics.",
     "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts.",
     "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -4028,7 +4028,7 @@ export const plugins = [
       "assets": 5,
       "references": 15,
       "scripts": 17,
-      "files": 74
+      "files": 81
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -4378,6 +4378,6 @@ export const totals = {
   "assets": 330,
   "references": 471,
   "scripts": 408,
-  "files": 1916
+  "files": 1923
 } as const;
 export type Plugin = (typeof plugins)[number];

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Prompt"
+  short_description: "Create a validated Gauntlet run prompt"
+
+policy:
+  allow_implicit_invocation: false

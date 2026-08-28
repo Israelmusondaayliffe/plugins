@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gauntlet Evidence"
+  short_description: "Assemble a Gauntlet evidence report"
+
+policy:
+  allow_implicit_invocation: false

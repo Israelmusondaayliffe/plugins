@@ -9,6 +9,15 @@ const readText = (path) => readFileSync(new URL(path, root), "utf8");
 const mattSlug = "matt-partok-bundled-plugin-for-knowledge-work";
 const mattDisplayName = "Matt Partok Bundled Plugin For Knowledge Work";
 const signalSlug = "signal-to-system";
+const gauntletSkills = [
+  "gauntlet",
+  "gauntlet-brief",
+  "gauntlet-evidence",
+  "gauntlet-handoff",
+  "gauntlet-prompt",
+  "gauntlet-run",
+  "gauntlet-verify",
+].sort();
 
 function generatedExport(name) {
   const catalog = readText("app/catalog.generated.ts");
@@ -69,6 +78,24 @@ test("excludes only the repository-only compatibility plugin", () => {
     assert.equal(collection.plugins.includes(mattSlug), false);
   }
   assert.equal(catalog.some((plugin) => plugin.slug === signalSlug), true);
+});
+
+test("keeps every Gauntlet skill explicit-only in Codex", () => {
+  const skillsRoot = new URL("plugins/gauntlet/skills/", root);
+  const actualSkills = readdirSync(skillsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  assert.deepEqual(actualSkills, gauntletSkills);
+  for (const skill of gauntletSkills) {
+    const metadataPath = `plugins/gauntlet/skills/${skill}/agents/openai.yaml`;
+    assert.equal(existsSync(new URL(metadataPath, root)), true, metadataPath);
+    assert.match(
+      readText(metadataPath),
+      /^policy:\n(?:.*\n)*?  allow_implicit_invocation: false$/m,
+      `${skill} must disable implicit invocation`,
+    );
+  }
 });
 
 test("assigns every visible plugin to one approved outcome collection", () => {
