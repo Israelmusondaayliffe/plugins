@@ -35,7 +35,7 @@ class WebProductRouterVisualTests(unittest.TestCase):
         bundle = json.loads((ROOT / "bundle-spec.json").read_text(encoding="utf-8"))
         claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
         codex = json.loads((ROOT / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
-        self.assertEqual({bundle["version"], claude["version"], codex["version"]}, {"0.4.1"})
+        self.assertEqual({bundle["version"], claude["version"], codex["version"]}, {"0.4.2"})
         expected = {"browser", "build-web-apps", "codex-security", "github", "playwright", "supabase"}
         self.assertEqual({item["name"] for item in bundle["companions"]}, expected)
         self.assertTrue(all(item["required"] is False for item in bundle["companions"]))

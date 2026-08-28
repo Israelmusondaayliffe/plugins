@@ -97,7 +97,7 @@ class CoordinatorOutputTests(unittest.TestCase):
         self.assertEqual(claude["name"], codex["name"])
         self.assertEqual(claude["version"], codex["version"])
         self.assertEqual(codex["version"], SPEC["version"])
-        self.assertEqual(codex["version"], "0.2.1")
+        self.assertEqual(codex["version"], "0.2.2")
 
 
 if __name__ == "__main__":

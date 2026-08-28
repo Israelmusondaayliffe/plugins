@@ -179,7 +179,7 @@ test("server-renders a guided public record with source and related navigation",
   }
   assert.match(text, /Begin with the front door/);
   assert.match(text, /What this plugin is best for/);
-  assert.match(text, /A practical way to use it/);
+  assert.match(text, /Use this workflow\./);
   assert.match(text, /Start from the job in front of you/);
   assert.match(text, /Worked example/);
   assert.match(text, /Boundaries/);
@@ -188,7 +188,7 @@ test("server-renders a guided public record with source and related navigation",
     (html.match(/Copy [^"]+ prompt:/g) ?? []).length >= 3,
     "guide must render three prompt copy controls",
   );
-  assert.match(text, /Source you can inspect/);
+  assert.match(text, /Inspect the source\./);
   assert.match(
     html,
     new RegExp(

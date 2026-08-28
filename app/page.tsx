@@ -92,7 +92,7 @@ export default async function Home() {
         <section className="install-section" id="install">
           <div className="shell install-layout">
             <div className="install-intro">
-              <p className="kicker">Install your way</p>
+              <p className="kicker">Install by host</p>
               <h2>Choose your host. Check the record.</h2>
               <p>
                 Add the public source once, then use the command shown only for
@@ -165,7 +165,7 @@ export default async function Home() {
 
         <section className="inventory-section shell">
           <div className="inventory-statement">
-            <h2>Claims kept where you can inspect them.</h2>
+            <h2>Inspect each claim.</h2>
             <p>
               A plugin can be available in a marketplace and still not be
               verified on every host. The registry keeps those facts separate,

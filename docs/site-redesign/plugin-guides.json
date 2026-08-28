@@ -39,7 +39,7 @@
           "Test the main claims before writing the recommendation.",
           "Draft the brief, disclose uncertainty, and verify every required section."
         ],
-        "result": "A useful result is a short decision brief with traceable sources, clear uncertainty, and a recommendation tied to the evidence."
+        "result": "The finished decision brief traces its sources, states uncertainty clearly, and ties the recommendation to the evidence."
       },
       "tips": [
         "Name the reader and the decision they need to make.",
@@ -96,10 +96,10 @@
           "Split the test into offer, landing copy, outreach draft, and evidence review.",
           "Complete and verify each approved slice before calling the test ready."
         ],
-        "result": "A useful result is a bounded workshop test with an approved brief, practical work units, and clear evidence for readiness."
+        "result": "The finished workshop test has an approved brief, practical work units, and clear readiness evidence."
       },
       "tips": [
-        "Describe the change you want, not only the artifact you want produced.",
+        "Describe the intended change as well as the artifact you want produced.",
         "State what must remain unchanged.",
         "Decide what evidence would make you confident enough to stop.",
         "Use the full coordinator for multi-stage work and a specialist for one clear stage."
@@ -151,7 +151,7 @@
           "Record proposed lessons as candidates rather than active instructions.",
           "Review the candidates and later audit whether approved lessons improved results."
         ],
-        "result": "A useful result is a verified briefing plus a reviewable learning record that cannot silently replace the source instructions."
+        "result": "The briefing is verified, and its learning record remains reviewable without replacing the source instructions."
       },
       "tips": [
         "Give the verifier concrete requirements, not a vague quality score.",
@@ -209,7 +209,7 @@
           "Draft the copy in the requested voice.",
           "Check every factual claim and remove or qualify unsupported language."
         ],
-        "result": "A useful result is clear launch copy that sounds intentional, preserves the source meaning, and makes only supportable claims."
+        "result": "The launch copy is clear and intentional, preserves the source meaning, and makes only supportable claims."
       },
       "tips": [
         "Say whether you want a draft, a rewrite, or comments only.",
@@ -266,12 +266,12 @@
           "Audit overlap if several skills appear to fit.",
           "Recommend the primary route, and install something new only if a real gap remains and approval is given."
         ],
-        "result": "A useful result is one clear primary capability, a reason it fits, and evidence for any claimed installation or discovery state."
+        "result": "The selected primary capability has a clear fit, backed by evidence for every installation or discovery claim."
       },
       "tips": [
         "Name the host because availability can differ between hosts.",
         "Say whether you want a read-only answer or an actual install or release.",
-        "Describe the outcome, not only the tool name you remember.",
+        "Describe the outcome instead of relying on the tool name you remember.",
         "Ask for fresh-task proof when discovery matters."
       ],
       "boundaries": [
@@ -323,13 +323,13 @@
           "Build the approved form, status view, and deterministic access checks.",
           "Verify the policy paths and operating plan before release."
         ],
-        "result": "A useful result is an owned, registered internal app whose allowed actions, blocked actions, and operating responsibilities are clear."
+        "result": "The internal app is owned and registered, with clear allowed actions, blocked actions, and operating responsibilities."
       },
       "tips": [
         "Start with one real internal decision or workflow.",
         "Name the accountable owner before building.",
         "List sensitive data and forbidden actions explicitly.",
-        "Describe the normal operating and support process, not only the first release."
+        "Describe normal operation and support after the first release."
       ],
       "boundaries": [
         "It does not replace security, privacy, legal, or compliance review where those are required.",
@@ -381,7 +381,7 @@
           "Set the schedule, durable checkpoint, evidence requirements, and stop conditions.",
           "Audit authority and failure handling before activation."
         ],
-        "result": "A useful result is a reusable agent contract that knows what to inspect, when to report, when to do nothing, and when to stop."
+        "result": "The reusable agent contract says what to inspect, when to report, when to do nothing, and when to stop."
       },
       "tips": [
         "Define the outcome before choosing the architecture.",
@@ -424,8 +424,8 @@
         {"need": "You need final render checks", "skill": "video-delivery-qc", "why": "It verifies the delivered file rather than the production plan."
         }
       ],
-      "workedExample": {"title": "A short launch explainer", "situation": "A product team has approved messaging, interface captures, and a 45-second target but no production structure.", "steps": ["Route the brief to a product-launch workflow.", "Turn the approved promise into timed scenes and define each media source.", "Build the video with readable captions and restrained overlays.", "Render the candidate and inspect picture, audio, timing, and brief alignment."], "result": "A useful result is a delivery-ready video whose story, media, captions, and technical properties match the approved brief."},
-      "tips": ["Give the target platform, aspect ratio, runtime, and audience.", "Separate approved media from media that still needs rights clearance.", "Write one communication goal for each scene.", "Review a rendered file, not only the timeline or source code."],
+      "workedExample": {"title": "A short launch explainer", "situation": "A product team has approved messaging, interface captures, and a 45-second target but no production structure.", "steps": ["Route the brief to a product-launch workflow.", "Turn the approved promise into timed scenes and define each media source.", "Build the video with readable captions and restrained overlays.", "Render the candidate and inspect picture, audio, timing, and brief alignment."], "result": "The delivery-ready video matches the approved brief in story, media, captions, and technical properties."},
+      "tips": ["Give the target platform, aspect ratio, runtime, and audience.", "Separate approved media from media that still needs rights clearance.", "Write one communication goal for each scene.", "Review the rendered file as well as the timeline or source code."],
       "boundaries": ["The plugin does not supply rights to images, music, footage, logos, or voices.", "Generation and rendering may require separate media or runtime tools.", "Publishing or uploading needs separate approval.", "A production plan is not proof that a final video rendered correctly."],
       "successSignals": ["The video has one clear audience and message.", "Every scene, asset, and caption has a defined role.", "The final render passes both brief and technical delivery checks."]
     },
@@ -455,7 +455,7 @@
         {"need": "The first-glance hero must match a visual reference", "skill": "visual-fidelity-gate", "why": "It locks the target, reviews the representative hero independently, and stops below the visual threshold."
         }
       ],
-      "workedExample": {"title": "Redesigning a working directory", "situation": "A directory already has good content and filters, but visitors must click twice to reach an item page and the detail pages are too thin.", "steps": ["Map the current routes, filters, design tokens, and mobile behavior.", "Choose the existing design system as the visual authority.", "Replace selector rows with direct links and expand the detail template.", "Run build checks and browser tests for navigation, focus, responsive layout, and content."], "result": "A useful result is a working redesign that keeps the product's identity, shortens the main path, and passes the agreed browser flows."},
+      "workedExample": {"title": "Redesigning a working directory", "situation": "A directory already has good content and filters, but visitors must click twice to reach an item page and the detail pages are too thin.", "steps": ["Map the current routes, filters, design tokens, and mobile behavior.", "Choose the existing design system as the visual authority.", "Replace selector rows with direct links and expand the detail template.", "Run build checks and browser tests for navigation, focus, responsive layout, and content."], "result": "The working redesign keeps the product's identity, shortens the main path, and passes the agreed browser flows."},
       "tips": ["Provide the repository or live URL and name the source of truth.", "List behavior that must not change.", "Define the top three user flows before styling.", "Give exact viewport sizes when responsive details matter."],
       "boundaries": ["A screenshot does not reveal hidden product logic or data rules.", "A local build does not prove the public deployment is current.", "Deployment, domains, credentials, and paid services may require separate tools and approval.", "A redesign should not silently rewrite product behavior."],
       "successSignals": ["The main user flows work in the rendered product.", "The visual system is consistent across routes and viewport sizes.", "Accessibility, error states, and completion checks are part of the result."]
@@ -483,7 +483,7 @@
         {"need": "You need evidence for a prompt decision", "skill": "prompt-benchmark-designer", "why": "It creates representative cases and scoring."
         }
       ],
-      "workedExample": {"title": "Moving a production extraction prompt", "situation": "A team wants to move a working extraction prompt to another model without losing schema compliance or evidence handling.", "steps": ["Define the input types, output schema, error behavior, and current success rate evidence.", "Audit the original prompt for model-specific assumptions.", "Build the target-model version with the verified specialist.", "Run both prompts on representative normal and edge cases before choosing."], "result": "A useful result is a target prompt with an explicit contract and measured evidence that supports or rejects the migration."},
+      "workedExample": {"title": "Moving a production extraction prompt", "situation": "A team wants to move a working extraction prompt to another model without losing schema compliance or evidence handling.", "steps": ["Define the input types, output schema, error behavior, and current success rate evidence.", "Audit the original prompt for model-specific assumptions.", "Build the target-model version with the verified specialist.", "Run both prompts on representative normal and edge cases before choosing."], "result": "The target prompt has an explicit contract and measured evidence that supports or rejects the migration."},
       "tips": ["Name the exact model and interface when known.", "Provide representative inputs, including hard cases.", "Define the output schema and failure behavior before prompt wording.", "Compare measured outputs, not confidence in the prose."],
       "boundaries": ["Model behavior and interfaces can change, so unstable claims need current verification.", "A polished prompt is not evidence that it performs well.", "The plugin does not provide model access, credentials, or usage budget.", "Do not transfer host-specific paths or tools into another environment without adaptation."],
       "successSignals": ["The prompt names its inputs, outputs, constraints, and failure behavior.", "The chosen route matches a verified model contract.", "Representative benchmark results support the final decision."]
@@ -510,7 +510,7 @@
         {"need": "You need a durable decision record", "skill": "decision-synthesizer", "why": "It turns the reasoning into a clear recommendation and record."
         }
       ],
-      "workedExample": {"title": "Choosing how to launch a new service", "situation": "A founder is choosing between a self-serve offer, a small cohort, and a high-touch service with limited demand evidence.", "steps": ["Define the decision deadline, capacity, revenue need, and acceptable risk.", "Register assumptions about buyer urgency, price, delivery effort, and proof.", "Explore options that differ in customer, mechanism, and commitment.", "Select a reversible test and document why it best fits the evidence."], "result": "A useful result is a clear decision with stated tradeoffs, testable assumptions, and the next evidence needed before a larger commitment."},
+      "workedExample": {"title": "Choosing how to launch a new service", "situation": "A founder is choosing between a self-serve offer, a small cohort, and a high-touch service with limited demand evidence.", "steps": ["Define the decision deadline, capacity, revenue need, and acceptable risk.", "Register assumptions about buyer urgency, price, delivery effort, and proof.", "Explore options that differ in customer, mechanism, and commitment.", "Select a reversible test and document why it best fits the evidence."], "result": "The decision states its tradeoffs, testable assumptions, and the next evidence needed before a larger commitment."},
       "tips": ["Name the actual commitment you are deciding about.", "Provide constraints that cannot move.", "Separate preferences from evidence.", "Say which decisions are reversible and which are costly to undo."],
       "boundaries": ["It does not replace current market, legal, financial, or technical research when those facts matter.", "It should not force a recommendation when key evidence is missing.", "A decision memo does not authorize execution.", "Interview workflows should pause for your answers."],
       "successSignals": ["The decision and criteria are explicit.", "Important assumptions have evidence, tests, or owners.", "The recommendation explains tradeoffs and the next review point."]
@@ -537,10 +537,10 @@
         {"need": "You need to inspect a finished series", "skill": "brand-consistency-verifier", "why": "It compares assets with the approved visual rules."
         }
       ],
-      "workedExample": {"title": "Creating a visual system for a new editorial series", "situation": "A team has approved positioning and article topics but needs a consistent cover-image world across many releases.", "steps": ["Turn the positioning into a brief with audience, mood, visual principles, and exclusions.", "Define a repeatable composition, palette, image language, and variation system.", "Choose the verified image workflow and build a prompt pack for several topics.", "Generate candidates and check the series against the approved system."], "result": "A useful result is an inspectable brand system and prompt pack that produce related images without making every image identical."},
+      "workedExample": {"title": "Creating a visual system for a new editorial series", "situation": "A team has approved positioning and article topics but needs a consistent cover-image world across many releases.", "steps": ["Turn the positioning into a brief with audience, mood, visual principles, and exclusions.", "Define a repeatable composition, palette, image language, and variation system.", "Choose the verified image workflow and build a prompt pack for several topics.", "Generate candidates and check the series against the approved system."], "result": "The brand system and prompt pack are inspectable and produce related images without making every image identical."},
       "tips": ["Bring approved positioning before asking for visual direction.", "Separate inspiration from elements you own or may reproduce.", "Describe what must stay consistent and what may vary.", "Review a group of outputs together to see drift."],
       "boundaries": ["The plugin does not grant rights to reference images, logos, typefaces, or recognizable people.", "Image generation requires access to an appropriate model or tool.", "Model capabilities and interfaces should be verified when current behavior matters.", "A prompt pack is not proof that the generated series is consistent."],
-      "successSignals": ["The visual choices trace back to the approved brand brief.", "Consistency rules and allowed variation are both clear.", "Finished assets are checked as a system, not only one at a time."]
+      "successSignals": ["The visual choices trace back to the approved brand brief.", "Consistency rules and allowed variation are both clear.", "Finished assets are checked together and individually."]
     },
     "founder-revenue-engine": {
       "bestFor": ["Researching recent signals that may reveal an early customer.", "Turning evidence into a focused ideal-customer hypothesis.", "Building a clear commercial narrative from a validated audience.", "Drafting bounded outreach or founder-led content without sending it."],
@@ -565,7 +565,7 @@
         {"need": "You need likely first-customer targets", "skill": "first-customer-finder", "why": "It looks for plausible prospects based on the validated hypothesis."
         }
       ],
-      "workedExample": {"title": "Testing an early service offer", "situation": "A founder has a useful service idea but the audience is broad and the claimed urgency is based on intuition.", "steps": ["Research recent signals and language around the problem.", "Choose a narrow audience with a visible trigger and costly need.", "Build a commercial narrative using only supported evidence.", "Draft a small outreach sequence and define what response would validate the hypothesis."], "result": "A useful result is a testable customer hypothesis, credible narrative, and bounded outreach draft tied to observed signals."},
+      "workedExample": {"title": "Testing an early service offer", "situation": "A founder has a useful service idea but the audience is broad and the claimed urgency is based on intuition.", "steps": ["Research recent signals and language around the problem.", "Choose a narrow audience with a visible trigger and costly need.", "Build a commercial narrative using only supported evidence.", "Draft a small outreach sequence and define what response would validate the hypothesis."], "result": "The customer hypothesis is testable, the narrative is credible, and the bounded outreach draft is tied to observed signals."},
       "tips": ["Name the offer, price range, geography, and time window when relevant.", "Share evidence from real customer conversations.", "Separate a hypothesis from a verified customer fact.", "Define what response would count as useful validation."],
       "boundaries": ["Research results and prospect details can become stale and may need current verification.", "The plugin does not send outreach, publish posts, purchase data, or access accounts without separate authority and tools.", "It should not invent customer pain, demand, proof, or personalization.", "Legal and platform rules may require additional review."],
       "successSignals": ["The target customer is narrow enough to test.", "Claims and personalization trace to real evidence.", "The next contact step is bounded and has a clear learning goal."]
@@ -592,8 +592,8 @@
         {"need": "You suspect old or conflicting guidance", "skill": "staleness-and-conflict-audit", "why": "It performs a read-only conflict and freshness review."
         }
       ],
-      "workedExample": {"title": "Promoting lessons from a finished project", "situation": "A team finished a project and wants future work to benefit from it without turning one-off details into permanent rules.", "steps": ["Identify the authoritative project sources and the lessons worth considering.", "Extract candidates with context, evidence, and provenance.", "Promote only broadly reusable items to the appropriate durable location.", "Link related decisions and schedule review for facts likely to become stale."], "result": "A useful result is a small set of traceable, scoped knowledge records that help later work without replacing the original project evidence."},
-      "tips": ["Provide the original source, not only a remembered summary.", "Label facts, decisions, preferences, and instructions separately.", "Add dates or expiry for facts likely to change.", "Keep one-off project context out of global rules."],
+      "workedExample": {"title": "Promoting lessons from a finished project", "situation": "A team finished a project and wants future work to benefit from it without turning one-off details into permanent rules.", "steps": ["Identify the authoritative project sources and the lessons worth considering.", "Extract candidates with context, evidence, and provenance.", "Promote only broadly reusable items to the appropriate durable location.", "Link related decisions and schedule review for facts likely to become stale."], "result": "The knowledge records are traceable, scoped, and useful to later work without replacing the original project evidence."},
+      "tips": ["Provide the original source instead of a remembered summary.", "Label facts, decisions, preferences, and instructions separately.", "Add dates or expiry for facts likely to change.", "Keep one-off project context out of global rules."],
       "boundaries": ["Recall aids are not automatically authoritative instructions.", "Extraction should not delete, replace, or silently edit the source.", "Private or sensitive information needs an appropriate storage and access decision.", "An audit identifies conflicts but does not resolve them without approval."],
       "successSignals": ["Every promoted item retains provenance and scope.", "Authority and destination are explicit.", "Stale, conflicting, and uncertain items remain visible rather than silently merged."]
     },
@@ -618,8 +618,8 @@
         {"need": "You already have charts and claims", "skill": "chart-message-audit", "why": "It checks whether the visual evidence actually supports the message."
         }
       ],
-      "workedExample": {"title": "Explaining a customer-retention change", "situation": "An analysis shows retention fell in one segment, but leaders need to know whether to change onboarding, pricing, or measurement.", "steps": ["Confirm the metric definition, comparison period, and data-quality caveats.", "Choose a short executive readout because the immediate need is a decision, not ongoing monitoring.", "Build the story around what changed, where, likely explanations, and what remains uncertain.", "Audit each chart against its claim and end with a bounded next test."], "result": "A useful result is a concise readout that helps leaders decide what to test while keeping evidence and caveats visible."},
-      "tips": ["Bring checked analysis, not only raw data.", "Name the decision the output must support.", "Use one claim per chart whenever possible.", "Put caveats near the conclusion they limit."],
+      "workedExample": {"title": "Explaining a customer-retention change", "situation": "An analysis shows retention fell in one segment, but leaders need to know whether to change onboarding, pricing, or measurement.", "steps": ["Confirm the metric definition, comparison period, and data-quality caveats.", "Choose a short executive readout because the immediate need is a decision, not ongoing monitoring.", "Build the story around what changed, where, likely explanations, and what remains uncertain.", "Audit each chart against its claim and end with a bounded next test."], "result": "The concise readout helps leaders decide what to test while keeping evidence and caveats visible."},
+      "tips": ["Bring checked analysis rather than raw data alone.", "Name the decision the output must support.", "Use one claim per chart whenever possible.", "Put caveats near the conclusion they limit."],
       "boundaries": ["The plugin does not repair unreliable analysis by changing its presentation.", "It should not imply causation from descriptive evidence alone.", "Interactive or published outputs may require separate build and hosting tools.", "Executive clarity does not justify hiding material uncertainty."],
       "successSignals": ["The format fits the audience and decision.", "Each visual supports its stated claim.", "The result makes evidence, caveats, decisions, and next actions easy to find."]
     },
@@ -644,8 +644,8 @@
         {"need": "You need a recommendation from measured results", "skill": "model-selection-memo", "why": "It separates observed performance from the final judgment."
         }
       ],
-      "workedExample": {"title": "Choosing a model for support-ticket classification", "situation": "A team needs a model that classifies tickets into a fixed schema, handles ambiguous cases, and stays within latency and cost limits.", "steps": ["Define representative normal, ambiguous, multilingual, and malformed tickets.", "Set schema accuracy, abstention quality, latency, and cost measures before running.", "Run each candidate with fixed settings and preserve raw outputs and failures.", "Compare the normalized results and write a selection memo with tradeoffs."], "result": "A useful result is a reproducible evidence package and a model choice tied to the real production constraints."},
-      "tips": ["Use production-like cases, not only easy examples.", "Freeze the rubric before looking at results.", "Preserve raw failures and invalid outputs.", "Measure operational constraints alongside answer quality."],
+      "workedExample": {"title": "Choosing a model for support-ticket classification", "situation": "A team needs a model that classifies tickets into a fixed schema, handles ambiguous cases, and stays within latency and cost limits.", "steps": ["Define representative normal, ambiguous, multilingual, and malformed tickets.", "Set schema accuracy, abstention quality, latency, and cost measures before running.", "Run each candidate with fixed settings and preserve raw outputs and failures.", "Compare the normalized results and write a selection memo with tradeoffs."], "result": "The evidence package is reproducible, and the model choice is tied to the real production constraints."},
+      "tips": ["Use production-like cases, including hard examples.", "Freeze the rubric before looking at results.", "Preserve raw failures and invalid outputs.", "Measure operational constraints alongside answer quality."],
       "boundaries": ["The plugin does not provide model access, credentials, or evaluation budget.", "A small benchmark supports only the cases it represents.", "Model behavior can change, so old results may need rerunning.", "The final choice still contains judgment and should say so."],
       "successSignals": ["Inputs, settings, rubric, and raw results are reproducible.", "Failures remain visible in the comparison.", "The selection follows a stated decision rule and documents tradeoffs."]
     },
@@ -672,7 +672,7 @@
         {"need": "The loop is repeating or stalled", "skill": "loop-doctor", "why": "It examines the contract, state, and verifier for the cause."
         }
       ],
-      "workedExample": {"title": "A weekly change-monitoring loop", "situation": "A team wants a weekly report about a topic, but only when sources show a meaningful change.", "steps": ["Define authoritative sources, the meaning of a meaningful change, report format, and no-op receipt.", "Create states for checking, reporting, blocked, and complete, with a durable last-seen checkpoint.", "Run and verify one manual iteration before scheduling.", "Schedule the loop and diagnose it if reports repeat without new evidence."], "result": "A useful result is a resumable loop that reports real changes, records clean no-op runs, and stops or escalates under defined conditions."},
+      "workedExample": {"title": "A weekly change-monitoring loop", "situation": "A team wants a weekly report about a topic, but only when sources show a meaningful change.", "steps": ["Define authoritative sources, the meaning of a meaningful change, report format, and no-op receipt.", "Create states for checking, reporting, blocked, and complete, with a durable last-seen checkpoint.", "Run and verify one manual iteration before scheduling.", "Schedule the loop and diagnose it if reports repeat without new evidence."], "result": "The resumable loop reports real changes, records clean no-op runs, and stops or escalates under defined conditions."},
       "tips": ["Make progress measurable as a shrinking difference from the target state.", "Define what happens when nothing changed.", "Set a maximum amount of work per iteration.", "Prove one manual run before adding a schedule."],
       "boundaries": ["A loop does not gain permission to send, publish, delete, or purchase.", "Scheduling depends on a host surface that can actually wake the task.", "A successful manual run does not prove the schedule has fired.", "Repeated unchanged state is a diagnosis signal, not proof of progress."],
       "successSignals": ["State and progress survive across sessions.", "Each iteration produces evidence, a valid no-op receipt, or an explicit blocker.", "The loop has finite limits and unambiguous stop conditions."]
@@ -698,10 +698,10 @@
         {"need": "You want a read-only current-state review", "skill": "harness-audit", "why": "It maps evidence, gaps, and risks without repair."},
         {"need": "You have an approved target design", "skill": "harness-builder", "why": "It implements the bounded harness change."},
         {"need": "Context files are too large, stale, or conflicting", "skill": "context-doctor", "why": "It diagnoses the context system specifically."},
-        {"need": "You need proof after a change", "skill": "harness-verifier", "why": "It checks installed and fresh-task behavior, not only files."
+        {"need": "You need proof after a change", "skill": "harness-verifier", "why": "It checks the installed capability, fresh-task behavior, and the files."
         }
       ],
-      "workedExample": {"title": "Repairing a harness that plans but does not finish", "situation": "A user has strong instructions and many plugins, but tasks produce audits and plans while required implementation remains unfinished.", "steps": ["Interview for the real definition of progress, authority limits, and completion evidence.", "Audit task rules, plugin ownership, routing, and examples of incomplete runs.", "Plan a small repair that makes observable target-state change the primary progress measure.", "Build reversibly and verify the new rule, installed parity, fresh-task discovery, and behavior on a representative task."], "result": "A useful result is a host-native harness whose rules, capabilities, and proof chain support the user's real work and behave correctly in a fresh task."},
+      "workedExample": {"title": "Repairing a harness that plans but does not finish", "situation": "A user has strong instructions and many plugins, but tasks produce audits and plans while required implementation remains unfinished.", "steps": ["Interview for the real definition of progress, authority limits, and completion evidence.", "Audit task rules, plugin ownership, routing, and examples of incomplete runs.", "Plan a small repair that makes observable target-state change the primary progress measure.", "Build reversibly and verify the new rule, installed parity, fresh-task discovery, and behavior on a representative task."], "result": "The host-native harness supports the user's real work, with its rules, capabilities, and proof chain verified in a fresh task."},
       "tips": ["Bring examples of real successful and failed tasks.", "Name the active host and its authoritative configuration locations.", "Keep personal workflow requirements separate from public plugin packages.", "Require fresh-task behavior checks after material plugin or routing changes."],
       "boundaries": ["A repository copy is not proof of the active global or installed harness.", "Host-specific paths, formats, and capabilities must be adapted rather than copied blindly.", "Backups and approval are required before broad or difficult-to-reverse changes.", "Validation scripts prove only the facts they directly check."],
       "successSignals": ["The harness maps real outcomes to clear capability owners.", "Source, installed, enabled, and fresh-task states agree for changed components.", "Representative tasks follow the intended routing, authority, and completion rules."]
@@ -729,7 +729,7 @@
         {"need": "The architecture needs safe reorganization", "skill": "graph-rewrite", "why": "It plans contract-preserving migration."
         }
       ],
-      "workedExample": {"title": "A governed content-production graph", "situation": "A team wants research, drafting, fact checking, review, and publication preparation to adapt to evidence without losing approvals.", "steps": ["Define the final content package and the authority boundary for publication.", "Create typed research, analysis, drafting, claim-check, review, and packaging nodes.", "Add edges for failed evidence, revision, approval, and completion with finite loop limits.", "Run from recorded state and inspect the graph if work repeats or bypasses a gate."], "result": "A useful result is an inspectable graph where every transition has a reason, evidence is preserved, and publication remains behind explicit approval."},
+      "workedExample": {"title": "A governed content-production graph", "situation": "A team wants research, drafting, fact checking, review, and publication preparation to adapt to evidence without losing approvals.", "steps": ["Define the final content package and the authority boundary for publication.", "Create typed research, analysis, drafting, claim-check, review, and packaging nodes.", "Add edges for failed evidence, revision, approval, and completion with finite loop limits.", "Run from recorded state and inspect the graph if work repeats or bypasses a gate."], "result": "The graph is inspectable: every transition has a reason, evidence is preserved, and publication remains behind explicit approval."},
       "tips": ["Give each node one clear responsibility.", "Define outputs so the next node can verify them.", "Use explicit edge conditions instead of vague agent judgment.", "Set limits on any edge that can repeat."],
       "boundaries": ["A graph does not expand the authority of its nodes.", "More nodes do not automatically improve a simple workflow.", "Rewriting a live graph may require migration and rollback planning.", "Inspection and debugging do not authorize changes."],
       "successSignals": ["Every node and edge has an explicit contract.", "Current state and evidence explain why each transition occurred.", "Failures, approvals, loops, and completion all have bounded behavior."]
@@ -757,7 +757,7 @@
         {"need": "You need a fresh completion decision", "skill": "gauntlet-verify", "why": "It independently checks the integrated result."
         }
       ],
-      "workedExample": {"title": "A multi-part public release", "situation": "A large release includes code, documentation, data, accessibility checks, deployment, and public verification with several independent workstreams.", "steps": ["Compile the brief, boundaries, authoritative sources, and release evidence.", "Approve a finite plan with deliverables and ownership for each workstream.", "Execute the actual release changes, using critics only after integrated candidates exist.", "Create durable handoffs and run a fresh end-to-end verifier before release."], "result": "A useful result is the completed public release plus compact evidence that every required workstream reached a terminal state."},
+      "workedExample": {"title": "A multi-part public release", "situation": "A large release includes code, documentation, data, accessibility checks, deployment, and public verification with several independent workstreams.", "steps": ["Compile the brief, boundaries, authoritative sources, and release evidence.", "Approve a finite plan with deliverables and ownership for each workstream.", "Execute the actual release changes, using critics only after integrated candidates exist.", "Create durable handoffs and run a fresh end-to-end verifier before release."], "result": "The public release is complete, with compact evidence that every required workstream reached a terminal state."},
       "tips": ["Reserve Gauntlet for work large enough to justify its coordination cost.", "Set a finite worker and usage cap before launching workstreams.", "Track unresolved required items as a number that must fall.", "Use one integrated fresh review when possible."],
       "boundaries": ["Gauntlet is explicit-only and must be named.", "It does not broaden permission for external, destructive, paid, or sensitive actions.", "Plans, critics, and handoffs are support work, not substitutes for the requested change.", "An unresolved required item prevents a complete verdict unless the user approved that state."],
       "successSignals": ["Every workstream has a concrete deliverable and terminal status.", "Support work stays proportional to completed target-state work.", "A fresh verifier confirms the integrated result against the approved brief."]
@@ -785,7 +785,7 @@
         {"need": "You need an independent completion verdict", "skill": "gauntlet-verify", "why": "It checks the result from fresh context."
         }
       ],
-      "workedExample": {"title": "Rebuilding a multi-part documentation system", "situation": "A documentation rebuild spans source analysis, information architecture, writing, examples, validation, and publication preparation across several sessions.", "steps": ["Create and approve a brief with the source hierarchy and exact definition of done.", "Prepare finite workstreams and define evidence for each deliverable.", "Execute the actual documentation changes and preserve compact evidence.", "Hand off durable state between sessions and use a fresh verifier on the integrated result."], "result": "A useful result is a complete documentation system whose artifacts, source fidelity, checks, and unresolved items are independently inspectable."},
+      "workedExample": {"title": "Rebuilding a multi-part documentation system", "situation": "A documentation rebuild spans source analysis, information architecture, writing, examples, validation, and publication preparation across several sessions.", "steps": ["Create and approve a brief with the source hierarchy and exact definition of done.", "Prepare finite workstreams and define evidence for each deliverable.", "Execute the actual documentation changes and preserve compact evidence.", "Hand off durable state between sessions and use a fresh verifier on the integrated result."], "result": "The documentation system makes its artifacts, source fidelity, checks, and unresolved items independently inspectable."},
       "tips": ["Use the explicit Gauntlet name so it cannot trigger accidentally.", "Set resource limits and deliverables before worker activity.", "Keep evidence compact and tied to the final requirements.", "Do not call the project complete while required work remains in review or deferred."],
       "boundaries": ["The plugin is available only on its verified Claude hosts.", "It does not grant permission for publishing, external messages, destructive changes, purchases, or secrets access.", "Blind critics improve review independence but do not replace direct proof.", "Gauntlet overhead is not justified for small or one-step tasks."],
       "successSignals": ["The approved brief remains the completion authority.", "All required deliverables have terminal results and evidence.", "Fresh verification checks the integrated candidate rather than trusting workstream reports."]
@@ -833,7 +833,7 @@
           "If the evidence is sufficient, use Workshop Workbench to recommend and build only the materials needed for the first session.",
           "After the session, use Session Compounder to preserve decisions and ask which follow-up or reusable outputs are worth creating."
         ],
-        "result": "A useful result would be a traceable chain from cited public signals to a bounded test, a right-sized workshop package, and permission-aware follow-up outputs. This is an illustrative route, not a claimed outcome."
+        "result": "The illustrative route ends with a traceable chain from cited public signals to a bounded test, a right-sized workshop package, and permission-aware follow-up outputs. This is not a claimed outcome."
       },
       "tips": [
         "Name the job already in front of you. You do not need to run all ten skills.",
