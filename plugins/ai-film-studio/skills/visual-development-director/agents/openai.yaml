@@ -1,0 +1,5 @@
+interface:
+  display_name: "Visual Development Director"
+  short_description: "Define visual rules and reusable scene geography."
+policy:
+  allow_implicit_invocation: false

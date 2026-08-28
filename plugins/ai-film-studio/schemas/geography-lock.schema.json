@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/geography-lock/v1",
+  "title": "GeographyLock",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "scene_id", "status", "camera_side", "axis_rule", "landmarks", "light_logic", "positions"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/geography-lock/v1"},
+    "id": {"type": "string", "pattern": "^geo_[a-z0-9_]+$"},
+    "scene_id": {"type": "string", "pattern": "^scene_[a-z0-9_]+$"},
+    "status": {"enum": ["draft", "approved", "retired"]},
+    "camera_side": {"type": "string", "minLength": 1},
+    "axis_rule": {"type": "string", "minLength": 1},
+    "landmarks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "position"],
+        "properties": {"id": {"type": "string", "minLength": 1}, "position": {"type": "string", "minLength": 1}}
+      }
+    },
+    "light_logic": {"type": "string", "minLength": 1},
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["subject_id", "relative_to", "facing", "gaze_target"],
+        "properties": {
+          "subject_id": {"type": "string", "minLength": 1},
+          "relative_to": {"type": "string", "minLength": 1},
+          "facing": {"type": "string", "minLength": 1},
+          "gaze_target": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

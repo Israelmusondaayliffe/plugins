@@ -1,0 +1,21 @@
+{
+  "schema_version":"ai-film-studio/ModelProfile/v1",
+  "profile_version":"1.0.0",
+  "model_id":"kling",
+  "model_version_checked":"Current Kling owner contract, exact surface selected at handoff",
+  "verified_at":"2026-08-06",
+  "selection_policy":"explicit-only",
+  "status":"delegated",
+  "prompt_formatter":"optional:video-production-studio:video-prompt-builder",
+  "validator":"optional:video-production-studio:video-prompt-builder",
+  "supported_inputs":["complete model-neutral ShotRecord packet; exact capabilities verified before live use"],
+  "reference_support":["No limit or mode assumed by this profile."],
+  "audio_support":"Unverified here; delegated owner must check.",
+  "duration_support":"Unverified here; delegated owner must check.",
+  "editing_modes":["No mode assumed by this profile."],
+  "known_constraints":["Explicit model selection required."],
+  "failure_patterns":["adapter uncertainty","reference drift"],
+  "first_party_evidence":["local normalized packet contract","optional video-production-studio:video-prompt-builder owner contract"],
+  "preflight":["Return the complete local packet.","If model-specific syntax is requested, verify formatter availability, exact Kling surface, version, controls, cost, and approval."],
+  "external_action_policy":"approval-required"
+}

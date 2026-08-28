@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "e2e_simulated_95_minute_feature_plan",
+  "fixture_kind": "end-to-end",
+  "scenario": "A simulated 95-minute feature plan is record-only: it decomposes the film into scene blocks, asset states, production workstreams, test gates, post-production milestones, and a delivery receipt without claiming a rendered feature exists.",
+  "record_chain": ["FilmBrief", "ProductionPlan", "AssetRecord", "TaskPacket", "ShotRecord", "PromptPacket", "GenerationAttempt", "AuditPacket", "FixPacket", "VerificationPacket", "DeliveryReceipt"],
+  "expected_status": "simulation only; no render, cost, or delivery claim is permitted",
+  "evidence": ["ProductionPlan names records and acceptance evidence for each workstream.", "DeliveryReceipt distinguishes planning proof from rendered-video quality proof."]
+}

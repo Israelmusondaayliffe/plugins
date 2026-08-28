@@ -1,6 +1,6 @@
 {
   "route": "sites-artifact",
-  "objective": "Extend the existing Wada-inspired public registry with Signal to System as the 22nd curated plugin, an interactive ten-skill chooser, and one public guide page per skill while preserving the 23-package repository, current architecture, visual system, host boundaries, and excluded compatibility package.",
+  "objective": "Extend the Wada-inspired public registry with six approved plugins and their guides while preserving the 29-package repository, current architecture, visual system, host boundaries, Signal to System chooser, and excluded compatibility package.",
   "design_constitution": null,
   "artifact_brief": "docs/site-redesign/artifact-brief.json",
   "source_manifest": "docs/site-redesign/source-manifest.json",

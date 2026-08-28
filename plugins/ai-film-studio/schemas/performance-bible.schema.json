@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/performance-bible/v1",
+  "title": "PerformanceBible",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "character_asset_id", "status", "observable_profile", "locked_voice_descriptor", "scene_adaptation_rules"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/performance-bible/v1"},
+    "id": {"type": "string", "pattern": "^performance_[a-z0-9_]+$"},
+    "character_asset_id": {"type": "string", "pattern": "^@char_[a-z0-9_]+$"},
+    "status": {"enum": ["draft", "approved", "retired"]},
+    "observable_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["body_history", "movement_pattern", "triggered_behavior", "mask_and_crack", "eye_life"],
+      "properties": {
+        "body_history": {"type": "string", "minLength": 1},
+        "movement_pattern": {"type": "string", "minLength": 1},
+        "triggered_behavior": {"type": "string", "minLength": 1},
+        "mask_and_crack": {"type": "string", "minLength": 1},
+        "eye_life": {"type": "string", "minLength": 1}
+      }
+    },
+    "locked_voice_descriptor": {"type": "string", "minLength": 1},
+    "scene_adaptation_rules": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  }
+}

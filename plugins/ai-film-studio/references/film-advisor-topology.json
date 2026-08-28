@@ -1,0 +1,17 @@
+{
+  "schema_version": "ai-film-studio/film-advisor-topology/v1",
+  "planner": {"role": "planner", "model": "gpt-5.6-sol", "effort": "high", "fresh_task": false, "may_integrate": true, "may_issue_final_response": true},
+  "builder": {"role": "builder", "model": "gpt-5.6-terra", "effort": "max", "fresh_task": true, "forked": false, "may_write": true},
+  "auditor": {"role": "auditor", "model": "gpt-5.6-sol", "effort": "xhigh", "fresh_task": true, "forked": false, "may_write": false},
+  "fixer": {"role": "fixer", "model": "gpt-5.6-sol", "effort": "xhigh", "fresh_task": true, "forked": false, "may_write": true, "max_repair_rounds": 1},
+  "verifier": {"role": "verifier", "model": "gpt-5.6-sol", "effort": "xhigh", "fresh_task": true, "forked": false, "may_write": false},
+  "host_requirements": ["gpt-5.6-sol high", "gpt-5.6-terra max", "gpt-5.6-sol xhigh", "fresh non-forked tasks", "bounded write authority", "runtime receipts"],
+  "fallback": {
+    "mode": "local-bounded-planner",
+    "core_available_without_named_models": true,
+    "phases": ["plan", "draft", "audit", "one bounded repair", "verify"],
+    "claims_limit": "Do not claim model or fresh-task independence that the host did not prove.",
+    "unsupported_handoff_fields": ["missing_capability", "completed_local_work", "unresolved_proof", "next_action"]
+  },
+  "independence": {"auditor_fixer_verifier_distinct": true, "overlapping_writes_serialized": true, "failed_verification_returns_to_planner": true, "uncontrolled_repair_loop": false}
+}

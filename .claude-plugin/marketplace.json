@@ -213,6 +213,60 @@
       "author": {
         "name": "Community Maintainers"
       }
+    },
+    {
+      "name": "ai-film-studio",
+      "source": "./plugins/ai-film-studio",
+      "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
+      "version": "0.2.0",
+      "author": {
+        "name": "Community Maintainers"
+      }
+    },
+    {
+      "name": "guide-production-studio",
+      "source": "./plugins/guide-production-studio",
+      "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
+      "version": "0.1.1",
+      "author": {
+        "name": "Community Maintainers"
+      }
+    },
+    {
+      "name": "last30days",
+      "source": "./plugins/last30days",
+      "description": "Recent-signal research across social, community, market, code, and web sources on Codex, Claude Code, and Claude Cowork.",
+      "version": "3.16.1",
+      "author": {
+        "name": "mvanhorn"
+      }
+    },
+    {
+      "name": "loop-observatory",
+      "source": "./plugins/loop-observatory",
+      "description": "Read-only telemetry, portfolio reporting, and judge calibration for bounded agent loops.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Community Maintainers"
+      }
+    },
+    {
+      "name": "practice-compiler",
+      "source": "./plugins/practice-compiler",
+      "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
+      "version": "0.2.0",
+      "author": {
+        "name": "Community Maintainers"
+      }
+    },
+    {
+      "name": "skill-eval-loop",
+      "source": "./plugins/skill-eval-loop",
+      "description": "Run bounded regression and repair cycles for skills and plugins with a complete local evaluator and optional OpenAI Plugin Eval analysis.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Community Maintainers"
+      }
     }
   ]
 }

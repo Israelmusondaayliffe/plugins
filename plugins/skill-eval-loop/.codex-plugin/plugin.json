@@ -1,0 +1,39 @@
+{
+  "name": "skill-eval-loop",
+  "version": "0.1.0",
+  "description": "Run bounded regression and repair cycles for skills and plugins with a complete local evaluator and optional OpenAI Plugin Eval analysis.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "skills",
+    "plugins",
+    "evaluation",
+    "regression",
+    "loops",
+    "cowork"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Skill Eval Loop",
+    "shortDescription": "Make skill and plugin regressions visible",
+    "longDescription": "Build a prompt suite, validate supplied case and rubric evidence locally, compare against a pinned baseline, and stage bounded candidate repairs without changing the source before approval. OpenAI Plugin Eval adds optional static analysis when installed.",
+    "developerName": "Community Maintainers",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/skill-eval-loop",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Build an eval suite for this skill.",
+      "Run a regression check against the baseline.",
+      "Stage a bounded repair cycle for this plugin."
+    ]
+  }
+}

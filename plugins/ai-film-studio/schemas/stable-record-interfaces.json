@@ -1,0 +1,16 @@
+{
+  "interface_version": "ai-film-studio/stable-record-interfaces/v1",
+  "interfaces": [
+    {"name": "FilmBrief", "schema": "schemas/FilmBrief.schema.json", "template": "templates/FilmBrief.json", "fixture": "fixtures/valid/FilmBrief.json"},
+    {"name": "ProductionPlan", "schema": "schemas/ProductionPlan.schema.json", "template": "templates/ProductionPlan.json", "fixture": "fixtures/valid/ProductionPlan.json"},
+    {"name": "AssetRecord", "schema": "schemas/AssetRecord.schema.json", "template": "templates/AssetRecord.json", "fixture": "fixtures/valid/AssetRecord.json"},
+    {"name": "ShotRecord", "schema": "schemas/ShotRecord.schema.json", "template": "templates/ShotRecord.json", "fixture": "fixtures/valid/ShotRecord.json"},
+    {"name": "PromptPacket", "schema": "schemas/PromptPacket.schema.json", "template": "templates/PromptPacket.json", "fixture": "fixtures/valid/PromptPacket.json"},
+    {"name": "GenerationAttempt", "schema": "schemas/GenerationAttempt.schema.json", "template": "templates/GenerationAttempt.json", "fixture": "fixtures/valid/GenerationAttempt.json"},
+    {"name": "TaskPacket", "schema": "schemas/TaskPacket.schema.json", "template": "templates/TaskPacket.json", "fixture": "fixtures/valid/TaskPacket.json"},
+    {"name": "AuditPacket", "schema": "schemas/AuditPacket.schema.json", "template": "templates/AuditPacket.json", "fixture": "fixtures/valid/AuditPacket.json"},
+    {"name": "FixPacket", "schema": "schemas/FixPacket.schema.json", "template": "templates/FixPacket.json", "fixture": "fixtures/valid/FixPacket.json"},
+    {"name": "VerificationPacket", "schema": "schemas/VerificationPacket.schema.json", "template": "templates/VerificationPacket.json", "fixture": "fixtures/valid/VerificationPacket.json"},
+    {"name": "DeliveryReceipt", "schema": "schemas/DeliveryReceipt.schema.json", "template": "templates/DeliveryReceipt.json", "fixture": "fixtures/valid/DeliveryReceipt.json"}
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: Approved Practice Handoff
+  short_description: Route an approved proposal to its owner
+  default_prompt: Use $approved-practice-handoff to prepare an approved proposal handoff.
+policy:
+  allow_implicit_invocation: false

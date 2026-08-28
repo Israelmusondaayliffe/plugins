@@ -1,0 +1,53 @@
+{
+  "plugin": "guide-production-studio",
+  "version": "0.1.1",
+  "skills": [
+    "guide-acceptance-review",
+    "guide-production-router",
+    "guide-source-mapper",
+    "practical-guide-architect",
+    "practical-guide-builder"
+  ],
+  "front_door": "guide-production-router",
+  "required_files": [
+    ".plugin-eval/benchmark.json",
+    "README.md",
+    "skills/guide-production-router/assets/guide-contract.template.json",
+    "skills/guide-production-router/assets/guide-review.template.json",
+    "skills/guide-production-router/references/guide-architecture.md",
+    "skills/guide-production-router/references/human-acceptance-rubric.md",
+    "skills/guide-production-router/references/provenance-policy.md",
+    "skills/guide-production-router/references/visual-evidence.md",
+    "skills/guide-production-router/scripts/validate_guide_contract.py",
+    "skills/guide-production-router/scripts/validate_guide_review.py",
+    "skills/guide-production-router/scripts/validate_public_guide.py",
+    "scripts/evaluate_guide_trigger.py",
+    "tests/outcome-cases.json",
+    "tests/build_eval_evidence.py",
+    "tests/run_guide_trigger_cases.py",
+    "tests/test_standalone.py",
+    "tests/trigger-cases.json"
+  ],
+  "routing_cases": [
+    {
+      "prompt": "Build a practical guide from these sources.",
+      "expected_skill": "guide-production-router"
+    },
+    {
+      "prompt": "Map what can be taught publicly and what must stay private.",
+      "expected_skill": "guide-source-mapper"
+    },
+    {
+      "prompt": "Choose whether this guide needs one page or child pages.",
+      "expected_skill": "practical-guide-architect"
+    },
+    {
+      "prompt": "Write the approved source-grounded guide.",
+      "expected_skill": "practical-guide-builder"
+    },
+    {
+      "prompt": "Review this guide as a cold reader.",
+      "expected_skill": "guide-acceptance-review"
+    }
+  ]
+}

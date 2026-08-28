@@ -1,0 +1,6 @@
+interface:
+  display_name: "Last30Days Health"
+  short_description: "Diagnose and repair the last30days runtime, permissions, credentials, source..."
+  default_prompt: "$last30days-health Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

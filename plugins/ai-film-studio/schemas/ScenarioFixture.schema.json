@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/ScenarioFixture/v1",
+  "title": "ScenarioFixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "fixture_kind", "scenario", "record_chain", "expected_status", "evidence"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/ScenarioFixture/v1"},
+    "id": {"type": "string", "pattern": "^(e2e|failure)_[a-z0-9_]+$"},
+    "fixture_kind": {"enum": ["end-to-end", "failure"]},
+    "scenario": {"type": "string", "minLength": 1},
+    "record_chain": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "expected_status": {"type": "string", "minLength": 1},
+    "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  }
+}

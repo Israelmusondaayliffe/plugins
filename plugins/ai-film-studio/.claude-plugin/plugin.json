@@ -1,0 +1,15 @@
+{
+  "name": "ai-film-studio",
+  "version": "0.2.0",
+  "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "keywords": [
+    "ai-film",
+    "film-production",
+    "codex",
+    "claude-code",
+    "cowork"
+  ]
+}

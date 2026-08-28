@@ -1,0 +1,6 @@
+interface:
+  display_name: Eval Suite Builder
+  short_description: Build positive, negative, functional, and rubric cases
+  default_prompt: Use $eval-suite-builder to define a skill or plugin regression suite.
+policy:
+  allow_implicit_invocation: false

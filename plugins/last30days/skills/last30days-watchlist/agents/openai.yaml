@@ -1,0 +1,6 @@
+interface:
+  display_name: "Last30Days Watchlist"
+  short_description: "Manage recurring last30days topic monitoring, run stored topics, inspect delt..."
+  default_prompt: "$last30days-watchlist Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

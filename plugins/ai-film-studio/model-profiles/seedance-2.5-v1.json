@@ -1,0 +1,21 @@
+{
+  "schema_version":"ai-film-studio/ModelProfile/v1",
+  "profile_version":"1.0.0",
+  "model_id":"seedance-2.5",
+  "model_version_checked":"Seedance 2.5 owner contract",
+  "verified_at":"2026-08-05",
+  "selection_policy":"default-delegation",
+  "status":"delegated",
+  "prompt_formatter":"optional:video-production-studio:video-prompt-builder",
+  "validator":"optional:video-production-studio:video-prompt-builder",
+  "supported_inputs":["complete model-neutral ShotRecord packet; exact surface controls verified before live use"],
+  "reference_support":["declared active references with positive and negative scope; exact limits verified by owner"],
+  "audio_support":"Verify on the selected surface before live use.",
+  "duration_support":"Verify on the selected surface before live use.",
+  "editing_modes":["Only modes verified by the delegated owner."],
+  "known_constraints":["AI Film Studio does not duplicate Seedance syntax or infer live controls."],
+  "failure_patterns":["reference leakage","geography drift","dialogue leakage","overloaded action"],
+  "first_party_evidence":["local normalized packet contract","optional video-production-studio:video-prompt-builder checked 2026-08-05"],
+  "preflight":["Return the complete local packet.","If model-specific syntax is requested, verify formatter availability, surface, inputs, references, audio, duration, editing mode, cost, and approval."],
+  "external_action_policy":"approval-required"
+}

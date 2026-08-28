@@ -4,7 +4,7 @@
       "id": "F1",
       "name": "See the current public catalog immediately",
       "preconditions": ["The site is built from the current source"],
-      "steps": [{"action": "Open the homepage", "expected": "The compact Wada masthead, registry description, 22 public plugins, 171 bundled skills, and catalog controls are visible without a marketing-art hero.", "evidence": "Rendered DOM assertion and matching-viewport screenshot"}],
+      "steps": [{"action": "Open the homepage", "expected": "The compact Wada masthead, registry description, 28 public plugins, 204 bundled skills, and catalog controls are visible without a marketing-art hero.", "evidence": "Rendered DOM assertion and matching-viewport screenshot"}],
       "status": "passed"
     },
     {
@@ -55,7 +55,7 @@
       "id": "F7",
       "name": "Preserve the public export and privacy boundary",
       "preconditions": ["The generated catalog reflects repository source"],
-      "steps": [{"action": "Check every public record, both exports, and the excluded compatibility route", "expected": "All 22 public plugin routes and both exports work, the deprecated Matt package is absent from every public surface, and its route returns 404.", "evidence": "Rendered-route suite, export scan, and anonymous request assertions"}],
+      "steps": [{"action": "Check every public record, both exports, and the excluded compatibility route", "expected": "All 28 public plugin routes and both exports work, the deprecated Matt package is absent from every public surface, and its route returns 404.", "evidence": "Rendered-route suite, export scan, and anonymous request assertions"}],
       "status": "passed"
     },
     {

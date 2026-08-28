@@ -1,0 +1,6 @@
+interface:
+  display_name: Capability Repair Cycle
+  short_description: Stage and verify the smallest candidate repair
+  default_prompt: Use $capability-repair-cycle to stage an approval-gated capability repair.
+policy:
+  allow_implicit_invocation: false

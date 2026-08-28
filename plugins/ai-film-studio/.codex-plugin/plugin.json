@@ -1,0 +1,32 @@
+{
+  "name": "ai-film-studio",
+  "version": "0.2.0",
+  "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
+  "keywords": [
+    "ai-film",
+    "film-production",
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI Film Studio",
+    "shortDescription": "Plan AI film work through explicit records and gates.",
+    "longDescription": "An explicit-only, record-driven workflow for film concepts, production plans, reusable assets, performance, geography, continuity, model-neutral prompt packets, review, and delivery preparation. Named companion plugins are optional. The bundled film grill, packet builder, and bounded planner keep the core workflow usable when companions are absent.",
+    "developerName": "Community Maintainers",
+    "category": "Media",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use AI Film Studio to grill this film idea and prepare an approval-ready FilmBrief.",
+      "Use Film Advisor to build the approved film plan with the best verified host topology.",
+      "Use AI Film Studio to prepare a continuity-safe, model-ready shot handoff."
+    ]
+  }
+}

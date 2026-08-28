@@ -1,0 +1,39 @@
+{
+  "name": "loop-observatory",
+  "version": "0.1.0",
+  "description": "Read-only telemetry, portfolio reporting, and judge calibration for bounded agent loops.",
+  "keywords": [
+    "loops",
+    "telemetry",
+    "evaluation",
+    "codex",
+    "claude-code",
+    "cowork"
+  ],
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/loop-observatory",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Loop Observatory",
+    "shortDescription": "Measure loop outcomes and judge quality.",
+    "longDescription": "Normalize terminal LoopKit and registered Operating Graph runs, compare acceptance and exhaustion patterns, and audit judge calibration without modifying source runs.",
+    "developerName": "Community Maintainers",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/loop-observatory",
+    "privacyPolicyURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/Israelmusondaayliffe/plugins/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Ingest new terminal loop runs without changing their source files.",
+      "Build a portfolio report for my registered loops.",
+      "Audit loop judges for false passes and false failures."
+    ]
+  }
+}

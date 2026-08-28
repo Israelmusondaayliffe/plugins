@@ -1,0 +1,11 @@
+{
+  "schema_version": "ai-film-studio/geography-lock/v1",
+  "id": "geo_fixture_threshold",
+  "scene_id": "scene_fixture_threshold",
+  "status": "approved",
+  "camera_side": "Camera remains on the corridor side of the threshold.",
+  "axis_rule": "The camera does not cross the doorway line.",
+  "landmarks": [{"id": "doorway", "position": "midground, center"}, {"id": "mailbox", "position": "corridor wall, frame-right"}],
+  "light_logic": "A single warm room source falls through the doorway toward the cooler corridor.",
+  "positions": [{"subject_id": "@char_fixture_courier_neutral", "relative_to": "one step from the doorway on the corridor side", "facing": "toward doorway", "gaze_target": "friend inside room"}]
+}

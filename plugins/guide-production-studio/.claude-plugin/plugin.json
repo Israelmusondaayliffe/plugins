@@ -1,0 +1,18 @@
+{
+  "name": "guide-production-studio",
+  "version": "0.1.1",
+  "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/guide-production-studio",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "keywords": [
+    "guides",
+    "source-mapping",
+    "writing",
+    "codex",
+    "claude-code",
+    "cowork"
+  ]
+}

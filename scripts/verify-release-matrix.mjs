@@ -13,21 +13,28 @@ const versions = {
   "founder-revenue-engine": "0.2.2",
   "gauntlet": "0.2.2",
   "gauntlet-loop": "1.2.0",
+  "guide-production-studio": "0.1.1",
   "harness-engineering": "2.7.0",
   "knowledge-work-superpowers": "0.2.2",
+  "last30days": "3.16.1",
+  "loop-observatory": "0.1.0",
   "loopkit": "0.3.1",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",
   "model-evaluation-lab": "0.2.1",
   "model-prompt-lab": "0.2.0",
   "operating-graph": "0.2.1",
   "outcome-engine": "1.1.2",
+  "practice-compiler": "0.2.0",
   "proofloop": "0.2.0",
   "signal-to-system": "0.1.0-beta.1",
+  "skill-eval-loop": "0.1.0",
   "strategy-room": "0.2.3",
   "video-production-studio": "0.3.1",
   "web-product-studio": "0.4.2",
   "writing-quality": "0.2.1",
+  "ai-film-studio": "0.2.0",
 };
+const preservedAuthors = new Map([["last30days", "mvanhorn"]]);
 const codexMarketplace = JSON.parse(
   readFileSync(join(root, ".agents/plugins/marketplace.json"), "utf8"),
 );
@@ -43,7 +50,7 @@ if (claudeMarketplace.name !== "community-agent-plugins") {
 const codexNames = codexMarketplace.plugins.map((entry) => entry.name).sort();
 const claudeNames = claudeMarketplace.plugins.map((entry) => entry.name).sort();
 if (JSON.stringify(codexNames) !== JSON.stringify(Object.keys(versions).sort())) {
-  throw new Error("Codex marketplace inventory differs from the approved 23-plugin set");
+  throw new Error("Codex marketplace inventory differs from the approved 29-plugin set");
 }
 if (JSON.stringify(claudeNames) !== JSON.stringify(codexNames)) {
   throw new Error("Claude marketplace inventory differs from Codex");
@@ -70,8 +77,9 @@ for (const [name, expected] of Object.entries(versions)) {
       throw new Error(`${name} manifest ${field} mismatch`);
     }
   }
-  if (codex.author?.name !== "Community Maintainers" || claude.author?.name !== "Community Maintainers") {
-    throw new Error(`${name} publisher is not depersonalized`);
+  const expectedAuthor = preservedAuthors.get(name) ?? "Community Maintainers";
+  if (codex.author?.name !== expectedAuthor || claude.author?.name !== expectedAuthor) {
+    throw new Error(`${name} publisher mismatch: expected ${expectedAuthor}`);
   }
   if (/\+codex\./.test(expected)) throw new Error(`${name} contains a cachebuster`);
 }

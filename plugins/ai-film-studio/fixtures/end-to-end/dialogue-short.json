@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "e2e_dialogue_short",
+  "fixture_kind": "end-to-end",
+  "scenario": "A dialogue short establishes two character states, locked voice descriptors, a threshold geography lock, scene blocks, and continuity-safe shot records before a delegated prompt handoff.",
+  "record_chain": ["FilmBrief", "ProductionPlan", "AssetRecord", "ShotRecord", "PromptPacket", "AuditPacket", "FixPacket", "VerificationPacket"],
+  "expected_status": "dialogue planning passes only if speaker identity, listening behavior, geography, and approval gates remain explicit",
+  "evidence": ["Sound map assigns each dialogue line to one approved voice descriptor.", "Shot records state first-frame positions and camera-side continuity."]
+}

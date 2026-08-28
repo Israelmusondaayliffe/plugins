@@ -1,0 +1,5 @@
+interface:
+  display_name: "Production Architect"
+  short_description: "Plan film records, dependencies, and review gates."
+policy:
+  allow_implicit_invocation: false

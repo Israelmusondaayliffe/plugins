@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/iteration-record/v1",
+  "title": "IterationRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "shot_id", "hypothesis", "baseline", "changed_variable", "observed_evidence", "diagnosis", "next_route"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/iteration-record/v1"},
+    "id": {"type": "string", "pattern": "^iteration_[a-z0-9_]+$"},
+    "shot_id": {"type": "string", "pattern": "^shot_[a-z0-9_]+$"},
+    "hypothesis": {"type": "string", "minLength": 1},
+    "baseline": {"type": "string", "minLength": 1},
+    "changed_variable": {"type": "string", "minLength": 1},
+    "observed_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "diagnosis": {"enum": ["source_asset", "geography", "performance", "direction", "adapter_uncertainty", "inconclusive"]},
+    "next_route": {"type": "string", "minLength": 1}
+  }
+}

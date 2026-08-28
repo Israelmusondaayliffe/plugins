@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "failure_identity_drift",
+  "fixture_kind": "failure",
+  "scenario": "A candidate character asset changes durable identity cues under required test conditions.",
+  "record_chain": ["AssetRecord", "AuditPacket", "FixPacket"],
+  "expected_status": "hold: repair the source asset or descriptor before downstream shot work",
+  "evidence": ["Stress-test evidence does not identify one consistent approved identity."]
+}

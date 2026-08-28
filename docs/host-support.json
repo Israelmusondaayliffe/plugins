@@ -43,5 +43,35 @@
     "platforms": ["Codex", "Claude Code", "Claude Cowork"],
     "note": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior."
   },
-  "writing-quality": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] }
+  "writing-quality": { "platforms": ["Codex", "Claude Code", "Claude Cowork"] },
+  "ai-film-studio": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "status": "declared-beta",
+    "note": "Package and local workflow support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group."
+  },
+  "guide-production-studio": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "status": "declared-beta",
+    "note": "Package and local validation support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group."
+  },
+  "last30days": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "status": "declared-beta",
+    "note": "The pinned research engine and public wrapper declare Codex, Claude Code, and Claude Cowork support. Source availability, credentials, and optional tools vary by host."
+  },
+  "loop-observatory": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "status": "declared-beta",
+    "note": "Local ingestion, reporting, calibration, and generic repair handoffs are declared for Codex, Claude Code, and Claude Cowork."
+  },
+  "practice-compiler": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "status": "declared-beta",
+    "note": "Codex session roots are the Codex default. Claude project roots and other trace roots require the documented explicit options."
+  },
+  "skill-eval-loop": {
+    "platforms": ["Codex", "Claude Code", "Claude Cowork"],
+    "status": "declared-beta",
+    "note": "Local suite, evidence, baseline, staging, and promotion controls are declared for all three hosts. OpenAI Plugin Eval is an optional enhanced analyzer."
+  }
 }

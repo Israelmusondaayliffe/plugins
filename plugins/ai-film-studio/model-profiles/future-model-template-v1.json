@@ -1,0 +1,21 @@
+{
+  "schema_version":"ai-film-studio/ModelProfile/v1",
+  "profile_version":"1.0.0",
+  "model_id":"future-model-template",
+  "model_version_checked":"not checked",
+  "verified_at":"unverified",
+  "selection_policy":"template-only",
+  "status":"template",
+  "prompt_formatter":"unassigned",
+  "validator":"unassigned",
+  "supported_inputs":[],
+  "reference_support":[],
+  "audio_support":"unverified",
+  "duration_support":"unverified",
+  "editing_modes":[],
+  "known_constraints":["Cannot emit model syntax or authorize live work."],
+  "failure_patterns":["unsupported capability claim"],
+  "first_party_evidence":[],
+  "preflight":["Add current first-party evidence, formatter, validator, and fixtures before promotion."],
+  "external_action_policy":"approval-required"
+}

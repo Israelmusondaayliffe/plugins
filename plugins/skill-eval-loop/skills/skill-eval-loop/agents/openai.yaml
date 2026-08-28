@@ -1,0 +1,6 @@
+interface:
+  display_name: Skill Eval Loop
+  short_description: Run bounded skill and plugin regression cycles
+  default_prompt: Use $skill-eval-loop to build and run an approval-gated capability regression loop.
+policy:
+  allow_implicit_invocation: true

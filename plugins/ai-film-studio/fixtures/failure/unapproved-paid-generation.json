@@ -1,0 +1,9 @@
+{
+  "schema_version": "ai-film-studio/ScenarioFixture/v1",
+  "id": "failure_unapproved_paid_generation",
+  "fixture_kind": "failure",
+  "scenario": "A planned generation is requested without a matching approval ID.",
+  "record_chain": ["PromptPacket", "GenerationAttempt"],
+  "expected_status": "stopped: external action requires approval",
+  "evidence": ["GenerationAttempt has no live-action approval ID."]
+}

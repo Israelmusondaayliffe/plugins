@@ -17,23 +17,30 @@ const versions = {
   "continuity-vault": "0.2.2",
   "data-storytelling-studio": "0.2.1",
   "founder-revenue-engine": "0.2.2",
-  "gauntlet": "0.2.1",
+  "gauntlet": "0.2.2",
   "gauntlet-loop": "1.2.0",
+  "guide-production-studio": "0.1.1",
   "harness-engineering": "2.7.0",
   "knowledge-work-superpowers": "0.2.2",
+  "last30days": "3.16.1",
+  "loop-observatory": "0.1.0",
   "loopkit": "0.3.1",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",
   "model-evaluation-lab": "0.2.1",
   "model-prompt-lab": "0.2.0",
   "operating-graph": "0.2.1",
   "outcome-engine": "1.1.2",
+  "practice-compiler": "0.2.0",
   "proofloop": "0.2.0",
   "signal-to-system": "0.1.0-beta.1",
+  "skill-eval-loop": "0.1.0",
   "strategy-room": "0.2.3",
   "video-production-studio": "0.3.1",
   "web-product-studio": "0.4.2",
   "writing-quality": "0.2.1",
+  "ai-film-studio": "0.2.0",
 };
+const preservedAuthors = new Map([["last30days", "mvanhorn"]]);
 
 codex.name = "community-agent-plugins";
 codex.interface = { displayName: "Community Agent Plugins" };
@@ -59,11 +66,12 @@ for (const entry of codex.plugins) {
     claudeManifest[field] = codexManifest[field];
   }
   claudeManifest.version = version;
+  const authorName = preservedAuthors.get(entry.name) ?? "Community Maintainers";
   for (const manifest of [codexManifest, claudeManifest]) {
-    manifest.author = { name: "Community Maintainers" };
+    manifest.author = { name: authorName };
   }
   if (codexManifest.interface) {
-    codexManifest.interface.developerName = "Community Maintainers";
+    codexManifest.interface.developerName = authorName;
     if (
       codexManifest.interface.websiteURL ===
       ownerProfile
@@ -81,7 +89,7 @@ for (const entry of codex.plugins) {
     JSON.stringify(claudeManifest, null, 2) + "\n",
   );
   const licensePath = join(pluginRoot, "LICENSE");
-  if (existsSync(licensePath)) {
+  if (existsSync(licensePath) && !preservedAuthors.has(entry.name)) {
     const license = readFileSync(licensePath, "utf8").replace(
       /^Copyright \(c\) 2026 .*$/m,
       "Copyright (c) 2026 Contributors",
@@ -92,7 +100,7 @@ for (const entry of codex.plugins) {
   if (!claudeEntry) throw new Error(`Missing Claude marketplace entry for ${entry.name}`);
   claudeEntry.version = version;
   claudeEntry.description = codexManifest.description;
-  claudeEntry.author = { name: "Community Maintainers" };
+  claudeEntry.author = { name: authorName };
 }
 
 writeFileSync(codexPath, JSON.stringify(codex, null, 2) + "\n");

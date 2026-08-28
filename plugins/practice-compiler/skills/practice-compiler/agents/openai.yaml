@@ -1,0 +1,6 @@
+interface:
+  display_name: Practice Compiler
+  short_description: Mine repeated work into reviewed proposals
+  default_prompt: Use $practice-compiler to scan, review, and route repeated work practices.
+policy:
+  allow_implicit_invocation: true

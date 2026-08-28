@@ -1,0 +1,39 @@
+{
+  "name": "practice-compiler",
+  "version": "0.2.0",
+  "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "sessions",
+    "workflow",
+    "improvement",
+    "patterns",
+    "proposals",
+    "cowork"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Practice Compiler",
+    "shortDescription": "Turn repeated work into reviewed improvements",
+    "longDescription": "Scan an exact session window, distinguish user, automation, subagent, and synthetic traces, group semantic variants, and stage deduplicated proposals with session-and-line evidence. Read-only stdout mode is available before persistence or approval.",
+    "developerName": "Community Maintainers",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/practice-compiler",
+    "privacyPolicyURL": "https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement",
+    "termsOfServiceURL": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "defaultPrompt": [
+      "Scan my recent Codex sessions for repeated friction.",
+      "Review the staged practice improvement proposals.",
+      "Prepare a handoff for this approved proposal."
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "ai-film-studio/iteration-record/v1",
+  "id": "iteration_fixture_threshold_001",
+  "shot_id": "shot_fixture_threshold_001",
+  "hypothesis": "The locked doorway axis will preserve the courier's position and gaze.",
+  "baseline": "An approved character and approved threshold location are used.",
+  "changed_variable": "The first-frame occupancy clause is made explicit.",
+  "observed_evidence": ["The first visible frame contains the courier at the doorway."],
+  "diagnosis": "direction",
+  "next_route": "post-delivery-learning"
+}

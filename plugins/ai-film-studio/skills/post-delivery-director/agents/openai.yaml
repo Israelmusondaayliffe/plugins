@@ -1,0 +1,5 @@
+interface:
+  display_name: "Post Delivery Director"
+  short_description: "Prepare post, delivery, and learning records."
+policy:
+  allow_implicit_invocation: false

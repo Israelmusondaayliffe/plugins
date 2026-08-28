@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/TaskPacket/v1",
+  "title": "TaskPacket",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "production_plan_id", "production_plan_sha256", "role", "model", "effort", "fresh_task", "forked", "dependencies", "allowed_write_paths", "inputs", "expected_outputs", "evidence_paths", "authority"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/TaskPacket/v1"},
+    "id": {"type": "string", "pattern": "^task_[a-z0-9_]+$"},
+    "production_plan_id": {"type": "string", "pattern": "^plan_[a-z0-9_]+$"},
+    "production_plan_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "role": {"const": "builder"},
+    "model": {"const": "gpt-5.6-terra"},
+    "effort": {"const": "max"},
+    "fresh_task": {"const": true},
+    "forked": {"const": false},
+    "dependencies": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "allowed_write_paths": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "inputs": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}},
+    "expected_outputs": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "evidence_paths": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "authority": {"type": "object", "required": ["may_write", "may_approve", "may_integrate", "may_issue_final_verdict"], "properties": {"may_write": {"const": true}, "may_approve": {"const": false}, "may_integrate": {"const": false}, "may_issue_final_verdict": {"const": false}}}
+  }
+}

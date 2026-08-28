@@ -1,0 +1,10 @@
+{
+  "profile_index_version": "ai-film-studio/model-profiles/v1",
+  "default_delegation": "seedance-2.5-v1.json",
+  "profiles": [
+    {"model_id": "seedance-2.5", "path": "model-profiles/seedance-2.5-v1.json", "selection": "default-delegation"},
+    {"model_id": "kling", "path": "model-profiles/kling-v1.json", "selection": "explicit-only"},
+    {"model_id": "veo", "path": "model-profiles/veo-v1.json", "selection": "explicit-only"},
+    {"model_id": "future-model-template", "path": "model-profiles/future-model-template-v1.json", "selection": "template-only"}
+  ]
+}

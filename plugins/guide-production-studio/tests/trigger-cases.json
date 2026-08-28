@@ -1,0 +1,25 @@
+{
+  "schema_version": "guide-production-studio/trigger-cases/v1",
+  "cases": [
+    {"id": "p01", "query": "Build a practical guide from these sources and make it useful for beginners and experts.", "should_trigger": true},
+    {"id": "p02", "query": "Redo this Notion manual. It has facts but nobody can understand how to use it.", "should_trigger": true},
+    {"id": "p03", "query": "Map which parts of this private workflow can be taught publicly without losing the public source lineage.", "should_trigger": true},
+    {"id": "p04", "query": "Should this reference be one long page or a parent with child pages? Study the sources first.", "should_trigger": true},
+    {"id": "p05", "query": "Write a copy-ready prompt guide with context, a real example, and troubleshooting.", "should_trigger": true},
+    {"id": "p06", "query": "Review this how-to as a cold reader before we publish it.", "should_trigger": true},
+    {"id": "p07", "query": "Create a source-grounded workflow guide, but do not turn it into a course or worksheet pack.", "should_trigger": true},
+    {"id": "p08", "query": "Turn these tested image results into a guide that shows what changed and how to judge it.", "should_trigger": true},
+    {"id": "p09", "query": "The guide is bloated and repeats itself across ten pages. Redesign the teaching structure.", "should_trigger": true},
+    {"id": "p10", "query": "Build one benchmark manual before we launch workers for the rest.", "should_trigger": true},
+    {"id": "n01", "query": "Clean up the grammar in this paragraph without changing my tone.", "should_trigger": false},
+    {"id": "n02", "query": "Research the latest Midjourney parameter documentation and give me a source ledger.", "should_trigger": false},
+    {"id": "n03", "query": "Publish this already approved page to Notion.", "should_trigger": false},
+    {"id": "n04", "query": "Build a three-hour workshop with slides and presenter notes.", "should_trigger": false},
+    {"id": "n05", "query": "Explain loops in one paragraph. I do not want a guide.", "should_trigger": false},
+    {"id": "n06", "query": "Create the AI film assets and generate the first shot.", "should_trigger": false},
+    {"id": "n07", "query": "Check whether the claims in this finished document are sourced.", "should_trigger": false},
+    {"id": "n08", "query": "Turn this report into a downloadable PDF without rewriting it.", "should_trigger": false},
+    {"id": "n09", "query": "Audit my plugin installation and routing registry.", "should_trigger": false},
+    {"id": "n10", "query": "Teach me this topic interactively over the next six sessions.", "should_trigger": false}
+  ]
+}

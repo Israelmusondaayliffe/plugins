@@ -1,0 +1,5 @@
+interface:
+  display_name: "Film Wayfinder"
+  short_description: "Turn an uncertain film idea into a testable premise."
+policy:
+  allow_implicit_invocation: false

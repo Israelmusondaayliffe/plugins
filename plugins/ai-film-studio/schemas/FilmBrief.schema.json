@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-film-studio/FilmBrief/v1",
+  "title": "FilmBrief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "project_id", "status", "outcome", "audience", "runtime", "story", "distribution", "visual_intent", "sound_intent", "budget", "schedule", "constraints", "rights", "approval_policy", "acceptance_criteria", "open_decisions"],
+  "properties": {
+    "schema_version": {"const": "ai-film-studio/FilmBrief/v1"},
+    "id": {"type": "string", "pattern": "^brief_[a-z0-9_]+$"},
+    "project_id": {"type": "string", "pattern": "^project_[a-z0-9_]+$"},
+    "status": {"enum": ["draft", "approved", "superseded"]},
+    "outcome": {"type": "string", "minLength": 1},
+    "audience": {"type": "object", "required": ["primary", "promise"], "properties": {"primary": {"type": "string", "minLength": 1}, "promise": {"type": "string", "minLength": 1}}},
+    "runtime": {"type": "object", "required": ["target_seconds", "tolerance_seconds"], "properties": {"target_seconds": {"type": "integer", "minimum": 1}, "tolerance_seconds": {"type": "integer", "minimum": 0}}},
+    "story": {"type": "object", "required": ["premise", "protagonist_pressure", "opposition", "irreversible_choice", "smallest_test_scene"], "properties": {"premise": {"type": "string", "minLength": 1}, "protagonist_pressure": {"type": "string", "minLength": 1}, "opposition": {"type": "string", "minLength": 1}, "irreversible_choice": {"type": "string", "minLength": 1}, "smallest_test_scene": {"type": "string", "minLength": 1}}},
+    "distribution": {"type": "object", "required": ["target", "delivery_format"], "properties": {"target": {"type": "string", "minLength": 1}, "delivery_format": {"type": "string", "minLength": 1}}},
+    "visual_intent": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "sound_intent": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "budget": {"type": "object", "required": ["currency", "ceiling", "paid_generation_requires_approval"], "properties": {"currency": {"type": "string", "minLength": 3}, "ceiling": {"type": "integer", "minimum": 0}, "paid_generation_requires_approval": {"const": true}}},
+    "schedule": {"type": "object", "required": ["target_delivery", "milestones"], "properties": {"target_delivery": {"type": "string", "minLength": 1}, "milestones": {"type": "array", "items": {"type": "string"}}}},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "rights": {"type": "object", "required": ["source_policy", "unresolved"], "properties": {"source_policy": {"type": "string", "minLength": 1}, "unresolved": {"type": "array", "items": {"type": "string"}}}},
+    "approval_policy": {"type": "object", "required": ["production_contract", "external_actions"], "properties": {"production_contract": {"enum": ["required", "approved"]}, "external_actions": {"const": "separate-explicit-approval"}}},
+    "acceptance_criteria": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "open_decisions": {"type": "array", "items": {"type": "string"}}
+  }
+}

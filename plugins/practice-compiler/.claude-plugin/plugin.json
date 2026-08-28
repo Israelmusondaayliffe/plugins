@@ -1,0 +1,22 @@
+{
+  "name": "practice-compiler",
+  "version": "0.2.0",
+  "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/practice-compiler",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "claude-code",
+    "sessions",
+    "workflow",
+    "improvement",
+    "patterns",
+    "proposals",
+    "cowork"
+  ],
+  "skills": "./skills/"
+}

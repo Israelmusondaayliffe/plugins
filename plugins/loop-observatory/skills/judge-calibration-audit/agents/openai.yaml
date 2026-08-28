@@ -1,0 +1,6 @@
+interface:
+  display_name: Judge Calibration Audit
+  short_description: Detect false passes and false failures
+  default_prompt: Use $judge-calibration-audit to audit judge disagreement with human labels.
+policy:
+  allow_implicit_invocation: false
