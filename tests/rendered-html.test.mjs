@@ -170,7 +170,9 @@ test("server-renders a guided public record with source and related navigation",
   const text = withoutReactMarkers(html);
   assert.match(text, /Capability Operator/);
   assert.match(text, /Purpose/);
-  assert.match(text, /Verified hosts/);
+  assert.match(text, /Declared beta hosts/);
+  assert.match(text, /Fresh authenticated runtime discovery is unverified/);
+  assert.doesNotMatch(text, /Verified runtime support:/);
   assert.match(text, /Version/);
   assert.match(text, /Bundled skills/);
   assert.match(html, /aria-label="On this page"/);
