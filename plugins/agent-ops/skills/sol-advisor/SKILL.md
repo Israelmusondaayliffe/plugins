@@ -56,3 +56,7 @@ The 150K checkpoint is an observation checkpoint, not a configuration change, re
 ## Completion
 
 Return a ReturnPacket with status `succeeded`, `blocked`, `failed`, or `escalate`, plus the exact TaskPacket path and hash, artifact hashes, criterion-to-evidence mapping, actual scope, commands, evidence, uncertainties, risks, `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`. An implementation return cannot succeed with zero observable delta or, when unresolved work existed, no unresolved reduction. Do not label the work accepted.
+
+## Legacy compatibility
+
+This entry point preserves existing Sol protocol runs and their Gauntlet adapter. For a new GPT-6 Astra run, use `agent-ops:astra-advisor` explicitly. Do not silently reinterpret existing Sol packets or claim their older model mapping is the current Astra configuration.

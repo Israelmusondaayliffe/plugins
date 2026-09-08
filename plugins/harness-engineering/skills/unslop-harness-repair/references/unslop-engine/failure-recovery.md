@@ -92,7 +92,7 @@ Extended documentation for handling failure modes. Ensures graceful degradation 
 
 2. **Request sample:**
    ```
-   I can't detect a strong voice pattern in this content. 
+   I can't detect a strong voice pattern in this content.
    Could you share something you've written that represents your style?
    Or should I apply minimal polish and preserve this voice as-is?
    ```

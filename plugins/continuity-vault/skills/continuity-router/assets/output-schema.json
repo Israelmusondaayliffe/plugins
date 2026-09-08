@@ -17,9 +17,20 @@
     "verification"
   ],
   "enums": {
-    "route": ["handoff", "extract", "promote", "graph", "search", "audit", "digest"]
+    "route": [
+      "handoff",
+      "extract",
+      "promote",
+      "graph",
+      "search",
+      "audit",
+      "digest",
+      "compound"
+    ]
   },
-  "boolean_fields": ["destructive_action_authorized"],
+  "boolean_fields": [
+    "destructive_action_authorized"
+  ],
   "const_values": {
     "destructive_action_authorized": false
   }

@@ -31,6 +31,10 @@ FOLLOW_UP_RE = re.compile(
     r"make sure\b|verify\b|update\b|do this\b|finally\b)",
     re.I,
 )
+COST_RE = re.compile(r"\b(cost|expensive|usage|token|budget|wast(?:e|ed|ing)\s+(?:time|work|effort|tokens?)|low[- ]value\s+tests?)\b", re.I)
+MISSED_TOOL_RE = re.compile(r"\b(why (?:did you|haven't you|have you not) used|should have used|use (?:computer use|browser|chrome|image generation|figma|the tools))\b", re.I)
+REPAIR_RE = re.compile(r"\b(fix|repair|broken|did not render|didn't render|wrong again|redo)\b", re.I)
+USER_METHOD_RE = re.compile(r"\b(i would|this is how i|my method|the way i work|replicate (?:this|my) workflow)\b", re.I)
 SYNTHETIC_PROMPT_RE = re.compile(
     r"(?i)(bounded .*verification task|from automatically injected prior-task memory only|"
     r"reply with exactly .*nothing else|reply only with done|fresh codex task verification|"
@@ -215,15 +219,11 @@ def direct_user_text(event: dict[str, Any]) -> list[str]:
     return result
 
 
-def session_metadata(path: Path) -> tuple[dict[str, Any], list[str]]:
+def session_metadata(path: Path, adapter: str = "codex") -> tuple[dict[str, Any], list[str]]:
     metadata = {
         "session_id": path.stem,
         "thread_source": "unknown",
-        "source_class": (
-            "synthetic"
-            if any(part in {"fixture", "fixtures", "test", "tests", "tmp"} for part in path.parts)
-            else "user"
-        ),
+        "source_class": "synthetic" if any(part in {"fixture", "fixtures", "test", "tests", "tmp"} for part in path.parts) else "user",
         "timestamp": None,
     }
     errors: list[str] = []
@@ -231,8 +231,11 @@ def session_metadata(path: Path) -> tuple[dict[str, Any], list[str]]:
         lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
     except OSError as error:
         return metadata, [f"{path}: {error}"]
+    if adapter == "claude" and "subagents" in path.parts:
+        metadata["source_class"] = "subagent"
+        metadata["thread_source"] = "subagent"
     saw_session_meta = False
-    for number, raw in enumerate(lines[:80], start=1):
+    for number, raw in enumerate(lines if adapter == "claude" else lines[:80], start=1):
         if not raw.strip():
             continue
         try:
@@ -240,10 +243,13 @@ def session_metadata(path: Path) -> tuple[dict[str, Any], list[str]]:
         except json.JSONDecodeError as error:
             errors.append(f"{path}:{number}: {error}")
             continue
+        if adapter == "claude" and (event.get("isSidechain") is True or event.get("agentId")):
+            metadata["source_class"] = "subagent"
+            metadata["thread_source"] = "subagent"
         timestamp = parse_timestamp(event.get("timestamp"))
         if timestamp and metadata["timestamp"] is None:
             metadata["timestamp"] = timestamp
-        if event.get("type") == "session_meta" and isinstance(event.get("payload"), dict):
+        if adapter == "codex" and event.get("type") == "session_meta" and isinstance(event.get("payload"), dict):
             payload = event["payload"]
             metadata["session_id"] = str(payload.get("id") or payload.get("session_id") or metadata["session_id"])
             metadata["thread_source"] = str(payload.get("thread_source") or "unknown").lower()
@@ -318,6 +324,14 @@ def signal(
 
 
 def classify_user_signal(text: str, prior_user_messages: int) -> str:
+    if COST_RE.search(text):
+        return "cost-decision"
+    if MISSED_TOOL_RE.search(text):
+        return "missed-tool"
+    if USER_METHOD_RE.search(text):
+        return "user-method"
+    if REPAIR_RE.search(text) and prior_user_messages:
+        return "repeated-repair"
     if CORRECTION_RE.search(text):
         return "recurring-feedback"
     if prior_user_messages:
@@ -325,16 +339,12 @@ def classify_user_signal(text: str, prior_user_messages: int) -> str:
     return "repeated-task"
 
 
-def extract_signals(path: Path) -> tuple[list[dict[str, Any]], list[str]]:
+def extract_signals(path: Path, adapter: str = "codex") -> tuple[list[dict[str, Any]], list[str]]:
     signals: list[dict[str, Any]] = []
-    metadata, errors = session_metadata(path)
+    metadata, errors = session_metadata(path, adapter)
     evidence_metadata = {
         **metadata,
-        "timestamp": (
-            metadata["timestamp"].isoformat()
-            if isinstance(metadata.get("timestamp"), datetime)
-            else metadata.get("timestamp")
-        ),
+        "timestamp": metadata["timestamp"].isoformat() if isinstance(metadata.get("timestamp"), datetime) else metadata.get("timestamp"),
     }
     commands: list[tuple[int, str, str]] = []
     outputs: list[tuple[int, str]] = []
@@ -353,11 +363,7 @@ def extract_signals(path: Path) -> tuple[list[dict[str, Any]], list[str]]:
             continue
         for text in direct_user_text(event):
             kind = classify_user_signal(text, prior_user_messages)
-            details = {
-                **evidence_metadata,
-                "content_clue": bool(CONTENT_RE.search(text)),
-                "config_clue": bool(CONFIG_RE.search(text)),
-            }
+            details = {**evidence_metadata, "content_clue": bool(CONTENT_RE.search(text)), "config_clue": bool(CONFIG_RE.search(text))}
             signals.append(signal(kind, path, number, text, semantic_key(text), details))
             prior_user_messages += 1
         for obj in walk(event):
@@ -374,14 +380,7 @@ def extract_signals(path: Path) -> tuple[list[dict[str, Any]], list[str]]:
             if isinstance(exit_code, int) and exit_code != 0:
                 outputs.append((number, json.dumps(obj, sort_keys=True)))
     for number, name, command in commands:
-        signals.append(signal(
-            "executed-command",
-            path,
-            number,
-            command,
-            command,
-            {**evidence_metadata, "tool": name, "command": command},
-        ))
+        signals.append(signal("executed-command", path, number, command, command, {**evidence_metadata, "tool": name, "command": command}))
     for number, output in outputs:
         if re.search(r"(?i)(exit[_ ]?code\s*[:=]?\s*[1-9]|error|failed|unknown flag|command not found)", output):
             key = re.sub(r"\d+", "N", redact(output).lower())[:180]
@@ -431,6 +430,8 @@ def build_proposals(signals: list[dict[str, Any]], min_occurrences: int) -> list
                 candidates.append({**item, "kind": "repeated-task", "semantic_key": f"command {command}"})
     proposals: list[dict[str, Any]] = []
     for items in cluster_signals(candidates):
+        if any(item["metadata"].get("source_class") != "design-export" for item in items):
+            items = [item for item in items if item["metadata"].get("source_class") != "design-export"]
         sessions = {item["session_id"] for item in items}
         if len(sessions) < min_occurrences:
             continue
@@ -466,16 +467,105 @@ def build_proposals(signals: list[dict[str, Any]], min_occurrences: int) -> list
     return sorted(proposals, key=lambda item: (-item["occurrences"], item["proposal_id"]))
 
 
+DESIGN_EXPORT_KINDS = {
+    "feedback": "recurring-feedback",
+    "friction": "recurring-feedback",
+    "repair": "repeated-repair",
+    "missed-tool": "missed-tool",
+    "cost-decision": "cost-decision",
+    "user-method": "user-method",
+}
+
+
+def design_export_signals(payload: Any, since: datetime, until: datetime) -> list[dict[str, Any]]:
+    if not isinstance(payload, dict) or payload.get("schema_version") != "1.0":
+        raise CompilerError("Design export must be a schema_version 1.0 object")
+    records = payload.get("records")
+    if not isinstance(records, list):
+        raise CompilerError("Design export records must be a list")
+    signals: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for index, record in enumerate(records):
+        if not isinstance(record, dict) or record.get("source_type") != "design-neutral-export":
+            raise CompilerError(f"Design export record {index} has an invalid source type")
+        forbidden = {"exact_quote", "path", "source_path", "event_path"}.intersection(record)
+        if forbidden:
+            raise CompilerError(f"Design export record {index} contains forbidden raw fields: {', '.join(sorted(forbidden))}")
+        export_fingerprint = record.get("fingerprint")
+        if not isinstance(export_fingerprint, str) or not re.fullmatch(r"[0-9a-f]{64}", export_fingerprint):
+            raise CompilerError(f"Design export record {index} has an invalid fingerprint")
+        if export_fingerprint in seen:
+            continue
+        seen.add(export_fingerprint)
+        created = parse_timestamp(record.get("created_at"))
+        if created is None:
+            raise CompilerError(f"Design export record {index} has an invalid created_at")
+        if not since <= created <= until:
+            continue
+        project_id = record.get("project_id")
+        if not isinstance(project_id, str) or not re.fullmatch(r"project-[0-9a-f]{20}", project_id):
+            raise CompilerError(f"Design export record {index} has an invalid opaque project_id")
+        source_kind = record.get("signal_class")
+        if source_kind not in DESIGN_EXPORT_KINDS:
+            raise CompilerError(f"Design export record {index} has an invalid signal class")
+        summary = record.get("summary")
+        if not isinstance(summary, str) or not summary.strip():
+            raise CompilerError(f"Design export record {index} requires a summary")
+        evidence = " ".join(str(value) for value in (summary, record.get("impact"), record.get("method")) if value)
+        kind = DESIGN_EXPORT_KINDS[source_kind]
+        signals.append(signal(
+            kind,
+            Path("design-neutral-export"),
+            index + 1,
+            evidence,
+            semantic_key(evidence),
+            {
+                "session_id": project_id,
+                "source_class": "design-export",
+                "timestamp": created.isoformat(),
+                "design_export_fingerprint": export_fingerprint,
+            },
+        ))
+    return signals
+
+
+def cmd_ingest_design(args: argparse.Namespace) -> dict[str, Any]:
+    timezone_name = getattr(args, "timezone", None) or os.environ.get("TZ") or "UTC"
+    since = parse_boundary(args.since, timezone_name=timezone_name)
+    until = parse_boundary(args.until, end=True, timezone_name=timezone_name)
+    if since is None or until is None:
+        raise CompilerError("Design export intake requires --since and --until")
+    if since > until:
+        raise CompilerError("--since must be earlier than or equal to --until")
+    payload = load_json(Path(args.input).expanduser().resolve())
+    incoming = design_export_signals(payload, since, until)
+    root = root_path(args.state_root)
+    if args.stdout:
+        return {"mode": "stdout", "signals": len(incoming), "proposal_records": build_proposals(incoming, args.min_occurrences)}
+    registry_path = root / "signal-registry.json"
+    registry = load_json(registry_path, {"schema_version": 2, "signals": []})
+    merged: dict[tuple[str, str, int, str], dict[str, Any]] = {}
+    for item in list(registry.get("signals", [])) + incoming:
+        key = (item["kind"], item["session_id"], item["line"], item["fingerprint"])
+        merged[key] = item
+    all_signals = list(merged.values())
+    proposals = build_proposals(all_signals, args.min_occurrences)
+    atomic_json(registry_path, {"schema_version": 2, "updated_at": now(), "signal_count": len(all_signals), "signals": all_signals})
+    proposal_registry = merge_registry(root, proposals)
+    for proposal in proposals:
+        path = root / "proposals" / f"{proposal['proposal_id']}.json"
+        if path.exists():
+            existing = load_json(path)
+            proposal["status"] = existing.get("status", proposal["status"])
+        atomic_json(path, proposal)
+    return {"mode": "persistent", "signals": len(incoming), "proposals": len(proposals), "registry_entries": len(proposal_registry["proposals"])}
+
+
 def session_roots(args: argparse.Namespace) -> list[Path]:
     values = getattr(args, "sessions_root", None)
-    roots = (
-        [Path(item).expanduser().resolve() for item in values]
-        if values
-        else [(Path.home() / ".codex" / "sessions").resolve()]
-    )
-    if getattr(args, "include_claude", False):
-        roots.append((Path.home() / ".claude" / "projects").resolve())
-    return roots
+    if not values:
+        raise CompilerError("scan requires at least one explicit --sessions-root")
+    return [Path(item).expanduser().resolve() for item in values]
 
 
 def select_files(args: argparse.Namespace) -> tuple[list[tuple[Path, dict[str, Any]]], dict[str, int], list[str]]:
@@ -495,7 +585,7 @@ def select_files(args: argparse.Namespace) -> tuple[list[tuple[Path, dict[str, A
         if not source_root.exists():
             continue
         for path in source_root.rglob("*.jsonl"):
-            metadata, found_errors = session_metadata(path)
+            metadata, found_errors = session_metadata(path, getattr(args, "adapter", "codex"))
             errors.extend(found_errors)
             timestamp = metadata["timestamp"]
             if since and timestamp < since:
@@ -536,11 +626,7 @@ def cmd_scan(args: argparse.Namespace) -> dict[str, Any]:
     stdout_only = bool(getattr(args, "stdout", False))
     root = root_path(getattr(args, "state_root", None))
     cursor_path = root / "cursor.json"
-    cursor = (
-        {"schema_version": 2, "processed": {}}
-        if stdout_only
-        else load_json(cursor_path, {"schema_version": 2, "processed": {}})
-    )
+    cursor = {"schema_version": 2, "processed": {}} if stdout_only else load_json(cursor_path, {"schema_version": 2, "processed": {}})
     processed = cursor.setdefault("processed", {})
     selected: list[tuple[Path, str]] = []
     skipped = 0
@@ -554,7 +640,7 @@ def cmd_scan(args: argparse.Namespace) -> dict[str, Any]:
     signals: list[dict[str, Any]] = []
     errors = list(selection_errors)
     for path, digest in selected:
-        found, found_errors = extract_signals(path)
+        found, found_errors = extract_signals(path, getattr(args, "adapter", "codex"))
         signals.extend(found)
         errors.extend(found_errors)
         if not stdout_only:
@@ -737,22 +823,27 @@ def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     sub = result.add_subparsers(dest="command", required=True)
     scan = sub.add_parser("scan")
-    scan.add_argument("--sessions-root", action="append")
-    scan.add_argument("--include-claude", action="store_true")
+    scan.add_argument("--sessions-root", action="append", required=True)
+    scan.add_argument("--adapter", choices=["codex", "claude"], required=True)
     scan.add_argument("--limit", type=int, default=20)
     scan.add_argument("--min-occurrences", type=int, default=2)
     scan.add_argument("--since", help="inclusive ISO date or timestamp")
     scan.add_argument("--until", help="inclusive ISO date or timestamp")
-    scan.add_argument(
-        "--timezone",
-        default=os.environ.get("TZ") or "UTC",
-        help="IANA timezone for date-only boundaries",
-    )
+    scan.add_argument("--timezone", default=os.environ.get("TZ") or "UTC", help="IANA timezone for date-only boundaries")
     scan.add_argument("--source-class", action="append", choices=sorted(ALLOWED_SOURCE_CLASSES))
     scan.add_argument("--stdout", action="store_true", help="emit records without writing state or cursor files")
     scan.add_argument("--scan-id")
     scan.add_argument("--state-root")
     scan.set_defaults(func=cmd_scan)
+    design = sub.add_parser("ingest-design-export")
+    design.add_argument("--input", required=True)
+    design.add_argument("--since", required=True)
+    design.add_argument("--until", required=True)
+    design.add_argument("--timezone", default=os.environ.get("TZ") or "UTC")
+    design.add_argument("--min-occurrences", type=int, default=2)
+    design.add_argument("--state-root")
+    design.add_argument("--stdout", action="store_true")
+    design.set_defaults(func=cmd_ingest_design)
     report = sub.add_parser("report")
     report.add_argument("--state-root")
     report.set_defaults(func=cmd_report)
@@ -768,6 +859,9 @@ def parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = parser().parse_args()
+    if args.command == "scan" and (not args.since or not args.until):
+        print(json.dumps({"ok": False, "error": "scan requires an exact --since and --until window"}), file=sys.stderr)
+        return 1
     if getattr(args, "limit", 1) <= 0 or getattr(args, "min_occurrences", 1) <= 0:
         print(json.dumps({"ok": False, "error": "limit and min-occurrences must be positive"}), file=sys.stderr)
         return 1

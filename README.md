@@ -76,7 +76,7 @@ Cowork-supported plugin and install it from the catalog.
 | video-production-studio | End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video. |
 | web-product-studio | Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex. |
 | writing-quality | Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation. |
-The marketplace currently contains 29 plugins and 226 skills. The packages also
+The marketplace currently contains 29 plugins and 237 skills. The packages also
 include their supporting scripts, references, assets, and agent definitions.
 LoopKit includes local lifecycle hooks. The marketplace does not currently
 bundle MCP servers or app connectors.

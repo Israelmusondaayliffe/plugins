@@ -30,3 +30,7 @@ Before live use, ask for or verify the selected surface, current controls, costs
 ## Handoff
 
 Create a `PromptPacket` and attach it to the `ShotRecord`. Use `schemas/PromptPacket.schema.json`, `scripts/film_advisor.py`, and the adapter contract for deterministic validation. The packet remains a complete planning result even when its optional surface formatter is unavailable.
+
+## Prompt ownership
+
+For model-specific formatting, use the available Video Production prompt builder as an optional formatter. Keep the complete local model-neutral packet when it is absent. Do not introduce a second Seedance specialist with overlapping authority. A valid prompt or planning packet does not prove that a video was generated or inspected.

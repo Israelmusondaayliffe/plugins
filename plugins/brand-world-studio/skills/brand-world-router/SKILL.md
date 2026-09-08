@@ -46,3 +46,11 @@ The model selects the creative route. The validator enforces one allowed route, 
 - references/workflow.md defines routing and decision rules.
 - assets/output-template.json is the reusable output template.
 - assets/output-schema.json is the deterministic validation contract.
+
+## Midjourney routes
+
+- Prompt craft: load `../midjourney-prompt-architect/SKILL.md`.
+- V8.2 image editing: load `../midjourney-v8-2-edit-architect/SKILL.md`.
+- Reusing selected prompts or operating a queue: load `../midjourney-prompt-batching/SKILL.md`.
+
+Keep craft, editing and queue operations separate. Submissions, profile changes, speed changes, purchases and Trash need authority for the exact action. A selected prompt does not authorize a submission.

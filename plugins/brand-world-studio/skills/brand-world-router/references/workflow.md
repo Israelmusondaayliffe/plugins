@@ -13,3 +13,7 @@ Creative Production, Canva, Writing Quality, and Strategy Room are optional comp
 If positioning is missing and Strategy Room is absent, write a positioning-gap handoff to `<approved-output-root>/brand-world-studio/positioning-gap.md`. Include the known context, missing decisions, unsupported claims, evidence boundaries, and exact next decision. Ask for an approved output root when none exists, keep the complete handoff in the current task until approval, and stop without inventing strategy.
 
 When production companions are absent, keep the owned visual brief, prompt-pack, brandkit, and consistency-review path through the bundled skills.
+
+midjourney-prompt: create faithful Midjourney prompt variations with the prompt architect.
+midjourney-edit: architect V8.2 image edits with selected references.
+midjourney-batch: reuse selected Explore or Create prompts within the authorized queue scope.

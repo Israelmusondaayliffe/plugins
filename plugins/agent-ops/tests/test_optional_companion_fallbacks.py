@@ -20,7 +20,7 @@ class OptionalCompanionFallbackTests(unittest.TestCase):
             json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))["version"],
             json.loads((ROOT / "bundle-spec.json").read_text(encoding="utf-8"))["version"],
         }
-        self.assertEqual(versions, {"0.5.2"})
+        self.assertEqual(versions, {"0.6.0"})
 
     def test_every_named_sibling_is_optional(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -115,7 +115,7 @@ class OptionalCompanionFallbackTests(unittest.TestCase):
     def test_changed_prose_has_no_unicode_dash(self) -> None:
         files = (
             "README.md",
-            "agents/fa-reviewer.md",
+            "agents/fa-verifier.md",
             "skills/agent-ops-router/SKILL.md",
             "skills/agent-ops-router/references/routing.md",
             "skills/fable-advisor/SKILL.md",

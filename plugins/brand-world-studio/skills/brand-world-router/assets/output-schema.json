@@ -17,8 +17,10 @@
       "identity",
       "model-route",
       "prompt-pack",
-      "verify"
+      "verify",
+      "midjourney-prompt",
+      "midjourney-edit",
+      "midjourney-batch"
     ]
   }
 }
-

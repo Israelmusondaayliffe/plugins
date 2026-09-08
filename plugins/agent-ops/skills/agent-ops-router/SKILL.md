@@ -40,3 +40,7 @@ The model classifies the operating object. The validator enforces an allowed Age
 - references/routing.md defines boundaries.
 - assets/route-template.json provides the record.
 - The goal-runner, loop-goal-engineer, and loopy skill folders contain the local fallback contracts and tools.
+
+## Current explicit advisors
+
+A genuine request for Astra Advisor loads `../astra-advisor/SKILL.md` on Codex. A genuine request for Fable Advisor loads `../fable-advisor/SKILL.md` on Claude Code. Neither route activates from task size or complexity. The current advisor models are GPT-6 Astra and Fable 5.1 respectively; confirm host support before dispatch. The Sol route remains explicit legacy compatibility for existing packets.

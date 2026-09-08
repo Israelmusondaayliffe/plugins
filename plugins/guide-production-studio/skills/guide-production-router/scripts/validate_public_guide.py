@@ -11,7 +11,7 @@ from pathlib import Path
 
 PATTERNS = {
     "local user path": re.compile(r"/Users/[^\s)]+"),
-    "codex internal path": re.compile(r"(?:\.codex/|CODEX-OUTPUTS/|plugin://)", re.IGNORECASE),
+    "host internal path": re.compile(r"(?:\.claude/|\.codex/|CLAUDE-OUTPUTS/|CODEX-OUTPUTS/|plugin://)", re.IGNORECASE),
     "internal source ledger": re.compile(
         r"\b(?:claim ledger|source ledger|private research notes)\b",
         re.IGNORECASE,

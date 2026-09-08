@@ -24,8 +24,8 @@ class BundleTests(unittest.TestCase):
     def test_manifest_declares_exactly_eleven_skills(self):
         manifest = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
         claude = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
-        self.assertEqual(manifest["version"], "0.2.0")
-        self.assertEqual(claude["version"], "0.2.0")
+        self.assertEqual(manifest["version"], "0.2.1")
+        self.assertEqual(claude["version"], "0.2.1")
         self.assertEqual(manifest["description"], claude["description"])
         self.assertEqual(manifest["author"]["name"], "Community Maintainers")
         self.assertEqual(claude["author"]["name"], "Community Maintainers")

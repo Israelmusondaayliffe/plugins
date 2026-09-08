@@ -1,6 +1,6 @@
 ---
 name: model-prompt-router
-description: Routes production prompt work across generation, migration, diagnosis, benchmark design, and structured working-mode guidance for GPT-5.6, GPT-5.4, Fable 5, and related model families. Use when the requested model, prompt surface, effort, tool policy, or migration path is unclear. Requires current-source verification for unstable model behavior and validates one primary route before handoff.
+description: Route production prompting, migration, diagnosis and benchmark design for GPT 6 Astra, Fable 5.1 and older model compatibility. Use when the model, prompt surface, effort or operation is unclear. Verify current model guidance before handoff.
 ---
 
 # Model Prompt Router
@@ -34,3 +34,7 @@ The model interprets the prompt job and chooses the route. The validator enforce
 - references/workflow.md defines routing and decision rules.
 - assets/output-template.json is the reusable output template.
 - assets/output-schema.json is the deterministic validation contract.
+
+## Current model routes
+
+For GPT-6 Astra, load `../gpt-6-astra-production-prompter/SKILL.md`. For Claude Fable 5.1, load `../fable-5-1-production-prompter/SKILL.md`. Keep GPT-5.6, GPT-5.4 and Fable 5 routes for explicitly selected compatibility work. Confirm runtime availability in the selected host; do not silently substitute a different model.

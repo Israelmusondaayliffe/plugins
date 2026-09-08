@@ -1,0 +1,105 @@
+{
+  "source_record": {
+    "session": "Project working session",
+    "date": "2026-08-25",
+    "purpose": "Choose the next reversible test and preserve the handoff.",
+    "participants_or_roles": [
+      "project owner",
+      "facilitator"
+    ],
+    "source_locations": [
+      "notes/project-working-session.md"
+    ],
+    "source_completeness": "complete",
+    "recorded_audience": [
+      "private project team"
+    ],
+    "privacy_or_attribution_limits": "No public reuse or participant messaging was authorized."
+  },
+  "decisions": [
+    {
+      "id": "decision-1",
+      "statement": "Run the reversible prototype before choosing a permanent workflow.",
+      "evidence": "The notes record this as the agreed next test.",
+      "source_location": "notes/project-working-session.md",
+      "reuse_permission": "allowed",
+      "allowed_audience": [
+        "private project team"
+      ],
+      "attribution_rule": "Attribute to the session record.",
+      "deidentification_required": false
+    }
+  ],
+  "follow_ups": [
+    {
+      "id": "follow-up-1",
+      "action": "Prepare the prototype brief.",
+      "evidence": "The action appears in the follow-up section of the notes.",
+      "source_location": "notes/project-working-session.md",
+      "owner_status": "unresolved",
+      "owner": null,
+      "timing_status": "unresolved",
+      "timing": null,
+      "reuse_permission": "restricted",
+      "allowed_audience": [
+        "private project team"
+      ],
+      "attribution_rule": "Do not assign an owner until the source is updated.",
+      "deidentification_required": false
+    }
+  ],
+  "durable_knowledge": [
+    {
+      "id": "knowledge-1",
+      "material": "A reversible prototype is the preferred evidence step before a permanent workflow change.",
+      "evidence": "The method is stated in the session rationale.",
+      "source_location": "notes/project-working-session.md",
+      "reuse_permission": "allowed",
+      "allowed_audience": [
+        "private project team"
+      ],
+      "attribution_rule": "Link to the session record.",
+      "deidentification_required": false
+    }
+  ],
+  "recommended_outputs": [
+    {
+      "id": "candidate-1",
+      "output_type": "durable handoff",
+      "value": "Lets a fresh task continue from the agreed test without widening authority.",
+      "evidence_strength": "strong",
+      "effort": "low",
+      "sensitivity": "internal",
+      "source_item_ids": [
+        "decision-1",
+        "follow-up-1",
+        "knowledge-1"
+      ],
+      "intended_audience": "private project team",
+      "user_selected": true,
+      "permission_check": "allowed"
+    }
+  ],
+  "derivative_outputs": [
+    {
+      "id": "output-1",
+      "recommendation_id": "candidate-1",
+      "source_item_ids": [
+        "decision-1",
+        "follow-up-1",
+        "knowledge-1"
+      ],
+      "intended_audience": "private project team",
+      "audience_within_recorded_permission": true,
+      "permission_check": "allowed",
+      "location": "CODEX-OUTPUTS/2026-08-25/project_task-handoff_v1.md",
+      "newly_proposed_material": "None.",
+      "attribution_applied": "Links each item to the session record.",
+      "deidentification_applied": false,
+      "external_action": "none",
+      "external_action_authorized": false
+    }
+  ],
+  "unresolved_gaps": [],
+  "handoffs": {}
+}

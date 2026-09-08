@@ -9,6 +9,10 @@ Tier: 2 structured writing skill.
 
 Use this skill when the output needs to help a reader decide, act, align, approve, review, or execute.
 
+## Operation boundary
+
+Carry the requested operation through every step: draft, revise, diagnose, or validate. In diagnose or validation mode, return findings without rewriting the source, even when an agent or template includes a rewrite section. Templates are coverage checks, not mandatory output shapes. Use only the sections that serve the reader.
+
 ## Router Logic
 
 - New business document: load `agents/agent-intent-architect.md`.
@@ -30,4 +34,4 @@ Use this skill when the output needs to help a reader decide, act, align, approv
 3. Organize around decisions, risks, next actions, and evidence.
 4. Remove throat-clearing, generic context, and decorative framing.
 5. Make every section earn its place.
-6. End with the concrete next step or decision point.
+6. Include a next step or decision point only when the document’s purpose calls for one. Do not invent urgency, unsupported outcomes or a call to action.

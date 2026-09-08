@@ -1,6 +1,6 @@
 {
   "plugin": "brand-world-studio",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "skills": [
     "brand-brief-builder",
     "brand-consistency-verifier",
@@ -8,6 +8,9 @@
     "brand-world-router",
     "brandkit",
     "gpt-image-2-unified",
+    "midjourney-prompt-architect",
+    "midjourney-prompt-batching",
+    "midjourney-v8-2-edit-architect",
     "nano-banana-unified"
   ],
   "coordinator_skills": [
@@ -17,10 +20,26 @@
     "brand-consistency-verifier"
   ],
   "companions": [
-    {"name": "creative-production", "required": false, "purpose": "Broader creative exploration workflows when installed"},
-    {"name": "canva", "required": false, "purpose": "Canva asset production and delivery"},
-    {"name": "writing-quality", "required": false, "purpose": "Final customer-facing copy validation"},
-    {"name": "strategy-room", "required": false, "purpose": "Unresolved positioning decisions"}
+    {
+      "name": "creative-production",
+      "required": false,
+      "purpose": "Broader creative exploration workflows when installed"
+    },
+    {
+      "name": "canva",
+      "required": false,
+      "purpose": "Canva asset production and delivery"
+    },
+    {
+      "name": "writing-quality",
+      "required": false,
+      "purpose": "Final customer-facing copy validation"
+    },
+    {
+      "name": "strategy-room",
+      "required": false,
+      "purpose": "Unresolved positioning decisions"
+    }
   ],
   "guardrails": [
     "Positioning and commercial strategy must be supplied or settled upstream.",

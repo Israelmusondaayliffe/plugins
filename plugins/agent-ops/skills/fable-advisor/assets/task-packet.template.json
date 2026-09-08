@@ -1,6 +1,6 @@
 {
  "packet_type": "FableAdvisorTaskPacket",
- "protocol_version": 1,
+ "protocol_version": 3,
  "run_id": "REPLACE-run-id",
  "task_id": "T1",
  "run_manifest_path": ".fable-advisor/runs/REPLACE-run-id/run-manifest.json",
@@ -20,9 +20,10 @@
   "task_id": "T1",
   "classification": "complex",
   "role": "worker",
-  "agent_definition": "fa-worker-complex",
-  "model": "claude-opus-4-8",
-  "effort": "xhigh",
+  "runtime": "claude-code",
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "write_enabled": true,
   "dependencies": [],
   "allowed_write_paths": [
    ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
@@ -45,16 +46,8 @@
     "description": "REPLACE"
    }
   ],
-  "tools": [
-   "Read",
-   "Write",
-   "Edit",
-   "Glob",
-   "Grep",
-   "Bash"
-  ],
   "evidence_commands": [
-   "REPLACE, for example: python3 -m pytest tests/"
+   "REPLACE, for example: python3 -m unittest discover -s tests"
   ],
   "stop_conditions": [
    "scope violation",
@@ -69,11 +62,23 @@
  },
  "worker": {
   "role": "worker",
-  "agent_definition": "fa-worker-complex",
-  "model": "claude-opus-4-8",
-  "effort": "xhigh",
+  "runtime": "claude-code",
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "write_enabled": true,
   "fresh_instance": true,
-  "mechanism": "agent_tool"
+  "mechanism": "fa_worker"
+ },
+ "dispatch": {
+  "execution_mode": "background",
+  "monitoring": {
+   "cadence_seconds": 300,
+   "status_scope": "agent_id_only",
+   "result_collection": "terminal_only"
+  },
+  "attempt_policy": {
+   "max_fresh_retries": 1
+  }
  },
  "input_paths": [
   {
@@ -93,14 +98,6 @@
    "description": "REPLACE"
   }
  ],
- "tools": [
-  "Read",
-  "Write",
-  "Edit",
-  "Glob",
-  "Grep",
-  "Bash"
- ],
  "scope": {
   "allowed_write_paths": [
    ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
@@ -110,7 +107,7 @@
   ]
  },
  "evidence_commands": [
-  "REPLACE, for example: python3 -m pytest tests/"
+  "REPLACE, for example: python3 -m unittest discover -s tests"
  ],
  "stop_conditions": [
   "scope violation",

@@ -16,12 +16,12 @@ Protect the factual boundary of a draft. Keep evidence status visible while allo
 3. Classify each claim using references/classification.md.
 4. Record findings with assets/claim-ledger-template.json.
 5. Run scripts/validate_claim_ledger.py.
-6. Revise unsupported claims by removing, qualifying, sourcing, or explicitly marking them unverified.
+6. In diagnose or validation mode, report support gaps and suggested remedies without rewriting. In an authorized revision, remove, qualify, source, or explicitly mark unsupported claims unverified.
 7. For current, medical, legal, financial, security, or platform-behavior claims, verify through the source of truth before treating them as supported.
 
 ## Error Handling
 
-- If no evidence set is supplied, label material factual claims unsupported or uncertain rather than guessing.
+- If no evidence set is supplied, label material factual claims unsupported or uncertain rather than guessing. Missing support in the supplied material is not proof of falsehood or fabrication.
 - If a source only partially supports a claim, narrow the claim to the supported scope.
 - If live verification is required but unavailable, state the boundary and avoid a confirmed-current claim.
 - If the ledger fails validation, fix missing claim text, status, or remedy before delivery.

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Candidate Matcher And Brief Builder"
+  short_description: "Qualifies candidates and builds bounded handoffs"
+  default_prompt: "Use $candidate-matcher-and-brief-builder to qualify these candidates for the outcome and draft the right handoff."
+
+policy:
+  allow_implicit_invocation: false

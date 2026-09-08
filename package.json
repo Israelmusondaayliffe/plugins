@@ -10,7 +10,7 @@
     "metadata": "node scripts/sync-public-metadata.mjs",
     "release-matrix": "node scripts/verify-release-matrix.mjs",
     "copy-truth": "node scripts/verify-public-copy.mjs",
-    "safety": "node scripts/verify-public-safety.mjs",
+    "safety": "node scripts/verify-public-safety.mjs && python3 scripts/verify-public-boundary.py",
     "assets": "node scripts/verify-third-party-assets.mjs",
     "social-preview": "node scripts/generate-social-preview.mjs",
     "predev": "npm run catalog",

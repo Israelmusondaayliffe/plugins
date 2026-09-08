@@ -22,3 +22,7 @@ Authority order is the active instruction chain (the `CLAUDE.md` chain on Claude
 - Keep Notion and Google Drive optional and source-owned. Do not treat a local fallback as permission to read or copy either source.
 - A direct digest may use exact local source excerpts without a writing companion. Bind every claim to a source path and keep gaps explicit.
 - Never promote, overwrite, delete, or resolve conflicting material without separate authority.
+
+| `compound` | A completed meeting, interview, workshop, or working session needs selected outputs | `session-compounder` | Item-level source, permission, audience and selection |
+
+Decision Wayfinder owns decision maps. Practice Compiler owns repeated-practice mining. Continuity Vault preserves handoffs and source authority without starting either workflow implicitly.

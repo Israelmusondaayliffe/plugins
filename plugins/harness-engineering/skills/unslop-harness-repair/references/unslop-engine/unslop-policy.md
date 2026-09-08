@@ -69,7 +69,7 @@ Treat abstract metaphor nouns such as substrate, wedge, vector, locus, vantage, 
 - Remove decorative emoji unless requested.
 - Avoid bold-label-and-colon lists when prose reads better.
 - Use straight quotation marks unless exact source typography must be preserved.
-- Use no em dashes in authored prose under Israel's global rule.
+- Follow the current user’s punctuation preferences in editable prose; preserve exact source material.
 
 ## Final gate
 
@@ -81,3 +81,5 @@ Pass only when:
 - no personality, experience, identity, facts, or examples were invented
 - protected exact material is unchanged
 - no obvious AI pattern remains without a documented reason
+
+Never infer authorship from a word, pattern, or numerical score. These checks assess prose, not the identity or tools of its author.

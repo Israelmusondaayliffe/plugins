@@ -1,6 +1,6 @@
 {
   "plugin": "agent-ops",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "skills": [
     "agent-builder",
     "agent-ops-router",
@@ -10,12 +10,14 @@
     "goal-runner",
     "loop-goal-engineer",
     "loopy",
-    "fable-advisor"
+    "fable-advisor",
+    "astra-advisor"
   ],
   "coordinator_skills": [
     "agent-ops-router",
     "agent-system-audit",
-    "sol-advisor"
+    "sol-advisor",
+    "astra-advisor"
   ],
   "primary_skills": [
     "agent-builder",
@@ -59,13 +61,16 @@
       "expected_skill": "cowork-handoff",
       "evidence_file": "skills/cowork-handoff/SKILL.md",
       "evidence_contains": "The receiving harness is an agent"
+    },
+    {
+      "prompt": "Use Astra Advisor for this bounded Codex run.",
+      "expected_skill": "astra-advisor",
+      "evidence_file": "skills/agent-ops-router/references/routing.md",
+      "evidence_contains": "astra-advisor-explicit: route only"
     }
   ],
   "agents": [
-    "fa-worker-light",
-    "fa-worker-complex",
-    "fa-worker-complex-opus5",
-    "fa-worker-complex-46",
-    "fa-reviewer"
+    "fa-worker",
+    "fa-verifier"
   ]
 }

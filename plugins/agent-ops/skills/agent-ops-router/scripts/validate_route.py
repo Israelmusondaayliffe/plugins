@@ -5,7 +5,7 @@ import json
 import sys
 from pathlib import Path
 
-ROUTES = {"agent-design", "audit", "loopkit-handoff"}
+ROUTES = {"agent-design", "audit", "loopkit-handoff", "astra-advisor-explicit", "fable-advisor-explicit"}
 
 
 def main() -> int:
@@ -18,6 +18,8 @@ def main() -> int:
         print(f"invalid input: {exc}", file=sys.stderr)
         return 2
     errors = []
+    if data.get("route") in {"astra-advisor-explicit", "fable-advisor-explicit"} and data.get("activation") != "explicit-only":
+        errors.append("advisor routes require explicit-only activation")
     if data.get("route") not in ROUTES:
         errors.append("route is invalid")
     for field in ("outcome", "evidence_surface", "stop_condition", "rationale"):

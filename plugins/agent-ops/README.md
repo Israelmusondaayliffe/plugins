@@ -5,6 +5,9 @@ Agent Ops packages reusable agent design, agent-system routing, and agent-system
 ## Owned skills
 
 - agent-ops-router
+- astra-advisor (explicit-only; GPT 6 Astra parent, workers and review)
+- fable-advisor (explicit-only; Fable 5.1 parent, native workers and review, with an explicitly selected Codex worker option)
+- sol-advisor (legacy public packet compatibility)
 - agent-system-audit
 - agent-builder
 - goal-runner (explicit-only historical compatibility shim with an optional LoopKit handoff)
@@ -32,3 +35,7 @@ Agent Ops does not require a sibling plugin for reusable agent design, audit, or
 ## Verification
 
 Run scripts/verify_bundle.py and validate each skill. Scenario tests must cover agent design, audit, the optional LoopKit handoff, and the local fallback.
+
+## Advisor isolation
+
+Start Astra Advisor or Fable Advisor only when explicitly requested. Fable Advisor and Gauntlet are mutually exclusive. Native Fable workers use `fa-worker`; independent reviews use `fa-verifier`. Keep Codex lifecycle tooling and Claude agent files separate. Model configuration and protocol tests do not prove runtime availability on another installation.

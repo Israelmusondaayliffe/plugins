@@ -1,6 +1,6 @@
 {
   "name": "practice-compiler",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
   "author": {
     "name": "Community Maintainers"

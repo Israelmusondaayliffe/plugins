@@ -1,6 +1,6 @@
 {
  "packet_type": "FableAdvisorReviewPacket",
- "protocol_version": 1,
+ "protocol_version": 3,
  "run_id": "REPLACE-run-id",
  "review_round": 1,
  "verdict": "accepted",
@@ -38,16 +38,11 @@
  ],
  "findings": [],
  "reviewer_attestation": {
-  "agent_definition": "fa-reviewer",
-  "model": "claude-fable-5",
-  "effort": "xhigh",
-  "runtime_id": "REPLACE agent id",
-  "fresh_instance": true,
-  "spawn_record": {
-   "path": ".fable-advisor/runs/REPLACE-run-id/evidence/review-1.spawn.json",
-   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
-  },
-  "prior_review_runtime_ids": []
+  "reviewer": "parent",
+  "model": "claude-fable-5-1",
+  "effort": "high",
+  "session_id": "REPLACE parent session id",
+  "verification_task_ids": []
  },
  "uncertainties": [],
  "next_action": "REPLACE"

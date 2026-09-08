@@ -26,6 +26,17 @@ APPROVED_INSTRUCTIONAL_PATHS = [
 
 
 class CoordinatorOutputTests(unittest.TestCase):
+    def test_midjourney_routes_validate(self):
+        skill = ROOT / "skills/brand-world-router"
+        data = json.loads((skill / "assets/output-template.json").read_text())
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "output.json"
+            for route in ["midjourney-prompt", "midjourney-edit", "midjourney-batch"]:
+                data["route"] = route
+                path.write_text(json.dumps(data))
+                result = subprocess.run(["python3", str(skill / "scripts/validate_output.py"), str(path)], capture_output=True, text=True)
+                self.assertEqual(result.returncode, 0, result.stdout)
+
     def test_templates_pass(self) -> None:
         for name in SPEC["coordinator_skills"]:
             skill = ROOT / "skills" / name
@@ -97,7 +108,7 @@ class CoordinatorOutputTests(unittest.TestCase):
         self.assertEqual(claude["name"], codex["name"])
         self.assertEqual(claude["version"], codex["version"])
         self.assertEqual(codex["version"], SPEC["version"])
-        self.assertEqual(codex["version"], "0.2.2")
+        self.assertEqual(codex["version"], "0.3.0")
 
 
 if __name__ == "__main__":

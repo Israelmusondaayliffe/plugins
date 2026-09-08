@@ -859,7 +859,7 @@ export const plugins = [
     "shortDescription": "Route and verify serious writing work.",
     "longDescription": "Writing Quality separates intent architecture, rewriting, detect-only review, claim support, and final prose validation so each request receives the smallest sufficient intervention.",
     "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -873,8 +873,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
     "skills": [
       {
         "name": "business-writing-intent-enforcer",
@@ -1021,7 +1021,7 @@ export const plugins = [
     "shortDescription": "Route, inventory, and govern capabilities on Claude Code, Cowork, or Codex.",
     "longDescription": "Capability Operator selects one primary plugin or skill route, inventories capability layers, finds overlap and drift, manages lifecycle decisions, builds validated skills, and proves clean-task discovery after installation on Claude Code, Claude Cowork, and Codex.",
     "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1035,8 +1035,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
         "name": "capability-inventory",
@@ -1404,7 +1404,7 @@ export const plugins = [
     "shortDescription": "Design and audit bounded agent systems on Claude Code, Cowork, or Codex.",
     "longDescription": "Agent Ops designs reusable agents, routes agent-system work, and audits authority, tools, evidence, stops, and recovery on Claude Code, Claude Cowork, and Codex. Host-aware: subagents are agents/*.md files dispatched via the Agent tool on Claude Code and Cowork, and named config.toml blocks driven by spawn_agent lifecycle verbs on Codex. LoopKit is an optional companion for generic Goals and loops; Agent Ops keeps a bundled local fallback when it is absent.",
     "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-    "version": "0.5.2",
+    "version": "0.6.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [],
@@ -1418,8 +1418,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised.  Astra Advisor execution requires Codex desktop task-creation tools and explicit separate-task authority. Fable Advisor uses native Claude agents, with an explicitly selected Codex transport option. Models must be available on the actual host.",
     "skills": [
       {
         "name": "agent-builder",
@@ -1434,12 +1434,16 @@ export const plugins = [
         "description": "Audits an agent, Goal, loop, or autonomous workflow for authority, stop conditions, evidence, tool contracts, cost controls, recovery, and durable state. Use for read-only reviews before launch, after failures, or before increasing autonomy. Produces a validated finding ledger with severity and evidence, without executing or repairing the system unless separately authorized."
       },
       {
+        "name": "astra-advisor",
+        "description": "Use only after the user explicitly says \"use astra-advisor\" or gives an equivalent imperative such as \"run this as a multi-thread session.\" Runs a fixed, bounded Astra Advisor topology with exact model roles, packet validation, evidence checks, and no implicit activation."
+      },
+      {
         "name": "cowork-handoff",
         "description": "Package a task as a self-contained prompt that Claude Cowork, or another agentic harness, runs on its own. Use when the user says give me the prompt for Cowork, wants work handed to Cowork or a second harness instead of executed here, or asks for a copy-paste brief another agent can complete without this session's context. Produces the handoff prompt, not the work itself."
       },
       {
         "name": "fable-advisor",
-        "description": "Use only after the user explicitly says \"Use Fable Advisor\" or gives an equivalent imperative such as \"run this as a Fable Advisor multi-session run.\" Adaptive parent-orchestrated worker fleet with packet validation, exact-model workers, fresh Fable 5 review, and no implicit activation."
+        "description": "Use only after the user explicitly says \"Use Fable Advisor\" or gives an equivalent imperative. Adaptive parent-orchestrated workflow on Claude Code where the activating Fable 5.1 session at high effort plans, dispatches, integrates, and reviews; native Fable 5.1 subagents execute bounded packets by default, with Codex workers through the official Codex plugin as a per-task option. Packet validation, model attestation, parent final review, and no implicit activation."
       },
       {
         "name": "goal-runner",
@@ -1459,11 +1463,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 9,
-      "assets": 17,
-      "references": 19,
-      "scripts": 11,
-      "files": 85
+      "skills": 10,
+      "assets": 23,
+      "references": 22,
+      "scripts": 12,
+      "files": 95
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1589,7 +1593,7 @@ export const plugins = [
     "shortDescription": "Plan, produce, and verify video assets.",
     "longDescription": "Video Production Studio routes briefs across explainers, launches, music, slideshows, website and PR stories, captions, overlays, prompts, HyperFrames implementation, and final delivery checks.",
     "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "category": "Media",
     "license": null,
     "capabilities": [],
@@ -1603,8 +1607,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
     "skills": [
       {
         "name": "embedded-captions",
@@ -1672,7 +1676,7 @@ export const plugins = [
       "assets": 158,
       "references": 208,
       "scripts": 91,
-      "files": 563
+      "files": 564
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -1803,7 +1807,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -1817,8 +1821,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
         "name": "acceptance-flow",
@@ -2014,7 +2018,7 @@ export const plugins = [
     "shortDescription": "Route, build, migrate, and test model prompts on Claude Code, Cowork, and Codex.",
     "longDescription": "Model Prompt Lab selects a verified model and prompt operation before loading focused production guidance on Claude Code, Claude Cowork, or Codex, then supports migration audits and benchmark design without inventing unstable platform behavior.",
     "description": "Verified model routing, production prompt architecture, migration audits, and benchmark design on Claude Code, Claude Cowork, and Codex.",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -2028,9 +2032,13 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
     "skills": [
+      {
+        "name": "fable-5-1-production-prompter",
+        "description": "Prepare, migrate and diagnose Claude Fable 5.1 prompts using current owner documentation, the task’s evidence and a bounded validation. Use when Fable 5.1 is the selected model; keep older Fable 5 guidance as explicit compatibility."
+      },
       {
         "name": "fable-5-production-prompter",
         "description": "Generate, migrate, diagnose, and harden production prompts for Claude Fable 5 and Mythos 5 (claude-fable-5). Four routed modes. GENERATE builds new Fable 5 prompts with effort-aware defaults plus anti-overplanning, scope-restraint, and brevity guards. MIGRATE converts Opus 4.8/4.7/4.6 prompts and over-prescriptive skills via subtract-first depruning and reasoning-echo removal. DIAGNOSE fixes behavior drift (overplanning, fabricated progress, early stopping, context-budget anxiety, unrequested actions, refusal fallbacks, unreadable summaries). LONG-RUN builds multi-hour and multi-day autonomous harnesses with memory systems, verifier subagents, send_to_user tools, and parallel subagent orchestration. Covers effort levels, adaptive-thinking-only API, refusal stop reason with Opus 4.8 fallback, and dual-use safety classifiers. Triggers on Fable 5 prompt, Mythos 5, claude-fable-5, migrate to Fable 5, Claude 5 prompt, long-running agent harness, or any Fable 5 prompt engineering request."
@@ -2048,8 +2056,12 @@ export const plugins = [
         "description": "Generate production-ready GPT-5.6 prompts (gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna), migrate prompts from GPT-5.5/5.4/5.3-Codex/4.1/o3, or troubleshoot GPT-5.6 prompt issues. Use when users request GPT-5.6 prompts, ChatGPT prompts, GPT Builder instructions, API system prompts, Responses API configs, or need help with agentic workflows, coding agents, web research, extraction, long-context, computer use, or frontend design. Also triggers on migrate to gpt-5.6, port to 5.6, openai-docs migrate, prompt debugging, responses too brief, unnecessary approval requests, safeguard refusals on legit work, cache cost surprises, scope drift, tool routing failures, formatting drift. Covers lean prompting, Programmatic Tool Calling, pro mode, multi-agent beta, max reasoning effort, persisted reasoning, explicit prompt caching, autonomy and approval boundaries, verbosity contracts, retrieval budgets, citation gating, phase parameter, 1M context, compaction, frontend design."
       },
       {
+        "name": "gpt-6-astra-production-prompter",
+        "description": "Prepare, migrate, and diagnose prompts for GPT-6 Astra using explicitly accepted field evidence before or after local model availability. Use for Astra prompts, Astra migration, Astra prompt audit, overcomplicated Astra interfaces, landing-page bias, extra controls or labels, Astra writing, Astra computer use, or effort and cost restraint. Treat host support, exact model strings, API parameters, pricing, and rollout status as unverified until the owning surface proves them."
+      },
+      {
         "name": "model-prompt-router",
-        "description": "Routes production prompt work across generation, migration, diagnosis, benchmark design, and structured working-mode guidance for GPT-5.6, GPT-5.4, Fable 5, and related model families. Use when the requested model, prompt surface, effort, tool policy, or migration path is unclear. Requires current-source verification for unstable model behavior and validates one primary route before handoff."
+        "description": "Route production prompting, migration, diagnosis and benchmark design for GPT 6 Astra, Fable 5.1 and older model compatibility. Use when the model, prompt surface, effort or operation is unclear. Verify current model guidance before handoff."
       },
       {
         "name": "prompt-benchmark-designer",
@@ -2061,11 +2073,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 7,
-      "assets": 9,
-      "references": 34,
-      "scripts": 8,
-      "files": 82
+      "skills": 9,
+      "assets": 10,
+      "references": 36,
+      "scripts": 9,
+      "files": 93
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2196,7 +2208,7 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.2.3",
+    "version": "0.3.0",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2210,8 +2222,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
     "skills": [
       {
         "name": "assumption-challenger",
@@ -2220,6 +2232,14 @@ export const plugins = [
       {
         "name": "assumption-register",
         "description": "Creates and maintains a structured register of assumptions, evidence, confidence, reversibility, owners, test plans, and kill conditions. Use when a strategy, product plan, forecast, or decision depends on beliefs that may change. Validates unique assumption records and prevents unsupported certainty from disappearing into prose."
+      },
+      {
+        "name": "candidate-matcher-and-brief-builder",
+        "description": "Match a bounded outcome to a qualified person, agent, tool, product, or service, compare candidates against common must-haves, and create a ready-to-use handoff brief when a candidate qualifies. Use when the decision is who or what should do the work. Do not use for plugin portfolio governance, Capability Operator routing, broader strategy, or inferring private traits, price, or availability."
+      },
+      {
+        "name": "curiosity-compass",
+        "description": "Rank a messy set of ideas, questions, or opportunities into zero to three worthwhile directions using visible criteria, uncertainty, a viability floor, and a cheap first test. Use when the user does not yet know what deserves attention. Do not use for a settled choice with a mature evidence record, ordinary project planning, or execution."
       },
       {
         "name": "decision-synthesizer",
@@ -2238,16 +2258,20 @@ export const plugins = [
         "description": "Use when the user asks for options, angles, names, concepts, prompts, creative directions, strategy paths, or broad variation. Produces meaningfully different directions instead of minor wording changes, then helps choose the strongest path."
       },
       {
+        "name": "proof-to-product-mapper",
+        "description": "Assess proven or promising work, choose an evidence-appropriate reusable form, and create a productization brief plus the cheapest next validation. Use for methods, services, guides, templates, workshops, internal systems, skills, plugins, or paid products. Do not call an idea proven or build, publish, sell, or install the product by default."
+      },
+      {
         "name": "strategy-room-router",
         "description": "Routes pre-commitment decision work to rigorous interview, uncertain-effort wayfinding, assumption challenge, broad option generation, decision synthesis, or assumption tracking. Use when a product, business, creative, technical, or personal choice needs pressure-testing before resources are committed, or when a large uncertain effort needs its next blocking decision mapped. Enforces a decision-only boundary and produces a self-contained handoff when no optional execution companion is available."
       }
     ],
     "counts": {
-      "skills": 7,
-      "assets": 13,
+      "skills": 10,
+      "assets": 16,
       "references": 9,
       "scripts": 7,
-      "files": 55
+      "files": 64
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2372,7 +2396,7 @@ export const plugins = [
     "shortDescription": "Turn approved positioning into a coherent visual world.",
     "longDescription": "Brand World Studio routes approved strategy into a visual brief, identity system, image-model choice, production prompt pack, and consistency review without inventing upstream positioning.",
     "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "category": "Design",
     "license": null,
     "capabilities": [],
@@ -2386,8 +2410,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
     "skills": [
       {
         "name": "brand-brief-builder",
@@ -2414,16 +2438,28 @@ export const plugins = [
         "description": "Prompt architect for GPT Image 2. Generates exactly 7 production-ready Thinking-mode prompts across 11 modes: CREATE (text-to-image), EDIT, SHOW-ME (angle variations), COMPOSE (multi-reference), SEARCH, SERIES (consistent multi-output), TYPOGRAPHY (multilingual/non-Latin), INFOGRAPHIC, EDITORIAL, NARRATIVE (manga, comics, storyboards), MULTI-OUTPUT (multi-page systems sharing one visual DNA). Three formats with auto-detection: natural-language brief (default), JSON envelope with forbidden array (anti-drift, surgical edits, photoreal preservation), system prompt operating contract (single-submission batch generation, up to 8 coordinated outputs sharing one visual DNA). Every format encodes PSGV: Plan, Search or SKIP, Generate, Verify. Variation-axis detection freezes style when angle is requested. Triggers: gpt image 2, openai image prompt, 7 prompts gpt image, brand kit, design bible, json prompt, forbidden array, system prompt for image gen, batch image generation, or any GPT Image 2 prompting request."
       },
       {
+        "name": "midjourney-prompt-architect",
+        "description": "Build faithful Midjourney prompts from visual briefs, rough prompts, or supplied references. Use to create, rewrite, optimize, or vary prompts for photography, illustration, products, architecture, posters, album covers, editorial images, or cinematic scenes. Preserve explicit constraints and reference strings, use verified parameters, and never render images."
+      },
+      {
+        "name": "midjourney-prompt-batching",
+        "description": "Reuse selected Midjourney Explore or Create prompts as a controlled web batch, apply the intended Personalization profile, monitor queue capacity, and clean up explicitly named creations. Use when a user asks to batch Midjourney prompts, move Explore ideas into Create, reuse existing jobs with a profile code, manage a Create queue, or Trash selected results. Do not use to invent ordinary prompts or architect V8.2 image edits."
+      },
+      {
+        "name": "midjourney-v8-2-edit-architect",
+        "description": "Use when a user wants to edit, replace, remove, add, preserve, restyle, reorient, relocate, combine, inpaint, outpaint, or extend an image with the Midjourney V8.2 Edit Model and one to four references. Also use for character or object consistency, multi-reference composites, perspective or environment changes, style-cohesion repair, staged edit planning, and failed-edit diagnosis. Do not use for ordinary text-to-image prompting, Midjourney video prompting, or editing in another image model."
+      },
+      {
         "name": "nano-banana-unified",
         "description": "Unified prompt architect for Gemini 3 Pro Image (Nano Banana). Generates 10 production-ready prompts per query across four modes. CREATE: text-to-image, comics, stickers, icons, infographics, data viz. EDIT: image editing, style transfer, inpainting, show-me angles, multi-reference composition, character transformation. BRAND: brand design, identity systems, logo treatments, mockups, apparel, typography, capsule collections, 35+ brand use cases with DNA extraction. GRID: 6-9 image campaign grids, moodboards, visual systems using Gizem methodology. Backed by 43+ use case patterns, 127 creative directions, texture library, and official Google templates. Triggers: nano banana, gemini image, generate image, create image, image prompt, edit this image, show me angles, brand design, brand identity, brand mockup, logo treatment, brand visualization, capsule collection, grid, campaign grid, moodboard, comic, sticker, infographic, diagram, product concept, or any Gemini image generation request."
       }
     ],
     "counts": {
-      "skills": 7,
-      "assets": 9,
-      "references": 23,
-      "scripts": 7,
-      "files": 70
+      "skills": 10,
+      "assets": 10,
+      "references": 31,
+      "scripts": 8,
+      "files": 87
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2729,7 +2765,7 @@ export const plugins = [
     "shortDescription": "Keep reusable knowledge findable and trustworthy on Claude Code, Claude Cowork, and Codex.",
     "longDescription": "Continuity Vault routes work through source-preserving extraction, governed promotion, relationship mapping, recall, and staleness audits while keeping workspace files authoritative. It runs on Claude Code, Claude Cowork, and Codex, and treats the host instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) plus workspace source files as the authority layer.",
     "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -2743,8 +2779,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified runtime support: Codex, Claude Code, Claude Cowork.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
     "skills": [
       {
         "name": "continuity-router",
@@ -2763,16 +2799,20 @@ export const plugins = [
         "description": "Decides whether extracted knowledge belongs in a durable file, project reference, graph, memory candidate, or nowhere. Use when reusable context needs a governed destination with provenance, ownership, staleness review, and authority preserved. It recommends or records a promotion decision but does not rewrite authoritative sources without explicit scope."
       },
       {
+        "name": "session-compounder",
+        "description": "Inspect completed meeting, interview, workshop, or working-session notes; preserve source authority and reuse permission; recommend worthwhile outputs; and create only the user-selected, permission-safe set. Use when a session should produce durable decisions, follow-ups, knowledge, or derivative outputs rather than only a summary."
+      },
+      {
         "name": "staleness-and-conflict-audit",
         "description": "Audits a bounded source set for stale claims, conflicting instructions, broken authority assumptions, and unresolved ownership. Use when prior plans, memories, prompt guidance, plugin records, or operating rules may be reused. Produces read-only findings with evidence and recommended review actions. It never resolves a conflict by silently editing or deleting a source."
       }
     ],
     "counts": {
-      "skills": 5,
-      "assets": 8,
+      "skills": 6,
+      "assets": 10,
       "references": 13,
-      "scripts": 6,
-      "files": 50
+      "scripts": 7,
+      "files": 56
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -3394,7 +3434,7 @@ export const plugins = [
     "shortDescription": "Build a personal AI operating harness on Claude Code, Cowork, or Codex.",
     "longDescription": "Interview the user, inspect the current environment on the resolved platform, plan a right-sized harness, apply approved changes with backups, and verify the result with fresh evidence. Platform-aware: CLAUDE.md chains and settings on Claude Code, app instructions, connected folders, package uploads, and marketplaces on Claude Cowork, and AGENTS.md chains and marketplaces on Codex.",
     "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-    "version": "2.7.0",
+    "version": "2.7.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3411,8 +3451,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Package and manifest support is listed for Codex, Claude Code, and Claude Cowork; this release record does not claim fresh Cowork runtime behavior.",
     "skills": [
       {
         "name": "agents-md-engineer",
@@ -3804,7 +3844,7 @@ export const plugins = [
     "shortDescription": "Run explicitly selected mega-projects.",
     "longDescription": "A user-invoked Codex execution system for consequential software and knowledge-work projects. It turns an approved project constitution into bounded workstreams, separates builders from fresh critics, preserves state across sessions, integrates the whole project, and requires evidence-backed verification.",
     "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3819,8 +3859,8 @@ export const plugins = [
     "platforms": [
       "Codex"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified for Codex. Its multi-agent execution contract depends on Codex fresh-task semantics, so Claude runtime parity is not claimed.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Verified for Codex. Its multi-agent execution contract depends on Codex fresh-task semantics, so Claude runtime parity is not claimed.",
     "skills": [
       {
         "name": "gauntlet",
@@ -3981,7 +4021,7 @@ export const plugins = [
     "shortDescription": "Explicit-only mega-project loop with blind critics.",
     "longDescription": "The Claude Code and Cowork edition of the gauntlet method: split a goal into independently judgeable pieces, judge each with blind fresh-context critics against an external bar, verify with agents that never saw the build, and report with receipts.",
     "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3997,8 +4037,8 @@ export const plugins = [
       "Claude Code",
       "Claude Cowork"
     ],
-    "supportStatus": "verified",
-    "runtimeNote": "Verified for Claude Code and Claude Cowork. The legacy runtime still expects Claude environment conventions and is not claimed as Codex-compatible.",
+    "supportStatus": "declared-beta",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Verified for Claude Code and Claude Cowork. The legacy runtime still expects Claude environment conventions and is not claimed as Codex-compatible.",
     "skills": [
       {
         "name": "gauntlet",
@@ -4383,7 +4423,7 @@ export const plugins = [
     "shortDescription": "Plan AI film work through explicit records and gates.",
     "longDescription": "An explicit-only, record-driven workflow for film concepts, production plans, reusable assets, performance, geography, continuity, model-neutral prompt packets, review, and delivery preparation. Named companion plugins are optional. The bundled film grill, packet builder, and bounded planner keep the core workflow usable when companions are absent.",
     "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "category": "Media",
     "license": null,
     "capabilities": [
@@ -4401,7 +4441,7 @@ export const plugins = [
       "Claude Cowork"
     ],
     "supportStatus": "declared-beta",
-    "runtimeNote": "Package and local workflow support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group.",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Package and local workflow support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group.",
     "skills": [
       {
         "name": "ai-film-studio",
@@ -4586,7 +4626,7 @@ export const plugins = [
     "shortDescription": "Build useful, source-grounded practical guides.",
     "longDescription": "Guide Production Studio turns approved sources and tested methods into clear practical guides. It preserves public provenance, protects private implementation material, chooses structure from the reader's job, requires real examples and visual evidence where needed, and stops at human review before publication.",
     "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "category": "Productivity",
     "license": null,
     "capabilities": [],
@@ -4601,7 +4641,7 @@ export const plugins = [
       "Claude Cowork"
     ],
     "supportStatus": "declared-beta",
-    "runtimeNote": "Package and local validation support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group.",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Package and local validation support is declared for Codex, Claude Code, and Claude Cowork. Fresh installed-host behavior proof remains part of the later release-verification group.",
     "skills": [
       {
         "name": "guide-acceptance-review",
@@ -4629,7 +4669,7 @@ export const plugins = [
       "assets": 2,
       "references": 4,
       "scripts": 5,
-      "files": 27
+      "files": 28
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -5068,7 +5108,7 @@ export const plugins = [
     "shortDescription": "Turn repeated work into reviewed improvements",
     "longDescription": "Scan an exact session window, distinguish user, automation, subagent, and synthetic traces, group semantic variants, and stage deduplicated proposals with session-and-line evidence. Read-only stdout mode is available before persistence or approval.",
     "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -5086,8 +5126,12 @@ export const plugins = [
       "Claude Cowork"
     ],
     "supportStatus": "declared-beta",
-    "runtimeNote": "Codex session roots are the Codex default. Claude project roots and other trace roots require the documented explicit options.",
+    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. Codex session roots are the Codex default. Claude project roots and other trace roots require the documented explicit options.",
     "skills": [
+      {
+        "name": "active-practice-learning",
+        "description": "Compile bounded Codex or Claude Code traces and optional neutral Design exports into deduplicated, redacted, proposal-only workflow improvements. Use when the user asks the harness to learn from completed work, recurring friction, repeated repairs, missed tools, cost decisions, or a reusable method. Never scans passively or applies a proposal."
+      },
       {
         "name": "approved-practice-handoff",
         "description": "Use when an explicitly approved Practice Compiler proposal needs a skill-eval, skill-creation, harness, continuity, or content-workflow handoff. Routes to the existing owner, produces a handoff file only, and never applies the change."
@@ -5106,11 +5150,11 @@ export const plugins = [
       }
     ],
     "counts": {
-      "skills": 4,
+      "skills": 5,
       "assets": 1,
       "references": 2,
       "scripts": 1,
-      "files": 22
+      "files": 24
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -5366,10 +5410,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 28,
-  "skills": 204,
-  "assets": 335,
-  "references": 492,
-  "scripts": 534,
-  "files": 2278
+  "skills": 215,
+  "assets": 348,
+  "references": 505,
+  "scripts": 538,
+  "files": 2335
 } as const;
 export type Plugin = (typeof plugins)[number];

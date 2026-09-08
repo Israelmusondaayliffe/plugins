@@ -1,0 +1,5 @@
+interface:
+  display_name: "Fable 5.1 Production Prompter"
+  short_description: "Prepare current Fable prompts with source and scope checks"
+policy:
+  allow_implicit_invocation: false

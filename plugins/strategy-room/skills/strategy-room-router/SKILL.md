@@ -41,3 +41,11 @@ The model identifies the decision stage. The validator enforces one route, a nam
 - references/workflow.md defines routing and decision rules.
 - assets/output-template.json is the reusable output template.
 - assets/output-schema.json is the deterministic validation contract.
+
+## Additional decision routes
+
+- `prioritize`: use curiosity-compass for rough ideas that need criteria, a viability floor and a cheap first test.
+- `match`: use candidate-matcher-and-brief-builder when the decision is who or what should perform a bounded job.
+- `productize`: use proof-to-product-mapper when existing work needs a reusable form supported by its evidence.
+
+These routes end in recommendations and briefs. They do not authorize execution, contact, purchase, installation or publication.

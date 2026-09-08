@@ -71,3 +71,9 @@ Return exactly these fields:
 ## Reliability boundary
 
 The LLM interprets intent and handoff state. Scripts enforce names, ownership, route shape, collision fixtures, and registry-to-reference consistency.
+
+## Primary ownership and approved work
+
+The user’s selected domain plugin owns the workflow and completion judgment. Helpers perform bounded work and return to that owner. Before a material build, inspect current sources and resolve only decisions that could change scope or outcome. When a plan is already approved, proceed within its boundary without restarting the interview.
+
+Build routes from the user’s available public inventory. Keep the public Writing Quality entry points; do not route to a skill merely because it exists in a publisher’s private setup. An unavailable companion must not become an undeclared prerequisite.

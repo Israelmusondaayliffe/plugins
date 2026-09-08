@@ -1,6 +1,6 @@
 {
   "plugin": "guide-production-studio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "skills": [
     "guide-acceptance-review",
     "guide-production-router",
@@ -10,7 +10,7 @@
   ],
   "front_door": "guide-production-router",
   "required_files": [
-    ".plugin-eval/benchmark.json",
+    "tests/benchmark.json",
     "README.md",
     "skills/guide-production-router/assets/guide-contract.template.json",
     "skills/guide-production-router/assets/guide-review.template.json",

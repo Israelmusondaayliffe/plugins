@@ -16,7 +16,7 @@ Route the request to one phase. The safe compounding loop is scan, review, decid
 
 ## Gates
 
-- Codex user-root sessions are the Codex-host default. On Claude Code, use `--include-claude` or pass each exact source with `--sessions-root`. Automation, subagent, and synthetic traces require explicit selection.
+- Select exact source roots and a bounded time window. Automation, subagent, and synthetic traces require explicit selection.
 - Persist only redacted snippets and source references.
 - Require repeated evidence before staging by default.
 - Use an exact `--since` and `--until` window for time-bounded reviews.
@@ -25,3 +25,9 @@ Route the request to one phase. The safe compounding loop is scan, review, decid
 - A schedule may run the scan and staging phases only.
 
 Load `references/ownership-and-routing.md` when the destination owner is unclear.
+
+## Selected-source learning
+
+For cross-host learning or neutral Design exports, load `../active-practice-learning/SKILL.md`. A scan requires an exact `--sessions-root`, explicit `--adapter codex` or `--adapter claude`, and `--since`/`--until`. Use `--stdout` for a read-only scan. Never select a user's entire host history implicitly.
+
+For a question about learning ownership or a single supplied lesson, answer from the supplied material. Do not inspect sessions, write a proposal, save memory or change a destination unless that action was requested. A handoff approval authorizes the handoff record only.

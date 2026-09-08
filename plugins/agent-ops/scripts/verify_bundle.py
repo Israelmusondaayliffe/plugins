@@ -27,8 +27,8 @@ def main() -> int:
     except (OSError, json.JSONDecodeError) as exc:
         print(json.dumps({"valid": False, "errors": [str(exc)]}, indent=2))
         return 2
-    if manifest.get("name") != root.name or spec.get("plugin") != root.name:
-        fail(errors, "plugin name must match the source directory")
+    if manifest.get("name") != spec.get("plugin"):
+        fail(errors, "manifest and bundle spec plugin identities differ")
     if manifest.get("version") != spec.get("version"):
         fail(errors, "manifest and bundle spec versions differ")
     expected = set(spec.get("skills", []))

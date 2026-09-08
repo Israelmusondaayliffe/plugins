@@ -46,3 +46,7 @@ The fallback is read-only. It never promotes, overwrites, deletes, writes a comp
 ## Reliability Notes
 
 The model selects a route and explains why. The validator enforces a named source, authority layer, route, rationale, and false destructive-action flag.
+
+## Completed-session outputs
+
+For completed meeting, interview, workshop or working-session notes, select `compound` and load `../session-compounder/SKILL.md`. Preserve item-level provenance, reuse permission, allowed audience and user selection. This route does not authorize publishing or a repeated-practice scan.

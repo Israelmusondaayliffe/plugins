@@ -44,7 +44,7 @@ def main() -> int:
         if not (root / relative).is_file():
             errors.append(f"missing required file: {relative}")
 
-    benchmark_path = root / ".plugin-eval/benchmark.json"
+    benchmark_path = root / "tests/benchmark.json"
     try:
         benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
         if len(benchmark.get("scenarios", [])) < 5:

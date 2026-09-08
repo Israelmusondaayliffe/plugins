@@ -1,0 +1,138 @@
+{
+ "packet_type": "FableAdvisorTaskPacket",
+ "protocol_version": 3,
+ "run_id": "REPLACE-run-id",
+ "task_id": "T1",
+ "run_manifest_path": ".fable-advisor/runs/REPLACE-run-id/run-manifest.json",
+ "run_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+ "plan": {
+  "status": "approved",
+  "version": 1,
+  "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+ },
+ "task": {
+  "classification": "complex",
+  "objective": "REPLACE",
+  "dependencies": []
+ },
+ "authorization": {
+  "task_id": "T1",
+  "classification": "complex",
+  "role": "worker",
+  "runtime": "codex",
+  "model": "codex-default",
+  "effort": "high",
+  "write_enabled": true,
+  "dependencies": [],
+  "allowed_write_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
+  ],
+  "input_paths": [
+   {
+    "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+   }
+  ],
+  "expected_output": {
+   "description": "REPLACE",
+   "paths": [
+    ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md"
+   ]
+  },
+  "acceptance_criteria": [
+   {
+    "id": "C1",
+    "description": "REPLACE"
+   }
+  ],
+  "evidence_commands": [
+   "REPLACE, for example: python3 -m unittest discover -s tests"
+  ],
+  "stop_conditions": [
+   "scope violation",
+   "limit exhausted",
+   "missing input"
+  ],
+  "limits": {
+   "max_attempts": 3,
+   "max_turns": 80,
+   "max_elapsed_minutes": 60
+  }
+ },
+ "worker": {
+  "role": "worker",
+  "runtime": "codex",
+  "model": "codex-default",
+  "effort": "high",
+  "write_enabled": true,
+  "fresh_instance": true,
+  "mechanism": "codex_rescue"
+ },
+ "transport": {
+  "execution_mode": "background",
+  "dispatch_mode": "fresh",
+  "resume_lineage": null,
+  "monitoring": {
+   "cadence_seconds": 300,
+   "status_scope": "job_id_only",
+   "result_collection": "terminal_only"
+  },
+  "attempt_policy": {
+   "max_resume_continuations": 1,
+   "max_fresh_retries": 1
+  },
+  "transfer_policy": "explicit_emergency_diagnostic_only",
+  "review_policy": {
+   "instance": "fresh",
+   "write_enabled": false,
+   "authority": "advisory",
+   "acceptance": "parent"
+  }
+ },
+ "input_paths": [
+  {
+   "path": ".fable-advisor/runs/REPLACE-run-id/plan.md",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ ],
+ "expected_output": {
+  "description": "REPLACE",
+  "paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1/output.md"
+  ]
+ },
+ "acceptance_criteria": [
+  {
+   "id": "C1",
+   "description": "REPLACE"
+  }
+ ],
+ "scope": {
+  "allowed_write_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
+  ],
+  "read_paths": [
+   ".fable-advisor/runs/REPLACE-run-id/plan.md"
+  ]
+ },
+ "evidence_commands": [
+  "REPLACE, for example: python3 -m unittest discover -s tests"
+ ],
+ "stop_conditions": [
+  "scope violation",
+  "limit exhausted",
+  "missing input"
+ ],
+ "limits": {
+  "max_attempts": 3,
+  "max_turns": 80,
+  "max_elapsed_minutes": 60
+ },
+ "context": {
+  "delivery": "bounded_packet_only",
+  "include_parent_transcript": false,
+  "include_hidden_reasoning": false,
+  "reference_paths": []
+ }
+}

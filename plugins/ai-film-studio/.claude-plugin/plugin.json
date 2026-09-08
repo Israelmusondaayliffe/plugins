@@ -1,6 +1,6 @@
 {
   "name": "ai-film-studio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
   "author": {
     "name": "Community Maintainers"

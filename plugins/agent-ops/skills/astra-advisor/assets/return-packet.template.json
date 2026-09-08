@@ -1,0 +1,76 @@
+{
+  "packet_type": "ReturnPacket",
+  "protocol_version": 1,
+  "run_id": "astra-advisor-example-001",
+  "task_id": "task-routine-001",
+  "task_packet_path": "task-packet.json",
+  "task_packet_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "plan": {
+    "status": "approved",
+    "version": 1,
+    "path": ".gauntlet/plan.md",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "status": "succeeded",
+  "status_evidence": {
+    "summary": "The criterion is met by the recorded test output.",
+    "evidence_path": "evidence/astra-advisor-return.txt",
+    "evidence_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "scope": {
+    "allowed_write_paths": [
+      "/workspace/approved-root"
+    ],
+    "actual_write_paths": [
+      "/workspace/approved-root"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "approved-root/artifacts/task-routine-001.md",
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "kind": "implementation"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/astra-advisor-return.txt",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "kind": "test-output"
+    }
+  ],
+  "criterion_to_evidence": [
+    {
+      "criterion_id": "bounded-criterion",
+      "result": "met",
+      "evidence_paths": [
+        "evidence/astra-advisor-return.txt"
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": "python3 -m unittest tests.test_bounded_change",
+      "exit_code": 0,
+      "evidence_mode": "inline",
+      "summary": "The bounded check passed.",
+      "evidence_path": null,
+      "evidence_sha256": null
+    }
+  ],
+  "observable_delta": "Created the approved bounded implementation artifact.",
+  "primary_output_count": 1,
+  "unresolved_before": 1,
+  "unresolved_after": 0,
+  "support_artifact_count": 1,
+  "uncertainties": [],
+  "risks": [],
+  "next_target_action": "Submit the integrated result for the single final critic pass.",
+  "authority": {
+    "may_approve": false,
+    "may_integrate": false,
+    "may_update_state": false,
+    "may_update_budget": false,
+    "may_issue_final_verdict": false
+  }
+}

@@ -81,3 +81,5 @@ Pass only when:
 - no personality, experience, identity, facts, or examples were invented
 - protected exact material is unchanged
 - no obvious AI pattern remains without a documented reason
+
+Never infer authorship from a word, pattern, or numerical score. These checks assess prose, not the identity or tools of its author.

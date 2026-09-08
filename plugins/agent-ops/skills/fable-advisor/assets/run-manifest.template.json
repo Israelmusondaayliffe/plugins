@@ -1,8 +1,7 @@
 {
  "packet_type": "FableAdvisorRunManifest",
- "protocol_version": 1,
+ "protocol_version": 3,
  "run_id": "REPLACE-run-id",
- "mode": "standalone",
  "activation": {
   "type": "explicit",
   "quoted_request": "REPLACE with the user's verbatim imperative",
@@ -25,8 +24,10 @@
   "claude_code_version": "REPLACE",
   "entrypoint": "REPLACE (claude-desktop or cli)",
   "parent_session_id": "REPLACE",
-  "parent_model": "claude-fable-5",
-  "spawn_mechanism": "agent_tool"
+  "parent_model": "claude-fable-5-1",
+  "parent_effort": "high",
+  "dispatch_interface": "agent_tool",
+  "worker_model": "claude-fable-5-1"
  },
  "task_dag": [
   {
@@ -39,9 +40,10 @@
    "task_id": "T1",
    "classification": "complex",
    "role": "worker",
-   "agent_definition": "fa-worker-complex",
-   "model": "claude-opus-4-8",
-   "effort": "xhigh",
+   "runtime": "claude-code",
+   "model": "claude-fable-5-1",
+   "effort": "high",
+   "write_enabled": true,
    "dependencies": [],
    "allowed_write_paths": [
     ".fable-advisor/runs/REPLACE-run-id/artifacts/T1"
@@ -64,16 +66,8 @@
      "description": "REPLACE"
     }
    ],
-   "tools": [
-    "Read",
-    "Write",
-    "Edit",
-    "Glob",
-    "Grep",
-    "Bash"
-   ],
    "evidence_commands": [
-    "REPLACE, for example: python3 -m pytest tests/"
+    "REPLACE, for example: python3 -m unittest discover -s tests"
    ],
    "stop_conditions": [
     "scope violation",
@@ -88,10 +82,10 @@
   }
  ],
  "budget": {
-  "max_task_launches": 24,
-  "max_concurrency": 8,
-  "max_review_rounds": 3,
-  "max_repair_rounds": 3,
+  "max_task_launches": 6,
+  "max_concurrency": 4,
+  "max_review_rounds": 1,
+  "max_repair_rounds": 1,
   "max_elapsed_minutes": 240
  },
  "write_policy": {

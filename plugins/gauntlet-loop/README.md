@@ -103,3 +103,5 @@ This plugin adapts and extends Matt Shumer's Gauntlet Loop and the Claude of Dut
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+The Sol adapter remains compatibility-only. It does not accept Astra packets. Use the normal Gauntlet workflow or an explicitly selected standalone Astra Advisor run; do not infer a composed Astra adapter from matching host manifests.

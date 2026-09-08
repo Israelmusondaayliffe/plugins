@@ -19,7 +19,7 @@ Writing Quality owns ordinary prose work. Choose the smallest writing workflow t
    - rewrite: business-writing-intent-enforcer, then writing-enforcer with its source-backed 47-pattern method
    - detect-only: writing-enforcer in `DETECT` report-only mode
    - validation: writing-enforcer against the supplied draft, protected-material boundary, and constraints
-5. Use claim-boundary-checker when factual claims exceed the supplied evidence or are unstable.
+5. Use claim-boundary-checker when factual claims exceed the supplied evidence or are unstable. Preserve the selected operation when handing off; a claim audit does not authorize a rewrite.
 6. Recheck that the final response matches the requested operation and did not silently expand the factual scope.
 
 ## Error Handling

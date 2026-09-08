@@ -5,13 +5,17 @@ description: Scans local Codex session JSONL for repeated tasks, recurring feedb
 
 # Session Signal Scan
 
-1. On Codex, use user-root sessions under `~/.codex/sessions` by default. On Claude Code, use `--include-claude` or pass the exact session roots with `--sessions-root`.
-2. Set an exact inclusive date window.
-3. Add `--source-class automation`, `--source-class subagent`, or `--source-class synthetic` only when those sources belong in the analysis. Add `--include-claude` only after the user opts in.
+1. Select the exact session root and its `codex` or `claude` adapter. Never scan an implicit home directory.
+2. Set an exact inclusive date window and the source timezone.
+3. Include automation, subagent or synthetic traces only when the user selects those source classes.
 4. Preview without changing state:
+
+Run from the plugin root; replace source, dates and timezone with the selected scope.
 
 ```bash
 python3 scripts/practice_compiler.py scan \
+  --sessions-root SELECTED_SESSIONS \
+  --adapter codex \
   --since 2026-06-28 \
   --until 2026-07-27 \
   --timezone America/New_York \

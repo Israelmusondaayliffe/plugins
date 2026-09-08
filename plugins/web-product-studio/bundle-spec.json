@@ -1,6 +1,6 @@
 {
   "plugin": "web-product-studio",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "skills": [
     "acceptance-flow",
     "code-production-agent",
@@ -21,12 +21,36 @@
     "web-product-router"
   ],
   "companions": [
-    {"name": "build-web-apps", "required": false, "purpose": "Optional hosted web-app implementation surface"},
-    {"name": "supabase", "required": false, "purpose": "Optional backend and data service"},
-    {"name": "github", "required": false, "purpose": "Optional repository and pull-request operations"},
-    {"name": "codex-security", "required": false, "purpose": "Optional specialist security review"},
-    {"name": "browser", "required": false, "purpose": "Optional rendered verification surface"},
-    {"name": "playwright", "required": false, "purpose": "Optional repeatable browser automation"}
+    {
+      "name": "build-web-apps",
+      "required": false,
+      "purpose": "Optional hosted web-app implementation surface"
+    },
+    {
+      "name": "supabase",
+      "required": false,
+      "purpose": "Optional backend and data service"
+    },
+    {
+      "name": "github",
+      "required": false,
+      "purpose": "Optional repository and pull-request operations"
+    },
+    {
+      "name": "codex-security",
+      "required": false,
+      "purpose": "Optional specialist security review"
+    },
+    {
+      "name": "browser",
+      "required": false,
+      "purpose": "Optional rendered verification surface"
+    },
+    {
+      "name": "playwright",
+      "required": false,
+      "purpose": "Optional repeatable browser automation"
+    }
   ],
   "guardrails": [
     "Load exactly one design constitution or none.",

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Midjourney Prompt Batching"
+  short_description: "Reuse prompts and manage Midjourney batches"
+  default_prompt: "Use $midjourney-prompt-batching to reuse these Midjourney prompts as a controlled batch with the intended profile and queue cleanup."
+policy:
+  allow_implicit_invocation: false

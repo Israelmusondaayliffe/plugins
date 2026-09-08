@@ -1,0 +1,7 @@
+interface:
+  display_name: "Proof To Product Mapper"
+  short_description: "Maps evidenced work to a reusable form"
+  default_prompt: "Use $proof-to-product-mapper to grade this work's proof and map it to the right reusable form."
+
+policy:
+  allow_implicit_invocation: false

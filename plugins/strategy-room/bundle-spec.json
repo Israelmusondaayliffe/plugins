@@ -1,13 +1,16 @@
 {
   "plugin": "strategy-room",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "skills": [
     "assumption-challenger",
     "assumption-register",
+    "candidate-matcher-and-brief-builder",
+    "curiosity-compass",
     "decision-synthesizer",
     "decision-wayfinder",
     "grill-me",
     "multi-direction-explorer",
+    "proof-to-product-mapper",
     "strategy-room-router"
   ],
   "coordinator_skills": [
@@ -16,11 +19,31 @@
     "assumption-register"
   ],
   "companions": [
-    {"name": "knowledge-work-superpowers", "required": false, "purpose": "Evidence-led research and deliverables"},
-    {"name": "outcome-engine", "required": false, "purpose": "Execution after an accepted decision"},
-    {"name": "proofloop", "required": false, "purpose": "Extended verification"},
-    {"name": "writing-quality", "required": false, "purpose": "Optional final prose review"},
-    {"name": "continuity-vault", "required": false, "purpose": "Optional cross-task continuity"}
+    {
+      "name": "knowledge-work-superpowers",
+      "required": false,
+      "purpose": "Evidence-led research and deliverables"
+    },
+    {
+      "name": "outcome-engine",
+      "required": false,
+      "purpose": "Execution after an accepted decision"
+    },
+    {
+      "name": "proofloop",
+      "required": false,
+      "purpose": "Extended verification"
+    },
+    {
+      "name": "writing-quality",
+      "required": false,
+      "purpose": "Optional final prose review"
+    },
+    {
+      "name": "continuity-vault",
+      "required": false,
+      "purpose": "Optional cross-task continuity"
+    }
   ],
   "guardrails": [
     "Strategy Room owns pre-commitment reasoning and stops before execution.",

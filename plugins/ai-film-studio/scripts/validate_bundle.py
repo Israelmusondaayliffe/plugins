@@ -227,8 +227,8 @@ def _validate_codex_manifest(root: Path, manifest: Dict[str, Any], errors: List[
     label = ".codex-plugin/plugin.json"
     if manifest.get("name") != "ai-film-studio":
         errors.append(f"{label}: name must be ai-film-studio")
-    if manifest.get("version") != "0.2.0":
-        errors.append(f"{label}: version must be 0.2.0")
+    if manifest.get("version") != "0.2.1":
+        errors.append(f"{label}: version must be 0.2.1")
     if manifest.get("skills") != "./skills/":
         errors.append(f"{label}: skills must be ./skills/")
     for prohibited in ("mcpServers", "apps", "hooks"):
@@ -277,7 +277,7 @@ def _validate_claude_manifest(root: Path, codex: Dict[str, Any], errors: List[st
 
 
 def _validate_plugin_contract(root: Path, contract: Dict[str, Any], errors: List[str]) -> None:
-    if contract.get("name") != "ai-film-studio" or contract.get("version") != "0.2.0":
+    if contract.get("name") != "ai-film-studio" or contract.get("version") != "0.2.1":
         errors.append("plugin-contract.json: plugin identity mismatch")
     if contract.get("visibility") != "public" or contract.get("publish") is not True:
         errors.append("plugin-contract.json: plugin must be public and publishable")

@@ -50,3 +50,7 @@ The model selects the route and implementation skills. The validator enforces on
 - scripts/validate_route.py validates the plan.
 - references/routing.md defines route ownership.
 - assets/route-template.json records the decision.
+
+## Selected design owner
+
+If the user has selected a separate Design workflow, keep that workflow as the design owner and perform only its bounded implementation or inspection request. Otherwise continue with this plugin’s owned workflow. A separate Design installation is optional. Preserve the public visual contract validator, source-bound reviews and independent rendered acceptance.

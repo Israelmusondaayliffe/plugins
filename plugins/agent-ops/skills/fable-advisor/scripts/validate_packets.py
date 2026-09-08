@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Validate fail-closed Fable Advisor packets and their inspectable evidence.
+"""Validate fail-closed Fable Advisor protocol 3 packets and evidence.
 
-Claude-native adaptation of the Sol Advisor packet validator: adaptive topology,
-exact-model worker authorizations, Agent-tool or headless spawn evidence, and
-fresh-reviewer attestation. Validation checks records; it never executes commands.
+Default workers are native Claude Code subagents (agent-ops:fa-worker and
+agent-ops:fa-verifier) pinned to claude-fable-5-1. Codex workers through the
+official OpenAI Codex plugin remain a per-task option. The activating Claude
+parent (claude-fable-5-1 at high effort) performs the final review. Validation
+checks records; it never executes commands.
 """
 
 from __future__ import annotations
@@ -16,27 +18,30 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-PROTOCOL_VERSION = 1
+PROTOCOL_VERSION = 3
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 
-PARENT_MODEL = "claude-fable-5"
-REVIEWER_MODEL = "claude-fable-5"
-REVIEWER_EFFORT = "xhigh"
-REVIEWER_DEFINITION = "fa-reviewer"
-
-LIGHT_MODELS = {"claude-sonnet-5": {"low", "medium"}}
-COMPLEX_MODELS = {
-    "claude-opus-4-8": {"xhigh"},
-    "claude-opus-5": {"xhigh"},
-    "claude-opus-4-6": {"high"},
-}
-AGENT_DEFINITIONS = {
-    "fa-worker-light": {"claude-sonnet-5"},
-    "fa-worker-complex": {"claude-opus-4-8"},
-    "fa-worker-complex-opus5": {"claude-opus-5"},
-    "fa-worker-complex-46": {"claude-opus-4-6"},
-}
-SPAWN_MECHANISMS = {"agent_tool", "headless"}
+PARENT_MODEL = "claude-fable-5-1"
+PARENT_EFFORT = "high"
+REVIEWER_MODEL = PARENT_MODEL
+ACCEPTED_PARENT_MODELS = (PARENT_MODEL,)
+NATIVE_RUNTIME = "claude-code"
+CODEX_RUNTIME = "codex"
+WORKER_RUNTIMES = {NATIVE_RUNTIME, CODEX_RUNTIME}
+NATIVE_WORKER_MODEL = "claude-fable-5-1"
+# Native worker effort is pinned by the agent definitions under agents/. The
+# Agent tool has no per-call effort override, so packets record the pinned value.
+NATIVE_WORKER_EFFORT = "high"
+NATIVE_DISPATCH_INTERFACE = "agent_tool"
+NATIVE_WORKER_AGENTS = {"fa_worker": "agent-ops:fa-worker", "fa_verifier": "agent-ops:fa-verifier"}
+NATIVE_MECHANISMS = set(NATIVE_WORKER_AGENTS)
+NATIVE_ATTESTATION_SOURCE = "subagent_transcript"
+CODEX_DEFAULT_MODEL = "codex-default"
+CODEX_MECHANISMS = {"codex_rescue", "codex_companion"}
+CODEX_EFFORTS = {"default", "none", "minimal", "low", "medium", "high", "xhigh"}
+DISPATCH_MECHANISMS = NATIVE_MECHANISMS | CODEX_MECHANISMS
+MECHANISM_RUNTIME = {**{m: NATIVE_RUNTIME for m in NATIVE_MECHANISMS}, **{m: CODEX_RUNTIME for m in CODEX_MECHANISMS}}
+CLASSIFICATIONS = {"light", "complex", "verify"}
 
 AUTHORITY_SURFACES = (
     "state",
@@ -62,6 +67,16 @@ CRITERION_RESULTS = {"met", "blocked", "failed", "escalate"}
 FINDING_SEVERITIES = {"blocking", "major", "minor", "info"}
 WRITE_POLICY_MODES = {"disjoint_targets", "separate_worktrees", "serialized"}
 ATTESTATION_STATES = {"verified", "partially-verified"}
+DISPATCH_EXECUTION_MODES = {"foreground", "background"}
+DISPATCH_STATUS_SCOPE = "agent_id_only"
+DISPATCH_RESULT_COLLECTION = "terminal_only"
+TRANSPORT_EXECUTION_MODES = {"foreground", "background"}
+TRANSPORT_DISPATCH_MODES = {"fresh", "resume"}
+TRANSPORT_SCOPE_REQUIREMENT = "same_or_narrower"
+TRANSPORT_STATUS_SCOPE = "job_id_only"
+TRANSPORT_RESULT_COLLECTION = "terminal_only"
+TRANSPORT_TRANSFER_POLICY = "explicit_emergency_diagnostic_only"
+TRANSPORT_ATTEMPT_FIELDS = ("max_resume_continuations", "max_fresh_retries")
 
 
 def add(errors: list[str], message: str) -> None:
@@ -75,9 +90,16 @@ def require_object(value: Any, label: str, errors: list[str]) -> dict[str, Any]:
     return value
 
 
-def require_keys(value: dict[str, Any], required: set[str], label: str, errors: list[str]) -> None:
+def require_keys(
+    value: dict[str, Any],
+    required: set[str],
+    label: str,
+    errors: list[str],
+    *,
+    optional: frozenset[str] = frozenset(),
+) -> None:
     missing = sorted(required - set(value))
-    extra = sorted(set(value) - required)
+    extra = sorted(set(value) - required - optional)
     if missing:
         add(errors, f"{label} missing keys: {missing}")
     if extra:
@@ -261,21 +283,32 @@ def validate_criteria(value: Any, label: str, errors: list[str]) -> dict[str, st
     return result
 
 
-def worker_role_check(classification: Any, model: Any, effort: Any, definition: Any, label: str, errors: list[str]) -> None:
-    if classification == "light":
-        allowed = LIGHT_MODELS
-    elif classification == "complex":
-        allowed = COMPLEX_MODELS
+def worker_role_check(
+    classification: Any,
+    runtime: Any,
+    model: Any,
+    effort: Any,
+    write_enabled: Any,
+    label: str,
+    errors: list[str],
+) -> None:
+    if classification not in CLASSIFICATIONS:
+        add(errors, f"{label}.classification must be light, complex, or verify")
+    if runtime not in WORKER_RUNTIMES:
+        add(errors, f"{label}.runtime must be {NATIVE_RUNTIME} (the native default) or {CODEX_RUNTIME}")
+    elif runtime == NATIVE_RUNTIME:
+        if model != NATIVE_WORKER_MODEL:
+            add(errors, f"{label}.model must be {NATIVE_WORKER_MODEL}; another native worker model needs a new agent definition, never a silent change")
+        if effort != NATIVE_WORKER_EFFORT:
+            add(errors, f"{label}.effort must be {NATIVE_WORKER_EFFORT}, the effort pinned by the native worker agent definitions")
     else:
-        add(errors, f"{label}.classification must be light or complex")
-        return
-    if model not in allowed:
-        add(errors, f"{label}.model {model!r} is not an authorized {classification} worker model")
-        return
-    if effort not in allowed[model]:
-        add(errors, f"{label}.effort {effort!r} is not authorized for {model}")
-    if definition not in AGENT_DEFINITIONS or model not in AGENT_DEFINITIONS.get(definition, set()):
-        add(errors, f"{label}.agent_definition {definition!r} does not pin {model}")
+        require_string(model, f"{label}.model", errors)
+        if effort not in CODEX_EFFORTS:
+            add(errors, f"{label}.effort must be an authorized Codex companion effort")
+    if not isinstance(write_enabled, bool):
+        add(errors, f"{label}.write_enabled must be a bool")
+    if classification == "verify" and write_enabled is not False:
+        add(errors, "verify tasks must be read-only (write_enabled false)")
 
 
 def validate_task_limits(value: Any, label: str, errors: list[str]) -> None:
@@ -292,15 +325,15 @@ def validate_task_authorization(value: Any, root: Path, label: str, errors: list
         "task_id",
         "classification",
         "role",
-        "agent_definition",
+        "runtime",
         "model",
         "effort",
+        "write_enabled",
         "dependencies",
         "allowed_write_paths",
         "input_paths",
         "expected_output",
         "acceptance_criteria",
-        "tools",
         "evidence_commands",
         "stop_conditions",
         "limits",
@@ -311,9 +344,10 @@ def validate_task_authorization(value: Any, root: Path, label: str, errors: list
         add(errors, f"{label}.role must be worker")
     worker_role_check(
         authorization.get("classification"),
+        authorization.get("runtime"),
         authorization.get("model"),
         authorization.get("effort"),
-        authorization.get("agent_definition"),
+        authorization.get("write_enabled"),
         label,
         errors,
     )
@@ -341,19 +375,101 @@ def validate_task_authorization(value: Any, root: Path, label: str, errors: list
         if candidate is not None and not any(is_descendant(candidate, allowed) for allowed in write_paths):
             add(errors, f"{label}.expected_output.paths[{index}] must stay within allowed_write_paths")
     validate_criteria(authorization.get("acceptance_criteria"), f"{label}.acceptance_criteria", errors)
-    require_string_list(authorization.get("tools"), f"{label}.tools", errors)
     require_string_list(authorization.get("evidence_commands"), f"{label}.evidence_commands", errors)
     require_string_list(authorization.get("stop_conditions"), f"{label}.stop_conditions", errors)
     validate_task_limits(authorization.get("limits"), f"{label}.limits", errors)
     return authorization
 
 
+def validate_transport(value: Any, label: str, errors: list[str], *, classification: Any) -> None:
+    """Validate the optional Codex transport extension on a codex-runtime packet."""
+    transport = require_object(value, label, errors)
+    require_keys(
+        transport,
+        {
+            "execution_mode",
+            "dispatch_mode",
+            "resume_lineage",
+            "monitoring",
+            "attempt_policy",
+            "transfer_policy",
+            "review_policy",
+        },
+        label,
+        errors,
+    )
+    if transport.get("execution_mode") not in TRANSPORT_EXECUTION_MODES:
+        add(errors, f"{label}.execution_mode must be foreground or background")
+    dispatch_mode = transport.get("dispatch_mode")
+    if dispatch_mode not in TRANSPORT_DISPATCH_MODES:
+        add(errors, f"{label}.dispatch_mode must be fresh or resume")
+    if classification == "verify" and dispatch_mode == "resume":
+        add(errors, f"{label} verify tasks must use a fresh dispatch, never resume")
+    lineage = transport.get("resume_lineage")
+    if dispatch_mode == "fresh":
+        if lineage is not None:
+            add(errors, f"{label}.resume_lineage must be null for a fresh dispatch")
+    elif dispatch_mode == "resume":
+        lineage_label = f"{label}.resume_lineage"
+        record = require_object(lineage, lineage_label, errors)
+        require_keys(record, {"prior_job_id", "prior_thread_id", "scope_requirement"}, lineage_label, errors)
+        require_string(record.get("prior_job_id"), f"{lineage_label}.prior_job_id", errors)
+        require_string(record.get("prior_thread_id"), f"{lineage_label}.prior_thread_id", errors)
+        if record.get("scope_requirement") != TRANSPORT_SCOPE_REQUIREMENT:
+            add(errors, f"{lineage_label}.scope_requirement must be {TRANSPORT_SCOPE_REQUIREMENT}")
+    monitoring = require_object(transport.get("monitoring"), f"{label}.monitoring", errors)
+    require_keys(monitoring, {"cadence_seconds", "status_scope", "result_collection"}, f"{label}.monitoring", errors)
+    require_positive_int(monitoring.get("cadence_seconds"), f"{label}.monitoring.cadence_seconds", errors)
+    if monitoring.get("status_scope") != TRANSPORT_STATUS_SCOPE:
+        add(errors, f"{label}.monitoring.status_scope must be {TRANSPORT_STATUS_SCOPE}")
+    if monitoring.get("result_collection") != TRANSPORT_RESULT_COLLECTION:
+        add(errors, f"{label}.monitoring.result_collection must be {TRANSPORT_RESULT_COLLECTION}")
+    attempt_policy = require_object(transport.get("attempt_policy"), f"{label}.attempt_policy", errors)
+    require_keys(attempt_policy, set(TRANSPORT_ATTEMPT_FIELDS), f"{label}.attempt_policy", errors)
+    for field in TRANSPORT_ATTEMPT_FIELDS:
+        bound = attempt_policy.get(field)
+        if not isinstance(bound, int) or isinstance(bound, bool) or bound < 0 or bound > 1:
+            add(errors, f"{label}.attempt_policy.{field} must be 0 or 1")
+    if transport.get("transfer_policy") != TRANSPORT_TRANSFER_POLICY:
+        add(errors, f"{label}.transfer_policy must be {TRANSPORT_TRANSFER_POLICY}")
+    review_policy = require_object(transport.get("review_policy"), f"{label}.review_policy", errors)
+    require_keys(review_policy, {"instance", "write_enabled", "authority", "acceptance"}, f"{label}.review_policy", errors)
+    if review_policy.get("instance") != "fresh":
+        add(errors, f"{label}.review_policy.instance must be fresh")
+    require_bool(review_policy.get("write_enabled"), False, f"{label}.review_policy.write_enabled", errors)
+    if review_policy.get("authority") != "advisory":
+        add(errors, f"{label}.review_policy.authority must be advisory")
+    if review_policy.get("acceptance") != "parent":
+        add(errors, f"{label}.review_policy.acceptance must be parent")
+
+
+def validate_dispatch(value: Any, label: str, errors: list[str]) -> None:
+    """Validate how a native worker subagent is launched, monitored, and retried."""
+    dispatch = require_object(value, label, errors)
+    require_keys(dispatch, {"execution_mode", "monitoring", "attempt_policy"}, label, errors)
+    if dispatch.get("execution_mode") not in DISPATCH_EXECUTION_MODES:
+        add(errors, f"{label}.execution_mode must be foreground or background")
+    monitoring = require_object(dispatch.get("monitoring"), f"{label}.monitoring", errors)
+    require_keys(monitoring, {"cadence_seconds", "status_scope", "result_collection"}, f"{label}.monitoring", errors)
+    require_positive_int(monitoring.get("cadence_seconds"), f"{label}.monitoring.cadence_seconds", errors)
+    if monitoring.get("status_scope") != DISPATCH_STATUS_SCOPE:
+        add(errors, f"{label}.monitoring.status_scope must be {DISPATCH_STATUS_SCOPE}")
+    if monitoring.get("result_collection") != DISPATCH_RESULT_COLLECTION:
+        add(errors, f"{label}.monitoring.result_collection must be {DISPATCH_RESULT_COLLECTION}")
+    attempt_policy = require_object(dispatch.get("attempt_policy"), f"{label}.attempt_policy", errors)
+    require_keys(attempt_policy, {"max_fresh_retries"}, f"{label}.attempt_policy", errors)
+    bound = attempt_policy.get("max_fresh_retries")
+    if not isinstance(bound, int) or isinstance(bound, bool) or bound < 0 or bound > 1:
+        add(errors, f"{label}.attempt_policy.max_fresh_retries must be 0 or 1")
+
+
 def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path) -> None:
+    if "mode" in data:
+        add(errors, "RunManifest.mode was removed in protocol 2; gauntlet-composed runs are no longer supported")
     required = {
         "packet_type",
         "protocol_version",
         "run_id",
-        "mode",
         "activation",
         "plan",
         "goal",
@@ -372,8 +488,6 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path) -
     if data.get("protocol_version") != PROTOCOL_VERSION:
         add(errors, "RunManifest.protocol_version is unsupported")
     require_string(data.get("run_id"), "RunManifest.run_id", errors)
-    if data.get("mode") not in {"standalone", "composed"}:
-        add(errors, "RunManifest.mode must be standalone or composed")
 
     activation = require_object(data.get("activation"), "RunManifest.activation", errors)
     require_keys(activation, {"type", "quoted_request", "recorded_at"}, "RunManifest.activation", errors)
@@ -389,17 +503,34 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path) -
     runtime = require_object(data.get("runtime"), "RunManifest.runtime", errors)
     require_keys(
         runtime,
-        {"claude_code_version", "entrypoint", "parent_session_id", "parent_model", "spawn_mechanism"},
+        {
+            "claude_code_version",
+            "entrypoint",
+            "parent_session_id",
+            "parent_model",
+            "parent_effort",
+            "dispatch_interface",
+            "worker_model",
+        },
         "RunManifest.runtime",
         errors,
+        optional=frozenset({"codex_plugin_version", "codex_dispatch_interface"}),
     )
     require_string(runtime.get("claude_code_version"), "RunManifest.runtime.claude_code_version", errors)
     require_string(runtime.get("entrypoint"), "RunManifest.runtime.entrypoint", errors)
     require_string(runtime.get("parent_session_id"), "RunManifest.runtime.parent_session_id", errors)
-    if runtime.get("parent_model") != PARENT_MODEL:
-        add(errors, f"RunManifest.runtime.parent_model must be {PARENT_MODEL}")
-    if runtime.get("spawn_mechanism") not in SPAWN_MECHANISMS:
-        add(errors, "RunManifest.runtime.spawn_mechanism must be agent_tool or headless")
+    if runtime.get("parent_model") not in ACCEPTED_PARENT_MODELS:
+        add(errors, f"RunManifest.runtime.parent_model must be one of {ACCEPTED_PARENT_MODELS}")
+    if runtime.get("parent_effort") != PARENT_EFFORT:
+        add(errors, f"RunManifest.runtime.parent_effort must be {PARENT_EFFORT}")
+    if runtime.get("dispatch_interface") != NATIVE_DISPATCH_INTERFACE:
+        add(errors, f"RunManifest.runtime.dispatch_interface must be {NATIVE_DISPATCH_INTERFACE}")
+    if runtime.get("worker_model") != NATIVE_WORKER_MODEL:
+        add(errors, f"RunManifest.runtime.worker_model must be {NATIVE_WORKER_MODEL}")
+    if "codex_plugin_version" in runtime:
+        require_string(runtime.get("codex_plugin_version"), "RunManifest.runtime.codex_plugin_version", errors)
+    if "codex_dispatch_interface" in runtime and runtime.get("codex_dispatch_interface") not in CODEX_MECHANISMS:
+        add(errors, "RunManifest.runtime.codex_dispatch_interface must be codex_rescue or codex_companion")
 
     raw_authorizations = data.get("task_authorization")
     if not isinstance(raw_authorizations, list) or not raw_authorizations:
@@ -425,6 +556,13 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path) -
             all_scopes.append((str(task_id), scope))
     if criteria and assigned_criteria != set(criteria):
         add(errors, "RunManifest every approved criterion must be assigned to at least one task authorization")
+    if any(item.get("runtime") == CODEX_RUNTIME for item in authorizations.values()):
+        # The Codex option is authorized only when the manifest records the
+        # audited plugin version and the dispatch interface for those tasks.
+        if not isinstance(runtime.get("codex_plugin_version"), str) or not runtime.get("codex_plugin_version", "").strip():
+            add(errors, "RunManifest.runtime.codex_plugin_version is required when any task authorization uses the codex runtime")
+        if runtime.get("codex_dispatch_interface") not in CODEX_MECHANISMS:
+            add(errors, "RunManifest.runtime.codex_dispatch_interface is required when any task authorization uses the codex runtime")
 
     raw_dag = data.get("task_dag")
     if not isinstance(raw_dag, list) or not raw_dag:
@@ -512,10 +650,9 @@ def validate_run_manifest(data: dict[str, Any], errors: list[str], root: Path) -
 
     authority = require_object(data.get("authority"), "RunManifest.authority", errors)
     require_keys(authority, set(AUTHORITY_SURFACES), "RunManifest.authority", errors)
-    expected_owner = "parent" if data.get("mode") == "standalone" else "gauntlet"
     for surface in AUTHORITY_SURFACES:
-        if authority.get(surface) != expected_owner:
-            add(errors, f"RunManifest.authority.{surface} must be {expected_owner} for {data.get('mode')}")
+        if authority.get(surface) != "parent":
+            add(errors, f"RunManifest.authority.{surface} must be parent; no other workflow may own a Fable Advisor run")
 
 
 def load_and_validate(path: Path, root: Path, label: str, errors: list[str], validator: Any) -> dict[str, Any] | None:
@@ -544,14 +681,13 @@ def validate_task_packet(data: dict[str, Any], errors: list[str], root: Path) ->
         "input_paths",
         "expected_output",
         "acceptance_criteria",
-        "tools",
         "scope",
         "evidence_commands",
         "stop_conditions",
         "limits",
         "context",
     }
-    require_keys(data, required, "TaskPacket", errors)
+    require_keys(data, required, "TaskPacket", errors, optional=frozenset({"dispatch", "transport"}))
     if data.get("packet_type") != "FableAdvisorTaskPacket":
         add(errors, "TaskPacket.packet_type must be FableAdvisorTaskPacket")
     if data.get("protocol_version") != PROTOCOL_VERSION:
@@ -568,6 +704,21 @@ def validate_task_packet(data: dict[str, Any], errors: list[str], root: Path) ->
         add(errors, "TaskPacket.task.dependencies must not contain its own task ID")
 
     authorization = validate_task_authorization(data.get("authorization"), root, "TaskPacket.authorization", errors)
+    worker_runtime = authorization.get("runtime")
+    if worker_runtime == NATIVE_RUNTIME:
+        if "transport" in data:
+            add(errors, "TaskPacket.transport is the Codex extension; native claude-code packets carry dispatch")
+        validate_dispatch(data.get("dispatch"), "TaskPacket.dispatch", errors)
+    elif worker_runtime == CODEX_RUNTIME:
+        if "dispatch" in data:
+            add(errors, "TaskPacket.dispatch is the native extension; codex packets carry the optional transport")
+        if "transport" in data:
+            validate_transport(
+                data.get("transport"),
+                "TaskPacket.transport",
+                errors,
+                classification=authorization.get("classification"),
+            )
     for field, expected_value in {
         "task_id": data.get("task_id"),
         "classification": task.get("classification"),
@@ -579,20 +730,28 @@ def validate_task_packet(data: dict[str, Any], errors: list[str], root: Path) ->
     worker = require_object(data.get("worker"), "TaskPacket.worker", errors)
     require_keys(
         worker,
-        {"role", "agent_definition", "model", "effort", "fresh_instance", "mechanism"},
+        {"role", "runtime", "model", "effort", "write_enabled", "fresh_instance", "mechanism"},
         "TaskPacket.worker",
         errors,
     )
     if worker.get("role") != "worker":
         add(errors, "TaskPacket.worker.role must be worker")
     require_bool(worker.get("fresh_instance"), True, "TaskPacket.worker.fresh_instance", errors)
-    if worker.get("mechanism") not in SPAWN_MECHANISMS:
-        add(errors, "TaskPacket.worker.mechanism must be agent_tool or headless")
-    for field in ("agent_definition", "model", "effort"):
+    mechanism = worker.get("mechanism")
+    if mechanism not in DISPATCH_MECHANISMS:
+        add(errors, "TaskPacket.worker.mechanism must be fa_worker, fa_verifier, codex_rescue, or codex_companion")
+    elif MECHANISM_RUNTIME[mechanism] != worker.get("runtime"):
+        add(errors, "TaskPacket.worker.mechanism must belong to the worker runtime")
+    if worker.get("runtime") == NATIVE_RUNTIME:
+        if authorization.get("classification") == "verify" and mechanism != "fa_verifier":
+            add(errors, "verify tasks must dispatch through fa_verifier")
+        if mechanism == "fa_verifier" and worker.get("write_enabled") is not False:
+            add(errors, "fa_verifier is read-only (write_enabled false)")
+    for field in ("runtime", "model", "effort", "write_enabled"):
         if worker.get(field) != authorization.get(field):
             add(errors, f"TaskPacket.worker.{field} must exactly match the task authorization")
 
-    for field in ("input_paths", "expected_output", "acceptance_criteria", "tools", "evidence_commands", "stop_conditions", "limits"):
+    for field in ("input_paths", "expected_output", "acceptance_criteria", "evidence_commands", "stop_conditions", "limits"):
         if data.get(field) != authorization.get(field):
             add(errors, f"TaskPacket.{field} must exactly match TaskPacket.authorization.{field}")
 
@@ -667,7 +826,84 @@ def validate_spawn_record(
     run_id: Any,
     subject_type: str,
     subject_id: Any,
-    agent_definition: Any,
+    runtime: Any,
+    mechanism: Any,
+    requested_model: Any,
+    requested_effort: Any,
+    write_enabled: Any,
+    runtime_id: Any,
+) -> None:
+    record_ref, path = validate_file_ref(value, root, label, errors)
+    if path is None:
+        return
+    record = load_verified_json(path, label, errors)
+    if record is None:
+        return
+    require_keys(
+        record,
+        {
+            "record_type",
+            "protocol_version",
+            "run_id",
+            "subject_type",
+            "subject_id",
+            "runtime",
+            "mechanism",
+            "requested_model",
+            "requested_effort",
+            "write_enabled",
+            "runtime_id",
+            "spawned_at",
+        },
+        f"{label} JSON",
+        errors,
+        optional=frozenset({"agent_type"}),
+    )
+    expected = {
+        "record_type": "FableAdvisorSpawnRecord",
+        "protocol_version": PROTOCOL_VERSION,
+        "run_id": run_id,
+        "subject_type": subject_type,
+        "subject_id": subject_id,
+        "runtime": runtime,
+        "mechanism": mechanism,
+        "requested_model": requested_model,
+        "requested_effort": requested_effort,
+        "runtime_id": runtime_id,
+    }
+    for field, expected_value in expected.items():
+        if record.get(field) != expected_value:
+            add(errors, f"{label} JSON {field} does not bind the spawn")
+    record_runtime = record.get("runtime")
+    record_mechanism = record.get("mechanism")
+    if record_runtime not in WORKER_RUNTIMES:
+        add(errors, f"{label} JSON runtime must be {NATIVE_RUNTIME} or {CODEX_RUNTIME}")
+    if record_mechanism not in DISPATCH_MECHANISMS:
+        add(errors, f"{label} JSON mechanism must be fa_worker, fa_verifier, codex_rescue, or codex_companion")
+    elif MECHANISM_RUNTIME[record_mechanism] != record_runtime:
+        add(errors, f"{label} JSON mechanism must belong to the spawn runtime")
+    if record_runtime == NATIVE_RUNTIME:
+        if record.get("agent_type") != NATIVE_WORKER_AGENTS.get(record_mechanism):
+            add(errors, f"{label} JSON agent_type must be the subagent bound to its mechanism")
+    elif "agent_type" in record:
+        add(errors, f"{label} JSON agent_type is a native-runtime key and must be absent for codex spawns")
+    if not isinstance(record.get("write_enabled"), bool):
+        add(errors, f"{label} JSON write_enabled must be a bool")
+    elif record.get("write_enabled") != write_enabled:
+        add(errors, f"{label} JSON write_enabled does not bind the spawn")
+    require_iso_timestamp(record.get("spawned_at"), f"{label} JSON spawned_at", errors)
+
+
+def validate_job_record(
+    value: Any,
+    root: Path,
+    label: str,
+    errors: list[str],
+    *,
+    run_id: Any,
+    subject_type: str,
+    subject_id: Any,
+    runtime: Any,
     requested_model: Any,
     requested_effort: Any,
     runtime_id: Any,
@@ -686,75 +922,26 @@ def validate_spawn_record(
             "run_id",
             "subject_type",
             "subject_id",
-            "agent_definition",
+            "job_id",
+            "status",
             "requested_model",
-            "requested_effort",
-            "mechanism",
-            "runtime_id",
-            "spawned_at",
-        },
-        f"{label} JSON",
-        errors,
-    )
-    expected = {
-        "record_type": "FableAdvisorSpawnRecord",
-        "protocol_version": PROTOCOL_VERSION,
-        "run_id": run_id,
-        "subject_type": subject_type,
-        "subject_id": subject_id,
-        "agent_definition": agent_definition,
-        "requested_model": requested_model,
-        "requested_effort": requested_effort,
-        "runtime_id": runtime_id,
-    }
-    for field, expected_value in expected.items():
-        if record.get(field) != expected_value:
-            add(errors, f"{label} JSON {field} does not bind the spawn")
-    if record.get("mechanism") not in SPAWN_MECHANISMS:
-        add(errors, f"{label} JSON mechanism must be agent_tool or headless")
-    require_iso_timestamp(record.get("spawned_at"), f"{label} JSON spawned_at", errors)
-
-
-def validate_model_record(
-    value: Any,
-    root: Path,
-    label: str,
-    errors: list[str],
-    *,
-    run_id: Any,
-    subject_type: str,
-    subject_id: Any,
-    requested_model: Any,
-) -> None:
-    record_ref, path = validate_file_ref(value, root, label, errors)
-    if path is None:
-        return
-    record = load_verified_json(path, label, errors)
-    if record is None:
-        return
-    require_keys(
-        record,
-        {
-            "record_type",
-            "protocol_version",
-            "run_id",
-            "subject_type",
-            "subject_id",
-            "requested_model",
-            "observed_models",
+            "observed_model",
             "attestation",
             "source",
             "reason",
+            "raw",
         },
         f"{label} JSON",
         errors,
+        optional=frozenset({"observed_effort"}),
     )
     expected = {
-        "record_type": "FableAdvisorModelRecord",
+        "record_type": "FableAdvisorJobRecord",
         "protocol_version": PROTOCOL_VERSION,
         "run_id": run_id,
         "subject_type": subject_type,
         "subject_id": subject_id,
+        "job_id": runtime_id,
         "requested_model": requested_model,
     }
     for field, expected_value in expected.items():
@@ -763,20 +950,48 @@ def validate_model_record(
     attestation = record.get("attestation")
     if attestation not in ATTESTATION_STATES:
         add(errors, f"{label} JSON attestation must be verified or partially-verified")
-    observed = record.get("observed_models")
-    if not isinstance(observed, list) or any(not isinstance(item, str) for item in observed):
-        add(errors, f"{label} JSON observed_models must be a list of strings")
-        observed = []
+    require_string(record.get("status"), f"{label} JSON status", errors)
     require_string(record.get("source"), f"{label} JSON source", errors)
+    if not isinstance(record.get("raw"), dict):
+        add(errors, f"{label} JSON raw must be an object")
+    observed = record.get("observed_model")
+    codex_default_request = runtime == CODEX_RUNTIME and requested_model == CODEX_DEFAULT_MODEL
     if attestation == "verified":
-        if requested_model not in observed:
-            add(errors, f"{label} JSON verified attestation requires the requested model among observed_models")
+        require_string(observed, f"{label} JSON observed_model", errors)
+        if not codex_default_request and observed != requested_model:
+            add(errors, f"{label} JSON verified attestation requires observed_model to equal requested_model")
+        if runtime == NATIVE_RUNTIME and record.get("source") != NATIVE_ATTESTATION_SOURCE:
+            add(errors, f"{label} JSON verified attestation requires source {NATIVE_ATTESTATION_SOURCE}")
         if record.get("reason") is not None:
             add(errors, f"{label} JSON reason must be null when attestation is verified")
     elif attestation == "partially-verified":
         require_string(record.get("reason"), f"{label} JSON reason", errors)
-    if observed and requested_model not in observed:
-        add(errors, f"{label} JSON observed_models contradict the requested model")
+        if runtime == NATIVE_RUNTIME and observed is not None:
+            add(errors, f"{label} JSON partially-verified attestation requires observed_model null; an observed model is either verified or a contradiction")
+        if runtime == CODEX_RUNTIME and not codex_default_request:
+            add(errors, f"{label} JSON partially-verified attestation is only acceptable for codex-default requests")
+    if (
+        isinstance(observed, str)
+        and observed
+        and isinstance(requested_model, str)
+        and requested_model
+        and not codex_default_request
+        and observed != requested_model
+    ):
+        add(errors, "observed_model contradicts the requested model")
+    if "observed_effort" in record:
+        observed_effort = record.get("observed_effort")
+        if observed_effort is not None and (not isinstance(observed_effort, str) or not observed_effort.strip()):
+            add(errors, f"{label} JSON observed_effort must be null or a non-empty string")
+        if (
+            isinstance(observed_effort, str)
+            and observed_effort
+            and isinstance(requested_effort, str)
+            and requested_effort
+            and requested_effort != "default"
+            and observed_effort != requested_effort
+        ):
+            add(errors, "observed_effort contradicts the requested effort")
 
 
 def validate_command_records(
@@ -1038,15 +1253,34 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path) 
     attestation = require_object(data.get("runtime_attestation"), "ReturnPacket.runtime_attestation", errors)
     require_keys(
         attestation,
-        {"agent_definition", "requested_model", "requested_effort", "runtime_id", "spawn_record", "model_record"},
+        {
+            "runtime",
+            "mechanism",
+            "requested_model",
+            "requested_effort",
+            "runtime_id",
+            "authored_by",
+            "spawn_record",
+            "job_record",
+        },
         "ReturnPacket.runtime_attestation",
         errors,
     )
+    if attestation.get("runtime") not in WORKER_RUNTIMES:
+        add(errors, f"ReturnPacket.runtime_attestation.runtime must be {NATIVE_RUNTIME} or {CODEX_RUNTIME}")
     if packet is not None:
         worker = packet.get("worker", {}) if isinstance(packet.get("worker"), dict) else {}
-        for field, packet_field in (("agent_definition", "agent_definition"), ("requested_model", "model"), ("requested_effort", "effort")):
+        if attestation.get("runtime") != worker.get("runtime"):
+            add(errors, "ReturnPacket.runtime_attestation.runtime must exactly match the TaskPacket worker")
+        if attestation.get("mechanism") != worker.get("mechanism"):
+            add(errors, "ReturnPacket.runtime_attestation.mechanism must exactly match the TaskPacket worker")
+        for field, packet_field in (("requested_model", "model"), ("requested_effort", "effort")):
             if attestation.get(field) != worker.get(packet_field):
                 add(errors, f"ReturnPacket.runtime_attestation.{field} must exactly match the TaskPacket worker")
+        if attestation.get("authored_by") == "parent" and worker.get("write_enabled") is not False:
+            add(errors, "authored_by parent is only legal for read-only (write_enabled false) tasks")
+    if attestation.get("authored_by") not in {"worker", "parent"}:
+        add(errors, "ReturnPacket.runtime_attestation.authored_by must be worker or parent")
     require_string(attestation.get("runtime_id"), "ReturnPacket.runtime_attestation.runtime_id", errors)
     validate_spawn_record(
         attestation.get("spawn_record"),
@@ -1056,20 +1290,25 @@ def validate_return_packet(data: dict[str, Any], errors: list[str], root: Path) 
         run_id=data.get("run_id"),
         subject_type="task",
         subject_id=data.get("task_id"),
-        agent_definition=attestation.get("agent_definition"),
+        runtime=attestation.get("runtime"),
+        mechanism=attestation.get("mechanism"),
         requested_model=attestation.get("requested_model"),
         requested_effort=attestation.get("requested_effort"),
+        write_enabled=packet.get("worker", {}).get("write_enabled") if isinstance(packet, dict) else None,
         runtime_id=attestation.get("runtime_id"),
     )
-    validate_model_record(
-        attestation.get("model_record"),
+    validate_job_record(
+        attestation.get("job_record"),
         root,
-        "ReturnPacket.runtime_attestation.model_record",
+        "ReturnPacket.runtime_attestation.job_record",
         errors,
         run_id=data.get("run_id"),
         subject_type="task",
         subject_id=data.get("task_id"),
+        runtime=attestation.get("runtime"),
         requested_model=attestation.get("requested_model"),
+        requested_effort=attestation.get("requested_effort"),
+        runtime_id=attestation.get("runtime_id"),
     )
 
     require_string_list(data.get("uncertainties"), "ReturnPacket.uncertainties", errors, allow_empty=True)
@@ -1177,46 +1416,22 @@ def validate_review_packet(data: dict[str, Any], errors: list[str], root: Path) 
     attestation = require_object(data.get("reviewer_attestation"), "ReviewPacket.reviewer_attestation", errors)
     require_keys(
         attestation,
-        {
-            "agent_definition",
-            "model",
-            "effort",
-            "runtime_id",
-            "fresh_instance",
-            "spawn_record",
-            "prior_review_runtime_ids",
-        },
+        {"reviewer", "model", "effort", "session_id", "verification_task_ids"},
         "ReviewPacket.reviewer_attestation",
         errors,
     )
-    if attestation.get("agent_definition") != REVIEWER_DEFINITION:
-        add(errors, f"ReviewPacket.reviewer_attestation.agent_definition must be {REVIEWER_DEFINITION}")
-    if attestation.get("model") != REVIEWER_MODEL:
-        add(errors, f"ReviewPacket.reviewer_attestation.model must be {REVIEWER_MODEL}")
-    if attestation.get("effort") != REVIEWER_EFFORT:
-        add(errors, f"ReviewPacket.reviewer_attestation.effort must be {REVIEWER_EFFORT}")
-    require_bool(attestation.get("fresh_instance"), True, "ReviewPacket.reviewer_attestation.fresh_instance", errors)
-    require_string(attestation.get("runtime_id"), "ReviewPacket.reviewer_attestation.runtime_id", errors)
-    prior = require_string_list(
-        attestation.get("prior_review_runtime_ids"),
-        "ReviewPacket.reviewer_attestation.prior_review_runtime_ids",
+    if attestation.get("reviewer") != "parent":
+        add(errors, "ReviewPacket.reviewer_attestation.reviewer must be parent")
+    if attestation.get("model") not in ACCEPTED_PARENT_MODELS:
+        add(errors, f"ReviewPacket.reviewer_attestation.model must be one of {ACCEPTED_PARENT_MODELS}")
+    if attestation.get("effort") != PARENT_EFFORT:
+        add(errors, f"ReviewPacket.reviewer_attestation.effort must be {PARENT_EFFORT}")
+    require_string(attestation.get("session_id"), "ReviewPacket.reviewer_attestation.session_id", errors)
+    require_string_list(
+        attestation.get("verification_task_ids"),
+        "ReviewPacket.reviewer_attestation.verification_task_ids",
         errors,
         allow_empty=True,
-    )
-    if isinstance(attestation.get("runtime_id"), str) and attestation.get("runtime_id") in prior:
-        add(errors, "ReviewPacket.reviewer_attestation.runtime_id must never repeat a prior review round instance")
-    validate_spawn_record(
-        attestation.get("spawn_record"),
-        root,
-        "ReviewPacket.reviewer_attestation.spawn_record",
-        errors,
-        run_id=data.get("run_id"),
-        subject_type="review",
-        subject_id=f"round-{data.get('review_round')}",
-        agent_definition=REVIEWER_DEFINITION,
-        requested_model=REVIEWER_MODEL,
-        requested_effort=REVIEWER_EFFORT,
-        runtime_id=attestation.get("runtime_id"),
     )
 
     require_string_list(data.get("uncertainties"), "ReviewPacket.uncertainties", errors, allow_empty=True)

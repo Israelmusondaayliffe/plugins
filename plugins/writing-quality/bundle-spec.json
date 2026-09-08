@@ -1,6 +1,6 @@
 {
   "plugin": "writing-quality",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "skills": [
     "business-writing-intent-enforcer",
     "claim-boundary-checker",
@@ -34,11 +34,11 @@
   "protected_subtrees": {
     "skills/business-writing-intent-enforcer": {
       "files": 6,
-      "inventory_sha256": "dbb298d21a334bca28d10ea221e45ed24429c40cfd9cd03f2fceb1885b8dddae"
+      "inventory_sha256": "aa79e3dad365c2333bc1a47afb1141ee25bebd3ca4240fbc6ac35182c90aa770"
     },
     "skills/claim-boundary-checker": {
       "files": 4,
-      "inventory_sha256": "266b2c10d03a23a534644d6f795dc095e269bc5a1088cdcaa16347d3ce2e0952"
+      "inventory_sha256": "8eca04e07a64a0dc7e73ac6474d38d8953504b7cc12f5ab2374293c8e6c285e1"
     }
   },
   "guardrails": [

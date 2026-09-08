@@ -1,0 +1,12 @@
+{
+  "route": "astra-advisor-explicit",
+  "outcome": "Run an explicitly requested fixed-topology multi-task session.",
+  "evidence_surface": "Schema-valid packets, verified evidence hashes, and the owning workflow records.",
+  "boundaries": [
+    "Select only after an explicit Astra Advisor request.",
+    "Do not infer selection from complexity, high compute, or incidental subagent language."
+  ],
+  "stop_condition": "Stop when activation, model support, scope safety, evidence, or authority is invalid.",
+  "rationale": "Astra Advisor owns only the fixed explicit topology.",
+  "activation": "explicit-only"
+}

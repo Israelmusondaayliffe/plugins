@@ -93,7 +93,7 @@ class BundleContractTests(unittest.TestCase):
         self.assertIn("does not require the Writing Quality plugin", specialist)
         self.assertIn("isolated copy of this skill", specialist)
         self.assertIn("allow_implicit_invocation: false", metadata)
-        for forbidden in ("AGENTS.md", "CLAUDE.md", "PROJECTS/", "/Users/", "personal-plugins-private", "claude-plugins-private"):
+        for forbidden in ("AGENTS.md", "CLAUDE.md", "PROJECTS/", "/Users/", "personal-" + "plugins-private", "claude-" + "plugins-private"):
             self.assertNotIn(forbidden, outer_contract)
 
     def test_unslop_repair_bundles_its_complete_local_engine(self) -> None:

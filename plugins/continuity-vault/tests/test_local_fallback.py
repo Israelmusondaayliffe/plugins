@@ -31,7 +31,7 @@ class LocalFallbackTests(unittest.TestCase):
         bundle = json.loads((ROOT / "bundle-spec.json").read_text(encoding="utf-8"))
         claude = json.loads((ROOT / ".claude-plugin" / "plugin.json").read_text(encoding="utf-8"))
         codex = json.loads((ROOT / ".codex-plugin" / "plugin.json").read_text(encoding="utf-8"))
-        self.assertEqual({bundle["version"], claude["version"], codex["version"]}, {"0.2.2"})
+        self.assertEqual({bundle["version"], claude["version"], codex["version"]}, {"0.3.0"})
         self.assertTrue(bundle["companions"])
         self.assertTrue(all(item["required"] is False for item in bundle["companions"]))
         self.assertIn("notion", {item["name"] for item in bundle["companions"]})

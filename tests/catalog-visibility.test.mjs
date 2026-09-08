@@ -49,13 +49,13 @@ const repositorySkills = codexMarketplace.plugins.reduce(
 test("keeps the complete repository inventory separate from the Site inventory", () => {
   assert.equal(codexMarketplace.plugins.length, 29);
   assert.equal(claudeMarketplace.plugins.length, 29);
-  assert.equal(repositorySkills, 226);
+  assert.equal(repositorySkills, 237);
   assert.equal(curation.visibility.visible_plugins.length, 28);
   assert.equal(curation.visibility.excluded_plugins.length, 1);
   assert.equal(curation.expected_totals.plugins, 28);
-  assert.equal(curation.expected_totals.skills, 204);
+  assert.equal(curation.expected_totals.skills, 215);
   assert.equal(totals.plugins, 28);
-  assert.equal(totals.skills, 204);
+  assert.equal(totals.skills, 215);
 });
 
 test("excludes only the repository-only compatibility plugin", () => {

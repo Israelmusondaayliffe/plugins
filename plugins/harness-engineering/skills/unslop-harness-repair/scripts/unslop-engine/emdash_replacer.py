@@ -21,7 +21,7 @@ from pathlib import Path
 def is_likely_sentence(text: str) -> bool:
     """
     Determine if text following em-dash could be a standalone sentence.
-    
+
     Heuristics:
     - Has a subject (starts with pronoun, noun, or article)
     - Has a verb
@@ -30,11 +30,11 @@ def is_likely_sentence(text: str) -> bool:
     text = text.strip()
     if not text:
         return False
-    
+
     words = text.split()
     if len(words) < 2:
         return False
-    
+
     # Common sentence starters (pronouns, articles, demonstratives)
     sentence_starters = {
         'i', 'you', 'he', 'she', 'it', 'we', 'they',
@@ -44,18 +44,18 @@ def is_likely_sentence(text: str) -> bool:
         'my', 'your', 'his', 'her', 'its', 'our', 'their',
         'what', 'which', 'who', 'how', 'why', 'when', 'where',
     }
-    
+
     first_word = words[0].lower().strip('.,!?;:')
-    
+
     # Strong signal: starts with sentence starter
     if first_word in sentence_starters:
         return True
-    
+
     # Strong signal: starts with capitalized proper noun or name
     if words[0][0].isupper() and first_word not in sentence_starters:
         # Could be proper noun at start of sentence
         return True
-    
+
     # Check for verb presence (simple heuristic)
     common_verbs = {
         'is', 'are', 'was', 'were', 'be', 'been', 'being',
@@ -106,26 +106,26 @@ def is_likely_sentence(text: str) -> bool:
         'report', 'reports', 'reported', 'decide', 'decides', 'decided',
         'pull', 'pulls', 'pulled'
     }
-    
+
     text_lower = text.lower()
     has_verb = any(f' {verb} ' in f' {text_lower} ' for verb in common_verbs)
-    
+
     # If has sentence starter AND verb, definitely sentence
     if first_word in sentence_starters and has_verb:
         return True
-    
+
     # If 5+ words and has verb, likely sentence
     if len(words) >= 5 and has_verb:
         return True
-    
+
     # Short fragments without clear sentence structure -> continuation
     if len(words) <= 3:
         return False
-    
+
     # Default: if starts with lowercase and no clear indicators, continuation
     if text[0].islower():
         return False
-    
+
     # Default for ambiguous cases: treat as sentence (safer)
     return True
 
@@ -133,36 +133,36 @@ def is_likely_sentence(text: str) -> bool:
 def replace_emdashes(text: str) -> tuple[str, int]:
     """
     Replace em-dashes with period or comma based on context.
-    
+
     Returns:
         tuple: (processed_text, count_of_replacements)
     """
     # Match em-dash variants: —, –, --
     # Pattern: captures text before and after em-dash
     emdash_pattern = r'(\S)\s*[—–]|(\S)\s*--\s*'
-    
+
     count = 0
     result = text
-    
+
     # Find all em-dashes
     emdash_chars = ['—', '–', '--']
-    
+
     for emdash in emdash_chars:
         while emdash in result:
             # Find position
             pos = result.find(emdash)
             if pos == -1:
                 break
-            
+
             # Get text after em-dash
             after_pos = pos + len(emdash)
             # Skip any whitespace
             while after_pos < len(result) and result[after_pos] in ' \t':
                 after_pos += 1
-            
+
             # Get remaining text
             remaining = result[after_pos:] if after_pos < len(result) else ""
-            
+
             # Determine replacement
             if is_likely_sentence(remaining):
                 # Period + capitalize
@@ -173,8 +173,8 @@ def replace_emdashes(text: str) -> tuple[str, int]:
                     while first_letter_idx < len(remaining) and not remaining[first_letter_idx].isalpha():
                         first_letter_idx += 1
                     if first_letter_idx < len(remaining):
-                        remaining = (remaining[:first_letter_idx] + 
-                                   remaining[first_letter_idx].upper() + 
+                        remaining = (remaining[:first_letter_idx] +
+                                   remaining[first_letter_idx].upper() +
                                    remaining[first_letter_idx + 1:])
             else:
                 # Comma + keep lowercase
@@ -187,41 +187,41 @@ def replace_emdashes(text: str) -> tuple[str, int]:
                     # Otherwise lowercase
                     if first_word and not first_word.isupper():
                         remaining = remaining[0].lower() + remaining[1:]
-            
+
             # Strip whitespace before em-dash
             before = result[:pos].rstrip()
-            
+
             # Reconstruct
             result = before + replacement + remaining
             count += 1
-    
+
     return result, count
 
 
 def process_file(input_path: str, output_path: str = None, in_place: bool = False) -> dict:
     """
     Process a file and replace em-dashes.
-    
+
     Returns:
         dict with 'count', 'input', 'output' keys
     """
     input_file = Path(input_path)
-    
+
     if not input_file.exists():
         raise FileNotFoundError(f"Input file not found: {input_path}")
-    
+
     text = input_file.read_text(encoding='utf-8')
     processed, count = replace_emdashes(text)
-    
+
     if in_place:
         output_file = input_file
     elif output_path:
         output_file = Path(output_path)
     else:
         output_file = input_file.with_suffix('.processed' + input_file.suffix)
-    
+
     output_file.write_text(processed, encoding='utf-8')
-    
+
     return {
         'count': count,
         'input': str(input_file),
@@ -238,31 +238,31 @@ def main():
     parser.add_argument('--in-place', '-i', action='store_true',
                        help='Modify file in place')
     parser.add_argument('--text', '-t', help='Process text directly instead of file')
-    
+
     args = parser.parse_args()
-    
+
     if args.text:
         processed, count = replace_emdashes(args.text)
         print(f"Processed text ({count} em-dashes replaced):")
         print(processed)
         return
-    
+
     if not args.input:
         parser.print_help()
         sys.exit(1)
-    
+
     try:
         result = process_file(args.input, args.output, args.in_place)
         print(f"Em-dash replacement complete:")
         print(f"  Input: {result['input']}")
         print(f"  Output: {result['output']}")
         print(f"  Replacements: {result['count']}")
-        
+
         if result['count'] == 0:
             print("  Status: No em-dashes found ✓")
         else:
             print(f"  Status: {result['count']} em-dashes replaced ✓")
-            
+
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)

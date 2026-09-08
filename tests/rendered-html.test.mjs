@@ -66,9 +66,9 @@ test("server-renders the depersonalized registry identity and exact public disco
   const text = withoutReactMarkers(html);
   assert.match(text, /Community Agent Plugins/);
   assert.match(text, /\bAP\b/);
-  assert.match(text, /28 public plugins and 204 bundled skills/);
+  assert.match(text, /28 public plugins and 215 bundled skills/);
   assert.match(text, /28<\/strong><span>Public plugins/);
-  assert.match(text, /204<\/strong><span>Bundled skills/);
+  assert.match(text, /215<\/strong><span>Bundled skills/);
   assert.match(text, /04<\/strong><span>Outcome groups/);
   assert.match(text, /03<\/strong><span>Supported hosts/);
   assert.match(text, /Current edition/);
@@ -239,7 +239,7 @@ test("only renders install actions for each documented host", async () => {
 
 test("renders all and only the public static plugin routes", async () => {
   assert.equal(totals.plugins, 28);
-  assert.equal(totals.skills, 204);
+  assert.equal(totals.skills, 215);
   assert.equal(visiblePlugins.length, 28);
 
   for (const plugin of visiblePlugins) {
@@ -302,7 +302,7 @@ test("serves public discovery exports from the visible catalog", async () => {
   assert.equal(llmsResponse.status, 200);
   assert.equal(llmsResponse.headers.get("cache-control"), "no-store");
   const llms = await llmsResponse.text();
-  assert.match(llms, /Inventory: 28 plugins and 204 skills/);
+  assert.match(llms, /Inventory: 28 plugins and 215 skills/);
   assert.match(llms, /Install on Codex:/);
   assert.match(llms, /Install on Claude Code:/);
   assert.match(llms, /Install in Claude Cowork:/);

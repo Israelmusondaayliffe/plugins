@@ -156,4 +156,10 @@ If a user jumps modes without completing the previous one, note what is missing 
 
 **User provides an extremely long or complex brief**: Break it into segments. Build one segment at a time. Confirm each before proceeding. For videos past 60 seconds, use the ultra-long template with anti-drift scaffolding rather than stretching a short prompt.
 
-**User expects Claude to watch a video**: Claude cannot process video input. Route to DECONSTRUCT and ask the user to describe the video in text. The more specific their description (shot count, effects, timing), the better the deconstruction.
+**Video reference**: Use an available media inspection tool and record what it actually showed. If no suitable tool or accessible reference exists, request a description or usable frames and state the resulting limitation.
+
+## Optional Seedance validation
+
+When Seedance 2.5 is explicitly selected, validate its timed prompt with `python3 scripts/validate_video_prompt.py PROMPT.md --profile seedance-2.5 --mode MODE`. Use `--help` for supported modes. The positional file invocation keeps generic validation for other models. This checks prompt structure, not service availability or a generated video’s quality.
+
+Keep the user’s model choice and duration. Do not impose a publisher-specific model exclusion or default. Inspect available media tools before requesting a text description of a reference; use a user-supplied description only when the reference cannot be inspected with the available tools.

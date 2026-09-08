@@ -1,6 +1,6 @@
 {
   "plugin": "model-prompt-lab",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "skills": [
     "fable-5-production-prompter",
     "fable-mode",
@@ -8,7 +8,9 @@
     "gpt-5-6-production-prompter",
     "model-prompt-router",
     "prompt-benchmark-designer",
-    "prompt-migration-audit"
+    "prompt-migration-audit",
+    "gpt-6-astra-production-prompter",
+    "fable-5-1-production-prompter"
   ],
   "coordinator_skills": [
     "model-prompt-router",
@@ -16,9 +18,21 @@
     "prompt-migration-audit"
   ],
   "companions": [
-    {"name": "openai-developers", "required": false, "purpose": "Current OpenAI platform guidance when installed"},
-    {"name": "proofloop", "required": false, "purpose": "Extended iterative verification"},
-    {"name": "writing-quality", "required": false, "purpose": "Final human-facing prose validation"}
+    {
+      "name": "openai-developers",
+      "required": false,
+      "purpose": "Current OpenAI platform guidance when installed"
+    },
+    {
+      "name": "proofloop",
+      "required": false,
+      "purpose": "Extended iterative verification"
+    },
+    {
+      "name": "writing-quality",
+      "required": false,
+      "purpose": "Final human-facing prose validation"
+    }
   ],
   "guardrails": [
     "Current model availability, parameters, and tool behavior must be checked with the owning documentation when load-bearing.",

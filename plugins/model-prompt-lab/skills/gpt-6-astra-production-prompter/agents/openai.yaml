@@ -1,0 +1,6 @@
+interface:
+  display_name: "GPT-6 Astra Production Prompter"
+  short_description: "Prepare, migrate, and diagnose Astra prompts with evidence boundaries."
+  default_prompt: "$gpt-6-astra-production-prompter Use this skill for the request."
+policy:
+  allow_implicit_invocation: false

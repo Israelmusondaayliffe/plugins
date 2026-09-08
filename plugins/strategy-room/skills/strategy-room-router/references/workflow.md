@@ -12,3 +12,8 @@ Strategy Room owns pre-commitment reasoning and stops before execution. Outcome 
 When an execution companion is available and explicitly selected, hand it the accepted decision record after separate execution authorization. Otherwise emit a self-contained execution brief or decision handoff with the accepted decision, rationale, assumptions, evidence, risks, conditions, acceptance checks, next actions, and owner. Stop before execution.
 
 Continuity Vault is optional. When it is absent, write durable decision state to `<approved-output-root>/strategy-room/decision-map.md` using Decision Wayfinder's template. Write any execution handoff to `<approved-output-root>/strategy-room/execution-handoff.md`. If no output root is authorized, ask for one before writing.
+
+prioritize: use curiosity-compass for a ranked, evidence-qualified focus.
+match: use candidate-matcher-and-brief-builder for a qualified executor and handoff.
+productize: use proof-to-product-mapper for a reusable form and its next validation.
+wayfind: use decision-wayfinder for dependent decisions across sessions.

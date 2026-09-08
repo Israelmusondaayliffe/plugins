@@ -1,11 +1,12 @@
 {
   "plugin": "continuity-vault",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "skills": [
     "continuity-router",
     "frontier-extraction",
     "graphify",
     "knowledge-promotion-policy",
+    "session-compounder",
     "staleness-and-conflict-audit"
   ],
   "coordinator_skills": [
@@ -14,11 +15,31 @@
     "staleness-and-conflict-audit"
   ],
   "companions": [
-    {"name": "claude-mem", "required": false, "purpose": "Recall and prior-context discovery"},
-    {"name": "notion", "required": false, "purpose": "Internal wiki sources"},
-    {"name": "google-drive", "required": false, "purpose": "Working document sources"},
-    {"name": "knowledge-work-superpowers", "required": false, "purpose": "Evidence-led deliverables"},
-    {"name": "writing-quality", "required": false, "purpose": "Final continuity report prose"}
+    {
+      "name": "claude-mem",
+      "required": false,
+      "purpose": "Recall and prior-context discovery"
+    },
+    {
+      "name": "notion",
+      "required": false,
+      "purpose": "Internal wiki sources"
+    },
+    {
+      "name": "google-drive",
+      "required": false,
+      "purpose": "Working document sources"
+    },
+    {
+      "name": "knowledge-work-superpowers",
+      "required": false,
+      "purpose": "Evidence-led deliverables"
+    },
+    {
+      "name": "writing-quality",
+      "required": false,
+      "purpose": "Final continuity report prose"
+    }
   ],
   "guardrails": [
     "The active instruction chain (CLAUDE.md on Claude Code / Cowork, AGENTS.md on Codex) and workspace source files remain authoritative.",

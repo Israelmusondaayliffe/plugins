@@ -1,0 +1,6 @@
+interface:
+  display_name: "Astra Advisor"
+  short_description: "Explicit fixed-topology orchestration for bounded multi-task work."
+  default_prompt: "$astra-advisor Use this skill only after explicitly requesting Astra Advisor."
+policy:
+  allow_implicit_invocation: false

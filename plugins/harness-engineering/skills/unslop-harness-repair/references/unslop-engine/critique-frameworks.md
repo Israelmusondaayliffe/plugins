@@ -11,7 +11,7 @@ Self-critique requires adopting an external perspective. The lens chosen determi
 Choose critique lens based on who will consume/evaluate the output:
 
 - **Undergraduate lens** → Educational content, tutorials, onboarding docs
-- **Executive lens** → Strategy memos, board decks, business proposals  
+- **Executive lens** → Strategy memos, board decks, business proposals\
 - **Technical expert lens** → Architecture docs, research papers, API design
 - **Skeptical peer lens** → Arguments, pitches, claims requiring proof
 - **General public lens** → Marketing content, blog posts, social media

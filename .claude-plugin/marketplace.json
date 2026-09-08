@@ -11,7 +11,7 @@
       "name": "agent-ops",
       "source": "./plugins/agent-ops",
       "description": "Design, route, and audit reusable agent systems on Claude Code, Claude Cowork, and Codex, with explicit authority, evidence, stops, and failure behavior.",
-      "version": "0.5.2",
+      "version": "0.6.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -20,7 +20,7 @@
       "name": "brand-world-studio",
       "source": "./plugins/brand-world-studio",
       "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-      "version": "0.2.2",
+      "version": "0.3.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -29,7 +29,7 @@
       "name": "capability-operator",
       "source": "./plugins/capability-operator",
       "description": "Capability routing, read-only inventories, overlap audits, portfolio governance, skill creation, and fresh-task discovery proof on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -47,7 +47,7 @@
       "name": "continuity-vault",
       "source": "./plugins/continuity-vault",
       "description": "Source-preserving extraction, knowledge promotion, graph routing, recall, and staleness auditing across Claude Code, Claude Cowork, and Codex sessions.",
-      "version": "0.2.2",
+      "version": "0.3.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -74,7 +74,7 @@
       "name": "gauntlet",
       "source": "./plugins/gauntlet",
       "description": "Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet.",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "author": {
         "name": "Community Maintainers"
       }
@@ -83,7 +83,7 @@
       "name": "harness-engineering",
       "source": "./plugins/harness-engineering",
       "description": "Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow.",
-      "version": "2.7.0",
+      "version": "2.7.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -128,7 +128,7 @@
       "name": "model-prompt-lab",
       "source": "./plugins/model-prompt-lab",
       "description": "Verified model routing, production prompt architecture, migration audits, and benchmark design on Claude Code, Claude Cowork, and Codex.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -173,7 +173,7 @@
       "name": "strategy-room",
       "source": "./plugins/strategy-room",
       "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-      "version": "0.2.3",
+      "version": "0.3.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -182,7 +182,7 @@
       "name": "video-production-studio",
       "source": "./plugins/video-production-studio",
       "description": "End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video.",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -191,7 +191,7 @@
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.4.2",
+      "version": "0.4.3",
       "author": {
         "name": "Community Maintainers"
       }
@@ -200,7 +200,7 @@
       "name": "writing-quality",
       "source": "./plugins/writing-quality",
       "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -209,7 +209,7 @@
       "name": "gauntlet-loop",
       "source": "./plugins/gauntlet-loop",
       "description": "Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification.",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -218,7 +218,7 @@
       "name": "ai-film-studio",
       "source": "./plugins/ai-film-studio",
       "description": "Explicit-only AI film planning, continuity, prompt handoff, and production records with standalone local fallbacks.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Community Maintainers"
       }
@@ -227,7 +227,7 @@
       "name": "guide-production-studio",
       "source": "./plugins/guide-production-studio",
       "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "Community Maintainers"
       }
@@ -254,7 +254,7 @@
       "name": "practice-compiler",
       "source": "./plugins/practice-compiler",
       "description": "Mine date-bounded Codex or Claude Code work traces for repeated tasks, recurring feedback, and follow-up instructions, then stage redacted evidence-backed proposals.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Community Maintainers"
       }

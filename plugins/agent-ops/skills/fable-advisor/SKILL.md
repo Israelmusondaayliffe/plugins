@@ -1,96 +1,96 @@
 ---
 name: fable-advisor
-description: Use only after the user explicitly says "Use Fable Advisor" or gives an equivalent imperative such as "run this as a Fable Advisor multi-session run." Adaptive parent-orchestrated worker fleet with packet validation, exact-model workers, fresh Fable 5 review, and no implicit activation.
+description: Use only after the user explicitly says "Use Fable Advisor" or gives an equivalent imperative. Adaptive parent-orchestrated workflow on Claude Code where the activating Fable 5.1 session at high effort plans, dispatches, integrates, and reviews; native Fable 5.1 subagents execute bounded packets by default, with Codex workers through the official Codex plugin as a per-task option. Packet validation, model attestation, parent final review, and no implicit activation.
 ---
 
 # Fable Advisor
 
-Fable Advisor is a hidden, explicit-only, adaptive multi-worker workflow for bounded multi-task work on Claude Code. The session that activates it (the parent) plans, dispatches, integrates, and synthesizes. Workers build. A fresh reviewer criticizes. Nothing activates it except a genuine current imperative from the user.
+Fable Advisor is a hidden, explicit-only, user-invoked adaptive multi-task workflow on Claude Code. The activating session is the parent: model `claude-fable-5-1` at `high` effort. It plans, dispatches, integrates, reviews, and synthesizes. By default, native Claude Code subagents pinned to `claude-fable-5-1`, `agent-ops:fa-worker` and `agent-ops:fa-verifier`, build and verify tasks. Codex, through the official `codex@openai-codex` plugin, remains an available worker runtime that the RunManifest authorizes per task; it is never a silent fallback and never silently replaced.
 
-It is unrelated to Claude Code's built-in "advisor" feature (`advisorModel`, `--advisor`); do not conflate them.
+It is unrelated to Claude Code's built-in advisor feature (`advisorModel`, `--advisor`). Do not conflate them.
 
 ## Activation
 
 Require an explicit request: "Use Fable Advisor" or an equivalent imperative such as "run this as a Fable Advisor multi-session run." Quoted, explanatory, negated, conditional, and incidental references are not activation. Complexity, model names, agent language, or a request that merely has several tasks never activate it. A later same-request revocation ("but don't activate it", an immediate "no") cancels activation. Record the quoted imperative in the RunManifest as the activation record.
 
-If activation is absent or revoked, use agent-ops-router or plain in-session work. LoopKit and Outcome Engine are optional companion routers when installed.
+If activation is absent or revoked, use the normal routing owners (agent-ops-router, loopkit, outcome-engine, or plain in-session work).
+
+## Mutual exclusion with the gauntlet
+
+Fable Advisor and the gauntlet are peer explicit-only top-level workflows. They never auto-activate, nest, or compose each other. Whichever workflow the user explicitly invokes owns that run. If the user names both for one run, or invokes either workflow while the other has an active run on the target, stop, create no run state, and ask the user to choose one workflow or end the active run.
+
+Detect an active gauntlet run read-only by checking the target for a non-terminal `.gauntlet/runs/*/run.json`. Neither workflow silently supersedes the other.
 
 ## Roles and authority
 
 | Role | Runtime identity | Authority |
 | --- | --- | --- |
-| Parent | The activating session (expected model `claude-fable-5`) | Plan, obtain user approval, dispatch, validate packets, integrate, spawn reviewers, synthesize, claim completion, stop the run |
-| Worker | Fresh instance per task carrying the `fa-worker-light` role (`claude-sonnet-5`) or the `fa-worker-complex` role (`claude-opus-4-8` baseline; `fa-worker-complex-opus5` / `fa-worker-complex-46` only when the manifest authorizes it on recorded evidence), spawned per Worker execution below | Execute exactly one TaskPacket inside its write roots; run evidence commands; return a ReturnPacket. May delegate bounded lookups to its own nested subagents (one level). |
-| Reviewer | Fresh instance carrying the `fa-reviewer` role (`claude-fable-5`, xhigh), new instance every round, never resumed, spawned per Worker execution below | Read the approved spec, candidate artifacts, and evidence; reproduce declared checks; return accepted, revise, blocked, or unable_to_verify. Read-only. |
+| Parent | The activating session, model `claude-fable-5-1`, effort `high` | Plan, obtain approval, execute bounded work itself within the approved plan and write scope, dispatch, validate, integrate, perform final review, synthesize, issue the final answer and terminal verdict, and stop the run |
+| Worker | `agent-ops:fa-worker`, a fresh subagent pinned to `claude-fable-5-1` at `high` effort. The Agent tool's agent ID is its identity. | Execute one write-enabled TaskPacket within its declared scope, run task-level checks, and write its ReturnPacket |
+| Verifier | `agent-ops:fa-verifier`, a fresh read-only subagent pinned to `claude-fable-5-1` at `high` effort | Execute one `verify` TaskPacket and return checkable evidence as text; the parent transcribes the ReturnPacket |
+| Codex worker (option) | One job through the official Codex plugin, authorized per task with runtime `codex`. The companion job ID is its identity. Model `codex-default` or an explicit Codex model ID. | Execute one TaskPacket within its declared scope, run task-level checks, and return evidence. A `verify` Codex task is read-only. |
 
-## Worker execution: sessions before subagents
+The parent never substitutes one runtime for another after authorization and never passes a `model` override to the Agent tool. When it delegates, native Fable 5.1 workers are the default. When it executes work itself, the rules in Parent execution apply. If `agent-ops:fa-worker` or `agent-ops:fa-verifier` is not among the Agent tool's available types, native tasks cannot run; if the official Codex plugin cannot be invoked, codex-authorized tasks cannot run. Either case stops with an exact blocker report.
 
-Every worker and reviewer runs under one of two mechanisms. Each spawn records its mechanism in the spawn record; the manifest's `runtime.spawn_mechanism` records the run default. Sessions are the point of this workflow: a separate session gives each worker genuinely fresh context and machine-checkable model attestation, so `headless` is the default and `agent_tool` exists only as a recorded downgrade.
+Choose Codex for a task only when the user asks for it or the approved plan names it (for example, a task that benefits from a second model family, or a Codex-native toolchain). Record the choice in the task authorization; the default for every unmarked task is native.
 
-**`headless` (default).** Each worker and each reviewer round is its own Claude Code session via `claude -p`. Before first dispatch, write each needed role text (the body of the matching `fa-*` agent definition, frontmatter stripped) to `<run-root>/roles/<agent-name>.md`, exactly:
+Workers never approve, integrate, perform final review, contact the user, issue a final answer, or change run authority. A ReturnPacket is evidence, not acceptance.
 
-```bash
-awk 'flag; /^---$/{c++; if(c==2) flag=1}' <fa-agent-definition>.md > <run-root>/roles/<agent-name>.md
-```
+## Worker execution
 
-Dispatch each task as a background process:
+Dispatch only through the Agent tool: `subagent_type: "agent-ops:fa-worker"` for write-enabled packets, `"agent-ops:fa-verifier"` for `verify` packets. The prompt names the TaskPacket path, the run root, the working directory, and the evidence directory, and nothing else from the parent's context. Use `run_in_background: true` for background execution. Never pass `model`: the agent definitions pin `claude-fable-5-1` and `effort: high`, and a different rung needs a new agent definition in a new plugin version, never a silent change.
 
-```bash
-claude -p "TaskPacket: <packet path>. Run root: <run root>." \
-  --model <authorized model id> --effort <authorized effort> \
-  --append-system-prompt-file <run-root>/roles/<agent-name>.md \
-  --tools "Read,Write,Edit,Glob,Grep,Bash" \
-  --max-turns <40 light | 80 complex | 60 reviewer> \
-  --permission-mode acceptEdits --allowedTools "Bash" \
-  --add-dir <run root> <write roots> \
-  --output-format json > <run-root>/evidence/<task-id>.result.json
-```
+The agent ID the Agent tool returns is the runtime identity and names the subagent transcript (`agent-<id>.jsonl`). The parent writes the spawn record at dispatch and the job record at collection from the transcript's observed model. Before dispatching, monitoring, or collecting any worker, read `references/native-worker-operations.md`.
 
-Reviewer rounds use `--tools "Read,Glob,Grep,Bash"` and `--disallowedTools "Write,Edit"`. `bypassPermissions` only when the approved manifest authorizes it explicitly. The saved result JSON is the attestation surface: its `session_id` is the spawn identity and its per-model usage/cost block is the model_record. Headless mode does not depend on agent-registry visibility at all.
+Write-enabled workers write their own ReturnPacket inside the run directory. Verifiers return text, and the parent transcribes the ReturnPacket with `authored_by: "parent"`. Never enable hooks, gates, credentials, or credential changes from inside a run.
 
-**`agent_tool` (recorded fallback only).** Used only when headless is unavailable (CLI unauthenticated or absent) and the approved manifest records the downgrade. Spawn `agent-ops:fa-*`; if plugin-qualified names are missing from the registry, identical user-scope `fa-*` definitions are acceptable. Record which definition served. In-session model attestation is weaker (partially verified by design); ReturnPacket handling must say so.
+For a task authorized with runtime `codex`, dispatch through the official plugin only: the `codex:codex-rescue` subagent via the Agent tool, or the companion CLI (`node <codex-plugin-root>/scripts/codex-companion.mjs task|status|result --json`) when the target directory differs or when collecting results. The companion job ID is the runtime identity; the parent writes the spawn record at dispatch and the job record from `result <job-id> --json`. Before any Codex dispatch, resume, monitoring, or collection, read `references/codex-transport-operations.md`. The plugin's automatic stop-time review gate stays disabled.
 
-If neither mechanism is available, stop and ask (interactive) or end `blocked` (unattended). Never substitute a mechanism or model silently.
+## Parent execution
 
-Workers never approve, integrate, review, contact the user, or spawn peer workers. The reviewer never builds, repairs, writes, approves on the user's behalf, synthesizes, or becomes lead. A ReturnPacket is evidence, not acceptance. Only the parent produces the final answer, and only after an `accepted` verdict.
+The parent is Fable 5.1 at high effort, and it may do bounded implementation itself rather than only orchestrate. Parent execution is allowed when the approved plan names the work (or the user asks for it), the writes stay inside the plan's approved write scope, and the work is small enough that a dispatch would cost more than it saves: a critical-path fix, an integration-adjacent edit, a change the parent must understand fully to review the rest.
+
+Parent execution keeps every ownership and evidence rule. The parent records each parent-executed task in the run log with its objective, the write scope used, the observable target-state delta, and the evidence commands it ran, captured as command evidence records or inline low-risk command entries exactly as a worker would report them. It does not write a TaskPacket for itself and never counts parent-executed work against the worker launch cap, but it does count the elapsed time against the run budget. Parent-executed work is a candidate like any other: it goes through the same final review, reproduction commands, and hash freeze before acceptance, and the parent must not treat having written something as having reviewed it. Delegation stays the default for parallel, long, or substantial work, with native Fable 5.1 workers first and Codex by explicit authorization.
+
+## Sparse-parent posture
+
+Fable 5.1 is expensive. The parent plans, gets approval, executes only the bounded work it has reserved for itself, dispatches the rest, and then stays out of the way. It wakes for blockers, completion notifications, ReturnPacket collection and validation, material replanning, integration, and final review. It never supervises individual worker tool actions. It never checks a background worker more often than the packet cadence. The default is to collect at completion, not to poll.
 
 ## Work-first execution
 
-Execution against the requested target is the primary work. Exploration, plans, tests, receipts, and criticism are support: they count as progress only when they directly enable or verify a requested target-state change. Progress is measured as observable target-state delta plus a falling unresolved-work count; passing validators never outweighs required items still unfinished.
+Execution against the requested target is the primary work. Exploration, plans, tests, receipts, and criticism are support. They count as progress only when they directly enable or verify a requested target-state change. Progress is measured as observable target-state delta plus a falling unresolved-work count. Passing validators never outweighs required items still unfinished.
 
-Every implementation worker owns a direct deliverable or target-system mutation. A successful ReturnPacket carries a `work_report` with `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`; the parent rejects implementation success when the observable delta is empty or unresolved required work did not improve. Audit-only workers are exceptional: each must name the immediate decision it informs, and they never outnumber implementation workers on an implementation run.
+Every implementation worker owns a direct deliverable or target-system mutation. A successful ReturnPacket carries a `work_report` with `observable_delta`, `primary_output_count`, `unresolved_before`, `unresolved_after`, `support_artifact_count`, and `next_target_action`. The parent rejects implementation success when the observable delta is empty or unresolved required work did not improve. Audit-only workers are exceptional. Each names the immediate decision it informs, and they never outnumber implementation workers on an implementation run.
 
 ## Procedure
 
-1. **Audit.** Verify the runtime supports every model the run needs (Opus 5 requires Claude Code >= 2.1.219). Probe headless availability with a minimal `claude -p` call; on auth failure, ask the user to run `claude login` (interactive) or record a `spawn_mechanism: agent_tool` downgrade that the manifest approval must cover. Record runtime versions, session identity, and the chosen spawn mechanism in the RunManifest. Fail closed on unsupported mappings: stop and ask, never substitute silently.
-2. **Plan.** Decompose into a task DAG. Interview the user (knowing-your-unknowns) for shape-changing unknowns. Write the RunManifest from `assets/run-manifest.template.json` with finite limits, exact write roots, and per-task model authorization. Read `references/protocol.md` before writing packets.
-3. **Approve.** Present the RunManifest summary to the user, including total planned launches and expected usage, and get explicit approval before any dispatch. No blanket approvals.
-4. **Dispatch adaptively.** For each ready task: write a TaskPacket, validate it (`python3 scripts/validate_packets.py --root RUN_ROOT PACKET.json`), spawn the worker in the background per Worker execution (headless session by default) with the packet path as its brief, and write the spawn evidence record. Add workers as the DAG unblocks; retire them as tasks finish. Respect the manifest's concurrency and launch caps. Repo-mutating tasks use worktree isolation or serialized dependencies.
-5. **Collect.** Validate every ReturnPacket. Check attestation (requested model versus observed model); a mismatch quarantines the task's artifacts and forces re-dispatch or a user decision. Retry failed tasks up to the packet's limit with fresh instances.
+1. **Audit.** Confirm the session model is `claude-fable-5-1` and that `agent-ops:fa-worker` and `agent-ops:fa-verifier` are available subagent types. Record `claude_code_version`, `entrypoint`, `parent_session_id`, `parent_model`, `parent_effort`, `dispatch_interface: "agent_tool"`, and `worker_model` in the manifest. If any task will use runtime `codex`, also locate the newest installed official Codex plugin, run its companion `setup --json` check, and record `codex_plugin_version` and `codex_dispatch_interface`. Fail closed and report the exact blocker if anything a planned task needs is missing.
+2. **Plan.** Decompose the request into a task DAG. Interview the user only for shape-changing unknowns. Write the RunManifest from `assets/run-manifest.template.json` with finite limits, exact write roots, and per-task authorization. Read `references/protocol.md` before writing packets.
+3. **Approve.** Present the RunManifest summary, including total planned launches and expected usage, and get explicit user approval before dispatch. No blanket approvals.
+4. **Dispatch or execute.** For each ready task the parent has reserved for itself, execute it under Parent execution and log it. For every other ready task, write and validate a TaskPacket (native packets carry `dispatch`; Codex packets carry the optional `transport`), launch it through the runtime the authorization names, and write the spawn record with the returned agent ID or companion job ID. Respect concurrency, launch, dependency, and write-scope limits.
+5. **Collect.** At completion, write the job record (native: from the subagent transcript; Codex: from `result <job-id> --json`), validate the ReturnPacket, and compare the attestation with the TaskPacket. Quarantine any contradiction. Retry only within the packet and manifest limits.
 6. **Assemble.** Integrate inside declared scopes only, serialize shared-file edits, freeze the candidate, and record its hashes.
-7. **Review.** Spawn a fresh `fa-reviewer` instance (a new headless session per round by default) with only: the approved spec, the candidate paths and hashes, the evidence records, and the packet paths. Never planner reasoning or worker transcripts. Validate the ReviewPacket. After review returns, re-verify the candidate hashes; any change is an integrity failure that stops the run.
-8. **Revise loop.** On `revise`, write narrow repair TaskPackets bound to the findings, rebuild, and submit to a new fresh reviewer instance. Never reuse a reviewer agent ID across rounds. Stop at the manifest's round limit and report honestly.
-9. **Synthesize.** Only after `accepted`: the parent writes the final deliverable and the completion claim, citing verdicts and evidence.
-10. **Clean up.** Stop remaining background agents, remove unchanged worktrees, close the run record with status and costs, and announce output paths. Never delete evidence.
+7. **Final review.** The parent re-runs reproduction commands, consults evidence from any `verify` tasks, and writes the ReviewPacket with `reviewer: "parent"`, `model: "claude-fable-5-1"`, and `effort: "high"`. Re-verify candidate hashes before issuing a verdict.
+8. **Revise loop.** On `revise`, write narrow repair TaskPackets bound to the findings and dispatch fresh workers. Stop at the manifest round limit and report honestly.
+9. **Synthesize.** Only after an accepted parent review, write the final deliverable and completion claim with evidence.
+10. **Clean up.** Stop unfinished native workers with `TaskStop` and cancel unfinished Codex jobs with the official `cancel` command, close the run record with status and costs, and report output paths. Never delete evidence.
 
 ## Run directory
 
-`<target-project-root>/.fable-advisor/runs/<run-id>/` with `run-manifest.json`, `tasks/`, `returns/`, `reviews/`, `evidence/`, and `run-log.jsonl`. All packet paths are root-relative; pass the run root to the validator with `--root`. The run directory is the durable state: a fresh session resumes an open run by reading the manifest and task states after the user explicitly re-invokes Fable Advisor.
+`<target-project-root>/.fable-advisor/runs/<run-id>/` contains `run-manifest.json`, `tasks/`, `returns/`, `reviews/`, `evidence/`, and `run-log.jsonl`. All packet paths are root-relative. Pass the target project root to the validator with `--root`. The run directory is durable state. A fresh session resumes an open run only after the user explicitly re-invokes Fable Advisor.
 
-## Limits (defaults, user-overridable in the manifest)
+## Limits
 
-One resource budget covers the full user request: discovery, audit, implementation, review, repair, and final verification. Defaults: at most 6 total worker and reviewer launches, 4 concurrent tasks, 1 integrated review round, 1 repair round, and 1 compact final verification pass. Retries use a fresh instance and count against the launch cap. Elapsed: 240 minutes. Worker-local nesting: one level. Higher limits require a concrete cost warning and the user's explicit approval, and a high-cost run states its expected usage before any dispatch. On rate limits, halve concurrency and back off. When a cap is reached, stop dispatching and report; "as many as needed" never means unbounded.
+One resource budget covers discovery, audit, implementation, review, repair, and final verification. Defaults: at most 6 total launches, 4 concurrent tasks, 1 integrated review round, 1 repair round, 1 compact final verification pass, and 240 elapsed minutes. Retries use a fresh worker and count against the launch cap. Higher limits require a concrete cost warning and explicit user approval. On rate limits, halve concurrency and back off. When a cap is reached, stop dispatching and report. "As many as needed" never means unbounded.
 
 ## Failure handling
 
-Fail closed on: implicit activation, model or effort mismatch, missing attestation, unbounded limits, DAG cycles, unauthorized task IDs, unresolved dependencies, exhausted budgets, overlapping write scopes, competing authority, and missing or hash-mismatched evidence. A worker's Fable-refusal or classifier stop is `blocked`, and re-dispatch on another model requires the user's recorded approval.
-
-## Collisions
-
-- Gauntlet: while a gauntlet run is active, gauntlet owns state, budget, approval, integration, final answer, and terminal verdict. Fable Advisor activates inside it only if the user explicitly composes them, and then supplies only bounded packets and workstream criticism.
-- Generic goals, loops, schedules: use the optional LoopKit companion when installed, or the Agent Ops local fallback after explicit Agent Ops selection. Agent design and audit: agent-ops-router owns them.
-- Dynamic workflows / ultracode: separate opt-in surfaces; Fable Advisor neither requires nor implies them.
+Fail closed on implicit activation, protocol mismatch, undiscoverable worker agents, an unavailable or unauthenticated Codex plugin on a codex-authorized task, parent model or effort mismatch, worker model or effort contradiction, unbounded limits, DAG cycles, unauthorized task IDs, unresolved dependencies, exhausted budgets, overlapping write scopes, competing authority, and missing or hash-mismatched evidence. A missing runtime is a hard stop with an exact blocker report, never a silent substitution onto the other runtime.
 
 ## Completion
 
-The run ends in exactly one recorded terminal state: `accepted-and-synthesized`, `blocked`, `failed`, `cancelled`, or `budget-exhausted`. Report which one, with evidence paths. Never label unreviewed work accepted.
+The run ends in exactly one recorded terminal state: `accepted-and-synthesized`, `blocked`, `failed`, `cancelled`, or `budget-exhausted`. Report the state with evidence paths. Never label unreviewed work accepted.
+
+## Mutable lifecycle record
+
+Keep `run-manifest.json` immutable after its hash is bound by a TaskPacket. Maintain a separate adjacent `run-state.json` with `run_id`, `manifest_sha256`, `status` (`active`, `completed`, `failed`, or `cancelled`), `updated_at` (UTC timestamp), and `evidence` (root-relative record paths). Create `active` only after activation and collision checks. Record a terminal state only after the corresponding completion evidence, recorded failure, or explicit cancellation. Status does not grant task or publication authority. Gauntlet checks this record and its manifest hash; missing, malformed, or mismatched state requires reconciliation, not inferred activity or completion.

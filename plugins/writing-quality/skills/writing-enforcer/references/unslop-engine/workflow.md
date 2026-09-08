@@ -23,9 +23,9 @@ Apply this rule to everything you write, not just to the content under review.
 
 ## Core Philosophy
 
-Three things make writing sound like AI:
-1. **AI patterns present.** The 47 documented patterns that signal generic LLM prose.
-2. **Human personality absent or erased.** Sterile, voiceless writing that passes every technical check but has no pulse. Clean-but-soulless is itself an AI tell.
+Three useful editorial checks:
+1. **Generic patterns.** The 47 documented patterns can identify unclear or formulaic prose; they do not establish who wrote it.
+2. **Human personality absent or erased.** Sterile, voiceless writing that passes every technical check but has no pulse. A loss of source-backed voice is an editorial problem.
 3. **Overly complex vocabulary.** Big words where small words work. Sounds like the writer is performing intelligence, not communicating.
 
 This skill addresses all three. Pattern removal is the floor. Preserving the writer's real texture is the ceiling. Plain language is the law throughout.
@@ -131,7 +131,7 @@ Run `scripts/unslop-engine/quality_validator.py` on the input for automated dete
 - Summary-recap endings
 <!-- harness-quality-gate: literal-list-end -->
 
-**Rewrite-vs-patch threshold:** If text has 5+ P1 hits across 3+ categories, the structure itself is AI-generated. Advise full rewrite from the core point outward rather than patching.
+**Rewrite-vs-patch threshold:** If text has 5+ P1 hits across 3+ categories, consider whether its structure needs revision. Pattern matches never establish AI authorship. Advise full rewrite from the core point outward rather than patching.
 
 ---
 
@@ -352,4 +352,4 @@ If ANY check fails: fix or flag explicitly. Do not ship broken output.
 
 ---
 
-**The rule that ties it all together:** Plain language is human language. If you can say it simply, say it simply. Remove what signals machine authorship. Preserve what signals this writer. Validate that nothing new was invented. That's the job.
+**The rule that ties it all together:** Plain language is human language. If you can say it simply, say it simply. Remove generic patterns. Preserve the writer’s supplied meaning and voice. Validate that nothing new was invented. That's the job.
