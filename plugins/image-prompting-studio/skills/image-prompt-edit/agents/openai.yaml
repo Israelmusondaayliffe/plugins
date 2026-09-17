@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Prompt Edit"
+  short_description: "Image prompt edit prompts and guidance"
+  default_prompt: "Use $image-prompt-edit to help with this brief."

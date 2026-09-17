@@ -149,10 +149,10 @@
       "category": "Productivity"
     },
     {
-      "name": "brand-world-studio",
+      "name": "brand-studio",
       "source": {
         "source": "local",
-        "path": "./plugins/brand-world-studio"
+        "path": "./plugins/brand-studio"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -351,6 +351,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "image-prompting-studio",
+      "source": {
+        "source": "local",
+        "path": "./plugins/image-prompting-studio"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
     }
   ]
 }

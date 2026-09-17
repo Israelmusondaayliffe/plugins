@@ -13,7 +13,8 @@ export const collections = [
     "plugins": [
       "citizen-forge",
       "web-product-studio",
-      "brand-world-studio",
+      "brand-studio",
+      "image-prompting-studio",
       "video-production-studio",
       "founder-revenue-engine",
       "ai-film-studio"
@@ -1807,7 +1808,7 @@ export const plugins = [
     "shortDescription": "Build and verify coherent web products on Claude Code, Cowork, or Codex.",
     "longDescription": "Web Product Studio routes greenfield builds, redesigns, image-first implementation, targeted fixes, and QA while enforcing one design constitution and browser-verifiable acceptance flows. It uses the browser and automation surfaces available on Claude Code, Claude Cowork, or Codex and stops honestly when a required host capability is unavailable.",
     "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "category": "Developer Tools",
     "license": null,
     "capabilities": [],
@@ -2391,19 +2392,19 @@ export const plugins = [
     }
   },
   {
-    "slug": "brand-world-studio",
-    "name": "Brand World Studio",
-    "shortDescription": "Turn approved positioning into a coherent visual world.",
-    "longDescription": "Brand World Studio routes approved strategy into a visual brief, identity system, image-model choice, production prompt pack, and consistency review without inventing upstream positioning.",
-    "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-    "version": "0.3.0",
+    "slug": "brand-studio",
+    "name": "Brand Studio",
+    "shortDescription": "Brand strategy, briefs, identity systems, and review.",
+    "longDescription": "Brand Studio develops brand strategy, turns confirmed decisions into usable briefs, builds identity systems, and reviews brand work for consistency, using current supplied brand context and independent creative judgment. It works without Image Prompting Studio or any other sibling plugin.",
+    "description": "Brand strategy, briefs, identity systems, and brand reviews for your current brand or a named brand, independent of image prompting.",
+    "version": "1.0.0",
     "category": "Design",
     "license": null,
     "capabilities": [],
     "defaultPrompts": [
-      "Turn this approved positioning into a production-ready brand brief.",
-      "Choose the right image model and prompt workflow for this visual job.",
-      "Check this image series against the approved brand system."
+      "Develop my current brand direction from these references.",
+      "Turn this approved direction into a usable identity system.",
+      "Review these assets against the confirmed brand system."
     ],
     "platforms": [
       "Codex",
@@ -2411,31 +2412,259 @@ export const plugins = [
       "Claude Cowork"
     ],
     "supportStatus": "declared-beta",
-    "runtimeNote": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. ",
+    "runtimeNote": "Package and manifest support is declared for Codex, Claude Code, and Claude Cowork. Local package checks and the Claude manifest validator passed on the source tree. Fresh installed-host discovery is unverified; Cowork was not exercised.",
     "skills": [
       {
-        "name": "brand-brief-builder",
-        "description": "Turns approved business context, positioning, audience, references, and deliverables into a production-ready visual brand brief. Use when generating a logo system, identity board, campaign series, or image prompt pack from settled strategy. Validates audience, positioning, visual principles, forbidden drift, and required deliverables without inventing strategy."
+        "name": "brand-brief",
+        "description": "Translate supplied or confirmed brand decisions into a practical production brief. Use when the user needs audience, visual principles, assets, deliverables and constraints organized for identity, campaign or design work."
       },
       {
-        "name": "brand-consistency-verifier",
-        "description": "Checks a logo system, identity board, campaign series, or image set against an approved brand brief and reference assets. Use when a visual series needs a release or expansion decision. Records artifact-level findings for composition, color, typography, logo treatment, imagery, and forbidden drift, then validates a pass, fail, or blocked result."
+        "name": "brand-identity-system",
+        "description": "Develop logo concepts, symbolism, color, typography, applications and identity guidelines. Use for a coherent brand system, concept board, identity deck or brandkit; choose the visual direction from the brief and references."
       },
       {
-        "name": "brand-model-router",
-        "description": "Selects the image model, mode, source requirements, and prompt format for a brand visual job. Use when choosing between GPT Image 2, Nano Banana, Canva, Creative Production, or a no-generation route for identity boards, edits, series, logos, and campaign assets. Validates one model route and records alternatives and missing companions."
+        "name": "brand-review",
+        "description": "Inspect brand strategy, identity systems or visual assets against supplied requirements and references. Use for brand consistency, release readiness, deliberate variation versus drift, or specific repair recommendations."
       },
       {
-        "name": "brand-world-router",
-        "description": "Routes brand visual work across decision brief, identity system, image-model selection, production prompt pack, and consistency verification. Use when a brand, campaign, logo system, visual world, or image series needs one coherent production path. Keeps positioning upstream, selects only the skills needed, and validates a primary route before generation."
+        "name": "brand-strategy",
+        "description": "Develop or revise brand positioning and direction from the user's business, audience and cultural context. Use for brand purpose, audience, differentiation, promise, personality, strategic alternatives or a decision about what an identity should express."
       },
       {
-        "name": "brandkit",
-        "description": "Creates brand-guidelines boards, logo systems, identity decks, and visual-world presentations across minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app styles. It directs logo concepts, composition, sparse typography, symbols, mockups, imagery, and grid layouts."
+        "name": "brand-studio-router",
+        "description": "Develop brand strategy, briefs and identity systems, or review brand work. Use when the user asks for branding, positioning, a brand brief, a logo system, identity guidelines or a brand consistency review."
+      }
+    ],
+    "counts": {
+      "skills": 5,
+      "assets": 7,
+      "references": 4,
+      "scripts": 2,
+      "files": 27
+    },
+    "bundlesMcp": false,
+    "bundlesApp": false,
+    "guide": {
+      "bestFor": [
+        "Deciding audience, positioning, promise, and personality for a brand.",
+        "Turning confirmed decisions into a usable brand brief.",
+        "Developing logo concepts, color roles, typography, and identity boards.",
+        "Reviewing brand work for consistency and the smallest repairs."
+      ],
+      "startHere": {
+        "skill": "brand-studio-router",
+        "why": "Start here with the current brand material, the named brand if it is not your own, and the deliverable you need. It chooses one specialist without forcing a strategy-to-production sequence."
+      },
+      "quickStarts": [
+        {
+          "goal": "Develop a brand direction",
+          "prompt": "Develop the brand direction for [brand] from these references and decisions: [material]. Keep proposals clearly separate from confirmed choices."
+        },
+        {
+          "goal": "Write a brand brief",
+          "prompt": "Turn these confirmed brand decisions into a usable brief with audience, promise, personality, visual principles, and constraints: [decisions]."
+        },
+        {
+          "goal": "Review brand work",
+          "prompt": "Review these assets against the confirmed brand system and list consistent choices, drift, and the smallest corrections: [system and assets]."
+        }
+      ],
+      "workflow": [
+        {
+          "title": "Gather current brand context",
+          "instruction": "Separate supplied facts, confirmed decisions, proposed directions, and open questions before choosing a specialist.",
+          "skills": [
+            "brand-studio-router"
+          ]
+        },
+        {
+          "title": "Set the strategy",
+          "instruction": "Decide audience, positioning, promise, and personality, keeping proposals provisional until the owner chooses.",
+          "skills": [
+            "brand-strategy"
+          ]
+        },
+        {
+          "title": "Write the brief",
+          "instruction": "Turn confirmed decisions into deliverables, constraints, and traceable sources.",
+          "skills": [
+            "brand-brief"
+          ]
+        },
+        {
+          "title": "Build the identity system",
+          "instruction": "Develop symbols, logo concepts, color roles, typography, applications, and identity boards around the chosen concept.",
+          "skills": [
+            "brand-identity-system"
+          ]
+        },
+        {
+          "title": "Review for consistency",
+          "instruction": "Inspect brand work, record drift, and propose repairs without silently changing the assets.",
+          "skills": [
+            "brand-review"
+          ]
+        }
+      ],
+      "skillPaths": [
+        {
+          "need": "You need positioning before anything visual",
+          "skill": "brand-strategy",
+          "why": "It settles direction as a labeled proposal for your decision."
+        },
+        {
+          "need": "You have decisions but no brief",
+          "skill": "brand-brief",
+          "why": "It turns decisions into usable requirements."
+        },
+        {
+          "need": "You need a logo system or identity board",
+          "skill": "brand-identity-system",
+          "why": "It builds a system around the chosen concept."
+        },
+        {
+          "need": "You need to check finished work",
+          "skill": "brand-review",
+          "why": "It compares assets with the confirmed system."
+        }
+      ],
+      "workedExample": {
+        "title": "Refreshing a studio identity before a launch",
+        "situation": "A small studio has a confirmed positioning statement, a few old boards, and a launch date, and needs a coherent identity system.",
+        "steps": [
+          "Gather the confirmed material and mark the old boards as history rather than current direction.",
+          "Turn the positioning into a brief with audience, promise, personality, and constraints.",
+          "Develop logo concepts, color roles, and typography into an identity board.",
+          "Review the board against the brief and record the choices left open for the owner."
+        ],
+        "result": "The identity system is usable, its proposals are labeled, and the owner's open decisions are visible."
+      },
+      "tips": [
+        "Say which brand you mean when it is not your own.",
+        "Mark old boards as history unless you confirm them as current.",
+        "Keep proposed directions and confirmed decisions separate.",
+        "Ask for the one deliverable you need; the router does not run all four."
+      ],
+      "boundaries": [
+        "The plugin does not grant rights to reference images, logos, typefaces, or recognizable people.",
+        "A logo concept is a proposed design, not proof of trademark availability.",
+        "Image generation and publication require their own requested scope and tools.",
+        "Final creative acceptance stays with you."
+      ],
+      "successSignals": [
+        "The requested deliverable is complete and its sources are traceable.",
+        "Proposed choices and confirmed decisions are visibly distinct.",
+        "Missing evidence that affects the result is stated.",
+        "Finished assets are checked together and individually."
+      ]
+    }
+  },
+  {
+    "slug": "image-prompting-studio",
+    "name": "Image Prompting Studio",
+    "shortDescription": "Task-based image prompts, faithful reference translation, and Midjourney operations.",
+    "longDescription": "Image Prompting Studio routes image work to one task specialist and delivers copyable prompts by default: creation, edits, camera directions, shot planning, reference composition, research-backed prompts, series, multi-output requests, typography, infographics, editorial layouts, storyboards, campaign grids, brand interpretation, illustration and photo translation, style and time variation, layout, and prompt review, plus Midjourney prompt architecture, edit prompts, and explicitly requested Midjourney operations. Model names live in dated profiles. No sibling plugin is required.",
+    "description": "Complete image prompts for OpenAI Images, Nano Banana, Seedream, Recraft, Luma Uni, Ideogram, and Midjourney across creation, edits, references, conversion, series, layout, and review, plus requested Midjourney operations.",
+    "version": "1.0.0",
+    "category": "Design",
+    "license": null,
+    "capabilities": [],
+    "defaultPrompts": [
+      "Turn this image brief into copyable prompts.",
+      "Translate this illustration into a photograph while preserving its character and world.",
+      "Write one prompt requesting eight separate image outputs."
+    ],
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "supportStatus": "declared-beta",
+    "runtimeNote": "Package and manifest support is declared for Codex, Claude Code, and Claude Cowork. Local package checks and the Claude manifest validator passed on the source tree. Fresh installed-host discovery is unverified; Cowork was not exercised. Midjourney operations additionally require an authenticated browser session on the host.",
+    "skills": [
+      {
+        "name": "image-brand-interpretation",
+        "description": "Translate supplied or researched brand visual language into image prompts for products, mockups, identity treatments and creative recontextualization."
       },
       {
-        "name": "gpt-image-2-unified",
-        "description": "Prompt architect for GPT Image 2. Generates exactly 7 production-ready Thinking-mode prompts across 11 modes: CREATE (text-to-image), EDIT, SHOW-ME (angle variations), COMPOSE (multi-reference), SEARCH, SERIES (consistent multi-output), TYPOGRAPHY (multilingual/non-Latin), INFOGRAPHIC, EDITORIAL, NARRATIVE (manga, comics, storyboards), MULTI-OUTPUT (multi-page systems sharing one visual DNA). Three formats with auto-detection: natural-language brief (default), JSON envelope with forbidden array (anti-drift, surgical edits, photoreal preservation), system prompt operating contract (single-submission batch generation, up to 8 coordinated outputs sharing one visual DNA). Every format encodes PSGV: Plan, Search or SKIP, Generate, Verify. Variation-axis detection freezes style when angle is requested. Triggers: gpt image 2, openai image prompt, 7 prompts gpt image, brand kit, design bible, json prompt, forbidden array, system prompt for image gen, batch image generation, or any GPT Image 2 prompting request."
+        "name": "image-camera-directions",
+        "description": "Write controlled viewpoint studies or natural new shots from a reference. Cover camera angle, framing, shot distance, turnarounds and still endpoints while preserving the intended character, object or world."
+      },
+      {
+        "name": "image-campaign-grid",
+        "description": "Write prompts for one composite campaign grid or moodboard with distinct cells and coherent visual DNA."
+      },
+      {
+        "name": "image-editorial",
+        "description": "Write image prompts for posters, covers, spreads, campaign key visuals and page compositions combining imagery and typography."
+      },
+      {
+        "name": "image-illustration-photo-translator",
+        "description": "Write illustration-to-photo or photo-to-illustration prompts that preserve a reference character, object or world. Use a supplied target-style reference first and translate visual DNA with artistic judgment."
+      },
+      {
+        "name": "image-infographic",
+        "description": "Write image prompts for factual diagrams, maps, charts, process explanations and information graphics with explicit labels and relationships."
+      },
+      {
+        "name": "image-layout-architect",
+        "description": "Write image prompts for spatial arrangement, relative scale, panels and element relationships. Use when placement is the main problem in a scene, still life, grid or designed composition."
+      },
+      {
+        "name": "image-multi-output",
+        "description": "Write one prompt requesting multiple separate image outputs, including eight-image sets and coordinated pages with shared visual DNA."
+      },
+      {
+        "name": "image-prompt-create",
+        "description": "Create image prompts from an idea, scene, subject or object. Use for general image creation and open visual exploration."
+      },
+      {
+        "name": "image-prompt-edit",
+        "description": "Write image editing prompts for targeted changes or exploration of uploaded images, with explicit reference preservation."
+      },
+      {
+        "name": "image-prompt-review",
+        "description": "Review image prompts and supplied results against a brief or reference. Find structural errors, contradictions, continuity drift and task-specific visual defects, then suggest focused repairs."
+      },
+      {
+        "name": "image-prompt-router",
+        "description": "Route image prompting and requested Midjourney operations to one task specialist. Covers creation, edits, references, conversion, series and layout without requiring branding work."
+      },
+      {
+        "name": "image-reference-composer",
+        "description": "Compose subjects, objects, environments, style or layout from multiple image references with clear roles and priority."
+      },
+      {
+        "name": "image-research-prompts",
+        "description": "Research facts and visual references for image prompts about real entities, current events, data, geography or scientific subjects."
+      },
+      {
+        "name": "image-series",
+        "description": "Write prompts for a coherent series of images with recurring character, product, place or visual identity."
+      },
+      {
+        "name": "image-shot-planner",
+        "description": "Plan image shots and coverage from a brief or reference. Return a usable shot list for people, products, groups or environments without requiring prompt generation."
+      },
+      {
+        "name": "image-storyboard",
+        "description": "Write image prompts for comics, storyboards, narrative panels and illustrated instructions with ordered beats and continuity."
+      },
+      {
+        "name": "image-style-translator",
+        "description": "Translate an image into a requested artistic medium, material, visual style or photographic treatment while retaining its recognizable content and respecting a supplied style reference."
+      },
+      {
+        "name": "image-time-variation",
+        "description": "Write prompts that change a subject, object or world across age, time of day, seasons, weather, eras, decay or renewal while preserving recognizable continuity."
+      },
+      {
+        "name": "image-typography",
+        "description": "Write prompts where lettering, exact text or multilingual typography is the main visual subject or critical constraint."
+      },
+      {
+        "name": "midjourney-edit-architect",
+        "description": "Write or repair Midjourney image-edit prompts for replacement, removal, additions, restyling, viewpoint changes, reference composition, inpainting and outpainting. Use for precise edit instructions, staged edits or diagnosis of a supplied Midjourney result."
       },
       {
         "name": "midjourney-prompt-architect",
@@ -2443,138 +2672,162 @@ export const plugins = [
       },
       {
         "name": "midjourney-prompt-batching",
-        "description": "Reuse selected Midjourney Explore or Create prompts as a controlled web batch, apply the intended Personalization profile, monitor queue capacity, and clean up explicitly named creations. Use when a user asks to batch Midjourney prompts, move Explore ideas into Create, reuse existing jobs with a profile code, manage a Create queue, or Trash selected results. Do not use to invent ordinary prompts or architect V8.2 image edits."
-      },
-      {
-        "name": "midjourney-v8-2-edit-architect",
-        "description": "Use when a user wants to edit, replace, remove, add, preserve, restyle, reorient, relocate, combine, inpaint, outpaint, or extend an image with the Midjourney V8.2 Edit Model and one to four references. Also use for character or object consistency, multi-reference composites, perspective or environment changes, style-cohesion repair, staged edit planning, and failed-edit diagnosis. Do not use for ordinary text-to-image prompting, Midjourney video prompting, or editing in another image model."
-      },
-      {
-        "name": "nano-banana-unified",
-        "description": "Unified prompt architect for Gemini 3 Pro Image (Nano Banana). Generates 10 production-ready prompts per query across four modes. CREATE: text-to-image, comics, stickers, icons, infographics, data viz. EDIT: image editing, style transfer, inpainting, show-me angles, multi-reference composition, character transformation. BRAND: brand design, identity systems, logo treatments, mockups, apparel, typography, capsule collections, 35+ brand use cases with DNA extraction. GRID: 6-9 image campaign grids, moodboards, visual systems using Gizem methodology. Backed by 43+ use case patterns, 127 creative directions, texture library, and official Google templates. Triggers: nano banana, gemini image, generate image, create image, image prompt, edit this image, show me angles, brand design, brand identity, brand mockup, logo treatment, brand visualization, capsule collection, grid, campaign grid, moodboard, comic, sticker, infographic, diagram, product concept, or any Gemini image generation request."
+        "description": "Run bounded Midjourney jobs from new prompts, selected Explore items or existing creations. Use for Void Style Hunter, style-code exploration, prompt reuse, queue monitoring, selected HD variations or explicitly requested cleanup."
       }
     ],
     "counts": {
-      "skills": 10,
-      "assets": 10,
-      "references": 31,
-      "scripts": 8,
-      "files": 87
+      "skills": 23,
+      "assets": 1,
+      "references": 78,
+      "scripts": 3,
+      "files": 133
     },
     "bundlesMcp": false,
     "bundlesApp": false,
     "guide": {
       "bestFor": [
-        "Turning approved positioning into a usable visual brand brief.",
-        "Choosing an image-model workflow for a specific visual job.",
-        "Creating production-ready image prompt packs.",
-        "Checking a set of visuals for brand consistency."
+        "Writing complete, copyable image prompts for a named model or a broadly compatible default.",
+        "Translating an illustration into a photograph, or a photograph into an illustration, without losing its character.",
+        "Planning coverage, camera directions, series, storyboards, grids, and multi-image requests before generation.",
+        "Reviewing or repairing supplied prompts and preparing explicitly requested Midjourney operations."
       ],
       "startHere": {
-        "skill": "brand-world-router",
-        "why": "Start here with the approved positioning, audience, deliverable, and references. It decides whether the next job is briefing, system design, model routing, prompting, or consistency review."
+        "skill": "image-prompt-router",
+        "why": "Start here with the brief, any references, the model if you have one, and the number of outputs you want. It picks one task specialist and keeps prompts as the default deliverable."
       },
       "quickStarts": [
         {
-          "goal": "Build a brand brief",
-          "prompt": "Turn this approved positioning into a production-ready brand brief: [positioning]. Define the audience, promise, personality, visual principles, constraints, and required deliverables."
+          "goal": "Write an image prompt",
+          "prompt": "Turn this image brief into copyable prompts: [brief]. Use [model] if I name one; otherwise write a broadly compatible prompt."
         },
         {
-          "goal": "Route an image job",
-          "prompt": "Choose the right image-model and prompt workflow for this visual job: [job]. Use only verified model facts and explain the decision criteria."
+          "goal": "Translate a reference",
+          "prompt": "Translate this illustration into a photograph while preserving its character, world, and composition: [reference and notes]."
         },
         {
-          "goal": "Check consistency",
-          "prompt": "Check this image series against the approved brand system. Identify consistent choices, drift, unsupported elements, and the smallest corrections: [brand system and images]."
+          "goal": "Request several images at once",
+          "prompt": "Write one prompt that requests [number] separate image outputs for [subject], with a shared style and clear differences between outputs."
         }
       ],
       "workflow": [
         {
-          "title": "Confirm the brand foundation",
-          "instruction": "Start from approved positioning, audience, promise, personality, and non-negotiable constraints.",
+          "title": "Route the request",
+          "instruction": "Name the deliverable, references, model, and output count so one specialist owns the job.",
           "skills": [
-            "brand-brief-builder"
+            "image-prompt-router"
           ]
         },
         {
-          "title": "Build the visual system",
-          "instruction": "Turn the brief into repeatable rules for color, type, composition, imagery, materials, and art direction.",
+          "title": "Plan coverage when the set matters",
+          "instruction": "Decide framing, camera directions, or shot coverage before writing prompts for related images.",
           "skills": [
-            "brandkit"
+            "image-shot-planner",
+            "image-camera-directions"
           ]
         },
         {
-          "title": "Choose the production route",
-          "instruction": "Select the appropriate model workflow from verified capabilities and the specific visual task.",
+          "title": "Write the prompt",
+          "instruction": "Produce complete prompts for creation, edits, references, translation, or layout in the format the model expects.",
           "skills": [
-            "brand-model-router"
+            "image-prompt-create",
+            "image-prompt-edit",
+            "image-reference-composer",
+            "image-illustration-photo-translator",
+            "image-layout-architect"
           ]
         },
         {
-          "title": "Create the prompt pack",
-          "instruction": "Produce model-ready prompts with subject, composition, style, constraints, and variation logic.",
+          "title": "Keep sets coherent",
+          "instruction": "Carry continuity across series, storyboards, grids, and multi-output requests.",
           "skills": [
-            "gpt-image-2-unified",
-            "nano-banana-unified"
+            "image-series",
+            "image-storyboard",
+            "image-campaign-grid",
+            "image-multi-output"
           ]
         },
         {
-          "title": "Verify consistency",
-          "instruction": "Compare generated or designed assets against the approved system and record the drift.",
+          "title": "Review before generation",
+          "instruction": "Assess or repair supplied prompts and confirm the requested model, format, and count.",
           "skills": [
-            "brand-consistency-verifier"
+            "image-prompt-review"
+          ]
+        },
+        {
+          "title": "Handle Midjourney explicitly",
+          "instruction": "Build Midjourney creation or edit prompts, and run requested submissions only through an observed, authenticated session.",
+          "skills": [
+            "midjourney-prompt-architect",
+            "midjourney-edit-architect",
+            "midjourney-prompt-batching"
           ]
         }
       ],
       "skillPaths": [
         {
-          "need": "You have positioning but no production brief",
-          "skill": "brand-brief-builder",
-          "why": "It turns strategy into clear creative requirements."
+          "need": "Lettering or exact text is central",
+          "skill": "image-typography",
+          "why": "It treats the text as the subject and specifies exact strings."
         },
         {
-          "need": "You need a repeatable visual identity system",
-          "skill": "brandkit",
-          "why": "It defines the rules that keep outputs related."
+          "need": "Facts, labels, or data drive the picture",
+          "skill": "image-infographic",
+          "why": "It grounds relationships and labels before styling."
         },
         {
-          "need": "You need to choose an image workflow",
-          "skill": "brand-model-router",
-          "why": "It routes from the visual job and verified capabilities."
+          "need": "You need a poster, cover, or spread",
+          "skill": "image-editorial",
+          "why": "It composes image and text as one page."
         },
         {
-          "need": "You need to inspect a finished series",
-          "skill": "brand-consistency-verifier",
-          "why": "It compares assets with the approved visual rules."
+          "need": "Current facts or references are missing",
+          "skill": "image-research-prompts",
+          "why": "It gathers what the prompt needs before writing it."
+        },
+        {
+          "need": "You want a brand's visual language on a creative image",
+          "skill": "image-brand-interpretation",
+          "why": "It works from supplied brand material without starting brand strategy."
+        },
+        {
+          "need": "You want a different medium or style",
+          "skill": "image-style-translator",
+          "why": "It reinterprets the reference while keeping what you name as fixed."
+        },
+        {
+          "need": "You want age, season, era, decay, or restoration",
+          "skill": "image-time-variation",
+          "why": "It changes time while holding identity."
         }
       ],
       "workedExample": {
-        "title": "Creating a visual system for a new editorial series",
-        "situation": "A team has approved positioning and article topics but needs a consistent cover-image world across many releases.",
+        "title": "Preparing a product launch image set",
+        "situation": "A team needs a hero image, three detail shots, and a social grid for one product, generated with the model their tool supports.",
         "steps": [
-          "Turn the positioning into a brief with audience, mood, visual principles, and exclusions.",
-          "Define a repeatable composition, palette, image language, and variation system.",
-          "Choose the verified image workflow and build a prompt pack for several topics.",
-          "Generate candidates and check the series against the approved system."
+          "Route the brief and confirm the model, references, and output counts.",
+          "Plan the coverage so the hero and detail shots share lighting and angle logic.",
+          "Write complete prompts for each image and one prompt for the composite grid.",
+          "Review the prompts against the requested format and count before generation."
         ],
-        "result": "The brand system and prompt pack are inspectable and produce related images without making every image identical."
+        "result": "The prompt set is complete, copyable, consistent across images, and ready for the team's own generation step."
       },
       "tips": [
-        "Bring approved positioning before asking for visual direction.",
-        "Separate inspiration from elements you own or may reproduce.",
-        "Describe what must stay consistent and what may vary.",
-        "Review a group of outputs together to see drift."
+        "Name the model when you have one; otherwise you get a broadly compatible prompt.",
+        "Say how many prompt alternatives, images per prompt, and panels per composite you want.",
+        "Attach references and say what must stay fixed and what may change.",
+        "Treat prompt validation as a check on the prompt, not proof of the rendered image."
       ],
       "boundaries": [
-        "The plugin does not grant rights to reference images, logos, typefaces, or recognizable people.",
-        "Image generation requires access to an appropriate model or tool.",
-        "Model capabilities and interfaces should be verified when current behavior matters.",
-        "A prompt pack is not proof that the generated series is consistent."
+        "The plugin writes prompts; it generates images only when you ask and a tool is available.",
+        "Midjourney operations run only in an authenticated session you control, with explicit scope.",
+        "Model profiles are dated snapshots; confirm live capabilities before relying on a control.",
+        "Brand names in a brief do not start brand strategy work."
       ],
       "successSignals": [
-        "The visual choices trace back to the approved brand brief.",
-        "Consistency rules and allowed variation are both clear.",
-        "Finished assets are checked together and individually."
+        "Each prompt is complete, copyable, and in the format the model expects.",
+        "Related images share the intended continuity and differ where intended.",
+        "Requested counts, formats, and references match the prompts delivered.",
+        "Unexecuted steps are stated plainly rather than implied."
       ]
     }
   },
@@ -2584,7 +2837,7 @@ export const plugins = [
     "shortDescription": "Turn market signals into evidence-backed early revenue work on Claude Code, Cowork, or Codex.",
     "longDescription": "Founder Revenue Engine converts recent market signals into a bounded ICP, commercial narrative, outreach drafts, and founder-led content on Claude Code, Claude Cowork, and Codex while keeping sends and account changes unauthorized by default.",
     "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "category": "Sales",
     "license": null,
     "capabilities": [],
@@ -5409,11 +5662,11 @@ export const plugins = [
   }
 ] as const;
 export const totals = {
-  "plugins": 28,
-  "skills": 215,
-  "assets": 348,
-  "references": 505,
-  "scripts": 538,
-  "files": 2335
+  "plugins": 29,
+  "skills": 233,
+  "assets": 346,
+  "references": 556,
+  "scripts": 535,
+  "files": 2408
 } as const;
 export type Plugin = (typeof plugins)[number];

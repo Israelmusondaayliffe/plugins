@@ -16,7 +16,7 @@ Turn evidence and positioning into one commercial story. The narrative should ma
 3. Draft the problem, offer, proof, objections, and call to action using references/workflow.md.
 4. Fill assets/output-template.json and run scripts/validate_output.py.
 5. Use Writing Quality for optional final prose validation when installed. When it is absent, apply the plugin-owned commercial-copy checks in ../founder-revenue-router/references/commercial-copy-checks.md.
-6. Use Brand World Studio for visual expression only when installed. Its absence does not block the owned narrative.
+6. When visual assets are requested, use Image Prompting Studio for image prompts or Brand Studio for brand direction, only when installed. Their absence does not block the owned narrative.
 7. Route any unsupported claim back to research or remove it.
 
 ## Error Handling

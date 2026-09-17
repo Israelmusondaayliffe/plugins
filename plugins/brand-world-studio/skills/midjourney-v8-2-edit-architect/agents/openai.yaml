@@ -1,6 +1,0 @@
-interface:
-  display_name: "Midjourney V8.2 Edit Architect"
-  short_description: "Plan precise Midjourney V8.2 image edits"
-  default_prompt: "Use $midjourney-v8-2-edit-architect to turn this image-edit request into precise Midjourney V8.2 Edit Model prompts."
-policy:
-  allow_implicit_invocation: false

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Prompt Router"
+  short_description: "Image prompt router prompts and guidance"
+  default_prompt: "Use $image-prompt-router to help with this brief."

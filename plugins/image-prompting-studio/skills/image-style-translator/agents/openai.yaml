@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Style Translator"
+  short_description: "Image style translator prompts and guidance"
+  default_prompt: "Use $image-style-translator to help with this brief."

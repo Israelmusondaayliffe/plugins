@@ -1,0 +1,15 @@
+{
+  "name": "image-prompting-studio",
+  "version": "1.0.0",
+  "description": "Complete image prompts for OpenAI Images, Nano Banana, Seedream, Recraft, Luma Uni, Ideogram, and Midjourney across creation, edits, references, conversion, series, layout, and review, plus requested Midjourney operations.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork",
+    "image-prompting",
+    "midjourney"
+  ]
+}

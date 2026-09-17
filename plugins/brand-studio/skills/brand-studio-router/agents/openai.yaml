@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Studio Router"
+  short_description: "Brand studio router prompts and guidance"
+  default_prompt: "Use $brand-studio-router to help with this brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Campaign Grid"
+  short_description: "Image campaign grid prompts and guidance"
+  default_prompt: "Use $image-campaign-grid to help with this brief."

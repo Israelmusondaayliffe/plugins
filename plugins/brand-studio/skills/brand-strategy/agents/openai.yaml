@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Strategy"
+  short_description: "Brand strategy prompts and guidance"
+  default_prompt: "Use $brand-strategy to help with this brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Multi Output"
+  short_description: "Image multi output prompts and guidance"
+  default_prompt: "Use $image-multi-output to help with this brief."

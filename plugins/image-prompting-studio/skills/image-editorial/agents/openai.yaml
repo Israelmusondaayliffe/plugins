@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Editorial"
+  short_description: "Image editorial prompts and guidance"
+  default_prompt: "Use $image-editorial to help with this brief."

@@ -1,0 +1,29 @@
+{
+  "name": "image-prompting-studio",
+  "version": "1.0.0",
+  "description": "Complete image prompts for OpenAI Images, Nano Banana, Seedream, Recraft, Luma Uni, Ideogram, and Midjourney across creation, edits, references, conversion, series, layout, and review, plus requested Midjourney operations.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork",
+    "image-prompting",
+    "midjourney"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Image Prompting Studio",
+    "shortDescription": "Task-based image prompts, faithful reference translation, and Midjourney operations.",
+    "longDescription": "Image Prompting Studio routes image work to one task specialist and delivers copyable prompts by default: creation, edits, camera directions, shot planning, reference composition, research-backed prompts, series, multi-output requests, typography, infographics, editorial layouts, storyboards, campaign grids, brand interpretation, illustration and photo translation, style and time variation, layout, and prompt review, plus Midjourney prompt architecture, edit prompts, and explicitly requested Midjourney operations. Model names live in dated profiles. No sibling plugin is required.",
+    "developerName": "Community Maintainers",
+    "category": "Design",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Turn this image brief into copyable prompts.",
+      "Translate this illustration into a photograph while preserving its character and world.",
+      "Write one prompt requesting eight separate image outputs."
+    ]
+  }
+}

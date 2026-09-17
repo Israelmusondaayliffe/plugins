@@ -1,6 +1,0 @@
-interface:
-  display_name: "Brand Model Router"
-  short_description: "Selects the image model, mode, source requirements, and prompt format for a b..."
-  default_prompt: "$brand-model-router Use this skill for the request."
-policy:
-  allow_implicit_invocation: false

@@ -1,0 +1,91 @@
+{
+  "plugin": "image-prompting-studio",
+  "version": "1.0.0",
+  "skills": [
+    "image-prompt-router",
+    "image-prompt-create",
+    "image-prompt-edit",
+    "image-camera-directions",
+    "image-shot-planner",
+    "image-reference-composer",
+    "image-research-prompts",
+    "image-series",
+    "image-multi-output",
+    "image-typography",
+    "image-infographic",
+    "image-editorial",
+    "image-storyboard",
+    "image-campaign-grid",
+    "image-brand-interpretation",
+    "image-illustration-photo-translator",
+    "image-style-translator",
+    "image-time-variation",
+    "image-layout-architect",
+    "image-prompt-review",
+    "midjourney-prompt-architect",
+    "midjourney-edit-architect",
+    "midjourney-prompt-batching"
+  ],
+  "dependencies": [],
+  "validation": {
+    "structure": "python3 scripts/verify_bundle.py",
+    "creative_acceptance": "User selection; structural checks do not establish image quality.",
+    "host": "Claude Code, Claude Cowork, and Codex; both plugin manifests ship in this package"
+  },
+  "required_text": [
+    {
+      "file": "skills/image-prompt-router/SKILL.md",
+      "contains": "Prompts are the default deliverable"
+    },
+    {
+      "file": "skills/image-prompt-router/SKILL.md",
+      "contains": "Do not activate Brand Studio"
+    },
+    {
+      "file": "skills/image-prompt-router/SKILL.md",
+      "contains": "write a broadly compatible non-Midjourney prompt"
+    },
+    {
+      "file": "references/prompt-contract.md",
+      "contains": "Other plugins are never dependencies of these skills"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## OpenAI Images"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## Nano Banana"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## Seedream"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## Recraft"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## Luma Uni"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## Ideogram"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "## Midjourney"
+    },
+    {
+      "file": "references/model-profiles.md",
+      "contains": "Flux is outside this studio's selected model coverage"
+    }
+  ],
+  "artifact_checks": [],
+  "forbidden_dependencies": [
+    "brand-studio",
+    "model-prompt-lab",
+    "video-production-studio"
+  ]
+}

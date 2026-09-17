@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Shot Planner"
+  short_description: "Image shot planner prompts and guidance"
+  default_prompt: "Use $image-shot-planner to help with this brief."

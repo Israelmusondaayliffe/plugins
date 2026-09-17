@@ -29,7 +29,7 @@ class CoordinatorOutputTests(unittest.TestCase):
             )["version"],
             SPEC["version"],
         }
-        self.assertEqual(versions, {"0.2.2"})
+        self.assertEqual(versions, {"0.2.3"})
         expected = {
             "sales",
             "creative-production",
@@ -37,7 +37,8 @@ class CoordinatorOutputTests(unittest.TestCase):
             "google-calendar",
             "canva",
             "writing-quality",
-            "brand-world-studio",
+            "image-prompting-studio",
+            "brand-studio",
             "strategy-room",
         }
         self.assertEqual({item["name"] for item in SPEC["companions"]}, expected)

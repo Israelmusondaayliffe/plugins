@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Layout Architect"
+  short_description: "Image layout architect prompts and guidance"
+  default_prompt: "Use $image-layout-architect to help with this brief."

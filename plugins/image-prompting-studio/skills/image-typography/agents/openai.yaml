@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Typography"
+  short_description: "Image typography prompts and guidance"
+  default_prompt: "Use $image-typography to help with this brief."

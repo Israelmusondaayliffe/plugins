@@ -47,15 +47,15 @@ const repositorySkills = codexMarketplace.plugins.reduce(
 );
 
 test("keeps the complete repository inventory separate from the Site inventory", () => {
-  assert.equal(codexMarketplace.plugins.length, 29);
-  assert.equal(claudeMarketplace.plugins.length, 29);
-  assert.equal(repositorySkills, 237);
-  assert.equal(curation.visibility.visible_plugins.length, 28);
+  assert.equal(codexMarketplace.plugins.length, 30);
+  assert.equal(claudeMarketplace.plugins.length, 30);
+  assert.equal(repositorySkills, 255);
+  assert.equal(curation.visibility.visible_plugins.length, 29);
   assert.equal(curation.visibility.excluded_plugins.length, 1);
-  assert.equal(curation.expected_totals.plugins, 28);
-  assert.equal(curation.expected_totals.skills, 215);
-  assert.equal(totals.plugins, 28);
-  assert.equal(totals.skills, 215);
+  assert.equal(curation.expected_totals.plugins, 29);
+  assert.equal(curation.expected_totals.skills, 233);
+  assert.equal(totals.plugins, 29);
+  assert.equal(totals.skills, 233);
 });
 
 test("excludes only the repository-only compatibility plugin", () => {
@@ -110,7 +110,8 @@ test("assigns every visible plugin to one approved outcome collection", () => {
         plugins: [
           "citizen-forge",
           "web-product-studio",
-          "brand-world-studio",
+          "brand-studio",
+          "image-prompting-studio",
           "video-production-studio",
           "founder-revenue-engine",
           "ai-film-studio",
@@ -288,7 +289,8 @@ test("keeps the approved Site copy exact", () => {
     "web-product-studio": "The working redesign keeps the product's identity, shortens the main path, and passes the agreed browser flows.",
     "model-prompt-lab": "The target prompt has an explicit contract and measured evidence that supports or rejects the migration.",
     "strategy-room": "The decision states its tradeoffs, testable assumptions, and the next evidence needed before a larger commitment.",
-    "brand-world-studio": "The brand system and prompt pack are inspectable and produce related images without making every image identical.",
+    "brand-studio": "The identity system is usable, its proposals are labeled, and the owner's open decisions are visible.",
+    "image-prompting-studio": "The prompt set is complete, copyable, consistent across images, and ready for the team's own generation step.",
     "founder-revenue-engine": "The customer hypothesis is testable, the narrative is credible, and the bounded outreach draft is tied to observed signals.",
     "continuity-vault": "The knowledge records are traceable, scoped, and useful to later work without replacing the original project evidence.",
     "data-storytelling-studio": "The concise readout helps leaders decide what to test while keeping evidence and caveats visible.",
@@ -309,7 +311,8 @@ test("keeps the approved Site copy exact", () => {
   assert.equal(guideSource.guides["capability-operator"].tips[2], "Describe the outcome instead of relying on the tool name you remember.");
   assert.equal(guideSource.guides["citizen-forge"].tips[3], "Describe normal operation and support after the first release.");
   assert.equal(guideSource.guides["video-production-studio"].tips[3], "Review the rendered file as well as the timeline or source code.");
-  assert.equal(guideSource.guides["brand-world-studio"].successSignals[2], "Finished assets are checked together and individually.");
+  assert.equal(guideSource.guides["brand-studio"].successSignals[3], "Finished assets are checked together and individually.");
+  assert.equal(guideSource.guides["image-prompting-studio"].tips[0], "Name the model when you have one; otherwise you get a broadly compatible prompt.");
   assert.equal(guideSource.guides["continuity-vault"].tips[0], "Provide the original source instead of a remembered summary.");
   assert.equal(guideSource.guides["data-storytelling-studio"].tips[0], "Bring checked analysis rather than raw data alone.");
   assert.equal(guideSource.guides["model-evaluation-lab"].tips[0], "Use production-like cases, including hard examples.");
@@ -321,7 +324,7 @@ test("preserves the approved skill routing descriptions", () => {
     "web-product-studio/full-output-enforcement": "Guides long code-generation tasks through continuation rules, placeholder checks, and clean token-limit splits. Use for exhaustive, unabridged output.",
     "web-product-studio/redesign-existing-projects": "Audits existing websites and apps, identifies generic AI patterns, applies the skill's design standards, and checks that existing functionality still works. Supports any CSS framework or vanilla CSS.",
     "strategy-room/assumption-challenger": "Tier 3 research-first assumption challenger. It researches current sources, builds a challenge plan, examines the subject through several lenses, checks findings against the research, and returns a recommendations report. Use when user says \"challenge assumptions,\" \"analyze blind spots,\" \"what am I missing,\" \"critique this,\" \"find contradictions,\" \"stress test this,\" \"what could go wrong,\" \"tear this apart,\" or asks for rigorous adversarial review of plans, prompts, strategies, ideas, business cases, technical decisions, or AI prompts. Five-agent pipeline (researcher, planner, challenger, verifier, synthesizer). Three effort modes (light, standard, deep). Mandatory web search before challenge so the critique is grounded in current facts and expert disagreement, not training-data instinct.",
-    "brand-world-studio/brandkit": "Creates brand-guidelines boards, logo systems, identity decks, and visual-world presentations across minimalist, cinematic, editorial, dark-tech, luxury, cultural, security, gaming, developer-tool, and consumer-app styles. It directs logo concepts, composition, sparse typography, symbols, mockups, imagery, and grid layouts.",
+    "image-prompting-studio/image-prompt-router": "Route image prompting and requested Midjourney operations to one task specialist. Covers creation, edits, references, conversion, series and layout without requiring branding work.",
     "founder-revenue-engine/linkedin-viral-content-creator": "Create LinkedIn posts using a probability-driven consensus-breaking method and 69 included templates. Use when writing LinkedIn posts, creating hooks, improving drafts, or generating contrarian content. Enforces no-fabrication rule and a configurable voice profile. Six-phase workflow maps consensus, generates hooks via dual method (tail sampling plus templates), applies PRISM humanization, writes body, enforces quality, and delivers multiple options with rationale.",
     "gauntlet/gauntlet": "Loads only when the user explicitly invokes the gauntlet by name with one of these trigger phrases: gauntlet, run the gauntlet, gauntlet loop, gauntlet mode, gauntlet run, the big one, mega project mode, max run, ultracode run, beat this bar, blind critic loop, Claude of Duty method, resume the gauntlet, gauntlet handoff. It is the front door and router for the gauntlet mega-project method. It prechecks the surface and routes to the brief, prompt, run, verify, evidence, and handoff stages. Do not load for ordinary tasks, quick edits, single-shot drafts, routine reviews, or any request that does not name the gauntlet.",
     "web-product-studio/code-production-agent": "Coding agent for non-coders that turns plain-English requirements into software through required research, planning, approval, and validated execution. Handles building new apps/features/components/APIs, debugging and refactoring existing code, system design, performance optimization, and clean architecture restructuring. Five subagents (Planner, Builder, Fixer, Designer, Reviewer) coordinate through strict phase workflow. Includes deterministic code validation scripts for linting, error scanning, complexity analysis, structure checks. Use when user says \"build me\", \"create an app\", \"make a website\", \"fix this code\", \"debug this\", \"refactor\", \"optimize performance\", \"design a system\", \"clean up this codebase\", \"build an API\", \"create a component\", or describes any software idea or code problem in plain language. Also triggers on \"help me code\", \"I need software\", \"what's wrong with this code\", \"make this faster\", \"restructure this\", or any coding request from a non-technical user.",

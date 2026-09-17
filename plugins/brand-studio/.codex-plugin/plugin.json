@@ -1,0 +1,29 @@
+{
+  "name": "brand-studio",
+  "version": "1.0.0",
+  "description": "Brand strategy, briefs, identity systems, and brand reviews for your current brand or a named brand, independent of image prompting.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork",
+    "brand",
+    "identity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Brand Studio",
+    "shortDescription": "Brand strategy, briefs, identity systems, and review.",
+    "longDescription": "Brand Studio develops brand strategy, turns confirmed decisions into usable briefs, builds identity systems, and reviews brand work for consistency, using current supplied brand context and independent creative judgment. It works without Image Prompting Studio or any other sibling plugin.",
+    "developerName": "Community Maintainers",
+    "category": "Design",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Develop my current brand direction from these references.",
+      "Turn this approved direction into a usable identity system.",
+      "Review these assets against the confirmed brand system."
+    ]
+  }
+}

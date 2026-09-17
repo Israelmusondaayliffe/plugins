@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Illustration Photo Translator"
+  short_description: "Image illustration photo translator"
+  default_prompt: "Use $image-illustration-photo-translator to help with this brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Brand Interpretation"
+  short_description: "Image brand interpretation"
+  default_prompt: "Use $image-brand-interpretation to help with this brief."

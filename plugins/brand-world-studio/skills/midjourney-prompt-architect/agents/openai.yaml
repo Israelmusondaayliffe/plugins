@@ -1,6 +1,0 @@
-interface:
-  display_name: "Midjourney Prompt Architect"
-  short_description: "Build faithful Midjourney prompt packs"
-  default_prompt: "Use $midjourney-prompt-architect to turn this visual brief into production-ready Midjourney prompts."
-policy:
-  allow_implicit_invocation: false

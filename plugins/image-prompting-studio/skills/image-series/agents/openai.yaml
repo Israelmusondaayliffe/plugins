@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Series"
+  short_description: "Image series prompts and guidance"
+  default_prompt: "Use $image-series to help with this brief."

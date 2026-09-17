@@ -1,0 +1,4 @@
+interface:
+  display_name: "Midjourney Prompt Batching"
+  short_description: "Midjourney prompt batching"
+  default_prompt: "Use $midjourney-prompt-batching to help with this brief."

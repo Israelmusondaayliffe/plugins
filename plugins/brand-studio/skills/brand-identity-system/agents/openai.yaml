@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Identity System"
+  short_description: "Brand identity system prompts and guidance"
+  default_prompt: "Use $brand-identity-system to help with this brief."

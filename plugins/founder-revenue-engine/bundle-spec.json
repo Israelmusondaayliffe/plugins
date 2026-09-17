@@ -1,6 +1,6 @@
 {
   "plugin": "founder-revenue-engine",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "skills": [
     "first-customer-finder",
     "founder-revenue-router",
@@ -23,7 +23,8 @@
     {"name": "google-calendar", "required": false, "purpose": "Meeting actions after action-time authorization"},
     {"name": "canva", "required": false, "purpose": "Campaign asset production"},
     {"name": "writing-quality", "required": false, "purpose": "Optional final commercial prose validation"},
-    {"name": "brand-world-studio", "required": false, "purpose": "Campaign visual expression when installed"},
+    {"name": "image-prompting-studio", "required": false, "purpose": "Campaign image prompts when installed"},
+    {"name": "brand-studio", "required": false, "purpose": "Campaign brand direction when installed"},
     {"name": "strategy-room", "required": false, "purpose": "Offer and positioning decisions when installed"}
   ],
   "guardrails": [

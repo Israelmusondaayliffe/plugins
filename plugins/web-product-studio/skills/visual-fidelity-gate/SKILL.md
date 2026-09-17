@@ -23,7 +23,7 @@ Prevent a working interface from being mistaken for a convincing one.
 
 Do not trigger this gate for ordinary colors, spacing, icons, charts, CRUD work, backend work, diagnostics, or a generic request to look clean unless resemblance or picture quality is an explicit acceptance condition.
 
-Use Build Web Apps only after target lock. Web Product Studio keeps site-level ownership when Video Production Studio supplies a video asset or Brand World Studio supplies approved direction.
+Use Build Web Apps only after target lock. Web Product Studio keeps site-level ownership when Video Production Studio supplies a video asset or Brand Studio supplies approved direction.
 
 ## Reliability
 

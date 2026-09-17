@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "https://github.com/Israelmusondaayliffe/midjourney-v8-2-edit-architect",
+  "branch": "main",
+  "commit": "a5b4aae680d918b788404d87784dee28521e0a05",
+  "tree": "cb8c5df27dfb2cc3c0bd5368462e988f1a851133",
+  "imported_on": "2026-09-01",
+  "files": {
+    "LICENSE": "2437772197c4701ec6243f9100591a54b6ffbe300d7b0402b3e6acb4f09c6179",
+    "SKILL.md": "795cae146b37fb0b1cb059d1adfc0283e19b4b1d25b4c69ac5766d13190ef69d",
+    "references/current-model-boundaries.md": "b222509d73a734519d0367fb6657862a15bda3ff9264578402719ee827abe4bc",
+    "references/edit-patterns.md": "776065083602fe251d4e2130fc2c9e4966cff92d994f8785173d6f27b2bae4a4",
+    "references/failure-recovery.md": "05f6a36144096c21824364eb3b67cc43c6bf087e20b812c0c0fda7b6c4b7e1ff"
+  },
+  "adaptation": {
+    "date": "2026-09-13",
+    "skill": "midjourney-edit-architect",
+    "scope": "Stable naming, conditional model baseline, independent entry point, requested count, retained detailed craft and exact fenced examples. Original import hashes above remain historical attribution, not claims of current byte identity.",
+    "license_preserved": true
+  }
+}

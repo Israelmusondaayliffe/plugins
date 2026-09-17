@@ -1,0 +1,4 @@
+interface:
+  display_name: "Midjourney Edit Architect"
+  short_description: "Midjourney edit architect"
+  default_prompt: "Use $midjourney-edit-architect to help with this brief."
