@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Storyboard"
+  short_description: "Image storyboard prompts and guidance"
+  default_prompt: "Use $image-storyboard to help with this brief."

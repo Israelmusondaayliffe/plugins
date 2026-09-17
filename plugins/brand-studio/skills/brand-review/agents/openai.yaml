@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Review"
+  short_description: "Brand review prompts and guidance"
+  default_prompt: "Use $brand-review to help with this brief."

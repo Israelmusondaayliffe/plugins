@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Infographic"
+  short_description: "Image infographic prompts and guidance"
+  default_prompt: "Use $image-infographic to help with this brief."

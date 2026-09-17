@@ -16,7 +16,7 @@ Founder Revenue Engine packages the path from recent market signals to an eviden
 
 - Sales and Creative Production for connected workflows when installed
 - Gmail and Google Calendar for separately authorized actions
-- Canva and Brand World Studio for campaign assets when installed
+- Canva, Image Prompting Studio, and Brand Studio for campaign assets when installed
 - Writing Quality for optional final commercial prose validation
 - Strategy Room for unresolved offer or positioning decisions when installed
 

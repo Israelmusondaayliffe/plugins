@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Prompt Create"
+  short_description: "Image prompt create prompts and guidance"
+  default_prompt: "Use $image-prompt-create to help with this brief."

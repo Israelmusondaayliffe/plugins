@@ -25,7 +25,8 @@
       "web-product-studio",
       "model-prompt-lab",
       "strategy-room",
-      "brand-world-studio",
+      "brand-studio",
+      "image-prompting-studio",
       "founder-revenue-engine",
       "continuity-vault",
       "data-storytelling-studio",
@@ -54,8 +55,8 @@
     }
   },
   "expected_totals": {
-    "plugins": 28,
-    "skills": 215
+    "plugins": 29,
+    "skills": 233
   },
   "collections": [
     {
@@ -65,7 +66,8 @@
       "plugins": [
         "citizen-forge",
         "web-product-studio",
-        "brand-world-studio",
+        "brand-studio",
+        "image-prompting-studio",
         "video-production-studio",
         "founder-revenue-engine",
         "ai-film-studio"

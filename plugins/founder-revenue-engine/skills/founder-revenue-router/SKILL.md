@@ -13,7 +13,7 @@ Choose the commercial stage before researching or drafting. The plugin moves evi
 
 1. Define the offer, stage, market, evidence already available, desired commercial outcome, and prohibited actions.
 2. Choose one primary route using references/workflow.md.
-3. Run the plugin companion preflight before using Sales, Creative Production, Gmail, Google Calendar, Canva, Writing Quality, Brand World Studio, or Strategy Room. Every companion is optional.
+3. Run the plugin companion preflight before using Sales, Creative Production, Gmail, Google Calendar, Canva, Writing Quality, Image Prompting Studio, Brand Studio, or Strategy Room. Every companion is optional.
 4. Fill assets/output-template.json and run scripts/validate_output.py.
 5. Use last30days for recent signals, signal-to-icp and first-customer-finder for customer definition, market-narrative-builder for message, outreach-sequence-builder for drafts, and linkedin-viral-content-creator for founder-led content.
 6. When Writing Quality is absent, apply the plugin-owned commercial-copy checks in references/commercial-copy-checks.md.

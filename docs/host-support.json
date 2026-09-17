@@ -8,15 +8,6 @@
     "status": "declared-beta",
     "note": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised.  Astra Advisor execution requires Codex desktop task-creation tools and explicit separate-task authority. Fable Advisor uses native Claude agents, with an explicitly selected Codex transport option. Models must be available on the actual host."
   },
-  "brand-world-studio": {
-    "platforms": [
-      "Codex",
-      "Claude Code",
-      "Claude Cowork"
-    ],
-    "status": "declared-beta",
-    "note": "This candidate passed local package checks and isolated Codex and Claude Code installation. Fresh authenticated runtime discovery is unverified; Cowork was not exercised. "
-  },
   "capability-operator": {
     "platforms": [
       "Codex",
@@ -234,5 +225,23 @@
     ],
     "status": "declared-beta",
     "note": "Local suite, evidence, baseline, staging, and promotion controls are declared for all three hosts. OpenAI Plugin Eval is an optional enhanced analyzer."
+  },
+  "brand-studio": {
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "status": "declared-beta",
+    "note": "Package and manifest support is declared for Codex, Claude Code, and Claude Cowork. Local package checks and the Claude manifest validator passed on the source tree. Fresh installed-host discovery is unverified; Cowork was not exercised."
+  },
+  "image-prompting-studio": {
+    "platforms": [
+      "Codex",
+      "Claude Code",
+      "Claude Cowork"
+    ],
+    "status": "declared-beta",
+    "note": "Package and manifest support is declared for Codex, Claude Code, and Claude Cowork. Local package checks and the Claude manifest validator passed on the source tree. Fresh installed-host discovery is unverified; Cowork was not exercised. Midjourney operations additionally require an authenticated browser session on the host."
   }
 }

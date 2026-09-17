@@ -17,10 +17,10 @@
       }
     },
     {
-      "name": "brand-world-studio",
-      "source": "./plugins/brand-world-studio",
-      "description": "Brand briefs, visual systems, image-model routing, production prompt packs, and consistency verification.",
-      "version": "0.3.0",
+      "name": "brand-studio",
+      "source": "./plugins/brand-studio",
+      "description": "Brand strategy, briefs, identity systems, and brand reviews for your current brand or a named brand, independent of image prompting.",
+      "version": "1.0.0",
       "author": {
         "name": "Community Maintainers"
       }
@@ -65,7 +65,7 @@
       "name": "founder-revenue-engine",
       "source": "./plugins/founder-revenue-engine",
       "description": "Signal research, ICP definition, commercial narrative, bounded outreach drafts, and founder-led content on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "author": {
         "name": "Community Maintainers"
       }
@@ -191,7 +191,7 @@
       "name": "web-product-studio",
       "source": "./plugins/web-product-studio",
       "description": "Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex.",
-      "version": "0.4.3",
+      "version": "0.4.4",
       "author": {
         "name": "Community Maintainers"
       }
@@ -264,6 +264,15 @@
       "source": "./plugins/skill-eval-loop",
       "description": "Run bounded regression and repair cycles for skills and plugins with a complete local evaluator and optional OpenAI Plugin Eval analysis.",
       "version": "0.1.0",
+      "author": {
+        "name": "Community Maintainers"
+      }
+    },
+    {
+      "name": "image-prompting-studio",
+      "source": "./plugins/image-prompting-studio",
+      "description": "Complete image prompts for OpenAI Images, Nano Banana, Seedream, Recraft, Luma Uni, Ideogram, and Midjourney across creation, edits, references, conversion, series, layout, and review, plus requested Midjourney operations.",
+      "version": "1.0.0",
       "author": {
         "name": "Community Maintainers"
       }

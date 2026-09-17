@@ -11,12 +11,13 @@ const repositoryOwner = ["Is", "rael", "musonda", "ayliffe"].join("");
 const ownerProfile = `https://github.com/${repositoryOwner}`;
 const versions = {
   "agent-ops": "0.6.0",
-  "brand-world-studio": "0.3.0",
+  "brand-studio": "1.0.0",
+  "image-prompting-studio": "1.0.0",
   "capability-operator": "0.6.1",
   "citizen-forge": "1.1.0",
   "continuity-vault": "0.3.0",
   "data-storytelling-studio": "0.2.1",
-  "founder-revenue-engine": "0.2.2",
+  "founder-revenue-engine": "0.2.3",
   "gauntlet": "0.2.3",
   "gauntlet-loop": "1.2.1",
   "guide-production-studio": "0.1.2",
@@ -36,7 +37,7 @@ const versions = {
   "skill-eval-loop": "0.1.0",
   "strategy-room": "0.3.0",
   "video-production-studio": "0.4.0",
-  "web-product-studio": "0.4.3",
+  "web-product-studio": "0.4.4",
   "writing-quality": "0.2.2",
   "ai-film-studio": "0.2.1",
 };

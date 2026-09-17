@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Camera Directions"
+  short_description: "Image camera directions prompts and guidance"
+  default_prompt: "Use $image-camera-directions to help with this brief."

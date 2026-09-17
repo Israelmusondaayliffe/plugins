@@ -1,0 +1,54 @@
+{
+  "skill": "brand-review",
+  "required": [
+    "reference_id",
+    "artifacts",
+    "checks",
+    "findings",
+    "result",
+    "acceptance"
+  ],
+  "nonempty_strings": [
+    "reference_id"
+  ],
+  "list_fields": [
+    "artifacts",
+    "checks"
+  ],
+  "id_lists": [
+    "artifacts",
+    "checks"
+  ],
+  "item_required": {
+    "artifacts": [
+      "id",
+      "name",
+      "type"
+    ],
+    "checks": [
+      "id",
+      "rule",
+      "status",
+      "evidence"
+    ]
+  },
+  "item_enums": {
+    "checks.status": [
+      "passed",
+      "failed",
+      "untested"
+    ]
+  },
+  "enums": {
+    "result": [
+      "pass",
+      "fail",
+      "blocked"
+    ],
+    "acceptance": [
+      "pending",
+      "accepted",
+      "rejected"
+    ]
+  }
+}

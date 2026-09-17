@@ -1,0 +1,39 @@
+{
+  "plugin": "brand-studio",
+  "version": "1.0.0",
+  "skills": [
+    "brand-studio-router",
+    "brand-strategy",
+    "brand-brief",
+    "brand-identity-system",
+    "brand-review"
+  ],
+  "dependencies": [],
+  "validation": {
+    "structure": "python3 scripts/verify_bundle.py",
+    "creative_acceptance": "User selection; structural checks do not establish image quality.",
+    "host": "Claude Code, Claude Cowork, and Codex; both plugin manifests ship in this package"
+  },
+  "required_text": [
+    {
+      "file": "README.md",
+      "contains": "Works independently from Image Prompting Studio"
+    }
+  ],
+  "artifact_checks": [
+    {
+      "script": "scripts/validate_artifact.py",
+      "artifact": "skills/brand-brief/assets/source-example.json",
+      "schema": "skills/brand-brief/assets/output-schema.json"
+    },
+    {
+      "script": "scripts/validate_artifact.py",
+      "artifact": "skills/brand-review/assets/source-example.json",
+      "schema": "skills/brand-review/assets/output-schema.json"
+    }
+  ],
+  "forbidden_dependencies": [
+    "image-prompting-studio",
+    "model-prompt-lab"
+  ]
+}

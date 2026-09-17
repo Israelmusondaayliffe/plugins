@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Time Variation"
+  short_description: "Image time variation prompts and guidance"
+  default_prompt: "Use $image-time-variation to help with this brief."

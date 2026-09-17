@@ -1,0 +1,15 @@
+{
+  "name": "brand-studio",
+  "version": "1.0.0",
+  "description": "Brand strategy, briefs, identity systems, and brand reviews for your current brand or a named brand, independent of image prompting.",
+  "author": {
+    "name": "Community Maintainers"
+  },
+  "keywords": [
+    "codex",
+    "claude-code",
+    "cowork",
+    "brand",
+    "identity"
+  ]
+}

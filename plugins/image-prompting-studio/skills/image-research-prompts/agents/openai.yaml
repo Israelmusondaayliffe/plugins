@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Research Prompts"
+  short_description: "Image research prompts prompts and guidance"
+  default_prompt: "Use $image-research-prompts to help with this brief."

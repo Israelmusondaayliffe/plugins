@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Prompt Review"
+  short_description: "Image prompt review prompts and guidance"
+  default_prompt: "Use $image-prompt-review to help with this brief."

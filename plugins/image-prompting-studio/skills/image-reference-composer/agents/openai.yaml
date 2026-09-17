@@ -1,0 +1,4 @@
+interface:
+  display_name: "Image Reference Composer"
+  short_description: "Image reference composer prompts and guidance"
+  default_prompt: "Use $image-reference-composer to help with this brief."
