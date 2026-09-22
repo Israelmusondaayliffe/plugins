@@ -21,9 +21,8 @@ every file under one license.
 - loop-observatory declares MIT in its plugin manifests and includes a LICENSE file.
 - practice-compiler declares MIT in its plugin manifests and includes a LICENSE file.
 - skill-eval-loop declares MIT in its plugin manifests and includes a LICENSE file.
-- image-prompting-studio does not declare a top-level package license; its bundled
-  midjourney-edit-architect skill carries its own MIT LICENSE and a source-provenance
-  record for the imported upstream material.
+- writing-quality licenses original material under MIT. Its adapted writing-pattern taxonomy remains CC BY-SA 4.0; bundled MIT sources retain their notices. The package is mixed-license, not MIT-only.
+- strategy-room, brand-studio, guide-production-studio and image-prompting-studio include package-level MIT licenses for original material. Strategy Room retains the Matt Pocock attribution and license; Image Prompting Studio retains the bundled Midjourney edit skill's MIT license and provenance. Its public edition supplies prompts and omits generation-job execution.
 - matt-partok-bundled-plugin-for-knowledge-work declares MIT in its plugin
   manifest and includes a LICENSE and NOTICE.md attributing the original
   `mattpocock/skills` work to Matt Pocock.

@@ -1,6 +1,6 @@
 ---
 name: image-prompt-router
-description: "Route image prompting and requested Midjourney operations to one task specialist. Covers creation, edits, references, conversion, series and layout without requiring branding work."
+description: "Route image prompt preparation and review to one task specialist. Covers creation, edits, references, conversion, series and layout without requiring branding work."
 ---
 
 # Image Prompting Studio
@@ -32,7 +32,6 @@ When no model is named, write a broadly compatible non-Midjourney prompt. A name
 | Assess or repair supplied prompts | [image-prompt-review](../image-prompt-review/SKILL.md) |
 | Midjourney creation prompt syntax | [midjourney-prompt-architect](../midjourney-prompt-architect/SKILL.md) |
 | Midjourney editor, edits or retexture prompts | [midjourney-edit-architect](../midjourney-edit-architect/SKILL.md) |
-| Operate Midjourney submissions, exploration, curation or HD workflow | [midjourney-prompt-batching](../midjourney-prompt-batching/SKILL.md) |
 
 ## Resolve overlap by the deliverable
 
@@ -42,4 +41,4 @@ A coherent set belongs to series. Ordered storytelling belongs to storyboard. Wh
 
 Faithful photo/illustration translation keeps the reference's recognizable character, object or world. Broader reinterpretation of medium/style belongs to style-translator. Camera directions can be controlled studies or naturally evolving shots; the reference and wording decide, not a rigid global freeze/diversity rule.
 
-For an operation, use the available surface and verify actual model, mode, attachments and accepted submissions. If tools are unavailable, deliver the complete prompt and state what remains unexecuted. Save preferred recipes only after explicit user selection. Never claim rendered or creative success from prompt validation alone.
+This public edition delivers prompts and reviews supplied results. Do not submit generation jobs, operate queues, purchase credits or call image-generation tools. If the user wants execution, provide the complete prompts and explain that generation happens separately in their chosen tool. Save preferred recipes only after explicit user selection. Prompt validation does not prove rendered or creative success.

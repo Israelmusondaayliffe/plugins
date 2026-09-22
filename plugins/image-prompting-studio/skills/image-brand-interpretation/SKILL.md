@@ -5,7 +5,7 @@ description: "Translate supplied or researched brand visual language into image 
 
 # Image Brand Interpretation
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Work directly from the named brand and supplied references; Brand Studio is not required. Extract observable color, materials, patterns, mark/letterform character and design language. Verify factual brand claims when needed. Distinguish proposed speculative concepts from products the brand actually makes.
 

@@ -5,7 +5,7 @@ description: "Write prompts for a coherent series of images with recurring chara
 
 # Image Series
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Define the recurring anchor and the meaningful variation across the set. Identity can include face/hair/body, product silhouette and construction, a place's spatial features, or a coherent design language. Separate core identity from attributes the brief deliberately changes, such as wardrobe, pose, material or time.
 

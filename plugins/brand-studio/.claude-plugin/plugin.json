@@ -1,9 +1,10 @@
 {
   "name": "brand-studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Brand strategy, briefs, identity systems, and brand reviews for your current brand or a named brand, independent of image prompting.",
   "author": {
-    "name": "Community Maintainers"
+    "name": "Community Maintainers",
+    "url": "https://github.com/Israelmusondaayliffe/"
   },
   "keywords": [
     "codex",
@@ -11,5 +12,8 @@
     "cowork",
     "brand",
     "identity"
-  ]
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/brand-studio",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins"
 }

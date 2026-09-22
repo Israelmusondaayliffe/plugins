@@ -860,9 +860,9 @@ export const plugins = [
     "shortDescription": "Route and verify serious writing work.",
     "longDescription": "Writing Quality separates intent architecture, rewriting, detect-only review, claim support, and final prose validation so each request receives the smallest sufficient intervention.",
     "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "category": "Productivity",
-    "license": null,
+    "license": "MIT AND CC-BY-SA-4.0",
     "capabilities": [],
     "defaultPrompts": [
       "Route this writing task and produce the requested result.",
@@ -899,7 +899,7 @@ export const plugins = [
       "assets": 3,
       "references": 19,
       "scripts": 10,
-      "files": 43
+      "files": 47
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2209,9 +2209,9 @@ export const plugins = [
     "shortDescription": "Pressure-test decisions before committing resources.",
     "longDescription": "Strategy Room routes consequential choices through interview, assumption challenge, option generation, decision synthesis, and assumption tracking, then stops at an explicit execution handoff.",
     "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "category": "Productivity",
-    "license": null,
+    "license": "MIT",
     "capabilities": [],
     "defaultPrompts": [
       "Pressure-test this decision before I commit resources.",
@@ -2272,7 +2272,7 @@ export const plugins = [
       "assets": 16,
       "references": 9,
       "scripts": 7,
-      "files": 64
+      "files": 69
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2397,9 +2397,9 @@ export const plugins = [
     "shortDescription": "Brand strategy, briefs, identity systems, and review.",
     "longDescription": "Brand Studio develops brand strategy, turns confirmed decisions into usable briefs, builds identity systems, and reviews brand work for consistency, using current supplied brand context and independent creative judgment. It works without Image Prompting Studio or any other sibling plugin.",
     "description": "Brand strategy, briefs, identity systems, and brand reviews for your current brand or a named brand, independent of image prompting.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "category": "Design",
-    "license": null,
+    "license": "MIT",
     "capabilities": [],
     "defaultPrompts": [
       "Develop my current brand direction from these references.",
@@ -2440,7 +2440,7 @@ export const plugins = [
       "assets": 7,
       "references": 4,
       "scripts": 2,
-      "files": 27
+      "files": 31
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -2562,12 +2562,12 @@ export const plugins = [
   {
     "slug": "image-prompting-studio",
     "name": "Image Prompting Studio",
-    "shortDescription": "Task-based image prompts, faithful reference translation, and Midjourney operations.",
-    "longDescription": "Image Prompting Studio routes image work to one task specialist and delivers copyable prompts by default: creation, edits, camera directions, shot planning, reference composition, research-backed prompts, series, multi-output requests, typography, infographics, editorial layouts, storyboards, campaign grids, brand interpretation, illustration and photo translation, style and time variation, layout, and prompt review, plus Midjourney prompt architecture, edit prompts, and explicitly requested Midjourney operations. Model names live in dated profiles. No sibling plugin is required.",
-    "description": "Complete image prompts for OpenAI Images, Nano Banana, Seedream, Recraft, Luma Uni, Ideogram, and Midjourney across creation, edits, references, conversion, series, layout, and review, plus requested Midjourney operations.",
-    "version": "1.0.0",
+    "shortDescription": "Copyable image prompts, reference translation and Midjourney prompting.",
+    "longDescription": "Image Prompting Studio produces copyable prompts for creation, edits, camera directions, shot planning, reference composition, series, typography, infographics, editorial layouts, storyboards and prompt review. It retains Midjourney creation and edit prompting. This public edition does not generate images, submit jobs or operate generation queues. No sibling plugin is required.",
+    "description": "Write and review image prompts for creation, edits, references, series, layouts and Midjourney. Prompt preparation only; no image generation or job submission.",
+    "version": "1.1.0",
     "category": "Design",
-    "license": null,
+    "license": "MIT",
     "capabilities": [],
     "defaultPrompts": [
       "Turn this image brief into copyable prompts.",
@@ -2580,7 +2580,7 @@ export const plugins = [
       "Claude Cowork"
     ],
     "supportStatus": "declared-beta",
-    "runtimeNote": "Package and manifest support is declared for Codex, Claude Code, and Claude Cowork. Local package checks and the Claude manifest validator passed on the source tree. Fresh installed-host discovery is unverified; Cowork was not exercised. Midjourney operations additionally require an authenticated browser session on the host.",
+    "runtimeNote": "Public prompt-only edition. Midjourney creation and edit prompting remain; generation, browser job submission and queue management are not included. Package validation is separate from a fresh host behavior test.",
     "skills": [
       {
         "name": "image-brand-interpretation",
@@ -2628,7 +2628,7 @@ export const plugins = [
       },
       {
         "name": "image-prompt-router",
-        "description": "Route image prompting and requested Midjourney operations to one task specialist. Covers creation, edits, references, conversion, series and layout without requiring branding work."
+        "description": "Route image prompt preparation and review to one task specialist. Covers creation, edits, references, conversion, series and layout without requiring branding work."
       },
       {
         "name": "image-reference-composer",
@@ -2669,16 +2669,12 @@ export const plugins = [
       {
         "name": "midjourney-prompt-architect",
         "description": "Build faithful Midjourney prompts from visual briefs, rough prompts, or supplied references. Use to create, rewrite, optimize, or vary prompts for photography, illustration, products, architecture, posters, album covers, editorial images, or cinematic scenes. Preserve explicit constraints and reference strings, use verified parameters, and never render images."
-      },
-      {
-        "name": "midjourney-prompt-batching",
-        "description": "Run bounded Midjourney jobs from new prompts, selected Explore items or existing creations. Use for Void Style Hunter, style-code exploration, prompt reuse, queue monitoring, selected HD variations or explicitly requested cleanup."
       }
     ],
     "counts": {
-      "skills": 23,
+      "skills": 22,
       "assets": 1,
-      "references": 78,
+      "references": 76,
       "scripts": 3,
       "files": 133
     },
@@ -2689,7 +2685,7 @@ export const plugins = [
         "Writing complete, copyable image prompts for a named model or a broadly compatible default.",
         "Translating an illustration into a photograph, or a photograph into an illustration, without losing its character.",
         "Planning coverage, camera directions, series, storyboards, grids, and multi-image requests before generation.",
-        "Reviewing or repairing supplied prompts and preparing explicitly requested Midjourney operations."
+        "Reviewing supplied image prompts and preparing Midjourney creation or edit prompts."
       ],
       "startHere": {
         "skill": "image-prompt-router",
@@ -2755,11 +2751,10 @@ export const plugins = [
         },
         {
           "title": "Handle Midjourney explicitly",
-          "instruction": "Build Midjourney creation or edit prompts, and run requested submissions only through an observed, authenticated session.",
+          "instruction": "Build Midjourney creation or edit prompts for the user to run separately.",
           "skills": [
             "midjourney-prompt-architect",
-            "midjourney-edit-architect",
-            "midjourney-prompt-batching"
+            "midjourney-edit-architect"
           ]
         }
       ],
@@ -2818,8 +2813,8 @@ export const plugins = [
         "Treat prompt validation as a check on the prompt, not proof of the rendered image."
       ],
       "boundaries": [
-        "The plugin writes prompts; it generates images only when you ask and a tool is available.",
-        "Midjourney operations run only in an authenticated session you control, with explicit scope.",
+        "This public plugin writes and reviews prompts only; it does not generate images.",
+        "Midjourney generation jobs and queue operations are outside this public package.",
         "Model profiles are dated snapshots; confirm live capabilities before relying on a control.",
         "Brand names in a brief do not start brand strategy work."
       ],
@@ -3501,7 +3496,7 @@ export const plugins = [
     "shortDescription": "Bounded loops with durable evidence on Claude Code, Cowork, and Codex.",
     "longDescription": "LoopKit turns repeatable work into bounded loops on Claude Code, Claude Cowork, and Codex. It creates durable contracts, runs evidence-gated iterations, restores compact checkpoints, prepares scheduled tasks on the host scheduling surface, and diagnoses stalled or unsafe runs.",
     "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "category": "Productivity",
     "license": "MIT",
     "capabilities": [
@@ -3557,7 +3552,7 @@ export const plugins = [
       "assets": 3,
       "references": 7,
       "scripts": 10,
-      "files": 45
+      "files": 48
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -4879,9 +4874,9 @@ export const plugins = [
     "shortDescription": "Build useful, source-grounded practical guides.",
     "longDescription": "Guide Production Studio turns approved sources and tested methods into clear practical guides. It preserves public provenance, protects private implementation material, chooses structure from the reader's job, requires real examples and visual evidence where needed, and stops at human review before publication.",
     "description": "Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance.",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "category": "Productivity",
-    "license": null,
+    "license": "MIT",
     "capabilities": [],
     "defaultPrompts": [
       "Build a practical guide from these sources and preserve the public provenance.",
@@ -4922,7 +4917,7 @@ export const plugins = [
       "assets": 2,
       "references": 4,
       "scripts": 5,
-      "files": 28
+      "files": 32
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -5663,10 +5658,10 @@ export const plugins = [
 ] as const;
 export const totals = {
   "plugins": 29,
-  "skills": 233,
+  "skills": 232,
   "assets": 346,
-  "references": 556,
+  "references": 554,
   "scripts": 535,
-  "files": 2408
+  "files": 2428
 } as const;
 export type Plugin = (typeof plugins)[number];

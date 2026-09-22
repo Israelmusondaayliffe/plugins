@@ -5,7 +5,7 @@ description: Write or repair Midjourney image-edit prompts for replacement, remo
 
 # Midjourney edit architect
 
-Turn the source image, references and requested change into complete paste-ready prompts. Read `../../references/prompt-contract.md` and the Midjourney entry in `../../references/model-profiles.md`. This skill returns prompts by default; rendering requires a request to perform the edit.
+Turn the source image, references and requested change into complete paste-ready prompts. Read `../../references/prompt-contract.md` and the Midjourney entry in `../../references/model-profiles.md`. This public skill returns edit prompts; the user renders them separately in Midjourney.
 
 1. Inspect the supplied image and references. Identify the visual anchor, requested change, protected features and the light, perspective or material cues needed to integrate the result. Ask only when a missing reference or material ambiguity prevents a faithful result.
 2. Read [edit methods](references/edit-methods.md). Use its reference-role, risk and Editor guidance for the actual task. Preserve requested identity and world properties with artistic judgment. A change of viewpoint can reveal new surfaces; a naturally developed shot can alter pose and light when the context calls for it.

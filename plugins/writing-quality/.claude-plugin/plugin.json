@@ -1,13 +1,17 @@
 {
   "name": "writing-quality",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation.",
   "author": {
-    "name": "Community Maintainers"
+    "name": "Community Maintainers",
+    "url": "https://github.com/Israelmusondaayliffe/"
   },
   "keywords": [
     "codex",
     "claude-code",
     "cowork"
-  ]
+  ],
+  "license": "MIT AND CC-BY-SA-4.0",
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/writing-quality",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins"
 }

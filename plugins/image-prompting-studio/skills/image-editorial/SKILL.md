@@ -5,7 +5,7 @@ description: "Write image prompts for posters, covers, spreads, campaign key vis
 
 # Image Editorial
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Define the page's communication job, format, audience and visual hierarchy. Gather exact copy, supplied images, desired design tradition and palette. Compose image and typography together: focal point, headline scale, negative space, supporting copy, margins, alignment and the device that makes the page recognizable.
 

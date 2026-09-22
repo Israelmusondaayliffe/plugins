@@ -5,7 +5,7 @@ description: "Create image prompts from an idea, scene, subject or object. Use f
 
 # Image Prompt Create
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Turn the brief into a specific visual moment. Establish subject, action or state, environment, framing and the light or graphic treatment that makes the idea read. Explain materials through their behavior: transmission, reflections, wear, weight, folds, surface contact. Choose photographic terms only for a photographic treatment; preserve impossible or absurd premises when intentional.
 

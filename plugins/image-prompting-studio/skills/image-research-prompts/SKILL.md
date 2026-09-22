@@ -5,7 +5,7 @@ description: "Research facts and visual references for image prompts about real 
 
 # Image Research Prompts
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Identify the facts the image actually needs: entities, appearance, date, event, labels, units, geography or structure. Use the authoritative owner where possible and record the date relevant to the subject, not only the date of browsing. Separate verified facts, unknowns and deliberately speculative content.
 

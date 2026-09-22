@@ -5,7 +5,7 @@ description: "Write prompts for one composite campaign grid or moodboard with di
 
 # Image Campaign Grid
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 The output is a single composite grid. Define its rows/columns, reading rhythm and intended use, then give every cell a specific role. Keep product/character recognition and the campaign's color/material language coherent while varying context, scale, framing and narrative emphasis where the brief allows.
 

@@ -25,7 +25,7 @@ codex plugin add loopkit@community-agent-plugins
 
 On Claude Code, add this repository as a plugin marketplace (`/plugin marketplace add Israelmusondaayliffe/plugins`), then install `loopkit` from the `/plugin` UI. On Claude Cowork, install from the in-app marketplace or a delivered `.plugin` file.
 
-Review and trust the plugin hooks in `/hooks`. The hooks only refresh or restore a compact checkpoint for an active run in the current workspace.
+Review and trust the plugin hooks in `/hooks`. Claude loads `hooks/claude-hooks.json`; Codex loads `hooks/hooks.json`. Both call the same local checkpoint helper. The hooks only refresh or restore a compact checkpoint for an active run in the current workspace, under the host-scoped run directory described above. They do not inspect unrelated conversation history.
 
 ## Validate
 
@@ -37,3 +37,16 @@ python3 -m unittest discover -s tests -v
 ## Safety boundary
 
 Creating or running a loop does not expand the host platform's permissions. Schedules, external messages, destructive actions, production changes, purchases, and privacy-sensitive access still require the authority and approvals of the active task.
+
+## Claude Code quick start
+
+```text
+/plugin marketplace add Israelmusondaayliffe/plugins
+/plugin install loopkit@community-agent-plugins
+```
+
+Start a new task after installation. See [three example tasks](EXAMPLES.md), [support](SUPPORT.md) and [privacy](PRIVACY.md).
+
+## License
+
+MIT for original project material. Existing third-party licenses and notices remain in force. See [LICENSE](LICENSE).
