@@ -6,7 +6,7 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const versions = {
   "agent-ops": "0.6.0",
   "brand-studio": "1.0.1",
-  "image-prompting-studio": "1.1.0",
+  "image-prompting-studio": "1.1.1",
   "capability-operator": "0.6.1",
   "citizen-forge": "1.1.0",
   "continuity-vault": "0.3.0",
