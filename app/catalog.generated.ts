@@ -2565,7 +2565,7 @@ export const plugins = [
     "shortDescription": "Copyable image prompts, reference translation and Midjourney prompting.",
     "longDescription": "Image Prompting Studio produces copyable prompts for creation, edits, camera directions, shot planning, reference composition, series, typography, infographics, editorial layouts, storyboards and prompt review. It retains Midjourney creation and edit prompting. This public edition does not generate images, submit jobs or operate generation queues. No sibling plugin is required.",
     "description": "Write and review image prompts for creation, edits, references, series, layouts and Midjourney. Prompt preparation only; no image generation or job submission.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "category": "Design",
     "license": "MIT",
     "capabilities": [],
@@ -2676,7 +2676,7 @@ export const plugins = [
       "assets": 1,
       "references": 76,
       "scripts": 3,
-      "files": 133
+      "files": 134
     },
     "bundlesMcp": false,
     "bundlesApp": false,
@@ -5662,6 +5662,6 @@ export const totals = {
   "assets": 346,
   "references": 554,
   "scripts": 535,
-  "files": 2428
+  "files": 2429
 } as const;
 export type Plugin = (typeof plugins)[number];

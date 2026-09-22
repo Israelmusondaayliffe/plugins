@@ -1,6 +1,6 @@
 {
   "name": "image-prompting-studio",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Write and review image prompts for creation, edits, references, series, layouts and Midjourney. Prompt preparation only; no image generation or job submission.",
   "author": {
     "name": "Community Maintainers",
