@@ -35,3 +35,16 @@ Writing Quality owns ordinary documents, emails, posts, and other prose. Harness
 ## Verification
 
 Run `python3 skills/writing-enforcer/scripts/engine_check.py` to verify the pinned 19-file engine. Run `python3 scripts/verify_bundle.py` from any directory before release. Installation is trusted only after plugin validation, source-to-cache parity, live listing, and clean-task discovery all pass.
+
+## Claude Code quick start
+
+```text
+/plugin marketplace add Israelmusondaayliffe/plugins
+/plugin install writing-quality@community-agent-plugins
+```
+
+Start a new task after installation. See [three example tasks](EXAMPLES.md), [support](SUPPORT.md) and [privacy](PRIVACY.md).
+
+## License
+
+Original project material is MIT-licensed. The adapted writing-pattern taxonomy retains CC BY-SA 4.0; other upstream notices remain in force. See [LICENSE](LICENSE) and [third-party notices](skills/writing-enforcer/references/unslop-engine/THIRD_PARTY_NOTICES.md).

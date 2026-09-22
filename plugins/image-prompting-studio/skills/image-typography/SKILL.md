@@ -5,7 +5,7 @@ description: "Write prompts where lettering, exact text or multilingual typograp
 
 # Image Typography
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Make an exact text inventory before designing. Keep spelling, capitalization, punctuation, diacritics and script intact. Distinguish literal copy from instructions: font names, color codes and layout labels should not appear as text unless requested. If translation is needed, treat the translation as content to verify rather than letting the image model improvise it.
 

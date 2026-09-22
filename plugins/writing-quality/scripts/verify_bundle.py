@@ -63,8 +63,8 @@ def main() -> int:
         claude_manifest.get("version"),
         spec.get("version"),
     }
-    if versions != {"0.2.2"}:
-        fail(errors, "plugin manifests and bundle spec must agree on version 0.2.2")
+    if versions != {spec.get("version")}:
+        fail(errors, "plugin manifests and bundle spec must agree on version")
 
     expected = set(spec.get("skills", []))
     actual = {path.parent.name for path in (root / "skills").glob("*/SKILL.md")}

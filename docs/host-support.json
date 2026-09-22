@@ -242,6 +242,6 @@
       "Claude Cowork"
     ],
     "status": "declared-beta",
-    "note": "Package and manifest support is declared for Codex, Claude Code, and Claude Cowork. Local package checks and the Claude manifest validator passed on the source tree. Fresh installed-host discovery is unverified; Cowork was not exercised. Midjourney operations additionally require an authenticated browser session on the host."
+    "note": "Public prompt-only edition. Midjourney creation and edit prompting remain; generation, browser job submission and queue management are not included. Package validation is separate from a fresh host behavior test."
   }
 }

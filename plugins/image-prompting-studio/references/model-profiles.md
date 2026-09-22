@@ -42,11 +42,10 @@ For typography and layout, state exact quoted copy, reading order, hierarchy, co
 
 ## Midjourney
 
-Midjourney has its own prompt syntax and operational workflow. Use the three Midjourney skills only when selected or clearly requested. Stable prose should describe the visible result; parameters and reference/profile identifiers belong at the end and must match the selected model and mode.
+Midjourney has its own prompt syntax and operational workflow. Use the two Midjourney prompting skills only when selected or clearly requested. Stable prose should describe the visible result; parameters and reference/profile identifiers belong at the end and must match the selected model and mode.
 
 Current researched documentation includes V8.2, the updated Edit model and newer personalization identifiers. Historical codes remain useful when deliberately reusing source prompts. Do not upgrade a copied prompt's model/profile without request. Current account controls decide compatibility. [Versions](https://docs.midjourney.com/hc/en-us/articles/32199405667853-Version), [Edit model](https://docs.midjourney.com/hc/en-us/articles/48495453462797-Edit-Model), [Personalization](https://docs.midjourney.com/hc/en-us/articles/32433330574221-Personalization), [Creating on web](https://docs.midjourney.com/hc/en-us/articles/33390732264589-Creating-on-Web).
 
-The user's Void Style Hunter workflow has observed draft batches of 25 and selected HD variations. That observation does not establish a universal batch size or queue limit. Default requested operations to Relax, verify the active control, and track submission acceptance separately from rendered output. Preserve style code, full source prompt, profile, folder and selected image identity during curation. See the batching skill for the complete process.
 
 ## Maintenance
 

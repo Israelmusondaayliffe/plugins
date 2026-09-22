@@ -13,9 +13,9 @@ const readText = (path) => readFileSync(join(root, path), "utf8");
 const errors = [];
 const expected = {
   repositoryPlugins: 30,
-  repositorySkills: 255,
+  repositorySkills: 254,
   sitePlugins: 29,
-  siteSkills: 233,
+  siteSkills: 232,
 };
 const mattSlug = "matt-partok-bundled-plugin-for-knowledge-work";
 

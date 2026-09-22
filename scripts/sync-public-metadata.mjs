@@ -11,8 +11,8 @@ const repositoryOwner = ["Is", "rael", "musonda", "ayliffe"].join("");
 const ownerProfile = `https://github.com/${repositoryOwner}`;
 const versions = {
   "agent-ops": "0.6.0",
-  "brand-studio": "1.0.0",
-  "image-prompting-studio": "1.0.0",
+  "brand-studio": "1.0.1",
+  "image-prompting-studio": "1.1.0",
   "capability-operator": "0.6.1",
   "citizen-forge": "1.1.0",
   "continuity-vault": "0.3.0",
@@ -20,12 +20,12 @@ const versions = {
   "founder-revenue-engine": "0.2.3",
   "gauntlet": "0.2.3",
   "gauntlet-loop": "1.2.1",
-  "guide-production-studio": "0.1.2",
+  "guide-production-studio": "0.1.3",
   "harness-engineering": "2.7.1",
   "knowledge-work-superpowers": "0.2.2",
   "last30days": "3.16.1",
   "loop-observatory": "0.1.0",
-  "loopkit": "0.3.1",
+  "loopkit": "0.3.2",
   "matt-partok-bundled-plugin-for-knowledge-work": "1.1.1",
   "model-evaluation-lab": "0.2.1",
   "model-prompt-lab": "0.3.0",
@@ -35,10 +35,10 @@ const versions = {
   "proofloop": "0.2.0",
   "signal-to-system": "0.1.0-beta.1",
   "skill-eval-loop": "0.1.0",
-  "strategy-room": "0.3.0",
+  "strategy-room": "0.3.1",
   "video-production-studio": "0.4.0",
   "web-product-studio": "0.4.4",
-  "writing-quality": "0.2.2",
+  "writing-quality": "0.2.3",
   "ai-film-studio": "0.2.1",
 };
 const preservedAuthors = new Map([["last30days", "mvanhorn"]]);

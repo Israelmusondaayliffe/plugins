@@ -5,7 +5,7 @@ description: "Write image prompts for factual diagrams, maps, charts, process ex
 
 # Image Infographic
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Start with the information, not a decorative style. Identify the audience's question and the relationship that answers it: sequence, comparison, hierarchy, geography, causality, proportion or anatomy. Choose a visual form that represents that relationship faithfully.
 

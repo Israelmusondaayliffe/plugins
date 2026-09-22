@@ -38,3 +38,16 @@ Run `scripts/check_companions.py` to see which optional companions are installed
 ## Verification
 
 Run `scripts/verify_bundle.py` from any directory. Installation is trusted only after plugin validation, skill validation, source-to-cache parity, live listing, real-artifact validation, and clean-task discovery all pass.
+
+## Claude Code quick start
+
+```text
+/plugin marketplace add Israelmusondaayliffe/plugins
+/plugin install strategy-room@community-agent-plugins
+```
+
+Start a new task after installation. See [three example tasks](EXAMPLES.md), [support](SUPPORT.md) and [privacy](PRIVACY.md).
+
+## License
+
+MIT for original project material. Existing third-party licenses and notices remain in force. See [LICENSE](LICENSE).

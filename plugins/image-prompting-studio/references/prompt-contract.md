@@ -1,6 +1,6 @@
 # Shared prompting contract
 
-Deliver copyable prompts by default on every host, including Claude Code, Claude Cowork, and Codex. Generate images only when the user asks or an approved bounded test covers the operation. An explicit Midjourney operation can act through the host's available browser surface (an in-app browser, a browser extension bound to the user's existing session, or Computer Use) where it permits the needed browser actions. Do not fabricate a tool call, selected model, rendered image or creative acceptance.
+Deliver copyable prompts on every host, including Claude Code, Claude Cowork and Codex. This public edition prepares and reviews prompts only. Do not generate images, submit Midjourney jobs, operate queues or invoke generation tools. The user runs completed prompts separately in their chosen tool. Do not claim a rendered image or creative acceptance from prompt preparation.
 
 Follow the user's model and output count. When no model is named, write a broadly compatible non-Midjourney prompt. No model questionnaire is needed. Distinguish number of prompt alternatives, number of images requested inside a prompt, and panels inside a composite. For a singular request deliver one complete prompt; for open exploration choose a useful small set. No seven/ten/twelve quota, mandatory diversity distribution or word cap.
 
@@ -16,6 +16,6 @@ Every delivered prompt belongs in its own triple-backtick block. JSON prompts mu
 
 Brand names in image briefs do not activate or require Brand Studio. Work from supplied references and verified brand material as needed. A user-selected palette library (for example a Wada combination set) is an optional color resource alongside free exploration; see [color.md](color.md) when selected. Other plugins are never dependencies of these skills.
 
-Only save a recipe as a reusable preferred result after the user explicitly selects it. Operational records can track submissions and avoid duplicates without claiming creative approval. User selection is final QA; assistant review can report defects and differences.
+Only save a recipe as a reusable preferred result after the user explicitly selects it. User selection is final QA; assistant review can report defects and differences.
 
-During execution, verify the actual selected model, reference attachments and exposed controls. Use existing subscriptions/included credits within the authorized budget. Do not use a paid API, purchase credits or silently change models. Stop on uncertain submission status rather than submitting a duplicate. Model guidance is dated and updated on user request, not through an automatic updater.
+Model guidance is dated and updated on user request. Describe only supported controls in the prompt; do not invent parameters, style codes, model settings or successful output.

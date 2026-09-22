@@ -542,7 +542,7 @@
       "successSignals": ["The requested deliverable is complete and its sources are traceable.", "Proposed choices and confirmed decisions are visibly distinct.", "Missing evidence that affects the result is stated.", "Finished assets are checked together and individually."]
     },
     "image-prompting-studio": {
-      "bestFor": ["Writing complete, copyable image prompts for a named model or a broadly compatible default.", "Translating an illustration into a photograph, or a photograph into an illustration, without losing its character.", "Planning coverage, camera directions, series, storyboards, grids, and multi-image requests before generation.", "Reviewing or repairing supplied prompts and preparing explicitly requested Midjourney operations."],
+      "bestFor": ["Writing complete, copyable image prompts for a named model or a broadly compatible default.", "Translating an illustration into a photograph, or a photograph into an illustration, without losing its character.", "Planning coverage, camera directions, series, storyboards, grids, and multi-image requests before generation.", "Reviewing supplied image prompts and preparing Midjourney creation or edit prompts."],
       "startHere": {"skill": "image-prompt-router", "why": "Start here with the brief, any references, the model if you have one, and the number of outputs you want. It picks one task specialist and keeps prompts as the default deliverable."},
       "quickStarts": [
         {"goal": "Write an image prompt", "prompt": "Turn this image brief into copyable prompts: [brief]. Use [model] if I name one; otherwise write a broadly compatible prompt."},
@@ -555,7 +555,7 @@
         {"title": "Write the prompt", "instruction": "Produce complete prompts for creation, edits, references, translation, or layout in the format the model expects.", "skills": ["image-prompt-create", "image-prompt-edit", "image-reference-composer", "image-illustration-photo-translator", "image-layout-architect"]},
         {"title": "Keep sets coherent", "instruction": "Carry continuity across series, storyboards, grids, and multi-output requests.", "skills": ["image-series", "image-storyboard", "image-campaign-grid", "image-multi-output"]},
         {"title": "Review before generation", "instruction": "Assess or repair supplied prompts and confirm the requested model, format, and count.", "skills": ["image-prompt-review"]},
-        {"title": "Handle Midjourney explicitly", "instruction": "Build Midjourney creation or edit prompts, and run requested submissions only through an observed, authenticated session.", "skills": ["midjourney-prompt-architect", "midjourney-edit-architect", "midjourney-prompt-batching"]}
+        {"title": "Handle Midjourney explicitly", "instruction": "Build Midjourney creation or edit prompts for the user to run separately.", "skills": ["midjourney-prompt-architect", "midjourney-edit-architect"]}
       ],
       "skillPaths": [
         {"need": "Lettering or exact text is central", "skill": "image-typography", "why": "It treats the text as the subject and specifies exact strings."},
@@ -568,7 +568,7 @@
       ],
       "workedExample": {"title": "Preparing a product launch image set", "situation": "A team needs a hero image, three detail shots, and a social grid for one product, generated with the model their tool supports.", "steps": ["Route the brief and confirm the model, references, and output counts.", "Plan the coverage so the hero and detail shots share lighting and angle logic.", "Write complete prompts for each image and one prompt for the composite grid.", "Review the prompts against the requested format and count before generation."], "result": "The prompt set is complete, copyable, consistent across images, and ready for the team's own generation step."},
       "tips": ["Name the model when you have one; otherwise you get a broadly compatible prompt.", "Say how many prompt alternatives, images per prompt, and panels per composite you want.", "Attach references and say what must stay fixed and what may change.", "Treat prompt validation as a check on the prompt, not proof of the rendered image."],
-      "boundaries": ["The plugin writes prompts; it generates images only when you ask and a tool is available.", "Midjourney operations run only in an authenticated session you control, with explicit scope.", "Model profiles are dated snapshots; confirm live capabilities before relying on a control.", "Brand names in a brief do not start brand strategy work."],
+      "boundaries": ["This public plugin writes and reviews prompts only; it does not generate images.", "Midjourney generation jobs and queue operations are outside this public package.", "Model profiles are dated snapshots; confirm live capabilities before relying on a control.", "Brand names in a brief do not start brand strategy work."],
       "successSignals": ["Each prompt is complete, copyable, and in the format the model expects.", "Related images share the intended continuity and differ where intended.", "Requested counts, formats, and references match the prompts delivered.", "Unexecuted steps are stated plainly rather than implied."]
     },
     "founder-revenue-engine": {

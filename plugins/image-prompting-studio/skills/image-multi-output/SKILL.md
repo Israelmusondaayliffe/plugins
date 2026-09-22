@@ -5,7 +5,7 @@ description: "Write one prompt requesting multiple separate image outputs, inclu
 
 # Image Multi Output
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Deliver one complete prompt for the requested set unless the user explicitly asks for alternative batch prompts. This skill covers both repeated subject variants and distinct deliverables when the central requirement is one submission producing separate images. Preserve the distinction between one prompt, one composite/contact sheet, and several separate submissions.
 
@@ -15,4 +15,4 @@ For an eight-image request, explicitly request eight separate image outputs, one
 
 Use [multi-output recipes](references/gpt-multi-output.md) for event packages, product systems, editorial pages and world/character bibles. Read [page inventories](references/page-inventories.md) for useful starting contents. They are options, not a seven-page quota or a dependency on Brand Studio.
 
-For execution, verify the current host supports the intended operation. If only one image is returned, report the shortfall. Never label a grid as eight files, crop it to manufacture the claim, or silently submit eight separate requests. The prompt-writing deliverable remains useful even when this host cannot execute it. Only claim the requested image count after counting actual separate outputs.
+Write the requested prompts without submitting generation requests. If reviewing user-supplied results, count the actual separate images and report any shortfall. Never label a grid as eight files or crop it to manufacture the claim. Prompt preparation does not prove an output count.

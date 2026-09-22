@@ -23,3 +23,16 @@ It solves a different problem from prose cleanup. Writing Quality can polish fin
 ## Reliability
 
 Scripts validate contracts, review records, bundle structure, and obvious public-output leakage. Human judgment remains responsible for teaching quality, voice, usefulness, and final approval.
+
+## Claude Code quick start
+
+```text
+/plugin marketplace add Israelmusondaayliffe/plugins
+/plugin install guide-production-studio@community-agent-plugins
+```
+
+Start a new task after installation. See [three example tasks](EXAMPLES.md), [support](SUPPORT.md) and [privacy](PRIVACY.md).
+
+## License
+
+MIT for original project material. Existing third-party licenses and notices remain in force. See [LICENSE](LICENSE).

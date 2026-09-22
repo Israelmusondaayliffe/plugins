@@ -1,13 +1,17 @@
 {
   "name": "strategy-room",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Pre-commitment interviews, assumption challenge, option generation, decision synthesis, and uncertainty tracking.",
   "author": {
-    "name": "Community Maintainers"
+    "name": "Community Maintainers",
+    "url": "https://github.com/Israelmusondaayliffe/"
   },
   "keywords": [
     "codex",
     "claude-code",
     "cowork"
-  ]
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/strategy-room",
+  "repository": "https://github.com/Israelmusondaayliffe/plugins"
 }

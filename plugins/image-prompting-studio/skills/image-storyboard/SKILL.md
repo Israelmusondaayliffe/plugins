@@ -5,7 +5,7 @@ description: "Write image prompts for comics, storyboards, narrative panels and 
 
 # Image Storyboard
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Identify the story or instructional progression, recurring characters/objects, key beats and reading order. Decide from the request whether the deliverable is one page of panels, separate frames, or several pages. Declare that explicitly so a multi-panel comic is not confused with multiple image files.
 

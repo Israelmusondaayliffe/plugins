@@ -1,9 +1,10 @@
 {
   "name": "loopkit",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Design, run, verify, resume, schedule, and diagnose bounded loops on Claude Code, Claude Cowork, and Codex with durable host-scoped state and evidence-gated completion.",
   "author": {
-    "name": "Community Maintainers"
+    "name": "Community Maintainers",
+    "url": "https://github.com/Israelmusondaayliffe/"
   },
   "homepage": "https://github.com/Israelmusondaayliffe/plugins/tree/main/plugins/loopkit",
   "repository": "https://github.com/Israelmusondaayliffe/plugins",

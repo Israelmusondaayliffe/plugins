@@ -58,7 +58,7 @@ Cowork-supported plugin and install it from the catalog.
 | gauntlet | Claude Code and Cowork edition of the gauntlet method: explicit-only mega-project loop with blind critics, fresh-context verification, evidence reports, and multi-session handoff. Loads only when the user names the gauntlet. |
 | gauntlet-loop | Codex edition of the gauntlet method: explicitly invoked mega-projects through approved plans, bounded agent workstreams, fresh critics, durable handoffs, and independent verification. |
 | guide-production-studio | Build source-grounded practical guides through provenance mapping, reader-first architecture, evidence-led writing, and independent human acceptance. |
-| image-prompting-studio | Complete image prompts for OpenAI Images, Nano Banana, Seedream, Recraft, Luma Uni, Ideogram, and Midjourney across creation, edits, references, conversion, series, layout, and review, plus requested Midjourney operations. |
+| image-prompting-studio | Write and review image prompts for creation, edits, references, series, layouts and Midjourney. Prompt preparation only; no image generation or job submission. |
 | harness-engineering | Design, build, verify, and maintain a personalized AI operating harness on Claude Code, Claude Cowork, or Codex through a source-first interview and reversible guided workflow. |
 | knowledge-work-superpowers | A disciplined workflow system for research, analysis, writing, review, and evidence-backed delivery. |
 | last30days | Recent-signal research across social, community, market, code, and web sources on Codex, Claude Code, and Claude Cowork. |
@@ -77,7 +77,7 @@ Cowork-supported plugin and install it from the catalog.
 | video-production-studio | End-to-end routing, prompting, production, captions, graphics, runtime implementation, and delivery checks for video. |
 | web-product-studio | Route, build, redesign, implement from images, and verify web products with one visual authority on Claude Code, Claude Cowork, or Codex. |
 | writing-quality | Intent-aware drafting, rewriting, detect-only review, claim boundaries, and final prose validation. |
-The marketplace currently contains 30 plugins and 255 skills. The packages also
+The marketplace currently contains 30 plugins and 254 skills. The packages also
 include their supporting scripts, references, assets, and agent definitions.
 LoopKit includes local lifecycle hooks. The marketplace does not currently
 bundle MCP servers or app connectors.

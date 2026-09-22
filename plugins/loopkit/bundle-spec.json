@@ -1,6 +1,6 @@
 {
   "plugin": "loopkit",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "state_root": {
     "claude-code": "~/.claude/loopkit",
     "cowork": "~/.claude/loopkit",
@@ -16,7 +16,10 @@
     "loop-scheduler",
     "loop-doctor"
   ],
-  "hooks": ["PreCompact", "SessionStart"],
+  "hooks": [
+    "PreCompact",
+    "SessionStart"
+  ],
   "guardrails": [
     "A loop never expands the active task's authority or permissions.",
     "Completion requires deterministic evidence and a valid run receipt.",
@@ -25,7 +28,11 @@
   ],
   "compatibility": {
     "agent_ops": "optional",
-    "temporary_shims": ["goal-runner", "loop-goal-engineer", "loopy"],
+    "temporary_shims": [
+      "goal-runner",
+      "loop-goal-engineer",
+      "loopy"
+    ],
     "status": "Agent Ops owns these optional explicit-only compatibility identities; LoopKit does not require them."
   }
 }

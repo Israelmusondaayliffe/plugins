@@ -5,7 +5,7 @@ description: "Compose subjects, objects, environments, style or layout from mult
 
 # Image Reference Composer
 
-Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) only for a named model or actual execution.
+Read the shared [prompt contract](../../references/prompt-contract.md). Use [model profiles](../../references/model-profiles.md) when adapting a prompt for a named model.
 
 Read every supplied reference. Identify what each contributes: identity, object geometry, wardrobe, environment, composition, pose, material, lighting or style. Use a short reference map and an explicit priority when references conflict. Do not transfer a style reference's face or a wardrobe reference's identity unless requested.
 
